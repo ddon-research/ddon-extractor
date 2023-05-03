@@ -1,0 +1,67 @@
+:toc:
+:toc-placement!:
+
+== About
+
+a minimal CLI to extract data from DDON's client resources.
+
+* This tool does not handle ARC files, only the nested files inside
+
+'''
+
+toc::[]
+
+== How to develop
+
+To develop, an IDE such as JetBrains' IntelliJ IDEA Community Edition is recommended.
+This is currently the only IDE the source code has been tested with.
+
+=== Workspace & IDE
+
+==== IntelliJ IDEA Community Edition
+
+* Download and Install JDK17 via https://adoptium.net/releases.html[Eclipse Adoptium]
+* Download and install the https://www.jetbrains.com/toolbox-app/[Toolbox App] by JetBrains
+* Install IntelliJ IDEA Community Edition via the toolbox
+* Click on Open Project and open the cloned repository
+* Open any Java file and click on the suggestion to set up the JDK
+* Set up the project structure to fix the JDK hints
+** Navigate to `File -> Settings -> Project Structure`
+** Ensure `Project language` is set to SDK default
+** Ensure `Project SDK` is set to JDK17
+
+== How to build
+
+=== Gradle
+
+The Gradle build is configured to make use of the Gradle wrapper, which will be downloaded on the first Gradle command.
+
+To trigger a Gradle build the following Gradle command may be used:
+....
+./gradlew build
+....
+
+=== Native images
+
+Since JDK16 the `jpackage` tool is bundled with the JDK.
+This tool allows the creation of native OS executable images.
+
+* To do this in an automated way, the following Gradle plugin will be used: https://badass-jlink-plugin.beryx.org/releases/latest/[The Badass JLink Plugin]
+* For Windows there is a prerequisite tool which also has to be installed: https://wixtoolset.org/releases/[WiX Toolset]
+
+To trigger a native image build the following Gradle command suffices:
+....
+./gradlew jpackage
+....
+
+== How to run
+
+=== Gradle
+
+....
+./gradlew run
+....
+
+=== Native images
+
+Directly run the executable.
