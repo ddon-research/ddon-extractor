@@ -49,4 +49,28 @@ public abstract class FileDeserializer implements Deserializer {
         }
         return false;
     }
+
+    @Override
+    public Object deserialize() {
+        return deserialize(false);
+    }
+
+    @Override
+    public Object deserialize(boolean addMetaInformation) {
+        if (extractionTypeReference.magic != null && !isMagicValid()) {
+            return null;
+        }
+        if (extractionTypeReference.version > 0 && !isVersionValid()) {
+            return null;
+        }
+        if (addMetaInformation) {
+            return readObjectWithMetaInformation();
+        } else {
+            return readObject();
+        }
+    }
+
+    protected abstract Object readObject();
+
+    protected abstract Object readObjectWithMetaInformation();
 }

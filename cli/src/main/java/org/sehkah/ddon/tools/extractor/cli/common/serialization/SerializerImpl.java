@@ -39,7 +39,7 @@ public class SerializerImpl implements Serializer {
     public <T> T deserialize(String serialized, Class<T> cls) {
         return switch (preferredSerializationType) {
             case JSON, json -> deserializeJson(serialized, cls);
-            case YAML, yaml, DEFAULT -> deserializeYaml(serialized, cls);
+            case YAML, yaml, yml, DEFAULT -> deserializeYaml(serialized, cls);
         };
     }
 
@@ -47,7 +47,7 @@ public class SerializerImpl implements Serializer {
     public <T> String serialize(T deserialized) {
         return switch (preferredSerializationType) {
             case JSON, json -> serializeJson(deserialized);
-            case YAML, yaml, DEFAULT -> serializeYaml(deserialized);
+            case YAML, yaml, yml, DEFAULT -> serializeYaml(deserialized);
         };
     }
 

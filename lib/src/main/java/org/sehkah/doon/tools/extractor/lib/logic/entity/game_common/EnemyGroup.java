@@ -5,5 +5,6 @@ import java.util.List;
 public record EnemyGroup(
         long EnemyGroupId,
         long MsgIndex,
-        List<Long> EmList) {
+        List<Long> EmList
+) {
 }

@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializerImpl;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
+import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
 import picocli.CommandLine;
@@ -46,48 +47,30 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean writeOutputToFile;
 
-    private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile) {
-        BinaryFileReader binaryFileReader;
-        try {
-            binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
-        } catch (IOException e) {
-            logger.error("Failed to read from the provided file path: {}", filePath);
-            if (logger.isDebugEnabled()) {
-                logger.error(e);
-            }
-            return StatusCode.ERROR;
-        }
-        Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
+    @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
+            Optionally specify whether to enrich the output with additional meta information (if available).
+            For example, if a numeric type has a corresponding semantic mapping this be output as additional field.
+            Note that this will make the output result less compatible in turn for improved comprehensibility.
+            """, defaultValue = "false")
+    private boolean addMetaInformation;
+
+    private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile, boolean addMetaInformation) {
+        FileReader fileReader = getFileReader(filePath);
+        if (fileReader == null) return StatusCode.ERROR;
+        Deserializer deserializer = DeserializerFactory.forFilePath(fileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
-        Object deserializedOutput = deserializer.deserialize();
-
+        Object deserializedOutput = deserializer.deserialize(addMetaInformation);
+        if (fileReader.hasRemaining()) {
+            logger.warn("File has data remaining! {} bytes / {} bytes left.", fileReader.getRemainingCount(), fileReader.getLimit());
+        }
         if (deserializedOutput != null) {
-            Serializer serializer = new SerializerImpl(outputFormat);
-            String serializedOutput;
-            try {
-                serializedOutput = serializer.serialize(deserializedOutput);
-            } catch (SerializerException e) {
-                logger.error("Failed to serialize object: {}", deserializedOutput);
-                if (logger.isDebugEnabled()) {
-                    logger.error(e);
-                }
-                return StatusCode.ERROR;
-            }
+            String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
+            if (serializedOutput == null) return StatusCode.ERROR;
             if (writeOutputToFile) {
-                String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
-                Path outputFilePath = Path.of(".").resolve(outputFile);
-                logger.debug("Outputting to file: {}", outputFilePath);
-                try {
-                    Files.write(outputFilePath, serializedOutput.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                } catch (IOException e) {
-                    logger.error("Failed to write file: {}", outputFilePath);
-                    if (logger.isDebugEnabled()) {
-                        logger.error(e);
-                    }
-                    return StatusCode.ERROR;
-                }
+                StatusCode error = writeOutputToFile(filePath, outputFormat, serializedOutput);
+                if (error != null) return error;
             } else {
                 logger.debug("Outputting to console.");
                 logger.info(serializedOutput);
@@ -99,6 +82,53 @@ public class ExtractCommand implements Callable<Integer> {
         }
     }
 
+    private static StatusCode writeOutputToFile(Path filePath, SerializationFormat outputFormat, String serializedOutput) {
+        String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
+        Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
+        outputFolder.toFile().mkdirs();
+        Path outputFilePath = outputFolder.resolve(outputFile);
+        logger.debug("Outputting to file: {}", outputFilePath);
+        try {
+            Files.write(outputFilePath, serializedOutput.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            logger.error("Failed to write file: {}", outputFilePath);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return StatusCode.ERROR;
+        }
+        return null;
+    }
+
+    private static String getDeserializedOutput(SerializationFormat outputFormat, Object deserializedOutput) {
+        String serializedOutput;
+        Serializer serializer = new SerializerImpl(outputFormat);
+        try {
+            serializedOutput = serializer.serialize(deserializedOutput);
+        } catch (SerializerException e) {
+            logger.error("Failed to serialize object: {}", deserializedOutput);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return null;
+        }
+        return serializedOutput;
+    }
+
+    private static FileReader getFileReader(Path filePath) {
+        FileReader binaryFileReader;
+        try {
+            binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
+        } catch (IOException e) {
+            logger.error("Failed to read from the provided file path: {}", filePath);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return null;
+        }
+        return binaryFileReader;
+    }
+
     @Override
     public Integer call() throws Exception {
         if (Files.exists(inputFilePath) && Files.isReadable(inputFilePath)) {
@@ -107,7 +137,7 @@ public class ExtractCommand implements Callable<Integer> {
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
                     List<StatusCode> statusCodes = files
                             .filter(Files::isRegularFile)
-                            .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile)).toList();
+                            .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile, addMetaInformation)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         logger.warn("Failed to extract one or more resource files.");
                         return StatusCode.ERROR.ordinal();
@@ -118,7 +148,7 @@ public class ExtractCommand implements Callable<Integer> {
                 }
             } else {
                 logger.debug("Extracting resource data from file: {}", inputFilePath);
-                return extractSingleFile(inputFilePath, outputFormat, writeOutputToFile).ordinal();
+                return extractSingleFile(inputFilePath, outputFormat, writeOutputToFile, addMetaInformation).ordinal();
             }
         } else {
             logger.error("The provided file path '{}' does either not exist or is not readable.", inputFilePath);

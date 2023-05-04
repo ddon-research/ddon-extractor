@@ -1,10 +1,19 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
+import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
+
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.function.Function;
 
 public interface FileReader {
     int getPosition();
+
+    int getLimit();
+
+    boolean hasRemaining();
+
+    int getRemainingCount();
 
     int readUnsignedByte();
 
@@ -24,7 +33,15 @@ public interface FileReader {
 
     double readDouble();
 
+    MtVector3 readMtVector3();
+
+    String readNullTerminatedString(Charset charset);
+
+    String readNullTerminatedString();
+
     String readString(int length);
 
-    <Entity> List<Entity> readArray(Function<FileReader, Entity> entityReaderFunction);
+    String readString(int length, Charset charset);
+
+    <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 }

@@ -10,19 +10,21 @@ public class EnemyGroupDeserializer extends FileDeserializer {
         super(ExtractionType.ENEMY_GROUP, fileReader);
     }
 
-    private static EnemyGroup readEntity(FileReader reader) {
+    private static EnemyGroup readEntity(FileReader fileReader) {
         return new EnemyGroup(
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readArray(FileReader::readUnsignedInteger)
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readArray(FileReader::readUnsignedInteger)
         );
     }
 
     @Override
-    public Object deserialize() {
-        if (!isVersionValid()) {
-            return null;
-        }
+    protected Object readObject() {
         return fileReader.readArray(EnemyGroupDeserializer::readEntity);
+    }
+
+    @Override
+    protected Object readObjectWithMetaInformation() {
+        return readObject();
     }
 }
