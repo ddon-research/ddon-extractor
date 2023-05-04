@@ -52,15 +52,14 @@ application {
     mainClass = 'org.sehkah.ddon.tools.Main'
 }
 
-jar {
+tasks.withType(Jar).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes 'Main-Class': 'org.sehkah.ddon.tools.Main'
-    }
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-        duplicatesStrategy DuplicatesStrategy.EXCLUDE
+        attributes 'Main-Class': application.mainClass
     }
 }
+
+tasks.distTar.enabled = false
 
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--ignore-signing-information']
@@ -68,7 +67,6 @@ jlink {
         name = rootProject.name
         jvmArgs = ['-Dfile.encoding=UTF-8']
     }
-
     jpackage {
         jvmArgs = ['-Dfile.encoding=UTF-8']
         skipInstaller = true
