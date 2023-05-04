@@ -1,7 +1,8 @@
-package org.sehkah.doon.tools.extractor.lib.logic.reserialization;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.game_common.EnemyGroupDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.gui_cmn.WarpLocationListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.LandListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.EnemyGroupDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationListDeserializer;
 
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ public enum ExtractionType {
     ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg", EnemyGroupDeserializer.INSTANCE),
     WARP_LOCATION_LIST("ui/gui_cmn", "ui/03_warp", "warpLocationList.wal", "wal", WarpLocationListDeserializer.INSTANCE),
     LOBBY_WARP_LOCATION_LIST("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", WarpLocationListDeserializer.INSTANCE),
+    LAND_LIST("base", "scr", "land_list.lai", "lai", LandListDeserializer.INSTANCE),
     UNSUPPORTED("", "", "", "", null);
 
     final String arcFile;

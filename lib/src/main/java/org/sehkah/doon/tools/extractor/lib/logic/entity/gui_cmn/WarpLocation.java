@@ -11,5 +11,5 @@ public record WarpLocation(
         long MapPosY,
         long IconType,
         long Padding
-        ) {
+) {
 }

@@ -1,10 +1,10 @@
-package org.sehkah.doon.tools.extractor.lib.logic.reserialization.gui_cmn;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
+import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.WarpLocation;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.Deserializer;
 
 import java.util.List;
 
@@ -16,13 +16,13 @@ public class WarpLocationListDeserializer implements Deserializer {
 
     }
 
-    public static List<WarpLocation> deserializeObject(BinaryFileReader binaryFileReader) {
-        long version = binaryFileReader.readUnsignedInteger();
+    public static List<WarpLocation> deserializeObject(FileReader fileReader) {
+        long version = fileReader.readUnsignedInteger();
         logger.info("version: '{}'", version);
-        return binaryFileReader.readArray(WarpLocationListDeserializer::readEntity);
+        return fileReader.readArray(WarpLocationListDeserializer::readEntity);
     }
 
-    private static WarpLocation readEntity(BinaryFileReader reader) {
+    private static WarpLocation readEntity(FileReader reader) {
         return new WarpLocation(
                 reader.readUnsignedInteger(),
                 reader.readUnsignedInteger(),
@@ -37,7 +37,8 @@ public class WarpLocationListDeserializer implements Deserializer {
         );
     }
 
-    public Object deserialize(BinaryFileReader binaryFileReader) {
-        return deserializeObject(binaryFileReader);
+    @Override
+    public Object deserialize(FileReader fileReader) {
+        return deserializeObject(fileReader);
     }
 }

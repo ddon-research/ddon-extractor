@@ -8,8 +8,8 @@ import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializerImpl;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.Deserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.DeserializerFactory;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
 import picocli.CommandLine;
 
 import java.io.IOException;

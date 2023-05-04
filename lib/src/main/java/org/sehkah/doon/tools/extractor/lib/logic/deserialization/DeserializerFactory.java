@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.reserialization;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
