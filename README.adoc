@@ -3,6 +3,8 @@
 
 == About
 
+image::https://github.com/Sehkah/ddon-extractor/actions/workflows/gradle-build.yml/badge.svg[]
+
 a minimal CLI to extract data from DDON's client resources.
 
 * This tool does not handle ARC files, only the nested files inside
