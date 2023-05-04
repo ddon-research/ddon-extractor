@@ -1,7 +1,9 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.AreaInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.AreaInfoStageDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.LandInfoDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.StageInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.EnemyGroupDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 
@@ -14,6 +16,8 @@ public enum ExtractionType {
     LOBBY_WARP_LOCATION("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", null, 353, WarpLocationDeserializer.class),
     LAND_INFO("base", "scr", "land_list.lai", "lai", "LAI\0", 4, LandInfoDeserializer.class),
     AREA_INFO_STAGE("base", "scr", "area_stage_list.ars", "ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
+    AREA_INFO("base", "scr", "area_list.ari", "ari", "ARI\0", 2, AreaInfoDeserializer.class),
+    STAGE_INFO("base", "scr", "stage_list.slt", "slt", "slt\0", 34, StageInfoDeserializer.class),
     UNSUPPORTED("", "", "", "", null, 0, null);
 
     public final String arcFile;

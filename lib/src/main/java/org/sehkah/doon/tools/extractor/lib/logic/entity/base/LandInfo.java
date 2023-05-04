@@ -6,5 +6,6 @@ public record LandInfo(
         long LandId,
         boolean IsDispNews,
         int GameMode,
-        List<Long> AreaIds) {
+        List<Long> AreaIds
+) {
 }
