@@ -10,35 +10,28 @@ public class WarpLocationDeserializer extends FileDeserializer {
         super(ExtractionType.WARP_LOCATION, fileReader);
     }
 
-    private static WarpLocation readEntity(FileReader reader) {
+    private static WarpLocation readEntity(FileReader fileReader) {
         return new WarpLocation(
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readSignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readUnsignedShort(),
-                reader.readUnsignedShort(),
-                reader.readUnsignedByte(),
-                reader.readUnsignedInteger()
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readSignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedByte(),
+                fileReader.readUnsignedInteger()
         );
     }
 
     @Override
-    public Object deserialize() {
-        return deserialize(false);
+    protected Object readObject() {
+        return fileReader.readArray(WarpLocationDeserializer::readEntity);
     }
 
     @Override
-    public Object deserialize(boolean addMetaInformation) {
-        if (!isVersionValid()) {
-            return null;
-        }
-        if (addMetaInformation) {
-            return fileReader.readArray(WarpLocationDeserializer::readEntity);
-        } else {
-            return fileReader.readArray(WarpLocationDeserializer::readEntity);
-        }
+    protected Object readObjectWithMetaInformation() {
+        return readObject();
     }
 }

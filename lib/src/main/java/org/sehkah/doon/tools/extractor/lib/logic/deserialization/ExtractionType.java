@@ -5,6 +5,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.AreaInfoSt
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.LandAreaInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.StageInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.EnemyGroupDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 
 import java.nio.file.Path;
@@ -13,6 +14,7 @@ import java.util.Arrays;
 public enum ExtractionType {
     ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg", null, 1, EnemyGroupDeserializer.class),
     WARP_LOCATION("ui/gui_cmn", "ui/03_warp", "warpLocationList.wal", "wal", null, 353, WarpLocationDeserializer.class),
+    STAGE_MAP("ui/gui_cmn", "param", "stage_map.smp", "smp", null, 1, StageMapDeserializer.class),
     LOBBY_WARP_LOCATION("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", null, 353, WarpLocationDeserializer.class),
     LAND_AREA_INFO("base", "scr", "land_list.lai", "lai", "LAI\0", 4, LandAreaInfoDeserializer.class),
     AREA_INFO_STAGE("base", "scr", "area_stage_list.ars", "ars", "ARS\0", 2, AreaInfoStageDeserializer.class),

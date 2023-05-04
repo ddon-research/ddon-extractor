@@ -1,8 +1,11 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
+import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,7 +42,7 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public int getRemainingCount(){
+    public int getRemainingCount() {
         return byteBuffer.remaining();
     }
 
@@ -89,10 +92,34 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public MtVector3 readMtVector3() {
+        return new MtVector3(readFloat(), readFloat(), readFloat());
+    }
+
+    @Override
+    public String readNullTerminatedString(Charset charset) {
+        int i = byteBuffer.position();
+        while (byteBuffer.get(i) != 0) {
+            i++;
+        }
+        return readString(i + 1 - byteBuffer.position(), charset).replace("\0", "");
+    }
+
+    @Override
+    public String readNullTerminatedString() {
+        return readNullTerminatedString(StandardCharsets.US_ASCII).replace("\0", "");
+    }
+
+    @Override
     public String readString(int length) {
+        return readString(length, StandardCharsets.US_ASCII);
+    }
+
+    @Override
+    public String readString(int length, Charset charset) {
         byte[] stringBytes = new byte[length];
-        byteBuffer.get(stringBytes, byteBuffer.position(), byteBuffer.position() + length);
-        return StandardCharsets.US_ASCII.decode(ByteBuffer.wrap(stringBytes)).toString();
+        byteBuffer.get(stringBytes, 0, length);
+        return charset.decode(ByteBuffer.wrap(stringBytes)).toString();
     }
 
     @Override

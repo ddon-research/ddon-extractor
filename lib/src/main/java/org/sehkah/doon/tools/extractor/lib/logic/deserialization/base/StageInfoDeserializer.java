@@ -11,34 +11,29 @@ public class StageInfoDeserializer extends FileDeserializer {
         super(ExtractionType.STAGE_INFO, fileReader);
     }
 
-    private static StageInfo readEntity(FileReader reader) {
+
+    private static StageInfo readEntity(FileReader fileReader) {
         return new StageInfo(
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger(),
-                reader.readUnsignedByte(),
-                reader.readUnsignedInteger(),
-                reader.readUnsignedInteger()
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedByte(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger()
         );
     }
 
-    private static StageInfoWithMetaInformation readEntityWithMetaInformation(FileReader reader) {
-        return StageInfoWithMetaInformation.of(readEntity(reader));
+    private static StageInfoWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
+        return StageInfoWithMetaInformation.of(readEntity(fileReader));
+    }
+
+
+    @Override
+    protected Object readObject() {
+        return fileReader.readArray(StageInfoDeserializer::readEntity);
     }
 
     @Override
-    public Object deserialize() {
-        return deserialize(false);
-    }
-
-    @Override
-    public Object deserialize(boolean addMetaInformation) {
-        if (!isMagicValid() || !isVersionValid()) {
-            return null;
-        }
-        if (addMetaInformation) {
-            return fileReader.readArray(StageInfoDeserializer::readEntityWithMetaInformation);
-        } else {
-            return fileReader.readArray(StageInfoDeserializer::readEntity);
-        }
+    protected Object readObjectWithMetaInformation() {
+        return fileReader.readArray(StageInfoDeserializer::readEntityWithMetaInformation);
     }
 }

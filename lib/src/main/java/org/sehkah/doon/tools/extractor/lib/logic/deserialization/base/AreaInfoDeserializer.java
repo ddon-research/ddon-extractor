@@ -10,28 +10,21 @@ public class AreaInfoDeserializer extends FileDeserializer {
         super(ExtractionType.AREA_INFO, fileReader);
     }
 
-    private static AreaInfo readEntity(FileReader reader) {
+    private static AreaInfo readEntity(FileReader fileReader) {
         return new AreaInfo(
-                reader.readUnsignedInteger(),
-                reader.readSignedInteger(),
-                reader.readSignedInteger()
+                fileReader.readUnsignedInteger(),
+                fileReader.readSignedInteger(),
+                fileReader.readSignedInteger()
         );
     }
 
     @Override
-    public Object deserialize() {
-        return deserialize(false);
+    protected Object readObject() {
+        return fileReader.readArray(AreaInfoDeserializer::readEntity);
     }
 
     @Override
-    public Object deserialize(boolean addMetaInformation) {
-        if (!isMagicValid() || !isVersionValid()) {
-            return null;
-        }
-        if (addMetaInformation) {
-            return fileReader.readArray(AreaInfoDeserializer::readEntity);
-        } else {
-            return fileReader.readArray(AreaInfoDeserializer::readEntity);
-        }
+    protected Object readObjectWithMetaInformation() {
+        return readObject();
     }
 }

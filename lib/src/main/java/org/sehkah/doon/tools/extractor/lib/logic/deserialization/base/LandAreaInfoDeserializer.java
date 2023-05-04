@@ -11,33 +11,26 @@ public class LandAreaInfoDeserializer extends FileDeserializer {
         super(ExtractionType.LAND_AREA_INFO, fileReader);
     }
 
-    private static LandAreaInfo readEntity(FileReader reader) {
+    private static LandAreaInfo readEntity(FileReader fileReader) {
         return new LandAreaInfo(
-                reader.readUnsignedInteger(),
-                reader.readBoolean(),
-                reader.readUnsignedByte(),
-                reader.readArray(FileReader::readUnsignedInteger)
+                fileReader.readUnsignedInteger(),
+                fileReader.readBoolean(),
+                fileReader.readUnsignedByte(),
+                fileReader.readArray(FileReader::readUnsignedInteger)
         );
     }
 
-    private static LandAreaInfoWithMetaInformation readEntityWithMetaInformation(FileReader reader) {
-        return LandAreaInfoWithMetaInformation.of(readEntity(reader));
+    private static LandAreaInfoWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
+        return LandAreaInfoWithMetaInformation.of(readEntity(fileReader));
     }
 
     @Override
-    public Object deserialize() {
-        return deserialize(false);
+    protected Object readObject() {
+        return fileReader.readArray(LandAreaInfoDeserializer::readEntity);
     }
 
     @Override
-    public Object deserialize(boolean addMetaInformation) {
-        if (!isMagicValid() || !isVersionValid()) {
-            return null;
-        }
-        if (addMetaInformation) {
-            return fileReader.readArray(LandAreaInfoDeserializer::readEntityWithMetaInformation);
-        } else {
-            return fileReader.readArray(LandAreaInfoDeserializer::readEntity);
-        }
+    protected Object readObjectWithMetaInformation() {
+        return fileReader.readArray(LandAreaInfoDeserializer::readEntityWithMetaInformation);
     }
 }
