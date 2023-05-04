@@ -105,7 +105,9 @@ public class ExtractCommand implements Callable<Integer> {
             if (Files.isDirectory(inputFilePath)) {
                 logger.debug("Recursively extracting resource data from folder: {}", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
-                    List<StatusCode> statusCodes = files.map(path -> extractSingleFile(path, outputFormat, writeOutputToFile)).toList();
+                    List<StatusCode> statusCodes = files
+                            .filter(Files::isRegularFile)
+                            .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         logger.warn("Failed to extract one or more resource files.");
                         return StatusCode.ERROR.ordinal();

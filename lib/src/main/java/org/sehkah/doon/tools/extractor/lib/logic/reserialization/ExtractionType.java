@@ -1,22 +1,29 @@
 package org.sehkah.doon.tools.extractor.lib.logic.reserialization;
 
+import org.sehkah.doon.tools.extractor.lib.logic.reserialization.game_common.EnemyGroupDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.reserialization.gui_cmn.WarpLocationListDeserializer;
+
 import java.nio.file.Path;
 import java.util.Arrays;
 
 public enum ExtractionType {
-    ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg"),
-    UNSUPPORTED("", "", "", "");
+    ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg", EnemyGroupDeserializer.INSTANCE),
+    WARP_LOCATION_LIST("ui/gui_cmn", "ui/03_warp", "warpLocationList.wal", "wal", WarpLocationListDeserializer.INSTANCE),
+    LOBBY_WARP_LOCATION_LIST("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", WarpLocationListDeserializer.INSTANCE),
+    UNSUPPORTED("", "", "", "", null);
 
     final String arcFile;
     final String arcFilePath;
     final String resourceFileName;
     final String resourceFileExtension;
+    final Deserializer deserializer;
 
-    ExtractionType(String arcFile, String arcFilePath, String resourceFileName, String resourceFileExtension) {
+    ExtractionType(String arcFile, String arcFilePath, String resourceFileName, String resourceFileExtension, Deserializer deserializer) {
         this.arcFile = arcFile;
         this.arcFilePath = arcFilePath;
         this.resourceFileName = resourceFileName;
         this.resourceFileExtension = resourceFileExtension;
+        this.deserializer = deserializer;
     }
 
     public static ExtractionType findByResourceFileName(String resourceFileName) {

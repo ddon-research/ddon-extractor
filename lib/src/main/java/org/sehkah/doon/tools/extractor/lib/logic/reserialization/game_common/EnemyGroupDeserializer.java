@@ -16,13 +16,13 @@ public class EnemyGroupDeserializer implements Deserializer {
 
     }
 
-    public static List<EnemyGroup> deserializeEnemyGroup(BinaryFileReader binaryFileReader) {
+    public static List<EnemyGroup> deserializeObject(BinaryFileReader binaryFileReader) {
         long version = binaryFileReader.readUnsignedInteger();
         logger.info("version: '{}'", version);
-        return binaryFileReader.readArray(EnemyGroupDeserializer::readEnemyGroup);
+        return binaryFileReader.readArray(EnemyGroupDeserializer::readEntity);
     }
 
-    private static EnemyGroup readEnemyGroup(BinaryFileReader reader) {
+    private static EnemyGroup readEntity(BinaryFileReader reader) {
         return new EnemyGroup(
                 reader.readUnsignedInteger(),
                 reader.readUnsignedInteger(),
@@ -31,6 +31,6 @@ public class EnemyGroupDeserializer implements Deserializer {
     }
 
     public Object deserialize(BinaryFileReader binaryFileReader) {
-        return deserializeEnemyGroup(binaryFileReader);
+        return deserializeObject(binaryFileReader);
     }
 }
