@@ -35,6 +35,7 @@ public class SerializerImpl implements Serializer {
         this.preferredSerializationType = preferredSerializationType;
     }
 
+    @Override
     public <T> T deserialize(String serialized, Class<T> cls) {
         return switch (preferredSerializationType) {
             case JSON, json -> deserializeJson(serialized, cls);
@@ -42,6 +43,7 @@ public class SerializerImpl implements Serializer {
         };
     }
 
+    @Override
     public <T> String serialize(T deserialized) {
         return switch (preferredSerializationType) {
             case JSON, json -> serializeJson(deserialized);
@@ -49,6 +51,7 @@ public class SerializerImpl implements Serializer {
         };
     }
 
+    @Override
     public <T> T deserializeJson(String serialized, Class<T> cls) {
         try {
             return jsonMapper.readValue(serialized, cls);
@@ -57,6 +60,7 @@ public class SerializerImpl implements Serializer {
         }
     }
 
+    @Override
     public <T> String serializeJson(T deserialized) {
         try {
             return jsonMapper.writeValueAsString(deserialized);
@@ -65,6 +69,7 @@ public class SerializerImpl implements Serializer {
         }
     }
 
+    @Override
     public <T> T deserializeYaml(String serialized, Class<T> cls) {
         try {
             return yamlMapper.readValue(serialized, cls);
@@ -73,6 +78,7 @@ public class SerializerImpl implements Serializer {
         }
     }
 
+    @Override
     public <T> String serializeYaml(T deserialized) {
         try {
             return yamlMapper.writeValueAsString(deserialized);

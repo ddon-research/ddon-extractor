@@ -5,11 +5,11 @@ public record WarpLocation(
         long SortNo,
         long AreaId,
         long SpotId,
-        long StageNo,
+        int StageNo,
         long PosNo,
-        long MapPosX,
-        long MapPosY,
-        long IconType,
+        int MapPosX,
+        int MapPosY,
+        int IconType,
         long Padding
-        ) {
+) {
 }

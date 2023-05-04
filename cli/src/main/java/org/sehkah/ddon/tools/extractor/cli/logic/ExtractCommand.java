@@ -8,8 +8,8 @@ import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializerImpl;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.Deserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.reserialization.DeserializerFactory;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -57,11 +57,11 @@ public class ExtractCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        Deserializer deserializer = DeserializerFactory.forFilePath(filePath);
+        Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
-        Object deserializedOutput = deserializer.deserialize(binaryFileReader);
+        Object deserializedOutput = deserializer.deserialize();
 
         if (deserializedOutput != null) {
             Serializer serializer = new SerializerImpl(outputFormat);
