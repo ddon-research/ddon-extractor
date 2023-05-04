@@ -46,14 +46,21 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean writeOutputToFile;
 
-    private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile) {
+    @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
+            Optionally specify whether to enrich the output with additional meta information (if available).
+            For example, if a numeric type has a corresponding semantic mapping this be output as additional field.
+            Note that this will make the output result less compatible in turn for improved comprehensibility.
+            """, defaultValue = "false")
+    private boolean addMetaInformation;
+
+    private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile, boolean addMetaInformation) {
         BinaryFileReader binaryFileReader = getBinaryFileReader(filePath);
         if (binaryFileReader == null) return StatusCode.ERROR;
         Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
-        Object deserializedOutput = deserializer.deserialize();
+        Object deserializedOutput = deserializer.deserialize(addMetaInformation);
 
         if (deserializedOutput != null) {
             String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
@@ -127,7 +134,7 @@ public class ExtractCommand implements Callable<Integer> {
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
                     List<StatusCode> statusCodes = files
                             .filter(Files::isRegularFile)
-                            .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile)).toList();
+                            .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile, addMetaInformation)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         logger.warn("Failed to extract one or more resource files.");
                         return StatusCode.ERROR.ordinal();
@@ -138,7 +145,7 @@ public class ExtractCommand implements Callable<Integer> {
                 }
             } else {
                 logger.debug("Extracting resource data from file: {}", inputFilePath);
-                return extractSingleFile(inputFilePath, outputFormat, writeOutputToFile).ordinal();
+                return extractSingleFile(inputFilePath, outputFormat, writeOutputToFile, addMetaInformation).ordinal();
             }
         } else {
             logger.error("The provided file path '{}' does either not exist or is not readable.", inputFilePath);

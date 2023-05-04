@@ -27,9 +27,18 @@ public class WarpLocationDeserializer extends FileDeserializer {
 
     @Override
     public Object deserialize() {
+        return deserialize(false);
+    }
+
+    @Override
+    public Object deserialize(boolean addMetaInformation) {
         if (!isVersionValid()) {
             return null;
         }
-        return fileReader.readArray(WarpLocationDeserializer::readEntity);
+        if (addMetaInformation) {
+            return null;
+        } else {
+            return fileReader.readArray(WarpLocationDeserializer::readEntity);
+        }
     }
 }

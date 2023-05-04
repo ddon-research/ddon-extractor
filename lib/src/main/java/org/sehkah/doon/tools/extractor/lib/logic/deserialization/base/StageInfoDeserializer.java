@@ -4,6 +4,7 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtractionType;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.StageInfoWithMetaInformation;
 
 public class StageInfoDeserializer extends FileDeserializer {
     public StageInfoDeserializer(FileReader fileReader) {
@@ -20,11 +21,24 @@ public class StageInfoDeserializer extends FileDeserializer {
         );
     }
 
+    private static StageInfoWithMetaInformation readEntityWithMetaInformation(FileReader reader) {
+        return StageInfoWithMetaInformation.of(readEntity(reader));
+    }
+
     @Override
     public Object deserialize() {
+        return deserialize(false);
+    }
+
+    @Override
+    public Object deserialize(boolean addMetaInformation) {
         if (!isMagicValid() || !isVersionValid()) {
             return null;
         }
-        return fileReader.readArray(StageInfoDeserializer::readEntity);
+        if (addMetaInformation) {
+            return fileReader.readArray(StageInfoDeserializer::readEntityWithMetaInformation);
+        } else {
+            return fileReader.readArray(StageInfoDeserializer::readEntity);
+        }
     }
 }

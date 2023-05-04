@@ -20,9 +20,18 @@ public class EnemyGroupDeserializer extends FileDeserializer {
 
     @Override
     public Object deserialize() {
+        return deserialize(false);
+    }
+
+    @Override
+    public Object deserialize(boolean addMetaInformation) {
         if (!isVersionValid()) {
             return null;
         }
-        return fileReader.readArray(EnemyGroupDeserializer::readEntity);
+        if (addMetaInformation) {
+            return null;
+        } else {
+            return fileReader.readArray(EnemyGroupDeserializer::readEntity);
+        }
     }
 }

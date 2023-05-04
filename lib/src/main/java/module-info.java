@@ -7,4 +7,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
 }

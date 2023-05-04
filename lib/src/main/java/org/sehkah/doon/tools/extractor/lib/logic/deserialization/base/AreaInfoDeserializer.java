@@ -20,9 +20,18 @@ public class AreaInfoDeserializer extends FileDeserializer {
 
     @Override
     public Object deserialize() {
+        return deserialize(false);
+    }
+
+    @Override
+    public Object deserialize(boolean addMetaInformation) {
         if (!isMagicValid() || !isVersionValid()) {
             return null;
         }
-        return fileReader.readArray(AreaInfoDeserializer::readEntity);
+        if (addMetaInformation) {
+            return fileReader.readArray(AreaInfoDeserializer::readEntity);
+        } else {
+            return fileReader.readArray(AreaInfoDeserializer::readEntity);
+        }
     }
 }
