@@ -1,32 +1,37 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.AreaInfoStageDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.LandInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.EnemyGroupDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 
 import java.nio.file.Path;
 import java.util.Arrays;
 
 public enum ExtractionType {
-    ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg", null, EnemyGroupDeserializer.INSTANCE),
-    WARP_LOCATION_LIST("ui/gui_cmn", "ui/03_warp", "warpLocationList.wal", "wal", null, WarpLocationListDeserializer.INSTANCE),
-    LOBBY_WARP_LOCATION_LIST("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", null, WarpLocationListDeserializer.INSTANCE),
-    LAND_INFO("base", "scr", "land_list.lai", "lai", "LAI ", LandInfoDeserializer.INSTANCE),
-    UNSUPPORTED("", "", "", "", null, null);
+    ENEMY_GROUP("game_common", "param", "enemy_group.emg", "emg", null, 1, EnemyGroupDeserializer.class),
+    WARP_LOCATION("ui/gui_cmn", "ui/03_warp", "warpLocationList.wal", "wal", null, 353, WarpLocationDeserializer.class),
+    LOBBY_WARP_LOCATION("ui/uGUIRimWarp", "ui/03_warp", "lobbyWarpLocationList.wal", "wal", null, 353, WarpLocationDeserializer.class),
+    LAND_INFO("base", "scr", "land_list.lai", "lai", "LAI\0", 4, LandInfoDeserializer.class),
+    AREA_INFO_STAGE("base", "scr", "area_stage_list.ars", "ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
+    UNSUPPORTED("", "", "", "", null, 0, null);
 
     public final String arcFile;
     public final String arcFilePath;
     public final String resourceFileName;
     public final String resourceFileExtension;
     public final String magic;
-    public final Deserializer deserializer;
+    public final long version;
+    public final Class<? extends Deserializer> deserializer;
 
-    ExtractionType(String arcFile, String arcFilePath, String resourceFileName, String resourceFileExtension, String magic, Deserializer deserializer) {
+    ExtractionType(String arcFile, String arcFilePath, String resourceFileName, String resourceFileExtension,
+                   String magic, long version, Class<? extends Deserializer> deserializer) {
         this.arcFile = arcFile;
         this.arcFilePath = arcFilePath;
         this.resourceFileName = resourceFileName;
         this.resourceFileExtension = resourceFileExtension;
         this.magic = magic;
+        this.version = version;
         this.deserializer = deserializer;
     }
 

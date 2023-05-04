@@ -57,11 +57,11 @@ public class ExtractCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        Deserializer deserializer = DeserializerFactory.forFilePath(filePath);
+        Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
-        Object deserializedOutput = deserializer.deserialize(binaryFileReader);
+        Object deserializedOutput = deserializer.deserialize();
 
         if (deserializedOutput != null) {
             Serializer serializer = new SerializerImpl(outputFormat);
