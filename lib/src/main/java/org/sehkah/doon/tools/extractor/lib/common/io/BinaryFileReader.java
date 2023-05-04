@@ -29,6 +29,21 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public int getLimit() {
+        return byteBuffer.limit();
+    }
+
+    @Override
+    public boolean hasRemaining() {
+        return byteBuffer.hasRemaining();
+    }
+
+    @Override
+    public int getRemainingCount(){
+        return byteBuffer.remaining();
+    }
+
+    @Override
     public int readUnsignedByte() {
         return Byte.toUnsignedInt(byteBuffer.get());
     }

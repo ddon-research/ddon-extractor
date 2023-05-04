@@ -6,6 +6,12 @@ import java.util.function.Function;
 public interface FileReader {
     int getPosition();
 
+    int getLimit();
+
+    boolean hasRemaining();
+
+    int getRemainingCount();
+
     int readUnsignedByte();
 
     byte readSignedByte();

@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializerImpl;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
+import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
 import picocli.CommandLine;
@@ -54,14 +55,16 @@ public class ExtractCommand implements Callable<Integer> {
     private boolean addMetaInformation;
 
     private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile, boolean addMetaInformation) {
-        BinaryFileReader binaryFileReader = getBinaryFileReader(filePath);
-        if (binaryFileReader == null) return StatusCode.ERROR;
-        Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
+        FileReader fileReader = getFileReader(filePath);
+        if (fileReader == null) return StatusCode.ERROR;
+        Deserializer deserializer = DeserializerFactory.forFilePath(fileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
         Object deserializedOutput = deserializer.deserialize(addMetaInformation);
-
+        if (fileReader.hasRemaining()) {
+            logger.warn("File has data remaining! {} bytes / {} bytes left.", fileReader.getRemainingCount(), fileReader.getLimit());
+        }
         if (deserializedOutput != null) {
             String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
             if (serializedOutput == null) return StatusCode.ERROR;
@@ -112,8 +115,8 @@ public class ExtractCommand implements Callable<Integer> {
         return serializedOutput;
     }
 
-    private static BinaryFileReader getBinaryFileReader(Path filePath) {
-        BinaryFileReader binaryFileReader;
+    private static FileReader getFileReader(Path filePath) {
+        FileReader binaryFileReader;
         try {
             binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
         } catch (IOException e) {
