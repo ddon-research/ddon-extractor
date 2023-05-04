@@ -18,7 +18,7 @@ public class DeserializerFactory {
     public static Deserializer forFilePath(FileReader fileReader, Path filePath) {
         ExtractionType extractionType = ExtractionType.findByFilePath(filePath);
         if (Objects.requireNonNull(extractionType) == ExtractionType.UNSUPPORTED) {
-            logger.error("The provided file path '{}' did not match any supported extraction types.", filePath);
+            logger.warn("The provided file path '{}' did not match any supported extraction types.", filePath);
             return null;
         }
         Deserializer instance = null;

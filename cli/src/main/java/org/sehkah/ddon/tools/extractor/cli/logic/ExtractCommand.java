@@ -47,16 +47,8 @@ public class ExtractCommand implements Callable<Integer> {
     private boolean writeOutputToFile;
 
     private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile) {
-        BinaryFileReader binaryFileReader;
-        try {
-            binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
-        } catch (IOException e) {
-            logger.error("Failed to read from the provided file path: {}", filePath);
-            if (logger.isDebugEnabled()) {
-                logger.error(e);
-            }
-            return StatusCode.ERROR;
-        }
+        BinaryFileReader binaryFileReader = getBinaryFileReader(filePath);
+        if (binaryFileReader == null) return StatusCode.ERROR;
         Deserializer deserializer = DeserializerFactory.forFilePath(binaryFileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
@@ -64,30 +56,11 @@ public class ExtractCommand implements Callable<Integer> {
         Object deserializedOutput = deserializer.deserialize();
 
         if (deserializedOutput != null) {
-            Serializer serializer = new SerializerImpl(outputFormat);
-            String serializedOutput;
-            try {
-                serializedOutput = serializer.serialize(deserializedOutput);
-            } catch (SerializerException e) {
-                logger.error("Failed to serialize object: {}", deserializedOutput);
-                if (logger.isDebugEnabled()) {
-                    logger.error(e);
-                }
-                return StatusCode.ERROR;
-            }
+            String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
+            if (serializedOutput == null) return StatusCode.ERROR;
             if (writeOutputToFile) {
-                String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
-                Path outputFilePath = Path.of(".").resolve(outputFile);
-                logger.debug("Outputting to file: {}", outputFilePath);
-                try {
-                    Files.write(outputFilePath, serializedOutput.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                } catch (IOException e) {
-                    logger.error("Failed to write file: {}", outputFilePath);
-                    if (logger.isDebugEnabled()) {
-                        logger.error(e);
-                    }
-                    return StatusCode.ERROR;
-                }
+                StatusCode error = writeOutputToFile(filePath, outputFormat, serializedOutput);
+                if (error != null) return error;
             } else {
                 logger.debug("Outputting to console.");
                 logger.info(serializedOutput);
@@ -97,6 +70,53 @@ public class ExtractCommand implements Callable<Integer> {
             logger.error("Deserialization has failed.");
             return StatusCode.ERROR;
         }
+    }
+
+    private static StatusCode writeOutputToFile(Path filePath, SerializationFormat outputFormat, String serializedOutput) {
+        String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
+        Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
+        outputFolder.toFile().mkdirs();
+        Path outputFilePath = outputFolder.resolve(outputFile);
+        logger.debug("Outputting to file: {}", outputFilePath);
+        try {
+            Files.write(outputFilePath, serializedOutput.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            logger.error("Failed to write file: {}", outputFilePath);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return StatusCode.ERROR;
+        }
+        return null;
+    }
+
+    private static String getDeserializedOutput(SerializationFormat outputFormat, Object deserializedOutput) {
+        String serializedOutput;
+        Serializer serializer = new SerializerImpl(outputFormat);
+        try {
+            serializedOutput = serializer.serialize(deserializedOutput);
+        } catch (SerializerException e) {
+            logger.error("Failed to serialize object: {}", deserializedOutput);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return null;
+        }
+        return serializedOutput;
+    }
+
+    private static BinaryFileReader getBinaryFileReader(Path filePath) {
+        BinaryFileReader binaryFileReader;
+        try {
+            binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
+        } catch (IOException e) {
+            logger.error("Failed to read from the provided file path: {}", filePath);
+            if (logger.isDebugEnabled()) {
+                logger.error(e);
+            }
+            return null;
+        }
+        return binaryFileReader;
     }
 
     @Override
