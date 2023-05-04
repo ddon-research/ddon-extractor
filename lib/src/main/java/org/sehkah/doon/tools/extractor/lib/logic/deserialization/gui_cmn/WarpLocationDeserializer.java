@@ -36,7 +36,7 @@ public class WarpLocationDeserializer extends FileDeserializer {
             return null;
         }
         if (addMetaInformation) {
-            return null;
+            return fileReader.readArray(WarpLocationDeserializer::readEntity);
         } else {
             return fileReader.readArray(WarpLocationDeserializer::readEntity);
         }

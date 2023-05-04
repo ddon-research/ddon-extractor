@@ -11,6 +11,7 @@ public record StageInfoWithMetaInformation(
         long Version
 ) {
     public static StageInfoWithMetaInformation of(StageInfo stageInfo) {
-        return new StageInfoWithMetaInformation(stageInfo.StageNo(), stageInfo.Type(), StageInfoType.of(stageInfo.Type()), stageInfo.RecommendLevel(), stageInfo.MessageId(), stageInfo.Version());
+        return new StageInfoWithMetaInformation(stageInfo.StageNo(), stageInfo.Type(),
+                StageInfoType.of(stageInfo.Type()), stageInfo.RecommendLevel(), stageInfo.MessageId(), stageInfo.Version());
     }
 }

@@ -29,7 +29,7 @@ public class EnemyGroupDeserializer extends FileDeserializer {
             return null;
         }
         if (addMetaInformation) {
-            return null;
+            return fileReader.readArray(EnemyGroupDeserializer::readEntity);
         } else {
             return fileReader.readArray(EnemyGroupDeserializer::readEntity);
         }
