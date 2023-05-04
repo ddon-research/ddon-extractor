@@ -14,7 +14,6 @@ ext {
     orgApacheLoggingLog4jVersion = '2.20.0'
     comFasterxmlJacksonVersion = '2.15.0'
     junitVersion = '5.8.2'
-    javaFxVersion = '17.0.2'
     infoPicocliVersion = '4.7.3'
 }
 
@@ -38,7 +37,7 @@ dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: "${junitVersion}"
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
@@ -88,11 +87,11 @@ jlink {
     mergedModule {
         additive = true
         uses 'com.fasterxml.jackson.databind.Module'
-        uses 'org.apache.logging.log4j.util.PropertySource';
-        uses 'org.apache.logging.log4j.core.util.ContextDataProvider';
-        uses 'org.apache.logging.log4j.core.util.WatchEventService';
-        uses 'org.apache.logging.log4j.spi.Provider';
-        uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory';
+        uses 'org.apache.logging.log4j.util.PropertySource'
+        uses 'org.apache.logging.log4j.core.util.ContextDataProvider'
+        uses 'org.apache.logging.log4j.core.util.WatchEventService'
+        uses 'org.apache.logging.log4j.spi.Provider'
+        uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory'
     }
 }
 

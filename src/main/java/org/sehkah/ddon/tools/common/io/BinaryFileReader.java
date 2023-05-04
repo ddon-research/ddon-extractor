@@ -1,5 +1,8 @@
 package org.sehkah.ddon.tools.common.io;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -9,8 +12,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class BinaryFileReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
@@ -71,12 +72,14 @@ public class BinaryFileReader {
 
     public <Entity> List<Entity> readArray(Function<BinaryFileReader, Entity> entityReaderFunction) {
         long length = readUnsignedInteger();
-        return IntStream.iterate(0, i -> i < length, i -> i + 1)
-                .mapToObj(i -> entityReaderFunction.apply(this))
-                .collect(Collectors.toCollection(() -> new ArrayList<>((int) length)));
+        List<Entity> entities = new ArrayList<>((int) length);
+        for (long i = 0; i < length; i++) {
+            entities.add(entityReaderFunction.apply(this));
+        }
+        return entities;
     }
 
     public static BinaryFileReader inMemoryFromFilePath(Path path) throws IOException {
-        return new BinaryFileReader(ByteBuffer.wrap(Files.readAllBytes(path)));
+            return new BinaryFileReader(ByteBuffer.wrap(Files.readAllBytes(path)));
     }
 }

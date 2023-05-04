@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.common.serialization;
 
-public enum SupportedSerializationTypes {
+public enum SerializationFormat {
     JSON,json,
     YAML,yaml,
     DEFAULT

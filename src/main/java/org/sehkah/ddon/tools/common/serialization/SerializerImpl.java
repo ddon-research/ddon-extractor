@@ -10,7 +10,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 public class SerializerImpl implements Serializer {
     private static final JsonMapper jsonMapper;
     private static final YAMLMapper yamlMapper;
-    private final SupportedSerializationTypes preferredSerializationType;
+    private final SerializationFormat preferredSerializationType;
 
     static {
         JsonMapper.Builder jsonBuilder = JsonMapper.builder();
@@ -29,7 +29,7 @@ public class SerializerImpl implements Serializer {
         yamlMapper = yamlBuilder.build();
     }
 
-    public SerializerImpl(SupportedSerializationTypes preferredSerializationType) {
+    public SerializerImpl(SerializationFormat preferredSerializationType) {
         this.preferredSerializationType = preferredSerializationType;
     }
 
