@@ -29,27 +29,27 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public long readUnsignedByte() {
-        return Byte.toUnsignedLong(byteBuffer.get());
+    public int readUnsignedByte() {
+        return Byte.toUnsignedInt(byteBuffer.get());
     }
 
     @Override
-    public long readSignedByte() {
+    public byte readSignedByte() {
         return byteBuffer.get();
     }
 
     @Override
     public boolean readBoolean() {
-        return readUnsignedByte() != 0;
+        return byteBuffer.get() != 0;
     }
 
     @Override
-    public long readUnsignedShort() {
-        return Short.toUnsignedLong(byteBuffer.getShort());
+    public int readUnsignedShort() {
+        return Short.toUnsignedInt(byteBuffer.getShort());
     }
 
     @Override
-    public long readSignedShort() {
+    public short readSignedShort() {
         return byteBuffer.getShort();
     }
 
@@ -59,25 +59,18 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public long readSignedInteger() {
+    public int readSignedInteger() {
         return byteBuffer.getInt();
     }
 
     @Override
-    public float readSignedFloat() {
+    public float readFloat() {
         return byteBuffer.getFloat();
     }
 
     @Override
-    public double readSignedDouble() {
+    public double readDouble() {
         return byteBuffer.getDouble();
-    }
-
-    @Override
-    public String readStringUTF8(int length) {
-        byte[] stringBytes = new byte[length];
-        byteBuffer.get(stringBytes, byteBuffer.position(), byteBuffer.position() + length);
-        return StandardCharsets.UTF_8.decode(ByteBuffer.wrap(stringBytes)).toString();
     }
 
     @Override
@@ -88,9 +81,9 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public <Entity> List<Entity> readArray(Function<FileReader, Entity> entityReaderFunction) {
+    public <E> List<E> readArray(Function<FileReader, E> entityReaderFunction) {
         long length = readUnsignedInteger();
-        List<Entity> entities = new ArrayList<>((int) length);
+        List<E> entities = new ArrayList<>((int) length);
         for (long i = 0; i < length; i++) {
             entities.add(entityReaderFunction.apply(this));
         }

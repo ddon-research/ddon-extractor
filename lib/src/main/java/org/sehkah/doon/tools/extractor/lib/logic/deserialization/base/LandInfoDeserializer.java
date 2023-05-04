@@ -4,27 +4,27 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtractionType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.LandInfo;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class LandListDeserializer implements Deserializer {
-    public static final LandListDeserializer INSTANCE = new LandListDeserializer();
+public class LandInfoDeserializer implements Deserializer {
+    public static final LandInfoDeserializer INSTANCE = new LandInfoDeserializer();
     private static final Logger logger = LogManager.getLogger();
 
-    private LandListDeserializer() {
+    private LandInfoDeserializer() {
 
     }
 
     public static List<LandInfo> deserializeObject(FileReader fileReader) {
         String magic = fileReader.readString(4);
+        assert magic.equals(ExtractionType.LAND_INFO.magic);
         logger.info("magic: '{}'", magic);
         long version = fileReader.readUnsignedInteger();
         logger.info("version: '{}'", version);
 
-        List<LandInfo> landList = fileReader.readArray(reader -> readEntity(reader));
-        return landList;
+        return fileReader.readArray(LandInfoDeserializer::readEntity);
     }
 
     private static LandInfo readEntity(FileReader reader) {

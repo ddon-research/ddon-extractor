@@ -5,6 +5,6 @@ import java.util.List;
 public record LandInfo(
         long LandId,
         boolean IsDispNews,
-        long GameMode,
+        int GameMode,
         List<Long> AreaIds) {
 }

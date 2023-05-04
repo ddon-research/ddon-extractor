@@ -6,25 +6,23 @@ import java.util.function.Function;
 public interface FileReader {
     int getPosition();
 
-    long readUnsignedByte();
+    int readUnsignedByte();
 
-    long readSignedByte();
+    byte readSignedByte();
 
     boolean readBoolean();
 
-    long readUnsignedShort();
+    int readUnsignedShort();
 
-    long readSignedShort();
+    short readSignedShort();
 
     long readUnsignedInteger();
 
-    long readSignedInteger();
+    int readSignedInteger();
 
-    float readSignedFloat();
+    float readFloat();
 
-    double readSignedDouble();
-
-    String readStringUTF8(int length);
+    double readDouble();
 
     String readString(int length);
 
