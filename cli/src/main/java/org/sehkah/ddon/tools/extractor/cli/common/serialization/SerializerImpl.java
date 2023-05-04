@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.common.serialization;
+package org.sehkah.ddon.tools.extractor.cli.common.serialization;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -6,12 +6,11 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import org.sehkah.doon.tools.extractor.lib.common.error.SerializationException;
+import org.sehkah.ddon.tools.extractor.cli.common.error.SerializerException;
 
 public class SerializerImpl implements Serializer {
     private static final JsonMapper jsonMapper;
     private static final YAMLMapper yamlMapper;
-    private final SerializationFormat preferredSerializationType;
 
     static {
         JsonMapper.Builder jsonBuilder = JsonMapper.builder();
@@ -29,6 +28,8 @@ public class SerializerImpl implements Serializer {
         yamlBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
         yamlMapper = yamlBuilder.build();
     }
+
+    private final SerializationFormat preferredSerializationType;
 
     public SerializerImpl(SerializationFormat preferredSerializationType) {
         this.preferredSerializationType = preferredSerializationType;
@@ -52,7 +53,7 @@ public class SerializerImpl implements Serializer {
         try {
             return jsonMapper.readValue(serialized, cls);
         } catch (JsonProcessingException e) {
-            throw new SerializationException(e);
+            throw new SerializerException(e);
         }
     }
 
@@ -60,7 +61,7 @@ public class SerializerImpl implements Serializer {
         try {
             return jsonMapper.writeValueAsString(deserialized);
         } catch (JsonProcessingException e) {
-            throw new SerializationException(e);
+            throw new SerializerException(e);
         }
     }
 
@@ -68,7 +69,7 @@ public class SerializerImpl implements Serializer {
         try {
             return yamlMapper.readValue(serialized, cls);
         } catch (JsonProcessingException e) {
-            throw new SerializationException(e);
+            throw new SerializerException(e);
         }
     }
 
@@ -76,7 +77,7 @@ public class SerializerImpl implements Serializer {
         try {
             return yamlMapper.writeValueAsString(deserialized);
         } catch (JsonProcessingException e) {
-            throw new SerializationException(e);
+            throw new SerializerException(e);
         }
     }
 }

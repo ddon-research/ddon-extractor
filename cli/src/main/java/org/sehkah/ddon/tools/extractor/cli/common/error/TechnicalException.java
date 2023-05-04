@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.common.error;
+package org.sehkah.ddon.tools.extractor.cli.common.error;
 
 public class TechnicalException extends RuntimeException {
     public TechnicalException() {

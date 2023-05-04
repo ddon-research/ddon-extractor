@@ -21,7 +21,7 @@ dependencyResolutionManagement {
 rootProject.name = 'ddon-extractor'
 
 String[] modules = [
-        'app',
+        'cli',
         'lib',
 ]
 

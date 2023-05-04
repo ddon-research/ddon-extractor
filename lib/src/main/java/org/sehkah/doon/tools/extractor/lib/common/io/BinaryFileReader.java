@@ -19,6 +19,10 @@ public class BinaryFileReader {
         this.byteBuffer.order(DEFAULT_BYTE_ORDER);
     }
 
+    public static BinaryFileReader inMemoryFromFilePath(Path path) throws IOException {
+        return new BinaryFileReader(ByteBuffer.wrap(Files.readAllBytes(path)));
+    }
+
     public int getPosition() {
         return byteBuffer.position();
     }
@@ -74,9 +78,5 @@ public class BinaryFileReader {
             entities.add(entityReaderFunction.apply(this));
         }
         return entities;
-    }
-
-    public static BinaryFileReader inMemoryFromFilePath(Path path) throws IOException {
-            return new BinaryFileReader(ByteBuffer.wrap(Files.readAllBytes(path)));
     }
 }

@@ -11,6 +11,7 @@ plugins {
 ext {
     orgApacheLoggingLog4jVersion = '2.20.0'
     infoPicocliVersion = '4.7.3'
+    comFasterxmlJacksonVersion = '2.15.0'
 }
 
 dependencies {
@@ -22,13 +23,15 @@ dependencies {
     runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${orgApacheLoggingLog4jVersion}"
     // https://mvnrepository.com/artifact/info.picocli/picocli
     implementation group: 'info.picocli', name: 'picocli', version: "${infoPicocliVersion}"
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: "${comFasterxmlJacksonVersion}"
 }
 
 tasks.distTar.enabled = false
 
 application {
     applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
-    mainModule = 'org.sehkah.ddon.tools.extractor.app'
+    mainModule = 'org.sehkah.ddon.tools.extractor.cli'
     mainClass = 'org.sehkah.ddon.tools.extractor.cli.Main'
 }
 
@@ -59,7 +62,7 @@ jlink {
             ]
         }
     }
-    forceMerge('jackson', 'log4j')
+    forceMerge('jackson', 'log4j', 'snakeyaml')
     mergedModule {
         additive = true
         uses 'com.fasterxml.jackson.databind.Module'
