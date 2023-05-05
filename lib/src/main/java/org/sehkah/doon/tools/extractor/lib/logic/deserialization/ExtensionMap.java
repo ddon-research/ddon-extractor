@@ -24,6 +24,7 @@ public enum ExtensionMap {
     rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
     rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
     rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
+    rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     static {
