@@ -21,6 +21,7 @@ public enum ExtensionMap {
     rJobLevelUpTbl2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
     rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
     rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
+    rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
     UNSUPPORTED("", null, 0, null);
 
     static {
