@@ -2,6 +2,7 @@ package org.sehkah.doon.tools.extractor.lib.common.io;
 
 import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
 
+import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.function.Function;
@@ -28,6 +29,10 @@ public interface FileReader {
     long readUnsignedInteger();
 
     int readSignedInteger();
+
+    BigInteger readUnsignedLong();
+
+    long readSignedLong();
 
     float readFloat();
 

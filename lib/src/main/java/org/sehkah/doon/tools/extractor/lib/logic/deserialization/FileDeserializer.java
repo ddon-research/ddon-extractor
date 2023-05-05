@@ -8,19 +8,19 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
 public abstract class FileDeserializer implements Deserializer {
     protected final Logger logger = LogManager.getLogger();
-    protected final ExtractionType extractionTypeReference;
+    protected final ExtensionMap extension;
     protected final FileReader fileReader;
 
-    protected FileDeserializer(ExtractionType extractionTypeReference, FileReader fileReader) {
-        this.extractionTypeReference = extractionTypeReference;
+    protected FileDeserializer(ExtensionMap extension, FileReader fileReader) {
+        this.extension = extension;
         this.fileReader = fileReader;
     }
 
     protected boolean isVersionValid() {
         try {
             long version = fileReader.readUnsignedInteger();
-            if (version != extractionTypeReference.version) {
-                throw new VersionValidationFailedException(version, extractionTypeReference.version);
+            if (version != extension.version) {
+                throw new VersionValidationFailedException(version, extension.version);
             }
             logger.info("version: '{}'", version);
             return true;
@@ -36,8 +36,8 @@ public abstract class FileDeserializer implements Deserializer {
     protected boolean isMagicValid() {
         try {
             String magic = fileReader.readString(4);
-            if (!magic.equals(extractionTypeReference.magic)) {
-                throw new MagicValidationFailedException(magic, extractionTypeReference.magic);
+            if (!magic.equals(extension.magic)) {
+                throw new MagicValidationFailedException(magic, extension.magic);
             }
             logger.info("magic: '{}'", magic);
             return true;
@@ -57,10 +57,10 @@ public abstract class FileDeserializer implements Deserializer {
 
     @Override
     public Object deserialize(boolean addMetaInformation) {
-        if (extractionTypeReference.magic != null && !isMagicValid()) {
+        if (extension.magic != null && !isMagicValid()) {
             return null;
         }
-        if (extractionTypeReference.version > 0 && !isVersionValid()) {
+        if (extension.version > 0 && !isVersionValid()) {
             return null;
         }
         if (addMetaInformation) {

@@ -49,8 +49,8 @@ public class ExtractCommand implements Callable<Integer> {
 
     @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
             Optionally specify whether to enrich the output with additional meta information (if available).
-            For example, if a numeric type has a corresponding semantic mapping this be output as additional field.
-            Note that this will make the output result less compatible in turn for improved comprehensibility.
+            For example, if a numeric type has a corresponding (probable) semantic mapping this will be output as additional field.
+            Note that this makes the output more comprehensible at the price of compatibility and accuracy.
             """, defaultValue = "false")
     private boolean addMetaInformation;
 

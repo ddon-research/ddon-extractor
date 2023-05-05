@@ -16,14 +16,15 @@ public class DeserializerFactory {
     }
 
     public static Deserializer forFilePath(FileReader fileReader, Path filePath) {
-        ExtractionType extractionType = ExtractionType.findByFilePath(filePath);
-        if (Objects.requireNonNull(extractionType) == ExtractionType.UNSUPPORTED) {
+        String sanitizedFilePath = filePath.toString().replace('\\', '/');
+        ExtensionMap extensionMap = ExtensionMap.findByFileExtension(sanitizedFilePath);
+        if (Objects.requireNonNull(extensionMap) == ExtensionMap.UNSUPPORTED) {
             logger.warn("The provided file path '{}' did not match any supported extraction types.", filePath);
             return null;
         }
         Deserializer instance = null;
         try {
-            instance = extractionType.deserializer.getConstructor(FileReader.class).newInstance(fileReader);
+            instance = extensionMap.deserializer.getConstructor(FileReader.class).newInstance(fileReader);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                  NoSuchMethodException e) {
             logger.error("Failed to instantiate deserializer.");
@@ -32,9 +33,9 @@ public class DeserializerFactory {
             }
         }
         if (instance != null) {
-            logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extractionType.name());
+            logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extensionMap.name());
         } else {
-            logger.info("Could not find a suitable implementation for extraction type '{}'.", extractionType.name());
+            logger.info("Could not find a suitable implementation for extraction type '{}'.", extensionMap.name());
         }
         return instance;
     }
