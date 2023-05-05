@@ -10,12 +10,12 @@ import java.util.Objects;
 
 
 public class DeserializerFactory {
-    private static final Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
-    private DeserializerFactory() {
+    public DeserializerFactory() {
     }
 
-    public static Deserializer forFilePath(FileReader fileReader, Path filePath) {
+    public Deserializer forFilePath(FileReader fileReader, Path filePath) {
         String sanitizedFilePath = filePath.toString().replace('\\', '/');
         ExtensionMap extensionMap = ExtensionMap.findByFileExtension(sanitizedFilePath);
         if (Objects.requireNonNull(extensionMap) == ExtensionMap.UNSUPPORTED) {

@@ -46,7 +46,15 @@ public interface FileReader {
 
     String readString(int length);
 
+    String readString(long length);
+
+    String readString(long length, Charset charset);
+
     String readString(int length, Charset charset);
+
+    String readMtString();
+
+    String readMtString(Charset charset);
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 

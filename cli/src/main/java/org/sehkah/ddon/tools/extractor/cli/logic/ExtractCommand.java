@@ -24,7 +24,8 @@ import java.util.stream.Stream;
 @CommandLine.Command(name = "extract", mixinStandardHelpOptions = true, version = "extract 1.0",
         description = "Prints the provided DDON resource file to STDOUT.")
 public class ExtractCommand implements Callable<Integer> {
-    private static final Logger logger = LogManager.getLogger();
+    private final Logger logger = LogManager.getLogger(ExtractCommand.class);
+    private final DeserializerFactory deserializerFactory = new DeserializerFactory();
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (YAML).
@@ -54,10 +55,10 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean addMetaInformation;
 
-    private static StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile, boolean addMetaInformation) {
+    private StatusCode extractSingleFile(Path filePath, SerializationFormat outputFormat, boolean writeOutputToFile, boolean addMetaInformation) {
         FileReader fileReader = getFileReader(filePath);
         if (fileReader == null) return StatusCode.ERROR;
-        Deserializer deserializer = DeserializerFactory.forFilePath(fileReader, filePath);
+        Deserializer deserializer = deserializerFactory.forFilePath(fileReader, filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
@@ -82,7 +83,7 @@ public class ExtractCommand implements Callable<Integer> {
         }
     }
 
-    private static StatusCode writeOutputToFile(Path filePath, SerializationFormat outputFormat, String serializedOutput) {
+    private StatusCode writeOutputToFile(Path filePath, SerializationFormat outputFormat, String serializedOutput) {
         String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
         Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
         outputFolder.toFile().mkdirs();
@@ -100,7 +101,7 @@ public class ExtractCommand implements Callable<Integer> {
         return null;
     }
 
-    private static String getDeserializedOutput(SerializationFormat outputFormat, Object deserializedOutput) {
+    private String getDeserializedOutput(SerializationFormat outputFormat, Object deserializedOutput) {
         String serializedOutput;
         Serializer serializer = new SerializerImpl(outputFormat);
         try {
@@ -115,7 +116,7 @@ public class ExtractCommand implements Callable<Integer> {
         return serializedOutput;
     }
 
-    private static FileReader getFileReader(Path filePath) {
+    private FileReader getFileReader(Path filePath) {
         FileReader binaryFileReader;
         try {
             binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
