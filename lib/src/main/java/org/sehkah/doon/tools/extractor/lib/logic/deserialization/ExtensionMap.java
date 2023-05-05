@@ -19,6 +19,7 @@ public enum ExtensionMap {
     JOBBASE("jobbase", null, 263, JobBaseParamDeserializer.class),
     AJP("ajp", null, 256, JobAdjustParamDeserializer.class),
     JLT2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
+    SG_TBL("sg_tbl", null, 257, StatusGainTableDeserializer.class),
     UNSUPPORTED("", null, 0, null);
 
     static {
