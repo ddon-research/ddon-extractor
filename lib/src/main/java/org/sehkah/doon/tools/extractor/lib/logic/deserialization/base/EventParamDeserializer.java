@@ -7,9 +7,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.EventParam;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.OmList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.EventParamWithMetaInformation;
 
-public class EventListDeserializer extends FileDeserializer {
-    public EventListDeserializer(FileReader fileReader) {
-        super(ExtensionMap.EVP, fileReader);
+public class EventParamDeserializer extends FileDeserializer {
+    public EventParamDeserializer(FileReader fileReader) {
+        super(ExtensionMap.rEventParam, fileReader);
     }
 
     private static EventParam readEntity(FileReader fileReader) {
@@ -26,7 +26,7 @@ public class EventListDeserializer extends FileDeserializer {
                 fileReader.readSignedShort(),
                 fileReader.readSignedShort(),
                 fileReader.readFloat(),
-                fileReader.readArray(EventListDeserializer::readOmList)
+                fileReader.readArray(EventParamDeserializer::readOmList)
         );
     }
 
@@ -46,11 +46,11 @@ public class EventListDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(EventListDeserializer::readEntity);
+        return fileReader.readArray(EventParamDeserializer::readEntity);
     }
 
     @Override
     protected Object readObjectWithMetaInformation() {
-        return fileReader.readArray(EventListDeserializer::readEntityWithMetaInformation);
+        return fileReader.readArray(EventParamDeserializer::readEntityWithMetaInformation);
     }
 }

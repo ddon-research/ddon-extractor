@@ -152,4 +152,9 @@ public class BinaryFileReader implements FileReader {
         }
         return entities;
     }
+
+    @Override
+    public void rewind(int i) {
+        byteBuffer.position(byteBuffer.position() - i);
+    }
 }

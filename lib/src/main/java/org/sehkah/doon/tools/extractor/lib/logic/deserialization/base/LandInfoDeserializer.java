@@ -6,9 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.LandAreaInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.LandAreaInfoWithMetaInformation;
 
-public class LandAreaInfoDeserializer extends FileDeserializer {
-    public LandAreaInfoDeserializer(FileReader fileReader) {
-        super(ExtensionMap.LAI, fileReader);
+public class LandInfoDeserializer extends FileDeserializer {
+    public LandInfoDeserializer(FileReader fileReader) {
+        super(ExtensionMap.rLandInfo, fileReader);
     }
 
     private static LandAreaInfo readEntity(FileReader fileReader) {
@@ -26,11 +26,11 @@ public class LandAreaInfoDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(LandAreaInfoDeserializer::readEntity);
+        return fileReader.readArray(LandInfoDeserializer::readEntity);
     }
 
     @Override
     protected Object readObjectWithMetaInformation() {
-        return fileReader.readArray(LandAreaInfoDeserializer::readEntityWithMetaInformation);
+        return fileReader.readArray(LandInfoDeserializer::readEntityWithMetaInformation);
     }
 }

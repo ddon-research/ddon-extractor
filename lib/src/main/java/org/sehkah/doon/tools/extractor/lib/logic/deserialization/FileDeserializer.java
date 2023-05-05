@@ -20,7 +20,11 @@ public abstract class FileDeserializer implements Deserializer {
         try {
             long version = fileReader.readUnsignedInteger();
             if (version != extension.version) {
-                throw new VersionValidationFailedException(version, extension.version);
+                fileReader.rewind(4);
+                version = fileReader.readUnsignedShort();
+                if (version != extension.version) {
+                    throw new VersionValidationFailedException(version, extension.version);
+                }
             }
             logger.info("version: '{}'", version);
             return true;

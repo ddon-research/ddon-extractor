@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.EnemyGroup;
 
 public class EnemyGroupDeserializer extends FileDeserializer {
     public EnemyGroupDeserializer(FileReader fileReader) {
-        super(ExtensionMap.EMG, fileReader);
+        super(ExtensionMap.rEnemyGroup, fileReader);
     }
 
     private static EnemyGroup readEntity(FileReader fileReader) {

@@ -49,4 +49,6 @@ public interface FileReader {
     String readString(int length, Charset charset);
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
+
+    void rewind(int i);
 }

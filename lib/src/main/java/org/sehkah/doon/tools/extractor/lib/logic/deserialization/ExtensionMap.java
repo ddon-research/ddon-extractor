@@ -8,18 +8,19 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLoc
 import java.util.Arrays;
 
 public enum ExtensionMap {
-    EMG("emg", null, 1, EnemyGroupDeserializer.class),
-    WAL("wal", null, 353, WarpLocationDeserializer.class),
-    SMP("smp", null, 1, StageMapDeserializer.class),
-    LAI("lai", "LAI\0", 4, LandAreaInfoDeserializer.class),
-    ARS("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
-    ARI("ari", "ARI\0", 2, AreaInfoDeserializer.class),
-    SLT("slt", "slt\0", 34, StageInfoDeserializer.class),
-    EVP("evp", null, 19, EventListDeserializer.class),
-    JOBBASE("jobbase", null, 263, JobBaseParamDeserializer.class),
-    AJP("ajp", null, 256, JobAdjustParamDeserializer.class),
-    JLT2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
-    SG_TBL("sg_tbl", null, 257, StatusGainTableDeserializer.class),
+    rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
+    rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
+    rStageMap("smp", null, 1, StageMapDeserializer.class),
+    rLandInfo("lai", "LAI\0", 4, LandInfoDeserializer.class),
+    rAreaInfoStage("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
+    rAreaInfo("ari", "ARI\0", 2, AreaInfoDeserializer.class),
+    rStageList("slt", "slt\0", 34, StageListDeserializer.class),
+    rEventParam("evp", null, 19, EventParamDeserializer.class),
+    rJobBaseParam("jobbase", null, 263, JobBaseParamDeserializer.class),
+    rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
+    rJobLevelUpTbl2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
+    rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
+    rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
     UNSUPPORTED("", null, 0, null);
 
     static {

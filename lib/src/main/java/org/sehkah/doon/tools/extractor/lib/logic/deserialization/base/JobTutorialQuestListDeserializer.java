@@ -3,23 +3,22 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfoStage;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.QuestId;
 
-public class AreaInfoStageDeserializer extends FileDeserializer {
-    public AreaInfoStageDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAreaInfoStage, fileReader);
+public class JobTutorialQuestListDeserializer extends FileDeserializer {
+    public JobTutorialQuestListDeserializer(FileReader fileReader) {
+        super(ExtensionMap.rJobTutorialQuestList, fileReader);
     }
 
-    private static AreaInfoStage readEntity(FileReader fileReader) {
-        return new AreaInfoStage(
-                fileReader.readUnsignedInteger(),
+    private static QuestId readEntity(FileReader fileReader) {
+        return new QuestId(
                 fileReader.readUnsignedInteger()
         );
     }
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(AreaInfoStageDeserializer::readEntity);
+        return fileReader.readArray(JobTutorialQuestListDeserializer::readEntity);
     }
 
     @Override
@@ -27,4 +26,3 @@ public class AreaInfoStageDeserializer extends FileDeserializer {
         return readObject();
     }
 }
-

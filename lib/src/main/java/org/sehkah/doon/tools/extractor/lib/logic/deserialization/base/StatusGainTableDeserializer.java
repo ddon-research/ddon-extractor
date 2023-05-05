@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StatusGain;
 
 public class StatusGainTableDeserializer extends FileDeserializer {
     public StatusGainTableDeserializer(FileReader fileReader) {
-        super(ExtensionMap.SG_TBL, fileReader);
+        super(ExtensionMap.rStatusGainTable, fileReader);
     }
 
     private static StatusGain readEntity(FileReader fileReader) {

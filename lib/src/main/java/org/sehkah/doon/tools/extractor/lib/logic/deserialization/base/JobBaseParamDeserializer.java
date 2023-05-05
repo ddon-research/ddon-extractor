@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.JobInfo;
 
 public class JobBaseParamDeserializer extends FileDeserializer {
     public JobBaseParamDeserializer(FileReader fileReader) {
-        super(ExtensionMap.JOBBASE, fileReader);
+        super(ExtensionMap.rJobBaseParam, fileReader);
     }
 
     private static JobInfo readEntity(FileReader fileReader) {

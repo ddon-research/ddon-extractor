@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.IncreaseParam;
 
 public class JobLevelUpTableDeserializer extends FileDeserializer {
     public JobLevelUpTableDeserializer(FileReader fileReader) {
-        super(ExtensionMap.JLT2, fileReader);
+        super(ExtensionMap.rJobLevelUpTbl2, fileReader);
     }
 
     private static IncreaseParam readEntity(FileReader fileReader) {
