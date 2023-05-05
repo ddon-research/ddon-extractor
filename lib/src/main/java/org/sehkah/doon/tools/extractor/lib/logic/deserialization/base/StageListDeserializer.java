@@ -6,9 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.StageInfoWithMetaInformation;
 
-public class StageInfoDeserializer extends FileDeserializer {
-    public StageInfoDeserializer(FileReader fileReader) {
-        super(ExtensionMap.SLT, fileReader);
+public class StageListDeserializer extends FileDeserializer {
+    public StageListDeserializer(FileReader fileReader) {
+        super(ExtensionMap.rStageList, fileReader);
     }
 
 
@@ -29,11 +29,11 @@ public class StageInfoDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(StageInfoDeserializer::readEntity);
+        return fileReader.readArray(StageListDeserializer::readEntity);
     }
 
     @Override
     protected Object readObjectWithMetaInformation() {
-        return fileReader.readArray(StageInfoDeserializer::readEntityWithMetaInformation);
+        return fileReader.readArray(StageListDeserializer::readEntityWithMetaInformation);
     }
 }

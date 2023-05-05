@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AdjustParam;
 
 public class JobAdjustParamDeserializer extends FileDeserializer {
     public JobAdjustParamDeserializer(FileReader fileReader) {
-        super(ExtensionMap.AJP, fileReader);
+        super(ExtensionMap.rAdjustParam, fileReader);
     }
 
     private static AdjustParam readEntity(FileReader fileReader) {

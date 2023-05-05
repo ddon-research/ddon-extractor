@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.StageMapParam;
 
 public class StageMapDeserializer extends FileDeserializer {
     public StageMapDeserializer(FileReader fileReader) {
-        super(ExtensionMap.SMP, fileReader);
+        super(ExtensionMap.rStageMap, fileReader);
     }
 
     private static StageMap readEntity(FileReader fileReader) {

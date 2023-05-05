@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.WarpLocation;
 
 public class WarpLocationDeserializer extends FileDeserializer {
     public WarpLocationDeserializer(FileReader fileReader) {
-        super(ExtensionMap.WAL, fileReader);
+        super(ExtensionMap.rWarpLocation, fileReader);
     }
 
     private static WarpLocation readEntity(FileReader fileReader) {

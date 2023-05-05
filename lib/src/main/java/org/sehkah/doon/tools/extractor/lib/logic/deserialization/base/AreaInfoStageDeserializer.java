@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfoStage;
 
 public class AreaInfoStageDeserializer extends FileDeserializer {
     public AreaInfoStageDeserializer(FileReader fileReader) {
-        super(ExtensionMap.ARS, fileReader);
+        super(ExtensionMap.rAreaInfoStage, fileReader);
     }
 
     private static AreaInfoStage readEntity(FileReader fileReader) {

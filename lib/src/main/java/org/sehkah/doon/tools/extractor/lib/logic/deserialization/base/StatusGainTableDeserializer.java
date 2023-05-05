@@ -3,24 +3,23 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StatusGain;
 
-public class AreaInfoDeserializer extends FileDeserializer {
-    public AreaInfoDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAreaInfo, fileReader);
+public class StatusGainTableDeserializer extends FileDeserializer {
+    public StatusGainTableDeserializer(FileReader fileReader) {
+        super(ExtensionMap.rStatusGainTable, fileReader);
     }
 
-    private static AreaInfo readEntity(FileReader fileReader) {
-        return new AreaInfo(
+    private static StatusGain readEntity(FileReader fileReader) {
+        return new StatusGain(
                 fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
+                fileReader.readUnsignedInteger()
         );
     }
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(AreaInfoDeserializer::readEntity);
+        return fileReader.readArray(StatusGainTableDeserializer::readEntity);
     }
 
     @Override
