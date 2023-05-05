@@ -1,0 +1,56 @@
+
+== Supported files
+
+[source, json]
+----
+[
+	{
+		"fileExtension": "emg",
+		"version": 1
+	},
+	{
+		"fileExtension": "wal",
+		"version": 353
+	},
+	{
+		"fileExtension": "smp",
+		"version": 1
+	},
+	{
+		"fileExtension": "lai",
+		"magic": "LAI ",
+		"version": 4
+	},
+	{
+		"fileExtension": "ars",
+		"magic": "ARS ",
+		"version": 2
+	},
+	{
+		"fileExtension": "ari",
+		"magic": "ARI ",
+		"version": 2
+	},
+	{
+		"fileExtension": "slt",
+		"magic": "slt ",
+		"version": 34
+	},
+	{
+		"fileExtension": "evp",
+		"version": 19
+	},
+	{
+		"fileExtension": "jobbase",
+		"version": 263
+	},
+	{
+		"fileExtension": "ajp",
+		"version": 256
+	},
+	{
+		"fileExtension": "jlt2",
+		"version": 1
+	}
+]
+----
