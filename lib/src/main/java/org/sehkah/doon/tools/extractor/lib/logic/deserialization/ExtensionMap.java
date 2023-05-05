@@ -5,8 +5,6 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 
-import java.util.Arrays;
-
 public enum ExtensionMap {
     rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
     rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
@@ -25,11 +23,8 @@ public enum ExtensionMap {
     rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
     rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
     rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
+    rGUIMessage("gmd", "GMD\0", 66306, GUIMessageDeserializer.class),
     UNSUPPORTED("", null, 999, null);
-
-    static {
-        System.out.println((Arrays.toString(ExtensionMap.values())));
-    }
 
     public final String fileExtension;
     public final String magic;

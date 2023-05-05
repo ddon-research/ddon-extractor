@@ -180,7 +180,6 @@ public enum ExtensionMapTarget {
     rGUIFont("gfd", "gfd\0", 0, null),
     rGUIIconInfo("gii", "gii\0", 0, null),
     rGUIMapSetting("gmp", "gmp\0", 0, null),
-    rGUIMessage("gmd", "gmd\0", 0, null),
     rGUIPhotoFrame("pho", "pho\0", 0, null),
     rGatheringItem("gat", "gat\0", 0, null),
     rGeometry2("geo2", "geo2\0", 0, null),

@@ -7,9 +7,11 @@ import org.sehkah.doon.tools.extractor.lib.common.error.VersionValidationFailedE
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
 public abstract class FileDeserializer implements Deserializer {
-    protected final Logger logger = LogManager.getLogger();
+    protected final Logger logger = LogManager.getLogger(FileDeserializer.class);
     protected final ExtensionMap extension;
     protected final FileReader fileReader;
+    protected long version;
+    protected String magic;
 
     protected FileDeserializer(ExtensionMap extension, FileReader fileReader) {
         this.extension = extension;
@@ -18,7 +20,7 @@ public abstract class FileDeserializer implements Deserializer {
 
     protected boolean isVersionValid() {
         try {
-            long version = fileReader.readUnsignedInteger();
+            version = fileReader.readUnsignedInteger();
             if (version != extension.version) {
                 fileReader.rewind(4);
                 version = fileReader.readUnsignedShort();
@@ -39,7 +41,7 @@ public abstract class FileDeserializer implements Deserializer {
 
     protected boolean isMagicValid() {
         try {
-            String magic = fileReader.readString(4);
+            magic = fileReader.readString(4);
             if (!magic.equals(extension.magic)) {
                 throw new MagicValidationFailedException(magic, extension.magic);
             }

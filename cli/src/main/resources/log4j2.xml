@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="ddon-extractor-cli-logger">
+    <Appenders>
+        <Console name="CliLogConsole" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8">
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="CliLogFile" fileName="cli.log">
+            <PatternLayout charset="UTF-8">
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Async name="CliLogAsync">
+            <AppenderRef ref="CliLogFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="off">
+            <AppenderRef ref="CliLogConsole"/>
+            <AppenderRef ref="CliLogAsync"/>
+        </Root>
+    </Loggers>
+</Configuration>

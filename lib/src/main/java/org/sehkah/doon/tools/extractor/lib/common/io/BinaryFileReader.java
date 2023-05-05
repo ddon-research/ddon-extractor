@@ -137,10 +137,33 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public String readString(long length) {
+        return readString(length, StandardCharsets.US_ASCII);
+    }
+
+    @Override
+    public String readString(long length, Charset charset) {
+        return readString((int) length, charset);
+    }
+
+    @Override
     public String readString(int length, Charset charset) {
         byte[] stringBytes = new byte[length];
         byteBuffer.get(stringBytes, 0, length);
         return charset.decode(ByteBuffer.wrap(stringBytes)).toString();
+    }
+
+    @Override
+    public String readMtString() {
+        return readMtString(StandardCharsets.US_ASCII);
+    }
+
+    @Override
+    public String readMtString(Charset charset) {
+        long length = Integer.toUnsignedLong(byteBuffer.getInt());
+        String mtString = readString(length, charset);
+        byteBuffer.get();
+        return mtString;
     }
 
     @Override
