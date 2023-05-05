@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;

@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
@@ -10,7 +10,7 @@ public class JobTutorialQuestListDeserializer extends FileDeserializer {
         super(ExtensionMap.rJobTutorialQuestList, fileReader);
     }
 
-    private static QuestId readEntity(FileReader fileReader) {
+    static QuestId readEntity(FileReader fileReader) {
         return new QuestId(
                 fileReader.readUnsignedInteger()
         );

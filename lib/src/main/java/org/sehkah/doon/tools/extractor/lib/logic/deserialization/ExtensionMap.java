@@ -2,6 +2,9 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.EnemyGroupDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.JobTutorialQuestListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.QuestSequenceListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.TutorialQuestGroupDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 
@@ -22,6 +25,7 @@ public enum ExtensionMap {
     rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
     rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
     rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
+    rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
     UNSUPPORTED("", null, 0, null);
 
     static {
