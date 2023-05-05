@@ -64,7 +64,7 @@ public abstract class FileDeserializer implements Deserializer {
         if (extension.magic != null && !isMagicValid()) {
             return null;
         }
-        if (extension.version > 0 && !isVersionValid()) {
+        if (extension.version >= 0 && !isVersionValid()) {
             return null;
         }
         if (addMetaInformation) {
