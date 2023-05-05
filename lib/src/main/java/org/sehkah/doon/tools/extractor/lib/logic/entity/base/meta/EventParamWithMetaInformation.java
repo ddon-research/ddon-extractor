@@ -49,6 +49,6 @@ public record EventParamWithMetaInformation(
                 eventParam.OmAQCScale(),
                 eventParam.Version(),
                 eventParam.OmList().stream().map(OmListWithMetaInformation::of).toList()
-                );
+        );
     }
 }

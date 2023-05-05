@@ -3,6 +3,7 @@ package org.sehkah.doon.tools.extractor.lib.common.io;
 import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
@@ -79,6 +80,26 @@ public class BinaryFileReader implements FileReader {
     @Override
     public int readSignedInteger() {
         return byteBuffer.getInt();
+    }
+
+    @Override
+    public BigInteger readUnsignedLong() {
+        long i = byteBuffer.getLong();
+        if (i >= 0L)
+            return BigInteger.valueOf(i);
+        else {
+            int upper = (int) (i >>> 32);
+            int lower = (int) i;
+
+            // return (upper << 32) + lower
+            return (BigInteger.valueOf(Integer.toUnsignedLong(upper))).shiftLeft(32).
+                    add(BigInteger.valueOf(Integer.toUnsignedLong(lower)));
+        }
+    }
+
+    @Override
+    public long readSignedLong() {
+        return byteBuffer.getLong();
     }
 
     @Override

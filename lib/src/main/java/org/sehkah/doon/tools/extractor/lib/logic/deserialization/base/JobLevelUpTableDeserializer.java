@@ -3,15 +3,18 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfoStage;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.IncreaseParam;
 
-public class AreaInfoStageDeserializer extends FileDeserializer {
-    public AreaInfoStageDeserializer(FileReader fileReader) {
-        super(ExtensionMap.ARS, fileReader);
+public class JobLevelUpTableDeserializer extends FileDeserializer {
+    public JobLevelUpTableDeserializer(FileReader fileReader) {
+        super(ExtensionMap.JLT2, fileReader);
     }
 
-    private static AreaInfoStage readEntity(FileReader fileReader) {
-        return new AreaInfoStage(
+    private static IncreaseParam readEntity(FileReader fileReader) {
+        return new IncreaseParam(
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
         );
@@ -19,7 +22,7 @@ public class AreaInfoStageDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        return fileReader.readArray(AreaInfoStageDeserializer::readEntity);
+        return fileReader.readArray(JobLevelUpTableDeserializer::readEntity);
     }
 
     @Override
@@ -27,4 +30,3 @@ public class AreaInfoStageDeserializer extends FileDeserializer {
         return readObject();
     }
 }
-

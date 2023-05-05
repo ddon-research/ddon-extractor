@@ -1,14 +1,14 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtractionType;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.StageInfoWithMetaInformation;
 
 public class StageInfoDeserializer extends FileDeserializer {
     public StageInfoDeserializer(FileReader fileReader) {
-        super(ExtractionType.STAGE_INFO, fileReader);
+        super(ExtensionMap.SLT, fileReader);
     }
 
 

@@ -1,16 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtractionType;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.EventParam;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.OmList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.EventParamWithMetaInformation;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.StageInfoWithMetaInformation;
 
 public class EventListDeserializer extends FileDeserializer {
     public EventListDeserializer(FileReader fileReader) {
-        super(ExtractionType.EVENT_PARAM, fileReader);
+        super(ExtensionMap.EVP, fileReader);
     }
 
     private static EventParam readEntity(FileReader fileReader) {
