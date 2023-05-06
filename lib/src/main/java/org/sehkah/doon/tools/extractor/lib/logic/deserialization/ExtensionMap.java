@@ -6,6 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 
 public enum ExtensionMap {
@@ -30,6 +31,8 @@ public enum ExtensionMap {
     rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
     rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
     rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
+    rGatheringItem("gat", null, 1, GatheringItemDeserializer.class),
+    rShopGoods("spg_tbl", "TBL\0", 259, ShopGoodsDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
