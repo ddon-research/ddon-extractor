@@ -280,7 +280,6 @@ public enum ExtensionMapTarget {
     rQuestMarkerInfo("qmi", "qmi\0", 0, null),
     rQuestTextData("qtd", "qtd\0", 0, null),
     rRagdoll("rdd", "rdd\0", 0, null),
-    rRageTable("rag", "rag\0", 0, null),
     rReaction("rac", "rac\0", 0, null),
     rRecommendDragonSkill("rds", "rds\0", 0, null),
     rRegionBreakInfo("erb", "erb\0", 0, null),

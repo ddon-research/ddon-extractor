@@ -1,5 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
@@ -13,6 +14,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGo
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
+
+import java.util.Arrays;
+import java.util.List;
 
 public enum ExtensionMap {
     rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
@@ -51,6 +55,7 @@ public enum ExtensionMap {
     rJobMasterCtrl("jmc", null, 256, JobMasterCtrlDeserializer.class),
     rHumanEnemyCustomSkill("hmcs", null, 3, HumanEnemyCustomSkillDeserializer.class),
     rEquipPreset("equip_preset", null, 7, EquipPresetDeserializer.class),
+    rRageTable("rag", null, 257, RageTableDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
@@ -72,6 +77,10 @@ public enum ExtensionMap {
             }
         }
         return UNSUPPORTED;
+    }
+
+    public static List<String> getSupportedFileExtensions() {
+        return Arrays.stream(ExtensionMap.values()).filter(extensionMap -> !extensionMap.fileExtension.isBlank()).map(extensionMap -> extensionMap.fileExtension).toList();
     }
 
     @Override

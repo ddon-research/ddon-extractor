@@ -11,6 +11,7 @@ import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -141,9 +142,12 @@ public class ExtractCommand implements Callable<Integer> {
             if (Files.isDirectory(inputFilePath)) {
                 logger.debug("Recursively extracting resource data from folder: {}", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
+                    List<String> supportedFileExtensions = ExtensionMap.getSupportedFileExtensions();
                     List<StatusCode> statusCodes = files
-                            .filter(Files::isRegularFile)
-                            .filter(path -> !path.toString().endsWith(".arc"))
+                            .filter(path -> {
+                                String filePath = path.toString();
+                                return Files.isRegularFile(path) && supportedFileExtensions.stream().anyMatch(filePath::endsWith);
+                            })
                             .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile, addMetaInformation)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         logger.warn("Failed to extract one or more resource files.");
