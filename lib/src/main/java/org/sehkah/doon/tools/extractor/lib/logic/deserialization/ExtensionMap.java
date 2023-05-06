@@ -12,6 +12,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGo
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,6 +57,7 @@ public enum ExtensionMap {
     rRageTable("rag", null, 257, RageTableDeserializer.class),
     rStartPosArea("sta", null, 0, StartPosAreaDeserializer.class),
     rAbilityData("abd", null, 3, AbilityDataDeserializer.class),
+    rAbilityAddData("aad", null, 1, AbilityAddDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
