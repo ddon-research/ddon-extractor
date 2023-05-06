@@ -5,6 +5,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.AchievementDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
@@ -43,6 +44,7 @@ public enum ExtensionMap {
     rCraftSkillCost("ckc", null, 2, CraftSkillCostDeserializer.class),
     rCraftCapPass("ccp", null, 2, CraftCapPassDeserializer.class),
     rCraftQuality("cqr", null, 1, CraftQualityDeserializer.class),
+    rAchievement("acv", null, 2, AchievementDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

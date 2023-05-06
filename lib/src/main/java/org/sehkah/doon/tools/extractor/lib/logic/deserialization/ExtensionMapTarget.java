@@ -19,7 +19,6 @@ public enum ExtensionMapTarget {
     rAIWayPoint("way", "way\0", 0, null),
     rAIWayPointGraph("gway", "gway\0", 0, null),
     rAbilityList("abl", "abl\0", 0, null),
-    rAchievement("acv", "acv\0", 0, null),
     rAchievementHeader("ach", "ach\0", 0, null),
     rAcquirementrAbilityAddData("aad", "aad\0", 0, null),
     rAcquirementrAbilityData("abd", "abd\0", 0, null),
