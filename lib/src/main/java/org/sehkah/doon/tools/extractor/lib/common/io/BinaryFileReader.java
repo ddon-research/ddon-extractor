@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
-import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
+import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -18,13 +18,13 @@ public class BinaryFileReader implements FileReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     private final ByteBuffer byteBuffer;
 
-    public BinaryFileReader(ByteBuffer byteBuffer) {
-        this.byteBuffer = byteBuffer;
-        this.byteBuffer.order(DEFAULT_BYTE_ORDER);
+    public BinaryFileReader(Path filePath) throws IOException {
+        this(ByteBuffer.wrap(Files.readAllBytes(filePath)));
     }
 
-    public static BinaryFileReader inMemoryFromFilePath(Path path) throws IOException {
-        return new BinaryFileReader(ByteBuffer.wrap(Files.readAllBytes(path)));
+    private BinaryFileReader(ByteBuffer byteBuffer) {
+        this.byteBuffer = byteBuffer;
+        this.byteBuffer.order(DEFAULT_BYTE_ORDER);
     }
 
     @Override
@@ -113,8 +113,8 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public MtVector3 readMtVector3() {
-        return new MtVector3(readFloat(), readFloat(), readFloat());
+    public Vector3f readVector3f() {
+        return new Vector3f(readFloat(), readFloat(), readFloat());
     }
 
     @Override

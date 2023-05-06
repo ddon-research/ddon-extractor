@@ -21,7 +21,7 @@ public class LandInfoDeserializer extends FileDeserializer {
     }
 
     private static LandAreaInfoWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
-        return LandAreaInfoWithMetaInformation.of(readEntity(fileReader));
+        return new LandAreaInfoWithMetaInformation(readEntity(fileReader));
     }
 
     @Override

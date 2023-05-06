@@ -10,8 +10,13 @@ public record StageInfoWithMetaInformation(
         long MessageId,
         long Version
 ) {
-    public static StageInfoWithMetaInformation of(StageInfo stageInfo) {
-        return new StageInfoWithMetaInformation(stageInfo.StageNo(), stageInfo.Type(),
-                StageInfoType.of(stageInfo.Type()), stageInfo.RecommendLevel(), stageInfo.MessageId(), stageInfo.Version());
+    public StageInfoWithMetaInformation(StageInfo stageInfo) {
+        this(
+                stageInfo.StageNo(),
+                stageInfo.Type(), StageInfoType.of(stageInfo.Type()),
+                stageInfo.RecommendLevel(),
+                stageInfo.MessageId(),
+                stageInfo.Version()
+        );
     }
 }
