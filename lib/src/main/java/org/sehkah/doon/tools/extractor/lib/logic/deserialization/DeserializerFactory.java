@@ -32,10 +32,11 @@ public class DeserializerFactory {
                 logger.error(e);
             }
         }
+        String extractionName = extensionMap.name();
         if (instance != null) {
-            logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extensionMap.name());
+            logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extractionName);
         } else {
-            logger.info("Could not find a suitable implementation for extraction type '{}'.", extensionMap.name());
+            logger.info("Could not find a suitable implementation for extraction type '{}'.", extractionName);
         }
         return instance;
     }

@@ -14,6 +14,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFac
 import picocli.CommandLine;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -86,11 +87,15 @@ public class ExtractCommand implements Callable<Integer> {
     private StatusCode writeOutputToFile(Path filePath, SerializationFormat outputFormat, String serializedOutput) {
         String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
         Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
-        outputFolder.toFile().mkdirs();
+        boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
+        if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
+            logger.error("Failed to create folders for output file.");
+            return StatusCode.ERROR;
+        }
         Path outputFilePath = outputFolder.resolve(outputFile);
         logger.debug("Outputting to file: {}", outputFilePath);
         try {
-            Files.write(outputFilePath, serializedOutput.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+            Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
             logger.error("Failed to write file: {}", outputFilePath);
             if (logger.isDebugEnabled()) {
@@ -119,7 +124,7 @@ public class ExtractCommand implements Callable<Integer> {
     private FileReader getFileReader(Path filePath) {
         FileReader binaryFileReader;
         try {
-            binaryFileReader = BinaryFileReader.inMemoryFromFilePath(filePath);
+            binaryFileReader = new BinaryFileReader(filePath);
         } catch (IOException e) {
             logger.error("Failed to read from the provided file path: {}", filePath);
             if (logger.isDebugEnabled()) {

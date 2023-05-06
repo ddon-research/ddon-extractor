@@ -19,47 +19,47 @@ public class GUIMessageDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        long LanguageId = fileReader.readUnsignedInteger();
-        BigInteger UpdateTime = fileReader.readUnsignedLong();
-        long IndexNum = fileReader.readUnsignedInteger();
-        long MessageNum = fileReader.readUnsignedInteger();
-        long IndexNameBufferSize = fileReader.readUnsignedInteger();
-        long BufferSize = fileReader.readUnsignedInteger();
-        String PackageName = fileReader.readMtString();
+        long languageId = fileReader.readUnsignedInteger();
+        BigInteger updateTime = fileReader.readUnsignedLong();
+        long indexNum = fileReader.readUnsignedInteger();
+        long messageNum = fileReader.readUnsignedInteger();
+        long indexNameBufferSize = fileReader.readUnsignedInteger();
+        long bufferSize = fileReader.readUnsignedInteger();
+        String packageName = fileReader.readMtString();
 
-        long maxEntries = Math.max(IndexNum, MessageNum);
+        long maxEntries = Math.max(indexNum, messageNum);
         List<GUIMessageIndex> indices = new ArrayList<>((int) maxEntries);
         for (int i = 0; i < maxEntries; i++) {
             indices.add(new GUIMessageIndex());
         }
 
         long[] hashTable = new long[256];
-        if (IndexNum > 0) {
-            for (int i = 0; i < IndexNum; i++) {
+        if (indexNum > 0) {
+            for (int i = 0; i < indexNum; i++) {
                 GUIMessageIndex index = indices.get(i);
-                index.Index = fileReader.readUnsignedInteger();
-                index.CrcHashDouble = fileReader.readUnsignedInteger();
-                index.CrcHashTriple = fileReader.readUnsignedInteger();
-                index.Offset = fileReader.readUnsignedInteger();
-                index.LinkOffset = fileReader.readUnsignedInteger();
+                index.index = fileReader.readUnsignedInteger();
+                index.crcHashDouble = fileReader.readUnsignedInteger();
+                index.crcHashTriple = fileReader.readUnsignedInteger();
+                index.offset = fileReader.readUnsignedInteger();
+                index.linkOffset = fileReader.readUnsignedInteger();
             }
 
             for (int i = 0; i < hashTable.length; i++) {
                 hashTable[i] = fileReader.readUnsignedInteger();
             }
 
-            for (int i = 0; i < IndexNum; i++) {
-                indices.get(i).Key = fileReader.readNullTerminatedString();
+            for (int i = 0; i < indexNum; i++) {
+                indices.get(i).key = fileReader.readNullTerminatedString();
             }
         }
 
-        for (int i = 0; i < MessageNum; i++) {
+        for (int i = 0; i < messageNum; i++) {
             GUIMessageIndex index = indices.get(i);
-            index.Message = fileReader.readNullTerminatedString(StandardCharsets.UTF_8);
-            index.MessageIndex = i;
+            index.message = fileReader.readNullTerminatedString(StandardCharsets.UTF_8);
+            index.messageIndex = i;
         }
 
-        return new GUIMessage(version, LanguageId, UpdateTime, IndexNum, MessageNum, IndexNameBufferSize, BufferSize, PackageName, indices, hashTable);
+        return new GUIMessage(version, languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
     }
 
     @Override
