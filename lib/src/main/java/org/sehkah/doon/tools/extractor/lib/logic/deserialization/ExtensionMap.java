@@ -1,10 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftElementExpDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftSkillCostDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftSkillSpeedDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftUpGradeExpDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
@@ -44,6 +41,7 @@ public enum ExtensionMap {
     rCraftElementExp("cee", null, 1, CraftElementExpDeserializer.class),
     rCraftSkillSpd("cks", null, 3, CraftSkillSpeedDeserializer.class),
     rCraftSkillCost("ckc", null, 2, CraftSkillCostDeserializer.class),
+    rCraftCapPass("ccp", null, 2, CraftCapPassDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

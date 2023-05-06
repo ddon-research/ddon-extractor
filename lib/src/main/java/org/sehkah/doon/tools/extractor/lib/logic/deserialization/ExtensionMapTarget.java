@@ -85,9 +85,7 @@ public enum ExtensionMapTarget {
     rCollisionObj("obc", "obc\0", 0, null),
     rConstModelParam("cmp", "cmp\0", 0, null),
     rConvexHull("hul", "hul\0", 0, null),
-    rCraftCapPass("ccp", "ccp\0", 0, null),
     rCraftQuality("cqr", "cqr\0", 0, null),
-
     rCustimShlLimit("csl", "csl\0", 0, null),
     rCycleContentsSortieInfo("csi", "csi\0", 0, null),
     rCycleQuestInfo("cqi", "cqi\0", 0, null),
