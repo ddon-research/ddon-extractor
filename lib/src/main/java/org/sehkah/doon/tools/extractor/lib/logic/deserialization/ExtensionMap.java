@@ -2,6 +2,7 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftElementExpDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftSkillCostDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftSkillSpeedDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.CraftUpGradeExpDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
@@ -42,6 +43,7 @@ public enum ExtensionMap {
     rCraftUpGradeExp("cuex", null, 1, CraftUpGradeExpDeserializer.class),
     rCraftElementExp("cee", null, 1, CraftElementExpDeserializer.class),
     rCraftSkillSpd("cks", null, 3, CraftSkillSpeedDeserializer.class),
+    rCraftSkillCost("ckc", null, 2, CraftSkillCostDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
