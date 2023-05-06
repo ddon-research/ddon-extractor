@@ -35,6 +35,7 @@ public enum ExtensionMap {
     rGatheringItem("gat", null, 1, GatheringItemDeserializer.class),
     rShopGoods("spg_tbl", "TBL\0", 259, ShopGoodsDeserializer.class),
     rQuestHistoryData("qhd", null, 1, QuestHistoryDataDeserializer.class),
+    rPlayerExpTable("exp", null, 2, PlayerExpTableDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
