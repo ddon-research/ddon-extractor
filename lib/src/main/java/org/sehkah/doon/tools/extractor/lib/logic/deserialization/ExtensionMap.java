@@ -48,6 +48,7 @@ public enum ExtensionMap {
     rAchievement("acv", null, 2, AchievementDeserializer.class),
     rAchievementHeader("ach", null, 3, AchievementHeaderDeserializer.class),
     rJobMasterCtrl("jmc", null, 256, JobMasterCtrlDeserializer.class),
+    rHumanEnemyCustomSkill("hmcs", null, 3, HumanEnemyCustomSkillDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

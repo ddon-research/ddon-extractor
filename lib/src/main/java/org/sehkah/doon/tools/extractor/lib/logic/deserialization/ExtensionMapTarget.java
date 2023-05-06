@@ -179,7 +179,6 @@ public enum ExtensionMapTarget {
     rGrassWind("grw", "grw\0", 0, null),
     rHeadCtrl("head_ctrl", "head_ctrl\0", 0, null),
     rHideNpcNameInfo("hni", "hni\0", 0, null),
-    rHumanEnemyCustomSkill("hmcs", "hmcs\0", 0, null),
     rHumanEnemyEquip("hmeq", "hmeq\0", 0, null),
     rHumanEnemyParam("hmeparam", "hmeparam\0", 0, null),
     rHumanEnemyPreset("hmpre", "hmpre\0", 0, null),
