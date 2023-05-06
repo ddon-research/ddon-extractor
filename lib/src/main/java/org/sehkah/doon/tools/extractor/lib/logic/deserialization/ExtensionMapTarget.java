@@ -86,7 +86,6 @@ public enum ExtensionMapTarget {
     rConstModelParam("cmp", "cmp\0", 0, null),
     rConvexHull("hul", "hul\0", 0, null),
     rCraftCapPass("ccp", "ccp\0", 0, null),
-    rCraftElementExp("cee", "cee\0", 0, null),
     rCraftQuality("cqr", "cqr\0", 0, null),
     rCraftSkillCost("ckc", "ckc\0", 0, null),
     rCraftSkillSpd("cks", "cks\0", 0, null),
