@@ -23,7 +23,7 @@ public class StageListDeserializer extends FileDeserializer {
     }
 
     private static StageInfoWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
-        return StageInfoWithMetaInformation.of(readEntity(fileReader));
+        return new StageInfoWithMetaInformation(readEntity(fileReader));
     }
 
 

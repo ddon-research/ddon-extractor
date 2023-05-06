@@ -33,8 +33,8 @@ public record EventParamWithMetaInformation(
         }
     }
 
-    public static EventParamWithMetaInformation of(EventParam eventParam) {
-        return new EventParamWithMetaInformation(
+    public EventParamWithMetaInformation(EventParam eventParam) {
+        this(
                 eventParam.Type(), EventParamEventType.of(eventParam.Type()),
                 eventParam.Stage(),
                 eventParam.EvNo(),
@@ -48,7 +48,7 @@ public record EventParamWithMetaInformation(
                 eventParam.SubMixerAfter(),
                 eventParam.OmAQCScale(),
                 eventParam.Version(),
-                eventParam.OmList().stream().map(OmListWithMetaInformation::of).toList()
+                eventParam.OmList().stream().map(OmListWithMetaInformation::new).toList()
         );
     }
 }

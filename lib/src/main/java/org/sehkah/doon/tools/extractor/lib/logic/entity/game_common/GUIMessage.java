@@ -1,5 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
 
+import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
+
 import java.math.BigInteger;
 import java.util.List;
 

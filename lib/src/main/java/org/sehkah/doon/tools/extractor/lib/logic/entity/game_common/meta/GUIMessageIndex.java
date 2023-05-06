@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
+package org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta;
 
 public class GUIMessageIndex {
     public long index;

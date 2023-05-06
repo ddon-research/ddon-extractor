@@ -11,8 +11,11 @@ public record LandAreaInfoWithMetaInformation(
         LandAreaInfoGameMode GameModeName,
         List<Long> AreaIds
 ) {
-    public static LandAreaInfoWithMetaInformation of(LandAreaInfo landAreaInfo) {
-        return new LandAreaInfoWithMetaInformation(landAreaInfo.LandId(), landAreaInfo.IsDispNews(),
-                landAreaInfo.GameMode(), LandAreaInfoGameMode.of(landAreaInfo.GameMode()), landAreaInfo.AreaIds());
+    public LandAreaInfoWithMetaInformation(LandAreaInfo landAreaInfo) {
+        this(
+                landAreaInfo.LandId(),
+                landAreaInfo.IsDispNews(),
+                landAreaInfo.GameMode(), LandAreaInfoGameMode.of(landAreaInfo.GameMode()),
+                landAreaInfo.AreaIds());
     }
 }

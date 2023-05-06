@@ -4,6 +4,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.rom.LocationDataDeserializer;
 
 public enum ExtensionMap {
     rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
@@ -24,6 +25,7 @@ public enum ExtensionMap {
     rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
     rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
     rGUIMessage("gmd", "GMD\0", 66306, GUIMessageDeserializer.class),
+    rLocationData("lcd", "lcd\0", 16, LocationDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

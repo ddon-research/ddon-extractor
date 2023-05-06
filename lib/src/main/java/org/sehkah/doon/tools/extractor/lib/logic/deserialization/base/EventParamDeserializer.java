@@ -41,7 +41,7 @@ public class EventParamDeserializer extends FileDeserializer {
     }
 
     private static EventParamWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
-        return EventParamWithMetaInformation.of(readEntity(fileReader));
+        return new EventParamWithMetaInformation(readEntity(fileReader));
     }
 
     @Override

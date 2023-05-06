@@ -225,7 +225,6 @@ public enum ExtensionMapTarget {
     rLineBuilder("mlb", "mlb\0", 0, null),
     rLinkageEnemy("lae", "lae\0", 0, null),
     rLoadingParam("ldp", "ldp\0", 0, null),
-    rLocationData("lcd", "lcd\0", 0, null),
     rMagicChantParam("chant", "chant\0", 0, null),
     rMagicCommandList("mgcc", "mgcc\0", 0, null),
     rMagicCommandWord("mcw", "mcw\0", 0, null),

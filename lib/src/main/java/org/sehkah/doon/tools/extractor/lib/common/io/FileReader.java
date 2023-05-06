@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
-import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
+import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -38,7 +38,7 @@ public interface FileReader {
 
     double readDouble();
 
-    MtVector3 readMtVector3();
+    Vector3f readVector3f();
 
     String readNullTerminatedString(Charset charset);
 

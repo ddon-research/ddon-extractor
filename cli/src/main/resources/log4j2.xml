@@ -16,7 +16,7 @@
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="off">
+        <Root level="debug">
             <AppenderRef ref="CliLogConsole"/>
             <AppenderRef ref="CliLogAsync"/>
         </Root>

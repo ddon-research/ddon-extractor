@@ -11,8 +11,8 @@ public record OmListWithMetaInformation(
         short GroupNo,
         short SetId
 ) {
-    public static OmListWithMetaInformation of(OmList omList) {
-        return new OmListWithMetaInformation(
+    public OmListWithMetaInformation(OmList omList) {
+        this(
                 omList.OmId(),
                 omList.CtrlType(), EventParamOmCtrlType.of(omList.CtrlType()),
                 omList.LotType(), EventParamOmLotSetType.of(omList.LotType()),

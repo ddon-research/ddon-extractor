@@ -26,7 +26,7 @@ public class StageMapDeserializer extends FileDeserializer {
                 reader.readUnsignedInteger(),
                 reader.readFloat(),
                 reader.readNullTerminatedString(),
-                reader.readMtVector3()
+                reader.readVector3f()
         );
     }
 

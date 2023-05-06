@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
-import org.sehkah.doon.tools.extractor.lib.common.datatype.MtVector3;
+import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -113,8 +113,8 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public MtVector3 readMtVector3() {
-        return new MtVector3(readFloat(), readFloat(), readFloat());
+    public Vector3f readVector3f() {
+        return new Vector3f(readFloat(), readFloat(), readFloat());
     }
 
     @Override

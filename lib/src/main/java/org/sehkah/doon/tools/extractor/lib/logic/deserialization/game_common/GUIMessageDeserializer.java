@@ -4,7 +4,8 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessage;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessageIndex;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageWithMetaInformation;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -16,9 +17,7 @@ public class GUIMessageDeserializer extends FileDeserializer {
         super(ExtensionMap.rGUIMessage, fileReader);
     }
 
-
-    @Override
-    protected Object readObject() {
+    private static GUIMessage readEntity(FileReader fileReader, Long version) {
         long languageId = fileReader.readUnsignedInteger();
         BigInteger updateTime = fileReader.readUnsignedLong();
         long indexNum = fileReader.readUnsignedInteger();
@@ -62,8 +61,17 @@ public class GUIMessageDeserializer extends FileDeserializer {
         return new GUIMessage(version, languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
     }
 
+    private static GUIMessageWithMetaInformation readEntityWithMetaInformation(FileReader fileReader, Long version) {
+        return new GUIMessageWithMetaInformation(readEntity(fileReader, version));
+    }
+
+    @Override
+    protected Object readObject() {
+        return readEntity(fileReader, version);
+    }
+
     @Override
     protected Object readObjectWithMetaInformation() {
-        return readObject();
+        return readEntityWithMetaInformation(fileReader, version);
     }
 }

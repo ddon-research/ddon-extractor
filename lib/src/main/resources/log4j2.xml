@@ -16,7 +16,7 @@
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="off">
+        <Root level="debug">
             <AppenderRef ref="LibLogConsole"/>
             <AppenderRef ref="LibLogAsync"/>
         </Root>
