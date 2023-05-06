@@ -139,7 +139,6 @@ public enum ExtensionMapTarget {
     rEnumDef("edf", "edf\0", 0, null),
     rEquipCaptureList("ecl", "ecl\0", 0, null),
     rEquipPartsInfo("epi", "epi\0", 0, null),
-    rEquipPreset("equip_preset", "equip_preset\0", 0, null),
     rEquipPresetPalette("epp", "epp\0", 0, null),
     rErosionInfoRes("reg_info", "reg_info\0", 0, null),
     rErosionRegion("reg_ersion", "reg_ersion\0", 0, null),

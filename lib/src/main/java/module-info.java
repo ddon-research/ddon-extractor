@@ -20,4 +20,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.sg300000.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.history;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIArisenCard;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.preset.equip;
 }
