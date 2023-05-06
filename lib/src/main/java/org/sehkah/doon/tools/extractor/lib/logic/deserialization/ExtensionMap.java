@@ -1,6 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
@@ -13,7 +14,7 @@ public enum ExtensionMap {
     rAreaInfoStage("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
     rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
     rEventParam("evp", null, 19, EventParamDeserializer.class),
-    rFieldAreaAdjoinList("faa", "faa\0", 0, null),
+    rFieldAreaAdjoinList("faa", "FAA\0", 2, FieldAreaAdjoinListDeserializer.class),
     rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
     rFieldAreaMarkerInfo("fmi", "FMI\0", 1, FieldAreaMarkerInfoDeserializer.class),
     rGUIMessage("gmd", "GMD\0", 66306, GUIMessageDeserializer.class),
