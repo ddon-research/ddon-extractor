@@ -90,7 +90,6 @@ public enum ExtensionMapTarget {
     rCraftQuality("cqr", "cqr\0", 0, null),
     rCraftSkillCost("ckc", "ckc\0", 0, null),
     rCraftSkillSpd("cks", "cks\0", 0, null),
-    rCraftUpGradeExp("cuex", "cuex\0", 0, null),
     rCustimShlLimit("csl", "csl\0", 0, null),
     rCycleContentsSortieInfo("csi", "csi\0", 0, null),
     rCycleQuestInfo("cqi", "cqi\0", 0, null),
