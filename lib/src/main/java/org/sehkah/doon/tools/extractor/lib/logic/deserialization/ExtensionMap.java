@@ -8,6 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.AchievementDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StartPosAreaDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
@@ -56,6 +57,7 @@ public enum ExtensionMap {
     rHumanEnemyCustomSkill("hmcs", null, 3, HumanEnemyCustomSkillDeserializer.class),
     rEquipPreset("equip_preset", null, 7, EquipPresetDeserializer.class),
     rRageTable("rag", null, 257, RageTableDeserializer.class),
+    rStartPosArea("sta", null, 0, StartPosAreaDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

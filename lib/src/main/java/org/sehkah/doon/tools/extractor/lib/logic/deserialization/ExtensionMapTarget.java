@@ -341,7 +341,6 @@ public enum ExtensionMapTarget {
     rStaminaDecTbl("sdt", "sdt\0", 0, null),
     rStarCatalog("stc", "stc\0", 0, null),
     rStartPos("stp", "stp\0", 0, null),
-    rStartPosArea("sta", "sta\0", 0, null),
     rStatusCheck("sck", "sck\0", 0, null),
     rSwingModel("swm", "swm\0", 0, null),
     rTargetCursorOffset("tco", "tco\0", 0, null),
