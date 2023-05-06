@@ -8,6 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMa
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 
 public enum ExtensionMap {
     rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
@@ -33,6 +34,7 @@ public enum ExtensionMap {
     rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
     rGatheringItem("gat", null, 1, GatheringItemDeserializer.class),
     rShopGoods("spg_tbl", "TBL\0", 259, ShopGoodsDeserializer.class),
+    rQuestHistoryData("qhd", null, 1, QuestHistoryDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

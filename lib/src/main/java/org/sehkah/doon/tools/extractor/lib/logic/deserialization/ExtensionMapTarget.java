@@ -287,7 +287,6 @@ public enum ExtensionMapTarget {
     rPriorityThink("ptk", "ptk\0", 0, null),
     rPrologueHmStatus("phs", "phs\0", 0, null),
     rPushRate("push_rate", "push_rate\0", 0, null),
-    rQuestHistoryData("qhd", "qhd\0", 0, null),
     rQuestList("qst", "qst\0", 0, null),
     rQuestMarkerInfo("qmi", "qmi\0", 0, null),
     rQuestTextData("qtd", "qtd\0", 0, null),
