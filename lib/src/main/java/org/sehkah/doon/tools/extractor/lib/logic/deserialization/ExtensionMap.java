@@ -1,31 +1,34 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLocationDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.rom.LocationDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 
 public enum ExtensionMap {
-    rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
-    rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
-    rStageMap("smp", null, 1, StageMapDeserializer.class),
-    rLandInfo("lai", "LAI\0", 4, LandInfoDeserializer.class),
-    rAreaInfoStage("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
-    rAreaInfo("ari", "ARI\0", 2, AreaInfoDeserializer.class),
-    rStageList("slt", "slt\0", 34, StageListDeserializer.class),
-    rEventParam("evp", null, 19, EventParamDeserializer.class),
-    rJobBaseParam("jobbase", null, 263, JobBaseParamDeserializer.class),
     rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
-    rJobLevelUpTbl2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
-    rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
-    rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
-    rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
-    rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
-    rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
+    rAreaInfo("ari", "ARI\0", 2, AreaInfoDeserializer.class),
+    rAreaInfoStage("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
+    rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
+    rEventParam("evp", null, 19, EventParamDeserializer.class),
+    rFieldAreaAdjoinList("faa", "faa\0", 0, null),
     rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
+    rFieldAreaMarkerInfo("fmi", "FMI\0", 1, FieldAreaMarkerInfoDeserializer.class),
     rGUIMessage("gmd", "GMD\0", 66306, GUIMessageDeserializer.class),
+    rJobBaseParam("jobbase", null, 263, JobBaseParamDeserializer.class),
+    rJobLevelUpTbl2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
+    rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
+    rLandInfo("lai", "LAI\0", 4, LandInfoDeserializer.class),
     rLocationData("lcd", "lcd\0", 16, LocationDataDeserializer.class),
+    rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
+    rStageList("slt", "slt\0", 34, StageListDeserializer.class),
+    rStageMap("smp", null, 1, StageMapDeserializer.class),
+    rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
+    rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
+    rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
+    rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

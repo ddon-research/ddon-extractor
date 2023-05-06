@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.entity.rom.meta;
+package org.sehkah.doon.tools.extractor.lib.logic.entity.stage.meta;
 
 import java.util.Arrays;
 

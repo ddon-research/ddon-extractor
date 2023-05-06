@@ -1,10 +1,10 @@
-package org.sehkah.doon.tools.extractor.lib.logic.deserialization.rom;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.rom.LocationData;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.rom.meta.LocationDataWithMetaInformation;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.LocationData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.meta.LocationDataWithMetaInformation;
 
 public class LocationDataDeserializer extends FileDeserializer {
     public LocationDataDeserializer(FileReader fileReader) {

@@ -65,7 +65,7 @@ public class ExtractCommand implements Callable<Integer> {
         }
         Object deserializedOutput = deserializer.deserialize(addMetaInformation);
         if (fileReader.hasRemaining()) {
-            logger.warn("File has data remaining! {} bytes / {} bytes left.", fileReader.getRemainingCount(), fileReader.getLimit());
+            logger.warn("File has data remaining! {} bytes of {} bytes are unread.", fileReader.getRemainingCount(), fileReader.getLimit());
         }
         if (deserializedOutput != null) {
             String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
@@ -143,6 +143,7 @@ public class ExtractCommand implements Callable<Integer> {
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
                     List<StatusCode> statusCodes = files
                             .filter(Files::isRegularFile)
+                            .filter(path -> !path.toString().endsWith(".arc"))
                             .map(path -> extractSingleFile(path, outputFormat, writeOutputToFile, addMetaInformation)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         logger.warn("Failed to extract one or more resource files.");

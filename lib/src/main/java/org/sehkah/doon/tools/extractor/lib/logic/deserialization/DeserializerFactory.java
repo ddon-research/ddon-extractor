@@ -6,20 +6,20 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
-import java.util.Objects;
 
 
 public class DeserializerFactory {
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
-    public DeserializerFactory() {
-    }
-
     public Deserializer forFilePath(FileReader fileReader, Path filePath) {
         String sanitizedFilePath = filePath.toString().replace('\\', '/');
         ExtensionMap extensionMap = ExtensionMap.findByFileExtension(sanitizedFilePath);
-        if (Objects.requireNonNull(extensionMap) == ExtensionMap.UNSUPPORTED) {
-            logger.warn("The provided file path '{}' did not match any supported extraction types.", filePath);
+        if (extensionMap == ExtensionMap.UNSUPPORTED) {
+            logger.warn("The provided file path '{}' has an unknown file extension.", filePath);
+            return null;
+        }
+        if (extensionMap.deserializer == null) {
+            logger.warn("The provided file path '{}' has a known file extension which is not supported yet.", filePath);
             return null;
         }
         Deserializer instance = null;

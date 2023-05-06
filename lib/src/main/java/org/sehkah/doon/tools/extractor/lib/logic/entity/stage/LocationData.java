@@ -1,4 +1,4 @@
-package org.sehkah.doon.tools.extractor.lib.logic.entity.rom;
+package org.sehkah.doon.tools.extractor.lib.logic.entity.stage;
 
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 

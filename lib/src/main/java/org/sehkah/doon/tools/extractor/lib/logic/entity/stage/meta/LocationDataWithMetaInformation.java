@@ -1,7 +1,7 @@
-package org.sehkah.doon.tools.extractor.lib.logic.entity.rom.meta;
+package org.sehkah.doon.tools.extractor.lib.logic.entity.stage.meta;
 
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.rom.LocationData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.LocationData;
 
 public record LocationDataWithMetaInformation(
         Vector3f Pos,
