@@ -11,6 +11,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.WarpLoc
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
 
 public enum ExtensionMap {
     rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
@@ -45,6 +46,7 @@ public enum ExtensionMap {
     rCraftCapPass("ccp", null, 2, CraftCapPassDeserializer.class),
     rCraftQuality("cqr", null, 1, CraftQualityDeserializer.class),
     rAchievement("acv", null, 2, AchievementDeserializer.class),
+    rAchievementHeader("ach", null, 3, AchievementHeaderDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
