@@ -47,6 +47,7 @@ public enum ExtensionMap {
     rCraftQuality("cqr", null, 1, CraftQualityDeserializer.class),
     rAchievement("acv", null, 2, AchievementDeserializer.class),
     rAchievementHeader("ach", null, 3, AchievementHeaderDeserializer.class),
+    rJobMasterCtrl("jmc", null, 256, JobMasterCtrlDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

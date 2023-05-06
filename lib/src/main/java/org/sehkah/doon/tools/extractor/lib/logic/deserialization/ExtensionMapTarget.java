@@ -191,7 +191,6 @@ public enum ExtensionMapTarget {
     rItemEquipJobInfoList("eir", "eir\0", 0, null),
     rItemList("ipa", "ipa\0", 0, null),
     rJobCustomParam("jcp", "jcp\0", 0, null),
-    rJobMasterCtrl("jmc", "jmc\0", 0, null),
     rJointEx2("jex2", "jex2\0", 0, null),
     rJointInfo("jnt_info", "jnt_info\0", 0, null),
     rJointOrder("jnt_order", "jnt_order\0", 0, null),
