@@ -42,6 +42,7 @@ public enum ExtensionMap {
     rCraftSkillSpd("cks", null, 3, CraftSkillSpeedDeserializer.class),
     rCraftSkillCost("ckc", null, 2, CraftSkillCostDeserializer.class),
     rCraftCapPass("ccp", null, 2, CraftCapPassDeserializer.class),
+    rCraftQuality("cqr", null, 1, CraftQualityDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
