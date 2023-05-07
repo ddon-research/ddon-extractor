@@ -343,7 +343,6 @@ public enum ExtensionMapTarget {
     rTexturePNG("tex", "tex\0", 0, null),
     rThinkParamRange("thp_range", "thp_range\0", 0, null),
     rThinkParamTimer("thp_timer", "thp_timer\0", 0, null),
-    rTutorialDialogMessage("tdm", "tdm\0", 0, null),
     rTutorialTargetList("ttl", "ttl\0", 0, null),
     rVertices("vts", "vts\0", 0, null),
     rVfxLightInfluence("eli", "eli\0", 0, null),
