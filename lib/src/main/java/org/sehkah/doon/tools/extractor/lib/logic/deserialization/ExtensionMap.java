@@ -10,6 +10,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.CustomSkillDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
@@ -60,6 +61,7 @@ public enum ExtensionMap {
     rAbilityData("abd", null, 3, AbilityDataDeserializer.class),
     rAbilityAddData("aad", null, 1, AbilityAddDataDeserializer.class),
     rCustomSkillData("csd", null, 3, CustomSkillDataDeserializer.class),
+    rNormalSkillData("nsd", null, 5, NormalSkillDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
