@@ -5,52 +5,226 @@
 ----
 [
 	{
-		"fileExtension": "emg",
-		"version": 1
+		"#": 0,
+		"fileExtension": "ajp",
+		"version": 256
 	},
 	{
-		"fileExtension": "wal",
-		"version": 353
-	},
-	{
-		"fileExtension": "smp",
-		"version": 1
-	},
-	{
-		"fileExtension": "lai",
-		"magic": "LAI ",
-		"version": 4
-	},
-	{
-		"fileExtension": "ars",
-		"magic": "ARS ",
-		"version": 2
-	},
-	{
+		"#": 1,
 		"fileExtension": "ari",
 		"magic": "ARI ",
 		"version": 2
 	},
 	{
+		"#": 2,
+		"fileExtension": "ars",
+		"magic": "ARS ",
+		"version": 2
+	},
+	{
+		"#": 3,
+		"fileExtension": "emg",
+		"version": 1
+	},
+	{
+		"#": 4,
+		"fileExtension": "evp",
+		"version": 19
+	},
+	{
+		"#": 5,
+		"fileExtension": "faa",
+		"magic": "FAA ",
+		"version": 2
+	},
+	{
+		"#": 6,
+		"fileExtension": "fal",
+		"magic": "FAl ",
+		"version": 2
+	},
+	{
+		"#": 7,
+		"fileExtension": "fmi",
+		"magic": "FMI ",
+		"version": 1
+	},
+	{
+		"#": 8,
+		"fileExtension": "gmd",
+		"magic": "GMD ",
+		"version": 66306
+	},
+	{
+		"#": 9,
+		"fileExtension": "jobbase",
+		"version": 263
+	},
+	{
+		"#": 10,
+		"fileExtension": "jlt2",
+		"version": 1
+	},
+	{
+		"#": 11,
+		"fileExtension": "jtq",
+		"magic": "JTQ ",
+		"version": 1
+	},
+	{
+		"#": 12,
+		"fileExtension": "lai",
+		"magic": "LAI ",
+		"version": 4
+	},
+	{
+		"#": 13,
+		"fileExtension": "lcd",
+		"magic": "lcd ",
+		"version": 16
+	},
+	{
+		"#": 14,
+		"fileExtension": "qsq",
+		"version": 256
+	},
+	{
+		"#": 15,
 		"fileExtension": "slt",
 		"magic": "slt ",
 		"version": 34
 	},
 	{
-		"fileExtension": "evp",
-		"version": 19
+		"#": 16,
+		"fileExtension": "smp",
+		"version": 1
 	},
 	{
-		"fileExtension": "jobbase",
-		"version": 263
+		"#": 17,
+		"fileExtension": "sts",
+		"version": 0
 	},
 	{
-		"fileExtension": "ajp",
+		"#": 18,
+		"fileExtension": "sg_tbl",
+		"version": 257
+	},
+	{
+		"#": 19,
+		"fileExtension": "tqg",
+		"magic": "TQG ",
+		"version": 1
+	},
+	{
+		"#": 20,
+		"fileExtension": "wal",
+		"version": 353
+	},
+	{
+		"#": 21,
+		"fileExtension": "gat",
+		"version": 1
+	},
+	{
+		"#": 22,
+		"fileExtension": "spg_tbl",
+		"magic": "TBL ",
+		"version": 259
+	},
+	{
+		"#": 23,
+		"fileExtension": "qhd",
+		"version": 1
+	},
+	{
+		"#": 24,
+		"fileExtension": "exp",
+		"version": 2
+	},
+	{
+		"#": 25,
+		"fileExtension": "cuex",
+		"version": 1
+	},
+	{
+		"#": 26,
+		"fileExtension": "cee",
+		"version": 1
+	},
+	{
+		"#": 27,
+		"fileExtension": "cks",
+		"version": 3
+	},
+	{
+		"#": 28,
+		"fileExtension": "ckc",
+		"version": 2
+	},
+	{
+		"#": 29,
+		"fileExtension": "ccp",
+		"version": 2
+	},
+	{
+		"#": 30,
+		"fileExtension": "cqr",
+		"version": 1
+	},
+	{
+		"#": 31,
+		"fileExtension": "acv",
+		"version": 2
+	},
+	{
+		"#": 32,
+		"fileExtension": "ach",
+		"version": 3
+	},
+	{
+		"#": 33,
+		"fileExtension": "jmc",
 		"version": 256
 	},
 	{
-		"fileExtension": "jlt2",
+		"#": 34,
+		"fileExtension": "hmcs",
+		"version": 3
+	},
+	{
+		"#": 35,
+		"fileExtension": "equip_preset",
+		"version": 7
+	},
+	{
+		"#": 36,
+		"fileExtension": "rag",
+		"version": 257
+	},
+	{
+		"#": 37,
+		"fileExtension": "sta",
+		"version": 0
+	},
+	{
+		"#": 38,
+		"fileExtension": "abd",
+		"version": 3
+	},
+	{
+		"#": 39,
+		"fileExtension": "aad",
 		"version": 1
+	},
+	{
+		"#": 40,
+		"fileExtension": "csd",
+		"version": 3
+	},
+	{
+		"#": 41,
+		"fileExtension": "nsd",
+		"version": 5
 	}
 ]
 ----

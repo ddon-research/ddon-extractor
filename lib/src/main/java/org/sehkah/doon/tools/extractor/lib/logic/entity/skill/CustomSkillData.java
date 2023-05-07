@@ -7,7 +7,7 @@ public record CustomSkillData(
         int MsgNameIndex,
         int IconId,
         int ExSkillCustomSkillIdReference,
-        int UnknownByte,
+        int ExSkillUnknownByte,
         List<SkillLevelData> LvArray
 ) {
 }
