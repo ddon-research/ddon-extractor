@@ -71,6 +71,7 @@ public enum ExtensionMap {
     rAbilityList("abl", "abl0", 9, AbilityListDeserializer.class),
     rLayoutPreset("lop", null, 5, LayoutPresetDeserializer.class),
     rFieldMapData("fmd", "fmd\0", 18, FieldMapDataDeserializer.class),
+    rAreaInfoJointArea("arj", "ARJ\0", 2, AreaInfoJointAreaDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
