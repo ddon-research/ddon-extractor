@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.error;
 
-public class VersionValidationFailedException extends BusinessException {
+public class VersionValidationFailedException extends TechnicalException {
     public VersionValidationFailedException() {
     }
 

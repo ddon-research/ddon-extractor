@@ -67,11 +67,11 @@ public class GUIMessageDeserializer extends FileDeserializer {
 
     @Override
     protected Object readObject() {
-        return readEntity(fileReader, version);
+        return readEntity(fileReader, extension.fileHeader.versionNumber);
     }
 
     @Override
     protected Object readObjectWithMetaInformation() {
-        return readEntityWithMetaInformation(fileReader, version);
+        return readEntityWithMetaInformation(fileReader, extension.fileHeader.versionNumber);
     }
 }
