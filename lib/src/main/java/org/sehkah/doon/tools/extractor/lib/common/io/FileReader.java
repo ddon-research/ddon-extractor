@@ -21,6 +21,8 @@ public interface FileReader {
 
     byte readSignedByte();
 
+    byte[] readSignedByte(int num);
+
     boolean readBoolean();
 
     int readUnsignedShort();
@@ -37,9 +39,13 @@ public interface FileReader {
 
     float readFloat();
 
+    float[] readFloat(int num);
+
     double readDouble();
 
     Vector3f readVector3f();
+
+    Vector3f[] readVector3f(int num);
 
     Float2f readFloat2f();
 

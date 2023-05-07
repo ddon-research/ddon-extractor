@@ -327,7 +327,6 @@ public enum ExtensionMapTarget {
     rStatusCheck("sck", "sck\0", 0, null),
     rSwingModel("swm", "swm\0", 0, null),
     rTargetCursorOffset("tco", "tco\0", 0, null),
-    rTbl2ChatMacro("tcm", "tcm\0", 0, null),
     rTbl2ClanEmblemTextureId("ceti_tbl", "ceti_tbl\0", 0, null),
     rTbl2ItemIconId("tii", "tii\0", 0, null),
     rTblMenuComm("tmc", "tmc\0", 0, null),

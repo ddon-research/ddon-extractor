@@ -5,7 +5,7 @@ public class FileParsingIncompleteException extends TechnicalException {
     }
 
     public FileParsingIncompleteException(int remainingBytesCount, int maxBytesCount) {
-        super("File has data remaining! %s bytes of %s bytes are unread.".formatted(remainingBytesCount, maxBytesCount));
+        super("File has data remaining! %s bytes are unread.".formatted(maxBytesCount - remainingBytesCount));
     }
 
     public FileParsingIncompleteException(String message) {

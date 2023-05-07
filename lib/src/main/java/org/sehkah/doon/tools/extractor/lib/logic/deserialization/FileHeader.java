@@ -24,6 +24,10 @@ public class FileHeader {
         this(magicString, magicString == null ? 0 : magicString.length(), versionNumber, versionBytesLength);
     }
 
+    public FileHeader(int versionNumber, int versionBytesLength) {
+        this(null, 0, versionNumber, versionBytesLength);
+    }
+
     public boolean isVersionValid(FileReader fileReader) {
         long encounteredVersionNumber = -1;
         if (versionBytesLength == 2) {

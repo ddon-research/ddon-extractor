@@ -59,6 +59,15 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public byte[] readSignedByte(int num) {
+        byte[] bytes = new byte[num];
+        for (int i = 0; i < num; i++) {
+            bytes[i] = byteBuffer.get();
+        }
+        return bytes;
+    }
+
+    @Override
     public boolean readBoolean() {
         return byteBuffer.get() != 0;
     }
@@ -109,6 +118,15 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public float[] readFloat(int num) {
+        float[] floats = new float[num];
+        for (int i = 0; i < num; i++) {
+            floats[i] = readFloat();
+        }
+        return floats;
+    }
+
+    @Override
     public double readDouble() {
         return byteBuffer.getDouble();
     }
@@ -116,6 +134,15 @@ public class BinaryFileReader implements FileReader {
     @Override
     public Vector3f readVector3f() {
         return new Vector3f(readFloat(), readFloat(), readFloat());
+    }
+
+    @Override
+    public Vector3f[] readVector3f(int num) {
+        Vector3f[] vector3fs = new Vector3f[num];
+        for (int i = 0; i < num; i++) {
+            vector3fs[i] = readVector3f();
+        }
+        return vector3fs;
     }
 
     @Override
