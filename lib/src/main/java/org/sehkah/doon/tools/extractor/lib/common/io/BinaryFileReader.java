@@ -1,5 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
+import org.sehkah.doon.tools.extractor.lib.common.datatype.Float2f;
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.io.IOException;
@@ -115,6 +116,11 @@ public class BinaryFileReader implements FileReader {
     @Override
     public Vector3f readVector3f() {
         return new Vector3f(readFloat(), readFloat(), readFloat());
+    }
+
+    @Override
+    public Float2f readFloat2f() {
+        return new Float2f(readFloat(), readFloat());
     }
 
     @Override

@@ -145,7 +145,6 @@ public enum ExtensionMapTarget {
     rEvidenceList("evd", "evd\0", 0, null),
     rFacialEditJointPreset("fedt_jntpreset", "fedt_jntpreset\0", 0, null),
     rFatAdjust("fat_adjust", "fat_adjust\0", 0, null),
-    rFieldMapData("fmd", "fmd\0", 0, null),
     rFreeF32Tbl("f2p", "f2p\0", 0, null),
     rFullbodyIKHuman2("fbik_human2", "fbik_human2\0", 0, null),
     rFunctionList("ftl", "ftl\0", 0, null),
