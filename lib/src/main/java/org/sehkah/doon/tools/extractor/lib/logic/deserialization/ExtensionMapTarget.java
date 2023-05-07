@@ -29,7 +29,6 @@ public enum ExtensionMapTarget {
     rArchiveListArray("ala", "ala\0", 0, null),
     rAreaHitShape("ahs", "ahs\0", 0, null),
     rAreaInfoJointArea("arj", "arj\0", 0, null),
-    rAreaMasterSpotDetailData("amsd", "amsd\0", 0, null),
     rArmedEnemyInfo("aeminfo", "aeminfo\0", 0, null),
     rAtDfRateRaid("atdf_raid", "atdf_raid\0", 0, null),
     rAttackParam("atk", "atk\0", 0, null),

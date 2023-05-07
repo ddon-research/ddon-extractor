@@ -15,6 +15,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationD
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
@@ -66,6 +67,7 @@ public enum ExtensionMap {
     rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
     rAreaMasterRankData("amr", null, 4, AreaMasterRankDataDeserializer.class),
     rAreaMasterSpotData("ams", null, 8, AreaMasterSpotDataDeserializer.class),
+    rAreaMasterSpotDetailData("amsd", null, 5, AreaMasterSpotDetailDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
