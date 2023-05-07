@@ -22,7 +22,6 @@ public enum ExtensionMapTarget {
     rActivateDragonSkill("ads", "ads\0", 0, null),
     rActorLight("ali", "ali\0", 0, null),
     rAdjLimitParam("alp", "alp\0", 0, null),
-    rAnimalData("aml", "aml\0", 0, null),
     rArchive("arc", "arc\0", 0, null),
     rArchiveImport("aimp", "aimp\0", 0, null),
     rArchiveListArray("ala", "ala\0", 0, null),

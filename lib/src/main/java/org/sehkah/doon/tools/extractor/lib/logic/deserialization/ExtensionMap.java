@@ -1,6 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
@@ -88,6 +89,7 @@ public enum ExtensionMap {
     rTutorialQuestGroup("tqg", new FileHeader("TQG\0", 1, 2), TutorialQuestGroupDeserializer.class),
     rWarpLocation("wal", new FileHeader(353, 4), WarpLocationDeserializer.class),
     rTbl2ChatMacro("tcm", new FileHeader(256, 4), Tbl2ChatMacroDeserializer.class),
+    rAnimalData("aml", new FileHeader(0, 4), AnimalDataDeserializer.class),
     UNSUPPORTED("", new FileHeader(null, 999, 4), null);
 
     public final String fileExtension;
