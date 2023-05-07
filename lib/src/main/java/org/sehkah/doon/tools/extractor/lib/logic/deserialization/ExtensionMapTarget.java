@@ -18,7 +18,6 @@ public enum ExtensionMapTarget {
     rAISensor("sn2", "sn2\0", 0, null),
     rAIWayPoint("way", "way\0", 0, null),
     rAIWayPointGraph("gway", "gway\0", 0, null),
-    rAbilityList("abl", "abl\0", 0, null),
     rActionParamList("acp", "acp\0", 0, null),
     rActivateDragonSkill("ads", "ads\0", 0, null),
     rActorLight("ali", "ali\0", 0, null),
