@@ -211,7 +211,6 @@ public enum ExtensionMapTarget {
     rMovieOnDiskInterMediate("wmv", "wmv\0", 0, null),
     rMovieOnMemory("mem.wmv", "mem.wmv\0", 0, null),
     rMovieOnMemoryInterMediate("mem.wmv", "mem.wmv\0", 0, null),
-    rMsgSet("mss", "mss\0", 0, null),
     rMyRoomActParam("mra", "mra\0", 0, null),
     rNPCEmoMyRoom("nem", "nem\0", 0, null),
     rNPCMotMyRoom("nmm", "nmm\0", 0, null),

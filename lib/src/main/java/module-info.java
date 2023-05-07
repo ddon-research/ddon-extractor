@@ -30,4 +30,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.quest;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.quest.meta;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten;
 }
