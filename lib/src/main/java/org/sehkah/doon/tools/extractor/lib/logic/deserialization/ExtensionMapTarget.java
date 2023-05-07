@@ -203,7 +203,6 @@ public enum ExtensionMapTarget {
     rMandraCharaMake("mcm", "mcm\0", 0, null),
     rMandraMotCombine("mmc", "mmc\0", 0, null),
     rMandraReaction("mdr", "mdr\0", 0, null),
-    rMapSpotStageList("msl", "msl\0", 0, null),
     rMaterial("mrl", "mrl\0", 0, null),
     rModel("mod", "mod\0", 0, null),
     rMotionFilter("mot_filter", "mot_filter\0", 0, null),

@@ -74,6 +74,7 @@ public enum ExtensionMap {
     rFieldMapData("fmd", "fmd\0", 18, FieldMapDataDeserializer.class),
     rAreaInfoJointArea("arj", "ARJ\0", 2, AreaInfoJointAreaDeserializer.class),
     rMapSpotData("msd", "msd\0", 0, MapSpotDataDeserializer.class),
+    rMapSpotStageList("msl", "msl\0", 0, MapSpotStageListDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
