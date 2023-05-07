@@ -265,7 +265,6 @@ public enum ExtensionMapTarget {
     rPushRate("push_rate", "push_rate\0", 0, null),
     rQuestList("qst", "qst\0", 0, null),
     rQuestMarkerInfo("qmi", "qmi\0", 0, null),
-    rQuestTextData("qtd", "qtd\0", 0, null),
     rRagdoll("rdd", "rdd\0", 0, null),
     rReaction("rac", "rac\0", 0, null),
     rRecommendDragonSkill("rds", "rds\0", 0, null),
