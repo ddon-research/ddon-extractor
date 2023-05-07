@@ -149,7 +149,6 @@ public enum ExtensionMapTarget {
     rFurnitureData("fnd", "fnd\0", 0, null),
     rFurnitureGroup("fng", "fng\0", 0, null),
     rFurnitureItem("fni", "fni\0", 0, null),
-    rFurnitureLayout("fnl", "fnl\0", 0, null),
     rGUI("gui", "gui\0", 0, null),
     rGUIDogmaOrb("dgm", "dgm\0", 0, null),
     rGUIFont("gfd", "gfd\0", 0, null),
