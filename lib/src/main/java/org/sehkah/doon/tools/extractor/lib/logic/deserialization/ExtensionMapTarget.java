@@ -194,7 +194,6 @@ public enum ExtensionMapTarget {
     rLayout("lot", "lot\0", 0, null),
     rLayoutGroupParam("lgp", "lgp\0", 0, null),
     rLayoutGroupParamList("gpl", "gpl\0", 0, null),
-    rLayoutPreset("lop", "lop\0", 0, null),
     rLegCtrl("leg_ctrl", "leg_ctrl\0", 0, null),
     rLineBuilder("mlb", "mlb\0", 0, null),
     rLinkageEnemy("lae", "lae\0", 0, null),

@@ -69,6 +69,7 @@ public enum ExtensionMap {
     rAreaMasterSpotData("ams", null, 8, AreaMasterSpotDataDeserializer.class),
     rAreaMasterSpotDetailData("amsd", null, 5, AreaMasterSpotDetailDataDeserializer.class),
     rAbilityList("abl", "abl0", 9, AbilityListDeserializer.class),
+    rLayoutPreset("lop", null, 5, LayoutPresetDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
