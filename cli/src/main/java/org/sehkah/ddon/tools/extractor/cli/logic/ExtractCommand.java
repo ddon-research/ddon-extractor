@@ -65,9 +65,6 @@ public class ExtractCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         Object deserializedOutput = deserializer.deserialize(addMetaInformation);
-        if (fileReader.hasRemaining()) {
-            logger.warn("File has data remaining! {} bytes of {} bytes are unread.", fileReader.getRemainingCount(), fileReader.getLimit());
-        }
         if (deserializedOutput != null) {
             String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
             if (serializedOutput == null) return StatusCode.ERROR;

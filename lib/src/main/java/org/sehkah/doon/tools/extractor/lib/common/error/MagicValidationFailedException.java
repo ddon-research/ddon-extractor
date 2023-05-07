@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.error;
 
-public class MagicValidationFailedException extends BusinessException {
+public class MagicValidationFailedException extends TechnicalException {
     public MagicValidationFailedException() {
     }
 

@@ -1,18 +1,24 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureLayoutDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.scr.MapSpotDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.Tbl2ChatMacroDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
@@ -26,70 +32,75 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum ExtensionMap {
-    rAbilityData("abd", null, 3, AbilityDataDeserializer.class),
-    rAbilityList("abl", "abl0", 9, AbilityListDeserializer.class),
-    rAchievement("acv", null, 2, AchievementDeserializer.class),
-    rAchievementHeader("ach", null, 3, AchievementHeaderDeserializer.class),
-    rAdjustParam("ajp", null, 256, JobAdjustParamDeserializer.class),
-    rAreaInfo("ari", "ARI\0", 2, AreaInfoDeserializer.class),
-    rAreaInfoJointArea("arj", "ARJ\0", 2, AreaInfoJointAreaDeserializer.class),
-    rAreaInfoStage("ars", "ARS\0", 2, AreaInfoStageDeserializer.class),
-    rAreaMasterRankData("amr", null, 4, AreaMasterRankDataDeserializer.class),
-    rAreaMasterSpotData("ams", null, 8, AreaMasterSpotDataDeserializer.class),
-    rAreaMasterSpotDetailData("amsd", null, 5, AreaMasterSpotDetailDataDeserializer.class),
-    rCraftCapPass("ccp", null, 2, CraftCapPassDeserializer.class),
-    rCraftElementExp("cee", null, 1, CraftElementExpDeserializer.class),
-    rCraftQuality("cqr", null, 1, CraftQualityDeserializer.class),
-    rCraftSkillCost("ckc", null, 2, CraftSkillCostDeserializer.class),
-    rCraftSkillSpd("cks", null, 3, CraftSkillSpeedDeserializer.class),
-    rCraftUpGradeExp("cuex", null, 1, CraftUpGradeExpDeserializer.class),
-    rCustomSkillData("csd", null, 3, CustomSkillDataDeserializer.class),
-    rEnemyGroup("emg", null, 1, EnemyGroupDeserializer.class),
-    rEquipPreset("equip_preset", null, 7, EquipPresetDeserializer.class),
-    rEventParam("evp", null, 19, EventParamDeserializer.class),
-    rFieldAreaAdjoinList("faa", "FAA\0", 2, FieldAreaAdjoinListDeserializer.class),
-    rFieldAreaList("fal", "FAl\0", 2, FieldAreaListDeserializer.class),
-    rFieldAreaMarkerInfo("fmi", "FMI\0", 1, FieldAreaMarkerInfoDeserializer.class),
-    rFieldMapData("fmd", "fmd\0", 18, FieldMapDataDeserializer.class),
-    rGUIMessage("gmd", "GMD\0", 66306, GUIMessageDeserializer.class),
-    rGatheringItem("gat", null, 1, GatheringItemDeserializer.class),
-    rHumanEnemyCustomSkill("hmcs", null, 3, HumanEnemyCustomSkillDeserializer.class),
-    rJobBaseParam("jobbase", null, 263, JobBaseParamDeserializer.class),
-    rJobLevelUpTbl2("jlt2", null, 1, JobLevelUpTableDeserializer.class),
-    rJobMasterCtrl("jmc", null, 256, JobMasterCtrlDeserializer.class),
-    rJobTutorialQuestList("jtq", "JTQ\0", 1, JobTutorialQuestListDeserializer.class),
-    rLandInfo("lai", "LAI\0", 4, LandInfoDeserializer.class),
-    rLayoutPreset("lop", null, 5, LayoutPresetDeserializer.class),
-    rLocationData("lcd", "lcd\0", 16, LocationDataDeserializer.class),
-    rMapSpotData("msd", "msd\0", 0, MapSpotDataDeserializer.class),
-    rMapSpotStageList("msl", "msl\0", 0, MapSpotStageListDeserializer.class),
-    rNormalSkillData("nsd", null, 5, NormalSkillDataDeserializer.class),
-    rPlayerExpTable("exp", null, 2, PlayerExpTableDeserializer.class),
-    rQuestHistoryData("qhd", null, 1, QuestHistoryDataDeserializer.class),
-    rQuestSequenceList("qsq", null, 256, QuestSequenceListDeserializer.class),
-    rRageTable("rag", null, 257, RageTableDeserializer.class),
-    rShopGoods("spg_tbl", "TBL\0", 259, ShopGoodsDeserializer.class),
-    rStageList("slt", "slt\0", 34, StageListDeserializer.class),
-    rStageMap("smp", null, 1, StageMapDeserializer.class),
-    rStageToSpot("sts", null, 0, StageToSpotDeserializer.class),
-    rStartPosArea("sta", null, 0, StartPosAreaDeserializer.class),
-    rStatusGainTable("sg_tbl", null, 257, StatusGainTableDeserializer.class),
-    rTutorialDialogMessage("tdm", "TDM\0", 2, TutorialDialogMessageDeserializer.class),
-    rTutorialList("tlt", "TLT\0", 6, TutorialListDeserializer.class),
-    rTutorialQuestGroup("tqg", "TQG\0", 1, TutorialQuestGroupDeserializer.class),
-    rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
-    rAbilityAddData("aad", null, 1, AbilityAddDataDeserializer.class),
-    UNSUPPORTED("", null, 999, null);
+    rAbilityAddData("aad", new FileHeader(1, 4), AbilityAddDataDeserializer.class),
+    rAbilityData("abd", new FileHeader(3, 4), AbilityDataDeserializer.class),
+    rAbilityList("abl", new FileHeader("abl0", 9, 4), AbilityListDeserializer.class),
+    rAchievement("acv", new FileHeader(2, 4), AchievementDeserializer.class),
+    rAchievementHeader("ach", new FileHeader(3, 4), AchievementHeaderDeserializer.class),
+    rAdjustParam("ajp", new FileHeader(256, 4), JobAdjustParamDeserializer.class),
+    rAreaInfo("ari", new FileHeader("ARI\0", 2, 4), AreaInfoDeserializer.class),
+    rAreaInfoJointArea("arj", new FileHeader("ARJ\0", 2, 4), AreaInfoJointAreaDeserializer.class),
+    rAreaInfoStage("ars", new FileHeader("ARS\0", 2, 4), AreaInfoStageDeserializer.class),
+    rAreaMasterRankData("amr", new FileHeader(4, 4), AreaMasterRankDataDeserializer.class),
+    rAreaMasterSpotData("ams", new FileHeader(8, 4), AreaMasterSpotDataDeserializer.class),
+    rAreaMasterSpotDetailData("amsd", new FileHeader(5, 4), AreaMasterSpotDetailDataDeserializer.class),
+    rCraftCapPass("ccp", new FileHeader(2, 4), CraftCapPassDeserializer.class),
+    rCraftElementExp("cee", new FileHeader(1, 4), CraftElementExpDeserializer.class),
+    rCraftQuality("cqr", new FileHeader(1, 4), CraftQualityDeserializer.class),
+    rCraftSkillCost("ckc", new FileHeader(2, 4), CraftSkillCostDeserializer.class),
+    rCraftSkillSpd("cks", new FileHeader(3, 4), CraftSkillSpeedDeserializer.class),
+    rCraftUpGradeExp("cuex", new FileHeader(1, 4), CraftUpGradeExpDeserializer.class),
+    rCustomSkillData("csd", new FileHeader(3, 4), CustomSkillDataDeserializer.class),
+    rCycleQuestInfo("cqi", new FileHeader("CQI\0", 2, 4), CycleQuestInfoDeserializer.class),
+    rEnemyGroup("emg", new FileHeader(1, 4), EnemyGroupDeserializer.class),
+    rEquipPreset("equip_preset", new FileHeader(7, 4), EquipPresetDeserializer.class),
+    rEventParam("evp", new FileHeader(19, 4), EventParamDeserializer.class),
+    rFieldAreaAdjoinList("faa", new FileHeader("FAA\0", 2, 4), FieldAreaAdjoinListDeserializer.class),
+    rFieldAreaList("fal", new FileHeader("FAl\0", 2, 4), FieldAreaListDeserializer.class),
+    rFieldAreaMarkerInfo("fmi", new FileHeader("FMI\0", 1, 4), FieldAreaMarkerInfoDeserializer.class),
+    rFieldMapData("fmd", new FileHeader("fmd\0", 18, 4), FieldMapDataDeserializer.class),
+    rGUIMessage("gmd", new FileHeader("GMD\0", 66306, 4), GUIMessageDeserializer.class),
+    rGatheringItem("gat", new FileHeader(1, 4), GatheringItemDeserializer.class),
+    rHumanEnemyCustomSkill("hmcs", new FileHeader(3, 4), HumanEnemyCustomSkillDeserializer.class),
+    rJobBaseParam("jobbase", new FileHeader(263, 4), JobBaseParamDeserializer.class),
+    rJobLevelUpTbl2("jlt2", new FileHeader(1, 4), JobLevelUpTableDeserializer.class),
+    rJobMasterCtrl("jmc", new FileHeader(256, 4), JobMasterCtrlDeserializer.class),
+    rJobTutorialQuestList("jtq", new FileHeader("JTQ\0", 1, 2), JobTutorialQuestListDeserializer.class),
+    rLandInfo("lai", new FileHeader("LAI\0", 4, 4), LandInfoDeserializer.class),
+    rLayoutPreset("lop", new FileHeader(5, 4), LayoutPresetDeserializer.class),
+    rLocationData("lcd", new FileHeader("lcd\0", 16, 4), LocationDataDeserializer.class),
+    rMapSpotData("msd", new FileHeader("msd\0", 0, 4), MapSpotDataDeserializer.class),
+    rMapSpotStageList("msl", new FileHeader("msl\0", 0, 4), MapSpotStageListDeserializer.class),
+    rMsgSet("mss", new FileHeader("mgst", 3, 2), MsgSetDeserializer.class),
+    rNormalSkillData("nsd", new FileHeader(5, 4), NormalSkillDataDeserializer.class),
+    rPlayerExpTable("exp", new FileHeader(2, 4), PlayerExpTableDeserializer.class),
+    rQuestHistoryData("qhd", new FileHeader(1, 4), QuestHistoryDataDeserializer.class),
+    rQuestMarkerInfo("qmi", new FileHeader("QMI\0", 1, 4), QuestMarkerInfoDeserializer.class),
+    rQuestSequenceList("qsq", new FileHeader(256, 4), QuestSequenceListDeserializer.class),
+    rQuestTextData("qtd", new FileHeader("QTD\0", 2, 4), QuestTextDataDeserializer.class),
+    rRageTable("rag", new FileHeader(257, 4), RageTableDeserializer.class),
+    rShopGoods("spg_tbl", new FileHeader("TBL\0", 259, 4), ShopGoodsDeserializer.class),
+    rStageList("slt", new FileHeader("slt\0", 34, 4), StageListDeserializer.class),
+    rStageMap("smp", new FileHeader(1, 4), StageMapDeserializer.class),
+    rStageToSpot("sts", new FileHeader(0, 4), StageToSpotDeserializer.class),
+    rStartPosArea("sta", new FileHeader(0, 4), StartPosAreaDeserializer.class),
+    rStatusGainTable("sg_tbl", new FileHeader(257, 4), StatusGainTableDeserializer.class),
+    rTutorialDialogMessage("tdm", new FileHeader("TDM\0", 2, 4), TutorialDialogMessageDeserializer.class),
+    rTutorialList("tlt", new FileHeader("TLT\0", 6, 4), TutorialListDeserializer.class),
+    rTutorialQuestGroup("tqg", new FileHeader("TQG\0", 1, 2), TutorialQuestGroupDeserializer.class),
+    rWarpLocation("wal", new FileHeader(353, 4), WarpLocationDeserializer.class),
+    rTbl2ChatMacro("tcm", new FileHeader(256, 4), Tbl2ChatMacroDeserializer.class),
+    rAnimalData("aml", new FileHeader(0, 4), AnimalDataDeserializer.class),
+    rFurnitureLayout("fnl", new FileHeader(1, 4), FurnitureLayoutDeserializer.class),
+    UNSUPPORTED("", new FileHeader(null, 999, 4), null);
 
     public final String fileExtension;
-    public final String magic;
-    public final long version;
+    public final FileHeader fileHeader;
     public final Class<? extends Deserializer> deserializer;
 
-    ExtensionMap(String fileExtension, String magic, long version, Class<? extends Deserializer> deserializer) {
+    ExtensionMap(String fileExtension, FileHeader fileHeader, Class<? extends Deserializer> deserializer) {
         this.fileExtension = fileExtension;
-        this.magic = magic;
-        this.version = version;
+        this.fileHeader = fileHeader;
         this.deserializer = deserializer;
     }
 
@@ -111,8 +122,8 @@ public enum ExtensionMap {
         return "{\n" +
                 "\"#\": " + ordinal() + ",\n"
                 + "\"fileExtension\": \"" + fileExtension + "\",\n"
-                + (magic != null ? "\"magic\": \"" + magic + "\",\n" : "")
-                + "\"version\": " + version
+                + (fileHeader.magicString != null ? "\"magic\": \"" + fileHeader.magicString + "\",\n" : "")
+                + "\"version\": " + fileHeader.versionNumber
                 + "\n}";
     }
 }
