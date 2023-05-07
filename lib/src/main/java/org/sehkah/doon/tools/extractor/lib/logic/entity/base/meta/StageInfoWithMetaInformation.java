@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
 
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageListInfo;
 
 public record StageInfoWithMetaInformation(
         long StageNo,
@@ -10,13 +10,13 @@ public record StageInfoWithMetaInformation(
         long MessageId,
         long Version
 ) {
-    public StageInfoWithMetaInformation(StageInfo stageInfo) {
+    public StageInfoWithMetaInformation(StageListInfo stageListInfo) {
         this(
-                stageInfo.StageNo(),
-                stageInfo.Type(), StageInfoType.of(stageInfo.Type()),
-                stageInfo.RecommendLevel(),
-                stageInfo.MessageId(),
-                stageInfo.Version()
+                stageListInfo.StageNo(),
+                stageListInfo.Type(), StageInfoType.of(stageListInfo.Type()),
+                stageListInfo.RecommendLevel(),
+                stageListInfo.MessageId(),
+                stageListInfo.Version()
         );
     }
 }

@@ -1,5 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.common.io;
 
+import org.sehkah.doon.tools.extractor.lib.common.datatype.Float2f;
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.math.BigInteger;
@@ -39,6 +40,8 @@ public interface FileReader {
     double readDouble();
 
     Vector3f readVector3f();
+
+    Float2f readFloat2f();
 
     String readNullTerminatedString(Charset charset);
 

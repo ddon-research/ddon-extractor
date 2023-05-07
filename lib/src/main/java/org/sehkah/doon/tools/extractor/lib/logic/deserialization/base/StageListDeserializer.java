@@ -3,7 +3,7 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageListInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.StageInfoWithMetaInformation;
 
 public class StageListDeserializer extends FileDeserializer {
@@ -11,9 +11,8 @@ public class StageListDeserializer extends FileDeserializer {
         super(ExtensionMap.rStageList, fileReader);
     }
 
-
-    private static StageInfo readEntity(FileReader fileReader) {
-        return new StageInfo(
+    private static StageListInfo readEntity(FileReader fileReader) {
+        return new StageListInfo(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedByte(),
