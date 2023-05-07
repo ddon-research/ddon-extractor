@@ -8,6 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.scr.MapSpotDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
@@ -81,6 +82,7 @@ public enum ExtensionMap {
     rWarpLocation("wal", null, 353, WarpLocationDeserializer.class),
     rAbilityAddData("aad", null, 1, AbilityAddDataDeserializer.class),
     rQuestTextData("qtd", "QTD\0", 2, QuestTextDataDeserializer.class),
+    rQuestMarkerInfo("qmi", "QMI\0", 1, QuestMarkerInfoDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
