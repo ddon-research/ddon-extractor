@@ -8,6 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.scr.MapSpotDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.NormalSkillDataDeserializer;
@@ -72,6 +73,7 @@ public enum ExtensionMap {
     rLayoutPreset("lop", null, 5, LayoutPresetDeserializer.class),
     rFieldMapData("fmd", "fmd\0", 18, FieldMapDataDeserializer.class),
     rAreaInfoJointArea("arj", "ARJ\0", 2, AreaInfoJointAreaDeserializer.class),
+    rMapSpotData("msd", "msd\0", 0, MapSpotDataDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
