@@ -27,4 +27,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.EM.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.skill;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.scr;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide;
 }

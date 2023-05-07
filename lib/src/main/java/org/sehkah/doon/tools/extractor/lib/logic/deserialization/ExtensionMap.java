@@ -13,6 +13,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.sg300000.ShopGo
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationDataDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
@@ -75,6 +76,7 @@ public enum ExtensionMap {
     rAreaInfoJointArea("arj", "ARJ\0", 2, AreaInfoJointAreaDeserializer.class),
     rMapSpotData("msd", "msd\0", 0, MapSpotDataDeserializer.class),
     rMapSpotStageList("msl", "msl\0", 0, MapSpotStageListDeserializer.class),
+    rTutorialList("tlt", "TLT\0", 6, TutorialListDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;
