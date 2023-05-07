@@ -91,8 +91,11 @@ public enum ExtensionMap {
 
     @Override
     public String toString() {
-        return "{\n\"fileExtension\": \"" + fileExtension + "\",\n"
+        return "{\n" +
+                "\"#\": " + ordinal() + ",\n"
+                + "\"fileExtension\": \"" + fileExtension + "\",\n"
                 + (magic != null ? "\"magic\": \"" + magic + "\",\n" : "")
-                + "\"version\": " + version + "\n}";
+                + "\"version\": " + version
+                + "\n}";
     }
 }
