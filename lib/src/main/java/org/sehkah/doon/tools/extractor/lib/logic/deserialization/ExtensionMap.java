@@ -83,6 +83,7 @@ public enum ExtensionMap {
     rAbilityAddData("aad", null, 1, AbilityAddDataDeserializer.class),
     rQuestTextData("qtd", "QTD\0", 2, QuestTextDataDeserializer.class),
     rQuestMarkerInfo("qmi", "QMI\0", 1, QuestMarkerInfoDeserializer.class),
+    rCycleQuestInfo("cqi", "CQI\0", 2, CycleQuestInfoDeserializer.class),
     UNSUPPORTED("", null, 999, null);
 
     public final String fileExtension;

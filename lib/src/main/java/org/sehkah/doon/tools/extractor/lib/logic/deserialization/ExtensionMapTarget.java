@@ -76,7 +76,6 @@ public enum ExtensionMapTarget {
     rConvexHull("hul", "hul\0", 0, null),
     rCustimShlLimit("csl", "csl\0", 0, null),
     rCycleContentsSortieInfo("csi", "csi\0", 0, null),
-    rCycleQuestInfo("cqi", "cqi\0", 0, null),
     rDDOBenchmark("bmk", "bmk\0", 0, null),
     rDDOModelMontage("dmt", "dmt\0", 0, null),
     rDDOModelMontageEm("dme", "dme\0", 0, null),
