@@ -23,9 +23,4 @@ public class CraftQualityDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CraftQualityDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

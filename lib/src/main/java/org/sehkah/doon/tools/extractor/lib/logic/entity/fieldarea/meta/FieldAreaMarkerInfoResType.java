@@ -6,9 +6,7 @@ public enum FieldAreaMarkerInfoResType {
     RES_TYPE_NPC_0(0x0),
     RES_TYPE_SCE_HIT_0(0x1),
     RES_TYPE_RETURNAREA_0(0x2),
-    RES_TYPE_OM_0(0x3),
-    RES_TYPE_NUM_0(0x4);
-
+    RES_TYPE_OM_0(0x3);
 
     public final long value;
 

@@ -22,9 +22,4 @@ public class EnemyGroupDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(EnemyGroupDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

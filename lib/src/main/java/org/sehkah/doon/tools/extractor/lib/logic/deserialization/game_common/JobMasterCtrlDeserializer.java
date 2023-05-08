@@ -28,9 +28,4 @@ public class JobMasterCtrlDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(JobMasterCtrlDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

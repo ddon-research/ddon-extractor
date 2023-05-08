@@ -34,9 +34,4 @@ public class CustomSkillDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CustomSkillDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

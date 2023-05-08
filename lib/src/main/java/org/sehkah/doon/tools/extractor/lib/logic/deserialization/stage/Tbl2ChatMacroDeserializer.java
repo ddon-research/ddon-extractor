@@ -22,9 +22,4 @@ public class Tbl2ChatMacroDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(Tbl2ChatMacroDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

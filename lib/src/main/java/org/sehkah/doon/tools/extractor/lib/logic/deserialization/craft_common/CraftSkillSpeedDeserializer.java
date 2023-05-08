@@ -21,9 +21,4 @@ public class CraftSkillSpeedDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CraftSkillSpeedDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

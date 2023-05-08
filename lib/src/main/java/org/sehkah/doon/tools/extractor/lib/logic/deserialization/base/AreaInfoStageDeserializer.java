@@ -21,10 +21,4 @@ public class AreaInfoStageDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AreaInfoStageDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }
-

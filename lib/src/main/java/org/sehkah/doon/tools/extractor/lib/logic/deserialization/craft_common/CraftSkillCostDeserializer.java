@@ -24,9 +24,4 @@ public class CraftSkillCostDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CraftSkillCostDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

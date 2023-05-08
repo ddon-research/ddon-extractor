@@ -14,23 +14,13 @@ public abstract class FileDeserializer implements Deserializer {
 
     @Override
     public Object deserialize() {
-        return deserialize(false);
-    }
-
-    @Override
-    public Object deserialize(boolean addMetaInformation) {
         if (extension.fileHeader.magicString != null && !extension.fileHeader.isMagicValid(fileReader)) {
             return null;
         }
         if (extension.fileHeader.versionNumber >= 0 && !extension.fileHeader.isVersionValid(fileReader)) {
             return null;
         }
-        Object result;
-        if (addMetaInformation) {
-            result = readObjectWithMetaInformation();
-        } else {
-            result = readObject();
-        }
+        Object result = readObject();
         if (fileReader.hasRemaining()) {
             throw new FileParsingIncompleteException(fileReader.getRemainingCount(), fileReader.getLimit());
         }
@@ -38,6 +28,4 @@ public abstract class FileDeserializer implements Deserializer {
     }
 
     protected abstract Object readObject();
-
-    protected abstract Object readObjectWithMetaInformation();
 }

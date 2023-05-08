@@ -21,9 +21,4 @@ public class AreaInfoJointAreaDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AreaInfoJointAreaDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

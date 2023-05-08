@@ -34,10 +34,4 @@ public class StageMapDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(StageMapDeserializer::readEntity);
     }
-
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

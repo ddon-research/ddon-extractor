@@ -1,23 +1,32 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.error.TechnicalException;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.EventParamEventFlag;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.EventParamEventType;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta.EventParamLightCtrlType;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
 
 public record EventParam(
         int Type,
+        @MetaInformation
+        EventParamEventType TypeName,
         int Stage,
         int EvNo,
         int Flag,
+        @MetaInformation
+        EventParamEventFlag FlagName,
         String FileName,
         long QuestId,
         long LightCtrl,
+        @MetaInformation
+        EventParamLightCtrlType LightCtrlName,
         int StartFadeType,
         int EndFadeType,
         short SubMixerBefore,
         short SubMixerAfter,
         float OmAQCScale,
-        long Version,
         List<OmList> OmList
 ) {
     public EventParam {
@@ -29,9 +38,20 @@ public record EventParam(
         }
     }
 
-    public static EventParam of(int type, int stage, int evNo, int flag, String fileName, long questId, long lightCtrl,
-                                int startFadeType, int endFadeType, short subMixerBefore, short subMixerAfter, float omAQCScale, List<OmList> omList) {
-        return new EventParam(type, stage, evNo, flag, fileName, questId, lightCtrl, startFadeType, endFadeType,
-                subMixerBefore, subMixerAfter, omAQCScale, omList.size(), omList);
+    public EventParam(int type, int stage, int evNo, int flag, String fileName, long questId, long lightCtrl, int startFadeType, int endFadeType, short subMixerBefore, short subMixerAfter, float omAQCScale, List<OmList> omList) {
+        this(
+                type, EventParamEventType.of(type),
+                stage,
+                evNo,
+                flag, EventParamEventFlag.of(flag),
+                fileName,
+                questId,
+                lightCtrl, EventParamLightCtrlType.of(lightCtrl),
+                startFadeType,
+                endFadeType,
+                subMixerBefore,
+                subMixerAfter,
+                omAQCScale,
+                omList);
     }
 }

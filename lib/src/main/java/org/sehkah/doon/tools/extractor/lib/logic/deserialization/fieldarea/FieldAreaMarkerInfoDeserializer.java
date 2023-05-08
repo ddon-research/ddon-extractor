@@ -31,9 +31,4 @@ public class FieldAreaMarkerInfoDeserializer extends FileDeserializer {
     protected Object readObject() {
         return readEntity(fileReader);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

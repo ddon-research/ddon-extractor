@@ -26,9 +26,4 @@ public class AbilityDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AbilityDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

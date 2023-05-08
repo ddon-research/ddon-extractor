@@ -30,9 +30,4 @@ public class QuestMarkerInfoDeserializer extends FileDeserializer {
     protected Object readObject() {
         return readEntity(fileReader);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

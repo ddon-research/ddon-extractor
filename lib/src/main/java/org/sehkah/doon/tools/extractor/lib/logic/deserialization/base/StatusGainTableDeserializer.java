@@ -21,9 +21,4 @@ public class StatusGainTableDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(StatusGainTableDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

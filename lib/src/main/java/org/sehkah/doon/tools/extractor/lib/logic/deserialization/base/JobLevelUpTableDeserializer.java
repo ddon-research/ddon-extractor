@@ -24,9 +24,4 @@ public class JobLevelUpTableDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(JobLevelUpTableDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

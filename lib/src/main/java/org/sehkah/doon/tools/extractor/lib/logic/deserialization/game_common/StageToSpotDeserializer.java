@@ -22,9 +22,4 @@ public class StageToSpotDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(StageToSpotDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

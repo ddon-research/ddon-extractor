@@ -24,9 +24,4 @@ public class FurnitureLayoutDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(FurnitureLayoutDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

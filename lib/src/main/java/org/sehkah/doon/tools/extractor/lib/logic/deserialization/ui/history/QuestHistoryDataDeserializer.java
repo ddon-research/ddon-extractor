@@ -18,14 +18,8 @@ public class QuestHistoryDataDeserializer extends FileDeserializer {
         );
     }
 
-
     @Override
     protected Object readObject() {
         return fileReader.readArray(QuestHistoryDataDeserializer::readEntity);
-    }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
     }
 }

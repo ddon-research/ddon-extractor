@@ -18,9 +18,4 @@ public class JobAdjustParamDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(JobAdjustParamDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }
