@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.AchievementData;
 
-public class AchievementDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AchievementDeserializer extends FileDeserializer<List<AchievementData>> {
     public AchievementDeserializer() {
         super(ClientResourceFile.rAchievement);
     }
@@ -21,7 +23,7 @@ public class AchievementDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AchievementData> readObject(FileReader fileReader) {
         return fileReader.readArray(AchievementDeserializer::readEntity);
     }
 }

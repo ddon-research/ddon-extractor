@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.AbilityData;
 
-public class AbilityDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AbilityDataDeserializer extends FileDeserializer<List<AbilityData>> {
     public AbilityDataDeserializer() {
         super(ClientResourceFile.rAbilityData);
     }
@@ -23,7 +25,7 @@ public class AbilityDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AbilityData> readObject(FileReader fileReader) {
         return fileReader.readArray(AbilityDataDeserializer::readEntity);
     }
 }

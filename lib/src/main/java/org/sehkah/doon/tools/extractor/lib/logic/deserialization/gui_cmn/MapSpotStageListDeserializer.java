@@ -5,19 +5,19 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.MapSpotStageListData;
 
-public class MapSpotStageListDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class MapSpotStageListDeserializer extends FileDeserializer<List<MapSpotStageListData>> {
     public MapSpotStageListDeserializer() {
         super(ClientResourceFile.rMapSpotStageList);
     }
 
     private static MapSpotStageListData readEntity(FileReader fileReader) {
-        return new MapSpotStageListData(
-                fileReader.readSignedInteger()
-        );
+        return new MapSpotStageListData(fileReader.readSignedInteger());
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<MapSpotStageListData> readObject(FileReader fileReader) {
         return fileReader.readArray(MapSpotStageListDeserializer::readEntity);
     }
 }

@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.LayoutPreset;
 
-public class LayoutPresetDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class LayoutPresetDeserializer extends FileDeserializer<List<LayoutPreset>> {
     public LayoutPresetDeserializer() {
         super(ClientResourceFile.rLayoutPreset);
     }
@@ -19,7 +21,7 @@ public class LayoutPresetDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<LayoutPreset> readObject(FileReader fileReader) {
         return fileReader.readArray(LayoutPresetDeserializer::readEntity);
     }
 }

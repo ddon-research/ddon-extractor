@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.history.QuestHistoryData;
 
-public class QuestHistoryDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class QuestHistoryDataDeserializer extends FileDeserializer<List<QuestHistoryData>> {
     public QuestHistoryDataDeserializer() {
         super(ClientResourceFile.rQuestHistoryData);
     }
@@ -19,7 +21,7 @@ public class QuestHistoryDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<QuestHistoryData> readObject(FileReader fileReader) {
         return fileReader.readArray(QuestHistoryDataDeserializer::readEntity);
     }
 }

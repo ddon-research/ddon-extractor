@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfoJointArea;
 
-public class AreaInfoJointAreaDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AreaInfoJointAreaDeserializer extends FileDeserializer<List<AreaInfoJointArea>> {
     public AreaInfoJointAreaDeserializer() {
         super(ClientResourceFile.rAreaInfoJointArea);
     }
@@ -18,7 +20,7 @@ public class AreaInfoJointAreaDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AreaInfoJointArea> readObject(FileReader fileReader) {
         return fileReader.readArray(AreaInfoJointAreaDeserializer::readEntity);
     }
 }

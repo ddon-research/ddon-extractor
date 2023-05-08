@@ -6,7 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.quest.QuestMarkerInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.quest.QuestMarkerInfoInfo;
 
-public class QuestMarkerInfoDeserializer extends FileDeserializer {
+public class QuestMarkerInfoDeserializer extends FileDeserializer<QuestMarkerInfo> {
     public QuestMarkerInfoDeserializer() {
         super(ClientResourceFile.rQuestMarkerInfo);
     }
@@ -27,7 +27,7 @@ public class QuestMarkerInfoDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected QuestMarkerInfo readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

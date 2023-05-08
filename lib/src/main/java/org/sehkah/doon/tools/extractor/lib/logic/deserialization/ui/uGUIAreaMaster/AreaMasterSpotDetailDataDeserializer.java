@@ -7,7 +7,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.AreaMa
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.SpotEnemyData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.SpotItemData;
 
-public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer<List<AreaMasterSpotDetailData>> {
     public AreaMasterSpotDetailDataDeserializer() {
         super(ClientResourceFile.rAreaMasterSpotDetailData);
     }
@@ -41,7 +43,7 @@ public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AreaMasterSpotDetailData> readObject(FileReader fileReader) {
         return fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readEntity);
     }
 }

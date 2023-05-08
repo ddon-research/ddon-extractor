@@ -6,9 +6,21 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.EventParam;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.OmList;
 
-public class EventParamDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class EventParamDeserializer extends FileDeserializer<List<EventParam>> {
     public EventParamDeserializer() {
         super(ClientResourceFile.rEventParam);
+    }
+
+    private static OmList readOmList(FileReader fileReader) {
+        return new OmList(
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedShort(),
+                fileReader.readSignedShort(),
+                fileReader.readSignedShort()
+        );
     }
 
     private static EventParam readEntity(FileReader fileReader) {
@@ -29,18 +41,8 @@ public class EventParamDeserializer extends FileDeserializer {
         );
     }
 
-    private static OmList readOmList(FileReader fileReader) {
-        return new OmList(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort()
-        );
-    }
-
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<EventParam> readObject(FileReader fileReader) {
         return fileReader.readArray(EventParamDeserializer::readEntity);
     }
 }

@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIMessageDeserializer extends FileDeserializer {
+public class GUIMessageDeserializer extends FileDeserializer<GUIMessage> {
     public GUIMessageDeserializer() {
         super(ClientResourceFile.rGUIMessage);
     }
@@ -61,7 +61,7 @@ public class GUIMessageDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected GUIMessage readObject(FileReader fileReader) {
         return readEntity(fileReader, clientResourceFile.fileHeader.versionNumber);
     }
 }

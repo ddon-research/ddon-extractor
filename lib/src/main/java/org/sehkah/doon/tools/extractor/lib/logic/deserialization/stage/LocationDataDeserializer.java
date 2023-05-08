@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.LocationData;
 
-public class LocationDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class LocationDataDeserializer extends FileDeserializer<List<LocationData>> {
     public LocationDataDeserializer() {
         super(ClientResourceFile.rLocationData);
     }
@@ -24,7 +26,7 @@ public class LocationDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<LocationData> readObject(FileReader fileReader) {
         return fileReader.readArray(LocationDataDeserializer::readEntity);
     }
 }

@@ -17,7 +17,7 @@ public class DeserializerFactory {
             logger.warn("The provided file path '{}' has an extension which is not supported yet.", filePath);
             return null;
         }
-        Deserializer instance = null;
+        Deserializer<?> instance = null;
         try {
             instance = clientResourceFile.deserializer.getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |

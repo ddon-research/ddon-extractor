@@ -68,7 +68,7 @@ public class ExtractCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        Deserializer deserializer = deserializerFactory.forFilePath(filePath);
+        Deserializer<?> deserializer = deserializerFactory.forFilePath(filePath);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
@@ -125,7 +125,7 @@ public class ExtractCommand implements Callable<Integer> {
                     List<StatusCode> statusCodes = files
                             .filter(path -> {
                                 String fileName = path.getFileName().toString();
-                                return Files.isRegularFile(path) && supportedFileExtensions.stream().anyMatch(fileName::endsWith);
+                                return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
                             })
                             .map(path -> extractSingleFile(path, serializer, writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {

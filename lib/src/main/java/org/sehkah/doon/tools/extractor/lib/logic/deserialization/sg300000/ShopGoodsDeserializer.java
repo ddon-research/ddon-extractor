@@ -6,7 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.sg300000.ShopGoods;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.sg300000.meta.ShopGoodsDate;
 
-public class ShopGoodsDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class ShopGoodsDeserializer extends FileDeserializer<List<ShopGoods>> {
     public ShopGoodsDeserializer() {
         super(ClientResourceFile.rShopGoods);
     }
@@ -39,7 +41,7 @@ public class ShopGoodsDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<ShopGoods> readObject(FileReader fileReader) {
         return fileReader.readArray(ShopGoodsDeserializer::readEntity);
     }
 }

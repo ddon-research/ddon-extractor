@@ -6,7 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.FieldAreaMarkerInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.MarkerInfo;
 
-public class FieldAreaMarkerInfoDeserializer extends FileDeserializer {
+public class FieldAreaMarkerInfoDeserializer extends FileDeserializer<FieldAreaMarkerInfo> {
     public FieldAreaMarkerInfoDeserializer() {
         super(ClientResourceFile.rFieldAreaMarkerInfo);
     }
@@ -28,7 +28,7 @@ public class FieldAreaMarkerInfoDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected FieldAreaMarkerInfo readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

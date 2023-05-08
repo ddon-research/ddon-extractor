@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.Tbl2ChatMacro;
 
-public class Tbl2ChatMacroDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class Tbl2ChatMacroDeserializer extends FileDeserializer<List<Tbl2ChatMacro>> {
     public Tbl2ChatMacroDeserializer() {
         super(ClientResourceFile.rTbl2ChatMacro);
     }
@@ -19,7 +21,7 @@ public class Tbl2ChatMacroDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<Tbl2ChatMacro> readObject(FileReader fileReader) {
         return fileReader.readArray(Tbl2ChatMacroDeserializer::readEntity);
     }
 }

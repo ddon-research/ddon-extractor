@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common.CraftSkillCostData;
 
-public class CraftSkillCostDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class CraftSkillCostDeserializer extends FileDeserializer<List<CraftSkillCostData>> {
     public CraftSkillCostDeserializer() {
         super(ClientResourceFile.rCraftSkillCost);
     }
@@ -21,7 +23,7 @@ public class CraftSkillCostDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<CraftSkillCostData> readObject(FileReader fileReader) {
         return fileReader.readArray(CraftSkillCostDeserializer::readEntity);
     }
 }

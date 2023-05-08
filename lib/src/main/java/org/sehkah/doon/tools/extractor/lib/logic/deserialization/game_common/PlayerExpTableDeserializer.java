@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.PlayerExpTab
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerExpTableDeserializer extends FileDeserializer {
+public class PlayerExpTableDeserializer extends FileDeserializer<List<PlayerExpTable>> {
     public PlayerExpTableDeserializer() {
         super(ClientResourceFile.rPlayerExpTable);
     }
@@ -26,7 +26,7 @@ public class PlayerExpTableDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<PlayerExpTable> readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

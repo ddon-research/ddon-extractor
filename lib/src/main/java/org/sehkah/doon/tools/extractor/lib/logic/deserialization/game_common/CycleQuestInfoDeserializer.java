@@ -6,7 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.CycleQuestInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.CycleQuestSituationInfo;
 
-public class CycleQuestInfoDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class CycleQuestInfoDeserializer extends FileDeserializer<List<CycleQuestInfo>> {
     public CycleQuestInfoDeserializer() {
         super(ClientResourceFile.rCycleQuestInfo);
     }
@@ -35,7 +37,7 @@ public class CycleQuestInfoDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<CycleQuestInfo> readObject(FileReader fileReader) {
         return fileReader.readArray(CycleQuestInfoDeserializer::readEntity);
     }
 }

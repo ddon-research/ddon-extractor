@@ -6,7 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide.TutorialDialogMessage;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide.TutorialDialogMessageDialogPage;
 
-public class TutorialDialogMessageDeserializer extends FileDeserializer {
+public class TutorialDialogMessageDeserializer extends FileDeserializer<TutorialDialogMessage> {
     public TutorialDialogMessageDeserializer() {
         super(ClientResourceFile.rTutorialDialogMessage);
     }
@@ -27,7 +27,7 @@ public class TutorialDialogMessageDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected TutorialDialogMessage readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

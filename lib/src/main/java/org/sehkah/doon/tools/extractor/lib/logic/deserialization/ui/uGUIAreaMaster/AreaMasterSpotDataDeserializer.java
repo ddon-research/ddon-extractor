@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.AreaMasterSpotData;
 
-public class AreaMasterSpotDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AreaMasterSpotDataDeserializer extends FileDeserializer<List<AreaMasterSpotData>> {
     public AreaMasterSpotDataDeserializer() {
         super(ClientResourceFile.rAreaMasterSpotData);
     }
@@ -30,7 +32,7 @@ public class AreaMasterSpotDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AreaMasterSpotData> readObject(FileReader fileReader) {
         return fileReader.readArray(AreaMasterSpotDataDeserializer::readEntity);
     }
 }

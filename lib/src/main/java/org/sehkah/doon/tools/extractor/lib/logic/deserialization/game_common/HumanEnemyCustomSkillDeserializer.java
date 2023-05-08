@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.HumanEnemyCustomSkill;
 
-public class HumanEnemyCustomSkillDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class HumanEnemyCustomSkillDeserializer extends FileDeserializer<List<HumanEnemyCustomSkill>> {
     public HumanEnemyCustomSkillDeserializer() {
         super(ClientResourceFile.rHumanEnemyCustomSkill);
     }
@@ -25,7 +27,7 @@ public class HumanEnemyCustomSkillDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<HumanEnemyCustomSkill> readObject(FileReader fileReader) {
         return fileReader.readArray(HumanEnemyCustomSkillDeserializer::readEntity);
     }
 }

@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.AdjoinInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.AdjoinInfoVector3;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.FieldAreaAdjoinList;
 
-public class FieldAreaAdjoinListDeserializer extends FileDeserializer {
+public class FieldAreaAdjoinListDeserializer extends FileDeserializer<FieldAreaAdjoinList> {
     public FieldAreaAdjoinListDeserializer() {
         super(ClientResourceFile.rFieldAreaAdjoinList);
     }
@@ -37,7 +37,7 @@ public class FieldAreaAdjoinListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected FieldAreaAdjoinList readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.FieldMapData;
 
-public class FieldMapDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class FieldMapDataDeserializer extends FileDeserializer<List<FieldMapData>> {
     public FieldMapDataDeserializer() {
         super(ClientResourceFile.rFieldMapData);
     }
@@ -24,7 +26,7 @@ public class FieldMapDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<FieldMapData> readObject(FileReader fileReader) {
         return fileReader.readArray(FieldMapDataDeserializer::readEntity);
     }
 }

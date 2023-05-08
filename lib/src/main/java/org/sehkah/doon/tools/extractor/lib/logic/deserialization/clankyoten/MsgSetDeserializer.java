@@ -10,7 +10,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten.MsgSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsgSetDeserializer extends FileDeserializer {
+public class MsgSetDeserializer extends FileDeserializer<MsgSet> {
     public MsgSetDeserializer() {
         super(ClientResourceFile.rMsgSet);
     }
@@ -59,7 +59,7 @@ public class MsgSetDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected MsgSet readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.base.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilityListDeserializer extends FileDeserializer {
+public class AbilityListDeserializer extends FileDeserializer<AbilityList> {
     public AbilityListDeserializer() {
         super(ClientResourceFile.rAbilityList);
     }
@@ -68,7 +68,7 @@ public class AbilityListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected AbilityList readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

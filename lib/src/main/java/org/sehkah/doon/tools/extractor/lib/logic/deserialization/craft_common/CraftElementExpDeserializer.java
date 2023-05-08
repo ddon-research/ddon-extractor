@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common.CraftElemen
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftElementExpDeserializer extends FileDeserializer {
+public class CraftElementExpDeserializer extends FileDeserializer<List<CraftElementExpData>> {
     public CraftElementExpDeserializer() {
         super(ClientResourceFile.rCraftElementExp);
     }
@@ -27,7 +27,7 @@ public class CraftElementExpDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<CraftElementExpData> readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

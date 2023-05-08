@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten.FurnitureLayout;
 
-public class FurnitureLayoutDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class FurnitureLayoutDeserializer extends FileDeserializer<List<FurnitureLayout>> {
     public FurnitureLayoutDeserializer() {
         super(ClientResourceFile.rFurnitureLayout);
     }
@@ -21,7 +23,7 @@ public class FurnitureLayoutDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<FurnitureLayout> readObject(FileReader fileReader) {
         return fileReader.readArray(FurnitureLayoutDeserializer::readEntity);
     }
 }

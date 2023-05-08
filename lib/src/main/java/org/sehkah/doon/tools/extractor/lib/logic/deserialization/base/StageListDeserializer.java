@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.StageListInfo;
 
-public class StageListDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class StageListDeserializer extends FileDeserializer<List<StageListInfo>> {
     public StageListDeserializer() {
         super(ClientResourceFile.rStageList);
     }
@@ -21,7 +23,7 @@ public class StageListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<StageListInfo> readObject(FileReader fileReader) {
         return fileReader.readArray(StageListDeserializer::readEntity);
     }
 }

@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common.CraftUpGrad
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftUpGradeExpDeserializer extends FileDeserializer {
+public class CraftUpGradeExpDeserializer extends FileDeserializer<List<CraftUpGradeExpData>> {
     public CraftUpGradeExpDeserializer() {
         super(ClientResourceFile.rCraftUpGradeExp);
     }
@@ -26,7 +26,7 @@ public class CraftUpGradeExpDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<CraftUpGradeExpData> readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

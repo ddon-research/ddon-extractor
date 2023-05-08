@@ -6,7 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserialize
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUISkill.AbilityAddData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUISkill.AbilityLevelData;
 
-public class AbilityAddDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class AbilityAddDataDeserializer extends FileDeserializer<List<AbilityAddData>> {
     public AbilityAddDataDeserializer() {
         super(ClientResourceFile.rAbilityAddData);
     }
@@ -27,7 +29,7 @@ public class AbilityAddDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<AbilityAddData> readObject(FileReader fileReader) {
         return fileReader.readArray(AbilityAddDataDeserializer::readEntity);
     }
 }

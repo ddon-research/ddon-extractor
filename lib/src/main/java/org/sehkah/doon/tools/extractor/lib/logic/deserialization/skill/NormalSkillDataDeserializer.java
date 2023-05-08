@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.skill.NormalSkillData;
 
-public class NormalSkillDataDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class NormalSkillDataDeserializer extends FileDeserializer<List<NormalSkillData>> {
     public NormalSkillDataDeserializer() {
         super(ClientResourceFile.rNormalSkillData);
     }
@@ -25,7 +27,7 @@ public class NormalSkillDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<NormalSkillData> readObject(FileReader fileReader) {
         return fileReader.readArray(NormalSkillDataDeserializer::readEntity);
     }
 }

@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.EM.Rage;
 
-public class RageTableDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class RageTableDeserializer extends FileDeserializer<List<Rage>> {
     public RageTableDeserializer() {
         super(ClientResourceFile.rRageTable);
     }
@@ -20,7 +22,7 @@ public class RageTableDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<Rage> readObject(FileReader fileReader) {
         return fileReader.readArray(RageTableDeserializer::readEntity);
     }
 }

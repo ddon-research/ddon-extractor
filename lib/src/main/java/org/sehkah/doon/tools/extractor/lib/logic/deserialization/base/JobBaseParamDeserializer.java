@@ -5,7 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.JobInfo;
 
-public class JobBaseParamDeserializer extends FileDeserializer {
+import java.util.List;
+
+public class JobBaseParamDeserializer extends FileDeserializer<List<JobInfo>> {
     public JobBaseParamDeserializer() {
         super(ClientResourceFile.rJobBaseParam);
     }
@@ -61,7 +63,7 @@ public class JobBaseParamDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject(FileReader fileReader) {
+    protected List<JobInfo> readObject(FileReader fileReader) {
         return fileReader.readArray(JobBaseParamDeserializer::readEntity);
     }
 }
