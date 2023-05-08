@@ -3,29 +3,27 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 import org.sehkah.doon.tools.extractor.lib.common.error.FileParsingIncompleteException;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
-public abstract class FileDeserializer implements Deserializer {
-    protected final ExtensionMap extension;
-    protected final FileReader fileReader;
+public abstract class FileDeserializer<T> implements Deserializer<T> {
+    protected final ClientResourceFile clientResourceFile;
 
-    protected FileDeserializer(ExtensionMap extension, FileReader fileReader) {
-        this.extension = extension;
-        this.fileReader = fileReader;
+    protected FileDeserializer(ClientResourceFile clientResourceFile) {
+        this.clientResourceFile = clientResourceFile;
     }
 
     @Override
-    public Object deserialize() {
-        if (extension.fileHeader.magicString != null && !extension.fileHeader.isMagicValid(fileReader)) {
+    public T deserialize(FileReader fileReader) {
+        if (clientResourceFile.fileHeader.magicString != null && !clientResourceFile.fileHeader.isMagicValid(fileReader)) {
             return null;
         }
-        if (extension.fileHeader.versionNumber >= 0 && !extension.fileHeader.isVersionValid(fileReader)) {
+        if (clientResourceFile.fileHeader.versionNumber >= 0 && !clientResourceFile.fileHeader.isVersionValid(fileReader)) {
             return null;
         }
-        Object result = readObject();
+        T result = readObject(fileReader);
         if (fileReader.hasRemaining()) {
             throw new FileParsingIncompleteException(fileReader.getRemainingCount(), fileReader.getLimit());
         }
         return result;
     }
 
-    protected abstract Object readObject();
+    protected abstract T readObject(FileReader fileReader);
 }

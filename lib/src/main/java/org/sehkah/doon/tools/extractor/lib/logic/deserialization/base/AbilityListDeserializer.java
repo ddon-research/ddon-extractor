@@ -1,16 +1,16 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilityListDeserializer extends FileDeserializer {
-    public AbilityListDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAbilityList, fileReader);
+public class AbilityListDeserializer extends FileDeserializer<AbilityList> {
+    public AbilityListDeserializer() {
+        super(ClientResourceFile.rAbilityList);
     }
 
     private static AdditionalAbilityParamData readAdditionalAbilityParamData(FileReader fileReader) {
@@ -68,7 +68,7 @@ public class AbilityListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected AbilityList readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

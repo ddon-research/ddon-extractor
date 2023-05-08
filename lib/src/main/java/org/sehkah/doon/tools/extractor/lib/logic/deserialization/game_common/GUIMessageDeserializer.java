@@ -1,7 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessage;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
@@ -11,9 +11,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIMessageDeserializer extends FileDeserializer {
-    public GUIMessageDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rGUIMessage, fileReader);
+public class GUIMessageDeserializer extends FileDeserializer<GUIMessage> {
+    public GUIMessageDeserializer() {
+        super(ClientResourceFile.rGUIMessage);
     }
 
     private static GUIMessage readEntity(FileReader fileReader, Long version) {
@@ -61,7 +61,7 @@ public class GUIMessageDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
-        return readEntity(fileReader, extension.fileHeader.versionNumber);
+    protected GUIMessage readObject(FileReader fileReader) {
+        return readEntity(fileReader, clientResourceFile.fileHeader.versionNumber);
     }
 }

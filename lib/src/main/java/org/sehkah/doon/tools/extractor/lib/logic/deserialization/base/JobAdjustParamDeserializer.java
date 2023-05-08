@@ -1,13 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AdjustParam;
 
-public class JobAdjustParamDeserializer extends FileDeserializer {
-    public JobAdjustParamDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAdjustParam, fileReader);
+import java.util.List;
+
+public class JobAdjustParamDeserializer extends FileDeserializer<List<AdjustParam>> {
+    public JobAdjustParamDeserializer() {
+        super(ClientResourceFile.rAdjustParam);
     }
 
     private static AdjustParam readEntity(FileReader fileReader) {
@@ -15,7 +17,7 @@ public class JobAdjustParamDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<AdjustParam> readObject(FileReader fileReader) {
         return fileReader.readArray(JobAdjustParamDeserializer::readEntity);
     }
 }

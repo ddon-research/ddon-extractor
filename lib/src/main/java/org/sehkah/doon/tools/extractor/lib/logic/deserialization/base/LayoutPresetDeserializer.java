@@ -1,13 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.LayoutPreset;
 
-public class LayoutPresetDeserializer extends FileDeserializer {
-    public LayoutPresetDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rLayoutPreset, fileReader);
+import java.util.List;
+
+public class LayoutPresetDeserializer extends FileDeserializer<List<LayoutPreset>> {
+    public LayoutPresetDeserializer() {
+        super(ClientResourceFile.rLayoutPreset);
     }
 
     private static LayoutPreset readEntity(FileReader fileReader) {
@@ -19,7 +21,7 @@ public class LayoutPresetDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<LayoutPreset> readObject(FileReader fileReader) {
         return fileReader.readArray(LayoutPresetDeserializer::readEntity);
     }
 }

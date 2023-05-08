@@ -1,14 +1,16 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.FieldAreaInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.StageNo;
 
-public class FieldAreaListDeserializer extends FileDeserializer {
-    public FieldAreaListDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rFieldAreaList, fileReader);
+import java.util.List;
+
+public class FieldAreaListDeserializer extends FileDeserializer<List<FieldAreaInfo>> {
+    public FieldAreaListDeserializer() {
+        super(ClientResourceFile.rFieldAreaList);
     }
 
     private static FieldAreaInfo readEntity(FileReader fileReader) {
@@ -29,7 +31,7 @@ public class FieldAreaListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<FieldAreaInfo> readObject(FileReader fileReader) {
         return fileReader.readArray(FieldAreaListDeserializer::readEntity);
     }
 }

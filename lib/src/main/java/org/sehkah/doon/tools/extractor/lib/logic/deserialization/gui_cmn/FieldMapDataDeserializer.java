@@ -1,13 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.FieldMapData;
 
-public class FieldMapDataDeserializer extends FileDeserializer {
-    public FieldMapDataDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rFieldMapData, fileReader);
+import java.util.List;
+
+public class FieldMapDataDeserializer extends FileDeserializer<List<FieldMapData>> {
+    public FieldMapDataDeserializer() {
+        super(ClientResourceFile.rFieldMapData);
     }
 
     private static FieldMapData readEntity(FileReader fileReader) {
@@ -24,7 +26,7 @@ public class FieldMapDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<FieldMapData> readObject(FileReader fileReader) {
         return fileReader.readArray(FieldMapDataDeserializer::readEntity);
     }
 }

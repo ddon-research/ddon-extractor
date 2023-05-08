@@ -1,13 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.MyRoom.AnimalData;
 
-public class AnimalDataDeserializer extends FileDeserializer {
-    public AnimalDataDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAnimalData, fileReader);
+import java.util.List;
+
+public class AnimalDataDeserializer extends FileDeserializer<List<AnimalData>> {
+    public AnimalDataDeserializer() {
+        super(ClientResourceFile.rAnimalData);
     }
 
     private static AnimalData readEntity(FileReader fileReader) {
@@ -18,7 +20,7 @@ public class AnimalDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<AnimalData> readObject(FileReader fileReader) {
         return fileReader.readArray(AnimalDataDeserializer::readEntity);
     }
 }

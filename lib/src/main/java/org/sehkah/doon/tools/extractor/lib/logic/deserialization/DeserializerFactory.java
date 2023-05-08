@@ -2,39 +2,42 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
 import java.lang.reflect.InvocationTargetException;
-import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class DeserializerFactory {
+    private static final Map<String, Deserializer<?>> DESERIALIZER_MAP = new HashMap<>(64);
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
-    public Deserializer forFilePath(FileReader fileReader, Path filePath) {
-        String sanitizedFilePath = filePath.toString().replace('\\', '/');
-        ExtensionMap extensionMap = ExtensionMap.findByFileExtension(sanitizedFilePath);
-        if (extensionMap == ExtensionMap.UNSUPPORTED) {
-            logger.warn("The provided file path '{}' has an unknown file extension.", filePath);
+    // TODO get rid of reflection
+    public Deserializer forFile(String fileName) {
+        String fileNameExtension = fileName.substring(fileName.indexOf('.'));
+        ClientResourceFile clientResourceFile = ClientResourceFile.findByFileExtension(fileNameExtension);
+        if (clientResourceFile == null) {
+            logger.warn("The provided file '{}' has an extension which is not supported yet.", fileName);
             return null;
         }
-        if (extensionMap.deserializer == null) {
-            logger.warn("The provided file path '{}' has a known file extension which is not supported yet.", filePath);
-            return null;
-        }
-        Deserializer instance = null;
-        try {
-            instance = extensionMap.deserializer.getConstructor(FileReader.class).newInstance(fileReader);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                 NoSuchMethodException e) {
-            logger.error("Failed to instantiate deserializer.");
-            if (logger.isDebugEnabled()) {
-                logger.error(e);
+        Deserializer<?> instance = null;
+        if (DESERIALIZER_MAP.containsKey(fileNameExtension)) {
+            instance = DESERIALIZER_MAP.get(fileNameExtension);
+        } else {
+            try {
+                instance = clientResourceFile.deserializer.getConstructor().newInstance();
+                DESERIALIZER_MAP.put(fileNameExtension, instance);
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                     NoSuchMethodException e) {
+                logger.error("Failed to instantiate deserializer.");
+                if (logger.isDebugEnabled()) {
+                    logger.error(e);
+                }
             }
         }
-        String extractionName = extensionMap.name();
+        String extractionName = clientResourceFile.name();
         if (instance != null) {
-            logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extractionName);
+            logger.info("The provided file '{}' matches extraction type '{}'.", fileName, extractionName);
         } else {
             logger.info("Could not find a suitable implementation for extraction type '{}'.", extractionName);
         }

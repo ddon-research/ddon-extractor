@@ -1,5 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
-public interface Deserializer {
-    Object deserialize();
+import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
+
+public interface Deserializer<T> {
+    T deserialize(FileReader fileReader);
 }

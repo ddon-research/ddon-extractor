@@ -1,13 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide.TutorialNode;
 
-public class TutorialListDeserializer extends FileDeserializer {
-    public TutorialListDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rTutorialList, fileReader);
+import java.util.List;
+
+public class TutorialListDeserializer extends FileDeserializer<List<TutorialNode>> {
+    public TutorialListDeserializer() {
+        super(ClientResourceFile.rTutorialList);
     }
 
     private static TutorialNode readEntity(FileReader fileReader) {
@@ -22,7 +24,7 @@ public class TutorialListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected List<TutorialNode> readObject(FileReader fileReader) {
         return fileReader.readArray(TutorialListDeserializer::readEntity);
     }
 }

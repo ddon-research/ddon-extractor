@@ -1,14 +1,14 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.quest.QuestMarkerInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.quest.QuestMarkerInfoInfo;
 
-public class QuestMarkerInfoDeserializer extends FileDeserializer {
-    public QuestMarkerInfoDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rQuestMarkerInfo, fileReader);
+public class QuestMarkerInfoDeserializer extends FileDeserializer<QuestMarkerInfo> {
+    public QuestMarkerInfoDeserializer() {
+        super(ClientResourceFile.rQuestMarkerInfo);
     }
 
     private static QuestMarkerInfoInfo readQuestMarkerInfoInfo(FileReader fileReader) {
@@ -27,7 +27,7 @@ public class QuestMarkerInfoDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected QuestMarkerInfo readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }
