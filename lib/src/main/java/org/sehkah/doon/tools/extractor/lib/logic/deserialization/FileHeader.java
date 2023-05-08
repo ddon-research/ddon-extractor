@@ -30,11 +30,10 @@ public class FileHeader {
 
     public boolean isVersionValid(FileReader fileReader) {
         long encounteredVersionNumber = -1;
-        if (versionBytesLength == 2) {
-            encounteredVersionNumber = fileReader.readUnsignedShort();
-        }
         if (versionBytesLength == 4) {
             encounteredVersionNumber = fileReader.readUnsignedInteger();
+        } else if (versionBytesLength == 2) {
+            encounteredVersionNumber = fileReader.readUnsignedShort();
         }
         if (encounteredVersionNumber != versionNumber) {
             throw new VersionValidationFailedException(encounteredVersionNumber, versionNumber);

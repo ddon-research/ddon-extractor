@@ -12,10 +12,6 @@ import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 public class SerializerImpl implements Serializer {
     private final ObjectMapper objectMapper;
 
-    public SerializerImpl(SerializationFormat preferredSerializationType) {
-        this(preferredSerializationType, false);
-    }
-
     public SerializerImpl(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         MetaInformationIntrospector metaInformationIntrospector = new MetaInformationIntrospector(shouldSerializeMetaInformation);
         switch (preferredSerializationType) {
@@ -29,7 +25,7 @@ public class SerializerImpl implements Serializer {
                 jsonBuilder.annotationIntrospector(metaInformationIntrospector);
                 this.objectMapper = jsonBuilder.build();
             }
-            case YAML, yaml, yml, DEFAULT -> {
+            case YAML, yaml, yml -> {
                 YAMLMapper.Builder yamlBuilder = YAMLMapper.builder();
                 yamlBuilder.findAndAddModules();
                 yamlBuilder.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);

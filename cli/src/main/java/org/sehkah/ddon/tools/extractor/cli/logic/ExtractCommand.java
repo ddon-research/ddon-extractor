@@ -6,9 +6,9 @@ import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
 import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.Serializer;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializerImpl;
@@ -30,12 +30,12 @@ public class ExtractCommand implements Callable<Integer> {
     private final DeserializerFactory deserializerFactory = new DeserializerFactory();
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
-            If omitted the default format is used (YAML).
+            If omitted the default format is used (json).
             Example:
                  extract --format=JSON FILE  outputs the data with the JSON format on the console
                  extract --format FILE   outputs the data with the default format on the console"
-            """, defaultValue = "YAML")
-    private final SerializationFormat outputFormat = SerializationFormat.DEFAULT;
+            """, defaultValue = "json")
+    private SerializationFormat outputFormat;
     @CommandLine.Parameters(index = "0", arity = "1", description = """
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
             Example:
@@ -68,7 +68,8 @@ public class ExtractCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        Deserializer<?> deserializer = deserializerFactory.forFilePath(filePath);
+        String fileName = filePath.getFileName().toString();
+        Deserializer<?> deserializer = deserializerFactory.forFile(fileName);
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
@@ -85,7 +86,7 @@ public class ExtractCommand implements Callable<Integer> {
                 return StatusCode.ERROR;
             }
             if (writeOutputToFile) {
-                String outputFile = filePath.getFileName() + "." + outputFormat.name().toLowerCase();
+                String outputFile = fileName + "." + outputFormat;
                 Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
                 boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
                 if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
@@ -116,7 +117,7 @@ public class ExtractCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        if (Files.exists(inputFilePath) && Files.isReadable(inputFilePath)) {
+        if (Files.exists(inputFilePath)) {
             Serializer serializer = new SerializerImpl(outputFormat, addMetaInformation);
             if (Files.isDirectory(inputFilePath)) {
                 logger.debug("Recursively extracting resource data from folder: {}", inputFilePath);

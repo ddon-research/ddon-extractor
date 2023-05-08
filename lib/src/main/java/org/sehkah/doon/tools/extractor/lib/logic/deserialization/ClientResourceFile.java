@@ -103,13 +103,8 @@ public enum ClientResourceFile {
         this.deserializer = deserializer;
     }
 
-    public static ClientResourceFile findByFileExtension(String filePath) {
-        for (ClientResourceFile value : ClientResourceFile.values()) {
-            if (filePath.endsWith(value.fileExtension)) {
-                return value;
-            }
-        }
-        return null;
+    public static ClientResourceFile findByFileExtension(String fileExtension) {
+        return Arrays.stream(ClientResourceFile.values()).filter(value -> fileExtension.equals(value.fileExtension)).findFirst().orElse(null);
     }
 
     public static List<String> getSupportedFileExtensions() {
