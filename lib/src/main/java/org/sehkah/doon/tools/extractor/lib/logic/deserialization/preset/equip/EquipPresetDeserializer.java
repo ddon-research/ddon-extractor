@@ -20,9 +20,4 @@ public class EquipPresetDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(EquipPresetDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

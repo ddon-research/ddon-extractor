@@ -4,7 +4,6 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.LocationData;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.stage.meta.LocationDataWithMetaInformation;
 
 public class LocationDataDeserializer extends FileDeserializer {
     public LocationDataDeserializer(FileReader fileReader) {
@@ -24,17 +23,8 @@ public class LocationDataDeserializer extends FileDeserializer {
         );
     }
 
-    private static LocationDataWithMetaInformation readEntityWithMetaInformation(FileReader fileReader) {
-        return new LocationDataWithMetaInformation(readEntity(fileReader));
-    }
-
     @Override
     protected Object readObject() {
         return fileReader.readArray(LocationDataDeserializer::readEntity);
-    }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return fileReader.readArray(LocationDataDeserializer::readEntityWithMetaInformation);
     }
 }

@@ -3,15 +3,15 @@ package org.sehkah.ddon.tools.extractor.cli.logic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
-import org.sehkah.ddon.tools.extractor.cli.common.error.SerializerException;
-import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.cli.common.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.cli.common.serialization.SerializerImpl;
+import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFactory;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializationFormat;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.Serializer;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializerImpl;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -64,9 +64,10 @@ public class ExtractCommand implements Callable<Integer> {
         if (deserializer == null) {
             return StatusCode.ERROR;
         }
-        Object deserializedOutput = deserializer.deserialize(addMetaInformation);
+        Object deserializedOutput = deserializer.deserialize();
         if (deserializedOutput != null) {
-            String serializedOutput = getDeserializedOutput(outputFormat, deserializedOutput);
+            Serializer serializer = new SerializerImpl(outputFormat, addMetaInformation);
+            String serializedOutput = getSerializedOutput(serializer, deserializedOutput);
             if (serializedOutput == null) return StatusCode.ERROR;
             if (writeOutputToFile) {
                 StatusCode error = writeOutputToFile(filePath, outputFormat, serializedOutput);
@@ -104,9 +105,8 @@ public class ExtractCommand implements Callable<Integer> {
         return null;
     }
 
-    private String getDeserializedOutput(SerializationFormat outputFormat, Object deserializedOutput) {
+    private String getSerializedOutput(Serializer serializer, Object deserializedOutput) {
         String serializedOutput;
-        Serializer serializer = new SerializerImpl(outputFormat);
         try {
             serializedOutput = serializer.serialize(deserializedOutput);
         } catch (SerializerException e) {

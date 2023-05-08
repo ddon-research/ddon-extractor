@@ -22,9 +22,4 @@ public class AreaInfoDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AreaInfoDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

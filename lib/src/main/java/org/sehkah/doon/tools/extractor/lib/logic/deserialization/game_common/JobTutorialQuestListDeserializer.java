@@ -20,9 +20,4 @@ public class JobTutorialQuestListDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(JobTutorialQuestListDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

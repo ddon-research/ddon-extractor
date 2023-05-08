@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.cli.common.error;
+package org.sehkah.doon.tools.extractor.lib.common.error;
 
 public class SerializerException extends TechnicalException {
 

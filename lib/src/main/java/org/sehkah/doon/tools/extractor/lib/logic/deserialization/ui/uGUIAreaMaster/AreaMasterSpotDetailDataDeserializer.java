@@ -44,9 +44,4 @@ public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

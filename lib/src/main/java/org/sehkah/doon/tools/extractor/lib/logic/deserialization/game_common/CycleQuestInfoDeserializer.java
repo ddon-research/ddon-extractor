@@ -38,9 +38,4 @@ public class CycleQuestInfoDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CycleQuestInfoDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

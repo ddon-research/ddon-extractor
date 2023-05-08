@@ -1,9 +1,14 @@
 module org.sehkah.ddon.tools.extractor.lib {
     requires org.apache.logging.log4j;
 
+    requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.dataformat.yaml;
+
     exports org.sehkah.doon.tools.extractor.lib.common.datatype;
     exports org.sehkah.doon.tools.extractor.lib.common.error;
     exports org.sehkah.doon.tools.extractor.lib.common.io;
+
     exports org.sehkah.doon.tools.extractor.lib.logic.deserialization;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta;
@@ -32,4 +37,6 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.quest.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.MyRoom;
+
+    exports org.sehkah.doon.tools.extractor.lib.logic.serialization;
 }

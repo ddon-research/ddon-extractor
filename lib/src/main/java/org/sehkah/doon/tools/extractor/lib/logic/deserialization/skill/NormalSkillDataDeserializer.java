@@ -28,9 +28,4 @@ public class NormalSkillDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(NormalSkillDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

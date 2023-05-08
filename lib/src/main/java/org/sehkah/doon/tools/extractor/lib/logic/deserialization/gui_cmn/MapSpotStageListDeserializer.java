@@ -20,9 +20,4 @@ public class MapSpotStageListDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(MapSpotStageListDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

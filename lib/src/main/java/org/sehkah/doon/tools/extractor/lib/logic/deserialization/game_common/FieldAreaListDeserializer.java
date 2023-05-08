@@ -32,9 +32,4 @@ public class FieldAreaListDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(FieldAreaListDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

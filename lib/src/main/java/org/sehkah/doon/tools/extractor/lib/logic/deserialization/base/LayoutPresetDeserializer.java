@@ -22,9 +22,4 @@ public class LayoutPresetDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(LayoutPresetDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

@@ -25,9 +25,4 @@ public class CraftCapPassDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(CraftCapPassDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

@@ -28,9 +28,4 @@ public class HumanEnemyCustomSkillDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(HumanEnemyCustomSkillDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

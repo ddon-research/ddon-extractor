@@ -3,7 +3,7 @@ package org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.meta;
 import java.util.Arrays;
 
 public enum FieldMapDataType {
-    TYPE_NONE_10(0x00),
+    TYPE_NONE(0x00),
     TYPE_DUMMY1(0x01),
     TYPE_DUMMY2(0x02),
     TYPE_OM_ETC(0x03),

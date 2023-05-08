@@ -25,9 +25,4 @@ public class TutorialListDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(TutorialListDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

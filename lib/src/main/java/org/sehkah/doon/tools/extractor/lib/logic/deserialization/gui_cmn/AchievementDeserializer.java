@@ -24,9 +24,4 @@ public class AchievementDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AchievementDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

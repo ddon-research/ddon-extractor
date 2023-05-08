@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.cli.common.serialization;
+package org.sehkah.doon.tools.extractor.lib.logic.serialization;
 
 public enum SerializationFormat {
     JSON, json,

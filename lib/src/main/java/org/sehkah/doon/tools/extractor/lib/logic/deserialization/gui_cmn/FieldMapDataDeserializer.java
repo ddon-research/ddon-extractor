@@ -27,9 +27,4 @@ public class FieldMapDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(FieldMapDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

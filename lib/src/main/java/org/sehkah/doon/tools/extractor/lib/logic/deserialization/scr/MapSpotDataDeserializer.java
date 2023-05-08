@@ -24,9 +24,4 @@ public class MapSpotDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(MapSpotDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }

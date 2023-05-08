@@ -21,9 +21,4 @@ public class AnimalDataDeserializer extends FileDeserializer {
     protected Object readObject() {
         return fileReader.readArray(AnimalDataDeserializer::readEntity);
     }
-
-    @Override
-    protected Object readObjectWithMetaInformation() {
-        return readObject();
-    }
 }
