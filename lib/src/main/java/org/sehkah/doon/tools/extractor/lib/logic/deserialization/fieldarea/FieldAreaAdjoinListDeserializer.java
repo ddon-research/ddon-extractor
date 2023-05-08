@@ -1,15 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.AdjoinInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.AdjoinInfoVector3;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.FieldAreaAdjoinList;
 
 public class FieldAreaAdjoinListDeserializer extends FileDeserializer {
-    public FieldAreaAdjoinListDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rFieldAreaAdjoinList, fileReader);
+    public FieldAreaAdjoinListDeserializer() {
+        super(ClientResourceFile.rFieldAreaAdjoinList);
     }
 
     private static AdjoinInfoVector3 readAdjoinInfoVector3(FileReader fileReader) {
@@ -37,7 +37,7 @@ public class FieldAreaAdjoinListDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.TutorialQuestGroup;
 
 public class TutorialQuestGroupDeserializer extends FileDeserializer {
-    public TutorialQuestGroupDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rTutorialQuestGroup, fileReader);
+    public TutorialQuestGroupDeserializer() {
+        super(ClientResourceFile.rTutorialQuestGroup);
     }
 
     private static TutorialQuestGroup readEntity(FileReader fileReader) {
@@ -18,7 +18,7 @@ public class TutorialQuestGroupDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(TutorialQuestGroupDeserializer::readEntity);
     }
 }

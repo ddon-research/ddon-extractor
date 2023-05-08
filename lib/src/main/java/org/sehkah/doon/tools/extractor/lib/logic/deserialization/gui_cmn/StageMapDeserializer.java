@@ -1,14 +1,14 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.StageMap;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.StageMapParam;
 
 public class StageMapDeserializer extends FileDeserializer {
-    public StageMapDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rStageMap, fileReader);
+    public StageMapDeserializer() {
+        super(ClientResourceFile.rStageMap);
     }
 
     private static StageMap readEntity(FileReader fileReader) {
@@ -31,7 +31,7 @@ public class StageMapDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(StageMapDeserializer::readEntity);
     }
 }

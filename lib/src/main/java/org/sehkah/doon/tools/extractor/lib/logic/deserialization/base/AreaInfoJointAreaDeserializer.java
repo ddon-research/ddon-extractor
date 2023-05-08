@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.AreaInfoJointArea;
 
 public class AreaInfoJointAreaDeserializer extends FileDeserializer {
-    public AreaInfoJointAreaDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAreaInfoJointArea, fileReader);
+    public AreaInfoJointAreaDeserializer() {
+        super(ClientResourceFile.rAreaInfoJointArea);
     }
 
     private static AreaInfoJointArea readEntity(FileReader fileReader) {
@@ -18,7 +18,7 @@ public class AreaInfoJointAreaDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(AreaInfoJointAreaDeserializer::readEntity);
     }
 }

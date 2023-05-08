@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.WarpLocation;
 
 public class WarpLocationDeserializer extends FileDeserializer {
-    public WarpLocationDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rWarpLocation, fileReader);
+    public WarpLocationDeserializer() {
+        super(ClientResourceFile.rWarpLocation);
     }
 
     private static WarpLocation readEntity(FileReader fileReader) {
@@ -26,7 +26,7 @@ public class WarpLocationDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(WarpLocationDeserializer::readEntity);
     }
 }

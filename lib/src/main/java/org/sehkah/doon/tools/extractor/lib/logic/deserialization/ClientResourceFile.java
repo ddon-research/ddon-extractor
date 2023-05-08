@@ -31,7 +31,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.Ab
 import java.util.Arrays;
 import java.util.List;
 
-public enum ExtensionMap {
+public enum ClientResourceFile {
     rAbilityAddData("aad", new FileHeader(1, 4), AbilityAddDataDeserializer.class),
     rAbilityData("abd", new FileHeader(3, 4), AbilityDataDeserializer.class),
     rAbilityList("abl", new FileHeader("abl0", 9, 4), AbilityListDeserializer.class),
@@ -91,30 +91,29 @@ public enum ExtensionMap {
     rWarpLocation("wal", new FileHeader(353, 4), WarpLocationDeserializer.class),
     rTbl2ChatMacro("tcm", new FileHeader(256, 4), Tbl2ChatMacroDeserializer.class),
     rAnimalData("aml", new FileHeader(0, 4), AnimalDataDeserializer.class),
-    rFurnitureLayout("fnl", new FileHeader(1, 4), FurnitureLayoutDeserializer.class),
-    UNSUPPORTED("", new FileHeader(null, 999, 4), null);
+    rFurnitureLayout("fnl", new FileHeader(1, 4), FurnitureLayoutDeserializer.class);
 
     public final String fileExtension;
     public final FileHeader fileHeader;
     public final Class<? extends Deserializer> deserializer;
 
-    ExtensionMap(String fileExtension, FileHeader fileHeader, Class<? extends Deserializer> deserializer) {
+    ClientResourceFile(String fileExtension, FileHeader fileHeader, Class<? extends Deserializer> deserializer) {
         this.fileExtension = fileExtension;
         this.fileHeader = fileHeader;
         this.deserializer = deserializer;
     }
 
-    public static ExtensionMap findByFileExtension(String filePath) {
-        for (ExtensionMap value : ExtensionMap.values()) {
+    public static ClientResourceFile findByFileExtension(String filePath) {
+        for (ClientResourceFile value : ClientResourceFile.values()) {
             if (filePath.endsWith(value.fileExtension)) {
                 return value;
             }
         }
-        return UNSUPPORTED;
+        return null;
     }
 
     public static List<String> getSupportedFileExtensions() {
-        return Arrays.stream(ExtensionMap.values()).filter(extensionMap -> !extensionMap.fileExtension.isBlank()).map(extensionMap -> extensionMap.fileExtension).toList();
+        return Arrays.stream(ClientResourceFile.values()).map(extensionMap -> extensionMap.fileExtension).toList();
     }
 
     @Override

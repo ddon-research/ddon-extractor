@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.base.IncreaseParam;
 
 public class JobLevelUpTableDeserializer extends FileDeserializer {
-    public JobLevelUpTableDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rJobLevelUpTbl2, fileReader);
+    public JobLevelUpTableDeserializer() {
+        super(ClientResourceFile.rJobLevelUpTbl2);
     }
 
     private static IncreaseParam readEntity(FileReader fileReader) {
@@ -21,7 +21,7 @@ public class JobLevelUpTableDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(JobLevelUpTableDeserializer::readEntity);
     }
 }

@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.AbilityData;
 
 public class AbilityDataDeserializer extends FileDeserializer {
-    public AbilityDataDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAbilityData, fileReader);
+    public AbilityDataDeserializer() {
+        super(ClientResourceFile.rAbilityData);
     }
 
     private static AbilityData readEntity(FileReader fileReader) {
@@ -23,7 +23,7 @@ public class AbilityDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(AbilityDataDeserializer::readEntity);
     }
 }

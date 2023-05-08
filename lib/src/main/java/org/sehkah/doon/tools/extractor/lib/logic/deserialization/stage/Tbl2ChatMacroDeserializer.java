@@ -1,13 +1,13 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn.Tbl2ChatMacro;
 
 public class Tbl2ChatMacroDeserializer extends FileDeserializer {
-    public Tbl2ChatMacroDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rTbl2ChatMacro, fileReader);
+    public Tbl2ChatMacroDeserializer() {
+        super(ClientResourceFile.rTbl2ChatMacro);
     }
 
     private static Tbl2ChatMacro readEntity(FileReader fileReader) {
@@ -19,7 +19,7 @@ public class Tbl2ChatMacroDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(Tbl2ChatMacroDeserializer::readEntity);
     }
 }

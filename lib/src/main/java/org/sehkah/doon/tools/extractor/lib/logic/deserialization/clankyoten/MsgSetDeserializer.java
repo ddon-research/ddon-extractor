@@ -1,7 +1,7 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten.MsgData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.clankyoten.MsgGroup;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MsgSetDeserializer extends FileDeserializer {
-    public MsgSetDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rMsgSet, fileReader);
+    public MsgSetDeserializer() {
+        super(ClientResourceFile.rMsgSet);
     }
 
     private static MsgData readMsgData(FileReader fileReader) {
@@ -59,7 +59,7 @@ public class MsgSetDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return readEntity(fileReader);
     }
 }

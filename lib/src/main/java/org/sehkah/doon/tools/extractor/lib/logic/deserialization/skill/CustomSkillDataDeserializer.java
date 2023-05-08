@@ -1,14 +1,14 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.skill;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.skill.CustomSkillData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.skill.SkillLevelData;
 
 public class CustomSkillDataDeserializer extends FileDeserializer {
-    public CustomSkillDataDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rCustomSkillData, fileReader);
+    public CustomSkillDataDeserializer() {
+        super(ClientResourceFile.rCustomSkillData);
     }
 
     private static SkillLevelData readSkillLevelData(FileReader fileReader) {
@@ -31,7 +31,7 @@ public class CustomSkillDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(CustomSkillDataDeserializer::readEntity);
     }
 }

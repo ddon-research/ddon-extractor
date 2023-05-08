@@ -2,7 +2,6 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
@@ -11,20 +10,16 @@ import java.nio.file.Path;
 public class DeserializerFactory {
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
-    public Deserializer forFilePath(FileReader fileReader, Path filePath) {
+    public Deserializer forFilePath(Path filePath) {
         String sanitizedFilePath = filePath.toString().replace('\\', '/');
-        ExtensionMap extensionMap = ExtensionMap.findByFileExtension(sanitizedFilePath);
-        if (extensionMap == ExtensionMap.UNSUPPORTED) {
-            logger.warn("The provided file path '{}' has an unknown file extension.", filePath);
-            return null;
-        }
-        if (extensionMap.deserializer == null) {
-            logger.warn("The provided file path '{}' has a known file extension which is not supported yet.", filePath);
+        ClientResourceFile clientResourceFile = ClientResourceFile.findByFileExtension(sanitizedFilePath);
+        if (clientResourceFile == null) {
+            logger.warn("The provided file path '{}' has an extension which is not supported yet.", filePath);
             return null;
         }
         Deserializer instance = null;
         try {
-            instance = extensionMap.deserializer.getConstructor(FileReader.class).newInstance(fileReader);
+            instance = clientResourceFile.deserializer.getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                  NoSuchMethodException e) {
             logger.error("Failed to instantiate deserializer.");
@@ -32,7 +27,7 @@ public class DeserializerFactory {
                 logger.error(e);
             }
         }
-        String extractionName = extensionMap.name();
+        String extractionName = clientResourceFile.name();
         if (instance != null) {
             logger.info("The provided file path '{}' matches extraction type '{}'.", filePath, extractionName);
         } else {

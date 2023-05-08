@@ -1,15 +1,15 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ExtensionMap;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.AreaMasterSpotDetailData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.SpotEnemyData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster.SpotItemData;
 
 public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer {
-    public AreaMasterSpotDetailDataDeserializer(FileReader fileReader) {
-        super(ExtensionMap.rAreaMasterSpotDetailData, fileReader);
+    public AreaMasterSpotDetailDataDeserializer() {
+        super(ClientResourceFile.rAreaMasterSpotDetailData);
     }
 
     private static SpotEnemyData readSpotEnemyData(FileReader fileReader) {
@@ -41,7 +41,7 @@ public class AreaMasterSpotDetailDataDeserializer extends FileDeserializer {
     }
 
     @Override
-    protected Object readObject() {
+    protected Object readObject(FileReader fileReader) {
         return fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readEntity);
     }
 }
