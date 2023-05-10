@@ -100,7 +100,6 @@ public enum ClientResourceFile23 {
     rFreeF32Tbl(".f2p", new FileHeader("f2p\0", 111, 4)),
     rFullbodyIKHuman2(".fbik_human2", new FileHeader("fbik_human2\0", 111, 4)),
     rGUI(".gui", new FileHeader("gui\0", 111, 4)),
-    rGUIDogmaOrb(".dgm", new FileHeader("dgm\0", 111, 4)),
     rGUIFont(".gfd", new FileHeader("gfd\0", 111, 4)),
     rGUIIconInfo(".gii", new FileHeader("gii\0", 111, 4)),
     rGUIMapSetting(".gmp", new FileHeader("gmp\0", 111, 4)),

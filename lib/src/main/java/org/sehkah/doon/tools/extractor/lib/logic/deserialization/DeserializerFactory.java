@@ -25,6 +25,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationD
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.Tbl2ChatMacroDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialListDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
@@ -106,6 +107,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".ebi_sv", new EmBaseInfoSvDeserializer());
         DESERIALIZER_MAP.put(".edv", new EmDamageDirInfoDeserializer());
         DESERIALIZER_MAP.put(".evl", new EvaluationTableDeserializer());
+        DESERIALIZER_MAP.put(".dgm", new GUIDogmaOrbDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
