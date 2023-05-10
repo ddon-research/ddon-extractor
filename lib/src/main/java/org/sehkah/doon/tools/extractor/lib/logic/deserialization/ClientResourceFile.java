@@ -71,6 +71,8 @@ public enum ClientResourceFile {
     rEvaluationTable(".evl", new FileHeader(4, 4)),
     rGUIDogmaOrb(".dgm", new FileHeader(1, 4)),
     rNpcMeetingPlace(".nmp", new FileHeader(0, 4)),
+    rNpcConstItem(".nci", new FileHeader(2, 4)),
+    rSituationMsgCtrl(".smc", new FileHeader("smc\0", 111, 4)),
     rFurnitureData(".fnd", new FileHeader(5, 4));
 
     public final String fileExtension;
