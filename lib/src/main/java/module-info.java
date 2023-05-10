@@ -15,6 +15,8 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.npc_common;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.npc;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.stage;
@@ -27,9 +29,12 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIArisenCard;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUISkill;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIDogmaOrb;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.preset.equip;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.EM;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.EM.meta;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.em_common;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.em_common.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.skill;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.scr;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.tutorial_guide;

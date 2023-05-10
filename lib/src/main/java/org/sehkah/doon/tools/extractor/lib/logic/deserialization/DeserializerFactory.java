@@ -1,15 +1,22 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureLayoutDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EmBaseInfoSvDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EmDamageDirInfoDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EvaluationTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMsgCtrlDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
@@ -26,6 +33,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMast
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
 import java.util.HashMap;
@@ -96,10 +104,28 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".tcm", new Tbl2ChatMacroDeserializer());
         DESERIALIZER_MAP.put(".aml", new AnimalDataDeserializer());
         DESERIALIZER_MAP.put(".fnl", new FurnitureLayoutDeserializer());
+        DESERIALIZER_MAP.put(".fng", new FurnitureGroupDeserializer());
+        DESERIALIZER_MAP.put(".fnd", new FurnitureDataDeserializer());
+        DESERIALIZER_MAP.put(".fni", new FurnitureItemDeserializer());
+        DESERIALIZER_MAP.put(".ebi_sv", new EmBaseInfoSvDeserializer());
+        DESERIALIZER_MAP.put(".edv", new EmDamageDirInfoDeserializer());
+        DESERIALIZER_MAP.put(".evl", new EvaluationTableDeserializer());
+        DESERIALIZER_MAP.put(".dgm", new GUIDogmaOrbDeserializer());
+        DESERIALIZER_MAP.put(".nmp", new NpcMeetingPlaceDeserializer());
+        DESERIALIZER_MAP.put(".nci", new NpcConstItemDeserializer());
+        DESERIALIZER_MAP.put(".smc", new SituationMsgCtrlDeserializer());
     }
+
+    private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
     public Deserializer forFile(String fileName) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
-        return DESERIALIZER_MAP.getOrDefault(fileNameExtension, null);
+        Deserializer<?> deserializer = DESERIALIZER_MAP.getOrDefault(fileNameExtension, null);
+        if (deserializer != null) {
+            logger.debug("File extension '{}' matches deserializer {}.", fileNameExtension, deserializer.getClass().getSimpleName());
+        } else {
+            logger.debug("No deserializer found for file extension '{}'.", fileNameExtension);
+        }
+        return deserializer;
     }
 }
