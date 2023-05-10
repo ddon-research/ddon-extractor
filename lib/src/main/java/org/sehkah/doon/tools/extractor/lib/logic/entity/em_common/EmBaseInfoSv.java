@@ -9,12 +9,12 @@ public record EmBaseInfoSv(
         long EnemyID,
         long EmCategory,
         @MetaInformation
-        EnemyCategoryType EnemyCategoryType
+        EnemyCategoryType EnemyCategoryName
 ) {
     public EmBaseInfoSv(int Num, long enemyID, long emCategory) {
         this(
                 Num,
                 enemyID,
-                emCategory, org.sehkah.doon.tools.extractor.lib.logic.entity.em_common.meta.EnemyCategoryType.of(emCategory));
+                emCategory, EnemyCategoryType.of(emCategory));
     }
 }
