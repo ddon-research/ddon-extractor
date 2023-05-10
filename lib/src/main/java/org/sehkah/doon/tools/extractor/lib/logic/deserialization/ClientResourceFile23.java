@@ -95,7 +95,6 @@ public enum ClientResourceFile23 {
     rErosionShakeConvert(".ero_addTime", new FileHeader("ero_addTime\0", 111, 4)),
     rErosionSmallInfoRes(".eroSmall_info", new FileHeader("eroSmall_info\0", 111, 4)),
     rErosionSuperInfoRes(".eroSuper_info", new FileHeader("eroSuper_info\0", 111, 4)),
-    rEvaluationTable(".evl", new FileHeader("evl\0", 111, 4)),
     rFacialEditJointPreset(".fedt_jntpreset", new FileHeader("fedt_jntpreset\0", 111, 4)),
     rFatAdjust(".fat_adjust", new FileHeader("fat_adjust\0", 111, 4)),
     rFreeF32Tbl(".f2p", new FileHeader("f2p\0", 111, 4)),

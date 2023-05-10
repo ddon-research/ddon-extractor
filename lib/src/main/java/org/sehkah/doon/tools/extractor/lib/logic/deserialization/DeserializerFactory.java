@@ -9,6 +9,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EmDamageDirInfoDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.em_common.EvaluationTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
@@ -104,6 +105,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".fni", new FurnitureItemDeserializer());
         DESERIALIZER_MAP.put(".ebi_sv", new EmBaseInfoSvDeserializer());
         DESERIALIZER_MAP.put(".edv", new EmDamageDirInfoDeserializer());
+        DESERIALIZER_MAP.put(".evl", new EvaluationTableDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
