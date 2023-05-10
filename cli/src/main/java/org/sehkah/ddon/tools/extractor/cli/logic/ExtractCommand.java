@@ -74,6 +74,7 @@ public class ExtractCommand implements Callable<Integer> {
             logger.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;
         }
+        logger.debug("Extracting resource data from file '{}'.", filePath);
         Object deserializedOutput = deserializer.deserialize(fileReader);
         if (deserializedOutput != null) {
             String serializedOutput;
@@ -139,7 +140,6 @@ public class ExtractCommand implements Callable<Integer> {
                     }
                 }
             } else {
-                logger.debug("Extracting resource data from file '{}'.", inputFilePath);
                 return extractSingleFile(inputFilePath, serializer, writeOutputToFile).ordinal();
             }
         } else {

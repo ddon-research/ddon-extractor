@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureGroupDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureLayoutDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
@@ -100,6 +101,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".aml", new AnimalDataDeserializer());
         DESERIALIZER_MAP.put(".fnl", new FurnitureLayoutDeserializer());
         DESERIALIZER_MAP.put(".fng", new FurnitureGroupDeserializer());
+        DESERIALIZER_MAP.put(".fnd", new FurnitureDataDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);

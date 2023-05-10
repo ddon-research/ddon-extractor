@@ -64,7 +64,8 @@ public enum ClientResourceFile {
     rTbl2ChatMacro(".tcm", new FileHeader(256, 4)),
     rAnimalData(".aml", new FileHeader(0, 4)),
     rFurnitureLayout(".fnl", new FileHeader(1, 4)),
-    rFurnitureGroup(".fng", new FileHeader(1, 4));
+    rFurnitureGroup(".fng", new FileHeader(1, 4)),
+    rFurnitureData(".fnd", new FileHeader(5, 4));
 
     public final String fileExtension;
     public final FileHeader fileHeader;
