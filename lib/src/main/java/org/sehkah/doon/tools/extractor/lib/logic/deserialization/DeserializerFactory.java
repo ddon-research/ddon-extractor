@@ -5,10 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureDataDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureGroupDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureLayoutDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
@@ -102,6 +99,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".fnl", new FurnitureLayoutDeserializer());
         DESERIALIZER_MAP.put(".fng", new FurnitureGroupDeserializer());
         DESERIALIZER_MAP.put(".fnd", new FurnitureDataDeserializer());
+        DESERIALIZER_MAP.put(".fni", new FurnitureItemDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
@@ -109,7 +107,11 @@ public class DeserializerFactory {
     public Deserializer forFile(String fileName) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
         Deserializer<?> deserializer = DESERIALIZER_MAP.getOrDefault(fileNameExtension, null);
-        logger.debug("File extension '{}' matches deserializer {}.", fileNameExtension, deserializer.getClass().getSimpleName());
+        if (deserializer != null) {
+            logger.debug("File extension '{}' matches deserializer {}.", fileNameExtension, deserializer.getClass().getSimpleName());
+        } else {
+            logger.debug("No deserializer found for file extension '{}'.", fileNameExtension);
+        }
         return deserializer;
     }
 }
