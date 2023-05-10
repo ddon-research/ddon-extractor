@@ -145,7 +145,6 @@ public enum ClientResourceFile23 {
     rNpcIsNoSetPS3(".nsp", new FileHeader("nsp\0", 111, 4)),
     rNpcIsUseJobParamEx(".ujp", new FileHeader("ujp\0", 111, 4)),
     rNpcLedgerList(".nll", new FileHeader("nll\0", 111, 4)),
-    rNpcMeetingPlace(".nmp", new FileHeader("nmp\0", 111, 4)),
     rObjCollision(".col", new FileHeader("col\0", 111, 4)),
     rOccluder(".occ", new FileHeader("occ\0", 111, 4)),
     rOccluderEx(".oce", new FileHeader("oce\0", 111, 4)),

@@ -70,6 +70,7 @@ public enum ClientResourceFile {
     rEmDamageDirInfo(".edv", new FileHeader(2, 4)),
     rEvaluationTable(".evl", new FileHeader(4, 4)),
     rGUIDogmaOrb(".dgm", new FileHeader(1, 4)),
+    rNpcMeetingPlace(".nmp", new FileHeader(0, 4)),
     rFurnitureData(".fnd", new FileHeader(5, 4));
 
     public final String fileExtension;

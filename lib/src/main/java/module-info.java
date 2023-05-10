@@ -15,6 +15,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.craft_common.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.gui_cmn;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.npc_common;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.stage;

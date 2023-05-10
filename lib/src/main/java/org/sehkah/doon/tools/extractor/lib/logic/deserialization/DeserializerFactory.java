@@ -14,6 +14,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
@@ -25,12 +26,12 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.LocationD
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.stage.Tbl2ChatMacroDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.tutorial_guide.TutorialListDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
 import java.util.HashMap;
@@ -108,6 +109,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".edv", new EmDamageDirInfoDeserializer());
         DESERIALIZER_MAP.put(".evl", new EvaluationTableDeserializer());
         DESERIALIZER_MAP.put(".dgm", new GUIDogmaOrbDeserializer());
+        DESERIALIZER_MAP.put(".nmp", new NpcMeetingPlaceDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
