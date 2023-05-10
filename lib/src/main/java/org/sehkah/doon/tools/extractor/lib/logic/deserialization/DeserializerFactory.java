@@ -14,6 +14,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
@@ -112,6 +113,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".dgm", new GUIDogmaOrbDeserializer());
         DESERIALIZER_MAP.put(".nmp", new NpcMeetingPlaceDeserializer());
         DESERIALIZER_MAP.put(".nci", new NpcConstItemDeserializer());
+        DESERIALIZER_MAP.put(".smc", new SituationMsgCtrlDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
