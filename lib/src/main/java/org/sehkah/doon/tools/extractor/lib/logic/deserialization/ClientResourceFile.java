@@ -66,6 +66,7 @@ public enum ClientResourceFile {
     rFurnitureLayout(".fnl", new FileHeader(1, 4)),
     rFurnitureGroup(".fng", new FileHeader(1, 4)),
     rFurnitureItem(".fni", new FileHeader(1, 4)),
+    rEmBaseInfoSv(".ebi_sv", new FileHeader(21, 4)),
     rFurnitureData(".fnd", new FileHeader(5, 4));
 
     public final String fileExtension;
