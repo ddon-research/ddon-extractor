@@ -62,7 +62,7 @@ public class ExtractCommand implements Callable<Integer> {
         try {
             fileReader = new BinaryFileReader(filePath);
         } catch (IOException e) {
-            logger.error("Failed to read from the provided file path: {}", filePath);
+            logger.error("Failed to read from the provided file path '{}'.", filePath);
             if (logger.isDebugEnabled()) {
                 logger.error(e);
             }
@@ -71,6 +71,7 @@ public class ExtractCommand implements Callable<Integer> {
         String fileName = filePath.getFileName().toString();
         Deserializer<?> deserializer = deserializerFactory.forFile(fileName);
         if (deserializer == null) {
+            logger.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;
         }
         Object deserializedOutput = deserializer.deserialize(fileReader);
@@ -79,7 +80,7 @@ public class ExtractCommand implements Callable<Integer> {
             try {
                 serializedOutput = serializer.serialize(deserializedOutput);
             } catch (SerializerException e) {
-                logger.error("Failed to serialize object: {}", deserializedOutput);
+                logger.error("Failed to serialize object '{}'.", deserializedOutput);
                 if (logger.isDebugEnabled()) {
                     logger.error(e);
                 }
@@ -94,11 +95,11 @@ public class ExtractCommand implements Callable<Integer> {
                     return StatusCode.ERROR;
                 }
                 Path outputFilePath = outputFolder.resolve(outputFile);
-                logger.debug("Outputting to file: {}", outputFilePath);
+                logger.info("Outputting to file '{}'.", outputFilePath);
                 try {
                     Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
                 } catch (IOException e) {
-                    logger.error("Failed to write file: {}", outputFilePath);
+                    logger.error("Failed to write file '{}'.", outputFilePath);
                     if (logger.isDebugEnabled()) {
                         logger.error(e);
                     }
@@ -120,7 +121,7 @@ public class ExtractCommand implements Callable<Integer> {
         if (Files.exists(inputFilePath)) {
             Serializer serializer = new SerializerImpl(outputFormat, addMetaInformation);
             if (Files.isDirectory(inputFilePath)) {
-                logger.debug("Recursively extracting resource data from folder: {}", inputFilePath);
+                logger.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
                     List<String> supportedFileExtensions = ClientResourceFile.getSupportedFileExtensions();
                     List<StatusCode> statusCodes = files
@@ -138,7 +139,7 @@ public class ExtractCommand implements Callable<Integer> {
                     }
                 }
             } else {
-                logger.debug("Extracting resource data from file: {}", inputFilePath);
+                logger.debug("Extracting resource data from file '{}'.", inputFilePath);
                 return extractSingleFile(inputFilePath, serializer, writeOutputToFile).ordinal();
             }
         } else {

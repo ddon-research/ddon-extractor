@@ -38,7 +38,7 @@ public class FileHeader {
         if (encounteredVersionNumber != versionNumber) {
             throw new VersionValidationFailedException(encounteredVersionNumber, versionNumber);
         }
-        logger.info("version: '{}'", encounteredVersionNumber);
+        logger.debug("version: '{}'", encounteredVersionNumber);
         return true;
     }
 
@@ -47,7 +47,7 @@ public class FileHeader {
         if (!encounteredMagicString.equals(magicString)) {
             throw new MagicValidationFailedException(encounteredMagicString, magicString);
         }
-        logger.info("magic: '{}'", encounteredMagicString);
+        logger.debug("magic: '{}'", encounteredMagicString);
         return true;
     }
 }

@@ -63,7 +63,8 @@ public enum ClientResourceFile {
     rWarpLocation(".wal", new FileHeader(353, 4)),
     rTbl2ChatMacro(".tcm", new FileHeader(256, 4)),
     rAnimalData(".aml", new FileHeader(0, 4)),
-    rFurnitureLayout(".fnl", new FileHeader(1, 4));
+    rFurnitureLayout(".fnl", new FileHeader(1, 4)),
+    rFurnitureGroup(".fng", new FileHeader(1, 4));
 
     public final String fileExtension;
     public final FileHeader fileHeader;

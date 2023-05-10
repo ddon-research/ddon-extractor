@@ -1,8 +1,11 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureGroupDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.FurnitureLayoutDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.clankyoten.MsgSetDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.craft_common.*;
@@ -96,10 +99,15 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".tcm", new Tbl2ChatMacroDeserializer());
         DESERIALIZER_MAP.put(".aml", new AnimalDataDeserializer());
         DESERIALIZER_MAP.put(".fnl", new FurnitureLayoutDeserializer());
+        DESERIALIZER_MAP.put(".fng", new FurnitureGroupDeserializer());
     }
+
+    private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
     public Deserializer forFile(String fileName) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
-        return DESERIALIZER_MAP.getOrDefault(fileNameExtension, null);
+        Deserializer<?> deserializer = DESERIALIZER_MAP.getOrDefault(fileNameExtension, null);
+        logger.debug("File extension '{}' matches deserializer {}.", fileNameExtension, deserializer.getClass().getSimpleName());
+        return deserializer;
     }
 }
