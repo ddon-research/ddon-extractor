@@ -3,8 +3,8 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.CraftQualityData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessage;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessageIndex;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -26,15 +26,15 @@ public class GUIMessageDeserializer extends FileDeserializer<GUIMessage> {
         String packageName = fileReader.readMtString();
 
         long maxEntries = Math.max(indexNum, messageNum);
-        List<CraftQualityData.GUIMessageIndex> indices = new ArrayList<>((int) maxEntries);
+        List<GUIMessageIndex> indices = new ArrayList<>((int) maxEntries);
         for (int i = 0; i < maxEntries; i++) {
-            indices.add(new CraftQualityData.GUIMessageIndex());
+            indices.add(new GUIMessageIndex());
         }
 
         long[] hashTable = new long[256];
         if (indexNum > 0) {
             for (int i = 0; i < indexNum; i++) {
-                CraftQualityData.GUIMessageIndex index = indices.get(i);
+                GUIMessageIndex index = indices.get(i);
                 index.index = fileReader.readUnsignedInteger();
                 index.crcHashDouble = fileReader.readUnsignedInteger();
                 index.crcHashTriple = fileReader.readUnsignedInteger();
@@ -52,7 +52,7 @@ public class GUIMessageDeserializer extends FileDeserializer<GUIMessage> {
         }
 
         for (int i = 0; i < messageNum; i++) {
-            CraftQualityData.GUIMessageIndex index = indices.get(i);
+            GUIMessageIndex index = indices.get(i);
             index.message = fileReader.readNullTerminatedString(StandardCharsets.UTF_8);
             index.messageIndex = i;
         }

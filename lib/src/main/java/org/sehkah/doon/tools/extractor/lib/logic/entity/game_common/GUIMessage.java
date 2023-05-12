@@ -17,10 +17,10 @@ public record GUIMessage(
         long IndexNameBufferSize,
         long BufferSize,
         String PackageName,
-        List<CraftQualityData.GUIMessageIndex> Indices,
+        List<GUIMessageIndex> Indices,
         long[] HashTable
 ) {
-    public GUIMessage(long version, long languageId, BigInteger updateTime, long indexNum, long messageNum, long indexNameBufferSize, long bufferSize, String packageName, List<CraftQualityData.GUIMessageIndex> indices, long[] hashTable) {
+    public GUIMessage(long version, long languageId, BigInteger updateTime, long indexNum, long messageNum, long indexNameBufferSize, long bufferSize, String packageName, List<GUIMessageIndex> indices, long[] hashTable) {
         this(
                 version,
                 languageId, GUIMessageLanguageType.of(languageId),

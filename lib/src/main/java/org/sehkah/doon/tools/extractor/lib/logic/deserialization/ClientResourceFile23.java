@@ -101,7 +101,6 @@ public enum ClientResourceFile23 {
     rGrass(".grs", new FileHeader("grs\0", 111, 4)),
     rGrassWind(".grw", new FileHeader("grw\0", 111, 4)),
     rHeadCtrl(".head_ctrl", new FileHeader("head_ctrl\0", 111, 4)),
-    rHumanEnemyEquip(".hmeq", new FileHeader("hmeq\0", 111, 4)),
     rHumanEnemyParam(".hmeparam", new FileHeader("hmeparam\0", 111, 4)),
     rHumanEnemyPreset(".hmpre", new FileHeader("hmpre\0", 111, 4)),
     rIKCtrl(".ikctrl", new FileHeader("ikctrl\0", 111, 4)),
