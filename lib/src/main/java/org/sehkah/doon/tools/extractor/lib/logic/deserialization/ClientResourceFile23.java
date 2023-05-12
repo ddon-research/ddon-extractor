@@ -189,7 +189,6 @@ public enum ClientResourceFile23 {
     rSoundStreamRequest(".stqr", new FileHeader("stqr\0", 111, 4)),
     rSoundSubMixer(".smxr", new FileHeader("smxr\0", 111, 4)),
     rSoundSubMixerSet(".sms", new FileHeader("sms\0", 111, 4)),
-    rStageAdjoinList(".sal", new FileHeader("sal\0", 111, 4)),
     rStageConnect(".scc", new FileHeader("scc\0", 111, 4)),
     rStageCustom(".sca", new FileHeader("sca\0", 111, 4)),
     rStageCustomParts(".scp", new FileHeader("scp\0", 111, 4)),
