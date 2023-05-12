@@ -21,6 +21,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMs
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.PawnQuestTalkDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.scr.MapSpotDataDeserializer;
@@ -123,6 +124,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".dtt", new EmDmgTimerTblDeserializer());
         DESERIALIZER_MAP.put(".lup", new EmLvUpParamDeserializer());
         DESERIALIZER_MAP.put(".kctt", new KeyConfigTextTableDeserializer());
+        DESERIALIZER_MAP.put(".pqt", new PawnQuestTalkDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
