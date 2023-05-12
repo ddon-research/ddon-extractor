@@ -160,7 +160,6 @@ public enum ClientResourceFile23 {
     rPlPartsInfo(".psi", new FileHeader("psi\0", 111, 4)),
     rPlantTree(".plt", new FileHeader("plt\0", 111, 4)),
     rPriorityThink(".ptk", new FileHeader("ptk\0", 111, 4)),
-    rPrologueHmStatus(".phs", new FileHeader("phs\0", 111, 4)),
     rPushRate(".push_rate", new FileHeader("push_rate\0", 111, 4)),
     rQuestList(".qst", new FileHeader("qst\0", 111, 4)),
     rReaction(".rac", new FileHeader("rac\0", 111, 4)),

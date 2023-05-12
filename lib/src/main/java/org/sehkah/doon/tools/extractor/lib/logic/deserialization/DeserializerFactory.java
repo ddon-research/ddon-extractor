@@ -125,6 +125,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".lup", new EmLvUpParamDeserializer());
         DESERIALIZER_MAP.put(".kctt", new KeyConfigTextTableDeserializer());
         DESERIALIZER_MAP.put(".pqt", new PawnQuestTalkDeserializer());
+        DESERIALIZER_MAP.put(".phs", new PrologueHmStatusDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
