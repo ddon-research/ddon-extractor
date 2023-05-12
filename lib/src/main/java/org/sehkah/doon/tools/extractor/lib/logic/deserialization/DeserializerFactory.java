@@ -2,6 +2,8 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmDmgTimerTblDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
@@ -14,10 +16,12 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.job.StaminaDecTblDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.preset.equip.EquipPresetDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.PawnQuestTalkDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.quest.QuestTextDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.scr.MapSpotDataDeserializer;
@@ -34,6 +38,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMast
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
 import java.util.HashMap;
@@ -114,6 +119,17 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".nmp", new NpcMeetingPlaceDeserializer());
         DESERIALIZER_MAP.put(".nci", new NpcConstItemDeserializer());
         DESERIALIZER_MAP.put(".smc", new SituationMsgCtrlDeserializer());
+        DESERIALIZER_MAP.put(".sdt", new StaminaDecTblDeserializer());
+        DESERIALIZER_MAP.put(".paw", new AIPawnAutoWordTblDeserializer());
+        DESERIALIZER_MAP.put(".dtt", new EmDmgTimerTblDeserializer());
+        DESERIALIZER_MAP.put(".lup", new EmLvUpParamDeserializer());
+        DESERIALIZER_MAP.put(".kctt", new KeyConfigTextTableDeserializer());
+        DESERIALIZER_MAP.put(".pqt", new PawnQuestTalkDeserializer());
+        DESERIALIZER_MAP.put(".phs", new PrologueHmStatusDeserializer());
+        DESERIALIZER_MAP.put(".sbv", new ShrinkBlowValueDeserializer());
+        DESERIALIZER_MAP.put(".hmeq", new HumanEnemyEquipDeserializer());
+        DESERIALIZER_MAP.put(".psi", new PlPartsInfoDeserializer());
+        DESERIALIZER_MAP.put(".ndp", new NamedParamDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);

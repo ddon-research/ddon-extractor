@@ -4,7 +4,7 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessage;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.GUIMessageIndex;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;

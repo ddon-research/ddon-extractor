@@ -31,6 +31,8 @@ public interface FileReader {
 
     long readUnsignedInteger();
 
+    long[] readUnsignedInteger(int num);
+
     int readSignedInteger();
 
     BigInteger readUnsignedLong();

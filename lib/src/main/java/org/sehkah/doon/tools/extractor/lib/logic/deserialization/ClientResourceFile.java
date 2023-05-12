@@ -73,6 +73,17 @@ public enum ClientResourceFile {
     rTutorialDialogMessage(".tdm", new FileHeader("TDM\0", 2, 4)),
     rTutorialList(".tlt", new FileHeader("TLT\0", 6, 4)),
     rTutorialQuestGroup(".tqg", new FileHeader("TQG\0", 1, 2)),
+    rStaminaDecTbl(".sdt", new FileHeader("sdt\0", 7, 4)),
+    rAIPawnAutoWordTbl(".paw", new FileHeader(4, 4)),
+    rEmDmgTimerTbl(".dtt", new FileHeader(2, 4)),
+    rEmLvUpParam(".lup", new FileHeader(7, 4)),
+    rKeyConfigTextTable(".kctt", new FileHeader(1, 4)),
+    rPawnQuestTalk(".pqt", new FileHeader("PQT\0", 1, 4)),
+    rPrologueHmStatus(".phs", new FileHeader(0, 4)),
+    rShrinkBlowValue(".sbv", new FileHeader(2, 4)),
+    rHumanEnemyEquip(".hmeq", new FileHeader(3, 4)),
+    rPlPartsInfo(".psi", new FileHeader("PSI\0", 1, 4)),
+    rNamedParam(".ndp", new FileHeader( 5, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;

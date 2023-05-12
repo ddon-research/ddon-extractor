@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageLanguageType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
