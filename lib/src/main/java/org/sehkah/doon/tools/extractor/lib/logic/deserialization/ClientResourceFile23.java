@@ -208,7 +208,6 @@ public enum ClientResourceFile23 {
     rStageCustomPartsEx(".scpx", new FileHeader("scpx\0", 111, 4)),
     rStageInfo(".sti", new FileHeader("sti\0", 111, 4)),
     rStageJoint(".sja", new FileHeader("sja\0", 111, 4)),
-    rStaminaDecTbl(".sdt", new FileHeader("sdt\0", 111, 4)),
     rStarCatalog(".stc", new FileHeader("stc\0", 111, 4)),
     rStartPos(".stp", new FileHeader("stp\0", 111, 4)),
     rStatusCheck(".sck", new FileHeader("sck\0", 111, 4)),

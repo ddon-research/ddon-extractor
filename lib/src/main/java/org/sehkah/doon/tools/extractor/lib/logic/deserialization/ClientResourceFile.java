@@ -73,6 +73,7 @@ public enum ClientResourceFile {
     rTutorialDialogMessage(".tdm", new FileHeader("TDM\0", 2, 4)),
     rTutorialList(".tlt", new FileHeader("TLT\0", 6, 4)),
     rTutorialQuestGroup(".tqg", new FileHeader("TQG\0", 1, 2)),
+    rStaminaDecTbl(".sdt", new FileHeader("sdt\0", 7, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;
