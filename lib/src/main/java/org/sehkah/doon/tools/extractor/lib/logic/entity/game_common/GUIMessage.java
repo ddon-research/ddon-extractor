@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageIndex;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.game_common.meta.GUIMessageLanguageType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -18,10 +17,10 @@ public record GUIMessage(
         long IndexNameBufferSize,
         long BufferSize,
         String PackageName,
-        List<GUIMessageIndex> Indices,
+        List<CraftQualityData.GUIMessageIndex> Indices,
         long[] HashTable
 ) {
-    public GUIMessage(long version, long languageId, BigInteger updateTime, long indexNum, long messageNum, long indexNameBufferSize, long bufferSize, String packageName, List<GUIMessageIndex> indices, long[] hashTable) {
+    public GUIMessage(long version, long languageId, BigInteger updateTime, long indexNum, long messageNum, long indexNameBufferSize, long bufferSize, String packageName, List<CraftQualityData.GUIMessageIndex> indices, long[] hashTable) {
         this(
                 version,
                 languageId, GUIMessageLanguageType.of(languageId),

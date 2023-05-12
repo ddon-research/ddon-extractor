@@ -80,6 +80,7 @@ public enum ClientResourceFile {
     rKeyConfigTextTable(".kctt", new FileHeader(1, 4)),
     rPawnQuestTalk(".pqt", new FileHeader("PQT\0", 1, 4)),
     rPrologueHmStatus(".phs", new FileHeader(0, 4)),
+    rShrinkBlowValue(".sbv", new FileHeader(2, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;

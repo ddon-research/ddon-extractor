@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum ClientResourceFile34 {
+    rAIPawnSpecialityInfo(".ps_info", new FileHeader("ps_info\0", 111, 4)),
+    rAIPawnCulPrioThinkCategory(".pc_ptkc", new FileHeader("pc_ptkc\0", 111, 4)),
     rCycleContentsSortieInfo(".csi", new FileHeader("csi\0", 111, 4)),
     rDamageCounterInfo(".counter_Adj", new FileHeader("counter_Adj\0", 111, 4)),
     rDarkSkyParam(".dsp", new FileHeader("dsp\0", 111, 4)),
