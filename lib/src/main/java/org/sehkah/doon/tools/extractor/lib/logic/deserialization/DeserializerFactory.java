@@ -129,6 +129,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".sbv", new ShrinkBlowValueDeserializer());
         DESERIALIZER_MAP.put(".hmeq", new HumanEnemyEquipDeserializer());
         DESERIALIZER_MAP.put(".psi", new PlPartsInfoDeserializer());
+        DESERIALIZER_MAP.put(".ndp", new NamedParamDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);

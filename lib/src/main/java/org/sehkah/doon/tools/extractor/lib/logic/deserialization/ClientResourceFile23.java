@@ -130,7 +130,6 @@ public enum ClientResourceFile23 {
     rNPCEmoMyRoom(".nem", new FileHeader("nem\0", 111, 4)),
     rNPCMotMyRoom(".nmm", new FileHeader("nmm\0", 111, 4)),
     rNPCMotionSet(".nms", new FileHeader("nms\0", 111, 4)),
-    rNamedParam(".ndp", new FileHeader("ndp\0", 111, 4)),
     rNavigationMesh(".nav", new FileHeader("nav\0", 111, 4)),
     rNpcCustomSkill(".ncs", new FileHeader("ncs\0", 111, 4)),
     rNpcEditData(".ned", new FileHeader("ned\0", 111, 4)),
