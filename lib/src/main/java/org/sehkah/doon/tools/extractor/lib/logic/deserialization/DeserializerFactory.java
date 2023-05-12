@@ -17,6 +17,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.job.StaminaDecTblDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.marker.StageAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
@@ -130,6 +131,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".hmeq", new HumanEnemyEquipDeserializer());
         DESERIALIZER_MAP.put(".psi", new PlPartsInfoDeserializer());
         DESERIALIZER_MAP.put(".ndp", new NamedParamDeserializer());
+        DESERIALIZER_MAP.put(".sal", new StageAdjoinListDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);

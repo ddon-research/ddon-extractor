@@ -74,6 +74,7 @@ public enum ClientResourceFile {
     rShopGoods(".spg_tbl", new FileHeader("TBL\0", 259, 4)),
     rShrinkBlowValue(".sbv", new FileHeader(2, 4)),
     rSituationMsgCtrl(".smc", new FileHeader("SMC\0", 3, 4)),
+    rStageAdjoinList(".sal", new FileHeader("SAL\0", 4, 4)),
     rStageList(".slt", new FileHeader("slt\0", 34, 4)),
     rStageMap(".smp", new FileHeader(1, 4)),
     rStageToSpot(".sts", new FileHeader(0, 4)),
