@@ -227,12 +227,12 @@ public enum ClientResourceFile23 {
         this.fileHeader = fileHeader;
     }
 
-    public static ClientResourceFile findByFileExtension(String fileExtension) {
-        return Arrays.stream(ClientResourceFile.values()).filter(value -> fileExtension.equals(value.fileExtension)).findFirst().orElse(null);
+    public static ClientResourceFile23 findByFileExtension(String fileExtension) {
+        return Arrays.stream(ClientResourceFile23.values()).filter(value -> fileExtension.equals(value.fileExtension)).findFirst().orElse(null);
     }
 
     public static List<String> getSupportedFileExtensions() {
-        return Arrays.stream(ClientResourceFile.values()).map(extensionMap -> extensionMap.fileExtension).toList();
+        return Arrays.stream(ClientResourceFile23.values()).map(extensionMap -> extensionMap.fileExtension).toList();
     }
 
     @Override
