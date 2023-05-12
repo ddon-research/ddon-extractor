@@ -13,7 +13,7 @@ a minimal CLI to extract data from DDON's client resources.
 
 toc::[]
 
-include::docs/SupportedFiles.adoc[]
+include::docs/SupportedClientResourceFiles.adoc[]
 
 == How to develop
 
