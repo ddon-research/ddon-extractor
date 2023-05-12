@@ -69,7 +69,6 @@ public enum ClientResourceFile23 {
     rEffectProvider(".epv", new FileHeader("epv\0", 111, 4)),
     rEffectStrip(".efs", new FileHeader("efs\0", 111, 4)),
     rEmEffectTable(".eef", new FileHeader("eef\0", 111, 4)),
-    rEmLvUpParam(".lup", new FileHeader("lup\0", 111, 4)),
     rEmScaleTable(".esl", new FileHeader("esl\0", 111, 4)),
     rEmScrAdjust(".em_scr_adj", new FileHeader("em_scr_adj\0", 111, 4)),
     rEmSoundTable(".esn", new FileHeader("esn\0", 111, 4)),

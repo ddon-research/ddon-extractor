@@ -3,6 +3,7 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmDmgTimerTblDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.MyRoom.AnimalDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.base.*;
@@ -119,6 +120,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".sdt", new StaminaDecTblDeserializer());
         DESERIALIZER_MAP.put(".paw", new AIPawnAutoWordTblDeserializer());
         DESERIALIZER_MAP.put(".dtt", new EmDmgTimerTblDeserializer());
+        DESERIALIZER_MAP.put(".lup", new EmLvUpParamDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
