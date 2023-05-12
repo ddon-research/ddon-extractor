@@ -68,7 +68,6 @@ public enum ClientResourceFile23 {
     rEffectList(".efl", new FileHeader("efl\0", 111, 4)),
     rEffectProvider(".epv", new FileHeader("epv\0", 111, 4)),
     rEffectStrip(".efs", new FileHeader("efs\0", 111, 4)),
-    rEmDmgTimerTbl(".dtt", new FileHeader("dtt\0", 111, 4)),
     rEmEffectTable(".eef", new FileHeader("eef\0", 111, 4)),
     rEmLvUpParam(".lup", new FileHeader("lup\0", 111, 4)),
     rEmScaleTable(".esl", new FileHeader("esl\0", 111, 4)),

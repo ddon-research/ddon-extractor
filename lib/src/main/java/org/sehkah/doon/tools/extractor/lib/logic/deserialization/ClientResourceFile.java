@@ -75,6 +75,7 @@ public enum ClientResourceFile {
     rTutorialQuestGroup(".tqg", new FileHeader("TQG\0", 1, 2)),
     rStaminaDecTbl(".sdt", new FileHeader("sdt\0", 7, 4)),
     rAIPawnAutoWordTbl(".paw", new FileHeader(4, 4)),
+    rEmDmgTimerTbl(".dtt", new FileHeader(2, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;
