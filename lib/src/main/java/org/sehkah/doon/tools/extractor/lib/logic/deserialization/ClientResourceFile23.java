@@ -7,7 +7,6 @@ public enum ClientResourceFile23 {
     rAIFSM(".fsm", new FileHeader("fsm\0", 111, 4)),
     rAIPawnActNoSwitch(".pas", new FileHeader("pas\0", 111, 4)),
     rAIPawnAutoMotionTbl(".pam", new FileHeader("pam\0", 111, 4)),
-    rAIPawnAutoWordTbl(".paw", new FileHeader("paw\0", 111, 4)),
     rAIPawnCulPrioThinkCategory(".pc_ptkc", new FileHeader("pc_ptkc\0", 111, 4)),
     rAIPawnEmParam(".pep", new FileHeader("pep\0", 111, 4)),
     rAIPawnOrder(".pao", new FileHeader("pao\0", 111, 4)),

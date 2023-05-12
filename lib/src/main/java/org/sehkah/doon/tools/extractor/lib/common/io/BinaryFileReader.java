@@ -88,6 +88,15 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public long[] readUnsignedInteger(int num) {
+        long[] longs = new long[num];
+        for (int i = 0; i < num; i++) {
+            longs[i] = readUnsignedInteger();
+        }
+        return longs;
+    }
+
+    @Override
     public int readSignedInteger() {
         return byteBuffer.getInt();
     }
