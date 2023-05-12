@@ -6,6 +6,9 @@ import org.sehkah.doon.tools.extractor.lib.common.error.MagicValidationFailedExc
 import org.sehkah.doon.tools.extractor.lib.common.error.VersionValidationFailedException;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
 public class FileHeader {
     public final int magicBytesLength;
     public final int versionBytesLength;
@@ -26,6 +29,12 @@ public class FileHeader {
 
     public FileHeader(int versionNumber, int versionBytesLength) {
         this(null, 0, versionNumber, versionBytesLength);
+    }
+
+    public static long magicNumber(String magicString) {
+        ByteBuffer byteBuffer = ByteBuffer.wrap(magicString.getBytes());
+        byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        return Integer.toUnsignedLong(byteBuffer.getInt());
     }
 
     public boolean isVersionValid(FileReader fileReader) {

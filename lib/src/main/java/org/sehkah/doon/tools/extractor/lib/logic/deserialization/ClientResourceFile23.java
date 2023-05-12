@@ -154,7 +154,6 @@ public enum ClientResourceFile23 {
     rPartnerReactParam(".ppr", new FileHeader("ppr\0", 111, 4)),
     rPartsCtrlTable(".ptc", new FileHeader("ptc\0", 111, 4)),
     rPawnAIAction(".paa", new FileHeader("paa\0", 111, 4)),
-    rPlPartsInfo(".psi", new FileHeader("psi\0", 111, 4)),
     rPlantTree(".plt", new FileHeader("plt\0", 111, 4)),
     rPriorityThink(".ptk", new FileHeader("ptk\0", 111, 4)),
     rPushRate(".push_rate", new FileHeader("push_rate\0", 111, 4)),

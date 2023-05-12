@@ -82,6 +82,7 @@ public enum ClientResourceFile {
     rPrologueHmStatus(".phs", new FileHeader(0, 4)),
     rShrinkBlowValue(".sbv", new FileHeader(2, 4)),
     rHumanEnemyEquip(".hmeq", new FileHeader(3, 4)),
+    rPlPartsInfo(".psi", new FileHeader("PSI\0", 1, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;
