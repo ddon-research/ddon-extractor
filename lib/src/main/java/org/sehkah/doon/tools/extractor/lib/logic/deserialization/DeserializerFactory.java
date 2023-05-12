@@ -37,6 +37,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMast
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 
 import java.util.HashMap;
@@ -121,6 +122,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".paw", new AIPawnAutoWordTblDeserializer());
         DESERIALIZER_MAP.put(".dtt", new EmDmgTimerTblDeserializer());
         DESERIALIZER_MAP.put(".lup", new EmLvUpParamDeserializer());
+        DESERIALIZER_MAP.put(".kctt", new KeyConfigTextTableDeserializer());
     }
 
     private final Logger logger = LogManager.getLogger(DeserializerFactory.class);

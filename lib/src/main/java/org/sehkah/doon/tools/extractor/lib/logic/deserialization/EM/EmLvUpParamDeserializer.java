@@ -3,7 +3,6 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.EM.EmDmgTimerTbl;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.EM.EmLvUpParam;
 
 import java.util.List;

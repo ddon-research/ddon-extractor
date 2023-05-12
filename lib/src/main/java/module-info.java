@@ -32,6 +32,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUISkill;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIAreaMaster;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIDogmaOrb;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.ui.uGUIKeyConfig;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.preset.equip;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.EM;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.EM.meta;

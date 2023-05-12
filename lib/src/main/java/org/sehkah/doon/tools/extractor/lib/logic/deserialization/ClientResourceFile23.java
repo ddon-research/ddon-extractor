@@ -112,7 +112,6 @@ public enum ClientResourceFile23 {
     rJointInfo(".jnt_info", new FileHeader("jnt_info\0", 111, 4)),
     rJointOrder(".jnt_order", new FileHeader("jnt_order\0", 111, 4)),
     rJumpParamTbl(".jmp", new FileHeader("jmp\0", 111, 4)),
-    rKeyConfigTextTable(".kctt", new FileHeader("kctt\0", 111, 4)),
     rKeyCustomParam(".kcp", new FileHeader("kcp\0", 111, 4)),
     rLanguageResIDConverter(".lrc", new FileHeader("lrc\0", 111, 4)),
     rLargeCameraParam(".lcp", new FileHeader("lcp\0", 111, 4)),

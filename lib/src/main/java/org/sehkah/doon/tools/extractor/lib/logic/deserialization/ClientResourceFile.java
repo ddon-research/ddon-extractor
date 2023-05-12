@@ -77,6 +77,7 @@ public enum ClientResourceFile {
     rAIPawnAutoWordTbl(".paw", new FileHeader(4, 4)),
     rEmDmgTimerTbl(".dtt", new FileHeader(2, 4)),
     rEmLvUpParam(".lup", new FileHeader(7, 4)),
+    rKeyConfigTextTable(".kctt", new FileHeader(1, 4)),
     rWarpLocation(".wal", new FileHeader(353, 4));
 
     public final String fileExtension;

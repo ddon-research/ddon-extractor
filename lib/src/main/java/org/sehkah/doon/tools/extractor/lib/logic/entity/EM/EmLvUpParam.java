@@ -1,8 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.EM;
 
-import org.sehkah.doon.tools.extractor.lib.logic.entity.EM.meta.EnemyDmgTimerType;
-import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
-
 public record EmLvUpParam(
         long Lv,
         float[] Hp_Cor,
