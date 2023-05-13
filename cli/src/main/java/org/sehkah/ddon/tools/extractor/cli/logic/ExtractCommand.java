@@ -1,7 +1,5 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
 import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
@@ -12,6 +10,8 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.DeserializerFac
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.Serializer;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializerImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ import java.util.stream.Stream;
 @CommandLine.Command(name = "extract", mixinStandardHelpOptions = true, version = "extract 1.0",
         description = "Prints the provided DDON resource file to STDOUT.")
 public class ExtractCommand implements Callable<Integer> {
-    private final Logger logger = LogManager.getLogger(ExtractCommand.class);
+    private static final Logger logger = LoggerFactory.getLogger(ExtractCommand.class);
     private final DeserializerFactory deserializerFactory = new DeserializerFactory();
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
@@ -64,7 +64,7 @@ public class ExtractCommand implements Callable<Integer> {
         } catch (IOException e) {
             logger.error("Failed to read from the provided file path '{}'.", filePath);
             if (logger.isDebugEnabled()) {
-                logger.error(e);
+                logger.error("", e);
             }
             return StatusCode.ERROR;
         }
@@ -83,7 +83,7 @@ public class ExtractCommand implements Callable<Integer> {
             } catch (SerializerException e) {
                 logger.error("Failed to serialize object '{}'.", deserializedOutput);
                 if (logger.isDebugEnabled()) {
-                    logger.error(e);
+                    logger.error("", e);
                 }
                 return StatusCode.ERROR;
             }
@@ -102,7 +102,7 @@ public class ExtractCommand implements Callable<Integer> {
                 } catch (IOException e) {
                     logger.error("Failed to write file '{}'.", outputFilePath);
                     if (logger.isDebugEnabled()) {
-                        logger.error(e);
+                        logger.error("", e);
                     }
                     return StatusCode.ERROR;
                 }

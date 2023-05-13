@@ -6,13 +6,11 @@ pluginManagement {
 }
 
 plugins {
-    // Apply the foojay-resolver plugin to allow automatic download of JDKs
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
 }
 
 dependencyResolutionManagement {
     repositories {
-        // Use Maven Central for resolving dependencies.
         mavenCentral()
         mavenLocal()
     }
@@ -26,4 +24,3 @@ String[] modules = [
 ]
 
 include modules
-
