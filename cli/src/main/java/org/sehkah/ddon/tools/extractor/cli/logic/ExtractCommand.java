@@ -125,7 +125,7 @@ public class ExtractCommand implements Callable<Integer> {
                 logger.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
                     List<String> supportedFileExtensions = ClientResourceFile.getSupportedFileExtensions();
-                    List<StatusCode> statusCodes = files
+                    List<StatusCode> statusCodes = files.toList().parallelStream()
                             .filter(path -> {
                                 String fileName = path.getFileName().toString();
                                 return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
