@@ -204,6 +204,8 @@ public enum ClientResourceFile23 {
     rTblMenuOption(".tmo", new FileHeader("tmo\0", 111, 4)),
     rTexDetailEdit(".tde", new FileHeader("tde\0", 111, 4)),
     rTexture(".tex", new FileHeader("tex\0", 111, 4)),
+    rVfxLightInfluence(".eli", new FileHeader("eli\0", 111, 4)),
+    rVibration(".vib", new FileHeader("vib\0", 111, 4)),
     rWaypoint(".wpt", new FileHeader("wpt\0", 111, 4)),
     rWaypoint2(".wp2", new FileHeader("wp2\0", 111, 4)),
     rWeaponOffset(".wpn_ofs", new FileHeader("wpn_ofs\0", 111, 4)),
