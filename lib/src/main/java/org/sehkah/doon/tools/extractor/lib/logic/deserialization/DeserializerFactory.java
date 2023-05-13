@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmDmgTimerTblDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.EM.RageTableDeserializer;
@@ -17,6 +15,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.fieldarea.Field
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.game_common.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.gui_cmn.*;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.job.StaminaDecTblDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.marker.StageAdjoinListDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcConstItemDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.npc_common.NpcMeetingPlaceDeserializer;
@@ -40,6 +39,8 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIArisenCa
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +48,7 @@ import java.util.Map;
 
 public class DeserializerFactory {
     private static final Map<String, Deserializer<?>> DESERIALIZER_MAP = new HashMap<>(64);
+    private static final Logger logger = LoggerFactory.getLogger(DeserializerFactory.class);
 
     static {
         DESERIALIZER_MAP.put(".aad", new AbilityAddDataDeserializer());
@@ -130,9 +132,8 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".hmeq", new HumanEnemyEquipDeserializer());
         DESERIALIZER_MAP.put(".psi", new PlPartsInfoDeserializer());
         DESERIALIZER_MAP.put(".ndp", new NamedParamDeserializer());
+        DESERIALIZER_MAP.put(".sal", new StageAdjoinListDeserializer());
     }
-
-    private final Logger logger = LogManager.getLogger(DeserializerFactory.class);
 
     public Deserializer forFile(String fileName) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));

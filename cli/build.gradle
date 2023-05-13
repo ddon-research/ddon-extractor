@@ -1,15 +1,12 @@
 plugins {
-    // built-in plugins
     id 'java'
     id 'application'
     id 'jacoco'
     id 'project-report'
-    // community plugins
     id 'org.beryx.jlink'
 }
 
 ext {
-    orgApacheLoggingLog4jVersion = '2.20.0'
     infoPicocliVersion = '4.7.3'
     comFasterxmlJacksonVersion = '2.15.0'
 }
@@ -17,10 +14,6 @@ ext {
 dependencies {
     implementation project(':lib')
 
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${orgApacheLoggingLog4jVersion}"
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${orgApacheLoggingLog4jVersion}"
     // https://mvnrepository.com/artifact/info.picocli/picocli
     implementation group: 'info.picocli', name: 'picocli', version: "${infoPicocliVersion}"
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
@@ -62,7 +55,7 @@ jlink {
             ]
         }
     }
-    forceMerge('jackson', 'log4j', 'snakeyaml')
+    forceMerge('jackson', 'slf4j', 'log4j', 'snakeyaml')
     mergedModule {
         additive = true
         uses 'com.fasterxml.jackson.databind.Module'

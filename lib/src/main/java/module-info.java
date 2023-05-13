@@ -1,4 +1,5 @@
 module org.sehkah.ddon.tools.extractor.lib {
+    requires org.slf4j;
     requires org.apache.logging.log4j;
 
     requires com.fasterxml.jackson.databind;
@@ -23,6 +24,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.stage;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.stage.meta;
+    exports org.sehkah.doon.tools.extractor.lib.logic.entity.marker;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.fieldarea.meta;
     exports org.sehkah.doon.tools.extractor.lib.logic.entity.sg300000;
