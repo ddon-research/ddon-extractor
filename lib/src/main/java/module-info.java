@@ -1,4 +1,5 @@
 module org.sehkah.ddon.tools.extractor.lib {
+    requires org.slf4j;
     requires org.apache.logging.log4j;
 
     requires com.fasterxml.jackson.databind;

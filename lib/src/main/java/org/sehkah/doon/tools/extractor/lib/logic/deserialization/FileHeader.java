@@ -1,20 +1,20 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.sehkah.doon.tools.extractor.lib.common.error.MagicValidationFailedException;
 import org.sehkah.doon.tools.extractor.lib.common.error.VersionValidationFailedException;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public class FileHeader {
+    private static final Logger logger = LoggerFactory.getLogger(FileHeader.class);
     public final int magicBytesLength;
     public final int versionBytesLength;
     public final String magicString;
     public final long versionNumber;
-    protected final Logger logger = LogManager.getLogger(FileHeader.class);
 
     public FileHeader(String magicString, int magicBytesLength, long versionNumber, int versionBytesLength) {
         this.magicBytesLength = magicBytesLength;
