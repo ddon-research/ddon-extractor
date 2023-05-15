@@ -104,7 +104,6 @@ public enum ClientResourceFile23 {
     rHumanEnemyParam(".hmeparam", new FileHeader("hmeparam\0", 111, 4)),
     rHumanEnemyPreset(".hmpre", new FileHeader("hmpre\0", 111, 4)),
     rIKCtrl(".ikctrl", new FileHeader("ikctrl\0", 111, 4)),
-    rItemList(".ipa", new FileHeader("ipa\0", 111, 4)),
     rJointEx2(".jex2", new FileHeader("jex2\0", 111, 4)),
     rJointInfo(".jnt_info", new FileHeader("jnt_info\0", 111, 4)),
     rJointOrder(".jnt_order", new FileHeader("jnt_order\0", 111, 4)),

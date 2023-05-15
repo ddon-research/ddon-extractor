@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public enum AbilityParamCorrectType {
     CORRECT_TYPE_ADD(0x0),
-    CORRECT_TYPE_RATE(0x1);
+    CORRECT_TYPE_RATE(0x1),
+    CORRECT_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;
 
@@ -13,6 +14,6 @@ public enum AbilityParamCorrectType {
     }
 
     public static AbilityParamCorrectType of(long value) {
-        return Arrays.stream(AbilityParamCorrectType.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(null);
+        return Arrays.stream(AbilityParamCorrectType.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(CORRECT_TYPE_UNKNOWN);
     }
 }

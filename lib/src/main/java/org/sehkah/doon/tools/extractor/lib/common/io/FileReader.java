@@ -7,6 +7,7 @@ import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.ToLongFunction;
 
 public interface FileReader {
     int getPosition();
@@ -68,6 +69,8 @@ public interface FileReader {
     String readMtString(Charset charset);
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
+
+    <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction);
 
     void rewind(int i);
 }

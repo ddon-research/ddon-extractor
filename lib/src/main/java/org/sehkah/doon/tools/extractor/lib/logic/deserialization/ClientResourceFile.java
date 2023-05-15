@@ -47,6 +47,7 @@ public enum ClientResourceFile {
     rGatheringItem(".gat", new FileHeader(1, 4)),
     rHumanEnemyCustomSkill(".hmcs", new FileHeader(3, 4)),
     rHumanEnemyEquip(".hmeq", new FileHeader(3, 4)),
+    rItemList(".ipa", new FileHeader("ipa\0", 58, 4)),
     rJobBaseParam(".jobbase", new FileHeader(263, 4)),
     rJobLevelUpTbl2(".jlt2", new FileHeader(1, 4)),
     rJobMasterCtrl(".jmc", new FileHeader(256, 4)),

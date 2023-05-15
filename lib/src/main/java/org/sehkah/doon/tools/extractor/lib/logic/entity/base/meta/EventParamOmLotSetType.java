@@ -7,7 +7,7 @@ public enum EventParamOmLotSetType {
     OM_LOT_SET_TYPE_OM(0x1),
     OM_LOT_SET_TYPE_HM(0x2),
     OM_LOT_SET_TYPE_NONE(0x3),
-    OM_LOT_SET_TYPE_NUM(0x4);
+    OM_LOT_SET_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;
 
@@ -16,6 +16,6 @@ public enum EventParamOmLotSetType {
     }
 
     public static EventParamOmLotSetType of(long value) {
-        return Arrays.stream(EventParamOmLotSetType.values()).filter(eventParamOmLotSetType -> eventParamOmLotSetType.value == value).findFirst().orElse(null);
+        return Arrays.stream(EventParamOmLotSetType.values()).filter(eventParamOmLotSetType -> eventParamOmLotSetType.value == value).findFirst().orElse(OM_LOT_SET_TYPE_UNKNOWN);
     }
 }

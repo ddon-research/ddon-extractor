@@ -3,9 +3,10 @@ package org.sehkah.doon.tools.extractor.lib.logic.entity.base.meta;
 import java.util.Arrays;
 
 public enum LandAreaInfoGameMode {
-    MODE_GAMEMENU(0),
-    MODE_QUICKPARTY(1),
-    MODE_CLAN(2);
+    MODE_GAMEMENU(0x0),
+    MODE_QUICKPARTY(0x1),
+    MODE_CLAN(0x2),
+    MODE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;
 
@@ -14,6 +15,6 @@ public enum LandAreaInfoGameMode {
     }
 
     public static LandAreaInfoGameMode of(long value) {
-        return Arrays.stream(LandAreaInfoGameMode.values()).filter(landAreaInfoGameMode -> landAreaInfoGameMode.value == value).findFirst().orElse(null);
+        return Arrays.stream(LandAreaInfoGameMode.values()).filter(landAreaInfoGameMode -> landAreaInfoGameMode.value == value).findFirst().orElse(MODE_UNKNOWN);
     }
 }

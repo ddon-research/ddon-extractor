@@ -57,7 +57,8 @@ public enum AbilityParamType {
     PARAM_TYPE_HEAL_HP_UP(0x33),
     PARAM_TYPE_HEAL_STAMINA_UP(0x34),
     PARAM_TYPE_DEF_EROSION(0x35),
-    PARAM_TYPE_DEF_ITEM_SEAL(0x36);
+    PARAM_TYPE_DEF_ITEM_SEAL(0x36),
+    PARAM_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;
 
@@ -66,6 +67,6 @@ public enum AbilityParamType {
     }
 
     public static AbilityParamType of(long value) {
-        return Arrays.stream(AbilityParamType.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(null);
+        return Arrays.stream(AbilityParamType.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(PARAM_TYPE_UNKNOWN);
     }
 }
