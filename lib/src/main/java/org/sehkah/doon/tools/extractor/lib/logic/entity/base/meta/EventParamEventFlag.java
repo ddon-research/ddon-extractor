@@ -13,7 +13,8 @@ public enum EventParamEventFlag {
     FLAG_LIGHT1_FLAG_NO_PARTY_FLAG_CHG_SUB_MIXER(0x19),
     FLAG_ON_STG_BGM(0x20),
     FLAG_ON_BTL_BGM(0x40),
-    FLAG_CHG_SUB_MIXER_FLAG_ON_BTL_BGM(0x50);
+    FLAG_CHG_SUB_MIXER_FLAG_ON_BTL_BGM(0x50),
+    FLAG_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;
 
@@ -22,6 +23,6 @@ public enum EventParamEventFlag {
     }
 
     public static EventParamEventFlag of(long value) {
-        return Arrays.stream(EventParamEventFlag.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(null);
+        return Arrays.stream(EventParamEventFlag.values()).filter(eventParamEventFlag -> eventParamEventFlag.value == value).findFirst().orElse(FLAG_UNKNOWN);
     }
 }

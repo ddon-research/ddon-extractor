@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.function.ToLongFunction;
 
 public class BinaryFileReader implements FileReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
@@ -210,7 +211,12 @@ public class BinaryFileReader implements FileReader {
 
     @Override
     public <E> List<E> readArray(Function<FileReader, E> entityReaderFunction) {
-        long length = readUnsignedInteger();
+        return readArray(FileReader::readUnsignedInteger, entityReaderFunction);
+    }
+
+    @Override
+    public <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction) {
+        long length = arraySizeFunction.applyAsLong(this);
         List<E> entities = new ArrayList<>((int) length);
         for (long i = 0; i < length; i++) {
             entities.add(entityReaderFunction.apply(this));

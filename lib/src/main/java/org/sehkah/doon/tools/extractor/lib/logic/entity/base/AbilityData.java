@@ -10,6 +10,11 @@ public record AbilityData(
         AdditionalAbilityParamData AdditionalAbilityParamData
 ) {
     public AbilityData(int AbilityId, List<AbilityParam> ParamArray, boolean HasExSkill, AdditionalAbilityParamData AdditionalAbilityParamData) {
-        this(AbilityId, ParamArray.size(), ParamArray, HasExSkill, AdditionalAbilityParamData);
+        this(
+                AbilityId,
+                ParamArray.size(),
+                ParamArray,
+                HasExSkill,
+                AdditionalAbilityParamData);
     }
 }

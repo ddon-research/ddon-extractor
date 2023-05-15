@@ -10,6 +10,11 @@ public record AbilityList(
         List<AbilityData> DataList
 ) {
     public AbilityList(int UnknownByte1, int UnknownByte2, int UnknownShort, List<AbilityData> DataList) {
-        this(UnknownByte1, UnknownByte2, UnknownShort, DataList.size(), DataList);
+        this(
+                UnknownByte1,
+                UnknownByte2,
+                UnknownShort,
+                DataList.size(),
+                DataList);
     }
 }
