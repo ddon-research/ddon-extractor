@@ -103,7 +103,6 @@ public class ItemListDeserializer extends FileDeserializer<ItemList> {
 
     private static ItemListItemParam readItemParam(FileReader fileReader) {
         long ItemId = fileReader.readUnsignedInteger();
-        logger.info("ItemId {}", ItemId);
         long NameId = fileReader.readUnsignedInteger();
         int Category = fileReader.readUnsignedShort();
         int SubCategory = fileReader.readUnsignedShort();
@@ -116,7 +115,6 @@ public class ItemListDeserializer extends FileDeserializer<ItemList> {
         int IconNo = fileReader.readUnsignedShort();
         int IsUseLv = fileReader.readUnsignedShort();
         int ItemCategory = fileReader.readUnsignedByte();
-        logger.info("ItemCategory {}", ItemCategory);
         int StackMax = fileReader.readUnsignedByte();
         int Rank = fileReader.readUnsignedByte();
         int Grade = fileReader.readUnsignedByte();

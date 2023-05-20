@@ -133,7 +133,7 @@ public class DeserializerFactory {
         DESERIALIZER_MAP.put(".psi", new PlPartsInfoDeserializer());
         DESERIALIZER_MAP.put(".ndp", new NamedParamDeserializer());
         DESERIALIZER_MAP.put(".sal", new StageAdjoinListDeserializer());
-        DESERIALIZER_MAP.put(".ipa", new ItemListDeserializer());
+//        DESERIALIZER_MAP.put(".ipa", new ItemListDeserializer()); TODO enable once multi-season support is done
     }
 
     public Deserializer forFile(String fileName) {
