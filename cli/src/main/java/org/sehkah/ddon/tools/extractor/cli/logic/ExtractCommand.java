@@ -42,6 +42,7 @@ public class ExtractCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-s", "--season"}, arity = "0..1", description = """
             Optionally specify the client season (${COMPLETION-CANDIDATES}).
             If omitted the default season is used (THREE).
+            Warning: Only specific versions of season 2 (v02030004) and 3 (v03040008) have been verified!
             Example:
                  extract --season=SEASON_TWO FILE  expects the data to conform with season 2 structures
                  extract FILE   expects the data to conform with season 3 structures"

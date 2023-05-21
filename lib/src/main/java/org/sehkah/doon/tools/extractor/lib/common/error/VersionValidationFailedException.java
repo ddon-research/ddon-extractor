@@ -1,11 +1,17 @@
 package org.sehkah.doon.tools.extractor.lib.common.error;
 
+import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
+
 public class VersionValidationFailedException extends TechnicalException {
     public VersionValidationFailedException() {
     }
 
     public VersionValidationFailedException(long encounteredVersion, long expectedVersion) {
         super("Encountered version '%s' does not equal expected '%s'.".formatted(encounteredVersion, expectedVersion));
+    }
+
+    public VersionValidationFailedException(ClientResourceFile clientResourceFile) {
+        super("Version validation failed for client resource '%s'.".formatted(clientResourceFile));
     }
 
     public VersionValidationFailedException(String message) {

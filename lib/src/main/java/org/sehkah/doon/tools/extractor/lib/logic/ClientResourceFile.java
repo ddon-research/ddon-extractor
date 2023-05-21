@@ -5,11 +5,17 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.FileHeader;
 public class ClientResourceFile {
     public final ClientResourceFileExtension fileExtension;
     public final FileHeader fileHeader;
-    public final ClientSeasonType clientSeason;
 
-    ClientResourceFile(ClientResourceFileExtension fileExtension, FileHeader fileHeader, ClientSeasonType clientSeason) {
+    ClientResourceFile(ClientResourceFileExtension fileExtension, FileHeader fileHeader) {
         this.fileExtension = fileExtension;
         this.fileHeader = fileHeader;
-        this.clientSeason = clientSeason;
+    }
+
+    @Override
+    public String toString() {
+        return "ClientResourceFile{" +
+                "fileExtension=" + fileExtension +
+                ", fileHeader=" + fileHeader +
+                '}';
     }
 }

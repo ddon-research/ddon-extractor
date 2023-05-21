@@ -18,6 +18,14 @@ public abstract class ClientSeason {
         clientResourceFileMap = new EnumMap<>(ClientResourceFileExtension.class);
     }
 
+    public static ClientSeason get(ClientSeasonType clientSeasonType) {
+        return switch (clientSeasonType) {
+            case TWO -> new ClientSeasonTwo();
+            case THREE -> new ClientSeasonThree();
+            default -> throw new TechnicalException("Unknown season!");
+        };
+    }
+
     public Deserializer getDeserializer(String fileName) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
         Deserializer<?> deserializer = deserializerMap.getOrDefault(ClientResourceFileExtension.of(fileNameExtension), null);
@@ -27,13 +35,5 @@ public abstract class ClientSeason {
             logger.debug("No deserializer found for file extension '{}'.", fileNameExtension);
         }
         return deserializer;
-    }
-
-    public static ClientSeason get(ClientSeasonType clientSeasonType) {
-        return switch (clientSeasonType) {
-            case TWO -> new ClientSeasonTwo();
-            case THREE -> new ClientSeasonThree();
-            default -> throw new TechnicalException("Unknown season!");
-        };
     }
 }

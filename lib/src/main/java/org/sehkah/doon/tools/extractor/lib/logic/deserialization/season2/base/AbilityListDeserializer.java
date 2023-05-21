@@ -1,9 +1,12 @@
-package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season3.base;
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season2.base;
 
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.*;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base.AbilityData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base.AbilityList;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base.AbilityParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base.AbilityParamData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +15,6 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer<Abil
 
     public AbilityListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
-    }
-
-    private static AdditionalAbilityParamData readAdditionalAbilityParamData(FileReader fileReader) {
-        return new AdditionalAbilityParamData(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
-        );
     }
 
     private static AbilityParamData readAbilityParamData(FileReader fileReader) {
@@ -38,16 +34,9 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer<Abil
 
     private static AbilityData readAbilityData(FileReader fileReader, int num) {
         List<AbilityParam> ParamArray = fileReader.readArray(AbilityListDeserializer::readAbilityParam);
-        boolean HasExSkill = fileReader.readBoolean();
-        AdditionalAbilityParamData additionalAbilityParamData = null;
-        if (HasExSkill) {
-            additionalAbilityParamData = readAdditionalAbilityParamData(fileReader);
-        }
         return new AbilityData(
                 num,
-                ParamArray,
-                HasExSkill,
-                additionalAbilityParamData
+                ParamArray
         );
     }
 
