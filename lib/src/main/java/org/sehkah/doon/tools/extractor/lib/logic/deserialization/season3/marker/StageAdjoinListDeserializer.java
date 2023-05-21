@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.marker.AdjoinInf
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.marker.JumpPosition;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.marker.StageAdjoinList;
 
-public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<StageAdjoinList> {
+public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer {
     public StageAdjoinListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -36,16 +36,12 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<
         );
     }
 
-    private static StageAdjoinList readEntity(FileReader fileReader) {
+    @Override
+    protected StageAdjoinList parseClientResourceFile(FileReader fileReader) {
         return new StageAdjoinList(
                 fileReader.readUnsignedShort(),
                 fileReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo),
                 fileReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
         );
-    }
-
-    @Override
-    protected StageAdjoinList parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

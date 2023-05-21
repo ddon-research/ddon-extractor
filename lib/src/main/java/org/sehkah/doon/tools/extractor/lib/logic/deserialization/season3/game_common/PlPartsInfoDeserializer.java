@@ -10,7 +10,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.PlPa
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer<PlPartsInfoList> {
+public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer {
     public PlPartsInfoDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.npc.SituationData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.npc.SituationMsgCtrl;
 
-import java.util.List;
-
-public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer<List<SituationData>> {
+public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer {
     public SituationMsgCtrlDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static SituationData readEntity(FileReader fileReader) {
+    private static SituationData readSituationData(FileReader fileReader) {
         return new SituationData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected List<SituationData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(SituationMsgCtrlDeserializer::readEntity);
+    protected SituationMsgCtrl parseClientResourceFile(FileReader fileReader) {
+        return new SituationMsgCtrl(fileReader.readArray(SituationMsgCtrlDeserializer::readSituationData));
     }
 }

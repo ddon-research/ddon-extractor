@@ -2,7 +2,6 @@ package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn;
 
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Float2f;
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.meta.FieldMapDataType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -17,7 +16,7 @@ public record FieldMapData(
         Vector3f WorldPos,
         boolean DispWideMap,
         long QuestId
-) implements DeserializableClientResource {
+) {
     public FieldMapData(long type, int messId, long ID, int stageNo, Float2f point, Vector3f worldPos, boolean dispWideMap, long questId) {
         this(
                 type, FieldMapDataType.of(type),

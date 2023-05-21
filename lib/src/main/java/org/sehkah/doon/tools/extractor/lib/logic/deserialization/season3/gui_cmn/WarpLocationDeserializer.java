@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.WarpLocation;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.WarpLocationList;
 
-import java.util.List;
-
-public class WarpLocationDeserializer extends ClientResourceFileDeserializer<List<WarpLocation>> {
+public class WarpLocationDeserializer extends ClientResourceFileDeserializer {
     public WarpLocationDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static WarpLocation readEntity(FileReader fileReader) {
+    private static WarpLocation readWarpLocation(FileReader fileReader) {
         return new WarpLocation(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -28,7 +27,7 @@ public class WarpLocationDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<WarpLocation> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(WarpLocationDeserializer::readEntity);
+    protected WarpLocationList parseClientResourceFile(FileReader fileReader) {
+        return new WarpLocationList(fileReader.readArray(WarpLocationDeserializer::readWarpLocation));
     }
 }

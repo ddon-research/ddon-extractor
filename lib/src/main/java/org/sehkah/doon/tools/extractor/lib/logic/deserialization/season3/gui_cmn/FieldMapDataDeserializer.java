@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.FieldMapData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.FieldMapDataList;
 
-import java.util.List;
-
-public class FieldMapDataDeserializer extends ClientResourceFileDeserializer<List<FieldMapData>> {
+public class FieldMapDataDeserializer extends ClientResourceFileDeserializer {
     public FieldMapDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static FieldMapData readEntity(FileReader fileReader) {
+    private static FieldMapData readFieldMapData(FileReader fileReader) {
         return new FieldMapData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readSignedInteger(),
@@ -26,7 +25,7 @@ public class FieldMapDataDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<FieldMapData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(FieldMapDataDeserializer::readEntity);
+    protected FieldMapDataList parseClientResourceFile(FileReader fileReader) {
+        return new FieldMapDataList(fileReader.readArray(FieldMapDataDeserializer::readFieldMapData));
     }
 }

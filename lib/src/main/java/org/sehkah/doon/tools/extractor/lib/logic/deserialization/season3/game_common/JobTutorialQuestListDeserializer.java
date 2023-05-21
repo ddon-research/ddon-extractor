@@ -3,21 +3,20 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season3.game_c
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.JobTutorialQuestList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.QuestId;
 
-import java.util.List;
-
-public class JobTutorialQuestListDeserializer extends ClientResourceFileDeserializer<List<QuestId>> {
+public class JobTutorialQuestListDeserializer extends ClientResourceFileDeserializer {
     public JobTutorialQuestListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    static QuestId readEntity(FileReader fileReader) {
+    static QuestId readQuestId(FileReader fileReader) {
         return new QuestId(fileReader.readUnsignedInteger());
     }
 
     @Override
-    protected List<QuestId> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(JobTutorialQuestListDeserializer::readEntity);
+    protected JobTutorialQuestList parseClientResourceFile(FileReader fileReader) {
+        return new JobTutorialQuestList(fileReader.readArray(JobTutorialQuestListDeserializer::readQuestId));
     }
 }

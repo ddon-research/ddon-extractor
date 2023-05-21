@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.HumanEnemyCustomSkill;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.HumanEnemyCustomSkillList;
 
-import java.util.List;
-
-public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeserializer<List<HumanEnemyCustomSkill>> {
+public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeserializer {
     public HumanEnemyCustomSkillDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static HumanEnemyCustomSkill readEntity(FileReader fileReader) {
+    private static HumanEnemyCustomSkill readHumanEnemyCustomSkill(FileReader fileReader) {
         return new HumanEnemyCustomSkill(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -27,7 +26,7 @@ public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeseria
     }
 
     @Override
-    protected List<HumanEnemyCustomSkill> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(HumanEnemyCustomSkillDeserializer::readEntity);
+    protected HumanEnemyCustomSkillList parseClientResourceFile(FileReader fileReader) {
+        return new HumanEnemyCustomSkillList(fileReader.readArray(HumanEnemyCustomSkillDeserializer::readHumanEnemyCustomSkill));
     }
 }

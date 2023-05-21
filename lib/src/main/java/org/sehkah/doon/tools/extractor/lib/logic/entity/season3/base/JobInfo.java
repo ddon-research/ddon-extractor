@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 import java.math.BigInteger;
 
 public record JobInfo(
@@ -50,5 +48,5 @@ public record JobInfo(
         int MDefDownResist,
         int ErosionResist,
         int ItemSealResist
-) implements DeserializableClientResource {
+) {
 }

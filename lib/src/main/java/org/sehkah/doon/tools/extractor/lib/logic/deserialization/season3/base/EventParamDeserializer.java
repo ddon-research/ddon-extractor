@@ -4,11 +4,10 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.EventParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.EventParamList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.OmList;
 
-import java.util.List;
-
-public class EventParamDeserializer extends ClientResourceFileDeserializer<List<EventParam>> {
+public class EventParamDeserializer extends ClientResourceFileDeserializer {
     public EventParamDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -23,7 +22,7 @@ public class EventParamDeserializer extends ClientResourceFileDeserializer<List<
         );
     }
 
-    private static EventParam readEntity(FileReader fileReader) {
+    private static EventParam readEventParam(FileReader fileReader) {
         return new EventParam(
                 fileReader.readUnsignedShort(),
                 fileReader.readUnsignedShort(),
@@ -42,7 +41,7 @@ public class EventParamDeserializer extends ClientResourceFileDeserializer<List<
     }
 
     @Override
-    protected List<EventParam> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(EventParamDeserializer::readEntity);
+    protected EventParamList parseClientResourceFile(FileReader fileReader) {
+        return new EventParamList(fileReader.readArray(EventParamDeserializer::readEventParam));
     }
 }

@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaContinuationType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaUpdateType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaValueType;
@@ -20,7 +19,7 @@ public record StaminaDecList(
         long UpdateType,
         @MetaInformation
         StaminaUpdateType UpdateTypeName
-) implements DeserializableClientResource {
+) {
     public StaminaDecList(List<StaminaDecParam> staminaDecList, long staminaType, long valueType, long continuationType, long updateType) {
         this(
                 staminaDecList,

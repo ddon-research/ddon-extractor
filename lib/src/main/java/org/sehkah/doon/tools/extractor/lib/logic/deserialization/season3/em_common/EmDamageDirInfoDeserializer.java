@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EmDamageDirInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EmDamageDirInfoList;
 
-import java.util.List;
-
-public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer<List<EmDamageDirInfo>> {
+public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer {
     public EmDamageDirInfoDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static EmDamageDirInfo readEntity(FileReader fileReader) {
+    private static EmDamageDirInfo readEmDamageDirInfo(FileReader fileReader) {
         return new EmDamageDirInfo(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -26,7 +25,7 @@ public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<EmDamageDirInfo> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(EmDamageDirInfoDeserializer::readEntity);
+    protected EmDamageDirInfoList parseClientResourceFile(FileReader fileReader) {
+        return new EmDamageDirInfoList(fileReader.readArray(EmDamageDirInfoDeserializer::readEmDamageDirInfo));
     }
 }

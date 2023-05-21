@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 import java.util.List;
 
 public record CycleQuestInfo(
@@ -14,5 +12,5 @@ public record CycleQuestInfo(
         long GatherNpcId,
         long GatherStageNo,
         long GatherStartPos
-) implements DeserializableClientResource {
+) {
 }

@@ -7,7 +7,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.fieldarea.Adjoin
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.fieldarea.AdjoinInfoVector3;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.fieldarea.FieldAreaAdjoinList;
 
-public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeserializer<FieldAreaAdjoinList> {
+public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeserializer {
     public FieldAreaAdjoinListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -29,15 +29,11 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
         );
     }
 
-    private static FieldAreaAdjoinList readEntity(FileReader fileReader) {
+    @Override
+    protected FieldAreaAdjoinList parseClientResourceFile(FileReader fileReader) {
         return new FieldAreaAdjoinList(
                 fileReader.readSignedShort(),
                 fileReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo)
         );
-    }
-
-    @Override
-    protected FieldAreaAdjoinList parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

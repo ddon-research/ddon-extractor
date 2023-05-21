@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 public record HumanEnemyCustomSkill(
         long Id,
         long CustomSkill0,
@@ -12,5 +10,5 @@ public record HumanEnemyCustomSkill(
         long CustomLevel1,
         long CustomLevel2,
         long CustomLevel3
-) implements DeserializableClientResource {
+) {
 }
