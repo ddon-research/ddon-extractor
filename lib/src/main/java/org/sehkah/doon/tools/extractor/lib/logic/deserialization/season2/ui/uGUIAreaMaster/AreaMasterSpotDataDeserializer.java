@@ -1,0 +1,36 @@
+package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season2.ui.uGUIAreaMaster;
+
+import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
+import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster.AreaMasterSpotData;
+
+import java.util.List;
+
+public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializer<List<AreaMasterSpotData>> {
+    public AreaMasterSpotDataDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static AreaMasterSpotData readEntity(FileReader fileReader) {
+        return new AreaMasterSpotData(
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readSignedInteger(),
+                fileReader.readFloat(),
+                fileReader.readFloat(),
+                fileReader.readFloat(),
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedByte(),
+                fileReader.readUnsignedByte(),
+                fileReader.readUnsignedByte(),
+                fileReader.readBoolean()
+        );
+    }
+
+    @Override
+    protected List<AreaMasterSpotData> parseClientResourceFile(FileReader fileReader) {
+        return fileReader.readArray(AreaMasterSpotDataDeserializer::readEntity);
+    }
+}
