@@ -1,0 +1,33 @@
+package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job;
+
+import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaContinuationType;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaUpdateType;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.meta.StaminaValueType;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
+
+import java.util.List;
+
+public record StaminaDecList(
+        List<StaminaDecParam> StaminaDecList,
+        long StaminaType,
+        long ValueType,
+        @MetaInformation
+        StaminaValueType ValueTypeName,
+        long ContinuationType,
+        @MetaInformation
+        StaminaContinuationType ContinuationTypeName,
+        long UpdateType,
+        @MetaInformation
+        StaminaUpdateType UpdateTypeName
+) implements DeserializableClientResource {
+    public StaminaDecList(List<StaminaDecParam> staminaDecList, long staminaType, long valueType, long continuationType, long updateType) {
+        this(
+                staminaDecList,
+                staminaType,
+                valueType, StaminaValueType.of(valueType),
+                continuationType, StaminaContinuationType.of(continuationType),
+                updateType, StaminaUpdateType.of(updateType)
+        );
+    }
+}

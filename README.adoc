@@ -15,7 +15,7 @@ toc::[]
 
 == List of supported client resource files
 
-include::docs/SupportedClientResourceFiles.adoc[]
+Have a look at the files inside the `docs/extensions` folder.
 
 == How to develop
 
