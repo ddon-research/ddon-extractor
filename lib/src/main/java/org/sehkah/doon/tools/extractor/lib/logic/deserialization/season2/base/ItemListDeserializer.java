@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemList> {
+public class ItemListDeserializer extends ClientResourceFileDeserializer {
     private static final Logger logger = LoggerFactory.getLogger(ItemListDeserializer.class);
 
     public ItemListDeserializer(ClientResourceFile clientResourceFile) {
@@ -169,7 +169,8 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         );
     }
 
-    private static ItemList readEntity(FileReader fileReader) {
+    @Override
+    protected ItemList parseClientResourceFile(FileReader fileReader) {
         long ArrayDataNum = fileReader.readUnsignedInteger();
         long ArrayParamDataNum = fileReader.readUnsignedInteger();
         long ArrayVsParamDataNum = fileReader.readUnsignedInteger();
@@ -191,10 +192,5 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
                 ArrayEquipParamS8DataNum,
                 ItemParamList
         );
-    }
-
-    @Override
-    protected ItemList parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

@@ -4,11 +4,10 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityAddData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityAddDataList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityLevelData;
 
-import java.util.List;
-
-public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<List<AbilityAddData>> {
+public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer {
     public AbilityAddDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -20,7 +19,7 @@ public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<L
         );
     }
 
-    private static AbilityAddData readEntity(FileReader fileReader) {
+    private static AbilityAddData readAbilityAddData(FileReader fileReader) {
         return new AbilityAddData(
                 fileReader.readUnsignedShort(),
                 fileReader.readUnsignedByte(),
@@ -29,7 +28,7 @@ public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<L
     }
 
     @Override
-    protected List<AbilityAddData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(AbilityAddDataDeserializer::readEntity);
+    protected AbilityAddDataList parseClientResourceFile(FileReader fileReader) {
+        return new AbilityAddDataList(fileReader.readArray(AbilityAddDataDeserializer::readAbilityAddData));
     }
 }

@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.meta.EventParamEventFlag;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.meta.EventParamEventType;
@@ -29,7 +28,7 @@ public record EventParam(
         short SubMixerAfter,
         float OmAQCScale,
         List<OmList> OmList
-) implements DeserializableClientResource {
+) {
     public EventParam {
         if (!FileName.startsWith("event")) {
             throw new TechnicalException("Event file name does not start with event!");

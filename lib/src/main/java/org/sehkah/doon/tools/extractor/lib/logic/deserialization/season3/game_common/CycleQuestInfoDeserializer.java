@@ -4,11 +4,10 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.CycleQuestInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.CycleQuestInfoList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.CycleQuestSituationInfo;
 
-import java.util.List;
-
-public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<List<CycleQuestInfo>> {
+public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer {
     public CycleQuestInfoDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -22,7 +21,7 @@ public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<L
         );
     }
 
-    private static CycleQuestInfo readEntity(FileReader fileReader) {
+    private static CycleQuestInfo readCycleQuestInfo(FileReader fileReader) {
         return new CycleQuestInfo(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -37,7 +36,7 @@ public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<L
     }
 
     @Override
-    protected List<CycleQuestInfo> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(CycleQuestInfoDeserializer::readEntity);
+    protected CycleQuestInfoList parseClientResourceFile(FileReader fileReader) {
+        return new CycleQuestInfoList(fileReader.readArray(CycleQuestInfoDeserializer::readCycleQuestInfo));
     }
 }

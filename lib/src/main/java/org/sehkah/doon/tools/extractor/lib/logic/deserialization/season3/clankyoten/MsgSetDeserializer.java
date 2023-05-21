@@ -10,7 +10,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.clankyoten.MsgSe
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
+public class MsgSetDeserializer extends ClientResourceFileDeserializer {
     public MsgSetDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -42,7 +42,8 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
         );
     }
 
-    private static MsgSet readEntity(FileReader fileReader) {
+    @Override
+    protected MsgSet parseClientResourceFile(FileReader fileReader) {
         long NativeMsgGroupArrayNum = fileReader.readUnsignedInteger();
         long NativeMsgDataArrayNum = fileReader.readUnsignedInteger();
 
@@ -56,10 +57,5 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
                 NativeMsgDataArrayNum,
                 NativeMsgGroupArray
         );
-    }
-
-    @Override
-    protected MsgSet parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.scr.MapSpotData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.scr.MapSpotDataList;
 
-import java.util.List;
-
-public class MapSpotDataDeserializer extends ClientResourceFileDeserializer<List<MapSpotData>> {
+public class MapSpotDataDeserializer extends ClientResourceFileDeserializer {
     public MapSpotDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static MapSpotData readEntity(FileReader fileReader) {
+    private static MapSpotData readMapSpotData(FileReader fileReader) {
         return new MapSpotData(
                 fileReader.readVector3f(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class MapSpotDataDeserializer extends ClientResourceFileDeserializer<List
     }
 
     @Override
-    protected List<MapSpotData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(MapSpotDataDeserializer::readEntity);
+    protected MapSpotDataList parseClientResourceFile(FileReader fileReader) {
+        return new MapSpotDataList(fileReader.readArray(MapSpotDataDeserializer::readMapSpotData));
     }
 }

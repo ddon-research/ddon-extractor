@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.skill;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 public record NormalSkillData(
         long NeedJp,
@@ -12,5 +12,5 @@ public record NormalSkillData(
         int Category,
         int PreSkillIndex,
         int SlotNo
-) implements DeserializableClientResource {
+) implements TopLevelClientResource {
 }

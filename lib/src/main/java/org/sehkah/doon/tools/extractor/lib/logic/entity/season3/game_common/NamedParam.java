@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.meta.NamedParamType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -31,7 +30,7 @@ public record NamedParam(
         int BlowEnduranceSub,
         int OcdEndurance,
         int AilmentDamage
-) implements DeserializableClientResource {
+) {
     public NamedParam(long ID, long type, long hpRate, int experience, int attackBasePhys, int attackWepPhys, int defenceBasePhys, int defenceWepPhys, int attackBaseMagic, int attackWepMagic, int defenceBaseMagic, int defenceWepMagic, int power, int guardDefenceBase, int guardDefenceWep, int shrinkEnduranceMain, int blowEnduranceMain, int downEnduranceMain, int shakeEnduranceMain, int hpSub, int shrinkEnduranceSub, int blowEnduranceSub, int ocdEndurance, int ailmentDamage) {
         this(
                 ID,

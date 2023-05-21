@@ -3,16 +3,15 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season3.base;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.JobBaseParam;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.JobInfo;
 
-import java.util.List;
-
-public class JobBaseParamDeserializer extends ClientResourceFileDeserializer<List<JobInfo>> {
+public class JobBaseParamDeserializer extends ClientResourceFileDeserializer {
     public JobBaseParamDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static JobInfo readEntity(FileReader fileReader) {
+    private static JobInfo readJobInfo(FileReader fileReader) {
         return new JobInfo(
                 fileReader.readSignedShort(),
                 fileReader.readUnsignedLong(),
@@ -63,7 +62,7 @@ public class JobBaseParamDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<JobInfo> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(JobBaseParamDeserializer::readEntity);
+    protected JobBaseParam parseClientResourceFile(FileReader fileReader) {
+        return new JobBaseParam(fileReader.readArray(JobBaseParamDeserializer::readJobInfo));
     }
 }

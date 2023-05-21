@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.EM.EmLvUpParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.EM.EmLvUpParamList;
 
-import java.util.List;
-
-public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer<List<EmLvUpParam>> {
+public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer {
     public EmLvUpParamDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static EmLvUpParam readEntity(FileReader fileReader) {
+    private static EmLvUpParam readEmLvUpParam(FileReader fileReader) {
         return new EmLvUpParam(
                 fileReader.readUnsignedInteger(),
                 fileReader.readFloat(10),
@@ -36,7 +35,7 @@ public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer<List
     }
 
     @Override
-    protected List<EmLvUpParam> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(EmLvUpParamDeserializer::readEntity);
+    protected EmLvUpParamList parseClientResourceFile(FileReader fileReader) {
+        return new EmLvUpParamList(fileReader.readArray(EmLvUpParamDeserializer::readEmLvUpParam));
     }
 }

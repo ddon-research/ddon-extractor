@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.StartPosArea;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.StartPosAreaList;
 
-import java.util.List;
-
-public class StartPosAreaDeserializer extends ClientResourceFileDeserializer<List<StartPosArea>> {
+public class StartPosAreaDeserializer extends ClientResourceFileDeserializer {
     public StartPosAreaDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static StartPosArea readEntity(FileReader fileReader) {
+    private static StartPosArea readStartPosArea(FileReader fileReader) {
         return new StartPosArea(
                 fileReader.readUnsignedShort(),
                 fileReader.readUnsignedShort()
@@ -20,7 +19,7 @@ public class StartPosAreaDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<StartPosArea> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(StartPosAreaDeserializer::readEntity);
+    protected StartPosAreaList parseClientResourceFile(FileReader fileReader) {
+        return new StartPosAreaList(fileReader.readArray(StartPosAreaDeserializer::readStartPosArea));
     }
 }

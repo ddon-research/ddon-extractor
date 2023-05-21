@@ -3,16 +3,15 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season3.tutori
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.tutorial_guide.TutorialList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.tutorial_guide.TutorialNode;
 
-import java.util.List;
-
-public class TutorialListDeserializer extends ClientResourceFileDeserializer<List<TutorialNode>> {
+public class TutorialListDeserializer extends ClientResourceFileDeserializer {
     public TutorialListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static TutorialNode readEntity(FileReader fileReader) {
+    private static TutorialNode readTutorialNode(FileReader fileReader) {
         return new TutorialNode(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -24,7 +23,7 @@ public class TutorialListDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<TutorialNode> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(TutorialListDeserializer::readEntity);
+    protected TutorialList parseClientResourceFile(FileReader fileReader) {
+        return new TutorialList(fileReader.readArray(TutorialListDeserializer::readTutorialNode));
     }
 }

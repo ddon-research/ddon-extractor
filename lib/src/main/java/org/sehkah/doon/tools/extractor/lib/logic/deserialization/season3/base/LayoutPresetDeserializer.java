@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.LayoutPreset;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.LayoutPresetList;
 
-import java.util.List;
-
-public class LayoutPresetDeserializer extends ClientResourceFileDeserializer<List<LayoutPreset>> {
+public class LayoutPresetDeserializer extends ClientResourceFileDeserializer {
     public LayoutPresetDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static LayoutPreset readEntity(FileReader fileReader) {
+    private static LayoutPreset readLayoutPreset(FileReader fileReader) {
         return new LayoutPreset(
                 fileReader.readNullTerminatedString(),
                 fileReader.readUnsignedInteger(),
@@ -21,7 +20,7 @@ public class LayoutPresetDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<LayoutPreset> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(LayoutPresetDeserializer::readEntity);
+    protected LayoutPresetList parseClientResourceFile(FileReader fileReader) {
+        return new LayoutPresetList(fileReader.readArray(LayoutPresetDeserializer::readLayoutPreset));
     }
 }

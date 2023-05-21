@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftCapPassData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftCapPassList;
 
-import java.util.List;
-
-public class CraftCapPassDeserializer extends ClientResourceFileDeserializer<List<CraftCapPassData>> {
+public class CraftCapPassDeserializer extends ClientResourceFileDeserializer {
     public CraftCapPassDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static CraftCapPassData readEntity(FileReader fileReader) {
+    private static CraftCapPassData readCraftCapPassData(FileReader fileReader) {
         return new CraftCapPassData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedShort(),
@@ -24,7 +23,7 @@ public class CraftCapPassDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<CraftCapPassData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(CraftCapPassDeserializer::readEntity);
+    protected CraftCapPassList parseClientResourceFile(FileReader fileReader) {
+        return new CraftCapPassList(fileReader.readArray(CraftCapPassDeserializer::readCraftCapPassData));
     }
 }

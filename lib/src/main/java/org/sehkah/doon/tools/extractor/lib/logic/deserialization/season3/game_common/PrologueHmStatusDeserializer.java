@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.PrologueHmStatus;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.PrologueHmStatusList;
 
-import java.util.List;
-
-public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer<List<PrologueHmStatus>> {
+public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer {
     public PrologueHmStatusDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static PrologueHmStatus readEntity(FileReader fileReader) {
+    private static PrologueHmStatus readPrologueHmStatus(FileReader fileReader) {
         return new PrologueHmStatus(
                 fileReader.readUnsignedByte(),
                 fileReader.readUnsignedByte(),
@@ -35,7 +34,7 @@ public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected List<PrologueHmStatus> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(PrologueHmStatusDeserializer::readEntity);
+    protected PrologueHmStatusList parseClientResourceFile(FileReader fileReader) {
+        return new PrologueHmStatusList(fileReader.readArray(PrologueHmStatusDeserializer::readPrologueHmStatus));
     }
 }

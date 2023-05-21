@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.npc_common.NpcMeetingPlace;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.npc_common.NpcMeetingPlaceList;
 
-import java.util.List;
-
-public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<List<NpcMeetingPlace>> {
+public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer {
     public NpcMeetingPlaceDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static NpcMeetingPlace readEntity(FileReader fileReader) {
+    private static NpcMeetingPlace readNpcMeetingPlace(FileReader fileReader) {
         return new NpcMeetingPlace(
                 fileReader.readUnsignedInteger(),
                 fileReader.readSignedInteger(),
@@ -21,7 +20,7 @@ public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<NpcMeetingPlace> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(NpcMeetingPlaceDeserializer::readEntity);
+    protected NpcMeetingPlaceList parseClientResourceFile(FileReader fileReader) {
+        return new NpcMeetingPlaceList(fileReader.readArray(NpcMeetingPlaceDeserializer::readNpcMeetingPlace));
     }
 }

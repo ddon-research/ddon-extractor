@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnAutoWordNode;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnAutoWordNodeTbl;
 
-import java.util.List;
-
-public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserializer<List<AIPawnAutoWordNode>> {
+public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserializer {
     public AIPawnAutoWordTblDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static AIPawnAutoWordNode readEntity(FileReader fileReader) {
+    private static AIPawnAutoWordNode readAIPawnAutoWordNode(FileReader fileReader) {
         return new AIPawnAutoWordNode(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected List<AIPawnAutoWordNode> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(AIPawnAutoWordTblDeserializer::readEntity);
+    protected AIPawnAutoWordNodeTbl parseClientResourceFile(FileReader fileReader) {
+        return new AIPawnAutoWordNodeTbl(fileReader.readArray(AIPawnAutoWordTblDeserializer::readAIPawnAutoWordNode));
     }
 }

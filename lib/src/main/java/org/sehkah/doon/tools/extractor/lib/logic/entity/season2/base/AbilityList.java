@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
@@ -8,5 +8,5 @@ public record AbilityList(
         long BufferSize,
         long DataListNum,
         List<AbilityData> DataList
-) implements DeserializableClientResource {
+) implements TopLevelClientResource {
 }

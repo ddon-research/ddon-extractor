@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.doon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
@@ -85,7 +86,7 @@ public class ExtractCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         String fileName = filePath.getFileName().toString();
-        Deserializer<?> deserializer = clientSeason.getDeserializer(fileName);
+        Deserializer<TopLevelClientResource> deserializer = clientSeason.getDeserializer(fileName);
         if (deserializer == null) {
             logger.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;

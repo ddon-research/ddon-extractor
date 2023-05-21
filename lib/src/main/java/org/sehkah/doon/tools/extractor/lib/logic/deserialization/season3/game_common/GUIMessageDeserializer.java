@@ -11,12 +11,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GUIMessageDeserializer extends ClientResourceFileDeserializer<GUIMessage> {
+public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
     public GUIMessageDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static GUIMessage readEntity(FileReader fileReader, Long version) {
+    @Override
+    protected GUIMessage parseClientResourceFile(FileReader fileReader) {
         long languageId = fileReader.readUnsignedInteger();
         BigInteger updateTime = fileReader.readUnsignedLong();
         long indexNum = fileReader.readUnsignedInteger();
@@ -57,11 +58,6 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer<GUIMe
             index.messageIndex = i;
         }
 
-        return new GUIMessage(version, languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
-    }
-
-    @Override
-    protected GUIMessage parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader, clientResourceFile.fileHeader.versionNumber);
+        return new GUIMessage(clientResourceFile.fileHeader.versionNumber, languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
     }
 }

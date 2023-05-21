@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 import java.util.List;
 
 public record AreaMasterSpotDetailData(
@@ -9,5 +7,5 @@ public record AreaMasterSpotDetailData(
         List<SpotItemData> ItemArray,
         List<SpotEnemyData> EnemyArray
 
-) implements DeserializableClientResource {
+) {
 }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.AbilityData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.AbilityDataList;
 
-import java.util.List;
-
-public class AbilityDataDeserializer extends ClientResourceFileDeserializer<List<AbilityData>> {
+public class AbilityDataDeserializer extends ClientResourceFileDeserializer {
     public AbilityDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static AbilityData readEntity(FileReader fileReader) {
+    private static AbilityData readAbilityData(FileReader fileReader) {
         return new AbilityData(
                 fileReader.readUnsignedShort(),
                 fileReader.readUnsignedShort(),
@@ -25,7 +24,7 @@ public class AbilityDataDeserializer extends ClientResourceFileDeserializer<List
     }
 
     @Override
-    protected List<AbilityData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(AbilityDataDeserializer::readEntity);
+    protected AbilityDataList parseClientResourceFile(FileReader fileReader) {
+        return new AbilityDataList(fileReader.readArray(AbilityDataDeserializer::readAbilityData));
     }
 }

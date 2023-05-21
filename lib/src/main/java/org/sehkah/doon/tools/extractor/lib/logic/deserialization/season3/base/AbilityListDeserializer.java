@@ -8,7 +8,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilityListDeserializer extends ClientResourceFileDeserializer<AbilityList> {
+public class AbilityListDeserializer extends ClientResourceFileDeserializer {
 
     public AbilityListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
@@ -51,7 +51,8 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer<Abil
         );
     }
 
-    private static AbilityList readEntity(FileReader fileReader) {
+    @Override
+    protected AbilityList parseClientResourceFile(FileReader fileReader) {
         long BufferSize = fileReader.readUnsignedInteger();
         long DataListNum = fileReader.readUnsignedInteger();
         List<AbilityData> DataList = new ArrayList<>((int) DataListNum);
@@ -63,10 +64,5 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer<Abil
                 DataListNum,
                 DataList
         );
-    }
-
-    @Override
-    protected AbilityList parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

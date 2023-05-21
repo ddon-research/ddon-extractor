@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.meta.GUIMessageLanguageType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -20,7 +20,7 @@ public record GUIMessage(
         String PackageName,
         List<GUIMessageIndex> Indices,
         long[] HashTable
-) implements DeserializableClientResource {
+) implements TopLevelClientResource {
     public GUIMessage(long version, long languageId, BigInteger updateTime, long indexNum, long messageNum, long indexNameBufferSize, long bufferSize, String packageName, List<GUIMessageIndex> indices, long[] hashTable) {
         this(
                 version,

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.NamedParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.NamedParamList;
 
-import java.util.List;
-
-public class NamedParamDeserializer extends ClientResourceFileDeserializer<List<NamedParam>> {
+public class NamedParamDeserializer extends ClientResourceFileDeserializer {
     public NamedParamDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static NamedParam readEntity(FileReader fileReader) {
+    private static NamedParam readNamedParam(FileReader fileReader) {
         return new NamedParam(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -42,7 +41,7 @@ public class NamedParamDeserializer extends ClientResourceFileDeserializer<List<
     }
 
     @Override
-    protected List<NamedParam> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(NamedParamDeserializer::readEntity);
+    protected NamedParamList parseClientResourceFile(FileReader fileReader) {
+        return new NamedParamList(fileReader.readArray(NamedParamDeserializer::readNamedParam));
     }
 }
