@@ -11,7 +11,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.ClientSeasonType;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.Deserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.Serializer;
-import org.sehkah.doon.tools.extractor.lib.logic.serialization.SerializerImpl;
+import org.sehkah.doon.tools.extractor.lib.logic.serialization.StringSerializerImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
@@ -68,13 +68,13 @@ public class ExtractCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
             Optionally specify whether to enrich the output with additional meta information (if available).
             If omitted the default behavior is not to add meta information.
-            
+                        
             For example, if a numeric type has a corresponding (probable) semantic mapping this will be output as additional field.
             Note that this makes the output more comprehensible at the price of serialization compatibility and accuracy.
             """, defaultValue = "false")
     private boolean addMetaInformation;
 
-    private StatusCode extractSingleFile(Path filePath, Serializer serializer, boolean writeOutputToFile) {
+    private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
         FileReader fileReader;
         try {
             fileReader = new BinaryFileReader(filePath);
@@ -92,7 +92,7 @@ public class ExtractCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         logger.debug("Extracting resource data from file '{}'.", filePath);
-        Object deserializedOutput = deserializer.deserialize(fileReader);
+        TopLevelClientResource deserializedOutput = deserializer.deserialize(fileReader);
         if (deserializedOutput != null) {
             String serializedOutput;
             try {
@@ -137,7 +137,7 @@ public class ExtractCommand implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         if (Files.exists(inputFilePath)) {
-            Serializer serializer = new SerializerImpl(outputFormat, addMetaInformation);
+            Serializer<TopLevelClientResource> serializer = new StringSerializerImpl(outputFormat, addMetaInformation);
             clientSeason = ClientSeason.get(clientSeasonType);
             if (Files.isDirectory(inputFilePath)) {
                 logger.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
