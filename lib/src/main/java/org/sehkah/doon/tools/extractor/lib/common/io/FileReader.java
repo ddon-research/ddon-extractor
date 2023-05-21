@@ -10,8 +10,6 @@ import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
 public interface FileReader {
-    int getPosition();
-
     int getLimit();
 
     boolean hasRemaining();
@@ -21,8 +19,6 @@ public interface FileReader {
     int readUnsignedByte();
 
     byte readSignedByte();
-
-    byte[] readSignedByte(int num);
 
     boolean readBoolean();
 
@@ -38,13 +34,9 @@ public interface FileReader {
 
     BigInteger readUnsignedLong();
 
-    long readSignedLong();
-
     float readFloat();
 
     float[] readFloat(int num);
-
-    double readDouble();
 
     Vector3f readVector3f();
 
@@ -71,6 +63,4 @@ public interface FileReader {
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 
     <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction);
-
-    void rewind(int i);
 }

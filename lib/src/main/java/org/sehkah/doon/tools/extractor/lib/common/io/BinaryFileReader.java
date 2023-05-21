@@ -21,17 +21,12 @@ public class BinaryFileReader implements FileReader {
     private final ByteBuffer byteBuffer;
 
     public BinaryFileReader(Path filePath) throws IOException {
-        this(ByteBuffer.wrap(Files.readAllBytes(filePath)));
+        this(ByteBuffer.wrap(Files.readAllBytes(filePath)).asReadOnlyBuffer());
     }
 
     private BinaryFileReader(ByteBuffer byteBuffer) {
         this.byteBuffer = byteBuffer;
         this.byteBuffer.order(DEFAULT_BYTE_ORDER);
-    }
-
-    @Override
-    public int getPosition() {
-        return byteBuffer.position();
     }
 
     @Override
@@ -57,15 +52,6 @@ public class BinaryFileReader implements FileReader {
     @Override
     public byte readSignedByte() {
         return byteBuffer.get();
-    }
-
-    @Override
-    public byte[] readSignedByte(int num) {
-        byte[] bytes = new byte[num];
-        for (int i = 0; i < num; i++) {
-            bytes[i] = byteBuffer.get();
-        }
-        return bytes;
     }
 
     @Override
@@ -118,11 +104,6 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public long readSignedLong() {
-        return byteBuffer.getLong();
-    }
-
-    @Override
     public float readFloat() {
         return byteBuffer.getFloat();
     }
@@ -134,11 +115,6 @@ public class BinaryFileReader implements FileReader {
             floats[i] = readFloat();
         }
         return floats;
-    }
-
-    @Override
-    public double readDouble() {
-        return byteBuffer.getDouble();
     }
 
     @Override
@@ -222,10 +198,5 @@ public class BinaryFileReader implements FileReader {
             entities.add(entityReaderFunction.apply(this));
         }
         return entities;
-    }
-
-    @Override
-    public void rewind(int i) {
-        byteBuffer.position(byteBuffer.position() - i);
     }
 }
