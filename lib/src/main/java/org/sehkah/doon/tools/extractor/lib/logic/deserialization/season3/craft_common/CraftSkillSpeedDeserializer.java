@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftSkillSpdData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftSkillSpdList;
 
-import java.util.List;
-
-public class CraftSkillSpeedDeserializer extends ClientResourceFileDeserializer<List<CraftSkillSpdData>> {
+public class CraftSkillSpeedDeserializer extends ClientResourceFileDeserializer {
     public CraftSkillSpeedDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static CraftSkillSpdData readEntity(FileReader fileReader) {
+    private static CraftSkillSpdData readCraftSkillSpdData(FileReader fileReader) {
         return new CraftSkillSpdData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
@@ -20,7 +19,7 @@ public class CraftSkillSpeedDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<CraftSkillSpdData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(CraftSkillSpeedDeserializer::readEntity);
+    protected CraftSkillSpdList parseClientResourceFile(FileReader fileReader) {
+        return new CraftSkillSpdList(fileReader.readArray(CraftSkillSpeedDeserializer::readCraftSkillSpdData));
     }
 }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.clankyoten.FurnitureItem;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.clankyoten.FurnitureItemList;
 
-import java.util.List;
-
-public class FurnitureItemDeserializer extends ClientResourceFileDeserializer<List<FurnitureItem>> {
+public class FurnitureItemDeserializer extends ClientResourceFileDeserializer {
     public FurnitureItemDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static FurnitureItem readEntity(FileReader fileReader) {
+    private static FurnitureItem readFurnitureItem(FileReader fileReader) {
         return new FurnitureItem(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -21,7 +20,7 @@ public class FurnitureItemDeserializer extends ClientResourceFileDeserializer<Li
     }
 
     @Override
-    protected List<FurnitureItem> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(FurnitureItemDeserializer::readEntity);
+    protected FurnitureItemList parseClientResourceFile(FileReader fileReader) {
+        return new FurnitureItemList(fileReader.readArray(FurnitureItemDeserializer::readFurnitureItem));
     }
 }

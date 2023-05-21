@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.sg300000;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsCategoryType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsDate;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsReplenishType;
@@ -30,7 +29,7 @@ public record ShopGoods(
         ShopGoodsReplenishType ReplenishTypeName,
         int InGameDays,
         ShopGoodsDate RealDate
-) implements DeserializableClientResource {
+) {
     public ShopGoods(int category, long ID, BigInteger price, int goldType, int saleType, int requiredFavorite, ShopGoodsDate startDate, ShopGoodsDate endDate, int stockNum, int maxStockNum, int replenishRate, int replenishType, int inGameDays, ShopGoodsDate realDate) {
         this(
                 category, ShopGoodsCategoryType.of(category),

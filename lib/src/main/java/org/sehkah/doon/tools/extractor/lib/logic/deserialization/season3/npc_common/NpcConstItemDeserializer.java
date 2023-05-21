@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.npc_common.NpcConstItem;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.npc_common.NpcConstItemList;
 
-import java.util.List;
-
-public class NpcConstItemDeserializer extends ClientResourceFileDeserializer<List<NpcConstItem>> {
+public class NpcConstItemDeserializer extends ClientResourceFileDeserializer {
     public NpcConstItemDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static NpcConstItem readEntity(FileReader fileReader) {
+    private static NpcConstItem readNpcConstItem(FileReader fileReader) {
         return new NpcConstItem(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
@@ -20,7 +19,7 @@ public class NpcConstItemDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<NpcConstItem> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(NpcConstItemDeserializer::readEntity);
+    protected NpcConstItemList parseClientResourceFile(FileReader fileReader) {
+        return new NpcConstItemList(fileReader.readArray(NpcConstItemDeserializer::readNpcConstItem));
     }
 }

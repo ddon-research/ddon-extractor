@@ -6,7 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.tutorial_guide.TutorialDialogMessage;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.tutorial_guide.TutorialDialogMessageDialogPage;
 
-public class TutorialDialogMessageDeserializer extends ClientResourceFileDeserializer<TutorialDialogMessage> {
+public class TutorialDialogMessageDeserializer extends ClientResourceFileDeserializer {
     public TutorialDialogMessageDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -18,16 +18,13 @@ public class TutorialDialogMessageDeserializer extends ClientResourceFileDeseria
         );
     }
 
-    private static TutorialDialogMessage readEntity(FileReader fileReader) {
+
+    @Override
+    protected TutorialDialogMessage parseClientResourceFile(FileReader fileReader) {
         return new TutorialDialogMessage(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
                 fileReader.readArray(TutorialDialogMessageDeserializer::readTutorialDialogMessageDialogPage)
         );
-    }
-
-    @Override
-    protected TutorialDialogMessage parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

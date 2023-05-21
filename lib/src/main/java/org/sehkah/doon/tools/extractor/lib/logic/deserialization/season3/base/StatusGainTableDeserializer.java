@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.StatusGain;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.StatusGainTable;
 
-import java.util.List;
-
-public class StatusGainTableDeserializer extends ClientResourceFileDeserializer<List<StatusGain>> {
+public class StatusGainTableDeserializer extends ClientResourceFileDeserializer {
     public StatusGainTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static StatusGain readEntity(FileReader fileReader) {
+    private static StatusGain readStatusGain(FileReader fileReader) {
         return new StatusGain(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
@@ -20,7 +19,7 @@ public class StatusGainTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<StatusGain> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(StatusGainTableDeserializer::readEntity);
+    protected StatusGainTable parseClientResourceFile(FileReader fileReader) {
+        return new StatusGainTable(fileReader.readArray(StatusGainTableDeserializer::readStatusGain));
     }
 }

@@ -4,16 +4,15 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.CraftQualityData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.CraftQualityList;
 
-import java.util.List;
-
-public class CraftQualityDeserializer extends ClientResourceFileDeserializer<List<CraftQualityData>> {
+public class CraftQualityDeserializer extends ClientResourceFileDeserializer {
 
     public CraftQualityDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static CraftQualityData readEntity(FileReader fileReader) {
+    private static CraftQualityData readCraftQualityData(FileReader fileReader) {
         return new CraftQualityData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,9 @@ public class CraftQualityDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<CraftQualityData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(CraftQualityDeserializer::readEntity);
+    protected CraftQualityList parseClientResourceFile(FileReader fileReader) {
+        return new CraftQualityList(
+                fileReader.readArray(CraftQualityDeserializer::readCraftQualityData)
+        );
     }
 }

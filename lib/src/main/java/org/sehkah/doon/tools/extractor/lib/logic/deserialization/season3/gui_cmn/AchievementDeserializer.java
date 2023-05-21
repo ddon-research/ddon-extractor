@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.AchievementData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn.AchievementDataList;
 
-import java.util.List;
-
-public class AchievementDeserializer extends ClientResourceFileDeserializer<List<AchievementData>> {
+public class AchievementDeserializer extends ClientResourceFileDeserializer {
     public AchievementDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static AchievementData readEntity(FileReader fileReader) {
+    private static AchievementData readAchievementData(FileReader fileReader) {
         return new AchievementData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class AchievementDeserializer extends ClientResourceFileDeserializer<List
     }
 
     @Override
-    protected List<AchievementData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(AchievementDeserializer::readEntity);
+    protected AchievementDataList parseClientResourceFile(FileReader fileReader) {
+        return new AchievementDataList(fileReader.readArray(AchievementDeserializer::readAchievementData));
     }
 }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EvaluationTable;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EvaluationTableList;
 
-import java.util.List;
-
-public class EvaluationTableDeserializer extends ClientResourceFileDeserializer<List<EvaluationTable>> {
+public class EvaluationTableDeserializer extends ClientResourceFileDeserializer {
     public EvaluationTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static EvaluationTable readEntity(FileReader fileReader) {
+    private static EvaluationTable readEvaluationTable(FileReader fileReader) {
         return new EvaluationTable(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class EvaluationTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<EvaluationTable> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(EvaluationTableDeserializer::readEntity);
+    protected EvaluationTableList parseClientResourceFile(FileReader fileReader) {
+        return new EvaluationTableList(fileReader.readArray(EvaluationTableDeserializer::readEvaluationTable));
     }
 }

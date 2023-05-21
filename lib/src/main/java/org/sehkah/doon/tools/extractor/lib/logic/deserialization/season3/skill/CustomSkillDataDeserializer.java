@@ -4,11 +4,10 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.skill.CustomSkillData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.skill.CustomSkillDataList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.skill.SkillLevelData;
 
-import java.util.List;
-
-public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<List<CustomSkillData>> {
+public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer {
     public CustomSkillDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -21,7 +20,7 @@ public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<
         );
     }
 
-    private static CustomSkillData readEntity(FileReader fileReader) {
+    private static CustomSkillData readCustomSkillData(FileReader fileReader) {
         return new CustomSkillData(
                 fileReader.readUnsignedShort(),
                 fileReader.readUnsignedShort(),
@@ -33,7 +32,7 @@ public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<CustomSkillData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(CustomSkillDataDeserializer::readEntity);
+    protected CustomSkillDataList parseClientResourceFile(FileReader fileReader) {
+        return new CustomSkillDataList(fileReader.readArray(CustomSkillDataDeserializer::readCustomSkillData));
     }
 }

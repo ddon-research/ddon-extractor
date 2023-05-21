@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.StageListInfo;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.StageListInfoList;
 
-import java.util.List;
-
-public class StageListDeserializer extends ClientResourceFileDeserializer<List<StageListInfo>> {
+public class StageListDeserializer extends ClientResourceFileDeserializer {
     public StageListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static StageListInfo readEntity(FileReader fileReader) {
+    private static StageListInfo readStageListInfo(FileReader fileReader) {
         return new StageListInfo(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class StageListDeserializer extends ClientResourceFileDeserializer<List<S
     }
 
     @Override
-    protected List<StageListInfo> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(StageListDeserializer::readEntity);
+    protected StageListInfoList parseClientResourceFile(FileReader fileReader) {
+        return new StageListInfoList(fileReader.readArray(StageListDeserializer::readStageListInfo));
     }
 }

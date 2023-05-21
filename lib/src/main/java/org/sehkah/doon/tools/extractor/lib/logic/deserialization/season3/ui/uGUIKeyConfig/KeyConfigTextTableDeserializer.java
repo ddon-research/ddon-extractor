@@ -3,16 +3,15 @@ package org.sehkah.doon.tools.extractor.lib.logic.deserialization.season3.ui.uGU
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIKeyConfig.KeyConfigTextTable;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIKeyConfig.KeyText;
 
-import java.util.List;
-
-public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializer<List<KeyText>> {
+public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializer {
     public KeyConfigTextTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static KeyText readEntity(FileReader fileReader) {
+    private static KeyText readKeyText(FileReader fileReader) {
         return new KeyText(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -22,7 +21,7 @@ public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected List<KeyText> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(KeyConfigTextTableDeserializer::readEntity);
+    protected KeyConfigTextTable parseClientResourceFile(FileReader fileReader) {
+        return new KeyConfigTextTable(fileReader.readArray(KeyConfigTextTableDeserializer::readKeyText));
     }
 }

@@ -1,7 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.stage;
 
 import org.sehkah.doon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.stage.meta.LocationDataType;
 import org.sehkah.doon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -16,7 +15,7 @@ public record LocationData(
         LocationDataType LocationType,
         long WarpPointId,
         boolean SafeZone
-) implements DeserializableClientResource {
+) {
     public LocationData(Vector3f pos, float radius, float angle, float range, int messageNo, int type, long warpPointId, boolean safeZone) {
         this(
                 pos,

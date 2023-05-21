@@ -5,10 +5,9 @@ import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.StaminaDecList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.StaminaDecParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.job.StaminaDecTbl;
 
-import java.util.List;
-
-public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<List<StaminaDecList>> {
+public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer {
     public StaminaDecTblDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -17,7 +16,7 @@ public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<Li
         return new StaminaDecParam(fileReader.readFloat());
     }
 
-    private static StaminaDecList readEntity(FileReader fileReader) {
+    private static StaminaDecList readStaminaDecList(FileReader fileReader) {
         return new StaminaDecList(
                 fileReader.readArray(StaminaDecTblDeserializer::readStaminaDecParam),
                 fileReader.readUnsignedInteger(),
@@ -28,7 +27,7 @@ public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<Li
     }
 
     @Override
-    protected List<StaminaDecList> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(StaminaDecTblDeserializer::readEntity);
+    protected StaminaDecTbl parseClientResourceFile(FileReader fileReader) {
+        return new StaminaDecTbl(fileReader.readArray(StaminaDecTblDeserializer::readStaminaDecList));
     }
 }

@@ -4,12 +4,11 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster.AreaMasterSpotDetailData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster.AreaMasterSpotDetailDataList;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster.SpotEnemyData;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster.SpotItemData;
 
-import java.util.List;
-
-public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<List<AreaMasterSpotDetailData>> {
+public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer {
     public AreaMasterSpotDetailDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
@@ -34,7 +33,7 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
         );
     }
 
-    private static AreaMasterSpotDetailData readEntity(FileReader fileReader) {
+    private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(FileReader fileReader) {
         return new AreaMasterSpotDetailData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData),
@@ -43,7 +42,7 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
     }
 
     @Override
-    protected List<AreaMasterSpotDetailData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readEntity);
+    protected AreaMasterSpotDetailDataList parseClientResourceFile(FileReader fileReader) {
+        return new AreaMasterSpotDetailDataList(fileReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData));
     }
 }

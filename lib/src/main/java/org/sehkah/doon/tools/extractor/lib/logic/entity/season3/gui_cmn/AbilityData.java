@@ -1,6 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 public record AbilityData(
         int Id,
@@ -10,5 +10,5 @@ public record AbilityData(
         int Cost,
         int SortNo,
         boolean IsPawnDisable
-) implements DeserializableClientResource {
+) implements TopLevelClientResource {
 }

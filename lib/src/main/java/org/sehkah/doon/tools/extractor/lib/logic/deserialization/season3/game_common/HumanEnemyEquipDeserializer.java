@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.HumanEnemyEquip;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.HumanEnemyEquipList;
 
-import java.util.List;
-
-public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer<List<HumanEnemyEquip>> {
+public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer {
     public HumanEnemyEquipDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static HumanEnemyEquip readEntity(FileReader fileReader) {
+    private static HumanEnemyEquip readHumanEnemyEquip(FileReader fileReader) {
         return new HumanEnemyEquip(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -29,7 +28,7 @@ public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<HumanEnemyEquip> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(HumanEnemyEquipDeserializer::readEntity);
+    protected HumanEnemyEquipList parseClientResourceFile(FileReader fileReader) {
+        return new HumanEnemyEquipList(fileReader.readArray(HumanEnemyEquipDeserializer::readHumanEnemyEquip));
     }
 }

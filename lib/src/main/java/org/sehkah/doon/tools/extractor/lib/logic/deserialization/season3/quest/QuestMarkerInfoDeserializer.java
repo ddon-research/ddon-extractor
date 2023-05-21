@@ -6,7 +6,7 @@ import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.QuestMarkerInfo;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.QuestMarkerInfoInfo;
 
-public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer<QuestMarkerInfo> {
+public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer {
 
     public QuestMarkerInfoDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
@@ -20,15 +20,11 @@ public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer<
         );
     }
 
-    private static QuestMarkerInfo readEntity(FileReader fileReader) {
+    @Override
+    protected QuestMarkerInfo parseClientResourceFile(FileReader fileReader) {
         return new QuestMarkerInfo(
                 fileReader.readUnsignedInteger(),
                 fileReader.readArray(QuestMarkerInfoDeserializer::readQuestMarkerInfoInfo)
         );
-    }
-
-    @Override
-    protected QuestMarkerInfo parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
     }
 }

@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.QuestTextData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.QuestTextDataList;
 
-import java.util.List;
-
-public class QuestTextDataDeserializer extends ClientResourceFileDeserializer<List<QuestTextData>> {
+public class QuestTextDataDeserializer extends ClientResourceFileDeserializer {
     public QuestTextDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static QuestTextData readEntity(FileReader fileReader) {
+    private static QuestTextData readQuestTextData(FileReader fileReader) {
         return new QuestTextData(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
@@ -20,7 +19,7 @@ public class QuestTextDataDeserializer extends ClientResourceFileDeserializer<Li
     }
 
     @Override
-    protected List<QuestTextData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(QuestTextDataDeserializer::readEntity);
+    protected QuestTextDataList parseClientResourceFile(FileReader fileReader) {
+        return new QuestTextDataList(fileReader.readArray(QuestTextDataDeserializer::readQuestTextData));
     }
 }

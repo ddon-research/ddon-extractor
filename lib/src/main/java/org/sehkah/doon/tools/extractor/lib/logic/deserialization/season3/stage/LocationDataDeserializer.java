@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.stage.LocationData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.stage.LocationDataList;
 
-import java.util.List;
-
-public class LocationDataDeserializer extends ClientResourceFileDeserializer<List<LocationData>> {
+public class LocationDataDeserializer extends ClientResourceFileDeserializer {
     public LocationDataDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static LocationData readEntity(FileReader fileReader) {
+    private static LocationData readLocationData(FileReader fileReader) {
         return new LocationData(
                 fileReader.readVector3f(),
                 fileReader.readFloat(),
@@ -26,7 +25,7 @@ public class LocationDataDeserializer extends ClientResourceFileDeserializer<Lis
     }
 
     @Override
-    protected List<LocationData> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(LocationDataDeserializer::readEntity);
+    protected LocationDataList parseClientResourceFile(FileReader fileReader) {
+        return new LocationDataList(fileReader.readArray(LocationDataDeserializer::readLocationData));
     }
 }

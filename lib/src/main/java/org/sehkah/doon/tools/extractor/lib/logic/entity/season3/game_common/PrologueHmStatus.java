@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 public record PrologueHmStatus(
         int Job,
         int Lv,
@@ -20,5 +18,5 @@ public record PrologueHmStatus(
         int NormalSkillId1,
         int NormalSkillId2,
         int NormalSkillId3
-) implements DeserializableClientResource {
+) {
 }

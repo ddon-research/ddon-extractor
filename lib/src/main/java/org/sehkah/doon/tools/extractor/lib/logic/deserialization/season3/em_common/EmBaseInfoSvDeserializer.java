@@ -4,30 +4,31 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EmBaseInfoSv;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.em_common.EmBaseInfoSvList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmBaseInfoSvDeserializer extends ClientResourceFileDeserializer<List<EmBaseInfoSv>> {
+public class EmBaseInfoSvDeserializer extends ClientResourceFileDeserializer {
     public EmBaseInfoSvDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static List<EmBaseInfoSv> readEntity(FileReader fileReader) {
-        long length = fileReader.readUnsignedInteger();
-        List<EmBaseInfoSv> entities = new ArrayList<>((int) length);
-        for (int i = 0; i < length; i++) {
-            entities.add(new EmBaseInfoSv(
-                    i,
-                    fileReader.readUnsignedInteger(),
-                    fileReader.readUnsignedInteger()
-            ));
-        }
-        return entities;
+    private static EmBaseInfoSv readEmBaseInfoSv(FileReader fileReader, int num) {
+        return new EmBaseInfoSv(
+                num,
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger()
+        );
     }
 
     @Override
-    protected List<EmBaseInfoSv> parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
+    protected EmBaseInfoSvList parseClientResourceFile(FileReader fileReader) {
+        long length = fileReader.readUnsignedInteger();
+        List<EmBaseInfoSv> entities = new ArrayList<>((int) length);
+        for (int i = 0; i < length; i++) {
+            entities.add(readEmBaseInfoSv(fileReader, i));
+        }
+        return new EmBaseInfoSvList(entities);
     }
 }

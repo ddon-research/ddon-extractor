@@ -4,30 +4,31 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftElementExpData;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.craft_common.CraftElementExpList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftElementExpDeserializer extends ClientResourceFileDeserializer<List<CraftElementExpData>> {
+public class CraftElementExpDeserializer extends ClientResourceFileDeserializer {
     public CraftElementExpDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static List<CraftElementExpData> readEntity(FileReader fileReader) {
-        long length = fileReader.readUnsignedInteger();
-        List<CraftElementExpData> entities = new ArrayList<>((int) length);
-        for (int i = 0; i < length; i++) {
-            entities.add(new CraftElementExpData(
-                    i,
-                    fileReader.readUnsignedLong(),
-                    fileReader.readUnsignedInteger()
-            ));
-        }
-        return entities;
+    private static CraftElementExpData readCraftElementExpData(FileReader fileReader, int level) {
+        return new CraftElementExpData(
+                level,
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedInteger()
+        );
     }
 
     @Override
-    protected List<CraftElementExpData> parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
+    protected CraftElementExpList parseClientResourceFile(FileReader fileReader) {
+        long length = fileReader.readUnsignedInteger();
+        List<CraftElementExpData> entities = new ArrayList<>((int) length);
+        for (int i = 0; i < length; i++) {
+            entities.add(readCraftElementExpData(fileReader, i));
+        }
+        return new CraftElementExpList(entities);
     }
 }

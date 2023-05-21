@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.GatheringItem;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.GatheringItemList;
 
-import java.util.List;
-
-public class GatheringItemDeserializer extends ClientResourceFileDeserializer<List<GatheringItem>> {
+public class GatheringItemDeserializer extends ClientResourceFileDeserializer {
     public GatheringItemDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static GatheringItem readEntity(FileReader fileReader) {
+    private static GatheringItem readGatheringItem(FileReader fileReader) {
         return new GatheringItem(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger()
@@ -20,7 +19,7 @@ public class GatheringItemDeserializer extends ClientResourceFileDeserializer<Li
     }
 
     @Override
-    protected List<GatheringItem> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(GatheringItemDeserializer::readEntity);
+    protected GatheringItemList parseClientResourceFile(FileReader fileReader) {
+        return new GatheringItemList(fileReader.readArray(GatheringItemDeserializer::readGatheringItem));
     }
 }

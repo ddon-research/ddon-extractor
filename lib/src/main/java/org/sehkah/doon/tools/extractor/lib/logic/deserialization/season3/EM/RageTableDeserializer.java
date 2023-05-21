@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.EM.Rage;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.EM.RageTable;
 
-import java.util.List;
-
-public class RageTableDeserializer extends ClientResourceFileDeserializer<List<Rage>> {
+public class RageTableDeserializer extends ClientResourceFileDeserializer {
     public RageTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static Rage readEntity(FileReader fileReader) {
+    private static Rage readRage(FileReader fileReader) {
         return new Rage(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -22,7 +21,7 @@ public class RageTableDeserializer extends ClientResourceFileDeserializer<List<R
     }
 
     @Override
-    protected List<Rage> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(RageTableDeserializer::readEntity);
+    protected RageTable parseClientResourceFile(FileReader fileReader) {
+        return new RageTable(fileReader.readArray(RageTableDeserializer::readRage));
     }
 }

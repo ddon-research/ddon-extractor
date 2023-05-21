@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.EM;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
-
 public record EmLvUpParam(
         long Lv,
         float[] Hp_Cor,
@@ -21,5 +19,5 @@ public record EmLvUpParam(
         float GuardDefWep_Cor,
         float DownP_Cor,
         float ShakeP_Cor
-) implements DeserializableClientResource {
+) {
 }

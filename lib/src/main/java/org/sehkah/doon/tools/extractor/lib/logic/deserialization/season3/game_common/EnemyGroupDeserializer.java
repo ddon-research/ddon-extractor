@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroup;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroupList;
 
-import java.util.List;
-
-public class EnemyGroupDeserializer extends ClientResourceFileDeserializer<List<EnemyGroup>> {
+public class EnemyGroupDeserializer extends ClientResourceFileDeserializer {
     public EnemyGroupDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static EnemyGroup readEntity(FileReader fileReader) {
+    private static EnemyGroup readEnemyGroup(FileReader fileReader) {
         return new EnemyGroup(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -21,7 +20,7 @@ public class EnemyGroupDeserializer extends ClientResourceFileDeserializer<List<
     }
 
     @Override
-    protected List<EnemyGroup> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(EnemyGroupDeserializer::readEntity);
+    protected EnemyGroupList parseClientResourceFile(FileReader fileReader) {
+        return new EnemyGroupList(fileReader.readArray(EnemyGroupDeserializer::readEnemyGroup));
     }
 }

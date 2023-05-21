@@ -4,15 +4,14 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.IncreaseParam;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.base.JobLevelUpTable;
 
-import java.util.List;
-
-public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer<List<IncreaseParam>> {
+public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer {
     public JobLevelUpTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static IncreaseParam readEntity(FileReader fileReader) {
+    private static IncreaseParam readIncreaseParam(FileReader fileReader) {
         return new IncreaseParam(
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
@@ -23,7 +22,7 @@ public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected List<IncreaseParam> parseClientResourceFile(FileReader fileReader) {
-        return fileReader.readArray(JobLevelUpTableDeserializer::readEntity);
+    protected JobLevelUpTable parseClientResourceFile(FileReader fileReader) {
+        return new JobLevelUpTable(fileReader.readArray(JobLevelUpTableDeserializer::readIncreaseParam));
     }
 }

@@ -1,6 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.DeserializableClientResource;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.meta.AIPawnPersonalityType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.meta.PawnQuestTalkMessageType;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season3.quest.meta.PawnQuestTalkResourceType;
@@ -17,7 +16,7 @@ public record TalkData(
         int Personality,
         @MetaInformation
         AIPawnPersonalityType PersonalityType
-) implements DeserializableClientResource {
+) {
     public TalkData(long groupSerial, int msgType, int resType, int personality) {
         this(
                 groupSerial,

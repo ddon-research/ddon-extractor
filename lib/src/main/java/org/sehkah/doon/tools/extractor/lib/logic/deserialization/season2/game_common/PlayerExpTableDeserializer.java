@@ -4,29 +4,30 @@ import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.doon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.doon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.game_common.PlayerExpTable;
+import org.sehkah.doon.tools.extractor.lib.logic.entity.season2.game_common.PlayerExpTableList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer<List<PlayerExpTable>> {
+public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer {
     public PlayerExpTableDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static List<PlayerExpTable> readEntity(FileReader fileReader) {
-        long length = fileReader.readUnsignedInteger();
-        List<PlayerExpTable> entities = new ArrayList<>((int) length);
-        for (int i = 0; i < length; i++) {
-            entities.add(new PlayerExpTable(i,
-                    fileReader.readUnsignedInteger(),
-                    fileReader.readUnsignedInteger()
-            ));
-        }
-        return entities;
+    private static PlayerExpTable readPlayerExpTable(FileReader fileReader, int level) {
+        return new PlayerExpTable(level,
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger()
+        );
     }
 
     @Override
-    protected List<PlayerExpTable> parseClientResourceFile(FileReader fileReader) {
-        return readEntity(fileReader);
+    protected PlayerExpTableList parseClientResourceFile(FileReader fileReader) {
+        long length = fileReader.readUnsignedInteger();
+        List<PlayerExpTable> entities = new ArrayList<>((int) length);
+        for (int i = 0; i < length; i++) {
+            entities.add(readPlayerExpTable(fileReader, i));
+        }
+        return new PlayerExpTableList(entities);
     }
 }

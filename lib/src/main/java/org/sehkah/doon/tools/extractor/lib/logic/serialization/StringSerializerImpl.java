@@ -7,12 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.doon.tools.extractor.lib.common.error.SerializerException;
 
-public class SerializerImpl implements Serializer {
+public class StringSerializerImpl implements Serializer<TopLevelClientResource> {
     private final ObjectMapper objectMapper;
 
-    public SerializerImpl(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    public StringSerializerImpl(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         MetaInformationIntrospector metaInformationIntrospector = new MetaInformationIntrospector(shouldSerializeMetaInformation);
         switch (preferredSerializationType) {
             case JSON, json -> {
@@ -39,20 +40,16 @@ public class SerializerImpl implements Serializer {
     }
 
     @Override
-    public <T> T deserialize(String serialized, Class<T> cls) {
+    public String serialize(TopLevelClientResource deserialized) {
         try {
-            return objectMapper.readValue(serialized, cls);
+            return objectMapper.writeValueAsString(deserialized);
         } catch (JsonProcessingException e) {
             throw new SerializerException(e);
         }
     }
 
     @Override
-    public <T> String serialize(T deserialized) {
-        try {
-            return objectMapper.writeValueAsString(deserialized);
-        } catch (JsonProcessingException e) {
-            throw new SerializerException(e);
-        }
+    public byte[] serializeResource(TopLevelClientResource deserialized) throws SerializerException {
+        return new byte[0];
     }
 }
