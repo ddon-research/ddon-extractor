@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
-import org.sehkah.doon.tools.extractor.lib.common.error.MagicValidationFailedException;
-import org.sehkah.doon.tools.extractor.lib.common.error.VersionValidationFailedException;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +43,8 @@ public class FileHeader {
             encounteredVersionNumber = fileReader.readUnsignedShort();
         }
         if (encounteredVersionNumber != versionNumber) {
-            throw new VersionValidationFailedException(encounteredVersionNumber, versionNumber);
+            logger.error("Encountered version '{}' does not equal expected '{}'.", encounteredVersionNumber, versionNumber);
+            return false;
         }
         logger.debug("version: '{}'", encounteredVersionNumber);
         return true;
@@ -54,9 +53,20 @@ public class FileHeader {
     public boolean isMagicValid(FileReader fileReader) {
         String encounteredMagicString = fileReader.readString(magicBytesLength);
         if (!encounteredMagicString.equals(magicString)) {
-            throw new MagicValidationFailedException(encounteredMagicString, magicString);
+            logger.error("Encountered magic value '{}' does not equal expected '{}'.", encounteredMagicString, magicString);
+            return false;
         }
         logger.debug("magic: '{}'", encounteredMagicString);
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "FileHeader{" +
+                "magicBytesLength=" + magicBytesLength +
+                ", versionBytesLength=" + versionBytesLength +
+                ", magicString='" + magicString + '\'' +
+                ", versionNumber=" + versionNumber +
+                '}';
     }
 }
