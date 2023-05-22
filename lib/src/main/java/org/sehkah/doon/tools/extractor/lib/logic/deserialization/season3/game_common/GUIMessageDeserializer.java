@@ -58,6 +58,6 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
             index.messageIndex = i;
         }
 
-        return new GUIMessage(clientResourceFile.fileHeader.versionNumber, languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
+        return new GUIMessage(languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);
     }
 }

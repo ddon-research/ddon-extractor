@@ -26,6 +26,9 @@ public abstract class ClientResourceFileDeserializer implements Deserializer<Top
         if (fileReader.hasRemaining()) {
             throw new FileParsingIncompleteException(fileReader.getRemainingCount(), fileReader.getLimit());
         }
+        result.setFileSize(fileReader.getLimit());
+        result.setMagicString(clientResourceFile.fileHeader.magicString);
+        result.setVersionNumber(clientResourceFile.fileHeader.versionNumber);
         return result;
     }
 

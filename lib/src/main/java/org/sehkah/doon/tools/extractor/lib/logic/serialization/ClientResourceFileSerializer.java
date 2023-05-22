@@ -14,8 +14,7 @@ public abstract class ClientResourceFileSerializer implements Serializer<TopLeve
 
     @Override
     public byte[] serializeResource(TopLevelClientResource clientResource) {
-        // TODO: retrieve the expected file size from the original serialization
-        FileWriter fileWriter = new BinaryFileWriter();
+        FileWriter fileWriter = new BinaryFileWriter(clientResource.getFileSize());
         if (clientResourceFile.fileHeader.magicBytesLength > 0) {
             fileWriter.writeString(clientResourceFile.fileHeader.magicString);
         }

@@ -1,10 +1,20 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
-public record TutorialList(
-        List<TutorialNode> TutorialList
-) implements TopLevelClientResource {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+@Getter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public final class TutorialList extends TopLevelClientResource {
+    private final List<TutorialNode> TutorialList;
+
 }

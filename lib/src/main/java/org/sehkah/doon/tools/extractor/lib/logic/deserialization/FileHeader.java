@@ -1,5 +1,6 @@
 package org.sehkah.doon.tools.extractor.lib.logic.deserialization;
 
+import lombok.ToString;
 import org.sehkah.doon.tools.extractor.lib.common.io.FileReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
+@ToString
 public class FileHeader {
     private static final Logger logger = LoggerFactory.getLogger(FileHeader.class);
     public final int magicBytesLength;
@@ -58,15 +60,5 @@ public class FileHeader {
         }
         logger.debug("magic: '{}'", encounteredMagicString);
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "FileHeader{" +
-                "magicBytesLength=" + magicBytesLength +
-                ", versionBytesLength=" + versionBytesLength +
-                ", magicString='" + magicString + '\'' +
-                ", versionNumber=" + versionNumber +
-                '}';
     }
 }

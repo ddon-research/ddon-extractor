@@ -1,12 +1,22 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.clankyoten;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
-public record MsgSet(
-        long NativeMsgGroupArrayNum,
-        long NativeMsgDataArrayNum,
-        List<MsgGroup> NativeMsgGroupArray
-) implements TopLevelClientResource {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+@Getter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public final class MsgSet extends TopLevelClientResource {
+    private final long NativeMsgGroupArrayNum;
+    private final long NativeMsgDataArrayNum;
+    private final List<MsgGroup> NativeMsgGroupArray;
+
 }

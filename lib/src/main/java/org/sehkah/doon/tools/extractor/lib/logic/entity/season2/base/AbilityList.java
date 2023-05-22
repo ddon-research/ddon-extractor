@@ -1,12 +1,21 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season2.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
-public record AbilityList(
-        long BufferSize,
-        long DataListNum,
-        List<AbilityData> DataList
-) implements TopLevelClientResource {
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+@Getter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public final class AbilityList extends TopLevelClientResource {
+    private final long BufferSize;
+    private final long DataListNum;
+    private final List<AbilityData> DataList;
 }
