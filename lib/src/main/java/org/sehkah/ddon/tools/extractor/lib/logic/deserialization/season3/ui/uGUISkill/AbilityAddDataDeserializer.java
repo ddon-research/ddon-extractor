@@ -1,0 +1,34 @@
+package org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUISkill;
+
+import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityAddData;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityAddDataList;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill.AbilityLevelData;
+
+public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer {
+    public AbilityAddDataDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static AbilityLevelData readAbilityLevelData(FileReader fileReader) {
+        return new AbilityLevelData(
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedInteger()
+        );
+    }
+
+    private static AbilityAddData readAbilityAddData(FileReader fileReader) {
+        return new AbilityAddData(
+                fileReader.readUnsignedShort(),
+                fileReader.readUnsignedByte(),
+                fileReader.readArray(AbilityAddDataDeserializer::readAbilityLevelData)
+        );
+    }
+
+    @Override
+    protected AbilityAddDataList parseClientResourceFile(FileReader fileReader) {
+        return new AbilityAddDataList(fileReader.readArray(AbilityAddDataDeserializer::readAbilityAddData));
+    }
+}
