@@ -6,10 +6,13 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.function.IntFunction;
+import java.util.function.Supplier;
 
 public interface FileWriter {
+    int getPosition();
+
     byte[] getBytes();
 
     void writeUnsignedByte(int value);
@@ -52,8 +55,7 @@ public interface FileWriter {
 
     void writeMtString(String value, Charset charset);
 
-    <E> void writeArray(List<E> value, Function<FileWriter, E> entityWriterFunction);
+    <E> void writeArray(List<E> entities, Supplier<Consumer<E>> consumeEntity);
 
-    <E> void writeArray(List<E> value, IntFunction<Void> arraySizeWriterFunction, Function<FileWriter, E> entityWriterFunction);
-
+    <E> void writeArray(List<E> entities, IntFunction<Void> arraySizeWriterFunction, Supplier<Consumer<E>> consumeEntity);
 }

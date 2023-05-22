@@ -1,7 +1,10 @@
 module org.sehkah.ddon.tools.extractor.lib {
-    requires org.slf4j;
-    requires org.apache.logging.log4j;
     requires static lombok;
+
+    requires org.slf4j;
+
+    requires org.apache.logging.log4j;
+    requires org.apache.commons.codec;
 
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;

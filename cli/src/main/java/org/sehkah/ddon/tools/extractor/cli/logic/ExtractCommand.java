@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.Deserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
 import picocli.CommandLine;
@@ -84,13 +84,13 @@ public class ExtractCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         String fileName = filePath.getFileName().toString();
-        Deserializer<TopLevelClientResource> deserializer = clientSeason.getDeserializer(fileName);
-        if (deserializer == null) {
+        ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer = clientSeason.getDeserializer(fileName);
+        if (clientResourceDeserializer == null) {
             log.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;
         }
         log.debug("Extracting resource data from file '{}'.", filePath);
-        TopLevelClientResource deserializedOutput = deserializer.deserialize(fileReader);
+        TopLevelClientResource deserializedOutput = clientResourceDeserializer.deserialize(fileReader);
         if (deserializedOutput != null) {
             String serializedOutput;
             try {

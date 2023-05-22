@@ -61,16 +61,11 @@ public class StringSerializer implements Serializer<TopLevelClientResource> {
     }
 
     @Override
-    public TopLevelClientResource deserialize(String serialized, Class<TopLevelClientResource> cls) {
+    public TopLevelClientResource deserialize(String serialized) {
         try {
-            return objectMapper.readValue(serialized, cls);
+            return objectMapper.readValue(serialized, TopLevelClientResource.class);
         } catch (JsonProcessingException e) {
             throw new SerializerException(e);
         }
-    }
-
-    @Override
-    public byte[] serializeResource(TopLevelClientResource deserialized) throws SerializerException {
-        return new byte[0];
     }
 }

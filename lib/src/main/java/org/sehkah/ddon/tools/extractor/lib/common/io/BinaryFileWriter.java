@@ -9,25 +9,26 @@ import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.function.Function;
+import java.util.function.Consumer;
 import java.util.function.IntFunction;
+import java.util.function.Supplier;
 
 public class BinaryFileWriter implements FileWriter {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
-    private static final int MAX_FILE_SIZE = 5000000;
     private final ByteBuffer byteBuffer;
 
-    public BinaryFileWriter() {
-        this(MAX_FILE_SIZE);
-    }
-
     public BinaryFileWriter(int fileSize) {
-        this(ByteBuffer.allocate(MAX_FILE_SIZE));
+        this(ByteBuffer.allocate(fileSize));
     }
 
     private BinaryFileWriter(ByteBuffer byteBuffer) {
         this.byteBuffer = byteBuffer;
         this.byteBuffer.order(DEFAULT_BYTE_ORDER);
+    }
+
+    @Override
+    public int getPosition() {
+        return byteBuffer.position();
     }
 
     @Override
@@ -148,18 +149,14 @@ public class BinaryFileWriter implements FileWriter {
     }
 
     @Override
-    public <E> void writeArray(List<E> value, Function<FileWriter, E> entityWriterFunction) {
-        writeUnsignedInteger(value.size());
-        for (long i = 0; i < value.size(); i++) {
-            entityWriterFunction.apply(this);
-        }
+    public <E> void writeArray(List<E> entities, Supplier<Consumer<E>> consumeEntity) {
+        writeUnsignedInteger(entities.size());
+        entities.forEach(consumeEntity.get());
     }
 
     @Override
-    public <E> void writeArray(List<E> value, IntFunction<Void> arraySizeWriterFunction, Function<FileWriter, E> entityWriterFunction) {
-        arraySizeWriterFunction.apply(value.size());
-        for (long i = 0; i < value.size(); i++) {
-            entityWriterFunction.apply(this);
-        }
+    public <E> void writeArray(List<E> entities, IntFunction<Void> arraySizeWriterFunction, Supplier<Consumer<E>> consumeEntity) {
+        arraySizeWriterFunction.apply(entities.size());
+        entities.forEach(consumeEntity.get());
     }
 }

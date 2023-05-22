@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.VersionValidationFailedE
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 
-public abstract class ClientResourceFileDeserializer implements Deserializer<TopLevelClientResource> {
+public abstract class ClientResourceFileDeserializer implements ClientResourceDeserializer<TopLevelClientResource> {
     protected final ClientResourceFile clientResourceFile;
 
     protected ClientResourceFileDeserializer(ClientResourceFile clientResourceFile) {

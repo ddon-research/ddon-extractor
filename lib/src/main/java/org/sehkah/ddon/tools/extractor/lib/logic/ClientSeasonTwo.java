@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic;
 
+import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.AbilityListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.ItemListDeserializer;
@@ -48,7 +50,11 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUI
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUISkill.AbilityAddDataDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common.EnemyGroupSerializer;
+
+import java.util.Map;
 
 import static org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension.*;
 
@@ -56,11 +62,10 @@ public class ClientSeasonTwo extends ClientSeason {
 
     protected ClientSeasonTwo(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         super(preferredSerializationType, shouldSerializeMetaInformation);
-        setupClientResourceFiles();
-        setupDeserializers();
     }
 
-    private void setupClientResourceFiles() {
+    @Override
+    protected void setupClientResourceFiles(Map<ClientResourceFileExtension, ClientResourceFile> clientResourceFileMap) {
         clientResourceFileMap.put(rAIPawnAutoWordTbl, new ClientResourceFile(rAIPawnAutoWordTbl, new FileHeader(4, 4)));
         clientResourceFileMap.put(rAbilityAddData, new ClientResourceFile(rAbilityAddData, new FileHeader(1, 4)));
         clientResourceFileMap.put(rAbilityData, new ClientResourceFile(rAbilityData, new FileHeader(3, 4)));
@@ -146,7 +151,8 @@ public class ClientSeasonTwo extends ClientSeason {
         clientResourceFileMap.put(rItemList, new ClientResourceFile(rItemList, new FileHeader("ipa\0", 58, 4)));
     }
 
-    private void setupDeserializers() {
+    @Override
+    protected void setupDeserializers(Map<ClientResourceFileExtension, ClientResourceDeserializer<TopLevelClientResource>> deserializerMap) {
         deserializerMap.put(rAIPawnAutoWordTbl, new AIPawnAutoWordTblDeserializer(clientResourceFileMap.get(rAIPawnAutoWordTbl)));
         deserializerMap.put(rAbilityAddData, new AbilityAddDataDeserializer(clientResourceFileMap.get(rAbilityAddData)));
         deserializerMap.put(rAbilityData, new AbilityDataDeserializer(clientResourceFileMap.get(rAbilityData)));
@@ -230,5 +236,10 @@ public class ClientSeasonTwo extends ClientSeason {
         deserializerMap.put(rWarpLocation, new WarpLocationDeserializer(clientResourceFileMap.get(rWarpLocation)));
         deserializerMap.put(rPlayerExpTable, new PlayerExpTableDeserializer(clientResourceFileMap.get(rPlayerExpTable)));
         deserializerMap.put(rItemList, new ItemListDeserializer(clientResourceFileMap.get(rItemList)));
+    }
+
+    @Override
+    protected void setupSerializers(Map<ClientResourceFileExtension, ClientResourceSerializer<? extends TopLevelClientResource>> serializerMap) {
+        serializerMap.put(rEnemyGroup, new EnemyGroupSerializer(clientResourceFileMap.get(rEnemyGroup)));
     }
 }
