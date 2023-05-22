@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.ui.uGUIAreaMaster;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
-
 public record AreaMasterSpotData(
         long SpotId,
         long CategoryNo,
@@ -17,5 +15,5 @@ public record AreaMasterSpotData(
         int KeyType,
         int MaskType,
         boolean PosHide
-) implements TopLevelClientResource {
+) {
 }

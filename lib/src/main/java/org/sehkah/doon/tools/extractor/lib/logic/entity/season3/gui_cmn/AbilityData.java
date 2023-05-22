@@ -1,7 +1,5 @@
 package org.sehkah.doon.tools.extractor.lib.logic.entity.season3.gui_cmn;
 
-import org.sehkah.doon.tools.extractor.lib.common.entity.TopLevelClientResource;
-
 public record AbilityData(
         int Id,
         int MsgNameIndex,
@@ -10,5 +8,5 @@ public record AbilityData(
         int Cost,
         int SortNo,
         boolean IsPawnDisable
-) implements TopLevelClientResource {
+) {
 }
