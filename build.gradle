@@ -1,5 +1,6 @@
 plugins {
     id 'org.javamodularity.moduleplugin' apply false
+    id 'io.freefair.lombok' apply false
 }
 
 ext {
@@ -10,6 +11,7 @@ ext {
 
 subprojects {
     apply plugin: 'org.javamodularity.moduleplugin'
+    apply plugin: 'io.freefair.lombok'
 
     java {
         toolchain {

@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn" name="ddon-extractor-cli-logger">
     <Appenders>
-        <Console name="CliLogConsole" target="SYSTEM_OUT">
+        <Console name="CliLogConsole">
             <PatternLayout charset="UTF-8">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+                <Pattern>[%date{ABSOLUTE}] [%level{length=1}] [%20.20logger{1}] - %message%n</Pattern>
             </PatternLayout>
         </Console>
-        <File name="CliLogFile" fileName="cli.log">
+        <RandomAccessFile name="CliLogFile"
+                          fileName="ddon-extractor-cli-${date:yyyy_MM_dd_HH_mm_ss}.log"
+                          filePattern="log-archive/ddon-extractor-cli.%d{yyyy_MM_dd_HH_mm_ss}.log.gz">
             <PatternLayout charset="UTF-8">
-                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n</Pattern>
+                <Pattern>[%date{ISO8601}] [%20.20threadName] [%5.5level] [%20.20logger{1}] - %message%n</Pattern>
             </PatternLayout>
-        </File>
+        </RandomAccessFile>
         <Async name="CliLogAsync">
             <AppenderRef ref="CliLogFile"/>
         </Async>
