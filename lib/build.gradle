@@ -4,14 +4,6 @@ plugins {
     id 'project-report'
 }
 
-ext {
-    comFasterxmlJacksonVersion = '2.15.0'
-    commonsCodecVersion = '1.15'
-}
-
 dependencies {
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: "${comFasterxmlJacksonVersion}"
-    // https://mvnrepository.com/artifact/commons-codec/commons-codec
-    implementation group: 'commons-codec', name: 'commons-codec', version: "${commonsCodecVersion}"
+    implementation lib.jackson.dataformat.yaml
 }
