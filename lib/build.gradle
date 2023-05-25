@@ -6,4 +6,6 @@ plugins {
 
 dependencies {
     implementation lib.jackson.dataformat.yaml
+    runtimeOnly lib.jackson.core
+    runtimeOnly lib.jackson.databind
 }

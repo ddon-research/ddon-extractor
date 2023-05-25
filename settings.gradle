@@ -3,6 +3,8 @@ pluginManagement {
         id 'org.beryx.jlink' version '2.26.0'
         id 'org.javamodularity.moduleplugin' version '1.8.12'
         id 'io.freefair.lombok' version '8.0.1'
+        id 'com.github.ben-manes.versions' version '0.46.0'
+        id 'nl.littlerobots.version-catalog-update' version '0.8.0'
     }
 }
 
@@ -12,11 +14,34 @@ plugins {
 
 dependencyResolutionManagement {
     versionCatalogs {
+        common {
+            version('junit', '5.9.1')
+        }
+        log {
+            version('orgSlf4j', '2.0.7')
+            version('orgApacheLoggingLog4j', '2.20.0')
+
+            // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+            library('slf4j-api', 'org.slf4j', 'slf4j-api').versionRef('orgSlf4j')
+            // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+            library('log4j-api', 'org.apache.logging.log4j', 'log4j-api').versionRef('orgApacheLoggingLog4j')
+            // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+            library('log4j-core', 'org.apache.logging.log4j', 'log4j-core').versionRef('orgApacheLoggingLog4j')
+            // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl
+            library('log4j-slf4j2-impl', 'org.apache.logging.log4j', 'log4j-slf4j2-impl').versionRef('orgApacheLoggingLog4j')
+
+            bundle('logging-implementation', ['slf4j-api', 'log4j-api'])
+            bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
+        }
         lib {
             version('comFasterxmlJackson', '2.15.0')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
+            // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+            library('jackson-databind', 'com.fasterxml.jackson.core', 'jackson-databind').versionRef('comFasterxmlJackson')
+            // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+            library('jackson-core', 'com.fasterxml.jackson.core', 'jackson-core').versionRef('comFasterxmlJackson')
         }
         libTest {
             version('commonsCodec', '1.15')
