@@ -45,6 +45,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUI
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common.EnemyGroupSerializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common.GUIMessageSerializer;
 
 import java.util.Map;
 
@@ -228,5 +229,6 @@ public class ClientSeasonThree extends ClientSeason {
     @Override
     protected void setupSerializers(Map<ClientResourceFileExtension, ClientResourceSerializer<? extends TopLevelClientResource>> serializerMap) {
         serializerMap.put(rEnemyGroup, new EnemyGroupSerializer(clientResourceFileMap.get(rEnemyGroup)));
+        serializerMap.put(rGUIMessage, new GUIMessageSerializer(clientResourceFileMap.get(rGUIMessage)));
     }
 }

@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class EnemyGroupSerializerTest {
 
     @Test
-    void serializeResource() throws URISyntaxException, IOException {
-        String inputFile = "game_common/param/enemy_group.emg.json";
+    void serializeResourceSeasonThree() throws URISyntaxException, IOException {
+        String inputFile = "season3/game_common/param/enemy_group.emg.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
         ClientSeason clientSeasonThree = ClientSeason.get(ClientSeasonType.THREE, SerializationFormat.json, false);

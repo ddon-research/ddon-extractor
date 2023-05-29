@@ -6,4 +6,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
 
 public interface ClientResourceSerializer<T extends TopLevelClientResource> {
     byte[] serializeResource(T deserialized) throws SerializerException;
+
+    boolean isModdingAllowed();
+
+    void setModdingAllowed(boolean isModdingAllowed);
 }

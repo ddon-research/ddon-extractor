@@ -5,9 +5,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientStringSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.serialization.StringSerializer;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -24,7 +24,7 @@ public abstract class ClientSeason {
         clientResourceFileMap = new EnumMap<>(ClientResourceFileExtension.class);
         deserializerMap = new EnumMap<>(ClientResourceFileExtension.class);
         serializerMap = new EnumMap<>(ClientResourceFileExtension.class);
-        stringSerializer = StringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
+        stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
         setupClientResourceFiles(clientResourceFileMap);
         setupDeserializers(deserializerMap);
         setupSerializers(serializerMap);

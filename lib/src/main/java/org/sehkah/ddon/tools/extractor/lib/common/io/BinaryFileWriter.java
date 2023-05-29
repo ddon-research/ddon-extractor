@@ -144,7 +144,7 @@ public class BinaryFileWriter implements FileWriter {
 
     @Override
     public void writeMtString(String value, Charset charset) {
-        byteBuffer.putLong(Integer.toUnsignedLong(value.length()));
+        writeUnsignedInteger(value.length());
         writeNullTerminatedString(value, charset);
     }
 

@@ -10,16 +10,16 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
 
-public class StringSerializer implements Serializer<TopLevelClientResource> {
+public class ClientStringSerializer implements Serializer<TopLevelClientResource> {
     private final ObjectMapper objectMapper;
 
-    private StringSerializer(ObjectMapper objectMapper) {
+    private ClientStringSerializer(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
     public static Serializer<TopLevelClientResource> get(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         ObjectMapper objectMapper = initializeMapper(preferredSerializationType, shouldSerializeMetaInformation);
-        return new StringSerializer(objectMapper);
+        return new ClientStringSerializer(objectMapper);
     }
 
     private static ObjectMapper initializeMapper(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
