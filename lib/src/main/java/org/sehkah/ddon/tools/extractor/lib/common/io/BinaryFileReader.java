@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToLongFunction;
@@ -21,12 +22,26 @@ public class BinaryFileReader implements FileReader {
     private final ByteBuffer byteBuffer;
 
     public BinaryFileReader(Path filePath) throws IOException {
-        this(ByteBuffer.wrap(Files.readAllBytes(filePath)).asReadOnlyBuffer());
+        this(Files.readAllBytes(filePath));
     }
 
-    private BinaryFileReader(ByteBuffer byteBuffer) {
+    public BinaryFileReader(byte[] data) {
+        this(ByteBuffer.wrap(data));
+    }
+
+    public BinaryFileReader(ByteBuffer byteBuffer) {
         this.byteBuffer = byteBuffer;
         this.byteBuffer.order(DEFAULT_BYTE_ORDER);
+    }
+
+    @Override
+    public int getPosition() {
+        return byteBuffer.position();
+    }
+
+    @Override
+    public void setPosition(int position) {
+        byteBuffer.position(position);
     }
 
     @Override
@@ -52,6 +67,21 @@ public class BinaryFileReader implements FileReader {
     @Override
     public byte readSignedByte() {
         return byteBuffer.get();
+    }
+
+    @Override
+    public byte[] readSignedByte(int num) {
+        byte[] bytes = new byte[num];
+        byteBuffer.get(bytes);
+        return bytes;
+    }
+
+    /**
+     * @return a copy of the signed bytes starting from the given offset without consuming them.
+     */
+    @Override
+    public byte[] copySignedByte(int num, int offset) {
+        return Arrays.copyOfRange(byteBuffer.array(), offset, offset + num);
     }
 
     @Override
@@ -156,16 +186,6 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public String readString(long length) {
-        return readString(length, StandardCharsets.US_ASCII);
-    }
-
-    @Override
-    public String readString(long length, Charset charset) {
-        return readString((int) length, charset);
-    }
-
-    @Override
     public String readString(int length, Charset charset) {
         byte[] stringBytes = new byte[length];
         byteBuffer.get(stringBytes, 0, length);
@@ -180,7 +200,7 @@ public class BinaryFileReader implements FileReader {
     @Override
     public String readMtString(Charset charset) {
         long length = Integer.toUnsignedLong(byteBuffer.getInt());
-        String mtString = readString(length, charset);
+        String mtString = readString((int) length, charset);
         byteBuffer.get();
         return mtString;
     }

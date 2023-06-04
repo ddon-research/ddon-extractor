@@ -5,6 +5,8 @@ plugins {
 }
 
 dependencies {
+    implementation lib.bcprov.jdk18on
+
     implementation lib.jackson.dataformat.yaml
     runtimeOnly lib.jackson.core
     runtimeOnly lib.jackson.databind

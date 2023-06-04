@@ -35,6 +35,8 @@ dependencyResolutionManagement {
         }
         lib {
             version('comFasterxmlJackson', '2.15.0')
+            version('orgBouncycastle', '1.73')
+            version('orgApacheCommons', '3.12.0')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
@@ -42,6 +44,11 @@ dependencyResolutionManagement {
             library('jackson-databind', 'com.fasterxml.jackson.core', 'jackson-databind').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
             library('jackson-core', 'com.fasterxml.jackson.core', 'jackson-core').versionRef('comFasterxmlJackson')
+            // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk18on
+            library('bcprov-jdk18on', 'org.bouncycastle', 'bcprov-jdk18on').versionRef('orgBouncycastle')
+            // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+            library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
+
         }
         libTest {
             version('commonsCodec', '1.15')

@@ -10,6 +10,10 @@ import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
 public interface FileReader {
+    int getPosition();
+
+    void setPosition(int position);
+
     int getLimit();
 
     boolean hasRemaining();
@@ -19,6 +23,10 @@ public interface FileReader {
     int readUnsignedByte();
 
     byte readSignedByte();
+
+    byte[] readSignedByte(int num);
+
+    byte[] copySignedByte(int num, int offset);
 
     boolean readBoolean();
 
@@ -49,10 +57,6 @@ public interface FileReader {
     String readNullTerminatedString();
 
     String readString(int length);
-
-    String readString(long length);
-
-    String readString(long length, Charset charset);
 
     String readString(int length, Charset charset);
 

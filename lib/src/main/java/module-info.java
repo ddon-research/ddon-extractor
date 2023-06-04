@@ -9,6 +9,8 @@ module org.sehkah.ddon.tools.extractor.lib {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.dataformat.yaml;
 
+    requires org.bouncycastle.provider;
+
     exports org.sehkah.ddon.tools.extractor.lib.common.datatype;
     exports org.sehkah.ddon.tools.extractor.lib.common.error;
     exports org.sehkah.ddon.tools.extractor.lib.common.io;
@@ -63,4 +65,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.clankyoten;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity;
 }
