@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
 import picocli.CommandLine;
@@ -18,10 +19,13 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @Slf4j
@@ -72,6 +76,24 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean addMetaInformation;
 
+    @CommandLine.Option(names = {"-u", "--unpack-archives"}, arity = "0..1", description = """
+            Optionally specify whether to unpack .arc files if encountered.
+            If omitted the default behavior is not to unpack archives.
+                        
+            For example, if a .arc file is encountered while iterating files the contents of the archive will be written to disk and a descriptive file of the archive will be generated.
+            Note that this can potentially be a memory hog.
+            """, defaultValue = "false")
+    private boolean unpackArchives;
+
+    @CommandLine.Option(names = {"-x", "--unpack-archives-exclusively"}, arity = "0..1", description = """
+            Optionally specify whether to ignore all other file types and only unpack .arc files if encountered.
+            Has no effect if specified by itself.
+            If omitted the default behavior is to extract information for other file types as well.
+                        
+            For example, if any file type other than .arc is encountered while iterating files they will be ignored.
+            """, defaultValue = "false")
+    private boolean unpackArchivesExclusively;
+
     private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
         FileReader fileReader;
         try {
@@ -104,7 +126,7 @@ public class ExtractCommand implements Callable<Integer> {
             }
             if (writeOutputToFile) {
                 String outputFile = fileName + "." + outputFormat;
-                Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
+                Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
                 boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
                 if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
                     log.error("Failed to create folders for output file.");
@@ -114,6 +136,23 @@ public class ExtractCommand implements Callable<Integer> {
                 log.info("Outputting to file '{}'.", outputFilePath);
                 try {
                     Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
+                        outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
+                        for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
+                            String arcFile = entry.getKey();
+                            byte[] bytes = entry.getValue();
+                            Path arcFilePath = Paths.get(arcFile);
+                            Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
+                            boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
+                            if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
+                                log.error("Failed to create folders for arc file.");
+                                return StatusCode.ERROR;
+                            }
+                            Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
+                            log.info("Outputting to file '{}'.", arcOutputFilePath);
+                            Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                        }
+                    }
                 } catch (IOException e) {
                     log.error("Failed to write file '{}'.", outputFilePath);
                     if (log.isDebugEnabled()) {
@@ -139,12 +178,25 @@ public class ExtractCommand implements Callable<Integer> {
             if (Files.isDirectory(inputFilePath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
-                    Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
+                    Predicate<Path> fileFilter;
+                    if (unpackArchives && unpackArchivesExclusively) {
+                        String arcFileExtension = ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive);
+                        fileFilter = path -> {
+                            String fileName = path.getFileName().toString();
+                            return fileName.endsWith(arcFileExtension);
+                        };
+                    } else {
+                        Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
+                        if (!unpackArchives) {
+                            supportedFileExtensions.remove(ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive));
+                        }
+                        fileFilter = path -> {
+                            String fileName = path.getFileName().toString();
+                            return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
+                        };
+                    }
                     List<StatusCode> statusCodes = files.toList().parallelStream()
-                            .filter(path -> {
-                                String fileName = path.getFileName().toString();
-                                return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
-                            })
+                            .filter(fileFilter)
                             .map(path -> extractSingleFile(path, clientSeason.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         log.warn("Failed to extract one or more resource files.");
