@@ -66,4 +66,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.clankyoten;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity;
+    exports org.sehkah.ddon.tools.extractor.lib.common.crypto;
 }

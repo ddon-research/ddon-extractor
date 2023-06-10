@@ -90,122 +90,113 @@ public enum ClientResourceFileExtension {
     rTutorialQuestGroup,
     rWarpLocation;
 
-    private static final Map<Long, ClientResourceFileExtension> jamCrcTable = new HashMap<>(128);
+    private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = new HashMap<>(ClientResourceFileExtension.values().length);
 
-    private static final Map<String, ClientResourceFileExtension> fileExtensionResourceMap = new HashMap<>(ClientResourceFileExtension.values().length);
+    // TODO: File extensions are not unique and must not be used as keys.
+    private static final Map<String, ClientResourceFileExtension> fileExtensionToResourceMap = new HashMap<>(ClientResourceFileExtension.values().length);
 
-    private static final Map<ClientResourceFileExtension, String> fileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
+    private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
 
     static {
-        fileExtensionResourceMap.put(".arc", rArchive);
-        fileExtensionResourceMap.put(".aad", rAbilityAddData);
-        fileExtensionResourceMap.put(".abd", rAbilityData);
-        fileExtensionResourceMap.put(".abl", rAbilityList);
-        fileExtensionResourceMap.put(".ach", rAchievementHeader);
-        fileExtensionResourceMap.put(".acv", rAchievement);
-        fileExtensionResourceMap.put(".ajp", rAdjustParam);
-        fileExtensionResourceMap.put(".aml", rAnimalData);
-        fileExtensionResourceMap.put(".amr", rAreaMasterRankData);
-        fileExtensionResourceMap.put(".ams", rAreaMasterSpotData);
-        fileExtensionResourceMap.put(".amsd", rAreaMasterSpotDetailData);
-        fileExtensionResourceMap.put(".ari", rAreaInfo);
-        fileExtensionResourceMap.put(".arj", rAreaInfoJointArea);
-        fileExtensionResourceMap.put(".ars", rAreaInfoStage);
-        fileExtensionResourceMap.put(".ccp", rCraftCapPass);
-        fileExtensionResourceMap.put(".cee", rCraftElementExp);
-        fileExtensionResourceMap.put(".ckc", rCraftSkillCost);
-        fileExtensionResourceMap.put(".cks", rCraftSkillSpd);
-        fileExtensionResourceMap.put(".cqi", rCycleQuestInfo);
-        fileExtensionResourceMap.put(".cqr", rCraftQuality);
-        fileExtensionResourceMap.put(".csd", rCustomSkillData);
-        fileExtensionResourceMap.put(".cuex", rCraftUpGradeExp);
-        fileExtensionResourceMap.put(".dgm", rGUIDogmaOrb);
-        fileExtensionResourceMap.put(".dtt", rEmDmgTimerTbl);
-        fileExtensionResourceMap.put(".ebi_sv", rEmBaseInfoSv);
-        fileExtensionResourceMap.put(".edv", rEmDamageDirInfo);
-        fileExtensionResourceMap.put(".emg", rEnemyGroup);
-        fileExtensionResourceMap.put(".equip_preset", rEquipPreset);
-        fileExtensionResourceMap.put(".evl", rEvaluationTable);
-        fileExtensionResourceMap.put(".evp", rEventParam);
-        fileExtensionResourceMap.put(".exp", rPlayerExpTable);
-        fileExtensionResourceMap.put(".faa", rFieldAreaAdjoinList);
-        fileExtensionResourceMap.put(".fal", rFieldAreaList);
-        fileExtensionResourceMap.put(".fmd", rFieldMapData);
-        fileExtensionResourceMap.put(".fmi", rFieldAreaMarkerInfo);
-        fileExtensionResourceMap.put(".fnd", rFurnitureData);
-        fileExtensionResourceMap.put(".fng", rFurnitureGroup);
-        fileExtensionResourceMap.put(".fni", rFurnitureItem);
-        fileExtensionResourceMap.put(".fnl", rFurnitureLayout);
-        fileExtensionResourceMap.put(".gat", rGatheringItem);
-        fileExtensionResourceMap.put(".gmd", rGUIMessage);
-        fileExtensionResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
-        fileExtensionResourceMap.put(".hmeq", rHumanEnemyEquip);
-        fileExtensionResourceMap.put(".ipa", rItemList);
-        fileExtensionResourceMap.put(".jlt2", rJobLevelUpTbl2);
-        fileExtensionResourceMap.put(".jmc", rJobMasterCtrl);
-        fileExtensionResourceMap.put(".jobbase", rJobBaseParam);
-        fileExtensionResourceMap.put(".jtq", rJobTutorialQuestList);
-        fileExtensionResourceMap.put(".kctt", rKeyConfigTextTable);
-        fileExtensionResourceMap.put(".lai", rLandInfo);
-        fileExtensionResourceMap.put(".lcd", rLocationData);
-        fileExtensionResourceMap.put(".lop", rLayoutPreset);
-        fileExtensionResourceMap.put(".lup", rEmLvUpParam);
-        fileExtensionResourceMap.put(".msd", rMapSpotData);
-        fileExtensionResourceMap.put(".msl", rMapSpotStageList);
-        fileExtensionResourceMap.put(".mss", rMsgSet);
-        fileExtensionResourceMap.put(".nci", rNpcConstItem);
-        fileExtensionResourceMap.put(".ndp", rNamedParam);
-        fileExtensionResourceMap.put(".nmp", rNpcMeetingPlace);
-        fileExtensionResourceMap.put(".nsd", rNormalSkillData);
-        fileExtensionResourceMap.put(".paw", rAIPawnAutoWordTbl);
-        fileExtensionResourceMap.put(".phs", rPrologueHmStatus);
-        fileExtensionResourceMap.put(".pqt", rPawnQuestTalk);
-        fileExtensionResourceMap.put(".psi", rPlPartsInfo);
-        fileExtensionResourceMap.put(".qhd", rQuestHistoryData);
-        fileExtensionResourceMap.put(".qmi", rQuestMarkerInfo);
-        fileExtensionResourceMap.put(".qsq", rQuestSequenceList);
-        fileExtensionResourceMap.put(".qtd", rQuestTextData);
-        fileExtensionResourceMap.put(".rag", rRageTable);
-        fileExtensionResourceMap.put(".sal", rStageAdjoinList);
-        fileExtensionResourceMap.put(".sbv", rShrinkBlowValue);
-        fileExtensionResourceMap.put(".sdt", rStaminaDecTbl);
-        fileExtensionResourceMap.put(".sg_tbl", rStatusGainTable);
-        fileExtensionResourceMap.put(".slt", rStageList);
-        fileExtensionResourceMap.put(".smc", rSituationMsgCtrl);
-        fileExtensionResourceMap.put(".smp", rStageMap);
-        fileExtensionResourceMap.put(".spg_tbl", rShopGoods);
-        fileExtensionResourceMap.put(".sta", rStartPosArea);
-        fileExtensionResourceMap.put(".sts", rStageToSpot);
-        fileExtensionResourceMap.put(".tcm", rTbl2ChatMacro);
-        fileExtensionResourceMap.put(".tdm", rTutorialDialogMessage);
-        fileExtensionResourceMap.put(".tlt", rTutorialList);
-        fileExtensionResourceMap.put(".tqg", rTutorialQuestGroup);
-        fileExtensionResourceMap.put(".wal", rWarpLocation);
+        fileExtensionToResourceMap.put(".arc", rArchive);
+        fileExtensionToResourceMap.put(".aad", rAbilityAddData);
+        fileExtensionToResourceMap.put(".abd", rAbilityData);
+        fileExtensionToResourceMap.put(".abl", rAbilityList);
+        fileExtensionToResourceMap.put(".ach", rAchievementHeader);
+        fileExtensionToResourceMap.put(".acv", rAchievement);
+        fileExtensionToResourceMap.put(".ajp", rAdjustParam);
+        fileExtensionToResourceMap.put(".aml", rAnimalData);
+        fileExtensionToResourceMap.put(".amr", rAreaMasterRankData);
+        fileExtensionToResourceMap.put(".ams", rAreaMasterSpotData);
+        fileExtensionToResourceMap.put(".amsd", rAreaMasterSpotDetailData);
+        fileExtensionToResourceMap.put(".ari", rAreaInfo);
+        fileExtensionToResourceMap.put(".arj", rAreaInfoJointArea);
+        fileExtensionToResourceMap.put(".ars", rAreaInfoStage);
+        fileExtensionToResourceMap.put(".ccp", rCraftCapPass);
+        fileExtensionToResourceMap.put(".cee", rCraftElementExp);
+        fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);
+        fileExtensionToResourceMap.put(".cks", rCraftSkillSpd);
+        fileExtensionToResourceMap.put(".cqi", rCycleQuestInfo);
+        fileExtensionToResourceMap.put(".cqr", rCraftQuality);
+        fileExtensionToResourceMap.put(".csd", rCustomSkillData);
+        fileExtensionToResourceMap.put(".cuex", rCraftUpGradeExp);
+        fileExtensionToResourceMap.put(".dgm", rGUIDogmaOrb);
+        fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
+        fileExtensionToResourceMap.put(".ebi_sv", rEmBaseInfoSv);
+        fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
+        fileExtensionToResourceMap.put(".emg", rEnemyGroup);
+        fileExtensionToResourceMap.put(".equip_preset", rEquipPreset);
+        fileExtensionToResourceMap.put(".evl", rEvaluationTable);
+        fileExtensionToResourceMap.put(".evp", rEventParam);
+        fileExtensionToResourceMap.put(".exp", rPlayerExpTable);
+        fileExtensionToResourceMap.put(".faa", rFieldAreaAdjoinList);
+        fileExtensionToResourceMap.put(".fal", rFieldAreaList);
+        fileExtensionToResourceMap.put(".fmd", rFieldMapData);
+        fileExtensionToResourceMap.put(".fmi", rFieldAreaMarkerInfo);
+        fileExtensionToResourceMap.put(".fnd", rFurnitureData);
+        fileExtensionToResourceMap.put(".fng", rFurnitureGroup);
+        fileExtensionToResourceMap.put(".fni", rFurnitureItem);
+        fileExtensionToResourceMap.put(".fnl", rFurnitureLayout);
+        fileExtensionToResourceMap.put(".gat", rGatheringItem);
+        fileExtensionToResourceMap.put(".gmd", rGUIMessage);
+        fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
+        fileExtensionToResourceMap.put(".hmeq", rHumanEnemyEquip);
+        fileExtensionToResourceMap.put(".ipa", rItemList);
+        fileExtensionToResourceMap.put(".jlt2", rJobLevelUpTbl2);
+        fileExtensionToResourceMap.put(".jmc", rJobMasterCtrl);
+        fileExtensionToResourceMap.put(".jobbase", rJobBaseParam);
+        fileExtensionToResourceMap.put(".jtq", rJobTutorialQuestList);
+        fileExtensionToResourceMap.put(".kctt", rKeyConfigTextTable);
+        fileExtensionToResourceMap.put(".lai", rLandInfo);
+        fileExtensionToResourceMap.put(".lcd", rLocationData);
+        fileExtensionToResourceMap.put(".lop", rLayoutPreset);
+        fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
+        fileExtensionToResourceMap.put(".msd", rMapSpotData);
+        fileExtensionToResourceMap.put(".msl", rMapSpotStageList);
+        fileExtensionToResourceMap.put(".mss", rMsgSet);
+        fileExtensionToResourceMap.put(".nci", rNpcConstItem);
+        fileExtensionToResourceMap.put(".ndp", rNamedParam);
+        fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
+        fileExtensionToResourceMap.put(".nsd", rNormalSkillData);
+        fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
+        fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
+        fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
+        fileExtensionToResourceMap.put(".psi", rPlPartsInfo);
+        fileExtensionToResourceMap.put(".qhd", rQuestHistoryData);
+        fileExtensionToResourceMap.put(".qmi", rQuestMarkerInfo);
+        fileExtensionToResourceMap.put(".qsq", rQuestSequenceList);
+        fileExtensionToResourceMap.put(".qtd", rQuestTextData);
+        fileExtensionToResourceMap.put(".rag", rRageTable);
+        fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
+        fileExtensionToResourceMap.put(".sbv", rShrinkBlowValue);
+        fileExtensionToResourceMap.put(".sdt", rStaminaDecTbl);
+        fileExtensionToResourceMap.put(".sg_tbl", rStatusGainTable);
+        fileExtensionToResourceMap.put(".slt", rStageList);
+        fileExtensionToResourceMap.put(".smc", rSituationMsgCtrl);
+        fileExtensionToResourceMap.put(".smp", rStageMap);
+        fileExtensionToResourceMap.put(".spg_tbl", rShopGoods);
+        fileExtensionToResourceMap.put(".sta", rStartPosArea);
+        fileExtensionToResourceMap.put(".sts", rStageToSpot);
+        fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
+        fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
+        fileExtensionToResourceMap.put(".tlt", rTutorialList);
+        fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);
+        fileExtensionToResourceMap.put(".wal", rWarpLocation);
 
-        Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcTable.put(CrcUtil.jamCrc32(e.name().getBytes()), e));
-        Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> {
-            for (Map.Entry<String, ClientResourceFileExtension> stringClientResourceFileExtensionEntry : fileExtensionResourceMap.entrySet()) {
-                if (stringClientResourceFileExtensionEntry.getValue() == e) {
-                    fileExtensionMap.put(e, stringClientResourceFileExtensionEntry.getKey());
-                }
-            }
-        });
+        fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
+
+        Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(CrcUtil.jamCrc32(e.name().getBytes()), e));
     }
 
     public static ClientResourceFileExtension of(String fileExtension) {
-        return fileExtensionResourceMap.get(fileExtension);
+        return fileExtensionToResourceMap.get(fileExtension);
     }
 
     public static String getFileExtensions(ClientResourceFileExtension resource) {
-        return fileExtensionMap.get(resource);
+        return resourceToFileExtensionMap.get(resource);
     }
 
     public static Set<String> getSupportedFileExtensions() {
-        return fileExtensionResourceMap.keySet();
-    }
-
-    // TODO: Replace with a more complete table by referencing all known class names in a separate enum
-    public static ClientResourceFileExtension getClientResourceFileExtensionByCrc(long crc) {
-        return jamCrcTable.get(crc);
+        return fileExtensionToResourceMap.keySet();
     }
 }

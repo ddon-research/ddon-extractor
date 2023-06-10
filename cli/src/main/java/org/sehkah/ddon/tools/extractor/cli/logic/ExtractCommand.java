@@ -94,6 +94,14 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean unpackArchivesExclusively;
 
+    @CommandLine.Option(names = {"-p", "--parallel"}, arity = "0..1", description = """
+            Optionally specify whether to run extraction in parallel.
+            If omitted the default behavior is to run in parallel.
+                        
+            Turning this off improves legibility of logs and supports debugging.
+            """, defaultValue = "true")
+    private boolean runInParallel;
+
     private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
         FileReader fileReader;
         try {
@@ -187,15 +195,18 @@ public class ExtractCommand implements Callable<Integer> {
                         };
                     } else {
                         Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
-                        if (!unpackArchives) {
-                            supportedFileExtensions.remove(ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive));
-                        }
                         fileFilter = path -> {
                             String fileName = path.getFileName().toString();
                             return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
                         };
                     }
-                    List<StatusCode> statusCodes = files.toList().parallelStream()
+                    Stream<Path> filePathStream;
+                    if (runInParallel) {
+                        filePathStream = files.toList().parallelStream();
+                    } else {
+                        filePathStream = files.toList().stream();
+                    }
+                    List<StatusCode> statusCodes = filePathStream
                             .filter(fileFilter)
                             .map(path -> extractSingleFile(path, clientSeason.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {

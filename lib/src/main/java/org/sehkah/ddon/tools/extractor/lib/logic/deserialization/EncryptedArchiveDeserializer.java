@@ -6,7 +6,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
+import org.sehkah.ddon.tools.extractor.lib.logic.FrameworkResources;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.ResourceInfo;
 
@@ -14,13 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ArchiveDeserializer extends ClientResourceFileDeserializer {
+public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer {
 
     private static final int ORG_SIZE_MASK = (1 << 29) - 1;
     private static final int QUALITY_MASK = (1 << 3) - 1;
     private static final int DATA_OFFSET = 0x8000;
 
-    public ArchiveDeserializer(ClientResourceFile clientResourceFile) {
+    public EncryptedArchiveDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
@@ -45,7 +45,7 @@ public class ArchiveDeserializer extends ClientResourceFileDeserializer {
 
     @Override
     protected Archive parseClientResourceFile(FileReader fileReader) {
-        List<ResourceInfo> resourceInfos = fileReader.readArray(FileReader::readUnsignedShort, ArchiveDeserializer::readResourceInfo);
+        List<ResourceInfo> resourceInfos = fileReader.readArray(FileReader::readUnsignedShort, EncryptedArchiveDeserializer::readResourceInfo);
 
         fileReader.setPosition(DATA_OFFSET);
         Map<String, byte[]> resourceFileMap = new HashMap<>();
@@ -56,7 +56,7 @@ public class ArchiveDeserializer extends ClientResourceFileDeserializer {
             if (decompressedData.length != resourceInfo.OriginalSize()) {
                 throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.OriginalSize()));
             }
-            resourceFileMap.put(resourceInfo.Path() + ClientResourceFileExtension.getFileExtensions(resourceInfo.TypeName()), decompressedData);
+            resourceFileMap.put(resourceInfo.Path() + FrameworkResources.getFileExtension(resourceInfo.TypeName()), decompressedData);
             bytesRead += resourceInfo.DataSize();
         }
         fileReader.setPosition(fileReader.getPosition() + bytesRead);

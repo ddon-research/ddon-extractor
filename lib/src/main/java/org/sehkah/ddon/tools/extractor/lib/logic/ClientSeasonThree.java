@@ -1,8 +1,8 @@
 package org.sehkah.ddon.tools.extractor.lib.logic;
 
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.EncryptedArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmDmgTimerTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmLvUpParamDeserializer;
@@ -57,9 +57,11 @@ public class ClientSeasonThree extends ClientSeason {
         super(preferredSerializationType, shouldSerializeMetaInformation);
     }
 
+    // TODO: Support ARCS, i.e. same resource class name but different file header
     @Override
     protected void setupClientResourceFiles(Map<ClientResourceFileExtension, ClientResourceFile> clientResourceFileMap) {
         clientResourceFileMap.put(rArchive, new ClientResourceFile(rArchive, new FileHeader("ARCC", 7, 2)));
+        clientResourceFileMap.put(rArchive, new ClientResourceFile(rArchive, new FileHeader("ARCS", 7, 2)));
         clientResourceFileMap.put(rAIPawnAutoWordTbl, new ClientResourceFile(rAIPawnAutoWordTbl, new FileHeader(4, 4)));
         clientResourceFileMap.put(rAbilityAddData, new ClientResourceFile(rAbilityAddData, new FileHeader(1, 4)));
         clientResourceFileMap.put(rAbilityData, new ClientResourceFile(rAbilityData, new FileHeader(3, 4)));
@@ -145,7 +147,7 @@ public class ClientSeasonThree extends ClientSeason {
 
     @Override
     protected void setupDeserializers(Map<ClientResourceFileExtension, ClientResourceDeserializer<TopLevelClientResource>> deserializerMap) {
-        deserializerMap.put(rArchive, new ArchiveDeserializer(clientResourceFileMap.get(rArchive)));
+        deserializerMap.put(rArchive, new EncryptedArchiveDeserializer(clientResourceFileMap.get(rArchive)));
         deserializerMap.put(rAIPawnAutoWordTbl, new AIPawnAutoWordTblDeserializer(clientResourceFileMap.get(rAIPawnAutoWordTbl)));
         deserializerMap.put(rAbilityAddData, new AbilityAddDataDeserializer(clientResourceFileMap.get(rAbilityAddData)));
         deserializerMap.put(rAbilityData, new AbilityDataDeserializer(clientResourceFileMap.get(rAbilityData)));

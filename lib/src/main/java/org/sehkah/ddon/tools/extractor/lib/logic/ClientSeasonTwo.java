@@ -1,8 +1,8 @@
 package org.sehkah.ddon.tools.extractor.lib.logic;
 
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.EncryptedArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.AbilityListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.ItemListDeserializer;
@@ -156,7 +156,7 @@ public class ClientSeasonTwo extends ClientSeason {
 
     @Override
     protected void setupDeserializers(Map<ClientResourceFileExtension, ClientResourceDeserializer<TopLevelClientResource>> deserializerMap) {
-        deserializerMap.put(rArchive, new ArchiveDeserializer(clientResourceFileMap.get(rArchive)));
+        deserializerMap.put(rArchive, new EncryptedArchiveDeserializer(clientResourceFileMap.get(rArchive)));
         deserializerMap.put(rAIPawnAutoWordTbl, new AIPawnAutoWordTblDeserializer(clientResourceFileMap.get(rAIPawnAutoWordTbl)));
         deserializerMap.put(rAbilityAddData, new AbilityAddDataDeserializer(clientResourceFileMap.get(rAbilityAddData)));
         deserializerMap.put(rAbilityData, new AbilityDataDeserializer(clientResourceFileMap.get(rAbilityData)));

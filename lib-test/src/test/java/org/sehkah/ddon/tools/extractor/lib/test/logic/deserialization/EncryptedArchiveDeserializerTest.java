@@ -4,10 +4,14 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.FileHeader;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.ArchiveS;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.ResourceInfo;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 
@@ -17,8 +21,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension.rArchive;
 
-class ArchiveDeserializerTest {
+class EncryptedArchiveDeserializerTest {
 
     @Test
     void deserializeResourceSeasonThree() throws URISyntaxException, IOException {
