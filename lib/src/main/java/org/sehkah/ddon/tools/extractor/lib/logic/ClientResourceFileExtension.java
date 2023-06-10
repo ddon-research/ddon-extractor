@@ -204,6 +204,7 @@ public enum ClientResourceFileExtension {
         return fileExtensionResourceMap.keySet();
     }
 
+    // TODO: Replace with a more complete table by referencing all known class names in a separate enum
     public static ClientResourceFileExtension getClientResourceFileExtensionByCrc(long crc) {
         return jamCrcTable.get(crc);
     }

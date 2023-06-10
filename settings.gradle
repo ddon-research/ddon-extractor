@@ -37,6 +37,7 @@ dependencyResolutionManagement {
             version('comFasterxmlJackson', '2.15.0')
             version('orgBouncycastle', '1.73')
             version('orgApacheCommons', '3.12.0')
+            version('comGoogleGuava', '32.0.1-jre')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
@@ -48,7 +49,8 @@ dependencyResolutionManagement {
             library('bcprov-jdk18on', 'org.bouncycastle', 'bcprov-jdk18on').versionRef('orgBouncycastle')
             // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
             library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
-
+            // https://mvnrepository.com/artifact/com.google.guava/guava
+            library('guava', 'com.google.guava', 'guava').versionRef('comGoogleGuava')
         }
         libTest {
             version('commonsCodec', '1.15')

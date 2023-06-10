@@ -10,7 +10,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.ResourceInfo;
 
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ public class ArchiveDeserializer extends ClientResourceFileDeserializer {
     private static ResourceInfo readResourceInfo(FileReader fileReader) {
         FileReader temporaryReader = new BinaryFileReader(BlowFishUtil.decrypt(fileReader.readSignedByte(80)));
 
-        String Path = temporaryReader.readString(64, StandardCharsets.UTF_8).replace("\0", "");
+        String Path = temporaryReader.readString(64).replace("\0", "");
         long Type = temporaryReader.readUnsignedInteger();
         long DataSize = temporaryReader.readUnsignedInteger();
         long Flags = temporaryReader.readUnsignedInteger();
