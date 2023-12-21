@@ -5,7 +5,9 @@ import picocli.CommandLine;
 
 public class Main {
     public static void main(String... args) {
-        int exitCode = new CommandLine(new ExtractCommand()).execute(args);
+        int exitCode = new CommandLine(new ExtractCommand())
+                .setCaseInsensitiveEnumValuesAllowed(true)
+                .execute(args);
         System.exit(exitCode);
     }
 }

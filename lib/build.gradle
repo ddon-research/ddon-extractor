@@ -4,11 +4,11 @@ plugins {
     id 'project-report'
 }
 
-ext {
-    comFasterxmlJacksonVersion = '2.15.0'
-}
-
 dependencies {
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: "${comFasterxmlJacksonVersion}"
+    implementation lib.bcprov.jdk18on
+    implementation lib.jackson.dataformat.yaml
+    implementation lib.commons.lang3
+
+    runtimeOnly lib.jackson.core
+    runtimeOnly lib.jackson.databind
 }

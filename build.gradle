@@ -1,15 +1,13 @@
 plugins {
     id 'org.javamodularity.moduleplugin' apply false
-}
-
-ext {
-    junitVersion = '5.9.1'
-    orgApacheLoggingLog4jVersion = '2.20.0'
-    orgSlf4jVersion = '2.0.7'
+    id 'io.freefair.lombok' apply false
+    id 'com.github.ben-manes.versions'
+    id 'nl.littlerobots.version-catalog-update'
 }
 
 subprojects {
     apply plugin: 'org.javamodularity.moduleplugin'
+    apply plugin: 'io.freefair.lombok'
 
     java {
         toolchain {
@@ -21,7 +19,7 @@ subprojects {
     testing {
         suites {
             test {
-                useJUnitJupiter(junitVersion)
+                useJUnitJupiter(common.versions.junit)
             }
         }
     }
@@ -31,13 +29,7 @@ subprojects {
     }
 
     dependencies {
-        // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-        implementation group: 'org.slf4j', name: 'slf4j-api', version: "${orgSlf4jVersion}"
-        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
-        implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${orgApacheLoggingLog4jVersion}"
-        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-        runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${orgApacheLoggingLog4jVersion}"
-        // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl
-        runtimeOnly group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: "${orgApacheLoggingLog4jVersion}"
+        implementation log.bundles.logging.implementation
+        runtimeOnly log.bundles.logging.runtimeOnly
     }
 }
