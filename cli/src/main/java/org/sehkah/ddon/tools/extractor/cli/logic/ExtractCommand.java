@@ -7,9 +7,9 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
 import picocli.CommandLine;
@@ -18,17 +18,20 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @Slf4j
 @CommandLine.Command(name = "extract", mixinStandardHelpOptions = true, version = "extract 1.0",
         description = "Extracts the provided DDON resource file(s).")
 public class ExtractCommand implements Callable<Integer> {
-    private ClientSeason clientSeason;
+    private ClientResourceFileManager clientResourceFileManager;
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -37,16 +40,6 @@ public class ExtractCommand implements Callable<Integer> {
                  extract --format FILE   outputs the data with the default format on the console"
             """, defaultValue = "json")
     private SerializationFormat outputFormat;
-
-    @CommandLine.Option(names = {"-s", "--season"}, arity = "0..1", description = """
-            Optionally specify the client season (${COMPLETION-CANDIDATES}).
-            If omitted the default season is used (THREE).
-            Warning: Only specific versions of season 2 (v02030004) and 3 (v03040008) have been verified!
-            Example:
-                 extract --season=SEASON_TWO FILE  expects the data to conform with season 2 structures
-                 extract FILE   expects the data to conform with season 3 structures"
-            """, defaultValue = "THREE")
-    private ClientSeasonType clientSeasonType;
 
     @CommandLine.Parameters(index = "0", arity = "1", description = """
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
@@ -72,6 +65,32 @@ public class ExtractCommand implements Callable<Integer> {
             """, defaultValue = "false")
     private boolean addMetaInformation;
 
+    @CommandLine.Option(names = {"-u", "--unpack-archives"}, arity = "0..1", description = """
+            Optionally specify whether to unpack .arc files if encountered.
+            If omitted the default behavior is not to unpack archives.
+                        
+            For example, if a .arc file is encountered while iterating files the contents of the archive will be written to disk and a descriptive file of the archive will be generated.
+            Note that this can potentially be a memory hog.
+            """, defaultValue = "false")
+    private boolean unpackArchives;
+
+    @CommandLine.Option(names = {"-x", "--unpack-archives-exclusively"}, arity = "0..1", description = """
+            Optionally specify whether to ignore all other file types and only unpack .arc files if encountered.
+            Has no effect if specified by itself.
+            If omitted the default behavior is to extract information for other file types as well.
+                        
+            For example, if any file type other than .arc is encountered while iterating files they will be ignored.
+            """, defaultValue = "false")
+    private boolean unpackArchivesExclusively;
+
+    @CommandLine.Option(names = {"-p", "--parallel"}, arity = "0..1", description = """
+            Optionally specify whether to run extraction in parallel.
+            If omitted the default behavior is to run in parallel.
+                        
+            Turning this off improves legibility of logs and supports debugging.
+            """, defaultValue = "true")
+    private boolean runInParallel;
+
     private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
         FileReader fileReader;
         try {
@@ -84,7 +103,7 @@ public class ExtractCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         String fileName = filePath.getFileName().toString();
-        ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer = clientSeason.getDeserializer(fileName);
+        ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer = clientResourceFileManager.getDeserializer(fileName, fileReader);
         if (clientResourceDeserializer == null) {
             log.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;
@@ -104,7 +123,7 @@ public class ExtractCommand implements Callable<Integer> {
             }
             if (writeOutputToFile) {
                 String outputFile = fileName + "." + outputFormat;
-                Path outputFolder = Path.of("output").resolve(filePath.subpath(3, filePath.getNameCount() - 1));
+                Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
                 boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
                 if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
                     log.error("Failed to create folders for output file.");
@@ -114,6 +133,23 @@ public class ExtractCommand implements Callable<Integer> {
                 log.info("Outputting to file '{}'.", outputFilePath);
                 try {
                     Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
+                        outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
+                        for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
+                            String arcFile = entry.getKey();
+                            byte[] bytes = entry.getValue();
+                            Path arcFilePath = Paths.get(arcFile);
+                            Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
+                            boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
+                            if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
+                                log.error("Failed to create folders for arc file.");
+                                return StatusCode.ERROR;
+                            }
+                            Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
+                            log.info("Outputting to file '{}'.", arcOutputFilePath);
+                            Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                        }
+                    }
                 } catch (IOException e) {
                     log.error("Failed to write file '{}'.", outputFilePath);
                     if (log.isDebugEnabled()) {
@@ -135,17 +171,33 @@ public class ExtractCommand implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         if (Files.exists(inputFilePath)) {
-            clientSeason = ClientSeason.get(clientSeasonType, outputFormat, addMetaInformation);
+            clientResourceFileManager = ClientResourceFileManager.get(outputFormat, addMetaInformation);
             if (Files.isDirectory(inputFilePath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
                 try (Stream<Path> files = Files.walk(inputFilePath)) {
-                    Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
-                    List<StatusCode> statusCodes = files.toList().parallelStream()
-                            .filter(path -> {
-                                String fileName = path.getFileName().toString();
-                                return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
-                            })
-                            .map(path -> extractSingleFile(path, clientSeason.getStringSerializer(), writeOutputToFile)).toList();
+                    Predicate<Path> fileFilter;
+                    if (unpackArchives && unpackArchivesExclusively) {
+                        String arcFileExtension = ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive);
+                        fileFilter = path -> {
+                            String fileName = path.getFileName().toString();
+                            return fileName.endsWith(arcFileExtension);
+                        };
+                    } else {
+                        Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
+                        fileFilter = path -> {
+                            String fileName = path.getFileName().toString();
+                            return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
+                        };
+                    }
+                    Stream<Path> filePathStream;
+                    if (runInParallel) {
+                        filePathStream = files.toList().parallelStream();
+                    } else {
+                        filePathStream = files.toList().stream();
+                    }
+                    List<StatusCode> statusCodes = filePathStream
+                            .filter(fileFilter)
+                            .map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         log.warn("Failed to extract one or more resource files.");
                         return StatusCode.ERROR.ordinal();
@@ -155,7 +207,7 @@ public class ExtractCommand implements Callable<Integer> {
                     }
                 }
             } else {
-                return extractSingleFile(inputFilePath, clientSeason.getStringSerializer(), writeOutputToFile).ordinal();
+                return extractSingleFile(inputFilePath, clientResourceFileManager.getStringSerializer(), writeOutputToFile).ordinal();
             }
         } else {
             log.error("The provided file path '{}' does either not exist or is not readable.", inputFilePath);

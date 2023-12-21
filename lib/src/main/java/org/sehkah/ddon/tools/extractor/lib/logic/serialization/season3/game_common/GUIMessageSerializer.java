@@ -1,7 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common;
 
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileWriter;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.GUIMessageIndex;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceFileSerializer;
@@ -10,10 +9,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class GUIMessageSerializer extends ClientResourceFileSerializer<GUIMessage> {
-    public GUIMessageSerializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
-
     @Override
     protected void serializeClientResourceFile(GUIMessage clientResource, FileWriter fileWriter) {
         fileWriter.writeUnsignedInteger(clientResource.getLanguageId());

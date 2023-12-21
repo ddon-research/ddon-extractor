@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.GenericStringSerializer;
@@ -25,9 +24,9 @@ class GUIMessageSerializerTest {
         String inputFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.gmd.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientSeason clientSeasonThree = ClientSeason.get(ClientSeasonType.THREE, SerializationFormat.json, false);
-        ClientResourceSerializer<TopLevelClientResource> serializer = clientSeasonThree.getSerializer(inputFile);
-        GUIMessage deserialized = (GUIMessage) clientSeasonThree.getStringSerializer().deserialize(input);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+        GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
+        ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
 
         assertEquals("b3fe63563340b8b070661b3b9a824acdffa971c2", DigestUtils.sha1Hex(bytes));
@@ -40,10 +39,10 @@ class GUIMessageSerializerTest {
         String inputTranslationFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.en.yaml";
         String inputTranslation = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputTranslationFile).toURI()));
 
-        ClientSeason clientSeasonThree = ClientSeason.get(ClientSeasonType.THREE, SerializationFormat.json, false);
-        ClientResourceSerializer<TopLevelClientResource> serializer = clientSeasonThree.getSerializer(inputFile);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+        GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
+        ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         serializer.setModdingAllowed(true);
-        GUIMessage deserialized = (GUIMessage) clientSeasonThree.getStringSerializer().deserialize(input);
         GenericStringSerializer genericStringSerializer = GenericStringSerializer.get(SerializationFormat.yaml);
         deserialized.updateMessages(genericStringSerializer.deserialize(inputTranslation, new TypeReference<>() {
         }));

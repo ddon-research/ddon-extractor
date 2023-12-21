@@ -15,7 +15,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.Enem
         @JsonSubTypes.Type(name = "enemyGroupList", value = EnemyGroupList.class)
 })
 public abstract class TopLevelClientResource {
+    protected FileHeader fileHeader;
     protected int FileSize;
-    protected String MagicString;
-    protected long VersionNumber;
 }

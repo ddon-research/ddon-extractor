@@ -8,4 +8,5 @@ module org.sehkah.ddon.tools.extractor.lib.test {
     requires com.fasterxml.jackson.dataformat.yaml;
 
     opens org.sehkah.ddon.tools.extractor.lib.test.logic.serialization to org.junit.platform.commons;
+    opens org.sehkah.ddon.tools.extractor.lib.test.logic.deserialization to org.junit.platform.commons;
 }
