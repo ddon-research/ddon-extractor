@@ -1,36 +1,23 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.serialization;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileWriter;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileWriter;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.FileHeader;
 
 @Slf4j
 public abstract class ClientResourceFileSerializer<T extends TopLevelClientResource> implements ClientResourceSerializer<T> {
-    @Getter
-    private final ClientResourceFile clientResourceFile;
+    private static final FileHeaderSerializer fileHeaderSerializer = new FileHeaderSerializer();
     private boolean isModdingAllowed = false;
 
-    protected ClientResourceFileSerializer(ClientResourceFile clientResourceFile) {
-        this.clientResourceFile = clientResourceFile;
+    protected ClientResourceFileSerializer() {
     }
 
     @Override
     public byte[] serializeResource(T clientResource) {
         FileWriter fileWriter = new BinaryFileWriter(clientResource.getFileSize());
-        FileHeader fileHeader = getClientResourceFile().getFileHeader();
-        if (fileHeader.getMagicBytesLength() > 0) {
-            fileWriter.writeString(fileHeader.getMagicString());
-        }
-        if (fileHeader.getVersionBytesLength() == 4) {
-            fileWriter.writeUnsignedInteger(fileHeader.getVersionNumber());
-        } else if (fileHeader.getVersionBytesLength() == 2) {
-            fileWriter.writeUnsignedShort((int) fileHeader.getVersionNumber());
-        }
+        fileHeaderSerializer.serializeClientResourceFile(clientResource.getFileHeader(), fileWriter);
         serializeClientResourceFile(clientResource, fileWriter);
         if (fileWriter.getPosition() != clientResource.getFileSize()) {
             if (isModdingAllowed()) {

@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.error;
 
+import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 
 public class MagicValidationFailedException extends TechnicalException {
@@ -12,6 +13,10 @@ public class MagicValidationFailedException extends TechnicalException {
 
     public MagicValidationFailedException(ClientResourceFile clientResourceFile) {
         super("Magic validation failed for client resource '%s'.".formatted(clientResourceFile));
+    }
+
+    public MagicValidationFailedException(FileHeader fileHeader) {
+        super("Magic validation failed for file header '%s'.".formatted(fileHeader));
     }
 
     public MagicValidationFailedException(String message) {

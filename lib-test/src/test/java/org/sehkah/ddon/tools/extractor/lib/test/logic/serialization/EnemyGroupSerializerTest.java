@@ -3,8 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.test.logic.serialization;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeason;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientSeasonType;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
 
@@ -22,9 +21,10 @@ class EnemyGroupSerializerTest {
         String inputFile = "season3/game_common/param/enemy_group.emg.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientSeason clientSeasonThree = ClientSeason.get(ClientSeasonType.THREE, SerializationFormat.json, false);
-        ClientResourceSerializer<TopLevelClientResource> serializer = clientSeasonThree.getSerializer(inputFile);
-        TopLevelClientResource deserialized = clientSeasonThree.getStringSerializer().deserialize(input);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+
+        TopLevelClientResource deserialized = clientResourceFileManager.getStringSerializer().deserialize(input);
+        ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
 
         assertEquals("bdb9b87f3126706640f823e9d85c88338c7c99f1", DigestUtils.sha1Hex(bytes));

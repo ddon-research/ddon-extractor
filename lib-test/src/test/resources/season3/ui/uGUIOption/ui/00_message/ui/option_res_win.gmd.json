@@ -3635,6 +3635,8 @@
   "indexNum": 374,
   "keyBufferSize": 9453,
   "fileSize": 25482,
-  "versionNumber": 66306,
-  "magicString": "GMD\u0000"
+  "FileHeader": {
+    "versionNumber": 66306,
+    "magicString": "GMD\u0000"
+  }
 }

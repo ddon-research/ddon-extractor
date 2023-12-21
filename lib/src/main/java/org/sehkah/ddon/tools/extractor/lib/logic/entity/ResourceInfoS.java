@@ -6,11 +6,11 @@ import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 import java.math.BigInteger;
 
 public record ResourceInfoS(
-        BigInteger Reference,
+        BigInteger ResourceID,
         long Type,
         @MetaInformation
         String TypeName,
-        // Currently unable to find the correct way to find the original path
+        // FIXME: Find a way to decode this into the original path
         @MetaInformation
         long PathCRC
 ) {

@@ -2885,5 +2885,8 @@
     }
   ],
   "fileSize": 6808,
-  "versionNumber": 1
+  "FileHeader": {
+    "versionNumber": 1,
+    "versionBytesLength": 4
+  }
 }

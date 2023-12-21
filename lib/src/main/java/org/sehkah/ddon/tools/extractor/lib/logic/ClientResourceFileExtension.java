@@ -92,7 +92,6 @@ public enum ClientResourceFileExtension {
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = new HashMap<>(ClientResourceFileExtension.values().length);
 
-    // TODO: File extensions are not unique and must not be used as keys.
     private static final Map<String, ClientResourceFileExtension> fileExtensionToResourceMap = new HashMap<>(ClientResourceFileExtension.values().length);
 
     private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);

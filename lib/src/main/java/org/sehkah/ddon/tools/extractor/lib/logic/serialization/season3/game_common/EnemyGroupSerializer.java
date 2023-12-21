@@ -1,15 +1,11 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common;
 
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileWriter;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroup;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceFileSerializer;
 
 public class EnemyGroupSerializer extends ClientResourceFileSerializer<EnemyGroupList> {
-    public EnemyGroupSerializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static void writeEnemyGroup(EnemyGroup enemyGroup, FileWriter fileWriter) {
         fileWriter.writeUnsignedInteger(enemyGroup.EnemyGroupId());

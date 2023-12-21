@@ -17,6 +17,8 @@ import java.util.List;
  * str = path + '\0'
  * (mID << 32) | MtCRC::getCRC(str, 0xFFFFFFFF);
  * </code>
+ * This is used for *_mod.arc, *_fedt_jntpreset.arc, *_dds.arc, armor\ac_*.arc, armor\np*.arc, wp\wp*.arc.
+ * For example, the ARCS file "eye0_fedt_jntpreset.arc" represents a reference to resource "eye0.fedt_jntpreset".
  */
 public class ReferenceArchiveDeserializer extends ClientResourceFileDeserializer {
     public ReferenceArchiveDeserializer(ClientResourceFile clientResourceFile) {
