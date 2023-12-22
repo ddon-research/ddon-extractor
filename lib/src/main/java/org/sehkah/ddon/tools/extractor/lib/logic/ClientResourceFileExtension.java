@@ -7,6 +7,7 @@ import java.util.*;
 public enum ClientResourceFileExtension {
     rArchive,
     rAIPawnAutoWordTbl,
+    rAIPawnAutoMotionTbl,
     rAbilityAddData,
     rAbilityData,
     rAbilityList,
@@ -158,6 +159,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
         fileExtensionToResourceMap.put(".nsd", rNormalSkillData);
         fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
+        fileExtensionToResourceMap.put(".pam", rAIPawnAutoMotionTbl);
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);

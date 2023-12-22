@@ -4,7 +4,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnAutoWordNode;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnAutoWordNodeTbl;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnAutoWordTbl;
 
 public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserializer {
     public AIPawnAutoWordTblDeserializer(ClientResourceFile clientResourceFile) {
@@ -22,7 +22,7 @@ public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected AIPawnAutoWordNodeTbl parseClientResourceFile(FileReader fileReader) {
-        return new AIPawnAutoWordNodeTbl(fileReader.readArray(AIPawnAutoWordTblDeserializer::readAIPawnAutoWordNode));
+    protected AIPawnAutoWordTbl parseClientResourceFile(FileReader fileReader) {
+        return new AIPawnAutoWordTbl(fileReader.readArray(AIPawnAutoWordTblDeserializer::readAIPawnAutoWordNode));
     }
 }

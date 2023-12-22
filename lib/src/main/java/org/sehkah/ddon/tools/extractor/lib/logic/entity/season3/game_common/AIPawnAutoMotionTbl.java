@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class AIPawnAutoWordNodeTbl extends TopLevelClientResource {
-    private final List<AIPawnAutoWordNode> AIPawnAutoWordNodeList;
+public final class AIPawnAutoMotionTbl extends TopLevelClientResource {
+    private final long UnknownArrayMetaData;
+    private final List<AIPawnAutoMotionNode> AIPawnAutoMotionNodeList;
 }
