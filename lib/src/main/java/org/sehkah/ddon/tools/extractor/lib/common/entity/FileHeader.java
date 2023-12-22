@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 
 public record FileHeader(
         String magicString,
-        @MetaInformation
         int magicBytesLength,
         long versionNumber,
         int versionBytesLength
