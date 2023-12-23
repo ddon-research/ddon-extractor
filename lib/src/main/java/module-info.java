@@ -57,6 +57,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.quest.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.clankyoten;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.MyRoom;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.pawn;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.game_common;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
