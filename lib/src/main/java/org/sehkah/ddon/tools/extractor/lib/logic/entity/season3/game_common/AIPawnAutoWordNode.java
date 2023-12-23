@@ -1,29 +1,23 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoMotionType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoWordSituationType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
-@ToString
-@EqualsAndHashCode
-@RequiredArgsConstructor
-@Getter
-public final class AIPawnAutoWordNode {
-    private final long AutoWordSituationID;
-    @MetaInformation
-    private final AIPawnAutoWordSituationType AutoWordSituationType;
-    private final long AutoCommonSituationID;
-    private final long LinkAutoMotionType;
-    @MetaInformation
-    private final AIPawnAutoMotionType AutoMotionType;
-    private final long[] PersonalityMsgNos;
-    private final long[] PersonalitySndNos;
+import java.util.List;
 
-    public AIPawnAutoWordNode(long autoWordSituationID, long autoCommonSituationID, long linkAutoMotionType, long[] personalityMsgNos, long[] personalitySndNos) {
+public record AIPawnAutoWordNode(
+        long autoWordSituationID,
+        @MetaInformation
+        AIPawnAutoWordSituationType autoWordSituationType,
+        long autoCommonSituationID,
+        long linkAutoMotionType,
+        @MetaInformation
+        AIPawnAutoMotionType autoMotionType,
+        List<Long> personalityMsgNos,
+        List<Long> personalitySndNos
+) {
+    public AIPawnAutoWordNode(long autoWordSituationID, long autoCommonSituationID, long linkAutoMotionType, List<Long> personalityMsgNos, List<Long> personalitySndNos) {
         this(
                 autoWordSituationID, AIPawnAutoWordSituationType.of(autoWordSituationID),
                 autoCommonSituationID,

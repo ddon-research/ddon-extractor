@@ -98,6 +98,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnAutoMotionTbl, new FileHeader(6, 4), AIPawnAutoMotionTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnSkillParamTbl, new FileHeader(6, 4), AIPawnSkillParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnOrder, new FileHeader(15, 4), AIPawnOrderDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnEmParam, new FileHeader(15, 4), AIPawnEmParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityAddData, new FileHeader(1, 4), AbilityAddDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityData, new FileHeader(3, 4), AbilityDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityList, new FileHeader("abl0", 9, 4), AbilityListDeserializer.class));

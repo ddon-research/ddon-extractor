@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common;
 
+import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoMotionGroupSelectType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoMotionGroupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoMotionSituationType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta.AIPawnAutoMotionType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 
 public record AIPawnAutoMotionNode(
@@ -28,7 +27,7 @@ public record AIPawnAutoMotionNode(
         // Synonymous for cBitSet<10>, which is defined as u32 mBits[1], i.e. there will always be exactly 1 value
         List<Long> EnableSituation,
         @MetaInformation
-        List<AIPawnAutoMotionSituationType> EnableSituationTypes,
+        Set<AIPawnAutoMotionSituationType> EnableSituationTypes,
         long WaitMoveType
 ) {
 
@@ -49,23 +48,8 @@ public record AIPawnAutoMotionNode(
                 GroupSelectType, AIPawnAutoMotionGroupSelectType.of(GroupSelectType),
                 BeginMinFrame,
                 BeginMaxFrame,
-                EnableSituation, getSituationTypes(EnableSituation),
+                EnableSituation, BitUtil.extractBitSetUnsignedIntegerFlag(AIPawnAutoMotionSituationType::of, EnableSituation, 11),
                 WaitMoveType
         );
-    }
-
-    private static List<AIPawnAutoMotionSituationType> getSituationTypes(List<Long> EnableSituation) {
-        long enableSituationValue = EnableSituation.get(0);
-        if (enableSituationValue == 0) {
-            return Collections.singletonList(AIPawnAutoMotionSituationType.AIPAWN_AUTOMOT_SITUATION_NONE);
-        }
-        BitSet bitSet = BitSet.valueOf(new long[]{enableSituationValue});
-        List<AIPawnAutoMotionSituationType> situationTypes = new ArrayList<>(11);
-        for (int i = 0; i < 11; i++) {
-            if (bitSet.get(i)) {
-                situationTypes.add(AIPawnAutoMotionSituationType.of(i));
-            }
-        }
-        return situationTypes;
     }
 }

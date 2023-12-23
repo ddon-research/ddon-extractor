@@ -2,7 +2,8 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.met
 
 import java.util.Arrays;
 
-public enum AIPawnOrderActGroupType {
+public enum AIPawnActionGroupType {
+    AIPAWN_ACT_GROUP_NONE(0x0),
     AIPAWN_ACT_GROUP_ATK_PHYS(0x1),
     AIPAWN_ACT_GROUP_ATK_MAGIC(0x2),
     AIPAWN_ACT_GROUP_ATK_SLASH(0x3),
@@ -67,11 +68,11 @@ public enum AIPawnOrderActGroupType {
 
     public final long value;
 
-    AIPawnOrderActGroupType(long value) {
+    AIPawnActionGroupType(long value) {
         this.value = value;
     }
 
-    public static AIPawnOrderActGroupType of(long value) {
-        return Arrays.stream(AIPawnOrderActGroupType.values()).filter(t -> t.value == value).findFirst().orElse(null);
+    public static AIPawnActionGroupType of(long value) {
+        return Arrays.stream(AIPawnActionGroupType.values()).filter(t -> t.value == value).findFirst().orElse(null);
     }
 }

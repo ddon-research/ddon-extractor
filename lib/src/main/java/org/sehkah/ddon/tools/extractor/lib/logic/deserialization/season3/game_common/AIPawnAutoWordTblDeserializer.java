@@ -16,8 +16,8 @@ public class AIPawnAutoWordTblDeserializer extends ClientResourceFileDeserialize
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
                 fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(9),
-                fileReader.readUnsignedInteger(9)
+                fileReader.readFixedLengthArray(9, FileReader::readUnsignedInteger),
+                fileReader.readFixedLengthArray(9, FileReader::readUnsignedInteger)
         );
     }
 
