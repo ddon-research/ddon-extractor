@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.io.IOException;
@@ -145,6 +146,14 @@ public class BinaryFileReader implements FileReader {
             floats[i] = readFloat();
         }
         return floats;
+    }
+
+    @Override
+    public Sphere readSphere() {
+        return new Sphere(
+                readVector3f(),
+                readFloat()
+        );
     }
 
     @Override

@@ -33,6 +33,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc.Sit
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcConstItemDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AIPawnActNoSwitchTblDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.PawnQuestTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.QuestTextDataDeserializer;
@@ -95,6 +96,7 @@ public class ClientResourceFileManager {
     }
 
     private static void setupClientResourceFilesSeasonThree(Set<ClientResourceFile> clientResourceFileSet) {
+        clientResourceFileSet.add(new ClientResourceFile(rAISensor, new FileHeader("SNR2", 1, 4), AISensorDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnAutoWordTbl, new FileHeader(4, 4), AIPawnAutoWordTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnAutoMotionTbl, new FileHeader(6, 4), AIPawnAutoMotionTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnSkillParamTbl, new FileHeader(6, 4), AIPawnSkillParamTblDeserializer.class));
