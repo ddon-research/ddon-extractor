@@ -51,7 +51,7 @@ public abstract class ClientResourceFileDeserializer implements ClientResourceDe
         FileHeader fileHeader = fileHeaderDeserializer.parseClientResourceFile(fileReader);
         TopLevelClientResource result = parseClientResourceFile(fileReader);
         if (fileReader.hasRemaining()) {
-            throw new FileParsingIncompleteException(fileReader.getRemainingCount(), fileReader.getLimit());
+            throw new FileParsingIncompleteException(fileHeader, fileReader.getRemainingCount(), fileReader.getLimit());
         }
         result.setFileSize(fileReader.getLimit());
         result.setFileHeader(fileHeader);

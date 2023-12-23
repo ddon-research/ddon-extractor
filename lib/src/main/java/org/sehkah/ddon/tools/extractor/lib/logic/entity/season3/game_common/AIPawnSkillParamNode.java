@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public record AIPawnSkillParamNode(
         int Job,
@@ -58,7 +57,7 @@ public record AIPawnSkillParamNode(
     }
 
     private static List<ObjConditionOcdType> getSkillOcdTypes(List<Long> skillOcd) {
-        return skillOcd.stream().map(ObjConditionOcdType::of).collect(Collectors.toList());
+        return skillOcd.stream().map(ObjConditionOcdType::of).toList();
     }
 
     private static List<AIPawnSkillParamFlagType> getSkillParamFlagTypes(List<Long> AIPawnSkillParamFlag) {

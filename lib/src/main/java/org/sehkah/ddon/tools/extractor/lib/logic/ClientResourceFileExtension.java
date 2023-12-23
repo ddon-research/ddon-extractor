@@ -9,6 +9,7 @@ public enum ClientResourceFileExtension {
     rAIPawnAutoWordTbl,
     rAIPawnAutoMotionTbl,
     rAIPawnSkillParamTbl,
+    rAIPawnOrder,
     rAbilityAddData,
     rAbilityData,
     rAbilityList,
@@ -162,6 +163,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
         fileExtensionToResourceMap.put(".pam", rAIPawnAutoMotionTbl);
         fileExtensionToResourceMap.put(".aps", rAIPawnSkillParamTbl);
+        fileExtensionToResourceMap.put(".pao", rAIPawnOrder);
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);

@@ -1,11 +1,17 @@
 package org.sehkah.ddon.tools.extractor.lib.common.error;
 
+import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
+
 public class FileParsingIncompleteException extends TechnicalException {
     public FileParsingIncompleteException() {
     }
 
     public FileParsingIncompleteException(int remainingBytesCount, int maxBytesCount) {
         super("File has data remaining! %s bytes are unread.".formatted(maxBytesCount - remainingBytesCount));
+    }
+
+    public FileParsingIncompleteException(FileHeader fileHeader, int remainingBytesCount, int maxBytesCount) {
+        super("File has data remaining! %s bytes are unread while parsing '%s'.".formatted(maxBytesCount - remainingBytesCount, fileHeader));
     }
 
     public FileParsingIncompleteException(String message) {
