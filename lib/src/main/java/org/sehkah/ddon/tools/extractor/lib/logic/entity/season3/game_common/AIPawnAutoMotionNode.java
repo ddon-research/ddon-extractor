@@ -60,8 +60,8 @@ public record AIPawnAutoMotionNode(
             return Collections.singletonList(AIPawnAutoMotionSituationType.AIPAWN_AUTOMOT_SITUATION_NONE);
         }
         BitSet bitSet = BitSet.valueOf(new long[]{enableSituationValue});
-        List<AIPawnAutoMotionSituationType> situationTypes = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
+        List<AIPawnAutoMotionSituationType> situationTypes = new ArrayList<>(11);
+        for (int i = 0; i < 11; i++) {
             if (bitSet.get(i)) {
                 situationTypes.add(AIPawnAutoMotionSituationType.of(i));
             }

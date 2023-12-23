@@ -66,5 +66,9 @@ public interface FileReader {
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 
+    <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction);
+
     <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction);
+
+    <E> List<E> readArray(long length, Function<FileReader, E> entityReaderFunction);
 }
