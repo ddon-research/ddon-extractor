@@ -30,6 +30,9 @@ public enum ClientResourceFileExtension {
     rBakeJoint,
     rBitTable,
     rBlowSaveEmLvParam,
+    rCalcDamageAtdmAdj,
+    rCalcDamageAtdmAdjRate,
+    rCalcDamageLvAdj,
     rCraftCapPass,
     rCraftElementExp,
     rCraftQuality,
@@ -125,6 +128,9 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".bjt", rBakeJoint);
         fileExtensionToResourceMap.put(".btb", rBitTable);
         fileExtensionToResourceMap.put(".blow_save", rBlowSaveEmLvParam);
+        fileExtensionToResourceMap.put(".cda", rCalcDamageAtdmAdj);
+        fileExtensionToResourceMap.put(".cdarate", rCalcDamageAtdmAdjRate);
+        fileExtensionToResourceMap.put(".cdl", rCalcDamageLvAdj);
         fileExtensionToResourceMap.put(".ccp", rCraftCapPass);
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);

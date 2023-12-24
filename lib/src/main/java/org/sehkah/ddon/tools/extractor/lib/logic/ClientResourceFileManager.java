@@ -123,6 +123,9 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rBakeJoint, new FileHeader(3, 4), BakeJointTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rBitTable, new FileHeader(2, 4), BitTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rBlowSaveEmLvParam, new FileHeader(2, 4), BlowSaveEmLvParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageAtdmAdj, new FileHeader(1, 4), CalcDamageAtdmAdjTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageAtdmAdjRate, new FileHeader(1, 4), CalcDamageAtdmAdjRateTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageLvAdj, new FileHeader(17, 4), CalcDamageLvAdjTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftCapPass, new FileHeader(2, 4), CraftCapPassDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftElementExp, new FileHeader(1, 4), CraftElementExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftQuality, new FileHeader(1, 4), CraftQualityDeserializer.class));
