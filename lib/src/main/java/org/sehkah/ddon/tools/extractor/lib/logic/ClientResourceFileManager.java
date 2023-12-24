@@ -109,6 +109,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rAchievement, new FileHeader(2, 4), AchievementDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAchievementHeader, new FileHeader(3, 4), AchievementHeaderDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAdjustParam, new FileHeader(256, 4), JobAdjustParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAdjLimitParam, new FileHeader(5, 4), AdjLimitParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAnimalData, new FileHeader(0, 4), AnimalDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaInfo, new FileHeader("ARI\0", 2, 4), AreaInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), AreaInfoJointAreaDeserializer.class));

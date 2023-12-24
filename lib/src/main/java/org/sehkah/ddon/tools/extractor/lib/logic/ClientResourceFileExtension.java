@@ -19,6 +19,7 @@ public enum ClientResourceFileExtension {
     rAchievement,
     rAchievementHeader,
     rAdjustParam,
+    rAdjLimitParam,
     rAnimalData,
     rAreaInfo,
     rAreaInfoJointArea,
@@ -110,6 +111,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ach", rAchievementHeader);
         fileExtensionToResourceMap.put(".acv", rAchievement);
         fileExtensionToResourceMap.put(".ajp", rAdjustParam);
+        fileExtensionToResourceMap.put(".alp", rAdjLimitParam);
         fileExtensionToResourceMap.put(".aml", rAnimalData);
         fileExtensionToResourceMap.put(".amr", rAreaMasterRankData);
         fileExtensionToResourceMap.put(".ams", rAreaMasterSpotData);
