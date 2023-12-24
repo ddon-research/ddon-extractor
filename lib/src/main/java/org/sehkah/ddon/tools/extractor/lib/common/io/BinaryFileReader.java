@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.io.IOException;
@@ -148,6 +149,14 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public Sphere readSphere() {
+        return new Sphere(
+                readVector3f(),
+                readFloat()
+        );
+    }
+
+    @Override
     public Vector3f readVector3f() {
         return new Vector3f(readFloat(), readFloat(), readFloat());
     }
@@ -211,8 +220,18 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction) {
+        return readArray(length, entityReaderFunction);
+    }
+
+    @Override
     public <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction) {
         long length = arraySizeFunction.applyAsLong(this);
+        return readArray(length, entityReaderFunction);
+    }
+
+    @Override
+    public <E> List<E> readArray(long length, Function<FileReader, E> entityReaderFunction) {
         List<E> entities = new ArrayList<>((int) length);
         for (long i = 0; i < length; i++) {
             entities.add(entityReaderFunction.apply(this));

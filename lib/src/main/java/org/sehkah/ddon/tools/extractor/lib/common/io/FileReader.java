@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
 import java.math.BigInteger;
@@ -46,6 +47,8 @@ public interface FileReader {
 
     float[] readFloat(int num);
 
+    Sphere readSphere();
+
     Vector3f readVector3f();
 
     Vector3f[] readVector3f(int num);
@@ -66,5 +69,9 @@ public interface FileReader {
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 
+    <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction);
+
     <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction);
+
+    <E> List<E> readArray(long length, Function<FileReader, E> entityReaderFunction);
 }

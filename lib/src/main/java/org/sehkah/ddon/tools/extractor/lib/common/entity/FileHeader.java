@@ -1,14 +1,11 @@
 package org.sehkah.ddon.tools.extractor.lib.common.entity;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 
 public record FileHeader(
         String magicString,
-        @MetaInformation
         int magicBytesLength,
         long versionNumber,
         int versionBytesLength

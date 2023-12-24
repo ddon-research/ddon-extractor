@@ -12,13 +12,16 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.EncryptedArchiv
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.ItemListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.game_common.PlayerExpTableDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.BitTableDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmDmgTimerTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmLvUpParamDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.RageTableDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.BakeJointTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.AnimalDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.craft_common.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.BlowSaveEmLvParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EmDamageDirInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EvaluationTableDeserializer;
@@ -32,6 +35,8 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcConstItemDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcMeetingPlaceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AIPawnActNoSwitchTblDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.PawnQuestTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.quest.QuestTextDataDeserializer;
@@ -94,13 +99,20 @@ public class ClientResourceFileManager {
     }
 
     private static void setupClientResourceFilesSeasonThree(Set<ClientResourceFile> clientResourceFileSet) {
+        clientResourceFileSet.add(new ClientResourceFile(rAISensor, new FileHeader("SNR2", 1, 4), AISensorDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAIPawnAutoWordTbl, new FileHeader(4, 4), AIPawnAutoWordTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnAutoMotionTbl, new FileHeader(6, 4), AIPawnAutoMotionTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnSkillParamTbl, new FileHeader(6, 4), AIPawnSkillParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnOrder, new FileHeader(15, 4), AIPawnOrderDeserializer.class));
+//TODO v15 -> v17        clientResourceFileSet.add(new ClientResourceFile(rAIPawnEmParam, new FileHeader(17, 4), AIPawnEmParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnActNoSwitch, new FileHeader(5, 4), AIPawnActNoSwitchTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityAddData, new FileHeader(1, 4), AbilityAddDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityData, new FileHeader(3, 4), AbilityDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityList, new FileHeader("abl0", 9, 4), AbilityListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAchievement, new FileHeader(2, 4), AchievementDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAchievementHeader, new FileHeader(3, 4), AchievementHeaderDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAdjustParam, new FileHeader(256, 4), JobAdjustParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAdjLimitParam, new FileHeader(5, 4), AdjLimitParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAnimalData, new FileHeader(0, 4), AnimalDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaInfo, new FileHeader("ARI\0", 2, 4), AreaInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), AreaInfoJointAreaDeserializer.class));
@@ -108,6 +120,12 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterRankData, new FileHeader(4, 4), AreaMasterRankDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotData, new FileHeader(8, 4), AreaMasterSpotDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotDetailData, new FileHeader(5, 4), AreaMasterSpotDetailDataDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rBakeJoint, new FileHeader(3, 4), BakeJointTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rBitTable, new FileHeader(2, 4), BitTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rBlowSaveEmLvParam, new FileHeader(2, 4), BlowSaveEmLvParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageAtdmAdj, new FileHeader(1, 4), CalcDamageAtdmAdjTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageAtdmAdjRate, new FileHeader(1, 4), CalcDamageAtdmAdjRateTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCalcDamageLvAdj, new FileHeader(17, 4), CalcDamageLvAdjTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftCapPass, new FileHeader(2, 4), CraftCapPassDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftElementExp, new FileHeader(1, 4), CraftElementExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftQuality, new FileHeader(1, 4), CraftQualityDeserializer.class));
@@ -178,6 +196,7 @@ public class ClientResourceFileManager {
     }
 
     private static void setupClientResourceFilesSeasonTwo(Set<ClientResourceFile> clientResourceFileSet) {
+        clientResourceFileSet.add(new ClientResourceFile(rAIPawnEmParam, new FileHeader(15, 4), AIPawnEmParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAbilityList, new FileHeader("abl0", 8, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.AbilityListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotData, new FileHeader(7, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotDetailData, new FileHeader(4, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer.class));

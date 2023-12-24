@@ -6,13 +6,20 @@ import java.util.*;
 
 public enum ClientResourceFileExtension {
     rArchive,
+    rAISensor,
     rAIPawnAutoWordTbl,
+    rAIPawnAutoMotionTbl,
+    rAIPawnSkillParamTbl,
+    rAIPawnEmParam,
+    rAIPawnActNoSwitch,
+    rAIPawnOrder,
     rAbilityAddData,
     rAbilityData,
     rAbilityList,
     rAchievement,
     rAchievementHeader,
     rAdjustParam,
+    rAdjLimitParam,
     rAnimalData,
     rAreaInfo,
     rAreaInfoJointArea,
@@ -20,6 +27,12 @@ public enum ClientResourceFileExtension {
     rAreaMasterRankData,
     rAreaMasterSpotData,
     rAreaMasterSpotDetailData,
+    rBakeJoint,
+    rBitTable,
+    rBlowSaveEmLvParam,
+    rCalcDamageAtdmAdj,
+    rCalcDamageAtdmAdjRate,
+    rCalcDamageLvAdj,
     rCraftCapPass,
     rCraftElementExp,
     rCraftQuality,
@@ -104,6 +117,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ach", rAchievementHeader);
         fileExtensionToResourceMap.put(".acv", rAchievement);
         fileExtensionToResourceMap.put(".ajp", rAdjustParam);
+        fileExtensionToResourceMap.put(".alp", rAdjLimitParam);
         fileExtensionToResourceMap.put(".aml", rAnimalData);
         fileExtensionToResourceMap.put(".amr", rAreaMasterRankData);
         fileExtensionToResourceMap.put(".ams", rAreaMasterSpotData);
@@ -111,6 +125,12 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ari", rAreaInfo);
         fileExtensionToResourceMap.put(".arj", rAreaInfoJointArea);
         fileExtensionToResourceMap.put(".ars", rAreaInfoStage);
+        fileExtensionToResourceMap.put(".bjt", rBakeJoint);
+        fileExtensionToResourceMap.put(".btb", rBitTable);
+        fileExtensionToResourceMap.put(".blow_save", rBlowSaveEmLvParam);
+        fileExtensionToResourceMap.put(".cda", rCalcDamageAtdmAdj);
+        fileExtensionToResourceMap.put(".cdarate", rCalcDamageAtdmAdjRate);
+        fileExtensionToResourceMap.put(".cdl", rCalcDamageLvAdj);
         fileExtensionToResourceMap.put(".ccp", rCraftCapPass);
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);
@@ -157,7 +177,13 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ndp", rNamedParam);
         fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
         fileExtensionToResourceMap.put(".nsd", rNormalSkillData);
+        fileExtensionToResourceMap.put(".sn2", rAISensor);
         fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
+        fileExtensionToResourceMap.put(".pam", rAIPawnAutoMotionTbl);
+        fileExtensionToResourceMap.put(".aps", rAIPawnSkillParamTbl);
+        fileExtensionToResourceMap.put(".pas", rAIPawnActNoSwitch);
+        fileExtensionToResourceMap.put(".pao", rAIPawnOrder);
+        fileExtensionToResourceMap.put(".pep", rAIPawnEmParam);
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);

@@ -47,19 +47,18 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
     protected Archive parseClientResourceFile(FileReader fileReader) {
         List<ResourceInfo> resourceInfos = fileReader.readArray(FileReader::readUnsignedShort, EncryptedArchiveDeserializer::readResourceInfo);
 
-        fileReader.setPosition(DATA_OFFSET);
         Map<String, byte[]> resourceFileMap = new HashMap<>();
-        int bytesRead = 0;
+        int bytesRead = Math.ceilDiv(fileReader.getPosition(), DATA_OFFSET) * DATA_OFFSET;
         for (ResourceInfo resourceInfo : resourceInfos) {
             byte[] compressedEncryptedData = fileReader.copySignedByte((int) resourceInfo.DataSize(), (int) resourceInfo.Offset());
             byte[] decompressedData = ZipUtil.decompress(BlowFishUtil.decrypt(compressedEncryptedData), (int) resourceInfo.OriginalSize());
-            if (decompressedData.length != resourceInfo.OriginalSize()) {
+            if (decompressedData.length != (int) resourceInfo.OriginalSize()) {
                 throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.OriginalSize()));
             }
             resourceFileMap.put(resourceInfo.Path() + FrameworkResources.getFileExtension(resourceInfo.TypeName()), decompressedData);
-            bytesRead += resourceInfo.DataSize();
+            bytesRead += (int) resourceInfo.DataSize();
         }
-        fileReader.setPosition(fileReader.getPosition() + bytesRead);
+        fileReader.setPosition(bytesRead);
 
         return new Archive(
                 resourceInfos.size(),
