@@ -33,6 +33,7 @@ public enum ClientResourceFileExtension {
     rCalcDamageAtdmAdj,
     rCalcDamageAtdmAdjRate,
     rCalcDamageLvAdj,
+    rCatchInfoParam,
     rCraftCapPass,
     rCraftElementExp,
     rCraftQuality,
@@ -131,6 +132,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".cda", rCalcDamageAtdmAdj);
         fileExtensionToResourceMap.put(".cdarate", rCalcDamageAtdmAdjRate);
         fileExtensionToResourceMap.put(".cdl", rCalcDamageLvAdj);
+        fileExtensionToResourceMap.put(".cip", rCatchInfoParam);
         fileExtensionToResourceMap.put(".ccp", rCraftCapPass);
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);

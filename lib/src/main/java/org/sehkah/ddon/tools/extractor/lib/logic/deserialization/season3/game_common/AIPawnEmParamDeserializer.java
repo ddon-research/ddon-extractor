@@ -6,6 +6,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnEmNode;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.AIPawnEmParam;
 
+// Works for both v15 (season 2) & v17 (season 3)
 public class AIPawnEmParamDeserializer extends ClientResourceFileDeserializer {
     public AIPawnEmParamDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
