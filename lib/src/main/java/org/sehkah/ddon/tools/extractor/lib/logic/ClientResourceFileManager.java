@@ -21,6 +21,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.craft_common.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.BlowSaveEmLvParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EmDamageDirInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.em_common.EvaluationTableDeserializer;
@@ -121,6 +122,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotDetailData, new FileHeader(5, 4), AreaMasterSpotDetailDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rBakeJoint, new FileHeader(3, 4), BakeJointTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rBitTable, new FileHeader(2, 4), BitTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rBlowSaveEmLvParam, new FileHeader(2, 4), BlowSaveEmLvParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftCapPass, new FileHeader(2, 4), CraftCapPassDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftElementExp, new FileHeader(1, 4), CraftElementExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftQuality, new FileHeader(1, 4), CraftQualityDeserializer.class));
