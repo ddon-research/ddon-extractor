@@ -15,6 +15,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.game_co
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmDmgTimerTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmLvUpParamDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.RageTableDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.BakeJointTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.AnimalDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
@@ -117,6 +118,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterRankData, new FileHeader(4, 4), AreaMasterRankDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotData, new FileHeader(8, 4), AreaMasterSpotDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rAreaMasterSpotDetailData, new FileHeader(5, 4), AreaMasterSpotDetailDataDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rBakeJoint, new FileHeader(3, 4), BakeJointTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftCapPass, new FileHeader(2, 4), CraftCapPassDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftElementExp, new FileHeader(1, 4), CraftElementExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCraftQuality, new FileHeader(1, 4), CraftQualityDeserializer.class));

@@ -27,6 +27,7 @@ public enum ClientResourceFileExtension {
     rAreaMasterRankData,
     rAreaMasterSpotData,
     rAreaMasterSpotDetailData,
+    rBakeJoint,
     rCraftCapPass,
     rCraftElementExp,
     rCraftQuality,
@@ -119,6 +120,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ari", rAreaInfo);
         fileExtensionToResourceMap.put(".arj", rAreaInfoJointArea);
         fileExtensionToResourceMap.put(".ars", rAreaInfoStage);
+        fileExtensionToResourceMap.put(".bjt", rBakeJoint);
         fileExtensionToResourceMap.put(".ccp", rCraftCapPass);
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);
