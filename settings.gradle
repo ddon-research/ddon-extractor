@@ -4,7 +4,7 @@ pluginManagement {
         id 'org.javamodularity.moduleplugin' version '1.8.12'
         id 'io.freefair.lombok' version '8.4'
         id 'com.github.ben-manes.versions' version '0.50.0'
-        id 'nl.littlerobots.version-catalog-update' version '0.8.1'
+        id 'nl.littlerobots.version-catalog-update' version '0.8.3'
     }
 }
 
