@@ -5,6 +5,10 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.LongFunction;
 
 public class BitUtil {
+    private BitUtil() {
+
+    }
+
     public static <T> Set<T> extractBitSetUnsignedIntegerFlag(LongFunction<T> longToEnumMapper, long bitSetValue) {
         return extractBitSetUnsignedIntegerFlag(longToEnumMapper, Collections.singletonList(bitSetValue));
     }

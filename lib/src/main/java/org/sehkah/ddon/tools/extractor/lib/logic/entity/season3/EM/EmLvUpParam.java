@@ -1,10 +1,12 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.EM;
 
+import java.util.List;
+
 public record EmLvUpParam(
         long Lv,
-        float[] Hp_Cor,
-        float[] ShP_Cor,
-        float[] BlP_Cor,
+        List<Float> Hp_Cor,
+        List<Float> ShP_Cor,
+        List<Float> BlP_Cor,
         float Ocd_Cor,
         float AttackWepPhys_Cor,
         float AttackWepMagic_Cor,

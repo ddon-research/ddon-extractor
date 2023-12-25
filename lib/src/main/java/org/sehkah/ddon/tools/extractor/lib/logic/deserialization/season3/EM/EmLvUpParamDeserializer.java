@@ -14,9 +14,9 @@ public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer {
     private static EmLvUpParam readEmLvUpParam(FileReader fileReader) {
         return new EmLvUpParam(
                 fileReader.readUnsignedInteger(),
-                fileReader.readFloat(10),
-                fileReader.readFloat(10),
-                fileReader.readFloat(10),
+                fileReader.readFixedLengthArray(10, FileReader::readFloat),
+                fileReader.readFixedLengthArray(10, FileReader::readFloat),
+                fileReader.readFixedLengthArray(10, FileReader::readFloat),
                 fileReader.readFloat(),
                 fileReader.readFloat(),
                 fileReader.readFloat(),

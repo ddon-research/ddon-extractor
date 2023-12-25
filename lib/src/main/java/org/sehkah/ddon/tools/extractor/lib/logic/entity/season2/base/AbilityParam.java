@@ -10,11 +10,9 @@ public record AbilityParam(
         int ParamType,
         @MetaInformation
         AbilityParamType ParamTypeName,
-
         int CorrectType,
         @MetaInformation
         AbilityParamCorrectType CorrectTypeName,
-
         long ParamDataArrayNum,
         List<AbilityParamData> ParamDataArray
 ) {

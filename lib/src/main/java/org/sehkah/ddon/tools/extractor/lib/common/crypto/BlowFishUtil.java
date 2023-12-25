@@ -9,7 +9,12 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import java.nio.charset.StandardCharsets;
 
 public class BlowFishUtil {
+
     private static final byte[] key = "ABB(DF2I8[{Y-oS_CCMy(@<}qR}WYX11M)w[5V.~CbjwM5q<F1Iab+-".getBytes(StandardCharsets.UTF_8);
+
+    private BlowFishUtil() {
+
+    }
 
     /**
      * Simulate blowfish-compat by reversing 4-byte chunks, see https://github.com/otrtool/otrtool/commit/4282fbee1643ed2b37ae48c510619b2617a34bf1

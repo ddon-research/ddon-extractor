@@ -7,9 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-public class FrameworkResources {
-    private static final Map<String, String> resourceToFileExtensionMap = new HashMap<>(420);
-    private static final Map<Long, String> jamCrcToResourceMap = new HashMap<>(420);
+public class FrameworkResourcesUtil {
+    private static final Map<String, String> resourceToFileExtensionMap = HashMap.newHashMap(420);
+    private static final Map<Long, String> jamCrcToResourceMap = HashMap.newHashMap(420);
+    private static final Map<Long, String> jamCrcToFileExtensionMap = HashMap.newHashMap(420);
 
     static {
         resourceToFileExtensionMap.put("rAI", ".ais");
@@ -433,7 +434,15 @@ public class FrameworkResources {
         resourceToFileExtensionMap.put("rZone", ".zon");
         resourceToFileExtensionMap.put("rkThinkData", ".pen");
 
-        resourceToFileExtensionMap.forEach((key, value) -> jamCrcToResourceMap.put(CrcUtil.jamCrc32(key.getBytes()), key));
+        resourceToFileExtensionMap.forEach((key, value) -> {
+            long crc = CrcUtil.jamCrc32(key.getBytes());
+            jamCrcToResourceMap.put(crc, key);
+            jamCrcToFileExtensionMap.put(crc, value);
+        });
+    }
+
+    private FrameworkResourcesUtil() {
+
     }
 
     public static String getFileExtension(String resourceClassName) {
@@ -443,6 +452,10 @@ public class FrameworkResources {
             log.warn("Unable to determine file extension for resource class '{}', defaulting to '{}'.", resourceClassName, fileExtension);
         }
         return fileExtension;
+    }
+
+    public static String getFileExtension(long crc) {
+        return jamCrcToFileExtensionMap.getOrDefault(crc, String.valueOf(crc));
     }
 
     public static String getFrameworkResourceClassNameByCrc(long crc) {

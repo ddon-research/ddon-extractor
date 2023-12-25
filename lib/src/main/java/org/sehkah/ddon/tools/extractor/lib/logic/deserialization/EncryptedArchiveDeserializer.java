@@ -6,7 +6,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.FrameworkResources;
+import org.sehkah.ddon.tools.extractor.lib.logic.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.ResourceInfo;
 
@@ -55,7 +55,7 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
             if (decompressedData.length != (int) resourceInfo.OriginalSize()) {
                 throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.OriginalSize()));
             }
-            resourceFileMap.put(resourceInfo.Path() + FrameworkResources.getFileExtension(resourceInfo.TypeName()), decompressedData);
+            resourceFileMap.put(resourceInfo.Path() + FrameworkResourcesUtil.getFileExtension(resourceInfo.TypeName()), decompressedData);
             bytesRead += (int) resourceInfo.DataSize();
         }
         fileReader.setPosition(bytesRead);

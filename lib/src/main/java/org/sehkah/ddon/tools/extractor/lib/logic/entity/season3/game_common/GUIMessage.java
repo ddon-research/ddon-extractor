@@ -53,4 +53,9 @@ public final class GUIMessage extends TopLevelClientResource {
     public void updateMessages(Map<String, String> keyMessageMap) {
         keyMessageMap.forEach(this::updateMessage);
     }
+
+    @MetaInformation
+    public GUIMessageLanguageType getLanguage() {
+        return Language;
+    }
 }

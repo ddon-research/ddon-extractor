@@ -9,6 +9,9 @@ import java.util.zip.Inflater;
 
 @Slf4j
 public class ZipUtil {
+    private ZipUtil() {
+
+    }
 
     public static byte[] decompress(byte[] input, int expectedSize) {
         final Inflater decompresser = new Inflater();
