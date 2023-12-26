@@ -109,6 +109,7 @@ public enum ClientResourceFileExtension {
     rWarpLocation,
     rWaypoint,
     rWaypoint2,
+    rWeaponOffset,
     rWeaponResTable,
     rWepCateResTbl;
 
@@ -225,6 +226,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wal", rWarpLocation);
         fileExtensionToResourceMap.put(".wpt", rWaypoint);
         fileExtensionToResourceMap.put(".wp2", rWaypoint2);
+        fileExtensionToResourceMap.put(".wpn_ofs", rWeaponOffset);
         fileExtensionToResourceMap.put(".wrt", rWeaponResTable);
         fileExtensionToResourceMap.put(".wcrt", rWepCateResTbl);
 
