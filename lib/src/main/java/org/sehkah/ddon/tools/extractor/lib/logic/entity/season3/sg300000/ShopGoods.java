@@ -1,7 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000;
 
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsCategoryType;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsDate;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsReplenishType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsSaleType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
