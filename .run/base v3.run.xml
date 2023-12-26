@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="game_common v3" type="Application" factoryName="Application">
+  <configuration default="false" name="base v3" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main" />
     <module name="ddon-extractor.cli.main" />
-    <option name="PROGRAM_PARAMETERS" value="-o -m D:\DDON_03040008\nativePC\rom\game_common" />
+    <option name="PROGRAM_PARAMETERS" value="-o -m D:\DDON_03040008\nativePC\rom\base" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />
