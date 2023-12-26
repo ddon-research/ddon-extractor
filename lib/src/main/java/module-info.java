@@ -59,6 +59,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUIDogmaOrb;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUIKeyConfig;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.wep_res_table;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
@@ -73,4 +74,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.common.crypto;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.wep_res_table.meta;
 }

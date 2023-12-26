@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta;
 
 import java.util.Arrays;
 
-public enum ItemListWeaponCategory {
+public enum WeaponCategory {
     HAND(0x0),
     SWORD(0x1),
     SHIELD(0x2),
@@ -22,11 +22,11 @@ public enum ItemListWeaponCategory {
 
     public final long value;
 
-    ItemListWeaponCategory(long value) {
+    WeaponCategory(long value) {
         this.value = value;
     }
 
-    public static ItemListWeaponCategory of(long value) {
-        return Arrays.stream(ItemListWeaponCategory.values()).filter(itemListWeaponCategory -> itemListWeaponCategory.value == value).findFirst().orElse(WEAPON_CATEGORY_UNKNOWN);
+    public static WeaponCategory of(long value) {
+        return Arrays.stream(WeaponCategory.values()).filter(t -> t.value == value).findFirst().orElse(WEAPON_CATEGORY_UNKNOWN);
     }
 }

@@ -62,6 +62,8 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUI
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.uGUISkill.AbilityAddDataDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.wep_res_table.WeaponResTableDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.wep_res_table.WepCateResTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.ClientStringSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
@@ -208,6 +210,8 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(353, 4), WarpLocationDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWaypoint, new FileHeader("WPT\0", 2, 4), WaypointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWaypoint2, new FileHeader("WP2\0", 1, 4), WaypointDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(11, 4), WeaponResTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWepCateResTbl, new FileHeader(1, 4), WepCateResTblDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonTwo(Set<ClientResourceFile> clientResourceFileSet) {
@@ -228,6 +232,7 @@ public class ClientResourceFileManager {
 // TODO: java.nio.BufferUnderflowException       clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 5, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.tutorial_guide.TutorialListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(352, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.gui_cmn.WarpLocationDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(9, 4), WeaponResTableDeserializer.class));
     }
 
     public ClientResourceDeserializer<TopLevelClientResource> getDeserializer(String fileName, FileReader fileReader) {
