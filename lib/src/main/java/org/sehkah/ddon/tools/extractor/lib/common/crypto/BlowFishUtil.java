@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.crypto;
 
-import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.CryptoException;
+import org.bouncycastle.crypto.DefaultBufferedBlockCipher;
 import org.bouncycastle.crypto.engines.BlowfishEngine;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
@@ -29,7 +29,7 @@ public class BlowFishUtil {
     }
 
     public static byte[] decrypt(byte[] encrypted) {
-        final BufferedBlockCipher blowfishDecryption = new BufferedBlockCipher(new BlowfishEngine());
+        final DefaultBufferedBlockCipher blowfishDecryption = new DefaultBufferedBlockCipher(new BlowfishEngine());
         blowfishDecryption.init(false, new KeyParameter(key));
         byte[] decrypted = new byte[encrypted.length];
         int outputLen = blowfishDecryption.processBytes(reverse(encrypted), 0, encrypted.length, decrypted, 0);
@@ -39,5 +39,10 @@ public class BlowFishUtil {
             throw new TechnicalException("Blowfish failed to decrypt data.", ce);
         }
         return reverse(decrypted);
+    }
+
+    public static byte[] decryptCompat(byte[] encrypted) {
+        final BlowFishCompat blowfishDecryption = new BlowFishCompat(key);
+        return blowfishDecryption.decryptECB(encrypted);
     }
 }

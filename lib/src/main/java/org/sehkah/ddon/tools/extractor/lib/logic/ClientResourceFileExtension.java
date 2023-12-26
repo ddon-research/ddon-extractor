@@ -1,7 +1,5 @@
 package org.sehkah.ddon.tools.extractor.lib.logic;
 
-import org.sehkah.ddon.tools.extractor.lib.common.crypto.CrcUtil;
-
 import java.util.*;
 
 public enum ClientResourceFileExtension {
@@ -220,7 +218,7 @@ public enum ClientResourceFileExtension {
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 
-        Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(CrcUtil.jamCrc32(e.name().getBytes()), e));
+        Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(e.name()), e));
     }
 
     public static ClientResourceFileExtension of(String fileExtension) {

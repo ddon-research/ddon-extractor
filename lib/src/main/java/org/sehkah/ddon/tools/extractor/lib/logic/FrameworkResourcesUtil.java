@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.crypto.CrcUtil;
 
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -435,9 +436,9 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rkThinkData", ".pen");
 
         resourceToFileExtensionMap.forEach((key, value) -> {
-            long crc = CrcUtil.jamCrc32(key.getBytes());
-            jamCrcToResourceMap.put(crc, key);
-            jamCrcToFileExtensionMap.put(crc, value);
+            long id = FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(key);
+            jamCrcToResourceMap.put(id, key);
+            jamCrcToFileExtensionMap.put(id, value);
         });
     }
 
@@ -445,11 +446,11 @@ public class FrameworkResourcesUtil {
 
     }
 
-    public static String getFileExtension(String resourceClassName) {
-        String fileExtension = resourceToFileExtensionMap.get(resourceClassName);
+    public static String getFileExtension(String resourceDataTypeName) {
+        String fileExtension = resourceToFileExtensionMap.get(resourceDataTypeName);
         if (fileExtension == null) {
-            fileExtension = "." + resourceClassName;
-            log.warn("Unable to determine file extension for resource class '{}', defaulting to '{}'.", resourceClassName, fileExtension);
+            fileExtension = "." + resourceDataTypeName;
+            log.warn("Unable to determine file extension for resource class '{}', defaulting to '{}'.", resourceDataTypeName, fileExtension);
         }
         return fileExtension;
     }
@@ -460,5 +461,53 @@ public class FrameworkResourcesUtil {
 
     public static String getFrameworkResourceClassNameByCrc(long crc) {
         return jamCrcToResourceMap.getOrDefault(crc, String.valueOf(crc));
+    }
+
+    public static BigInteger convertToResourceId(String dataTypeName, String path) {
+        return convertToResourceId(CrcUtil.jamCrc32(dataTypeName), path);
+    }
+
+    public static BigInteger convertToResourceId(long dataTypeId, String path) {
+        return BigInteger.valueOf(dataTypeId).shiftLeft(32).or(BigInteger.valueOf(CrcUtil.frameworkCrc32(path)));
+    }
+
+    public static long convertResourceIdToPathId(BigInteger resourceId) {
+        return resourceId.longValue() & 0xFFFF_FFFFL;
+    }
+
+    public static long convertResourceIdToTagId(BigInteger resourceId) {
+        return resourceId.longValue() >> 32;
+    }
+
+    /**
+     * @return an DTI->mID equivalent
+     */
+    public static long convertDataTypeStringToDataTypeId(String dataTypeName) {
+        return CrcUtil.jamCrc32(dataTypeName);
+    }
+
+    /**
+     * @return an ARC_TAGID equivalent
+     */
+    public static long convertResourceStringToTagId(String resourceName) {
+        return CrcUtil.frameworkCrc32(resourceName);
+    }
+
+    /**
+     * @return an ARC_SEARCHID equivalent
+     */
+    public static long convertResourceStringToSearchId(String resourceName) {
+        return CrcUtil.frameworkCrc32(resourceName);
+    }
+
+    public static long convertResourcePathToPathId(String path) {
+        return CrcUtil.frameworkCrc32(path);
+    }
+
+    /**
+     * @return a number corresponding to an ALA file name
+     */
+    public static long convertTagIdToTargetTagNumber(long tagId) {
+        return tagId & 0x7F;
     }
 }

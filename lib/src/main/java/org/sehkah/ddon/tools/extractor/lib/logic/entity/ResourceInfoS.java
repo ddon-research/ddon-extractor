@@ -17,7 +17,7 @@ public record ResourceInfoS(
         this(
                 ResourceID,
                 Type, FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(Type),
-                ResourceID.and(BigInteger.valueOf(0x0000_0000_ffff_ffffL)).longValue()
+                FrameworkResourcesUtil.convertResourceIdToPathId(ResourceID)
         );
     }
 }

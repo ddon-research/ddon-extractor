@@ -55,11 +55,14 @@ dependencyResolutionManagement {
         libTest {
             version('commonsCodec', '1.16.0')
             version('commonsIo', '2.15.1')
+            version('junitPioneer', '2.2.0')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec
             library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')
             // https://mvnrepository.com/artifact/commons-io/commons-io
             library('commons-io', 'commons-io', 'commons-io').versionRef('commonsIo')
+            // https://mvnrepository.com/artifact/org.junit-pioneer/junit-pioneer
+            library('junit-pioneer', 'org.junit-pioneer', 'junit-pioneer').versionRef('junitPioneer')
         }
         cli {
             version('comFasterxmlJackson', '2.16.0')

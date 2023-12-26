@@ -1,6 +1,5 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity;
 
-import org.sehkah.ddon.tools.extractor.lib.common.crypto.CrcUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.meta.ArchiveQuality;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
@@ -9,6 +8,8 @@ import java.math.BigInteger;
 
 public record ResourceInfo(
         String Path,
+        @MetaInformation
+        long PathCRC,
         @MetaInformation
         BigInteger ResourceId,
         long Type,
@@ -25,7 +26,7 @@ public record ResourceInfo(
 ) {
     public ResourceInfo(String path, long type, long dataSize, long orgSize, long quality, long offset) {
         this(
-                path, CrcUtil.resourceId(type, path),
+                path, FrameworkResourcesUtil.convertResourcePathToPathId(path), FrameworkResourcesUtil.convertToResourceId(type, path),
                 type, FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(type), FrameworkResourcesUtil.getFileExtension(type),
                 dataSize,
                 orgSize,

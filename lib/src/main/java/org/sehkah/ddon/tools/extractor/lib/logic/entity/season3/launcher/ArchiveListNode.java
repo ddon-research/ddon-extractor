@@ -24,7 +24,7 @@ public record ArchiveListNode(
                            long dbgResDataPointer) {
         this(searchId,
                 tagId,
-                resId, FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(resId.shiftRight(32).longValue()), resId.and(BigInteger.valueOf(0x0000_0000_ffff_ffffL)).longValue(),
+                resId, FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(FrameworkResourcesUtil.convertResourceIdToTagId(resId)), FrameworkResourcesUtil.convertResourceIdToPathId(resId),
                 dbgResDataNum,
                 dbgResDataPointer);
     }
