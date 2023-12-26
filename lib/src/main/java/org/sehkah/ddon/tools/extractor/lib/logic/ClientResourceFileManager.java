@@ -207,6 +207,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rTutorialQuestGroup, new FileHeader("TQG\0", 1, 2), TutorialQuestGroupDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(353, 4), WarpLocationDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWaypoint, new FileHeader("WPT\0", 2, 4), WaypointDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWaypoint2, new FileHeader("WP2\0", 1, 4), WaypointDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonTwo(Set<ClientResourceFile> clientResourceFileSet) {

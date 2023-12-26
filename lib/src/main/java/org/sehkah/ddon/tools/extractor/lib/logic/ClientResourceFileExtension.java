@@ -107,7 +107,8 @@ public enum ClientResourceFileExtension {
     rTutorialList,
     rTutorialQuestGroup,
     rWarpLocation,
-    rWaypoint;
+    rWaypoint,
+    rWaypoint2;
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
 
@@ -221,6 +222,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);
         fileExtensionToResourceMap.put(".wal", rWarpLocation);
         fileExtensionToResourceMap.put(".wpt", rWaypoint);
+        fileExtensionToResourceMap.put(".wp2", rWaypoint2);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 
