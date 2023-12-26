@@ -51,6 +51,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.C
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.LocationDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.Tbl2ChatMacroDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.history.QuestHistoryDataDeserializer;
@@ -205,6 +206,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 6, 4), TutorialListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialQuestGroup, new FileHeader("TQG\0", 1, 2), TutorialQuestGroupDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(353, 4), WarpLocationDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWaypoint, new FileHeader("WPT\0", 2, 4), WaypointDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonTwo(Set<ClientResourceFile> clientResourceFileSet) {
