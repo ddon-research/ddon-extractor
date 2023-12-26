@@ -34,6 +34,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.game_co
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.gui_cmn.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.StaminaDecTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.launcher.ArchiveListArrayDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.DungeonMarkerDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcConstItemDeserializer;
@@ -142,6 +143,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rCraftUpGradeExp, new FileHeader(1, 4), CraftUpGradeExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCustomSkillData, new FileHeader(3, 4), CustomSkillDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCycleQuestInfo, new FileHeader("CQI\0", 2, 4), CycleQuestInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rDungeonMarker, new FileHeader("DMI\0", 1, 4), DungeonMarkerDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmBaseInfoSv, new FileHeader(21, 4), EmBaseInfoSvDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmDamageDirInfo, new FileHeader(2, 4), EmDamageDirInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmDmgTimerTbl, new FileHeader(2, 4), EmDmgTimerTblDeserializer.class));
@@ -217,6 +219,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.LandInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
+// TODO: java.nio.BufferUnderflowException       clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 5, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.tutorial_guide.TutorialListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(352, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.gui_cmn.WarpLocationDeserializer.class));
     }

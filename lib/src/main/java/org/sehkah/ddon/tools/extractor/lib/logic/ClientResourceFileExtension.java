@@ -44,6 +44,7 @@ public enum ClientResourceFileExtension {
     rCraftUpGradeExp,
     rCustomSkillData,
     rCycleQuestInfo,
+    rDungeonMarker,
     rEmBaseInfoSv,
     rEmDamageDirInfo,
     rEmDmgTimerTbl,
@@ -148,6 +149,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".cqr", rCraftQuality);
         fileExtensionToResourceMap.put(".csd", rCustomSkillData);
         fileExtensionToResourceMap.put(".cuex", rCraftUpGradeExp);
+        fileExtensionToResourceMap.put(".dmi", rDungeonMarker);
         fileExtensionToResourceMap.put(".dgm", rGUIDogmaOrb);
         fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
         fileExtensionToResourceMap.put(".ebi_sv", rEmBaseInfoSv);
