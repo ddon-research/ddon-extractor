@@ -78,6 +78,7 @@ public enum ClientResourceFileExtension {
     rMapSpotData,
     rMapSpotStageList,
     rMsgSet,
+    rMyRoomActParam,
     rNamedParam,
     rNormalSkillData,
     rNpcConstItem,
@@ -182,6 +183,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
         fileExtensionToResourceMap.put(".msd", rMapSpotData);
+        fileExtensionToResourceMap.put(".mra", rMyRoomActParam);
         fileExtensionToResourceMap.put(".msl", rMapSpotStageList);
         fileExtensionToResourceMap.put(".mss", rMsgSet);
         fileExtensionToResourceMap.put(".nci", rNpcConstItem);
