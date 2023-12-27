@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
@@ -212,6 +213,18 @@ public class BinaryFileReader implements FileReader {
         String mtString = readString((int) length, charset);
         byteBuffer.get();
         return mtString;
+    }
+
+    @Override
+    public Color readColor() {
+        long rgba = readUnsignedInteger();
+
+        int r = (int) (rgba & 0xff);
+        int g = (int) ((rgba >> 8) & 0xff);
+        int b = (int) ((rgba >> 16) & 0xff);
+        int a = (int) ((rgba >> 24) & 0xff);
+
+        return new Color(r, g, b, a);
     }
 
     @Override

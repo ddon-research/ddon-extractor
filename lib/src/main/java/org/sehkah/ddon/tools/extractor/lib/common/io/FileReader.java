@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
@@ -66,6 +67,8 @@ public interface FileReader {
     String readMtString();
 
     String readMtString(Charset charset);
+
+    Color readColor();
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 

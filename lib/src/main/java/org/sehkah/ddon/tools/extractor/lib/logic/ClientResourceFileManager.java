@@ -48,6 +48,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.sg30000
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.CustomSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.LocationDataDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.StageJointDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.Tbl2ChatMacroDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.tutorial_guide.TutorialDialogMessageDeserializer;
@@ -202,6 +203,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rShrinkBlowValue, new FileHeader(2, 4), ShrinkBlowValueDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageJoint, new FileHeader("sja\0", 19, 4), StageJointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageList, new FileHeader("slt\0", 34, 4), StageListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageMap, new FileHeader(1, 4), StageMapDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageToSpot, new FileHeader(0, 4), StageToSpotDeserializer.class));
