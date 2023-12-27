@@ -75,6 +75,7 @@ public enum ClientResourceFileExtension {
     rLandInfo,
     rLayoutPreset,
     rLocationData,
+    rMagicCommandList,
     rMapSpotData,
     rMapSpotStageList,
     rMsgSet,
@@ -197,6 +198,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lcd", rLocationData);
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
+        fileExtensionToResourceMap.put(".mgcc", rMagicCommandList);
         fileExtensionToResourceMap.put(".msd", rMapSpotData);
         fileExtensionToResourceMap.put(".mra", rMyRoomActParam);
         fileExtensionToResourceMap.put(".msl", rMapSpotStageList);

@@ -30,6 +30,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.fieldar
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.game_common.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.gui_cmn.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.MagicCommandListTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.StaminaDecTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.launcher.ArchiveListArrayDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.DungeonMarkerDeserializer;
@@ -177,6 +178,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rLocationData, new FileHeader("lcd\0", 16, 4), LocationDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMapSpotData, new FileHeader("msd\0", 0, 4), MapSpotDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMapSpotStageList, new FileHeader("msl\0", 0, 4), MapSpotStageListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rMagicCommandList, new FileHeader(27, 4), MagicCommandListTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMsgSet, new FileHeader("mgst", 3, 2), MsgSetDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMyRoomActParam, new FileHeader(15, 4), MyRoomActParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNamedParam, new FileHeader(5, 4), NamedParamDeserializer.class));
