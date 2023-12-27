@@ -19,6 +19,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.C
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.WeaponOffsetTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.AnimalDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.MyRoomActParamTblDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.PartnerPawnTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.RoomWearParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
@@ -184,6 +185,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rNormalSkillData, new FileHeader(5, 4), NormalSkillDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNpcConstItem, new FileHeader(2, 4), NpcConstItemDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNpcMeetingPlace, new FileHeader(0, 4), NpcMeetingPlaceDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rPartnerPawnTalk, new FileHeader("ppt\0", 1, 4), PartnerPawnTalkDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPawnQuestTalk, new FileHeader("PQT\0", 1, 4), PawnQuestTalkDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPlPartsInfo, new FileHeader("PSI\0", 1, 4), PlPartsInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPrologueHmStatus, new FileHeader(0, 4), PrologueHmStatusDeserializer.class));
