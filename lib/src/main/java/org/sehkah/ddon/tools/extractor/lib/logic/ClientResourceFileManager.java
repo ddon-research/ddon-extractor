@@ -232,6 +232,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rCaughtInfoParam, new FileHeader(15, 4), CaughtInfoParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCustomSkillData, new FileHeader(1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.skill.CustomSkillDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEventParam, new FileHeader(18, 4), EventParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEmBaseInfoSv, new FileHeader(8, 4), EmBaseInfoSvDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rFurnitureData, new FileHeader(4, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.clankyoten.FurnitureDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rItemList, new FileHeader("ipa\0", 58, 4), ItemListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.LandInfoDeserializer.class));
