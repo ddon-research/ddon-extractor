@@ -93,6 +93,8 @@ public enum ClientResourceFileExtension {
     rQuestTextData,
     rRageTable,
     rShopGoods,
+    rShotReqInfo,
+    rShotReqInfo2,
     rShrinkBlowValue,
     rSituationMsgCtrl,
     rStageAdjoinList,
@@ -217,6 +219,8 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".smp", rStageMap);
         fileExtensionToResourceMap.put(".sn2", rAISensor);
         fileExtensionToResourceMap.put(".spg_tbl", rShopGoods);
+        fileExtensionToResourceMap.put(".sri", rShotReqInfo);
+        fileExtensionToResourceMap.put(".sri2", rShotReqInfo2);
         fileExtensionToResourceMap.put(".sta", rStartPosArea);
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);

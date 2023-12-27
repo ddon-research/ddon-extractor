@@ -12,10 +12,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.EncryptedArchiv
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.ItemListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.game_common.PlayerExpTableDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.BitTableDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmDmgTimerTblDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.EmLvUpParamDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.RageTableDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.BakeJointTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.CaughtInfoParamTblDeserializer;
@@ -195,6 +192,8 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rQuestTextData, new FileHeader("QTD\0", 2, 4), QuestTextDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rRageTable, new FileHeader(257, 4), RageTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShopGoods, new FileHeader("TBL\0", 259, 4), ShopGoodsDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo, new FileHeader(9, 4), ShotReqInfoTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo2, new FileHeader(9, 4), ShotReqInfo2TblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShrinkBlowValue, new FileHeader(2, 4), ShrinkBlowValueDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
