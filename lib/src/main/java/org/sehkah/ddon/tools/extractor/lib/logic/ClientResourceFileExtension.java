@@ -82,6 +82,7 @@ public enum ClientResourceFileExtension {
     rNamedParam,
     rNormalSkillData,
     rNpcConstItem,
+    rNpcLedgerList,
     rNpcMeetingPlace,
     rPartnerPawnTalk,
     rPartnerReactParam,
@@ -198,6 +199,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".msl", rMapSpotStageList);
         fileExtensionToResourceMap.put(".mss", rMsgSet);
         fileExtensionToResourceMap.put(".nci", rNpcConstItem);
+        fileExtensionToResourceMap.put(".nll", rNpcLedgerList);
         fileExtensionToResourceMap.put(".ndp", rNamedParam);
         fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
         fileExtensionToResourceMap.put(".nsd", rNormalSkillData);

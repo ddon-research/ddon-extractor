@@ -36,6 +36,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcConstItemDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcLedgerListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AIPawnActNoSwitchTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.pawn.AISensorDeserializer;
@@ -181,6 +182,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rNamedParam, new FileHeader(5, 4), NamedParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNormalSkillData, new FileHeader(5, 4), NormalSkillDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNpcConstItem, new FileHeader(2, 4), NpcConstItemDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rNpcLedgerList, new FileHeader("nll\0", 6, 4), NpcLedgerListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rNpcMeetingPlace, new FileHeader(0, 4), NpcMeetingPlaceDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPartnerReactParam, new FileHeader(4, 4), PartnerReactParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPartnerPawnTalk, new FileHeader("ppt\0", 1, 4), PartnerPawnTalkDeserializer.class));
