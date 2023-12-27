@@ -19,6 +19,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.C
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.WeaponOffsetTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.AnimalDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.MyRoomActParamTblDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.RoomWearParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.craft_common.*;
@@ -192,6 +193,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rQuestTextData, new FileHeader("QTD\0", 2, 4), QuestTextDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rRageTable, new FileHeader(257, 4), RageTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rReplaceWardGmdList, new FileHeader(1, 4), ReplaceWardGmdListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rRoomWearParam, new FileHeader(2, 4), RoomWearParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShopGoods, new FileHeader("TBL\0", 259, 4), ShopGoodsDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo, new FileHeader(9, 4), ShotReqInfoTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo2, new FileHeader(9, 4), ShotReqInfo2TblDeserializer.class));
@@ -229,6 +231,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rItemList, new FileHeader("ipa\0", 58, 4), ItemListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.LandInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMyRoomActParam, new FileHeader(14, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.MyRoom.MyRoomActParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rRoomWearParam, new FileHeader(1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.MyRoom.RoomWearParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
 // TODO: java.nio.BufferUnderflowException       clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), StageAdjoinListDeserializer.class));

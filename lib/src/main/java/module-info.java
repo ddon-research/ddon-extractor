@@ -70,6 +70,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.skill;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.MyRoom;
 
     exports org.sehkah.ddon.tools.extractor.lib.common.crypto;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.meta;
