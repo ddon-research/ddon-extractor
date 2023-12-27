@@ -77,6 +77,7 @@ public enum ClientResourceFileExtension {
     rLocationData,
     rMagicCommandList,
     rMagicCommandWord,
+    rMagicChantParam,
     rMapSpotData,
     rMapSpotStageList,
     rMsgSet,
@@ -159,6 +160,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".cdl", rCalcDamageLvAdj);
         fileExtensionToResourceMap.put(".cdrr", rCaughtDamageRateRefTbl);
         fileExtensionToResourceMap.put(".cdrt", rCaughtDamageRateTbl);
+        fileExtensionToResourceMap.put(".chant", rMagicChantParam);
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".cip", rCatchInfoParam);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);

@@ -1,9 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.*;
 
 import java.math.BigInteger;
 import java.nio.charset.Charset;
@@ -53,6 +50,12 @@ public interface FileReader {
     Vector3f readVector3f();
 
     Vector3f[] readVector3f(int num);
+
+    Vector4f readVector4f();
+
+    Vector4f[] readVector4f(int num);
+
+    Matrix readMatrix();
 
     Float2f readFloat2f();
 

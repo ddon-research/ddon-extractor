@@ -1,9 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.*;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -169,6 +166,25 @@ public class BinaryFileReader implements FileReader {
             vector3fs[i] = readVector3f();
         }
         return vector3fs;
+    }
+
+    @Override
+    public Vector4f readVector4f() {
+        return new Vector4f(readFloat(), readFloat(), readFloat(), readFloat());
+    }
+
+    @Override
+    public Vector4f[] readVector4f(int num) {
+        Vector4f[] vector4fs = new Vector4f[num];
+        for (int i = 0; i < num; i++) {
+            vector4fs[i] = readVector4f();
+        }
+        return vector4fs;
+    }
+
+    @Override
+    public Matrix readMatrix() {
+        return new Matrix(readVector4f(), readVector4f(), readVector4f(), readVector4f());
     }
 
     @Override
