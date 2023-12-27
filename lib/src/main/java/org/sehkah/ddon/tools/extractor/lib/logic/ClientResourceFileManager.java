@@ -191,6 +191,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rQuestSequenceList, new FileHeader(256, 4), QuestSequenceListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rQuestTextData, new FileHeader("QTD\0", 2, 4), QuestTextDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rRageTable, new FileHeader(257, 4), RageTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rReplaceWardGmdList, new FileHeader(1, 4), ReplaceWardGmdListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShopGoods, new FileHeader("TBL\0", 259, 4), ShopGoodsDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo, new FileHeader(9, 4), ShotReqInfoTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rShotReqInfo2, new FileHeader(9, 4), ShotReqInfo2TblDeserializer.class));

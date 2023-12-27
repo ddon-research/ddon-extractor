@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.math.BigInteger;
 
+// TODO decode information from resource IDs as meta info
 public record WepCateRes(
         long Category,
         @MetaInformation

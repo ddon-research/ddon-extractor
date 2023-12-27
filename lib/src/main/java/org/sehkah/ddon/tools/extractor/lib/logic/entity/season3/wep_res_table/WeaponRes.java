@@ -5,14 +5,15 @@ import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.math.BigInteger;
 
+// TODO decode information from resource IDs as meta info
 public record WeaponRes(
         long MTag,
         String ArcTag,
         long Sex,
         @MetaInformation
         WeaponSexType SexType,
-        BigInteger rModelResId,
-        BigInteger rModelResId2,
+        BigInteger ModelResId,
+        BigInteger ModelResId2,
         BigInteger DeformWeightMapResId,
         BigInteger EffectProviderResId,
         BigInteger SoundRequestResId,

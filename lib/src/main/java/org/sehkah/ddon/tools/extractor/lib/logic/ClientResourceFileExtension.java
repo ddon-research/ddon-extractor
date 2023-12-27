@@ -92,6 +92,7 @@ public enum ClientResourceFileExtension {
     rQuestSequenceList,
     rQuestTextData,
     rRageTable,
+    rReplaceWardGmdList,
     rShopGoods,
     rShotReqInfo,
     rShotReqInfo2,
@@ -210,6 +211,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".qsq", rQuestSequenceList);
         fileExtensionToResourceMap.put(".qtd", rQuestTextData);
         fileExtensionToResourceMap.put(".rag", rRageTable);
+        fileExtensionToResourceMap.put(".repgmdlist", rReplaceWardGmdList);
         fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
         fileExtensionToResourceMap.put(".sbv", rShrinkBlowValue);
         fileExtensionToResourceMap.put(".sdt", rStaminaDecTbl);
