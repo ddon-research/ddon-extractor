@@ -68,6 +68,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.npc;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.skill;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.MyRoom;

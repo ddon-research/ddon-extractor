@@ -47,10 +47,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.scr.Map
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.sg300000.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.CustomSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.skill.NormalSkillDataDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.LocationDataDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.StageJointDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.Tbl2ChatMacroDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.WaypointDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.ui.history.QuestHistoryDataDeserializer;
@@ -203,6 +200,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rShrinkBlowValue, new FileHeader(2, 4), ShrinkBlowValueDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 7, 4), StageConnectDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageJoint, new FileHeader("sja\0", 19, 4), StageJointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageList, new FileHeader("slt\0", 34, 4), StageListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageMap, new FileHeader(1, 4), StageMapDeserializer.class));
@@ -238,6 +236,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rRoomWearParam, new FileHeader(1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.MyRoom.RoomWearParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageConnectDeserializer.class));
 // TODO: java.nio.BufferUnderflowException       clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStaminaDecTbl, new FileHeader("sdt\0", 5, 4), StaminaDecTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 5, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.tutorial_guide.TutorialListDeserializer.class));
