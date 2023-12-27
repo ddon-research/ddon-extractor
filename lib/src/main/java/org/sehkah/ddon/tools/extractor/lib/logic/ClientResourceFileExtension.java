@@ -84,6 +84,7 @@ public enum ClientResourceFileExtension {
     rNpcConstItem,
     rNpcMeetingPlace,
     rPartnerPawnTalk,
+    rPartnerReactParam,
     rPawnQuestTalk,
     rPlPartsInfo,
     rPlayerExpTable,
@@ -206,6 +207,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
         fileExtensionToResourceMap.put(".pep", rAIPawnEmParam);
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
+        fileExtensionToResourceMap.put(".ppr", rPartnerReactParam);
         fileExtensionToResourceMap.put(".ppt", rPartnerPawnTalk);
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);
