@@ -216,6 +216,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rStageToSpot, new FileHeader(0, 4), StageToSpotDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStaminaDecTbl, new FileHeader("sdt\0", 7, 4), StaminaDecTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStartPosArea, new FileHeader(0, 4), StartPosAreaDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStatusCheck, new FileHeader(4, 4), StatusCheckTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStatusGainTable, new FileHeader(257, 4), StatusGainTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTbl2ChatMacro, new FileHeader(256, 4), Tbl2ChatMacroDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), TutorialDialogMessageDeserializer.class));
