@@ -434,6 +434,8 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rWepCateResTbl", ".wcrt");
         resourceToFileExtensionMap.put("rZone", ".zon");
         resourceToFileExtensionMap.put("rkThinkData", ".pen");
+        resourceToFileExtensionMap.put("rTexDetailEdit::DetailParam", ".tde_detailparam");
+        resourceToFileExtensionMap.put("MtArray", ".mtarray");
 
         resourceToFileExtensionMap.forEach((key, value) -> {
             long id = FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(key);

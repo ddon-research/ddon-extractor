@@ -29,7 +29,7 @@ public record ItemListParam(
     }
 
     private static String getKindTypeName(int category, short kindType) {
-        log.info("{}, {}", category, kindType);
+        log.trace("{}, {}", category, kindType);
         if (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_WEP.value
                 || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_ARMOR.value
                 || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_COLOR.value) {

@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.util;
 
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.*;
 import java.util.function.IntUnaryOperator;
 import java.util.function.LongFunction;
@@ -40,5 +42,19 @@ public class BitUtil {
             }
         }
         return types;
+    }
+
+    public static int extractInt(long source, int fromInclusive, int toInclusive) {
+        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES).order(ByteOrder.LITTLE_ENDIAN).putLong(source);
+        BitSet bitSet = BitSet.valueOf(buffer.array()).get(fromInclusive, toInclusive + 1);
+        int result = 0;
+        for (int i = 0; i < bitSet.length(); ++i) {
+            result += bitSet.get(i) ? (1 << i) : 0;
+        }
+        return result;
+    }
+
+    public static long extractLong(long source, int fromInclusive, int toInclusive) {
+        return BitSet.valueOf(new long[]{source}).get(fromInclusive, toInclusive + 1).toLongArray()[0];
     }
 }

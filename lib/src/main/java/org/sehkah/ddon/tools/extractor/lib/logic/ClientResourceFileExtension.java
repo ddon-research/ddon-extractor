@@ -120,6 +120,7 @@ public enum ClientResourceFileExtension {
     rTutorialDialogMessage,
     rTutorialList,
     rTutorialQuestGroup,
+    rTexDetailEdit,
     rWarpLocation,
     rWaypoint,
     rWaypoint2,
@@ -248,6 +249,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sta", rStartPosArea);
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
+        fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
         fileExtensionToResourceMap.put(".tlt", rTutorialList);
         fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);

@@ -12,13 +12,34 @@ module org.sehkah.ddon.tools.extractor.lib {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
 
+    exports org.sehkah.ddon.tools.extractor.lib.common.crypto;
     exports org.sehkah.ddon.tools.extractor.lib.common.datatype;
     exports org.sehkah.ddon.tools.extractor.lib.common.entity;
     exports org.sehkah.ddon.tools.extractor.lib.common.error;
     exports org.sehkah.ddon.tools.extractor.lib.common.io;
+
+    exports org.sehkah.ddon.tools.extractor.lib.logic;
+
     exports org.sehkah.ddon.tools.extractor.lib.logic.deserialization;
     exports org.sehkah.ddon.tools.extractor.lib.logic.serialization;
-    exports org.sehkah.ddon.tools.extractor.lib.logic;
+
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.meta;
+
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.marker;
+
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.clankyoten;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.game_common;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.marker;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.npc;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.skill;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.MyRoom;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.EM.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.EM;
@@ -26,6 +47,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.MyRoom;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.binary;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.clankyoten;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.craft_common.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.craft_common;
@@ -60,24 +82,5 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUIKeyConfig;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.ui.uGUISkill;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.wep_res_table;
-
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.clankyoten;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.game_common;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.marker;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.npc;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.skill;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.ui.uGUIAreaMaster;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.MyRoom;
-
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.marker;
-
-    exports org.sehkah.ddon.tools.extractor.lib.common.crypto;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.meta;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.entity;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.wep_res_table.meta;
 }
