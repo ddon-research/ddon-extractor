@@ -315,6 +315,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rPlPartsInfo", ".psi");
         resourceToFileExtensionMap.put("rPlanetariumItem", ".planet");
         resourceToFileExtensionMap.put("rPlantTree", ".plt");
+        resourceToFileExtensionMap.put("rPlayerExpTable", ".exp");
         resourceToFileExtensionMap.put("rPriorityThink", ".ptk");
         resourceToFileExtensionMap.put("rPrologueHmStatus", ".phs");
         resourceToFileExtensionMap.put("rPushRate", ".push_rate");
