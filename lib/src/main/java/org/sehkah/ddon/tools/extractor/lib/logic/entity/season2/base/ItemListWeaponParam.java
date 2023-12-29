@@ -4,7 +4,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.ItemListElementType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.ItemListPhysicalType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.ItemListSexType;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.ItemListWeaponCategory;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.WeaponCategory;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public record ItemListWeaponParam(
         long Durability,
         int WepCategory,
         @MetaInformation
-        ItemListWeaponCategory WepCategoryName,
+        WeaponCategory WepCategoryName,
         long Attack,
         long MagicAttack,
         long ShieldStagger,
@@ -41,7 +41,7 @@ public record ItemListWeaponParam(
         List<ItemListEquipParamS8> EquipParamS8List
 ) {
     public ItemListWeaponParam {
-        if (WepCategoryName == ItemListWeaponCategory.WEAPON_CATEGORY_UNKNOWN) {
+        if (WepCategoryName == WeaponCategory.WEAPON_CATEGORY_UNKNOWN) {
             throw new TechnicalException("WepCategory is unknown: " + WepCategory);
         }
         if (SexName == ItemListSexType.SEX_TYPE_UNKNOWN) {
@@ -62,7 +62,7 @@ public record ItemListWeaponParam(
                 defense,
                 magicDefense,
                 durability,
-                wepCategory, ItemListWeaponCategory.of(wepCategory),
+                wepCategory, WeaponCategory.of(wepCategory),
                 attack,
                 magicAttack,
                 shieldStagger,

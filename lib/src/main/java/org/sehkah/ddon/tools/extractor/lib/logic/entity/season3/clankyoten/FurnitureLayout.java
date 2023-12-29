@@ -4,7 +4,7 @@ public record FurnitureLayout(
         long ID,
         long GroupId,
         boolean IsRemovable,
-        int mSortNo,
-        long mGmdIdx
+        int SortNo,
+        long GmdIdx
 ) {
 }

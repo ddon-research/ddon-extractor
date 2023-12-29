@@ -4,7 +4,7 @@ pluginManagement {
         id 'org.javamodularity.moduleplugin' version '1.8.12'
         id 'io.freefair.lombok' version '8.4'
         id 'com.github.ben-manes.versions' version '0.50.0'
-        id 'nl.littlerobots.version-catalog-update' version '0.8.1'
+        id 'nl.littlerobots.version-catalog-update' version '0.8.3'
     }
 }
 
@@ -34,7 +34,7 @@ dependencyResolutionManagement {
             bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
         }
         lib {
-            version('comFasterxmlJackson', '2.16.0')
+            version('comFasterxmlJackson', '2.16.1')
             version('orgBouncycastle', '1.77')
             version('orgApacheCommons', '3.14.0')
             version('comGoogleGuava', '33.0.0-jre')
@@ -55,14 +55,17 @@ dependencyResolutionManagement {
         libTest {
             version('commonsCodec', '1.16.0')
             version('commonsIo', '2.15.1')
+            version('junitPioneer', '2.2.0')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec
             library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')
             // https://mvnrepository.com/artifact/commons-io/commons-io
             library('commons-io', 'commons-io', 'commons-io').versionRef('commonsIo')
+            // https://mvnrepository.com/artifact/org.junit-pioneer/junit-pioneer
+            library('junit-pioneer', 'org.junit-pioneer', 'junit-pioneer').versionRef('junitPioneer')
         }
         cli {
-            version('comFasterxmlJackson', '2.16.0')
+            version('comFasterxmlJackson', '2.16.1')
             version('infoPicocli', '4.7.5')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml

@@ -95,7 +95,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer {
         return new ItemListParam(
                 category,
                 fileReader.readSignedShort(),
-                List.of(fileReader.readUnsignedShort(), fileReader.readUnsignedShort(), fileReader.readUnsignedShort())
+                fileReader.readFixedLengthArray(3, FileReader::readUnsignedShort)
         );
     }
 

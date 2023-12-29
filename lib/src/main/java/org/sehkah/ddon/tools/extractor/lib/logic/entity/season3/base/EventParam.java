@@ -1,12 +1,14 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base;
 
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta.EventParamEventFlag;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta.EventParamEventType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta.EventParamLightCtrlType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
+import java.util.Set;
 
 public record EventParam(
         int Type,
@@ -16,7 +18,7 @@ public record EventParam(
         int EvNo,
         int Flag,
         @MetaInformation
-        EventParamEventFlag FlagName,
+        Set<EventParamEventFlag> FlagTypes,
         String FileName,
         long QuestId,
         long LightCtrl,
@@ -43,7 +45,7 @@ public record EventParam(
                 type, EventParamEventType.of(type),
                 stage,
                 evNo,
-                flag, EventParamEventFlag.of(flag),
+                flag, BitUtil.extractBitSetUnsignedIntegerFlag(EventParamEventFlag::of, i -> 1 << i, flag),
                 fileName,
                 questId,
                 lightCtrl, EventParamLightCtrlType.of(lightCtrl),

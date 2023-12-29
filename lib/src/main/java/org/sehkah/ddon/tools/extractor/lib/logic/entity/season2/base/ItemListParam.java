@@ -29,8 +29,10 @@ public record ItemListParam(
     }
 
     private static String getKindTypeName(int category, short kindType) {
-        log.info("category {}", category);
-        if (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_WEP.value || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_ARMOR.value) {
+        log.trace("{}, {}", category, kindType);
+        if (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_WEP.value
+                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_ARMOR.value
+                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_COLOR.value) {
             return ItemListElementParamKind.of(kindType).name();
         }
         return ItemListParamKind.of(kindType).name();

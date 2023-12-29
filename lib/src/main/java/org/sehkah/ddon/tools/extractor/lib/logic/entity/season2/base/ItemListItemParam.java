@@ -2,10 +2,12 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 public record ItemListItemParam(
@@ -28,7 +30,7 @@ public record ItemListItemParam(
         long IsUseJob,
         int Flag,
         @MetaInformation
-        ItemListFlagType FlagName,
+        Set<ItemListFlagType> FlagTypes,
         int IconNo,
         int IsUseLv,
         int ItemCategory,
@@ -51,8 +53,8 @@ public record ItemListItemParam(
             throw new TechnicalException("SubCategory is unknown: " + SubCategory);
         }
         // Flag with value above 6 is valid but currently unknown, only output a warning.
-        if (FlagName == ItemListFlagType.FLAG_TYPE_UNKNOWN) {
-            log.warn("Flag '{}' is unknown.", Flag);
+        if (FlagTypes.contains(ItemListFlagType.FLAG_TYPE_UNKNOWN)) {
+            log.warn("Flag '{}' has unknown values.", Flag);
         }
         if (ItemCategoryName == ItemListItemCategory.CATEGORY_UNKNOWN) {
             throw new TechnicalException("ItemCategory is unknown: " + ItemCategory);
@@ -62,7 +64,11 @@ public record ItemListItemParam(
         }
     }
 
-    public ItemListItemParam(long itemId, long nameId, int category, int subCategory, long price, long sortNo, long nameSortNo, long attackStatus, long isUseJob, int flag, int iconNo, int isUseLv, int itemCategory, int stackMax, int rank, int grade, int iconColNo, long paramNum, List<ItemListParam> ItemParamList, long vsEmNum, List<ItemListVsEnemyParam> vsEmList, ItemListWeaponParam itemListWeaponParam, ItemListProtectorParam protectorParam) {
+    public ItemListItemParam(long itemId, long nameId, int category, int subCategory, long price, long sortNo,
+                             long nameSortNo, long attackStatus, long isUseJob, int flag, int iconNo, int isUseLv,
+                             int itemCategory, int stackMax, int rank, int grade, int iconColNo, long paramNum,
+                             List<ItemListParam> itemParamList, long vsEmNum, List<ItemListVsEnemyParam> vsEmList,
+                             ItemListWeaponParam itemListWeaponParam, ItemListProtectorParam protectorParam) {
         this(itemId,
                 nameId,
                 category,
@@ -72,7 +78,7 @@ public record ItemListItemParam(
                 nameSortNo,
                 attackStatus,
                 isUseJob,
-                flag, ItemListFlagType.of(flag),
+                flag, BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, flag),
                 iconNo,
                 isUseLv,
                 itemCategory, ItemListItemCategory.of(itemCategory),
@@ -81,14 +87,20 @@ public record ItemListItemParam(
                 grade,
                 iconColNo,
                 paramNum,
-                ItemParamList,
+                itemParamList,
                 vsEmNum,
                 vsEmList,
                 itemListWeaponParam,
                 protectorParam);
     }
 
-    public ItemListItemParam(long itemId, long nameId, int category, int subCategory, ItemListEquipSubCategory subCategoryName, long price, long sortNo, long nameSortNo, long attackStatus, long isUseJob, int flag, ItemListFlagType flagName, int iconNo, int isUseLv, int itemCategory, ItemListItemCategory itemCategoryName, int stackMax, int rank, int grade, int iconColNo, long paramNum, List<ItemListParam> ItemParamList, long vsEmNum, List<ItemListVsEnemyParam> vsEmList, ItemListWeaponParam weaponParam, ItemListProtectorParam protectorParam) {
+    public ItemListItemParam(long itemId, long nameId, int category, int subCategory,
+                             ItemListEquipSubCategory subCategoryName, long price, long sortNo, long nameSortNo,
+                             long attackStatus, long isUseJob, int flag, Set<ItemListFlagType> flagTypes, int iconNo,
+                             int isUseLv, int itemCategory, ItemListItemCategory itemCategoryName, int stackMax,
+                             int rank, int grade, int iconColNo, long paramNum, List<ItemListParam> itemParamList,
+                             long vsEmNum, List<ItemListVsEnemyParam> vsEmList, ItemListWeaponParam weaponParam,
+                             ItemListProtectorParam protectorParam) {
         this(itemId,
                 nameId,
                 category, getCategoryName(category, itemCategoryName),
@@ -99,8 +111,7 @@ public record ItemListItemParam(
                 nameSortNo,
                 attackStatus,
                 isUseJob,
-                flag,
-                flagName,
+                flag, flagTypes,
                 iconNo,
                 isUseLv,
                 itemCategory,
@@ -110,7 +121,7 @@ public record ItemListItemParam(
                 grade,
                 iconColNo,
                 paramNum,
-                ItemParamList,
+                itemParamList,
                 vsEmNum,
                 vsEmList,
                 weaponParam,

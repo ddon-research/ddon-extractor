@@ -1,8 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Float2f;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.lib.common.datatype.*;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -171,6 +169,25 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public Vector4f readVector4f() {
+        return new Vector4f(readFloat(), readFloat(), readFloat(), readFloat());
+    }
+
+    @Override
+    public Vector4f[] readVector4f(int num) {
+        Vector4f[] vector4fs = new Vector4f[num];
+        for (int i = 0; i < num; i++) {
+            vector4fs[i] = readVector4f();
+        }
+        return vector4fs;
+    }
+
+    @Override
+    public Matrix readMatrix() {
+        return new Matrix(readVector4f(), readVector4f(), readVector4f(), readVector4f());
+    }
+
+    @Override
     public Float2f readFloat2f() {
         return new Float2f(readFloat(), readFloat());
     }
@@ -212,6 +229,18 @@ public class BinaryFileReader implements FileReader {
         String mtString = readString((int) length, charset);
         byteBuffer.get();
         return mtString;
+    }
+
+    @Override
+    public Color readColor() {
+        long rgba = readUnsignedInteger();
+
+        int r = (int) (rgba & 0xff);
+        int g = (int) ((rgba >> 8) & 0xff);
+        int b = (int) ((rgba >> 16) & 0xff);
+        int a = (int) ((rgba >> 24) & 0xff);
+
+        return new Color(r, g, b, a);
     }
 
     @Override

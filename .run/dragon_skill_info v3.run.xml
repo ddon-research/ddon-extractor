@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="dragon_skill_info v3" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main" />
+    <module name="ddon-extractor.cli.main" />
+    <option name="PROGRAM_PARAMETERS" value="-o -m -f json D:\DDON_03040008\nativePC\rom\dragon_skill_info" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

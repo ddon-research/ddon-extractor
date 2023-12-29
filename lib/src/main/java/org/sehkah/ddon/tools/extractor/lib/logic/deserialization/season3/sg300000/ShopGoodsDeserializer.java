@@ -4,8 +4,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.ShopGoods;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.ShopGoodsDate;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.ShopGoodsList;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.sg300000.meta.ShopGoodsDate;
 
 public class ShopGoodsDeserializer extends ClientResourceFileDeserializer {
     public ShopGoodsDeserializer(ClientResourceFile clientResourceFile) {
