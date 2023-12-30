@@ -1,2 +1,0 @@
-* rPlayerExpTable(".exp", new FileHeader(2, 4))
-* rItemList(".ipa", new FileHeader("ipa\0", 58, 4))
