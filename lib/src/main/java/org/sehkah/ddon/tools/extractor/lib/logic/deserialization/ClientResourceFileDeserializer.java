@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public abstract class ClientResourceFileDeserializer implements ClientResourceDeserializer<TopLevelClientResource> {
@@ -37,11 +38,11 @@ public abstract class ClientResourceFileDeserializer implements ClientResourceDe
         FileHeader fileHeaderShortVersionWithMagicString = new FileHeader(magicStringBeforeTwoByteVersion, 4, twoByteVersionAfterMagicString, 2);
         FileHeader fileHeaderShortVersionNoMagicString = new FileHeader((int) twoByteVersionNoMagicString, 2);
 
-        HashSet<FileHeader> fileHeaderCandidates = HashSet.newHashSet(4);
+        HashSet<FileHeader> fileHeaderCandidates = LinkedHashSet.newLinkedHashSet(4);
+        fileHeaderCandidates.add(fileHeaderShortVersionWithMagicString); // mostly for ARC files
         fileHeaderCandidates.add(fileHeaderIntVersionWithMagicString);
         fileHeaderCandidates.add(fileHeaderIntVersionNoMagicString);
-        fileHeaderCandidates.add(fileHeaderShortVersionWithMagicString);
-        fileHeaderCandidates.add(fileHeaderShortVersionNoMagicString);
+        fileHeaderCandidates.add(fileHeaderShortVersionNoMagicString); // least likely variant
 
         return fileHeaderCandidates;
     }
