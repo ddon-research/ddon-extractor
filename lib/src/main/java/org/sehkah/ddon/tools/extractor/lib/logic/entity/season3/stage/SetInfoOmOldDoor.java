@@ -1,10 +1,12 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.stage;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
+@JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmOldDoor extends SetInfo {
     private final boolean IsQuest;
     private final long QuestId;

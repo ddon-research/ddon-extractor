@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
@@ -17,6 +18,7 @@ import java.util.Map;
 @Setter
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonPropertyOrder(alphabetic = true)
 public final class GUIMessage extends TopLevelClientResource {
     private long LanguageId;
     @MetaInformation

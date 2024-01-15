@@ -1,10 +1,12 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.stage;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
+@JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmBowlOfLife extends SetInfo {
     private final boolean WaitBowlOfLife;
     private final boolean FullBowlOfLife;
