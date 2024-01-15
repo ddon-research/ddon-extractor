@@ -73,6 +73,8 @@ public interface FileReader {
 
     Color readColor();
 
+    OrientedBoundingBox readOrientedBoundingBox();
+
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 
     <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction);

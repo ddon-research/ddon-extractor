@@ -74,6 +74,7 @@ public enum ClientResourceFileExtension {
     rKeyConfigTextTable,
     rLandInfo,
     rLayoutPreset,
+    rLayout,
     rLocationData,
     rMagicCommandList,
     rMagicCommandWord,
@@ -202,6 +203,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lai", rLandInfo);
         fileExtensionToResourceMap.put(".lcd", rLocationData);
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
+        fileExtensionToResourceMap.put(".lot", rLayout);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
         fileExtensionToResourceMap.put(".mgcc", rMagicCommandList);
         fileExtensionToResourceMap.put(".mcw", rMagicCommandWord);

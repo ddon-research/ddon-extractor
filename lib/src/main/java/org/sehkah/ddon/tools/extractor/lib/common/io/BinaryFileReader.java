@@ -244,6 +244,14 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public OrientedBoundingBox readOrientedBoundingBox() {
+        return new OrientedBoundingBox(
+                readMatrix(),
+                readVector3f()
+        );
+    }
+
+    @Override
     public <E> List<E> readArray(Function<FileReader, E> entityReaderFunction) {
         return readArray(FileReader::readUnsignedInteger, entityReaderFunction);
     }

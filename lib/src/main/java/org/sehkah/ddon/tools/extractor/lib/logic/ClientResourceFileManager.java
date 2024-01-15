@@ -176,6 +176,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rJobTutorialQuestList, new FileHeader("JTQ\0", 1, 2), JobTutorialQuestListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rKeyConfigTextTable, new FileHeader(1, 4), KeyConfigTextTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 4, 4), LandInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rLayout, new FileHeader("lot\0", 117, 4), LayoutDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLayoutPreset, new FileHeader(5, 4), LayoutPresetDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLocationData, new FileHeader("lcd\0", 16, 4), LocationDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMapSpotData, new FileHeader("msd\0", 0, 4), MapSpotDataDeserializer.class));
