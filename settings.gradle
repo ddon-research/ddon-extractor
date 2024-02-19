@@ -1,7 +1,7 @@
 pluginManagement {
     plugins {
         id 'org.beryx.jlink' version '3.0.1'
-        id 'org.javamodularity.moduleplugin' version '1.8.12'
+        id 'org.javamodularity.moduleplugin' version '1.8.13'
         id 'io.freefair.lombok' version '8.4'
         id 'com.github.ben-manes.versions' version '0.51.0'
         id 'nl.littlerobots.version-catalog-update' version '0.8.3'
