@@ -2,7 +2,7 @@
   <configuration default="false" name="MyRoom v2" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main" />
     <module name="ddon-extractor.cli.main" />
-    <option name="PROGRAM_PARAMETERS" value="-p false -o -m -f json D:\DDON_02030004\nativePC\rom\MyRoom" />
+    <option name="PROGRAM_PARAMETERS" value="-p false -o -m -f json D:\DDON_02030004\nativePC\rom\ MyRoom" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />

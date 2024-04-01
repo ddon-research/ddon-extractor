@@ -2,7 +2,7 @@
   <configuration default="false" name="npc_common v3" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main" />
     <module name="ddon-extractor.cli.main" />
-    <option name="PROGRAM_PARAMETERS" value="-o -m -f json D:\DDON_03040008\nativePC\rom\npc\npc_common" />
+    <option name="PROGRAM_PARAMETERS" value="-o -m -f json D:\DDON_03040008\nativePC\rom\ npc\npc_common" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />

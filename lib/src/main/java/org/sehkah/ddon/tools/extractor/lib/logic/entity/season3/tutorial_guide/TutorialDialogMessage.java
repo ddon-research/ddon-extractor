@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -16,7 +19,15 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public final class TutorialDialogMessage extends TopLevelClientResource {
     private final long TitleGmdIdx;
+    @MetaInformation
+    private final String TutorialTitleName;
     private final long CategoryGmdIdx;
     private final List<TutorialDialogMessageDialogPage> PageInfo;
 
+    public TutorialDialogMessage(long titleGmdIdx, long categoryGmdIdx, List<TutorialDialogMessageDialogPage> pageInfo) {
+        this(titleGmdIdx, MessageLookupUtil.getMessage(MessageFileLookupType.TUTORIAL_GUIDE, "TUTORIAL_" + titleGmdIdx),
+                categoryGmdIdx,
+                pageInfo
+        );
+    }
 }

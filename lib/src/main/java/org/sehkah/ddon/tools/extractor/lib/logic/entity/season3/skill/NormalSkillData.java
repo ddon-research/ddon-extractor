@@ -6,6 +6,7 @@ public record NormalSkillData(
         int SkillNo,
         int IconId,
         int Index,
+        // TODO: Requires memorizing file names for looking up the appropriate GMD
         int MsgIndex,
         int Category,
         int PreSkillIndex,

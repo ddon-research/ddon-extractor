@@ -1,6 +1,8 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.ItemListSexType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcSexType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcUnitType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcVoiceType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
@@ -11,9 +13,13 @@ public record NpcLedgerListItem(
         long NpcId,
         int Sex,
         @MetaInformation
-        ItemListSexType SexType,
+        NpcSexType SexType,
         long NameId,
+        @MetaInformation
+        String NpcName,
         long ClassNameId,
+        @MetaInformation
+        String NpcClassName,
         int JobId,
         int Finger,
         int VoiceType,
@@ -28,9 +34,9 @@ public record NpcLedgerListItem(
     public NpcLedgerListItem(long npcId, int sex, long nameId, long classNameId, int jobId, int finger, int voiceType,
                              int unitType, long unitTypeParam, List<NpcLedgerListItemInstitution> institutionList) {
         this(npcId,
-                sex, ItemListSexType.of(sex),
-                nameId,
-                classNameId,
+                sex, NpcSexType.of(sex),
+                nameId, MessageLookupUtil.getMessage(MessageFileLookupType.NPC_NAME, nameId),
+                classNameId, MessageLookupUtil.getMessage(MessageFileLookupType.NPC_CLASS_NAME, classNameId),
                 jobId,
                 finger,
                 voiceType, NpcVoiceType.of(voiceType),
