@@ -42,10 +42,20 @@ public class ExtractCommand implements Callable<Integer> {
     private SerializationFormat outputFormat;
 
     @CommandLine.Parameters(index = "0", arity = "1", description = """
-            Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
+            Specifies the DDON client resource file path. 
+            This will be used as a basis to derive further meta information for certain files where supported and enabled.
+            See the meta information flag for further information
             Example:
-                extract "D:\\DDON\\nativePC\\rom\\game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
-                extract "D:\\DDON\\nativePC\\rom\\game_common\\param" will extract the data of all resource files found in this path.
+                extract "D:\\DDON\\nativePC\\rom" <resource file>
+            """)
+    private Path clientResourceBasePath;
+
+    @CommandLine.Parameters(index = "1", arity = "1", description = """
+            Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
+            The full path starting from the client resource base path must be specified, i.e. from "rom".
+            Example:
+                extract <client resource base path> "game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
+                extract <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
             """)
     private Path inputFilePath;
     @CommandLine.Option(names = {"-o"}, arity = "0..1", description = """
@@ -170,11 +180,12 @@ public class ExtractCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        if (Files.exists(inputFilePath)) {
-            clientResourceFileManager = ClientResourceFileManager.get(outputFormat, addMetaInformation);
-            if (Files.isDirectory(inputFilePath)) {
-                log.debug("Recursively extracting resource data from folder '{}'.", inputFilePath);
-                try (Stream<Path> files = Files.walk(inputFilePath)) {
+        Path fullPath = clientResourceBasePath.resolve(inputFilePath);
+        if (Files.exists(fullPath)) {
+            clientResourceFileManager = ClientResourceFileManager.get(clientResourceBasePath, outputFormat, addMetaInformation);
+            if (Files.isDirectory(fullPath)) {
+                log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
+                try (Stream<Path> files = Files.walk(fullPath)) {
                     Predicate<Path> fileFilter;
                     if (unpackArchives && unpackArchivesExclusively) {
                         String arcFileExtension = ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive);
@@ -207,10 +218,10 @@ public class ExtractCommand implements Callable<Integer> {
                     }
                 }
             } else {
-                return extractSingleFile(inputFilePath, clientResourceFileManager.getStringSerializer(), writeOutputToFile).ordinal();
+                return extractSingleFile(fullPath, clientResourceFileManager.getStringSerializer(), writeOutputToFile).ordinal();
             }
         } else {
-            log.error("The provided file path '{}' does either not exist or is not readable.", inputFilePath);
+            log.error("The provided file path '{}' does either not exist or is not readable.", fullPath);
             return StatusCode.ERROR.ordinal();
         }
     }

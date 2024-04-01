@@ -71,6 +71,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.season3.game_common.GUIMessageSerializer;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -85,8 +86,9 @@ public class ClientResourceFileManager {
     private final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile> clientResourceFileMap;
     private final Serializer<TopLevelClientResource> stringSerializer;
 
-    protected ClientResourceFileManager(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    protected ClientResourceFileManager(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
+        MessageLookupUtil.initialize(clientResourceBasePath);
         clientResourceFileSet = HashSet.newHashSet(128);
         clientResourceFileMap = HashMap.newHashMap(128);
         setupClientResourceFiles(clientResourceFileSet);
@@ -95,8 +97,8 @@ public class ClientResourceFileManager {
         }
     }
 
-    public static ClientResourceFileManager get(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        return new ClientResourceFileManager(preferredSerializationType, shouldSerializeMetaInformation);
+    public static ClientResourceFileManager get(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        return new ClientResourceFileManager(clientResourceBasePath, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     private static void setupClientResourceFiles(Set<ClientResourceFile> clientResourceFileSet) {

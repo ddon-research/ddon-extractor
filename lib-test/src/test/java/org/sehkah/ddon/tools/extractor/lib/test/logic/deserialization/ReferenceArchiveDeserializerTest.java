@@ -23,7 +23,7 @@ class ReferenceArchiveDeserializerTest {
         String inputFile = "season3/eye0_fedt_jntpreset.arc";
         byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
         FileReader fileReader = new BinaryFileReader(input);
         ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, fileReader);
         ArchiveS deserialized = (ArchiveS) deserializer.deserialize(fileReader);

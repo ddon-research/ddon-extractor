@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base;
 
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta.LandAreaInfoGameMode;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -7,6 +9,8 @@ import java.util.List;
 
 public record LandAreaInfo(
         long LandId,
+        @MetaInformation
+        String LandName,
         boolean IsDispNews,
         int GameMode,
         @MetaInformation
@@ -15,7 +19,7 @@ public record LandAreaInfo(
 ) {
     public LandAreaInfo(long landId, boolean isDispNews, int gameMode, List<Long> areaIds) {
         this(
-                landId,
+                landId, MessageLookupUtil.getMessage(MessageFileLookupType.LAND_NAME, landId - 1),
                 isDispNews,
                 gameMode, LandAreaInfoGameMode.of(gameMode),
                 areaIds);

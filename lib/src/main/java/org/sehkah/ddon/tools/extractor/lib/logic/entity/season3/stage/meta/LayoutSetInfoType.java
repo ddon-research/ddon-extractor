@@ -4,13 +4,13 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.stage.meta;
 import java.util.Arrays;
 
 public enum LayoutSetInfoType {
-    SetInfoOm(0),
-    SetInfoEnemy(1),
-    SetInfoNpc(2),
-    SetInfoGeneralPoint(3),
-    SetInfoOmGather(4),
+    SetInfoOm(0), // Mostly contained in files with file name prefix "s"
+    SetInfoEnemy(1), // Mostly contained in files with file name prefix "e"
+    SetInfoNpc(2), // Mostly contained in files with file name prefix "n"
+    SetInfoGeneralPoint(3), // Mostly contained in files with file name prefix "t"
+    SetInfoOmGather(4), // Mostly contained in files with file name prefix "p"
     SetInfoOmLadder(5),
-    SetInfoOmWarp(6),
+    SetInfoOmWarp(6), // Mostly contained in files with file name prefix "p"
     SetInfoOmTreasureBox(7),
     SetInfoOmBoard(8),
     SetInfoOmCtrl(9),

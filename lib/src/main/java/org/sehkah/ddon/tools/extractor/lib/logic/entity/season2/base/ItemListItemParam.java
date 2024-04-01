@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -12,11 +14,9 @@ import java.util.Set;
 @Slf4j
 public record ItemListItemParam(
         long ItemId,
-
-        // TODO ui\gui_cmn.arc -> ui\00_message\common\item_name.gmd
         long NameId,
-
-        // Description ->  TODO ui\item_info.arc -> ui\00_message\common\item_info.gmd
+        @MetaInformation
+        String ItemName,
         int Category, // Can be either a generic u32, USE_CATEGORY, MATERIAL_CATEGORY or SUB_CATEGORY
         @MetaInformation
         Object CategoryName, // TODO typification
@@ -70,7 +70,7 @@ public record ItemListItemParam(
                              List<ItemListParam> itemParamList, long vsEmNum, List<ItemListVsEnemyParam> vsEmList,
                              ItemListWeaponParam itemListWeaponParam, ItemListProtectorParam protectorParam) {
         this(itemId,
-                nameId,
+                nameId, MessageLookupUtil.getMessage(MessageFileLookupType.ITEM_NAME, nameId),
                 category,
                 subCategory, ItemListEquipSubCategory.of(subCategory),
                 price,
@@ -94,7 +94,7 @@ public record ItemListItemParam(
                 protectorParam);
     }
 
-    public ItemListItemParam(long itemId, long nameId, int category, int subCategory,
+    public ItemListItemParam(long itemId, long nameId, String itemName, int category, int subCategory,
                              ItemListEquipSubCategory subCategoryName, long price, long sortNo, long nameSortNo,
                              long attackStatus, long isUseJob, int flag, Set<ItemListFlagType> flagTypes, int iconNo,
                              int isUseLv, int itemCategory, ItemListItemCategory itemCategoryName, int stackMax,
@@ -102,7 +102,7 @@ public record ItemListItemParam(
                              long vsEmNum, List<ItemListVsEnemyParam> vsEmList, ItemListWeaponParam weaponParam,
                              ItemListProtectorParam protectorParam) {
         this(itemId,
-                nameId,
+                nameId, itemName,
                 category, getCategoryName(category, itemCategoryName),
                 subCategory,
                 subCategoryName,

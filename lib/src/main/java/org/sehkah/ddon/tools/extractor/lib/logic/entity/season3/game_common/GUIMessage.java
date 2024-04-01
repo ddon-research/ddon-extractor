@@ -8,8 +8,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.meta
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.math.BigInteger;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -54,6 +53,27 @@ public final class GUIMessage extends TopLevelClientResource {
 
     public void updateMessages(Map<String, String> keyMessageMap) {
         keyMessageMap.forEach(this::updateMessage);
+    }
+
+    public String getMessageByKey(String key) {
+        Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(guiMessageIndex -> guiMessageIndex.Key.equals(key)).findFirst();
+        return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Message).orElse(null);
+    }
+
+    public String getMessageByIndex(long index) {
+        return getMessageByIndexNaive(index);
+    }
+
+    public String getMessageByIndexBinarySearch(long index) {
+        GUIMessageIndex tmp = new GUIMessageIndex();
+        tmp.MessageIndex = index;
+        int idx = Collections.binarySearch(Indices, tmp, Comparator.comparingLong((GUIMessageIndex o) -> o.MessageIndex));
+        return Indices.get(idx).Message;
+    }
+
+    public String getMessageByIndexNaive(long index) {
+        Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.MessageIndex == index).findFirst();
+        return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Message).orElse(null);
     }
 
     @MetaInformation

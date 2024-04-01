@@ -24,7 +24,7 @@ class GUIMessageSerializerTest {
         String inputFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.gmd.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
         GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
@@ -39,7 +39,7 @@ class GUIMessageSerializerTest {
         String inputTranslationFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.en.yaml";
         String inputTranslation = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputTranslationFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
         GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         serializer.setModdingAllowed(true);

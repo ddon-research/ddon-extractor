@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common;
 
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcFunctionIdType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -9,6 +11,8 @@ import java.util.List;
 public record NpcLedgerListItemInstitution(
         long FunctionId,
         @MetaInformation
+        String FunctionName,
+        @MetaInformation
         NpcFunctionIdType FunctionIdType,
         // if ( !sNpcManager::getJobMasterState(v8, FunctionParam) || sNpcManager::getJobMasterState(v8, FunctionParam) == 4 )
         long FunctionParam,
@@ -16,7 +20,7 @@ public record NpcLedgerListItemInstitution(
 ) {
     public NpcLedgerListItemInstitution(long institutionId, long institutionParam, List<NpcLedgerListItemInstitutionOpenData> institutionOpenList) {
         this(
-                institutionId, NpcFunctionIdType.of(institutionId),
+                institutionId, MessageLookupUtil.getMessage(MessageFileLookupType.FUNC_SELECT_NAME, "FUNC_SELECT_NAME_" + institutionId), NpcFunctionIdType.of(institutionId),
                 institutionParam,
                 institutionOpenList);
     }
