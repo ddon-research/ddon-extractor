@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 public record AreaInfo(
@@ -12,7 +12,7 @@ public record AreaInfo(
         long PosY
 ) {
     public AreaInfo(long areaId, int posX, long posY) {
-        this(areaId, MessageLookupUtil.getMessage(MessageFileLookupType.AREA_LIST, areaId - 1),
+        this(areaId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.AREA_LIST, areaId - 1),
                 posX,
                 posY);
     }

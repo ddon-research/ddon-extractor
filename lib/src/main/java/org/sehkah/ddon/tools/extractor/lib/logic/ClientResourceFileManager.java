@@ -88,7 +88,7 @@ public class ClientResourceFileManager {
 
     protected ClientResourceFileManager(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
-        MessageLookupUtil.initialize(clientResourceBasePath);
+        DynamicResourceLookupUtil.initialize(clientResourceBasePath);
         clientResourceFileSet = HashSet.newHashSet(128);
         clientResourceFileMap = HashMap.newHashMap(128);
         setupClientResourceFiles(clientResourceFileSet);

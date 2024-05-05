@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public final class TutorialDialogMessage extends TopLevelClientResource {
     private final List<TutorialDialogMessageDialogPage> PageInfo;
 
     public TutorialDialogMessage(long titleGmdIdx, long categoryGmdIdx, List<TutorialDialogMessageDialogPage> pageInfo) {
-        this(titleGmdIdx, MessageLookupUtil.getMessage(MessageFileLookupType.TUTORIAL_GUIDE, "TUTORIAL_" + titleGmdIdx),
+        this(titleGmdIdx, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.TUTORIAL_GUIDE, "TUTORIAL_" + titleGmdIdx),
                 categoryGmdIdx,
                 pageInfo
         );

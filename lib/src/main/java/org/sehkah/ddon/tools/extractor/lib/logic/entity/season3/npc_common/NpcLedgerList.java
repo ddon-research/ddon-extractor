@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
+import java.util.Optional;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -17,4 +18,12 @@ import java.util.List;
 public final class NpcLedgerList extends TopLevelClientResource {
     private final List<NpcLedgerListItem> NpcLedgerList;
 
+    public NpcLedgerListItem getNpcById(long npcId) {
+        return getNpcByIdNaive(npcId);
+    }
+
+    private NpcLedgerListItem getNpcByIdNaive(long npcId) {
+        Optional<NpcLedgerListItem> optionalIndex = NpcLedgerList.stream().filter(i -> i.NpcId() == npcId).findFirst();
+        return optionalIndex.orElse(null);
+    }
 }

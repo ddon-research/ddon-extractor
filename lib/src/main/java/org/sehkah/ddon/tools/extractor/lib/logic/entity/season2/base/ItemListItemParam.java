@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -70,7 +70,7 @@ public record ItemListItemParam(
                              List<ItemListParam> itemParamList, long vsEmNum, List<ItemListVsEnemyParam> vsEmList,
                              ItemListWeaponParam itemListWeaponParam, ItemListProtectorParam protectorParam) {
         this(itemId,
-                nameId, MessageLookupUtil.getMessage(MessageFileLookupType.ITEM_NAME, nameId),
+                nameId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ITEM_NAME, nameId),
                 category,
                 subCategory, ItemListEquipSubCategory.of(subCategory),
                 price,

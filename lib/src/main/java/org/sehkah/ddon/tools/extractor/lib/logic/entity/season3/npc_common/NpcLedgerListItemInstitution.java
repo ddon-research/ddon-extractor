@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcFunctionIdType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -20,7 +20,7 @@ public record NpcLedgerListItemInstitution(
 ) {
     public NpcLedgerListItemInstitution(long institutionId, long institutionParam, List<NpcLedgerListItemInstitutionOpenData> institutionOpenList) {
         this(
-                institutionId, MessageLookupUtil.getMessage(MessageFileLookupType.FUNC_SELECT_NAME, "FUNC_SELECT_NAME_" + institutionId), NpcFunctionIdType.of(institutionId),
+                institutionId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.FUNC_SELECT_NAME, "FUNC_SELECT_NAME_" + institutionId), NpcFunctionIdType.of(institutionId),
                 institutionParam,
                 institutionOpenList);
     }

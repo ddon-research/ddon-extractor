@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 public record AbilityData(
@@ -19,8 +19,8 @@ public record AbilityData(
 ) {
     public AbilityData(int id, int msgNameIndex, int msgExpIndex, int iconId, int cost, int sortNo, boolean isPawnDisable) {
         this(id,
-                msgNameIndex, MessageLookupUtil.getMessage(MessageFileLookupType.ABILITY_NAME, msgNameIndex),
-                msgExpIndex, MessageLookupUtil.getMessage(MessageFileLookupType.ABILITY_INFO, msgExpIndex),
+                msgNameIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ABILITY_NAME, msgNameIndex),
+                msgExpIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ABILITY_INFO, msgExpIndex),
                 iconId,
                 cost,
                 sortNo,

@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +12,7 @@ public class ResourceUtil {
     }
 
     public static byte[] loadResourceFile(String resourceFilePath) {
-        try (InputStream in = MessageLookupUtil.class.getResourceAsStream(resourceFilePath)) {
+        try (InputStream in = DynamicResourceLookupUtil.class.getResourceAsStream(resourceFilePath)) {
             return in.readAllBytes();
         } catch (IOException e) {
             throw new TechnicalException(e);

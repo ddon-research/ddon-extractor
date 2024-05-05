@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcSexType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcUnitType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common.meta.NpcVoiceType;
@@ -35,8 +35,8 @@ public record NpcLedgerListItem(
                              int unitType, long unitTypeParam, List<NpcLedgerListItemInstitution> institutionList) {
         this(npcId,
                 sex, NpcSexType.of(sex),
-                nameId, MessageLookupUtil.getMessage(MessageFileLookupType.NPC_NAME, nameId),
-                classNameId, MessageLookupUtil.getMessage(MessageFileLookupType.NPC_CLASS_NAME, classNameId),
+                nameId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.NPC_NAME, nameId),
+                classNameId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.NPC_CLASS_NAME, classNameId),
                 jobId,
                 finger,
                 voiceType, NpcVoiceType.of(voiceType),

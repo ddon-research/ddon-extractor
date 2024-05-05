@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.tutorial_guide;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 public record TutorialNode(
@@ -16,7 +16,7 @@ public record TutorialNode(
     public TutorialNode(long id, long sortNo, long titleGmdIdx, long category, long openQuestId) {
         this(id,
                 sortNo,
-                titleGmdIdx, MessageLookupUtil.getMessage(MessageFileLookupType.TUTORIAL_GUIDE, titleGmdIdx),
+                titleGmdIdx, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.TUTORIAL_GUIDE, titleGmdIdx),
                 category,
                 openQuestId);
     }

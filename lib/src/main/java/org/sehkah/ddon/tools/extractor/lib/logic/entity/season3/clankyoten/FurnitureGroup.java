@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.clankyoten;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.MessageLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 public record FurnitureGroup(
@@ -15,7 +15,7 @@ public record FurnitureGroup(
     public FurnitureGroup(long ID, long cameraNo, long gmdIdx, int sortNo) {
         this(ID,
                 cameraNo,
-                gmdIdx, MessageLookupUtil.getMessage(MessageFileLookupType.FURNITURE_GROUP_NAME, gmdIdx),
+                gmdIdx, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.FURNITURE_GROUP_NAME, gmdIdx),
                 sortNo);
     }
 }

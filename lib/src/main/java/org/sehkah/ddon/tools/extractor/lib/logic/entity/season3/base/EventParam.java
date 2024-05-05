@@ -20,6 +20,8 @@ public record EventParam(
         @MetaInformation
         Set<EventParamEventFlag> FlagTypes,
         String FileName,
+        @MetaInformation
+        String EventName,
         long QuestId,
         long LightCtrl,
         @MetaInformation
@@ -46,7 +48,7 @@ public record EventParam(
                 stage,
                 evNo,
                 flag, BitUtil.extractBitSetUnsignedIntegerFlag(EventParamEventFlag::of, i -> 1 << i, flag),
-                fileName,
+                fileName, null,// FIXME: only works for season 3, season 2 lacks event room DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.EVENT_NAME, "EVENT_NAME_" + fileName.substring(fileName.lastIndexOf("\\") + 1)),
                 questId,
                 lightCtrl, EventParamLightCtrlType.of(lightCtrl),
                 startFadeType,
