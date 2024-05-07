@@ -234,6 +234,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rWaypoint2, new FileHeader("WP2\0", 1, 4), WaypointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWeaponOffset, new FileHeader(3, 4), WeaponOffsetTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(11, 4), WeaponResTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), WeatherStageInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWepCateResTbl, new FileHeader(1, 4), WepCateResTblDeserializer.class));
     }
 

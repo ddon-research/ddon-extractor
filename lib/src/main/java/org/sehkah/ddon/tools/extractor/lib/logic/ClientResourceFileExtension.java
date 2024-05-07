@@ -125,6 +125,7 @@ public enum ClientResourceFileExtension {
     rTutorialList,
     rTutorialQuestGroup,
     rTexDetailEdit,
+    rWeatherStageInfo,
     rWarpLocation,
     rWaypoint,
     rWaypoint2,
@@ -266,6 +267,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wp2", rWaypoint2);
         fileExtensionToResourceMap.put(".wpn_ofs", rWeaponOffset);
         fileExtensionToResourceMap.put(".wrt", rWeaponResTable);
+        fileExtensionToResourceMap.put(".wsi", rWeatherStageInfo);
         fileExtensionToResourceMap.put(".wcrt", rWepCateResTbl);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
