@@ -214,6 +214,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 7, 4), StageConnectDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageInfo, new FileHeader("sti\0", 265, 4), StageInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageCustom, new FileHeader("sca\0", 9, 4), StageCustomDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageJoint, new FileHeader("sja\0", 19, 4), StageJointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageList, new FileHeader("slt\0", 34, 4), StageListDeserializer.class));
@@ -256,6 +257,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageConnectDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageInfo, new FileHeader("sti\0", 81, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.marker.StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStaminaDecTbl, new FileHeader("sdt\0", 5, 4), StaminaDecTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 5, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.tutorial_guide.TutorialListDeserializer.class));
