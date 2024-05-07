@@ -1,0 +1,30 @@
+package org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.stage;
+
+import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.stage.StageCustom;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.stage.StageCustomArea;
+
+public class StageCustomDeserializer extends ClientResourceFileDeserializer {
+    public StageCustomDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static StageCustomArea readStageCustomArea(FileReader fileReader) {
+        return new StageCustomArea(
+                fileReader.readSignedByte(),
+                fileReader.readUnsignedByte(),
+                fileReader.readSignedInteger()
+        );
+    }
+
+    @Override
+    protected StageCustom parseClientResourceFile(FileReader fileReader) {
+        return new StageCustom(
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readArray(StageCustomDeserializer::readStageCustomArea)
+        );
+    }
+}

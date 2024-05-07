@@ -110,6 +110,7 @@ public enum ClientResourceFileExtension {
     rSituationMsgCtrl,
     rStageAdjoinList,
     rStageConnect,
+    rStageCustom,
     rStageJoint,
     rStageList,
     rStageMap,
@@ -242,6 +243,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sdt", rStaminaDecTbl);
         fileExtensionToResourceMap.put(".sg_tbl", rStatusGainTable);
         fileExtensionToResourceMap.put(".scc", rStageConnect);
+        fileExtensionToResourceMap.put(".sca", rStageCustom);
         fileExtensionToResourceMap.put(".sja", rStageJoint);
         fileExtensionToResourceMap.put(".slt", rStageList);
         fileExtensionToResourceMap.put(".smc", rSituationMsgCtrl);

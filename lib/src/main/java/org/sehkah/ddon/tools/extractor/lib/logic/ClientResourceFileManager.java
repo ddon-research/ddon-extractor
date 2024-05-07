@@ -214,6 +214,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 7, 4), StageConnectDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageCustom, new FileHeader("sca\0", 9, 4), StageCustomDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageJoint, new FileHeader("sja\0", 19, 4), StageJointDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageList, new FileHeader("slt\0", 34, 4), StageListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageMap, new FileHeader(1, 4), StageMapDeserializer.class));
