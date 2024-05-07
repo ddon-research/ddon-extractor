@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmLadder extends SetInfo {
     private final long Height;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

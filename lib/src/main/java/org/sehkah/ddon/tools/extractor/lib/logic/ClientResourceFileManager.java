@@ -11,6 +11,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceF
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.EncryptedArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.ItemListDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.OmParamDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.game_common.PlayerExpTableDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.EM.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.BakeJointTblDeserializer;
@@ -178,7 +179,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rJobTutorialQuestList, new FileHeader("JTQ\0", 1, 2), JobTutorialQuestListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rKeyConfigTextTable, new FileHeader(1, 4), KeyConfigTextTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 4, 4), LandInfoDeserializer.class));
-        clientResourceFileSet.add(new ClientResourceFile(rLayout, new FileHeader("lot\0", 117, 4), LayoutDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rLayout, new FileHeader("lot\0", 138, 4), LayoutDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLayoutPreset, new FileHeader(5, 4), LayoutPresetDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLocationData, new FileHeader("lcd\0", 16, 4), LocationDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMapSpotData, new FileHeader("msd\0", 0, 4), MapSpotDataDeserializer.class));
@@ -247,8 +248,10 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rFurnitureData, new FileHeader(4, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.clankyoten.FurnitureDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rItemList, new FileHeader("ipa\0", 58, 4), ItemListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rLandInfo, new FileHeader("LAI\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.base.LandInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rLayout, new FileHeader("lot\0", 117, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.LayoutDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rMyRoomActParam, new FileHeader(14, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.MyRoom.MyRoomActParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rRoomWearParam, new FileHeader(1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.MyRoom.RoomWearParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rOmParam, new FileHeader("TBL\0", 56, 4), OmParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageConnectDeserializer.class));

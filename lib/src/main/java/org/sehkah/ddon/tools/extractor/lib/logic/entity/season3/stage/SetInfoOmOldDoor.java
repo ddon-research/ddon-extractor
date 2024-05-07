@@ -19,5 +19,5 @@ public class SetInfoOmOldDoor extends SetInfo {
     private final int Kind2;
     private final int Group2;
     private final int ID2;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

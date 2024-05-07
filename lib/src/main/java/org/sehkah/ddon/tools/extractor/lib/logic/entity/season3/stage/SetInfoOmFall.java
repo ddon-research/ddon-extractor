@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmFall extends SetInfo {
     private final float FallHeight;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

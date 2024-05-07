@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
 public record AchievementData(

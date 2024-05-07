@@ -13,5 +13,6 @@ public class SetInfoEnemy extends SetInfo {
     private final long EmReactNo;
     private final int SubGroupNo;
     private final boolean ReturnPoint2nd;
+    private final long Unknown;
     private final SetInfoCoord InfoCharacter;
 }

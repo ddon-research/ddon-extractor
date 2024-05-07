@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmBreakTarget extends SetInfo {
     private final long BreakHitNum;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

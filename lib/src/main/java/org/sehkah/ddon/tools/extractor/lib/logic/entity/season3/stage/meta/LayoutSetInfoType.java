@@ -30,7 +30,32 @@ public enum LayoutSetInfoType {
     SetInfoOmEx(23),
     SetInfoOmOldDoor(24),
     SetInfoOmOneWay(25),
-    SetInfoOmBreakTarget(26);
+    SetInfoOmBreakTarget(26),
+    SetInfoOmUnknown27(27),
+    SetInfoOmUnknown28(28),
+    SetInfoOmWarpNew(29),
+    SetInfoOmUnknown30(30),
+    SetInfoOmUnknown31(31),
+    SetInfoOmUnknown32(32),
+    SetInfoOmUnknown33(33),
+    SetInfoOmUnknown34(34),
+    // 35 - 39 unused
+    SetInfoOmOld(40),
+    // 41 unused
+    SetInfoOmUnknown42(42),
+    SetInfoOmWarpNewV3(43),
+    SetInfoOmUnknown45(45),
+    SetInfoOmUnknown46(46),
+    SetInfoOmUnknown47(47),
+    SetInfoOmUnknown48(48),
+    SetInfoOmUnknown49(49),
+    SetInfoOmUnknown50(50),
+    SetInfoOmUnknown51(51),
+    SetInfoOmUnknown52(52),
+    SetInfoOmUnknown53(53),
+    SetInfoOmWarpNewV2(54),
+    SetInfoOmUnknown55(55),
+    SetInfoEnemyV2(200);
 
     public final long value;
 

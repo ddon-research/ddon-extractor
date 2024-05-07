@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmEx extends SetInfo {
     private final long QuestID;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

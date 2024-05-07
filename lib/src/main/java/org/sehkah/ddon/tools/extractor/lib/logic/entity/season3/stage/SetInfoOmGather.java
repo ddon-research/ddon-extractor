@@ -15,9 +15,9 @@ public class SetInfoOmGather extends SetInfo {
     @MetaInformation
     private final SetInfoOmGatherType GatheringTypeName;
     private final boolean IsGatherEnemy;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 
-    public SetInfoOmGather(long itemListID, long gatheringType, boolean isGatherEnemy, SetInfoOm infoOm) {
+    public SetInfoOmGather(long itemListID, long gatheringType, boolean isGatherEnemy, SetInfoOmOld infoOm) {
         this(itemListID,
                 gatheringType, SetInfoOmGatherType.of(gatheringType),
                 isGatherEnemy,

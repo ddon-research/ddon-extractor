@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 
@@ -134,9 +134,9 @@ public record ItemListItemParam(
             case CATEGORY_USE_ITEM -> ItemListUseCategory.of(category);
             case CATEGORY_ARMS -> ItemListEquipCategory.of(category);
             case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                    CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                    CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                    CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
+                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
+                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
     }

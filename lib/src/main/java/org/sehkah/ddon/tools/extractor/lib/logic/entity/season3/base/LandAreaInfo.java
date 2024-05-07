@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.base.meta.LandAreaInfoGameMode;
 import org.sehkah.ddon.tools.extractor.lib.logic.serialization.MetaInformation;
 

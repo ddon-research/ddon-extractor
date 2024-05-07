@@ -16,5 +16,6 @@ public class SetInfoOmCtrl extends SetInfo {
     private final List<SetInfoOmCtrlLinkParam> LinkParam; // 4
     private final int AddGroupNo;
     private final int AddSubGroupNo;
-    private final SetInfoOm InfoOm;
+    private final long Unknown;
+    private final SetInfoOmOld InfoOm;
 }

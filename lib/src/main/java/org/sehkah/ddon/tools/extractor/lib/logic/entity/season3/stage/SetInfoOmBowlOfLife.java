@@ -17,5 +17,5 @@ public class SetInfoOmBowlOfLife extends SetInfo {
     private final int Kind;
     private final int Group;
     private final int ID;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

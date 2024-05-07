@@ -12,6 +12,7 @@ public class SetInfoOm extends SetInfo {
     private final boolean DisableOnlyEffect;
     private final boolean OpenFlag;
     private final boolean EnableSyncLight;
+    private final boolean Unknown;
     private final boolean EnableZone;
     private final long InitMtnNo;
     private final long AreaMasterNo;

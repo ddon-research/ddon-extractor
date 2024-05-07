@@ -10,5 +10,5 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmNav extends SetInfo {
     private final Vector3f NavOBBExtent;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

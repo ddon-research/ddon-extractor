@@ -13,5 +13,5 @@ public class SetInfoOmBadStatus extends SetInfo {
     private final float BadHeight;
     private final Vector3f BadPos;
     private final long BreakHitNum;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

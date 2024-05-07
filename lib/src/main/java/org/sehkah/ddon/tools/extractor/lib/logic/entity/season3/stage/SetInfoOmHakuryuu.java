@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmHakuryuu extends SetInfo {
     private final long StoneLevel;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

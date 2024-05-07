@@ -17,5 +17,5 @@ public class SetInfoOmDoor extends SetInfo {
     private final long TextNo;
     private final long QuestID;
     private final long QuestFlag;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

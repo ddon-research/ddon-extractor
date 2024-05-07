@@ -89,6 +89,7 @@ public enum ClientResourceFileExtension {
     rNpcLedgerList,
     rNpcMeetingPlace,
     rNpcIsNoSetPS3,
+    rOmParam,
     rPartnerPawnTalk,
     rPartnerReactParam,
     rPawnQuestTalk,
@@ -217,6 +218,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
         fileExtensionToResourceMap.put(".nsp", rNpcIsNoSetPS3);
         fileExtensionToResourceMap.put(".nsd", rNormalSkillData);
+        fileExtensionToResourceMap.put(".omp", rOmParam);
         fileExtensionToResourceMap.put(".pam", rAIPawnAutoMotionTbl);
         fileExtensionToResourceMap.put(".pao", rAIPawnOrder);
         fileExtensionToResourceMap.put(".pas", rAIPawnActNoSwitch);

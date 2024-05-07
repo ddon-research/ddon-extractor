@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmBoard extends SetInfo {
     private final long BoardID;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

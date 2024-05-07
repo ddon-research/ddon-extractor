@@ -11,5 +11,5 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.OrientedBoundingBox;
 public class SetInfoOmWall extends SetInfo {
     private final long WallType;
     private final OrientedBoundingBox NavOBB;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

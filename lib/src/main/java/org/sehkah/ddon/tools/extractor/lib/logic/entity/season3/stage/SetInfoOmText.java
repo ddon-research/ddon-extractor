@@ -11,5 +11,5 @@ public class SetInfoOmText extends SetInfo {
     private final long TextNo;
     private final long TextQuestNo;
     private final long TextType;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

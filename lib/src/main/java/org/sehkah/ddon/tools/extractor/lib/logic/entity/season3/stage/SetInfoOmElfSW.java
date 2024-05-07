@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmElfSW extends SetInfo {
     private final long PLCount;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

@@ -12,5 +12,5 @@ public class SetInfoOmRange extends SetInfo {
     private final long Grp;
     private final boolean IsAll;
     private final boolean IsOneTime;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

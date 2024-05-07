@@ -13,5 +13,5 @@ public class SetInfoOmLever extends SetInfo {
     private final boolean ReqLever;
     private final int CamEvNo;
     private final BigInteger FSMCamEvResId; // rAIFSM
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

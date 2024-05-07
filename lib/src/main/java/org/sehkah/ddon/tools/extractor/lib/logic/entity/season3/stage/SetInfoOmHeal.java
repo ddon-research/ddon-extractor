@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @JsonPropertyOrder(alphabetic = true)
 public class SetInfoOmHeal extends SetInfo {
     private final long HealType;
-    private final SetInfoOm InfoOm;
+    private final SetInfoOmOld InfoOm;
 }

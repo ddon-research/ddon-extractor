@@ -23,5 +23,11 @@ public class SetInfoNpc extends SetInfo {
     private final boolean IsAttand;
     private final boolean DisableTouchAction;
     private final boolean DispElseQuestTalk;
+    private final short Unknown1;
+    private final short Unknown2;
+    private final short Unknown3;
+    private final short Unknown4;
+    private final short Unknown5;
+    private final short Unknown6;
     private final SetInfoCoord InfoCharacter;
 }
