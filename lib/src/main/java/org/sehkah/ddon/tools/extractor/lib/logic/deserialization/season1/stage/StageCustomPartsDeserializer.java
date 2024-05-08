@@ -8,8 +8,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.stage.StageCusto
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.stage.StageCustomPartsInfo;
 import org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.stage.StageCustomPartsParam;
 
-import java.nio.charset.Charset;
-
 public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer {
     public StageCustomPartsDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
@@ -47,7 +45,7 @@ public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer
                 fileReader.readFixedLengthArray(3, FileReader::readUnsignedLong),
                 fileReader.readUnsignedLong(),
 
-                fileReader.readNullTerminatedString(Charset.forName("Shift-JIS"))
+                fileReader.readJapaneseNullTerminatedString()
         );
     }
 

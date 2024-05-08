@@ -18,6 +18,7 @@ import java.util.function.ToLongFunction;
 
 public class BinaryFileReader implements FileReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
+    private static final Charset CHARSET_SHIFT_JIS = Charset.forName("Shift-JIS");
     private final ByteBuffer byteBuffer;
 
     public BinaryFileReader(Path filePath) throws IOException {
@@ -155,6 +156,15 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
+    public Cylinder readCylinder() {
+        return new Cylinder(
+                readVector3f(),
+                readVector3f(),
+                readFloat()
+        );
+    }
+
+    @Override
     public Vector3f readVector3f() {
         return new Vector3f(readFloat(), readFloat(), readFloat());
     }
@@ -203,7 +213,12 @@ public class BinaryFileReader implements FileReader {
 
     @Override
     public String readNullTerminatedString() {
-        return readNullTerminatedString(StandardCharsets.US_ASCII).replace("\0", "");
+        return readNullTerminatedString(StandardCharsets.US_ASCII);
+    }
+
+    @Override
+    public String readJapaneseNullTerminatedString() {
+        return readNullTerminatedString(CHARSET_SHIFT_JIS);
     }
 
     @Override
@@ -247,6 +262,14 @@ public class BinaryFileReader implements FileReader {
     public OrientedBoundingBox readOrientedBoundingBox() {
         return new OrientedBoundingBox(
                 readMatrix(),
+                readVector3f()
+        );
+    }
+
+    @Override
+    public AxisAlignedBoundingBox readAxisAlignedBoundingBox() {
+        return new AxisAlignedBoundingBox(
+                readVector3f(),
                 readVector3f()
         );
     }

@@ -47,6 +47,8 @@ public interface FileReader {
 
     Sphere readSphere();
 
+    Cylinder readCylinder();
+
     Vector3f readVector3f();
 
     Vector3f[] readVector3f(int num);
@@ -63,6 +65,8 @@ public interface FileReader {
 
     String readNullTerminatedString();
 
+    String readJapaneseNullTerminatedString();
+
     String readString(int length);
 
     String readString(int length, Charset charset);
@@ -74,6 +78,8 @@ public interface FileReader {
     Color readColor();
 
     OrientedBoundingBox readOrientedBoundingBox();
+
+    AxisAlignedBoundingBox readAxisAlignedBoundingBox();
 
     <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
 
