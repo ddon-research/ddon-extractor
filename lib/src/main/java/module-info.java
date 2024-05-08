@@ -27,6 +27,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.meta;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.marker;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season1.stage;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.base;

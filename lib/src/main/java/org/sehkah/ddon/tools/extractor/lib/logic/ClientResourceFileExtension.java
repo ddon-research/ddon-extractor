@@ -111,6 +111,7 @@ public enum ClientResourceFileExtension {
     rStageAdjoinList,
     rStageConnect,
     rStageCustom,
+    rStageCustomParts,
     rStageJoint,
     rStageList,
     rStageInfo,
@@ -257,6 +258,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sri2", rShotReqInfo2);
         fileExtensionToResourceMap.put(".sta", rStartPosArea);
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
+        fileExtensionToResourceMap.put(".scp", rStageCustomParts);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
         fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);

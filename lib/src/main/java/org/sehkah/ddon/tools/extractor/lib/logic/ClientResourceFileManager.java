@@ -258,6 +258,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rPlayerExpTable, new FileHeader(2, 4), PlayerExpTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.npc.SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 1, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageConnectDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageCustomParts, new FileHeader("scp\0", 17, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageCustomPartsDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageInfo, new FileHeader("sti\0", 81, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage.StageInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 3, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.marker.StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStaminaDecTbl, new FileHeader("sdt\0", 5, 4), StaminaDecTblDeserializer.class));
@@ -268,6 +269,7 @@ public class ClientResourceFileManager {
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season1.marker.StageAdjoinListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageCustomParts, new FileHeader("scp\0", 16, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season1.stage.StageCustomPartsDeserializer.class));
     }
 
     public ClientResourceDeserializer<TopLevelClientResource> getDeserializer(String fileName, FileReader fileReader) {

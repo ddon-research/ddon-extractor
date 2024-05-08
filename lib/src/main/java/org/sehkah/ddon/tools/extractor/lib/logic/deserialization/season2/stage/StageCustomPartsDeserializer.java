@@ -1,0 +1,75 @@
+package org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.stage;
+
+import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage.StageCustomParts;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage.StageCustomPartsFilter;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage.StageCustomPartsInfo;
+import org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage.StageCustomPartsParam;
+
+import java.nio.charset.Charset;
+
+public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer {
+    public StageCustomPartsDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static StageCustomPartsInfo readStageCustomPartsInfo(FileReader fileReader) {
+        return new StageCustomPartsInfo(
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+                fileReader.readNullTerminatedString(),
+
+                fileReader.readSignedShort(),
+                fileReader.readSignedShort(),
+                fileReader.readUnsignedInteger(),
+                fileReader.readFloat(),
+                fileReader.readSignedInteger(),
+                fileReader.readSignedInteger(),
+                fileReader.readSignedInteger(),
+                fileReader.readColor(),
+
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedLong(),
+                fileReader.readUnsignedLong(),
+                fileReader.readFixedLengthArray(3, FileReader::readUnsignedLong),
+                fileReader.readUnsignedLong(),
+
+                fileReader.readNullTerminatedString(Charset.forName("Shift-JIS"))
+        );
+    }
+
+    private static StageCustomPartsFilter readStageCustomPartsFilter(FileReader fileReader) {
+        return new StageCustomPartsFilter(
+                fileReader.readNullTerminatedString()
+        );
+    }
+
+    private static StageCustomPartsParam readStageCustomPartsParam(FileReader fileReader) {
+        return new StageCustomPartsParam(
+                fileReader.readFloat(),
+                fileReader.readFloat()
+        );
+    }
+
+    @Override
+    protected StageCustomParts parseClientResourceFile(FileReader fileReader) {
+        return new StageCustomParts(
+                readStageCustomPartsParam(fileReader),
+                fileReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsInfo),
+                fileReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsFilter)
+        );
+    }
+}
