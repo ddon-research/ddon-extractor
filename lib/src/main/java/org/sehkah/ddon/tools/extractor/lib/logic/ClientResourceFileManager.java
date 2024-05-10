@@ -20,6 +20,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.C
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.Human.WeaponOffsetTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.base.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.character_edit.EditStageParamDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.clankyoten.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.collision_common.PushRateListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.craft_common.*;
@@ -153,6 +154,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rEmBaseInfoSv, new FileHeader(21, 4), EmBaseInfoSvDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmDamageDirInfo, new FileHeader(2, 4), EmDamageDirInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmDmgTimerTbl, new FileHeader(2, 4), EmDmgTimerTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEditStageParam, new FileHeader("esp\0", 12, 4), EditStageParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmLvUpParam, new FileHeader(7, 4), EmLvUpParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEnemyGroup, new FileHeader(1, 4), EnemyGroupDeserializer.class, EnemyGroupSerializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEquipPreset, new FileHeader(7, 4), EquipPresetDeserializer.class));

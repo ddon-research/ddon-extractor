@@ -51,6 +51,7 @@ public enum ClientResourceFileExtension {
     rEmDmgTimerTbl,
     rEmLvUpParam,
     rEnemyGroup,
+    rEditStageParam,
     rEquipPreset,
     rEvaluationTable,
     rEventParam,
@@ -193,6 +194,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
         fileExtensionToResourceMap.put(".eli", rVfxLightInfluence);
         fileExtensionToResourceMap.put(".emg", rEnemyGroup);
+        fileExtensionToResourceMap.put(".esp", rEditStageParam);
         fileExtensionToResourceMap.put(".equip_preset", rEquipPreset);
         fileExtensionToResourceMap.put(".evl", rEvaluationTable);
         fileExtensionToResourceMap.put(".evp", rEventParam);
