@@ -35,6 +35,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.game_common;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.gui_cmn;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.marker;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.EM;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.npc;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.skill;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season2.stage;
@@ -52,6 +53,8 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.clankyoten;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.craft_common.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.craft_common;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.collision_common;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.effect_common;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.em_common.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.em_common;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.equip;
@@ -66,6 +69,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.marker;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.npc_common;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.om;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.pawn;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.quest.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.quest;
