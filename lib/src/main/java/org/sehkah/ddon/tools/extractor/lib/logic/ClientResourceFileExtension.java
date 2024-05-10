@@ -87,6 +87,8 @@ public enum ClientResourceFileExtension {
     rJobBaseParam,
     rJobLevelUpTbl2,
     rJobMasterCtrl,
+    rJumpParamTbl,
+    rEmWarpParam,
     rJobTutorialQuestList,
     rKeyConfigTextTable,
     rLandInfo,
@@ -244,6 +246,8 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ipa", rItemList);
         fileExtensionToResourceMap.put(".jlt2", rJobLevelUpTbl2);
         fileExtensionToResourceMap.put(".jmc", rJobMasterCtrl);
+        fileExtensionToResourceMap.put(".jmp", rJumpParamTbl);
+        fileExtensionToResourceMap.put(".ewp", rEmWarpParam);
         fileExtensionToResourceMap.put(".jobbase", rJobBaseParam);
         fileExtensionToResourceMap.put(".jtq", rJobTutorialQuestList);
         fileExtensionToResourceMap.put(".kctt", rKeyConfigTextTable);

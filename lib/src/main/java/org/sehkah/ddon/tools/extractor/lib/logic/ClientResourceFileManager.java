@@ -31,10 +31,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.fieldar
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.game_common.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.gui_cmn.*;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.MagicChantParamTblDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.MagicCommandListTblDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.MagicCommandWordTblDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.StaminaDecTblDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.job.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.launcher.ArchiveListArrayDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.DungeonMarkerDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season3.marker.StageAdjoinListDeserializer;
@@ -171,6 +168,8 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rChildRegionStatusParam, new FileHeader(65, 4), ChildRegionStatusParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEnemyReactResEx, new FileHeader(3, 4), EnemyReactResExTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEnemyReactResEx, new FileHeader(6, 4), EnemyReactResExTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEmWarpParam, new FileHeader(3, 4), EmWarpParamTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rJumpParamTbl, new FileHeader(4, 4), JumpParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rJointInfo, new FileHeader(6, 4), JointInfoTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rJointInfo, new FileHeader(259, 4), JointInfoTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEnemyGroup, new FileHeader(1, 4), EnemyGroupDeserializer.class, EnemyGroupSerializer.class));
@@ -292,6 +291,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(352, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.gui_cmn.WarpLocationDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(9, 4), WeaponResTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rOcdImmuneParamRes, new FileHeader(23, 4), OcdImmuneParamResTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rJumpParamTbl, new FileHeader(3, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.job.JumpParamTblDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {
