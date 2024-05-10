@@ -48,6 +48,21 @@ public enum ClientResourceFileExtension {
     rDungeonMarker,
     rEmBaseInfoSv,
     rEmDamageDirInfo,
+    rEmScaleTable,
+    rPartsCtrlTable,
+    rEnemyLocalEst,
+    rEnemyMaterialTable,
+    rEmSoundTable,
+    rOcdElectricParam,
+    rEnemyStatusChange,
+    rEmWorkRateTable,
+    rJointOrder,
+    rOcdImmuneParamRes,
+    rParentRegionStatusParam,
+    rChildRegionStatusParamList,
+    rChildRegionStatusParam,
+    rEnemyReactResEx,
+    rJointInfo,
     rEmDmgTimerTbl,
     rEmLvUpParam,
     rEnemyGroup,
@@ -192,6 +207,21 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
         fileExtensionToResourceMap.put(".ebi_sv", rEmBaseInfoSv);
         fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
+        fileExtensionToResourceMap.put(".esl", rEmScaleTable);
+        fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);
+        fileExtensionToResourceMap.put(".ele", rEnemyLocalEst);
+        fileExtensionToResourceMap.put(".ema", rEnemyMaterialTable);
+        fileExtensionToResourceMap.put(".esn", rEmSoundTable);
+        fileExtensionToResourceMap.put(".eoc", rOcdElectricParam);
+        fileExtensionToResourceMap.put(".est", rEnemyStatusChange);
+        fileExtensionToResourceMap.put(".ewk", rEmWorkRateTable);
+        fileExtensionToResourceMap.put(".jnt_order", rJointOrder);
+        fileExtensionToResourceMap.put(".oIp", rOcdImmuneParamRes);
+        fileExtensionToResourceMap.put(".prs", rParentRegionStatusParam);
+        fileExtensionToResourceMap.put(".rsl", rChildRegionStatusParamList);
+        fileExtensionToResourceMap.put(".crs", rChildRegionStatusParam);
+        fileExtensionToResourceMap.put(".era", rEnemyReactResEx);
+        fileExtensionToResourceMap.put(".jnt_info", rJointInfo);
         fileExtensionToResourceMap.put(".eli", rVfxLightInfluence);
         fileExtensionToResourceMap.put(".emg", rEnemyGroup);
         fileExtensionToResourceMap.put(".esp", rEditStageParam);
@@ -303,6 +333,7 @@ public enum ClientResourceFileExtension {
         return resourceToFileExtensionMap.get(resource);
     }
 
+    // TODO: Support JamCRC strings in case someone is using a tool which couldn't properly map the file extension
     public static Set<String> getSupportedFileExtensions() {
         return fileExtensionToResourceMap.keySet();
     }

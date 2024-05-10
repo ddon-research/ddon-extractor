@@ -68,4 +68,13 @@ class FrameworkResourcesUtilTest {
 
         assertEquals(124L, targetTagNumber);
     }
+
+    @Test
+    void testFileExtensionForResourceFileEqualsExpected() {
+        long resourceTypeId = 0x5362A636;
+
+        String fileExtension = FrameworkResourcesUtil.getFileExtension(resourceTypeId);
+
+        assertEquals(".ptc", fileExtension);
+    }
 }

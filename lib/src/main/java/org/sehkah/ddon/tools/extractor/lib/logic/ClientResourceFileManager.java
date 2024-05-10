@@ -156,6 +156,23 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rEmDmgTimerTbl, new FileHeader(2, 4), EmDmgTimerTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEditStageParam, new FileHeader("esp\0", 12, 4), EditStageParamDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmLvUpParam, new FileHeader(7, 4), EmLvUpParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEmScaleTable, new FileHeader(257, 4), EmScaleTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rPartsCtrlTable, new FileHeader(256, 4), PartsCtrlTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEnemyLocalEst, new FileHeader(259, 4), EnemyLocalEstTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEnemyMaterialTable, new FileHeader(260, 4), EnemyMaterialTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rOcdElectricParam, new FileHeader(1, 4), OcdElectricParamListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEmSoundTable, new FileHeader(261, 4), EmSoundTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEnemyStatusChange, new FileHeader(9, 4), EnemyStatusChangeTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEmWorkRateTable, new FileHeader(258, 4), EmWorkRateTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rJointOrder, new FileHeader(3, 4), JointOrderTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rOcdImmuneParamRes, new FileHeader(37, 4), OcdImmuneParamResTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rParentRegionStatusParam, new FileHeader(65, 4), ParentRegionStatusParamTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rChildRegionStatusParamList, new FileHeader(65, 4), ChildRegionStatusParamListTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rChildRegionStatusParam, new FileHeader(65, 4), ChildRegionStatusParamDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEnemyReactResEx, new FileHeader(3, 4), EnemyReactResExTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEnemyReactResEx, new FileHeader(6, 4), EnemyReactResExTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rJointInfo, new FileHeader(6, 4), JointInfoTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rJointInfo, new FileHeader(259, 4), JointInfoTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEnemyGroup, new FileHeader(1, 4), EnemyGroupDeserializer.class, EnemyGroupSerializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEquipPreset, new FileHeader(7, 4), EquipPresetDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEvaluationTable, new FileHeader(4, 4), EvaluationTableDeserializer.class));
@@ -274,6 +291,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 5, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.tutorial_guide.TutorialListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(352, 4), org.sehkah.ddon.tools.extractor.lib.logic.deserialization.season2.gui_cmn.WarpLocationDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(9, 4), WeaponResTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rOcdImmuneParamRes, new FileHeader(23, 4), OcdImmuneParamResTableDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {
