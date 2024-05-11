@@ -1,0 +1,25 @@
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.craft_common;
+
+import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.craft_common.CraftSkillSpdData;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.craft_common.CraftSkillSpdList;
+
+public class CraftSkillSpeedDeserializer extends ClientResourceFileDeserializer {
+    public CraftSkillSpeedDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static CraftSkillSpdData readCraftSkillSpdData(FileReader fileReader) {
+        return new CraftSkillSpdData(
+                fileReader.readUnsignedInteger(),
+                fileReader.readUnsignedInteger()
+        );
+    }
+
+    @Override
+    protected CraftSkillSpdList parseClientResourceFile(FileReader fileReader) {
+        return new CraftSkillSpdList(fileReader.readArray(CraftSkillSpeedDeserializer::readCraftSkillSpdData));
+    }
+}

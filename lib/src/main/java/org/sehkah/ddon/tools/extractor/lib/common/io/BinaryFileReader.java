@@ -26,12 +26,16 @@ public class BinaryFileReader implements FileReader {
     }
 
     public BinaryFileReader(byte[] data) {
-        this(ByteBuffer.wrap(data));
+        this(ByteBuffer.wrap(data), DEFAULT_BYTE_ORDER);
     }
 
-    public BinaryFileReader(ByteBuffer byteBuffer) {
+    public BinaryFileReader(byte[] data, ByteOrder byteOrder) {
+        this(ByteBuffer.wrap(data), byteOrder);
+    }
+
+    public BinaryFileReader(ByteBuffer byteBuffer, ByteOrder byteOrder) {
         this.byteBuffer = byteBuffer;
-        this.byteBuffer.order(DEFAULT_BYTE_ORDER);
+        this.byteBuffer.order(byteOrder);
     }
 
     @Override
@@ -42,6 +46,21 @@ public class BinaryFileReader implements FileReader {
     @Override
     public void setPosition(int position) {
         byteBuffer.position(position);
+    }
+
+    @Override
+    public ByteOrder getByteOrder() {
+        return byteBuffer.order();
+    }
+
+    @Override
+    public void setByteOrder(ByteOrder byteOrder) {
+        byteBuffer.order(byteOrder);
+    }
+
+    @Override
+    public ByteOrder getDefaultByteOrder() {
+        return DEFAULT_BYTE_ORDER;
     }
 
     @Override

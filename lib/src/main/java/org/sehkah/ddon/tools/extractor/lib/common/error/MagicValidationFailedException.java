@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.error;
 
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 
 public class MagicValidationFailedException extends TechnicalException {
     public MagicValidationFailedException() {

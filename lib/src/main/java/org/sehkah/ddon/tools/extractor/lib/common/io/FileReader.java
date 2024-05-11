@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.common.io;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.*;
 
 import java.math.BigInteger;
+import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.function.Function;
@@ -12,6 +13,12 @@ public interface FileReader {
     int getPosition();
 
     void setPosition(int position);
+
+    ByteOrder getByteOrder();
+
+    void setByteOrder(ByteOrder byteOrder);
+
+    ByteOrder getDefaultByteOrder();
 
     int getLimit();
 

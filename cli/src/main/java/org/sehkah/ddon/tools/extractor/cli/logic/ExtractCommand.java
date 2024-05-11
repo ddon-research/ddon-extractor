@@ -6,12 +6,12 @@ import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileExtension;
-import org.sehkah.ddon.tools.extractor.lib.logic.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.deserialization.ClientResourceDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.Archive;
-import org.sehkah.ddon.tools.extractor.lib.logic.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.logic.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExtension;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.Serializer;
 import picocli.CommandLine;
 
 import java.io.IOException;

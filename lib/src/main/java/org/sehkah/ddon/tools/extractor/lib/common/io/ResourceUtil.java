@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.common.io;
 
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.logic.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.DynamicResourceLookupUtil;
 
 import java.io.IOException;
 import java.io.InputStream;

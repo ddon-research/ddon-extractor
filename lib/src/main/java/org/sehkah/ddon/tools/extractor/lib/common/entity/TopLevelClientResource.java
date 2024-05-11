@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.common.entity;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
-import org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroupList;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.EnemyGroupList;
 
 /**
  * This is a 'marker' interface to support generic deserializers.
