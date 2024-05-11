@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.CraftQualityData;
@@ -12,19 +12,19 @@ public class CraftQualityDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static CraftQualityData readCraftQualityData(FileReader fileReader) {
+    private static CraftQualityData readCraftQualityData(BufferReader bufferReader) {
         return new CraftQualityData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected CraftQualityList parseClientResourceFile(FileReader fileReader) {
+    protected CraftQualityList parseClientResourceFile(BufferReader bufferReader) {
         return new CraftQualityList(
-                fileReader.readArray(CraftQualityDeserializer::readCraftQualityData)
+                bufferReader.readArray(CraftQualityDeserializer::readCraftQualityData)
         );
     }
 }

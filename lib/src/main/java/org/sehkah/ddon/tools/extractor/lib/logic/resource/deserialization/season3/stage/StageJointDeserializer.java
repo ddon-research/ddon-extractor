@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.StageJoint;
@@ -16,46 +16,46 @@ public class StageJointDeserializer extends ClientResourceFileDeserializer {
     }
 
 
-    private static StageJointInfo readStageJointInfo(FileReader fileReader) {
+    private static StageJointInfo readStageJointInfo(BufferReader bufferReader) {
         return new StageJointInfo(
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readFixedLengthArray(16, FileReader::readSignedByte),
-                fileReader.readColor(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readFixedLengthArray(3, FileReader::readUnsignedLong),
-                fileReader.readUnsignedLong(),
-                fileReader.readNullTerminatedString()
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readFixedLengthArray(16, BufferReader::readSignedByte),
+                bufferReader.readColor(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readFixedLengthArray(3, BufferReader::readUnsignedLong),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readNullTerminatedString()
         );
     }
 
-    private static StageJointParam readStageJointParam(FileReader fileReader) {
-        float StartX = fileReader.readFloat();
-        float StartZ = fileReader.readFloat();
-        float DeltaX = fileReader.readFloat();
-        float DeltaZ = fileReader.readFloat();
-        int AreaNumX = (int) fileReader.readUnsignedInteger();
-        int AreaNumZ = (int) fileReader.readUnsignedInteger();
+    private static StageJointParam readStageJointParam(BufferReader bufferReader) {
+        float StartX = bufferReader.readFloat();
+        float StartZ = bufferReader.readFloat();
+        float DeltaX = bufferReader.readFloat();
+        float DeltaZ = bufferReader.readFloat();
+        int AreaNumX = (int) bufferReader.readUnsignedInteger();
+        int AreaNumZ = (int) bufferReader.readUnsignedInteger();
 
         List<List<Byte>> Area = IntStream.range(0, AreaNumX)
-                .mapToObj(i -> fileReader.readFixedLengthArray(AreaNumZ, FileReader::readSignedByte))
+                .mapToObj(i -> bufferReader.readFixedLengthArray(AreaNumZ, BufferReader::readSignedByte))
                 .toList();
 
         return new StageJointParam(
@@ -70,11 +70,11 @@ public class StageJointDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageJoint parseClientResourceFile(FileReader fileReader) {
+    protected StageJoint parseClientResourceFile(BufferReader bufferReader) {
         return new StageJoint(
-                readStageJointParam(fileReader),
-                fileReader.readArray(StageJointDeserializer::readStageJointInfo),
-                readStageJointInfo(fileReader)
+                readStageJointParam(bufferReader),
+                bufferReader.readArray(StageJointDeserializer::readStageJointInfo),
+                readStageJointInfo(bufferReader)
         );
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.Human;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.Human.BakeJoint;
@@ -11,15 +11,15 @@ public class BakeJointTblDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static BakeJoint readBakeJoint(FileReader fileReader) {
+    private static BakeJoint readBakeJoint(BufferReader bufferReader) {
         return new BakeJoint(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedByte()
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected BakeJointTbl parseClientResourceFile(FileReader fileReader) {
-        return new BakeJointTbl(fileReader.readArray(BakeJointTblDeserializer::readBakeJoint));
+    protected BakeJointTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new BakeJointTbl(bufferReader.readArray(BakeJointTblDeserializer::readBakeJoint));
     }
 }

@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization;
 import org.sehkah.ddon.tools.extractor.lib.common.crypto.BlowFishUtil;
 import org.sehkah.ddon.tools.extractor.lib.common.crypto.ZipUtil;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
@@ -24,8 +24,8 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static ResourceInfo readResourceInfo(FileReader fileReader) {
-        FileReader temporaryReader = new BinaryFileReader(BlowFishUtil.decrypt(fileReader.readSignedByte(80)));
+    private static ResourceInfo readResourceInfo(BufferReader bufferReader) {
+        BufferReader temporaryReader = new BinaryReader(BlowFishUtil.decrypt(bufferReader.readSignedByte(80)));
 
         String Path = temporaryReader.readString(64).replace("\0", "");
         long Type = temporaryReader.readUnsignedInteger();
@@ -44,17 +44,17 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected Archive parseClientResourceFile(FileReader fileReader) {
-        List<ResourceInfo> resourceInfos = fileReader.readArray(FileReader::readUnsignedShort, EncryptedArchiveDeserializer::readResourceInfo);
+    protected Archive parseClientResourceFile(BufferReader bufferReader) {
+        List<ResourceInfo> resourceInfos = bufferReader.readArray(BufferReader::readUnsignedShort, EncryptedArchiveDeserializer::readResourceInfo);
 
         Map<String, byte[]> resourceFileMap = HashMap.newHashMap(resourceInfos.size());
         for (ResourceInfo resourceInfo : resourceInfos) {
-            byte[] compressedEncryptedData = fileReader.copySignedByte((int) resourceInfo.DataSize(), (int) resourceInfo.Offset());
+            byte[] compressedEncryptedData = bufferReader.copySignedByte((int) resourceInfo.DataSize(), (int) resourceInfo.Offset());
             byte[] decompressedData = ZipUtil.decompress(BlowFishUtil.decrypt(compressedEncryptedData), (int) resourceInfo.OriginalSize());
             if (decompressedData.length != (int) resourceInfo.OriginalSize()) {
                 throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.OriginalSize()));
             }
-            fileReader.setPosition((int) (resourceInfo.DataSize() + resourceInfo.Offset()));
+            bufferReader.setPosition((int) (resourceInfo.DataSize() + resourceInfo.Offset()));
             resourceFileMap.put(resourceInfo.Path() + FrameworkResourcesUtil.getFileExtension(resourceInfo.TypeName()), decompressedData);
         }
 

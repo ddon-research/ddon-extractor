@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.StatusCheck;
@@ -11,20 +11,20 @@ public class StatusCheckTblDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static StatusCheck readStatusCheck(FileReader fileReader) {
+    private static StatusCheck readStatusCheck(BufferReader bufferReader) {
         return new StatusCheck(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFixedLengthArray(3, FileReader::readFloat),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean()
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(3, BufferReader::readFloat),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected StatusCheckTbl parseClientResourceFile(FileReader fileReader) {
-        return new StatusCheckTbl(fileReader.readArray(StatusCheckTblDeserializer::readStatusCheck));
+    protected StatusCheckTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new StatusCheckTbl(bufferReader.readArray(StatusCheckTblDeserializer::readStatusCheck));
     }
 }

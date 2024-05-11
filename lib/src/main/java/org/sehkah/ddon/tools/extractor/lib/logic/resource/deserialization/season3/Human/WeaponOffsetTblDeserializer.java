@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.Human;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.Human.WeaponOffset;
@@ -11,30 +11,30 @@ public class WeaponOffsetTblDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static WeaponOffset readWeaponOffset(FileReader fileReader) {
+    private static WeaponOffset readWeaponOffset(BufferReader bufferReader) {
         return new WeaponOffset(
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readFloat()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected WeaponOffsetTbl parseClientResourceFile(FileReader fileReader) {
-        return new WeaponOffsetTbl(fileReader.readArray(WeaponOffsetTblDeserializer::readWeaponOffset));
+    protected WeaponOffsetTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new WeaponOffsetTbl(bufferReader.readArray(WeaponOffsetTblDeserializer::readWeaponOffset));
     }
 }

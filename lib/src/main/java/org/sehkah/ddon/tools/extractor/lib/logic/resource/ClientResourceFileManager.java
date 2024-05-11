@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
@@ -299,11 +299,11 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rStageCustomParts, new FileHeader("scp\0", 16, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.stage.StageCustomPartsDeserializer.class));
     }
 
-    public ClientResourceDeserializer<TopLevelClientResource> getDeserializer(String fileName, FileReader fileReader) {
+    public ClientResourceDeserializer<TopLevelClientResource> getDeserializer(String fileName, BufferReader bufferReader) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
         ClientResourceFileExtension clientResourceFileExtension = ClientResourceFileExtension.of(fileNameExtension);
         ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer;
-        Set<FileHeader> fileHeaderCandidates = ClientResourceFileDeserializer.identifyFileHeaderCandidates(fileReader);
+        Set<FileHeader> fileHeaderCandidates = ClientResourceFileDeserializer.identifyFileHeaderCandidates(bufferReader);
         for (FileHeader fileHeaderCandidate : fileHeaderCandidates) {
             Pair<ClientResourceFileExtension, FileHeader> candidateKey = Pair.of(clientResourceFileExtension, fileHeaderCandidate);
             log.debug("Attempting to match candidate file header '%s'.".formatted(candidateKey));

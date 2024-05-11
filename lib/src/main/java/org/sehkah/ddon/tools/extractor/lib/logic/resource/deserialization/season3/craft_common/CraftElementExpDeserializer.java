@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.craft_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.craft_common.CraftElementExpData;
@@ -14,20 +14,20 @@ public class CraftElementExpDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static CraftElementExpData readCraftElementExpData(FileReader fileReader, int level) {
+    private static CraftElementExpData readCraftElementExpData(BufferReader bufferReader, int level) {
         return new CraftElementExpData(
                 level,
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected CraftElementExpList parseClientResourceFile(FileReader fileReader) {
-        long length = fileReader.readUnsignedInteger();
+    protected CraftElementExpList parseClientResourceFile(BufferReader bufferReader) {
+        long length = bufferReader.readUnsignedInteger();
         List<CraftElementExpData> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {
-            entities.add(readCraftElementExpData(fileReader, i));
+            entities.add(readCraftElementExpData(bufferReader, i));
         }
         return new CraftElementExpList(entities);
     }

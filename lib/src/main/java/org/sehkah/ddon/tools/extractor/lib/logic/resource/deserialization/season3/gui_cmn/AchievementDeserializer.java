@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.AchievementData;
@@ -11,18 +11,18 @@ public class AchievementDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AchievementData readAchievementData(FileReader fileReader) {
+    private static AchievementData readAchievementData(BufferReader bufferReader) {
         return new AchievementData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected AchievementDataList parseClientResourceFile(FileReader fileReader) {
-        return new AchievementDataList(fileReader.readArray(AchievementDeserializer::readAchievementData));
+    protected AchievementDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AchievementDataList(bufferReader.readArray(AchievementDeserializer::readAchievementData));
     }
 }

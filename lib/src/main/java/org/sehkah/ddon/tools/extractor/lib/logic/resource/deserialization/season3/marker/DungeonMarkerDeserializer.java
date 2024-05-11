@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.marker.DungeonMarker;
@@ -13,29 +13,29 @@ public class DungeonMarkerDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static DungeonMarkerPosition readDungeonMarkerPosition(FileReader fileReader) {
-        return new DungeonMarkerPosition(fileReader.readVector3f());
+    private static DungeonMarkerPosition readDungeonMarkerPosition(BufferReader bufferReader) {
+        return new DungeonMarkerPosition(bufferReader.readVector3f());
     }
 
-    private static DungeonMarkerWarpInfoIndex readDungeonMarkerWarpInfoIndex(FileReader fileReader) {
-        return new DungeonMarkerWarpInfoIndex(fileReader.readUnsignedByte());
+    private static DungeonMarkerWarpInfoIndex readDungeonMarkerWarpInfoIndex(BufferReader bufferReader) {
+        return new DungeonMarkerWarpInfoIndex(bufferReader.readUnsignedByte());
     }
 
-    private static DungeonMarkerWarpInfo readDungeonMarkerWarpInfo(FileReader fileReader) {
+    private static DungeonMarkerWarpInfo readDungeonMarkerWarpInfo(BufferReader bufferReader) {
         return new DungeonMarkerWarpInfo(
-                fileReader.readSignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerWarpInfoIndex)
+                bufferReader.readSignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerWarpInfoIndex)
         );
     }
 
     @Override
-    protected DungeonMarker parseClientResourceFile(FileReader fileReader) {
+    protected DungeonMarker parseClientResourceFile(BufferReader bufferReader) {
         return new DungeonMarker(
-                fileReader.readUnsignedShort(),
-                fileReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerWarpInfo),
-                fileReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerPosition)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerWarpInfo),
+                bufferReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerPosition)
         );
     }
 }

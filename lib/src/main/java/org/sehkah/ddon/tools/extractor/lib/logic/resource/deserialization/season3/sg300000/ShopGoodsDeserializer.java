@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.sg300000;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.sg300000.ShopGoods;
@@ -12,35 +12,35 @@ public class ShopGoodsDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static ShopGoodsDate readShopGoodsDate(FileReader fileReader) {
+    private static ShopGoodsDate readShopGoodsDate(BufferReader bufferReader) {
         return new ShopGoodsDate(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte()
         );
     }
 
-    private static ShopGoods readShopGoods(FileReader fileReader) {
+    private static ShopGoods readShopGoods(BufferReader bufferReader) {
         return new ShopGoods(
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedShort(),
-                readShopGoodsDate(fileReader),
-                readShopGoodsDate(fileReader),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedShort(),
-                readShopGoodsDate(fileReader)
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedShort(),
+                readShopGoodsDate(bufferReader),
+                readShopGoodsDate(bufferReader),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedShort(),
+                readShopGoodsDate(bufferReader)
         );
     }
 
     @Override
-    protected ShopGoodsList parseClientResourceFile(FileReader fileReader) {
-        return new ShopGoodsList(fileReader.readArray(ShopGoodsDeserializer::readShopGoods));
+    protected ShopGoodsList parseClientResourceFile(BufferReader bufferReader) {
+        return new ShopGoodsList(bufferReader.readArray(ShopGoodsDeserializer::readShopGoods));
     }
 }

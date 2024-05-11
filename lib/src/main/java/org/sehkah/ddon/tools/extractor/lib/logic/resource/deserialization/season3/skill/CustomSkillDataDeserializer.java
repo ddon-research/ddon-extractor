@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.skill;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.skill.CustomSkillData;
@@ -12,27 +12,27 @@ public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static SkillLevelData readSkillLevelData(FileReader fileReader) {
+    private static SkillLevelData readSkillLevelData(BufferReader bufferReader) {
         return new SkillLevelData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static CustomSkillData readCustomSkillData(FileReader fileReader) {
+    private static CustomSkillData readCustomSkillData(BufferReader bufferReader) {
         return new CustomSkillData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readArray(CustomSkillDataDeserializer::readSkillLevelData)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readArray(CustomSkillDataDeserializer::readSkillLevelData)
         );
     }
 
     @Override
-    protected CustomSkillDataList parseClientResourceFile(FileReader fileReader) {
-        return new CustomSkillDataList(fileReader.readArray(CustomSkillDataDeserializer::readCustomSkillData));
+    protected CustomSkillDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new CustomSkillDataList(bufferReader.readArray(CustomSkillDataDeserializer::readCustomSkillData));
     }
 }

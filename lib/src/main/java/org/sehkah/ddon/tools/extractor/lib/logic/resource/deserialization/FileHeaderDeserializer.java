@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.error.MagicValidationFailedException;
 import org.sehkah.ddon.tools.extractor.lib.common.error.VersionValidationFailedException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 
 @Slf4j
 public class FileHeaderDeserializer {
@@ -14,17 +14,17 @@ public class FileHeaderDeserializer {
         this.expectedFileHeader = fileHeader;
     }
 
-    private static long readVersion(FileReader fileReader, int versionBytesLength) {
+    private static long readVersion(BufferReader bufferReader, int versionBytesLength) {
         if (versionBytesLength == 4) {
-            return fileReader.readUnsignedInteger();
+            return bufferReader.readUnsignedInteger();
         } else if (versionBytesLength == 2) {
-            return fileReader.readUnsignedShort();
+            return bufferReader.readUnsignedShort();
         }
         return -1;
     }
 
-    private static String readMagicString(FileReader fileReader, int magicBytesLength) {
-        return fileReader.readString(magicBytesLength);
+    private static String readMagicString(BufferReader bufferReader, int magicBytesLength) {
+        return bufferReader.readString(magicBytesLength);
     }
 
     private static boolean isVersionValid(FileHeader encountered, FileHeader expected) {
@@ -45,14 +45,14 @@ public class FileHeaderDeserializer {
         return true;
     }
 
-    protected FileHeader parseClientResourceFile(FileReader fileReader) {
+    protected FileHeader parseClientResourceFile(BufferReader bufferReader) {
         long versionNumber = -1;
         String magicString = null;
         if (expectedFileHeader.magicBytesLength() > 0) {
-            magicString = readMagicString(fileReader, expectedFileHeader.magicBytesLength());
+            magicString = readMagicString(bufferReader, expectedFileHeader.magicBytesLength());
         }
         if (expectedFileHeader.versionBytesLength() > 0) {
-            versionNumber = readVersion(fileReader, expectedFileHeader.versionBytesLength());
+            versionNumber = readVersion(bufferReader, expectedFileHeader.versionBytesLength());
         }
         FileHeader parsedFileHeader = new FileHeader(magicString, versionNumber, expectedFileHeader.versionBytesLength());
         if (parsedFileHeader.magicString() != null && !isMagicValid(parsedFileHeader, expectedFileHeader)) {

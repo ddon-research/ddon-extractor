@@ -16,24 +16,28 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
-public class BinaryFileReader implements FileReader {
+public class BinaryReader implements BufferReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     private static final Charset CHARSET_SHIFT_JIS = Charset.forName("Shift-JIS");
     private final ByteBuffer byteBuffer;
 
-    public BinaryFileReader(Path filePath) throws IOException {
+    public BinaryReader(Path filePath) throws IOException {
         this(Files.readAllBytes(filePath));
     }
 
-    public BinaryFileReader(byte[] data) {
+    public BinaryReader(Path filePath, ByteOrder byteOrder) throws IOException {
+        this(Files.readAllBytes(filePath), byteOrder);
+    }
+
+    public BinaryReader(byte[] data) {
         this(ByteBuffer.wrap(data), DEFAULT_BYTE_ORDER);
     }
 
-    public BinaryFileReader(byte[] data, ByteOrder byteOrder) {
+    public BinaryReader(byte[] data, ByteOrder byteOrder) {
         this(ByteBuffer.wrap(data), byteOrder);
     }
 
-    public BinaryFileReader(ByteBuffer byteBuffer, ByteOrder byteOrder) {
+    public BinaryReader(ByteBuffer byteBuffer, ByteOrder byteOrder) {
         this.byteBuffer = byteBuffer;
         this.byteBuffer.order(byteOrder);
     }
@@ -294,23 +298,23 @@ public class BinaryFileReader implements FileReader {
     }
 
     @Override
-    public <E> List<E> readArray(Function<FileReader, E> entityReaderFunction) {
-        return readArray(FileReader::readUnsignedInteger, entityReaderFunction);
+    public <E> List<E> readArray(Function<BufferReader, E> entityReaderFunction) {
+        return readArray(BufferReader::readUnsignedInteger, entityReaderFunction);
     }
 
     @Override
-    public <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction) {
+    public <E> List<E> readFixedLengthArray(long length, Function<BufferReader, E> entityReaderFunction) {
         return readArray(length, entityReaderFunction);
     }
 
     @Override
-    public <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction) {
+    public <E> List<E> readArray(ToLongFunction<BufferReader> arraySizeFunction, Function<BufferReader, E> entityReaderFunction) {
         long length = arraySizeFunction.applyAsLong(this);
         return readArray(length, entityReaderFunction);
     }
 
     @Override
-    public <E> List<E> readArray(long length, Function<FileReader, E> entityReaderFunction) {
+    public <E> List<E> readArray(long length, Function<BufferReader, E> entityReaderFunction) {
         List<E> entities = new ArrayList<>((int) length);
         for (long i = 0; i < length; i++) {
             entities.add(entityReaderFunction.apply(this));

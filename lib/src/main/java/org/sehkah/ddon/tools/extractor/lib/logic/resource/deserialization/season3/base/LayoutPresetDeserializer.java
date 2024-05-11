@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.LayoutPreset;
@@ -11,16 +11,16 @@ public class LayoutPresetDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static LayoutPreset readLayoutPreset(FileReader fileReader) {
+    private static LayoutPreset readLayoutPreset(BufferReader bufferReader) {
         return new LayoutPreset(
-                fileReader.readNullTerminatedString(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected LayoutPresetList parseClientResourceFile(FileReader fileReader) {
-        return new LayoutPresetList(fileReader.readArray(LayoutPresetDeserializer::readLayoutPreset));
+    protected LayoutPresetList parseClientResourceFile(BufferReader bufferReader) {
+        return new LayoutPresetList(bufferReader.readArray(LayoutPresetDeserializer::readLayoutPreset));
     }
 }

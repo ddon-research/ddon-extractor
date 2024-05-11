@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.AbilityData;
@@ -11,20 +11,20 @@ public class AbilityDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AbilityData readAbilityData(FileReader fileReader) {
+    private static AbilityData readAbilityData(BufferReader bufferReader) {
         return new AbilityData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected AbilityDataList parseClientResourceFile(FileReader fileReader) {
-        return new AbilityDataList(fileReader.readArray(AbilityDataDeserializer::readAbilityData));
+    protected AbilityDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AbilityDataList(bufferReader.readArray(AbilityDataDeserializer::readAbilityData));
     }
 }

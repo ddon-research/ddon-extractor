@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.MyRoom.MyRoomActParam;
@@ -12,24 +12,24 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
         super(clientResourceFile);
     }
 
-    private static MyRoomActParam readMyRoomActParam(FileReader fileReader) {
+    private static MyRoomActParam readMyRoomActParam(BufferReader bufferReader) {
         return new MyRoomActParam(
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean()
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected MyRoomActParamTbl parseClientResourceFile(FileReader fileReader) {
-        return new MyRoomActParamTbl(fileReader.readArray(MyRoomActParamTblDeserializer::readMyRoomActParam));
+    protected MyRoomActParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new MyRoomActParamTbl(bufferReader.readArray(MyRoomActParamTblDeserializer::readMyRoomActParam));
     }
 }

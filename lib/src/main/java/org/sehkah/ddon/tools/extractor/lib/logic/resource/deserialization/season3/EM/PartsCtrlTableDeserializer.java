@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.PartsCtrlData;
@@ -11,15 +11,15 @@ public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static PartsCtrlData readPartsCtrlData(FileReader fileReader) {
+    private static PartsCtrlData readPartsCtrlData(BufferReader bufferReader) {
         return new PartsCtrlData(
-                fileReader.readSignedInteger(),
-                fileReader.readFixedLengthArray(16, FileReader::readUnsignedInteger)
+                bufferReader.readSignedInteger(),
+                bufferReader.readFixedLengthArray(16, BufferReader::readUnsignedInteger)
         );
     }
 
     @Override
-    protected PartsCtrlTable parseClientResourceFile(FileReader fileReader) {
-        return new PartsCtrlTable(fileReader.readArray(PartsCtrlTableDeserializer::readPartsCtrlData));
+    protected PartsCtrlTable parseClientResourceFile(BufferReader bufferReader) {
+        return new PartsCtrlTable(bufferReader.readArray(PartsCtrlTableDeserializer::readPartsCtrlData));
     }
 }

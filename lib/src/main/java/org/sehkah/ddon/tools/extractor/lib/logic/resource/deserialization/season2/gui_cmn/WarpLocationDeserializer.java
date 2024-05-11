@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.gui_cmn.WarpLocation;
@@ -11,22 +11,22 @@ public class WarpLocationDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static WarpLocation readWarpLocation(FileReader fileReader) {
+    private static WarpLocation readWarpLocation(BufferReader bufferReader) {
         return new WarpLocation(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected WarpLocationList parseClientResourceFile(FileReader fileReader) {
-        return new WarpLocationList(fileReader.readArray(WarpLocationDeserializer::readWarpLocation));
+    protected WarpLocationList parseClientResourceFile(BufferReader bufferReader) {
+        return new WarpLocationList(bufferReader.readArray(WarpLocationDeserializer::readWarpLocation));
     }
 }

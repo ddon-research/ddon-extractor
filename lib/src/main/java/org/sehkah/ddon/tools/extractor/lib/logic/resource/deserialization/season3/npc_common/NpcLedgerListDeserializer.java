@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.npc_common.NpcLedgerList;
@@ -13,38 +13,38 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static NpcLedgerListItemInstitutionOpenData readNpcLedgerListItemInstitutionOpenData(FileReader fileReader) {
+    private static NpcLedgerListItemInstitutionOpenData readNpcLedgerListItemInstitutionOpenData(BufferReader bufferReader) {
         return new NpcLedgerListItemInstitutionOpenData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static NpcLedgerListItemInstitution readNpcLedgerListItemInstitution(FileReader fileReader) {
+    private static NpcLedgerListItemInstitution readNpcLedgerListItemInstitution(BufferReader bufferReader) {
         return new NpcLedgerListItemInstitution(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItemInstitutionOpenData)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItemInstitutionOpenData)
         );
     }
 
-    private static NpcLedgerListItem readNpcLedgerListItem(FileReader fileReader) {
+    private static NpcLedgerListItem readNpcLedgerListItem(BufferReader bufferReader) {
         return new NpcLedgerListItem(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItemInstitution)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItemInstitution)
         );
     }
 
     @Override
-    protected NpcLedgerList parseClientResourceFile(FileReader fileReader) {
-        return new NpcLedgerList(fileReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItem));
+    protected NpcLedgerList parseClientResourceFile(BufferReader bufferReader) {
+        return new NpcLedgerList(bufferReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItem));
     }
 }

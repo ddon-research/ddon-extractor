@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.npc.SituationData;
@@ -11,20 +11,20 @@ public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static SituationData readSituationData(FileReader fileReader) {
+    private static SituationData readSituationData(BufferReader bufferReader) {
         return new SituationData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected SituationMsgCtrl parseClientResourceFile(FileReader fileReader) {
-        return new SituationMsgCtrl(fileReader.readArray(SituationMsgCtrlDeserializer::readSituationData));
+    protected SituationMsgCtrl parseClientResourceFile(BufferReader bufferReader) {
+        return new SituationMsgCtrl(bufferReader.readArray(SituationMsgCtrlDeserializer::readSituationData));
     }
 }

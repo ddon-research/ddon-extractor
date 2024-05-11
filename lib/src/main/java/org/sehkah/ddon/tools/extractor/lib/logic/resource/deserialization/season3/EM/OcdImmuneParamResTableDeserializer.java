@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.OcdImmuneParamRes;
@@ -11,16 +11,16 @@ public class OcdImmuneParamResTableDeserializer extends ClientResourceFileDeseri
         super(clientResourceFile);
     }
 
-    private static OcdImmuneParamRes readOcdImmuneParamRes(FileReader fileReader) {
+    private static OcdImmuneParamRes readOcdImmuneParamRes(BufferReader bufferReader) {
         return new OcdImmuneParamRes(
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected OcdImmuneParamResTable parseClientResourceFile(FileReader fileReader) {
-        return new OcdImmuneParamResTable(fileReader.readArray(OcdImmuneParamResTableDeserializer::readOcdImmuneParamRes));
+    protected OcdImmuneParamResTable parseClientResourceFile(BufferReader bufferReader) {
+        return new OcdImmuneParamResTable(bufferReader.readArray(OcdImmuneParamResTableDeserializer::readOcdImmuneParamRes));
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.AreaInfoJointArea;
@@ -11,15 +11,15 @@ public class AreaInfoJointAreaDeserializer extends ClientResourceFileDeserialize
         super(clientResourceFile);
     }
 
-    private static AreaInfoJointArea readAreaInfoJointArea(FileReader fileReader) {
+    private static AreaInfoJointArea readAreaInfoJointArea(BufferReader bufferReader) {
         return new AreaInfoJointArea(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected AreaInfoJointAreaList parseClientResourceFile(FileReader fileReader) {
-        return new AreaInfoJointAreaList(fileReader.readArray(AreaInfoJointAreaDeserializer::readAreaInfoJointArea));
+    protected AreaInfoJointAreaList parseClientResourceFile(BufferReader bufferReader) {
+        return new AreaInfoJointAreaList(bufferReader.readArray(AreaInfoJointAreaDeserializer::readAreaInfoJointArea));
     }
 }

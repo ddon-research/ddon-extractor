@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.ArchiveS;
@@ -26,14 +26,14 @@ public class ReferenceArchiveDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static ResourceInfoS readResourceInfoS(FileReader fileReader) {
-        BigInteger resourceId = fileReader.readUnsignedLong();
+    private static ResourceInfoS readResourceInfoS(BufferReader bufferReader) {
+        BigInteger resourceId = bufferReader.readUnsignedLong();
         return new ResourceInfoS(resourceId, FrameworkResourcesUtil.convertResourceIdToTagId(resourceId));
     }
 
     @Override
-    protected ArchiveS parseClientResourceFile(FileReader fileReader) {
-        List<ResourceInfoS> resourceReferenceIds = fileReader.readArray(FileReader::readUnsignedShort, ReferenceArchiveDeserializer::readResourceInfoS);
+    protected ArchiveS parseClientResourceFile(BufferReader bufferReader) {
+        List<ResourceInfoS> resourceReferenceIds = bufferReader.readArray(BufferReader::readUnsignedShort, ReferenceArchiveDeserializer::readResourceInfoS);
 
         return new ArchiveS(
                 resourceReferenceIds.size(),

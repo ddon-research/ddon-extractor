@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.Waypoint;
@@ -12,25 +12,25 @@ public class WaypointDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static WaypointPoint readWaypointPoint(FileReader fileReader) {
+    private static WaypointPoint readWaypointPoint(BufferReader bufferReader) {
         return new WaypointPoint(
-                fileReader.readVector3f(),
-                fileReader.readFloat()
+                bufferReader.readVector3f(),
+                bufferReader.readFloat()
         );
     }
 
-    private static WaypointRoute readWaypointRoute(FileReader fileReader) {
+    private static WaypointRoute readWaypointRoute(BufferReader bufferReader) {
         return new WaypointRoute(
-                fileReader.readArray(FileReader::readSignedInteger),
-                fileReader.readArray(FileReader::readFloat)
+                bufferReader.readArray(BufferReader::readSignedInteger),
+                bufferReader.readArray(BufferReader::readFloat)
         );
     }
 
     @Override
-    protected Waypoint parseClientResourceFile(FileReader fileReader) {
+    protected Waypoint parseClientResourceFile(BufferReader bufferReader) {
         return new Waypoint(
-                fileReader.readArray(WaypointDeserializer::readWaypointPoint),
-                fileReader.readArray(WaypointDeserializer::readWaypointRoute)
+                bufferReader.readArray(WaypointDeserializer::readWaypointPoint),
+                bufferReader.readArray(WaypointDeserializer::readWaypointRoute)
         );
     }
 }

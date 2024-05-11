@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.EmWorkRate;
@@ -11,15 +11,15 @@ public class EmWorkRateTableDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static EmWorkRate readEmWorkRate(FileReader fileReader) {
+    private static EmWorkRate readEmWorkRate(BufferReader bufferReader) {
         return new EmWorkRate(
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected EmWorkRateTable parseClientResourceFile(FileReader fileReader) {
-        return new EmWorkRateTable(fileReader.readArray(EmWorkRateTableDeserializer::readEmWorkRate));
+    protected EmWorkRateTable parseClientResourceFile(BufferReader bufferReader) {
+        return new EmWorkRateTable(bufferReader.readArray(EmWorkRateTableDeserializer::readEmWorkRate));
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.effect_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.effect_common.VfxLightInfluence;
@@ -11,21 +11,21 @@ public class VfxLightInfluenceListDeserializer extends ClientResourceFileDeseria
         super(clientResourceFile);
     }
 
-    private static VfxLightInfluence readVfxLightInfluence(FileReader fileReader) {
+    private static VfxLightInfluence readVfxLightInfluence(BufferReader bufferReader) {
         return new VfxLightInfluence(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected VfxLightInfluenceList parseClientResourceFile(FileReader fileReader) {
-        return new VfxLightInfluenceList(fileReader.readArray(VfxLightInfluenceListDeserializer::readVfxLightInfluence));
+    protected VfxLightInfluenceList parseClientResourceFile(BufferReader bufferReader) {
+        return new VfxLightInfluenceList(bufferReader.readArray(VfxLightInfluenceListDeserializer::readVfxLightInfluence));
     }
 }

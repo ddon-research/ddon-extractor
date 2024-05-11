@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.StageMap;
@@ -12,7 +12,7 @@ public class StageMapDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static StageMapParam readParam(FileReader reader) {
+    private static StageMapParam readParam(BufferReader reader) {
         return new StageMapParam(
                 reader.readUnsignedInteger(),
                 reader.readFloat(),
@@ -21,18 +21,18 @@ public class StageMapDeserializer extends ClientResourceFileDeserializer {
         );
     }
 
-    private static StageMap readStageMap(FileReader fileReader) {
+    private static StageMap readStageMap(BufferReader bufferReader) {
         return new StageMap(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(StageMapDeserializer::readParam)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(StageMapDeserializer::readParam)
         );
     }
 
     @Override
-    protected StageMapList parseClientResourceFile(FileReader fileReader) {
-        return new StageMapList(fileReader.readArray(StageMapDeserializer::readStageMap));
+    protected StageMapList parseClientResourceFile(BufferReader bufferReader) {
+        return new StageMapList(bufferReader.readArray(StageMapDeserializer::readStageMap));
     }
 }

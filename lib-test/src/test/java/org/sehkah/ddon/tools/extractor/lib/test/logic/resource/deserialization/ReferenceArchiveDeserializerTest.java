@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.lib.test.logic.resource.deserialization;
 
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
@@ -24,9 +24,9 @@ class ReferenceArchiveDeserializerTest {
         byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
         ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
-        FileReader fileReader = new BinaryFileReader(input);
-        ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, fileReader);
-        ArchiveS deserialized = (ArchiveS) deserializer.deserialize(fileReader);
+        BufferReader bufferReader = new BinaryReader(input);
+        ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, bufferReader);
+        ArchiveS deserialized = (ArchiveS) deserializer.deserialize(bufferReader);
 
         assertEquals(1, deserialized.getResourceNum());
         assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().get(0).TypeName());

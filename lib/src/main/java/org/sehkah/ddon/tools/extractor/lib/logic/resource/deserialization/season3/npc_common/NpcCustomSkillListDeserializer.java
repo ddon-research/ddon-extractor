@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.npc_common.NpcCustomSkill;
@@ -11,23 +11,23 @@ public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static NpcCustomSkill readNpcCustomSkill(FileReader fileReader) {
+    private static NpcCustomSkill readNpcCustomSkill(BufferReader bufferReader) {
         return new NpcCustomSkill(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort()
         );
     }
 
     @Override
-    protected NpcCustomSkillList parseClientResourceFile(FileReader fileReader) {
-        return new NpcCustomSkillList(fileReader.readArray(NpcCustomSkillListDeserializer::readNpcCustomSkill));
+    protected NpcCustomSkillList parseClientResourceFile(BufferReader bufferReader) {
+        return new NpcCustomSkillList(bufferReader.readArray(NpcCustomSkillListDeserializer::readNpcCustomSkill));
     }
 }

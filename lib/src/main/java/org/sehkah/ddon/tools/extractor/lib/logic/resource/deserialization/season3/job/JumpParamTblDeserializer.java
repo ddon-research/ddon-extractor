@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.job.JumpParam;
@@ -11,21 +11,21 @@ public class JumpParamTblDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static JumpParam readJumpParam(FileReader fileReader) {
+    private static JumpParam readJumpParam(BufferReader bufferReader) {
         return new JumpParam(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected JumpParamTbl parseClientResourceFile(FileReader fileReader) {
-        return new JumpParamTbl(fileReader.readArray(JumpParamTblDeserializer::readJumpParam));
+    protected JumpParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new JumpParamTbl(bufferReader.readArray(JumpParamTblDeserializer::readJumpParam));
     }
 }

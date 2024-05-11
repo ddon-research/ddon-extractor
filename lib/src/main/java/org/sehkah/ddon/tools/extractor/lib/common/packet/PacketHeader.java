@@ -1,6 +1,5 @@
 package org.sehkah.ddon.tools.extractor.lib.common.packet;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

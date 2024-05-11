@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.EventParam;
@@ -12,36 +12,36 @@ public class EventParamDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static OmList readOmList(FileReader fileReader) {
+    private static OmList readOmList(BufferReader bufferReader) {
         return new OmList(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort()
         );
     }
 
-    private static EventParam readEventParam(FileReader fileReader) {
+    private static EventParam readEventParam(BufferReader bufferReader) {
         return new EventParam(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readFloat(),
-                fileReader.readArray(EventParamDeserializer::readOmList)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readFloat(),
+                bufferReader.readArray(EventParamDeserializer::readOmList)
         );
     }
 
     @Override
-    protected EventParamList parseClientResourceFile(FileReader fileReader) {
-        return new EventParamList(fileReader.readArray(EventParamDeserializer::readEventParam));
+    protected EventParamList parseClientResourceFile(BufferReader bufferReader) {
+        return new EventParamList(bufferReader.readArray(EventParamDeserializer::readEventParam));
     }
 }

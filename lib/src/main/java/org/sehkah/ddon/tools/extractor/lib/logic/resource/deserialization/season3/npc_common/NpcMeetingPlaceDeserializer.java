@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.npc_common.NpcMeetingPlace;
@@ -11,16 +11,16 @@ public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static NpcMeetingPlace readNpcMeetingPlace(FileReader fileReader) {
+    private static NpcMeetingPlace readNpcMeetingPlace(BufferReader bufferReader) {
         return new NpcMeetingPlace(
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected NpcMeetingPlaceList parseClientResourceFile(FileReader fileReader) {
-        return new NpcMeetingPlaceList(fileReader.readArray(NpcMeetingPlaceDeserializer::readNpcMeetingPlace));
+    protected NpcMeetingPlaceList parseClientResourceFile(BufferReader bufferReader) {
+        return new NpcMeetingPlaceList(bufferReader.readArray(NpcMeetingPlaceDeserializer::readNpcMeetingPlace));
     }
 }

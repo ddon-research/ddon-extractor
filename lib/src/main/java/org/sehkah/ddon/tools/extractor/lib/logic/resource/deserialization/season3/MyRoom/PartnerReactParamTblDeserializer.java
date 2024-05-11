@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.MyRoom.PartnerReactParam;
@@ -14,20 +14,20 @@ public class PartnerReactParamTblDeserializer extends ClientResourceFileDeserial
         super(clientResourceFile);
     }
 
-    private static PartnerReactParam readPartnerReactParam(FileReader fileReader) {
+    private static PartnerReactParam readPartnerReactParam(BufferReader bufferReader) {
         return new PartnerReactParam(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort()
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort()
         );
     }
 
     @Override
-    protected PartnerReactParamTbl parseClientResourceFile(FileReader fileReader) {
-        List<PartnerReactParam> partnerReactParams = fileReader.readArray(PartnerReactParamTblDeserializer::readPartnerReactParam);
+    protected PartnerReactParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        List<PartnerReactParam> partnerReactParams = bufferReader.readArray(PartnerReactParamTblDeserializer::readPartnerReactParam);
         PartnerReactParamTbl partnerReactParamTbl = new PartnerReactParamTbl(partnerReactParams);
         return partnerReactParamTbl;
     }

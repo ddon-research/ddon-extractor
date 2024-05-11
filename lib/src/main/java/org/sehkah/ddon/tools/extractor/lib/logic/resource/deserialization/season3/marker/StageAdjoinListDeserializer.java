@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.marker.AdjoinInfo;
@@ -13,35 +13,35 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static JumpPosition readJumpPosition(FileReader fileReader) {
+    private static JumpPosition readJumpPosition(BufferReader bufferReader) {
         return new JumpPosition(
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static AdjoinInfoIndex readAdjoinInfoIndex(FileReader fileReader) {
+    private static AdjoinInfoIndex readAdjoinInfoIndex(BufferReader bufferReader) {
         return new AdjoinInfoIndex(
-                fileReader.readUnsignedShort()
+                bufferReader.readUnsignedShort()
         );
     }
 
-    private static AdjoinInfo readAdjoinInfo(FileReader fileReader) {
+    private static AdjoinInfo readAdjoinInfo(BufferReader bufferReader) {
         return new AdjoinInfo(
-                fileReader.readArray(StageAdjoinListDeserializer::readAdjoinInfoIndex),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte()
+                bufferReader.readArray(StageAdjoinListDeserializer::readAdjoinInfoIndex),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected StageAdjoinList parseClientResourceFile(FileReader fileReader) {
+    protected StageAdjoinList parseClientResourceFile(BufferReader bufferReader) {
         return new StageAdjoinList(
-                fileReader.readUnsignedShort(),
-                fileReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo),
-                fileReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo),
+                bufferReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
         );
     }
 }

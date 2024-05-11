@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.ui.uGUIAreaMaster;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.ui.uGUIAreaMaster.AreaMasterSpotData;
@@ -11,25 +11,25 @@ public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static AreaMasterSpotData readAreaMasterSpotData(FileReader fileReader) {
+    private static AreaMasterSpotData readAreaMasterSpotData(BufferReader bufferReader) {
         return new AreaMasterSpotData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected AreaMasterSpotDataList parseClientResourceFile(FileReader fileReader) {
-        return new AreaMasterSpotDataList(fileReader.readArray(AreaMasterSpotDataDeserializer::readAreaMasterSpotData));
+    protected AreaMasterSpotDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AreaMasterSpotDataList(bufferReader.readArray(AreaMasterSpotDataDeserializer::readAreaMasterSpotData));
     }
 }

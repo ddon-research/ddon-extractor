@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.job.StaminaDecList;
@@ -12,22 +12,22 @@ public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static StaminaDecParam readStaminaDecParam(FileReader fileReader) {
-        return new StaminaDecParam(fileReader.readFloat());
+    private static StaminaDecParam readStaminaDecParam(BufferReader bufferReader) {
+        return new StaminaDecParam(bufferReader.readFloat());
     }
 
-    private static StaminaDecList readStaminaDecList(FileReader fileReader) {
+    private static StaminaDecList readStaminaDecList(BufferReader bufferReader) {
         return new StaminaDecList(
-                fileReader.readArray(StaminaDecTblDeserializer::readStaminaDecParam),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readArray(StaminaDecTblDeserializer::readStaminaDecParam),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected StaminaDecTbl parseClientResourceFile(FileReader fileReader) {
-        return new StaminaDecTbl(fileReader.readArray(StaminaDecTblDeserializer::readStaminaDecList));
+    protected StaminaDecTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new StaminaDecTbl(bufferReader.readArray(StaminaDecTblDeserializer::readStaminaDecList));
     }
 }

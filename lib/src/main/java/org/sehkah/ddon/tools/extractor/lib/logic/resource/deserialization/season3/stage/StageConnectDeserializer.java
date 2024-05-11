@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.StageConnect;
@@ -12,46 +12,46 @@ public class StageConnectDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static StageConnectConnect readStageConnectConnect(FileReader fileReader) {
+    private static StageConnectConnect readStageConnectConnect(BufferReader bufferReader) {
         return new StageConnectConnect(
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readFixedLengthArray(6, FileReader::readSignedShort),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFixedLengthArray(6, FileReader::readSignedShort),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readFixedLengthArray(6, BufferReader::readSignedShort),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(6, BufferReader::readSignedShort),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static StageConnectData readStageConnectData(FileReader fileReader) {
+    private static StageConnectData readStageConnectData(BufferReader bufferReader) {
         return new StageConnectData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected StageConnect parseClientResourceFile(FileReader fileReader) {
+    protected StageConnect parseClientResourceFile(BufferReader bufferReader) {
         return new StageConnect(
-                fileReader.readArray(StageConnectDeserializer::readStageConnectData),
-                fileReader.readArray(StageConnectDeserializer::readStageConnectConnect)
+                bufferReader.readArray(StageConnectDeserializer::readStageConnectData),
+                bufferReader.readArray(StageConnectDeserializer::readStageConnectConnect)
         );
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.marker;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season1.marker.AdjoinInfo;
@@ -12,25 +12,25 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static JumpPosition readJumpPosition(FileReader fileReader) {
+    private static JumpPosition readJumpPosition(BufferReader bufferReader) {
         return new JumpPosition(
-                fileReader.readVector3f()
+                bufferReader.readVector3f()
         );
     }
 
-    private static AdjoinInfo readAdjoinInfo(FileReader fileReader) {
+    private static AdjoinInfo readAdjoinInfo(BufferReader bufferReader) {
         return new AdjoinInfo(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
         );
     }
 
     @Override
-    protected StageAdjoinList parseClientResourceFile(FileReader fileReader) {
+    protected StageAdjoinList parseClientResourceFile(BufferReader bufferReader) {
         return new StageAdjoinList(
-                fileReader.readSignedInteger(),
-                fileReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo)
+                bufferReader.readSignedInteger(),
+                bufferReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo)
         );
     }
 }

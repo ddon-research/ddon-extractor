@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.fieldarea;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.fieldarea.FieldAreaMarkerInfo;
@@ -11,20 +11,20 @@ public class FieldAreaMarkerInfoDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static MarkerInfo readMarkerInfo(FileReader fileReader) {
+    private static MarkerInfo readMarkerInfo(BufferReader bufferReader) {
         return new MarkerInfo(
-                fileReader.readVector3f(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readVector3f(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected FieldAreaMarkerInfo parseClientResourceFile(FileReader fileReader) {
+    protected FieldAreaMarkerInfo parseClientResourceFile(BufferReader bufferReader) {
         return new FieldAreaMarkerInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(FieldAreaMarkerInfoDeserializer::readMarkerInfo)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(FieldAreaMarkerInfoDeserializer::readMarkerInfo)
         );
     }
 }

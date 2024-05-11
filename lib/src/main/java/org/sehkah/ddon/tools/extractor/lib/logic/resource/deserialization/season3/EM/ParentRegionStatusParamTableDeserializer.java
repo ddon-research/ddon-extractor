@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.ParentRegionStatusParam;
@@ -13,49 +13,49 @@ public class ParentRegionStatusParamTableDeserializer extends ClientResourceFile
         super(clientResourceFile);
     }
 
-    private static RegionBreakInfo readRegionBreakInfo(FileReader fileReader) {
+    private static RegionBreakInfo readRegionBreakInfo(BufferReader bufferReader) {
         return new RegionBreakInfo(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger()
         );
     }
 
-    private static RegionBreakInfoTable readRegionBreakInfoTable(FileReader fileReader) {
+    private static RegionBreakInfoTable readRegionBreakInfoTable(BufferReader bufferReader) {
         return new RegionBreakInfoTable(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(ParentRegionStatusParamTableDeserializer::readRegionBreakInfo)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(ParentRegionStatusParamTableDeserializer::readRegionBreakInfo)
         );
     }
 
-    private static ParentRegionStatusParam readParentRegionStatusParam(FileReader fileReader) {
+    private static ParentRegionStatusParam readParentRegionStatusParam(BufferReader bufferReader) {
         return new ParentRegionStatusParam(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFixedLengthArray(5, FileReader::readUnsignedInteger),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                readRegionBreakInfoTable(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(5, BufferReader::readUnsignedInteger),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                readRegionBreakInfoTable(bufferReader)
         );
     }
 
     @Override
-    protected ParentRegionStatusParamTable parseClientResourceFile(FileReader fileReader) {
-        return new ParentRegionStatusParamTable(fileReader.readArray(ParentRegionStatusParamTableDeserializer::readParentRegionStatusParam));
+    protected ParentRegionStatusParamTable parseClientResourceFile(BufferReader bufferReader) {
+        return new ParentRegionStatusParamTable(bufferReader.readArray(ParentRegionStatusParamTableDeserializer::readParentRegionStatusParam));
     }
 }

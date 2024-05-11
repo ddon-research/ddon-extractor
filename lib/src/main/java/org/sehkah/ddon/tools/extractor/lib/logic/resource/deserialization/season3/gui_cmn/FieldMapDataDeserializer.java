@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.FieldMapData;
@@ -11,21 +11,21 @@ public class FieldMapDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static FieldMapData readFieldMapData(FileReader fileReader) {
+    private static FieldMapData readFieldMapData(BufferReader bufferReader) {
         return new FieldMapData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readFloat2f(),
-                fileReader.readVector3f(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readFloat2f(),
+                bufferReader.readVector3f(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected FieldMapDataList parseClientResourceFile(FileReader fileReader) {
-        return new FieldMapDataList(fileReader.readArray(FieldMapDataDeserializer::readFieldMapData));
+    protected FieldMapDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new FieldMapDataList(bufferReader.readArray(FieldMapDataDeserializer::readFieldMapData));
     }
 }

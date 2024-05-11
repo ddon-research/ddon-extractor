@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.MapSpotStageList;
@@ -11,12 +11,12 @@ public class MapSpotStageListDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static MapSpotStageListData readMapSpotStageListData(FileReader fileReader) {
-        return new MapSpotStageListData(fileReader.readSignedInteger());
+    private static MapSpotStageListData readMapSpotStageListData(BufferReader bufferReader) {
+        return new MapSpotStageListData(bufferReader.readSignedInteger());
     }
 
     @Override
-    protected MapSpotStageList parseClientResourceFile(FileReader fileReader) {
-        return new MapSpotStageList(fileReader.readArray(MapSpotStageListDeserializer::readMapSpotStageListData));
+    protected MapSpotStageList parseClientResourceFile(BufferReader bufferReader) {
+        return new MapSpotStageList(bufferReader.readArray(MapSpotStageListDeserializer::readMapSpotStageListData));
     }
 }

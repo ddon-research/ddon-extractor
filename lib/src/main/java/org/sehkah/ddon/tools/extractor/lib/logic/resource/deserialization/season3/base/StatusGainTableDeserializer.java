@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StatusGain;
@@ -11,15 +11,15 @@ public class StatusGainTableDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static StatusGain readStatusGain(FileReader fileReader) {
+    private static StatusGain readStatusGain(BufferReader bufferReader) {
         return new StatusGain(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected StatusGainTable parseClientResourceFile(FileReader fileReader) {
-        return new StatusGainTable(fileReader.readArray(StatusGainTableDeserializer::readStatusGain));
+    protected StatusGainTable parseClientResourceFile(BufferReader bufferReader) {
+        return new StatusGainTable(bufferReader.readArray(StatusGainTableDeserializer::readStatusGain));
     }
 }

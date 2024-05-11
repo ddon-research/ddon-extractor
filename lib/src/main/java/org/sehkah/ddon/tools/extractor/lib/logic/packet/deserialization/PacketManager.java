@@ -2,16 +2,18 @@ package org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.PacketHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.GamePacket;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.c2l.C2LLoginReqDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.l2c.L2CLoginResDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.c2l.C2LLoginReqBufferDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.l2c.L2CLoginResBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.serialization.PacketStringSerializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.DynamicResourceLookupUtil;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -27,8 +29,9 @@ public class PacketManager {
     private final Map<PacketHeader, GamePacket> gamePacketFileMap;
     private final Serializer<Packet> stringSerializer;
 
-    protected PacketManager(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    protected PacketManager(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = PacketStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
+        DynamicResourceLookupUtil.initialize(clientResourceBasePath);
         gamePacketSet = HashSet.newHashSet(128);
         gamePacketFileMap = HashMap.newHashMap(128);
         setupGamePacketFiles(gamePacketSet);
@@ -37,20 +40,20 @@ public class PacketManager {
         }
     }
 
-    public static PacketManager get(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        return new PacketManager(preferredSerializationType, shouldSerializeMetaInformation);
+    public static PacketManager get(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        return new PacketManager(clientResourceBasePath, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     private void setupGamePacketFiles(Set<GamePacket> gamePacketSet) {
-        gamePacketSet.add(new GamePacket(new PacketHeader(C2L_LOGIN_REQ, 0, 1, 1, 0x00), C2LLoginReqDeserializer.class));
-        gamePacketSet.add(new GamePacket(new PacketHeader(L2C_LOGIN_RES, 0, 1, 2, 0x34), L2CLoginResDeserializer.class));
+        gamePacketSet.add(new GamePacket(new PacketHeader(C2L_LOGIN_REQ, 0, 1, 1, 0x00), C2LLoginReqBufferDeserializer.class));
+        gamePacketSet.add(new GamePacket(new PacketHeader(L2C_LOGIN_RES, 0, 1, 2, 0x34), L2CLoginResBufferDeserializer.class));
     }
 
-    public PacketDeserializer<Packet> getDeserializer(FileReader fileReader) {
-        PacketHeader identifiedPacketHeader = PacketHeaderDeserializer.parseQuick(fileReader);
+    public PacketBufferDeserializer<Packet> getDeserializer(BufferReader bufferReader) {
+        PacketHeader identifiedPacketHeader = PacketHeaderDeserializer.parseQuick(bufferReader);
         log.debug("Attempting to match parsed packet header '%s' to deserializer.".formatted(identifiedPacketHeader));
         if (gamePacketFileMap.containsKey(identifiedPacketHeader)) {
-            PacketDeserializer<Packet> deserializer = gamePacketFileMap.get(identifiedPacketHeader).getDeserializer();
+            PacketBufferDeserializer<Packet> deserializer = gamePacketFileMap.get(identifiedPacketHeader).getDeserializer();
             log.debug("Matched deserializer {}.", deserializer.getClass().getSimpleName());
             return deserializer;
         }

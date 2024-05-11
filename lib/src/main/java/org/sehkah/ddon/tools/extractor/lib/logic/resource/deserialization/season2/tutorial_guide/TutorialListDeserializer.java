@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.tutorial_guide;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.tutorial_guide.TutorialList;
@@ -11,18 +11,18 @@ public class TutorialListDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static TutorialNode readTutorialNode(FileReader fileReader) {
+    private static TutorialNode readTutorialNode(BufferReader bufferReader) {
         return new TutorialNode(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected TutorialList parseClientResourceFile(FileReader fileReader) {
-        return new TutorialList(fileReader.readArray(TutorialListDeserializer::readTutorialNode));
+    protected TutorialList parseClientResourceFile(BufferReader bufferReader) {
+        return new TutorialList(bufferReader.readArray(TutorialListDeserializer::readTutorialNode));
     }
 }

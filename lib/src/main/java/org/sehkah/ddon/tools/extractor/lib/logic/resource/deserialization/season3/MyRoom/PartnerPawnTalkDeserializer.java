@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.MyRoom.PartnerPawnTalk;
@@ -13,25 +13,25 @@ public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static PartnerPawnTalkInfoData readPartnerPawnTalkInfoData(FileReader fileReader) {
+    private static PartnerPawnTalkInfoData readPartnerPawnTalkInfoData(BufferReader bufferReader) {
         return new PartnerPawnTalkInfoData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort()
         );
     }
 
-    private static PartnerPawnTalkInfo readPartnerPawnTalkInfo(FileReader fileReader) {
-        return new PartnerPawnTalkInfo(fileReader.readArray(PartnerPawnTalkDeserializer::readPartnerPawnTalkInfoData));
+    private static PartnerPawnTalkInfo readPartnerPawnTalkInfo(BufferReader bufferReader) {
+        return new PartnerPawnTalkInfo(bufferReader.readArray(PartnerPawnTalkDeserializer::readPartnerPawnTalkInfoData));
     }
 
     @Override
-    protected PartnerPawnTalk parseClientResourceFile(FileReader fileReader) {
-        final long PartnerPawnTalkNum = fileReader.readUnsignedInteger();
-        final long BufferSize = fileReader.readUnsignedInteger();
+    protected PartnerPawnTalk parseClientResourceFile(BufferReader bufferReader) {
+        final long PartnerPawnTalkNum = bufferReader.readUnsignedInteger();
+        final long BufferSize = bufferReader.readUnsignedInteger();
         return new PartnerPawnTalk(
                 PartnerPawnTalkNum,
                 BufferSize,
-                fileReader.readFixedLengthArray(PartnerPawnTalkNum, PartnerPawnTalkDeserializer::readPartnerPawnTalkInfo)
+                bufferReader.readFixedLengthArray(PartnerPawnTalkNum, PartnerPawnTalkDeserializer::readPartnerPawnTalkInfo)
         );
 
     }

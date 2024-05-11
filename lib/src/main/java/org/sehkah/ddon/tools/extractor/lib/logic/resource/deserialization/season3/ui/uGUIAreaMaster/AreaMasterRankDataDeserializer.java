@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.ui.uGUIAreaMaster;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.ui.uGUIAreaMaster.AreaMasterRankData;
@@ -11,16 +11,16 @@ public class AreaMasterRankDataDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static AreaMasterRankData readAreaMasterRankData(FileReader fileReader) {
+    private static AreaMasterRankData readAreaMasterRankData(BufferReader bufferReader) {
         return new AreaMasterRankData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected AreaMasterRankDataList parseClientResourceFile(FileReader fileReader) {
-        return new AreaMasterRankDataList(fileReader.readArray(AreaMasterRankDataDeserializer::readAreaMasterRankData));
+    protected AreaMasterRankDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AreaMasterRankDataList(bufferReader.readArray(AreaMasterRankDataDeserializer::readAreaMasterRankData));
     }
 }

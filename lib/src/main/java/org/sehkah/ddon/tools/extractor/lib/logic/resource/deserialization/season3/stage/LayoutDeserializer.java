@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.stage;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.*;
@@ -15,663 +15,663 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer {
     }
 
 
-    private static SetInfoCoord readSetInfoCoord(FileReader fileReader) {
+    private static SetInfoCoord readSetInfoCoord(BufferReader bufferReader) {
         return new SetInfoCoord(
-                fileReader.readNullTerminatedString(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readSignedInteger()
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readSignedInteger()
         );
     }
 
-    private static SetInfoEnemy readSetInfoEnemy(FileReader fileReader) {
+    private static SetInfoEnemy readSetInfoEnemy(BufferReader bufferReader) {
         return new SetInfoEnemy(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoCoord(fileReader)
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoCoord(bufferReader)
         );
     }
 
-    private static SetInfoNpc readSetInfoNpc(FileReader fileReader) {
+    private static SetInfoNpc readSetInfoNpc(BufferReader bufferReader) {
         return new SetInfoNpc(
-                fileReader.readSignedInteger(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedByte(),
-                fileReader.readSignedByte(),
-                fileReader.readSignedByte(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                readSetInfoCoord(fileReader)
+                bufferReader.readSignedInteger(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readSignedByte(),
+                bufferReader.readSignedByte(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                readSetInfoCoord(bufferReader)
         );
     }
 
-    private static SetInfoGeneralPoint readSetInfoGeneralPoint(FileReader fileReader) {
+    private static SetInfoGeneralPoint readSetInfoGeneralPoint(BufferReader bufferReader) {
         return new SetInfoGeneralPoint(
-                readSetInfoCoord(fileReader),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
+                readSetInfoCoord(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger()
         );
     }
 
-    private static SetInfoOmGather readSetInfoOmGather(FileReader fileReader) {
+    private static SetInfoOmGather readSetInfoOmGather(BufferReader bufferReader) {
         return new SetInfoOmGather(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmLadder readSetInfoOmLadder(FileReader fileReader) {
+    private static SetInfoOmLadder readSetInfoOmLadder(BufferReader bufferReader) {
         return new SetInfoOmLadder(
-                fileReader.readSignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readSignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmWarp readSetInfoOmWarp(FileReader fileReader) {
+    private static SetInfoOmWarp readSetInfoOmWarp(BufferReader bufferReader) {
         return new SetInfoOmWarp(
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                readSetInfoOm(fileReader)
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                readSetInfoOm(bufferReader)
         );
     }
 
-    private static SetInfoOmWarpNew readSetInfoOmWarpNew(FileReader fileReader) {
+    private static SetInfoOmWarpNew readSetInfoOmWarpNew(BufferReader bufferReader) {
         return new SetInfoOmWarpNew(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                readSetInfoOm(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                readSetInfoOm(bufferReader)
         );
     }
 
-    private static SetInfoOmWarpNewV3 readSetInfoOmWarpNewV3(FileReader fileReader) {
+    private static SetInfoOmWarpNewV3 readSetInfoOmWarpNewV3(BufferReader bufferReader) {
         return new SetInfoOmWarpNewV3(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedInteger(),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                readSetInfoOm(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                readSetInfoOm(bufferReader)
         );
     }
 
-    private static SetInfoOmBoard readSetInfoOmBoard(FileReader fileReader) {
+    private static SetInfoOmBoard readSetInfoOmBoard(BufferReader bufferReader) {
         return new SetInfoOmBoard(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmCtrlLinkParam readSetInfoOmCtrlLinkParam(FileReader fileReader) {
+    private static SetInfoOmCtrlLinkParam readSetInfoOmCtrlLinkParam(BufferReader bufferReader) {
         return new SetInfoOmCtrlLinkParam(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedLong()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedLong()
         );
     }
 
-    private static SetInfoOmCtrl readSetInfoOmCtrl(FileReader fileReader) {
+    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader) {
         return new SetInfoOmCtrl(
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmElfSW readSetInfoOmElfSW(FileReader fileReader) {
+    private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {
         return new SetInfoOmElfSW(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmFall readSetInfoOmFall(FileReader fileReader) {
+    private static SetInfoOmFall readSetInfoOmFall(BufferReader bufferReader) {
         return new SetInfoOmFall(
-                fileReader.readFloat(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readFloat(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmLever readSetInfoOmLever(FileReader fileReader) {
+    private static SetInfoOmLever readSetInfoOmLever(BufferReader bufferReader) {
         return new SetInfoOmLever(
-                fileReader.readBoolean(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedLong(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedLong(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmRange readSetInfoOmRange(FileReader fileReader) {
+    private static SetInfoOmRange readSetInfoOmRange(BufferReader bufferReader) {
         return new SetInfoOmRange(
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmText readSetInfoOmText(FileReader fileReader) {
+    private static SetInfoOmText readSetInfoOmText(BufferReader bufferReader) {
         return new SetInfoOmText(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmWall readSetInfoOmWall(FileReader fileReader) {
+    private static SetInfoOmWall readSetInfoOmWall(BufferReader bufferReader) {
         return new SetInfoOmWall(
-                fileReader.readUnsignedInteger(),
-                fileReader.readOrientedBoundingBox(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readOrientedBoundingBox(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmHakuryuu readSetInfoOmHakuryuu(FileReader fileReader) {
+    private static SetInfoOmHakuryuu readSetInfoOmHakuryuu(BufferReader bufferReader) {
         return new SetInfoOmHakuryuu(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOm readSetInfoOm(FileReader fileReader) {
+    private static SetInfoOm readSetInfoOm(BufferReader bufferReader) {
         return new SetInfoOm(
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                readSetInfoCoord(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                readSetInfoCoord(bufferReader)
         );
     }
 
-    private static SetInfoOmOld readSetInfoOmOld(FileReader fileReader) {
+    private static SetInfoOmOld readSetInfoOmOld(BufferReader bufferReader) {
         return new SetInfoOmOld(
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                readSetInfoCoord(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                readSetInfoCoord(bufferReader)
         );
     }
 
-    private static SetInfoOmDoor readSetInfoOmDoor(FileReader fileReader) {
+    private static SetInfoOmDoor readSetInfoOmDoor(BufferReader bufferReader) {
         return new SetInfoOmDoor(
-                fileReader.readBoolean(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
 
-    private static SetInfoOmBowlOfLife readSetInfoOmBowlOfLife(FileReader fileReader) {
+    private static SetInfoOmBowlOfLife readSetInfoOmBowlOfLife(BufferReader bufferReader) {
         return new SetInfoOmBowlOfLife(
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmNav readSetInfoOmNav(FileReader fileReader) {
+    private static SetInfoOmNav readSetInfoOmNav(BufferReader bufferReader) {
         return new SetInfoOmNav(
-                fileReader.readVector3f(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readVector3f(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmHeal readSetInfoOmHeal(FileReader fileReader) {
+    private static SetInfoOmHeal readSetInfoOmHeal(BufferReader bufferReader) {
         return new SetInfoOmHeal(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmBadStatus readSetInfoOmBadStatus(FileReader fileReader) {
+    private static SetInfoOmBadStatus readSetInfoOmBadStatus(BufferReader bufferReader) {
         return new SetInfoOmBadStatus(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmBlock readSetInfoOmBlock(FileReader fileReader) {
+    private static SetInfoOmBlock readSetInfoOmBlock(BufferReader bufferReader) {
         return new SetInfoOmBlock(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmEx readSetInfoOmEx(FileReader fileReader) {
+    private static SetInfoOmEx readSetInfoOmEx(BufferReader bufferReader) {
         return new SetInfoOmEx(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmOldDoor readSetInfoOmOldDoor(FileReader fileReader) {
+    private static SetInfoOmOldDoor readSetInfoOmOldDoor(BufferReader bufferReader) {
         return new SetInfoOmOldDoor(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown28 readSetInfoOmUnknown28(FileReader fileReader) {
+    private static SetInfoOmUnknown28 readSetInfoOmUnknown28(BufferReader bufferReader) {
         return new SetInfoOmUnknown28(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown27 readSetInfoOmUnknown27(FileReader fileReader) {
+    private static SetInfoOmUnknown27 readSetInfoOmUnknown27(BufferReader bufferReader) {
         return new SetInfoOmUnknown27(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown30 readSetInfoOmUnknown30(FileReader fileReader) {
+    private static SetInfoOmUnknown30 readSetInfoOmUnknown30(BufferReader bufferReader) {
         return new SetInfoOmUnknown30(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown31 readSetInfoOmUnknown31(FileReader fileReader) {
+    private static SetInfoOmUnknown31 readSetInfoOmUnknown31(BufferReader bufferReader) {
         return new SetInfoOmUnknown31(
-                fileReader.readVector4f(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readVector4f(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown32 readSetInfoOmUnknown32(FileReader fileReader) {
+    private static SetInfoOmUnknown32 readSetInfoOmUnknown32(BufferReader bufferReader) {
         return new SetInfoOmUnknown32(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown33 readSetInfoOmUnknown33(FileReader fileReader) {
+    private static SetInfoOmUnknown33 readSetInfoOmUnknown33(BufferReader bufferReader) {
         return new SetInfoOmUnknown33(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown34 readSetInfoOmUnknown34(FileReader fileReader) {
+    private static SetInfoOmUnknown34 readSetInfoOmUnknown34(BufferReader bufferReader) {
         return new SetInfoOmUnknown34(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown45 readSetInfoOmUnknown45(FileReader fileReader) {
+    private static SetInfoOmUnknown45 readSetInfoOmUnknown45(BufferReader bufferReader) {
         return new SetInfoOmUnknown45(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readVector4f(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readVector4f(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown42 readSetInfoOmUnknown42(FileReader fileReader) {
+    private static SetInfoOmUnknown42 readSetInfoOmUnknown42(BufferReader bufferReader) {
         return new SetInfoOmUnknown42(
-                fileReader.readBoolean(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown46 readSetInfoOmUnknown46(FileReader fileReader) {
+    private static SetInfoOmUnknown46 readSetInfoOmUnknown46(BufferReader bufferReader) {
         return new SetInfoOmUnknown46(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown47 readSetInfoOmUnknown47(FileReader fileReader) {
+    private static SetInfoOmUnknown47 readSetInfoOmUnknown47(BufferReader bufferReader) {
         return new SetInfoOmUnknown47(
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown48 readSetInfoOmUnknown48(FileReader fileReader) {
+    private static SetInfoOmUnknown48 readSetInfoOmUnknown48(BufferReader bufferReader) {
         return new SetInfoOmUnknown48(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown49 readSetInfoOmUnknown49(FileReader fileReader) {
+    private static SetInfoOmUnknown49 readSetInfoOmUnknown49(BufferReader bufferReader) {
         return new SetInfoOmUnknown49(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown50 readSetInfoOmUnknown50(FileReader fileReader) {
+    private static SetInfoOmUnknown50 readSetInfoOmUnknown50(BufferReader bufferReader) {
         return new SetInfoOmUnknown50(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown51 readSetInfoOmUnknown51(FileReader fileReader) {
+    private static SetInfoOmUnknown51 readSetInfoOmUnknown51(BufferReader bufferReader) {
         return new SetInfoOmUnknown51(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown53 readSetInfoOmUnknown53(FileReader fileReader) {
+    private static SetInfoOmUnknown53 readSetInfoOmUnknown53(BufferReader bufferReader) {
         return new SetInfoOmUnknown53(
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readSignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readSignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown55 readSetInfoOmUnknown55(FileReader fileReader) {
+    private static SetInfoOmUnknown55 readSetInfoOmUnknown55(BufferReader bufferReader) {
         return new SetInfoOmUnknown55(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown52 readSetInfoOmUnknown52(FileReader fileReader) {
+    private static SetInfoOmUnknown52 readSetInfoOmUnknown52(BufferReader bufferReader) {
         return new SetInfoOmUnknown52(
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmWarpNewV2 readSetInfoOmWarpNewV2(FileReader fileReader) {
+    private static SetInfoOmWarpNewV2 readSetInfoOmWarpNewV2(BufferReader bufferReader) {
         return new SetInfoOmWarpNewV2(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                readSetInfoOm(fileReader)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                readSetInfoOm(bufferReader)
         );
     }
 
-    private static SetInfoEnemyV2 readSetInfoEnemyV2(FileReader fileReader) {
+    private static SetInfoEnemyV2 readSetInfoEnemyV2(BufferReader bufferReader) {
         return new SetInfoEnemyV2(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                readSetInfoCoord(fileReader)
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                readSetInfoCoord(bufferReader)
         );
     }
 
-    private static SetInfoOmOneWay readSetInfoOmOneWay(FileReader fileReader) {
+    private static SetInfoOmOneWay readSetInfoOmOneWay(BufferReader bufferReader) {
         return new SetInfoOmOneWay(
-                fileReader.readFixedLengthArray(4, FileReader::readVector3f),
-                readSetInfoOmEx(fileReader)
+                bufferReader.readFixedLengthArray(4, BufferReader::readVector3f),
+                readSetInfoOmEx(bufferReader)
         );
     }
 
-    private static SetInfoOmBreakTarget readSetInfoOmBreakTarget(FileReader fileReader) {
+    private static SetInfoOmBreakTarget readSetInfoOmBreakTarget(BufferReader bufferReader) {
         return new SetInfoOmBreakTarget(
-                fileReader.readUnsignedInteger(),
-                readSetInfoOmOld(fileReader)
+                bufferReader.readUnsignedInteger(),
+                readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static LayoutSetInfo readLayoutSetInfo(FileReader fileReader) {
-        int ID = fileReader.readSignedInteger();
-        long Type = fileReader.readUnsignedInteger();
+    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader) {
+        int ID = bufferReader.readSignedInteger();
+        long Type = bufferReader.readUnsignedInteger();
         SetInfo Info = null;
 
         switch (LayoutSetInfoType.of(Type)) {
-            case LayoutSetInfoType.SetInfoOm -> Info = readSetInfoOm(fileReader);
-            case LayoutSetInfoType.SetInfoEnemy -> Info = readSetInfoEnemy(fileReader);
-            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(fileReader);
-            case LayoutSetInfoType.SetInfoGeneralPoint -> Info = readSetInfoGeneralPoint(fileReader);
+            case LayoutSetInfoType.SetInfoOm -> Info = readSetInfoOm(bufferReader);
+            case LayoutSetInfoType.SetInfoEnemy -> Info = readSetInfoEnemy(bufferReader);
+            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(bufferReader);
+            case LayoutSetInfoType.SetInfoGeneralPoint -> Info = readSetInfoGeneralPoint(bufferReader);
             case LayoutSetInfoType.SetInfoOmGather, LayoutSetInfoType.SetInfoOmTreasureBox ->
-                    Info = readSetInfoOmGather(fileReader);
-            case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(fileReader);
-            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(fileReader);
-            case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(fileReader);
-            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(fileReader);
-            case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(fileReader);
-            case LayoutSetInfoType.SetInfoOmFall -> Info = readSetInfoOmFall(fileReader);
-            case LayoutSetInfoType.SetInfoOmLever -> Info = readSetInfoOmLever(fileReader);
-            case LayoutSetInfoType.SetInfoOmRange -> Info = readSetInfoOmRange(fileReader);
-            case LayoutSetInfoType.SetInfoOmText -> Info = readSetInfoOmText(fileReader);
-            case LayoutSetInfoType.SetInfoOmWall -> Info = readSetInfoOmWall(fileReader);
-            case LayoutSetInfoType.SetInfoOmHakuryuu -> Info = readSetInfoOmHakuryuu(fileReader);
-            case LayoutSetInfoType.SetInfoOmDoor -> Info = readSetInfoOmDoor(fileReader);
-            case LayoutSetInfoType.SetInfoOmBowlOfLife -> Info = readSetInfoOmBowlOfLife(fileReader);
-            case LayoutSetInfoType.SetInfoOmNav -> Info = readSetInfoOmNav(fileReader);
-            case LayoutSetInfoType.SetInfoOmHeal -> Info = readSetInfoOmHeal(fileReader);
-            case LayoutSetInfoType.SetInfoOmBadStatus -> Info = readSetInfoOmBadStatus(fileReader);
-            case LayoutSetInfoType.SetInfoOmBlock -> Info = readSetInfoOmBlock(fileReader);
-            case LayoutSetInfoType.SetInfoOmEx -> Info = readSetInfoOmEx(fileReader);
-            case LayoutSetInfoType.SetInfoOmOldDoor -> Info = readSetInfoOmOldDoor(fileReader);
-            case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(fileReader);
-            case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown27 -> Info = readSetInfoOmUnknown27(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown28 -> Info = readSetInfoOmUnknown28(fileReader);
-            case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown31 -> Info = readSetInfoOmUnknown31(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown32 -> Info = readSetInfoOmUnknown32(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown33 -> Info = readSetInfoOmUnknown33(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown34 -> Info = readSetInfoOmUnknown34(fileReader);
-            case LayoutSetInfoType.SetInfoOmOld -> Info = readSetInfoOmOld(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown42 -> Info = readSetInfoOmUnknown42(fileReader);
-            case LayoutSetInfoType.SetInfoOmWarpNewV3 -> Info = readSetInfoOmWarpNewV3(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown45 -> Info = readSetInfoOmUnknown45(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown46 -> Info = readSetInfoOmUnknown46(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown47 -> Info = readSetInfoOmUnknown47(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown48 -> Info = readSetInfoOmUnknown48(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown49 -> Info = readSetInfoOmUnknown49(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown50 -> Info = readSetInfoOmUnknown50(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown51 -> Info = readSetInfoOmUnknown51(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown52 -> Info = readSetInfoOmUnknown52(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown53 -> Info = readSetInfoOmUnknown53(fileReader);
-            case LayoutSetInfoType.SetInfoOmWarpNewV2 -> Info = readSetInfoOmWarpNewV2(fileReader);
-            case LayoutSetInfoType.SetInfoEnemyV2 -> Info = readSetInfoEnemyV2(fileReader);
-            case LayoutSetInfoType.SetInfoOmUnknown55 -> Info = readSetInfoOmUnknown55(fileReader);
+                    Info = readSetInfoOmGather(bufferReader);
+            case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
+            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader);
+            case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);
+            case LayoutSetInfoType.SetInfoOmFall -> Info = readSetInfoOmFall(bufferReader);
+            case LayoutSetInfoType.SetInfoOmLever -> Info = readSetInfoOmLever(bufferReader);
+            case LayoutSetInfoType.SetInfoOmRange -> Info = readSetInfoOmRange(bufferReader);
+            case LayoutSetInfoType.SetInfoOmText -> Info = readSetInfoOmText(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWall -> Info = readSetInfoOmWall(bufferReader);
+            case LayoutSetInfoType.SetInfoOmHakuryuu -> Info = readSetInfoOmHakuryuu(bufferReader);
+            case LayoutSetInfoType.SetInfoOmDoor -> Info = readSetInfoOmDoor(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBowlOfLife -> Info = readSetInfoOmBowlOfLife(bufferReader);
+            case LayoutSetInfoType.SetInfoOmNav -> Info = readSetInfoOmNav(bufferReader);
+            case LayoutSetInfoType.SetInfoOmHeal -> Info = readSetInfoOmHeal(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBadStatus -> Info = readSetInfoOmBadStatus(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBlock -> Info = readSetInfoOmBlock(bufferReader);
+            case LayoutSetInfoType.SetInfoOmEx -> Info = readSetInfoOmEx(bufferReader);
+            case LayoutSetInfoType.SetInfoOmOldDoor -> Info = readSetInfoOmOldDoor(bufferReader);
+            case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown27 -> Info = readSetInfoOmUnknown27(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown28 -> Info = readSetInfoOmUnknown28(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown31 -> Info = readSetInfoOmUnknown31(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown32 -> Info = readSetInfoOmUnknown32(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown33 -> Info = readSetInfoOmUnknown33(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown34 -> Info = readSetInfoOmUnknown34(bufferReader);
+            case LayoutSetInfoType.SetInfoOmOld -> Info = readSetInfoOmOld(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown42 -> Info = readSetInfoOmUnknown42(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNewV3 -> Info = readSetInfoOmWarpNewV3(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown45 -> Info = readSetInfoOmUnknown45(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown46 -> Info = readSetInfoOmUnknown46(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown47 -> Info = readSetInfoOmUnknown47(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown48 -> Info = readSetInfoOmUnknown48(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown49 -> Info = readSetInfoOmUnknown49(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown50 -> Info = readSetInfoOmUnknown50(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown51 -> Info = readSetInfoOmUnknown51(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown52 -> Info = readSetInfoOmUnknown52(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown53 -> Info = readSetInfoOmUnknown53(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNewV2 -> Info = readSetInfoOmWarpNewV2(bufferReader);
+            case LayoutSetInfoType.SetInfoEnemyV2 -> Info = readSetInfoEnemyV2(bufferReader);
+            case LayoutSetInfoType.SetInfoOmUnknown55 -> Info = readSetInfoOmUnknown55(bufferReader);
             default -> log.error("Unhandled layout type: {}", Type);
         }
 
@@ -683,10 +683,10 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected Layout parseClientResourceFile(FileReader fileReader) {
+    protected Layout parseClientResourceFile(BufferReader bufferReader) {
         return new Layout(
-                fileReader.readFixedLengthArray(22, FileReader::readUnsignedInteger),
-                fileReader.readArray(LayoutDeserializer::readLayoutSetInfo)
+                bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
+                bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo)
         );
     }
 }

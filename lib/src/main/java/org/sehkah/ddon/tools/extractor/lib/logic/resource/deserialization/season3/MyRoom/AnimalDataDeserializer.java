@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.MyRoom.AnimalData;
@@ -12,16 +12,16 @@ public class AnimalDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AnimalData readAnimalData(FileReader fileReader) {
+    private static AnimalData readAnimalData(BufferReader bufferReader) {
         return new AnimalData(
-                fileReader.readVector3f(),
-                fileReader.readVector3f()
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f()
         );
     }
 
     @Override
-    protected AnimalDataList parseClientResourceFile(FileReader fileReader) {
-        return new AnimalDataList(fileReader.readArray(AnimalDataDeserializer::readAnimalData));
+    protected AnimalDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AnimalDataList(bufferReader.readArray(AnimalDataDeserializer::readAnimalData));
 
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.AreaInfoStage;
@@ -11,15 +11,15 @@ public class AreaInfoStageDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AreaInfoStage readAreaInfoStage(FileReader fileReader) {
+    private static AreaInfoStage readAreaInfoStage(BufferReader bufferReader) {
         return new AreaInfoStage(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected AreaInfoStageList parseClientResourceFile(FileReader fileReader) {
-        return new AreaInfoStageList(fileReader.readArray(AreaInfoStageDeserializer::readAreaInfoStage));
+    protected AreaInfoStageList parseClientResourceFile(BufferReader bufferReader) {
+        return new AreaInfoStageList(bufferReader.readArray(AreaInfoStageDeserializer::readAreaInfoStage));
     }
 }

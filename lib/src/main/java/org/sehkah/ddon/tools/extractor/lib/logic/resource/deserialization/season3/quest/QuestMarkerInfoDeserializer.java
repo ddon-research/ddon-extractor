@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest.QuestMarkerInfo;
@@ -12,19 +12,19 @@ public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static QuestMarkerInfoInfo readQuestMarkerInfoInfo(FileReader fileReader) {
+    private static QuestMarkerInfoInfo readQuestMarkerInfoInfo(BufferReader bufferReader) {
         return new QuestMarkerInfoInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readVector3f()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readVector3f()
         );
     }
 
     @Override
-    protected QuestMarkerInfo parseClientResourceFile(FileReader fileReader) {
+    protected QuestMarkerInfo parseClientResourceFile(BufferReader bufferReader) {
         return new QuestMarkerInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(QuestMarkerInfoDeserializer::readQuestMarkerInfoInfo)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(QuestMarkerInfoDeserializer::readQuestMarkerInfoInfo)
         );
     }
 }

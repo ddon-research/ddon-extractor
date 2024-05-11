@@ -1,12 +1,12 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.packet.deserialization;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.C2LLoginReq;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.meta.PlatformType;
@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class C2LLoginReqDeserializerTest {
     @Test
     void testSeasonThreePacketDeserializes() {
-        FileReader input = new BinaryFileReader(new byte[]{
+        BufferReader input = new BinaryReader(new byte[]{
                 //header
                 0x00,
                 0x00, 0x01,
@@ -32,8 +32,8 @@ class C2LLoginReqDeserializerTest {
                 0x01
         }, ByteOrder.BIG_ENDIAN);
 
-        PacketManager packetManager = PacketManager.get(SerializationFormat.json, true);
-        PacketDeserializer<Packet> deserializer = packetManager.getDeserializer(input);
+        PacketManager packetManager = PacketManager.get(null, SerializationFormat.json, true);
+        PacketBufferDeserializer<Packet> deserializer = packetManager.getDeserializer(input);
         C2LLoginReq deserialized = (C2LLoginReq) deserializer.deserialize(input);
         Serializer<Packet> stringSerializer = packetManager.getStringSerializer();
         String serialized = stringSerializer.serialize(deserialized);

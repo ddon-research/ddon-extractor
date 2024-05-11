@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.ui.uGUISkill;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.ui.uGUISkill.AbilityAddData;
@@ -12,23 +12,23 @@ public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AbilityLevelData readAbilityLevelData(FileReader fileReader) {
+    private static AbilityLevelData readAbilityLevelData(BufferReader bufferReader) {
         return new AbilityLevelData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static AbilityAddData readAbilityAddData(FileReader fileReader) {
+    private static AbilityAddData readAbilityAddData(BufferReader bufferReader) {
         return new AbilityAddData(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readArray(AbilityAddDataDeserializer::readAbilityLevelData)
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readArray(AbilityAddDataDeserializer::readAbilityLevelData)
         );
     }
 
     @Override
-    protected AbilityAddDataList parseClientResourceFile(FileReader fileReader) {
-        return new AbilityAddDataList(fileReader.readArray(AbilityAddDataDeserializer::readAbilityAddData));
+    protected AbilityAddDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new AbilityAddDataList(bufferReader.readArray(AbilityAddDataDeserializer::readAbilityAddData));
     }
 }

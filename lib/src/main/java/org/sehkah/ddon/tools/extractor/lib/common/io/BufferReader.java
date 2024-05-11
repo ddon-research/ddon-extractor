@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
-public interface FileReader {
+public interface BufferReader {
     int getPosition();
 
     void setPosition(int position);
@@ -88,11 +88,11 @@ public interface FileReader {
 
     AxisAlignedBoundingBox readAxisAlignedBoundingBox();
 
-    <E> List<E> readArray(Function<FileReader, E> entityReaderFunction);
+    <E> List<E> readArray(Function<BufferReader, E> entityReaderFunction);
 
-    <E> List<E> readFixedLengthArray(long length, Function<FileReader, E> entityReaderFunction);
+    <E> List<E> readFixedLengthArray(long length, Function<BufferReader, E> entityReaderFunction);
 
-    <E> List<E> readArray(ToLongFunction<FileReader> arraySizeFunction, Function<FileReader, E> entityReaderFunction);
+    <E> List<E> readArray(ToLongFunction<BufferReader> arraySizeFunction, Function<BufferReader, E> entityReaderFunction);
 
-    <E> List<E> readArray(long length, Function<FileReader, E> entityReaderFunction);
+    <E> List<E> readArray(long length, Function<BufferReader, E> entityReaderFunction);
 }

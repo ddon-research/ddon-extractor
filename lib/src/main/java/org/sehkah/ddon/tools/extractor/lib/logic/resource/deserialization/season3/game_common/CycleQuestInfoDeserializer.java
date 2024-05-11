@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.CycleQuestInfo;
@@ -12,31 +12,31 @@ public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static CycleQuestSituationInfo readCycleQuestSituationInfo(FileReader fileReader) {
+    private static CycleQuestSituationInfo readCycleQuestSituationInfo(BufferReader bufferReader) {
         return new CycleQuestSituationInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static CycleQuestInfo readCycleQuestInfo(FileReader fileReader) {
+    private static CycleQuestInfo readCycleQuestInfo(BufferReader bufferReader) {
         return new CycleQuestInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(CycleQuestInfoDeserializer::readCycleQuestSituationInfo),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(CycleQuestInfoDeserializer::readCycleQuestSituationInfo),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected CycleQuestInfoList parseClientResourceFile(FileReader fileReader) {
-        return new CycleQuestInfoList(fileReader.readArray(CycleQuestInfoDeserializer::readCycleQuestInfo));
+    protected CycleQuestInfoList parseClientResourceFile(BufferReader bufferReader) {
+        return new CycleQuestInfoList(bufferReader.readArray(CycleQuestInfoDeserializer::readCycleQuestInfo));
     }
 }

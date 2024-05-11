@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.EnemyMaterial;
@@ -11,19 +11,19 @@ public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static EnemyMaterial readEnemyMaterialData(FileReader fileReader) {
+    private static EnemyMaterial readEnemyMaterialData(BufferReader bufferReader) {
         return new EnemyMaterial(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected EnemyMaterialTable parseClientResourceFile(FileReader fileReader) {
-        return new EnemyMaterialTable(fileReader.readArray(EnemyMaterialTableDeserializer::readEnemyMaterialData));
+    protected EnemyMaterialTable parseClientResourceFile(BufferReader bufferReader) {
+        return new EnemyMaterialTable(bufferReader.readArray(EnemyMaterialTableDeserializer::readEnemyMaterialData));
     }
 }

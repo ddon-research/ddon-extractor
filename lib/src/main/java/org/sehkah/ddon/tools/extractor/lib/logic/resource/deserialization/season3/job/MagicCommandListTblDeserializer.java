@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.job.MagicCommand;
@@ -12,24 +12,24 @@ public class MagicCommandListTblDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static MagicCommand readMagicCommand(FileReader fileReader) {
-        return new MagicCommand(fileReader.readFloat());
+    private static MagicCommand readMagicCommand(BufferReader bufferReader) {
+        return new MagicCommand(bufferReader.readFloat());
     }
 
-    private static MagicCommandList readMagicCommandList(FileReader fileReader) {
+    private static MagicCommandList readMagicCommandList(BufferReader bufferReader) {
         return new MagicCommandList(
-                fileReader.readArray(MagicCommandListTblDeserializer::readMagicCommand),
-                fileReader.readArray(MagicCommandListTblDeserializer::readMagicCommand),
-                fileReader.readArray(MagicCommandListTblDeserializer::readMagicCommand)
+                bufferReader.readArray(MagicCommandListTblDeserializer::readMagicCommand),
+                bufferReader.readArray(MagicCommandListTblDeserializer::readMagicCommand),
+                bufferReader.readArray(MagicCommandListTblDeserializer::readMagicCommand)
         );
     }
 
     @Override
-    protected MagicCommandListTbl parseClientResourceFile(FileReader fileReader) {
+    protected MagicCommandListTbl parseClientResourceFile(BufferReader bufferReader) {
         // MGCC is the only format to not have a file header, instead exporting all its data in "binary" format directly
         //  As a workaround to how file header identification is a basis of everything, treat the number of items as version
         //  afterward reset to position 0
-        fileReader.setPosition(0);
-        return new MagicCommandListTbl(fileReader.readArray(MagicCommandListTblDeserializer::readMagicCommandList));
+        bufferReader.setPosition(0);
+        return new MagicCommandListTbl(bufferReader.readArray(MagicCommandListTblDeserializer::readMagicCommandList));
     }
 }

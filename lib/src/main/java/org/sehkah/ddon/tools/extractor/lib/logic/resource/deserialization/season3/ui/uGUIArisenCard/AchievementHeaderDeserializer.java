@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.ui.uGUIArisenCard;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.ui.uGUIArisenCard.AchievementHeader;
@@ -11,12 +11,12 @@ public class AchievementHeaderDeserializer extends ClientResourceFileDeserialize
         super(clientResourceFile);
     }
 
-    private static AchievementHeaderData readAchievementHeaderData(FileReader fileReader) {
-        return new AchievementHeaderData(fileReader.readUnsignedInteger());
+    private static AchievementHeaderData readAchievementHeaderData(BufferReader bufferReader) {
+        return new AchievementHeaderData(bufferReader.readUnsignedInteger());
     }
 
     @Override
-    protected AchievementHeader parseClientResourceFile(FileReader fileReader) {
-        return new AchievementHeader(fileReader.readArray(AchievementHeaderDeserializer::readAchievementHeaderData));
+    protected AchievementHeader parseClientResourceFile(BufferReader bufferReader) {
+        return new AchievementHeader(bufferReader.readArray(AchievementHeaderDeserializer::readAchievementHeaderData));
     }
 }

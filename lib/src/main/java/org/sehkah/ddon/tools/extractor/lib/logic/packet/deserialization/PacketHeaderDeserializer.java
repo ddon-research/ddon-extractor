@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.PacketHeaderValidationFailedException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.PacketHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.meta.PacketGroup;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.meta.PacketSubType;
@@ -65,16 +65,16 @@ public class PacketHeaderDeserializer {
         return true;
     }
 
-    public static PacketHeader parseQuick(FileReader fileReader) {
-        int position = fileReader.getPosition();
+    public static PacketHeader parseQuick(BufferReader bufferReader) {
+        int position = bufferReader.getPosition();
 
-        int group = fileReader.readUnsignedByte();
-        int id = fileReader.readUnsignedShort();
-        int subId = fileReader.readUnsignedByte();
-        int source = fileReader.readUnsignedByte();
-        long count = fileReader.readUnsignedInteger();
+        int group = bufferReader.readUnsignedByte();
+        int id = bufferReader.readUnsignedShort();
+        int subId = bufferReader.readUnsignedByte();
+        int source = bufferReader.readUnsignedByte();
+        long count = bufferReader.readUnsignedInteger();
 
-        fileReader.setPosition(position);
+        bufferReader.setPosition(position);
 
         PacketHeader packetHeader = new PacketHeader(group, id, subId, source);
         packetHeader.setCount(count);
@@ -82,28 +82,28 @@ public class PacketHeaderDeserializer {
         return packetHeader;
     }
 
-    protected PacketHeader parse(FileReader fileReader) throws PacketHeaderValidationFailedException {
-        int group = fileReader.readUnsignedByte();
+    protected PacketHeader parse(BufferReader bufferReader) throws PacketHeaderValidationFailedException {
+        int group = bufferReader.readUnsignedByte();
         if (!isGroupValid(group, expectedPacketHeader)) {
             throw new PacketHeaderValidationFailedException();
         }
 
-        int id = fileReader.readUnsignedShort();
+        int id = bufferReader.readUnsignedShort();
         if (!isIdValid(id, expectedPacketHeader)) {
             throw new PacketHeaderValidationFailedException();
         }
 
-        int subId = fileReader.readUnsignedByte();
+        int subId = bufferReader.readUnsignedByte();
         if (!isSubIdValid(subId, expectedPacketHeader)) {
             throw new PacketHeaderValidationFailedException();
         }
 
-        int source = fileReader.readUnsignedByte();
+        int source = bufferReader.readUnsignedByte();
         if (!isPacketSourceValid(source, expectedPacketHeader)) {
             throw new PacketHeaderValidationFailedException();
         }
 
-        long count = fileReader.readUnsignedInteger();
+        long count = bufferReader.readUnsignedInteger();
         PacketHeader packetHeader = new PacketHeader(group, id, subId, source);
         packetHeader.setIdentifier(expectedPacketHeader.getIdentifier());
         packetHeader.setCount(count);

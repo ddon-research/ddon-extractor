@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest.QuestTextData;
@@ -11,15 +11,15 @@ public class QuestTextDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static QuestTextData readQuestTextData(FileReader fileReader) {
+    private static QuestTextData readQuestTextData(BufferReader bufferReader) {
         return new QuestTextData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected QuestTextDataList parseClientResourceFile(FileReader fileReader) {
-        return new QuestTextDataList(fileReader.readArray(QuestTextDataDeserializer::readQuestTextData));
+    protected QuestTextDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new QuestTextDataList(bufferReader.readArray(QuestTextDataDeserializer::readQuestTextData));
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.EmLvUpParam;
@@ -11,31 +11,31 @@ public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static EmLvUpParam readEmLvUpParam(FileReader fileReader) {
+    private static EmLvUpParam readEmLvUpParam(BufferReader bufferReader) {
         return new EmLvUpParam(
-                fileReader.readUnsignedInteger(),
-                fileReader.readFixedLengthArray(10, FileReader::readFloat),
-                fileReader.readFixedLengthArray(10, FileReader::readFloat),
-                fileReader.readFixedLengthArray(10, FileReader::readFloat),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(10, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(10, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(10, BufferReader::readFloat),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected EmLvUpParamList parseClientResourceFile(FileReader fileReader) {
-        return new EmLvUpParamList(fileReader.readArray(EmLvUpParamDeserializer::readEmLvUpParam));
+    protected EmLvUpParamList parseClientResourceFile(BufferReader bufferReader) {
+        return new EmLvUpParamList(bufferReader.readArray(EmLvUpParamDeserializer::readEmLvUpParam));
     }
 }

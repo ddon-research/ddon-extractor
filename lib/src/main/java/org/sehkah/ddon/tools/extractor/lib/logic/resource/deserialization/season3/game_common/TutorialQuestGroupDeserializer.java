@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.TutorialQuestGroup;
@@ -11,15 +11,15 @@ public class TutorialQuestGroupDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static TutorialQuestGroup readTutorialQuestGroup(FileReader fileReader) {
+    private static TutorialQuestGroup readTutorialQuestGroup(BufferReader bufferReader) {
         return new TutorialQuestGroup(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(JobTutorialQuestListDeserializer::readQuestId)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(JobTutorialQuestListDeserializer::readQuestId)
         );
     }
 
     @Override
-    protected TutorialQuestGroupList parseClientResourceFile(FileReader fileReader) {
-        return new TutorialQuestGroupList(fileReader.readArray(TutorialQuestGroupDeserializer::readTutorialQuestGroup));
+    protected TutorialQuestGroupList parseClientResourceFile(BufferReader bufferReader) {
+        return new TutorialQuestGroupList(bufferReader.readArray(TutorialQuestGroupDeserializer::readTutorialQuestGroup));
     }
 }

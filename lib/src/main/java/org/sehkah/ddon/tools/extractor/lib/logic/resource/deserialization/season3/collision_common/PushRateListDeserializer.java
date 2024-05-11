@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.collision_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.collision_common.PushRate;
@@ -11,14 +11,14 @@ public class PushRateListDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static PushRate readPushRate(FileReader fileReader) {
+    private static PushRate readPushRate(BufferReader bufferReader) {
         return new PushRate(
-                fileReader.readFixedLengthArray(6, FileReader::readFloat)
+                bufferReader.readFixedLengthArray(6, BufferReader::readFloat)
         );
     }
 
     @Override
-    protected PushRateList parseClientResourceFile(FileReader fileReader) {
-        return new PushRateList(fileReader.readArray(PushRateListDeserializer::readPushRate));
+    protected PushRateList parseClientResourceFile(BufferReader bufferReader) {
+        return new PushRateList(bufferReader.readArray(PushRateListDeserializer::readPushRate));
     }
 }

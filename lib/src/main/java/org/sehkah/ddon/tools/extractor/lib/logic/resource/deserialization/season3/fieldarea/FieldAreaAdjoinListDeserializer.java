@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.fieldarea;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.fieldarea.AdjoinInfo;
@@ -12,28 +12,28 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static AdjoinInfoVector3 readAdjoinInfoVector3(FileReader fileReader) {
+    private static AdjoinInfoVector3 readAdjoinInfoVector3(BufferReader bufferReader) {
         return new AdjoinInfoVector3(
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static AdjoinInfo readAdjoinInfo(FileReader fileReader) {
+    private static AdjoinInfo readAdjoinInfo(BufferReader bufferReader) {
         return new AdjoinInfo(
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfoVector3),
-                fileReader.readUnsignedByte()
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfoVector3),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected FieldAreaAdjoinList parseClientResourceFile(FileReader fileReader) {
+    protected FieldAreaAdjoinList parseClientResourceFile(BufferReader bufferReader) {
         return new FieldAreaAdjoinList(
-                fileReader.readSignedShort(),
-                fileReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo)
+                bufferReader.readSignedShort(),
+                bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo)
         );
     }
 }

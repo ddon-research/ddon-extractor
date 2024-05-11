@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common.GUIMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GUIMessage;
@@ -47,7 +47,7 @@ public class DynamicResourceLookupUtil {
         } catch (IOException e) {
             throw new TechnicalException(e);
         }
-        return deserializer.deserialize(new BinaryFileReader(input));
+        return deserializer.deserialize(new BinaryReader(input));
     }
 
     public static TopLevelClientResource getResource(ResourceFileLookupType resourceFileLookupType, ClientResourceFileDeserializer deserializer) {

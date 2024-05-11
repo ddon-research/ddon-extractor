@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.em_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.em_common.BlowSaveEmLvParam;
@@ -11,15 +11,15 @@ public class BlowSaveEmLvParamTblDeserializer extends ClientResourceFileDeserial
         super(clientResourceFile);
     }
 
-    private static BlowSaveEmLvParam readBlowSaveEmLvParam(FileReader fileReader) {
+    private static BlowSaveEmLvParam readBlowSaveEmLvParam(BufferReader bufferReader) {
         return new BlowSaveEmLvParam(
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected BlowSaveEmLvParamTbl parseClientResourceFile(FileReader fileReader) {
-        return new BlowSaveEmLvParamTbl(fileReader.readArray(BlowSaveEmLvParamTblDeserializer::readBlowSaveEmLvParam));
+    protected BlowSaveEmLvParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new BlowSaveEmLvParamTbl(bufferReader.readArray(BlowSaveEmLvParamTblDeserializer::readBlowSaveEmLvParam));
     }
 }

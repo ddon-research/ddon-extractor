@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.*;
@@ -11,97 +11,97 @@ public class CharParamEnemyTableDeserializer extends ClientResourceFileDeseriali
     }
 
 
-    private static CharParamEnemyGuardCounter readCharParamEnemyGuardCounter(FileReader fileReader) {
+    private static CharParamEnemyGuardCounter readCharParamEnemyGuardCounter(BufferReader bufferReader) {
         return new CharParamEnemyGuardCounter(
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte()
         );
     }
 
-    private static CharParamEnemyJumpAttackSpeed readCharParamEnemyJumpAttackSpeed(FileReader fileReader) {
+    private static CharParamEnemyJumpAttackSpeed readCharParamEnemyJumpAttackSpeed(BufferReader bufferReader) {
         return new CharParamEnemyJumpAttackSpeed(
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
-    private static CharParamEnemy readCharParamEnemy(FileReader fileReader) {
+    private static CharParamEnemy readCharParamEnemy(BufferReader bufferReader) {
         return new CharParamEnemy(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFixedLengthArray(4, CharParamEnemyTableDeserializer::readCharParamEnemyJumpAttackSpeed),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedByte(),
-                fileReader.readFixedLengthArray(10, CharParamEnemyTableDeserializer::readCharParamEnemyGuardCounter),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readArray(FileReader::readFloat),
-                fileReader.readArray(FileReader::readFloat),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFixedLengthArray(4, CharParamEnemyTableDeserializer::readCharParamEnemyJumpAttackSpeed),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readFixedLengthArray(10, CharParamEnemyTableDeserializer::readCharParamEnemyGuardCounter),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readArray(BufferReader::readFloat),
+                bufferReader.readArray(BufferReader::readFloat),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
-    private static CharParamEnemyFly readCharParamEnemyFly(FileReader fileReader) {
+    private static CharParamEnemyFly readCharParamEnemyFly(BufferReader bufferReader) {
         return new CharParamEnemyFly(
-                readCharParamEnemy(fileReader),
-                fileReader.readFloat(),
-                fileReader.readArray(FileReader::readFloat),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                readCharParamEnemy(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readArray(BufferReader::readFloat),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected CharParamEnemyTable parseClientResourceFile(FileReader fileReader) {
-        boolean FlgEnemyFly = fileReader.readBoolean();
+    protected CharParamEnemyTable parseClientResourceFile(BufferReader bufferReader) {
+        boolean FlgEnemyFly = bufferReader.readBoolean();
         CharParamEnemy CharParamEnemy;
         if (FlgEnemyFly) {
-            CharParamEnemy = readCharParamEnemyFly(fileReader);
+            CharParamEnemy = readCharParamEnemyFly(bufferReader);
         } else {
-            CharParamEnemy = readCharParamEnemy(fileReader);
+            CharParamEnemy = readCharParamEnemy(bufferReader);
         }
-        float ScaleDispGui = fileReader.readFloat();
-        long Unknown1 = fileReader.readUnsignedInteger();
-        long Unknown2 = fileReader.readUnsignedInteger();
+        float ScaleDispGui = bufferReader.readFloat();
+        long Unknown1 = bufferReader.readUnsignedInteger();
+        long Unknown2 = bufferReader.readUnsignedInteger();
 
         return new CharParamEnemyTable(
                 FlgEnemyFly,

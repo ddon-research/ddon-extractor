@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.StageToSpot;
@@ -11,16 +11,16 @@ public class StageToSpotDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    static StageToSpot readStageToSpot(FileReader fileReader) {
+    static StageToSpot readStageToSpot(BufferReader bufferReader) {
         return new StageToSpot(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected StageToSpotList parseClientResourceFile(FileReader fileReader) {
-        return new StageToSpotList(fileReader.readArray(StageToSpotDeserializer::readStageToSpot));
+    protected StageToSpotList parseClientResourceFile(BufferReader bufferReader) {
+        return new StageToSpotList(bufferReader.readArray(StageToSpotDeserializer::readStageToSpot));
     }
 }

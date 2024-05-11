@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.ShotReqInfo;
@@ -11,21 +11,21 @@ public class ShotReqInfoTblDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static ShotReqInfo readShotReqInfo(FileReader fileReader) {
+    private static ShotReqInfo readShotReqInfo(BufferReader bufferReader) {
         return new ShotReqInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected ShotReqInfoTbl parseClientResourceFile(FileReader fileReader) {
-        return new ShotReqInfoTbl(fileReader.readArray(ShotReqInfoTblDeserializer::readShotReqInfo));
+    protected ShotReqInfoTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new ShotReqInfoTbl(bufferReader.readArray(ShotReqInfoTblDeserializer::readShotReqInfo));
     }
 }

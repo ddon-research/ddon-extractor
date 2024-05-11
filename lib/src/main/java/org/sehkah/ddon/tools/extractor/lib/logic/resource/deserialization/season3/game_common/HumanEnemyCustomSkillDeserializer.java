@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.HumanEnemyCustomSkill;
@@ -11,22 +11,22 @@ public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeseria
         super(clientResourceFile);
     }
 
-    private static HumanEnemyCustomSkill readHumanEnemyCustomSkill(FileReader fileReader) {
+    private static HumanEnemyCustomSkill readHumanEnemyCustomSkill(BufferReader bufferReader) {
         return new HumanEnemyCustomSkill(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected HumanEnemyCustomSkillList parseClientResourceFile(FileReader fileReader) {
-        return new HumanEnemyCustomSkillList(fileReader.readArray(HumanEnemyCustomSkillDeserializer::readHumanEnemyCustomSkill));
+    protected HumanEnemyCustomSkillList parseClientResourceFile(BufferReader bufferReader) {
+        return new HumanEnemyCustomSkillList(bufferReader.readArray(HumanEnemyCustomSkillDeserializer::readHumanEnemyCustomSkill));
     }
 }

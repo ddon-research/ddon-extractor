@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.tutorial_guide;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.tutorial_guide.TutorialDialogMessage;
@@ -11,20 +11,20 @@ public class TutorialDialogMessageDeserializer extends ClientResourceFileDeseria
         super(clientResourceFile);
     }
 
-    private static TutorialDialogMessageDialogPage readTutorialDialogMessageDialogPage(FileReader fileReader) {
+    private static TutorialDialogMessageDialogPage readTutorialDialogMessageDialogPage(BufferReader bufferReader) {
         return new TutorialDialogMessageDialogPage(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
 
     @Override
-    protected TutorialDialogMessage parseClientResourceFile(FileReader fileReader) {
+    protected TutorialDialogMessage parseClientResourceFile(BufferReader bufferReader) {
         return new TutorialDialogMessage(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(TutorialDialogMessageDeserializer::readTutorialDialogMessageDialogPage)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(TutorialDialogMessageDeserializer::readTutorialDialogMessageDialogPage)
         );
     }
 }

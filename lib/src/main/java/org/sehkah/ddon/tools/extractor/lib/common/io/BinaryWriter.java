@@ -13,15 +13,15 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 
-public class BinaryFileWriter implements FileWriter {
+public class BinaryWriter implements BufferWriter {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     private final ByteBuffer byteBuffer;
 
-    public BinaryFileWriter(int fileSize) {
+    public BinaryWriter(int fileSize) {
         this(ByteBuffer.allocate(fileSize));
     }
 
-    private BinaryFileWriter(ByteBuffer byteBuffer) {
+    private BinaryWriter(ByteBuffer byteBuffer) {
         this.byteBuffer = byteBuffer;
         this.byteBuffer.order(DEFAULT_BYTE_ORDER);
     }

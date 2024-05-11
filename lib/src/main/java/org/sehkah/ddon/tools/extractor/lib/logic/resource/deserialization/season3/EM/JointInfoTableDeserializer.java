@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.JointInfo;
@@ -11,18 +11,18 @@ public class JointInfoTableDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static JointInfo readJointInfo(FileReader fileReader) {
+    private static JointInfo readJointInfo(BufferReader bufferReader) {
         return new JointInfo(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedShort()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedShort()
         );
     }
 
     @Override
-    protected JointInfoTable parseClientResourceFile(FileReader fileReader) {
-        return new JointInfoTable(fileReader.readArray(JointInfoTableDeserializer::readJointInfo));
+    protected JointInfoTable parseClientResourceFile(BufferReader bufferReader) {
+        return new JointInfoTable(bufferReader.readArray(JointInfoTableDeserializer::readJointInfo));
     }
 }

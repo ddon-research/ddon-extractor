@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season1.stage.StageCustomParts;
@@ -13,61 +13,61 @@ public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static StageCustomPartsInfo readStageCustomPartsInfo(FileReader fileReader) {
+    private static StageCustomPartsInfo readStageCustomPartsInfo(BufferReader bufferReader) {
         return new StageCustomPartsInfo(
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
 
-                fileReader.readSignedShort(),
-                fileReader.readSignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readColor(),
+                bufferReader.readSignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readColor(),
 
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readFixedLengthArray(3, FileReader::readUnsignedLong),
-                fileReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readFixedLengthArray(3, BufferReader::readUnsignedLong),
+                bufferReader.readUnsignedLong(),
 
-                fileReader.readJapaneseNullTerminatedString()
+                bufferReader.readJapaneseNullTerminatedString()
         );
     }
 
-    private static StageCustomPartsFilter readStageCustomPartsFilter(FileReader fileReader) {
+    private static StageCustomPartsFilter readStageCustomPartsFilter(BufferReader bufferReader) {
         return new StageCustomPartsFilter(
-                fileReader.readNullTerminatedString()
+                bufferReader.readNullTerminatedString()
         );
     }
 
-    private static StageCustomPartsParam readStageCustomPartsParam(FileReader fileReader) {
+    private static StageCustomPartsParam readStageCustomPartsParam(BufferReader bufferReader) {
         return new StageCustomPartsParam(
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected StageCustomParts parseClientResourceFile(FileReader fileReader) {
+    protected StageCustomParts parseClientResourceFile(BufferReader bufferReader) {
         return new StageCustomParts(
-                readStageCustomPartsParam(fileReader),
-                fileReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsInfo),
-                fileReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsFilter)
+                readStageCustomPartsParam(bufferReader),
+                bufferReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsInfo),
+                bufferReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsFilter)
         );
     }
 }

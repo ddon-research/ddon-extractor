@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.FileParsingIncompleteException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 
 import java.util.HashSet;
@@ -17,21 +17,21 @@ public abstract class ClientResourceFileDeserializer implements ClientResourceDe
         this.fileHeaderDeserializer = new FileHeaderDeserializer(clientResourceFile.getFileHeader());
     }
 
-    public static Set<FileHeader> identifyFileHeaderCandidates(FileReader fileReader) {
+    public static Set<FileHeader> identifyFileHeaderCandidates(BufferReader bufferReader) {
         // case 1: 4 + 4
-        String magicStringBeforeFourByteVersion = fileReader.readString(4);
-        long fourByteVersionAfterMagicString = fileReader.readUnsignedInteger();
-        fileReader.setPosition(fileReader.getPosition() - 8);
+        String magicStringBeforeFourByteVersion = bufferReader.readString(4);
+        long fourByteVersionAfterMagicString = bufferReader.readUnsignedInteger();
+        bufferReader.setPosition(bufferReader.getPosition() - 8);
         // case 2: 0 + 4
-        long fourByteVersionNoMagicString = fileReader.readUnsignedInteger();
-        fileReader.setPosition(fileReader.getPosition() - 4);
+        long fourByteVersionNoMagicString = bufferReader.readUnsignedInteger();
+        bufferReader.setPosition(bufferReader.getPosition() - 4);
         // case 3: 4 + 2
-        String magicStringBeforeTwoByteVersion = fileReader.readString(4);
-        long twoByteVersionAfterMagicString = fileReader.readUnsignedShort();
-        fileReader.setPosition(fileReader.getPosition() - 6);
+        String magicStringBeforeTwoByteVersion = bufferReader.readString(4);
+        long twoByteVersionAfterMagicString = bufferReader.readUnsignedShort();
+        bufferReader.setPosition(bufferReader.getPosition() - 6);
         // case 4: 0 + 2
-        long twoByteVersionNoMagicString = fileReader.readUnsignedShort();
-        fileReader.setPosition(fileReader.getPosition() - 2);
+        long twoByteVersionNoMagicString = bufferReader.readUnsignedShort();
+        bufferReader.setPosition(bufferReader.getPosition() - 2);
 
         FileHeader fileHeaderIntVersionWithMagicString = new FileHeader(magicStringBeforeFourByteVersion, 4, fourByteVersionAfterMagicString, 4);
         FileHeader fileHeaderIntVersionNoMagicString = new FileHeader((int) fourByteVersionNoMagicString, 4);
@@ -48,16 +48,16 @@ public abstract class ClientResourceFileDeserializer implements ClientResourceDe
     }
 
     @Override
-    public TopLevelClientResource deserialize(FileReader fileReader) {
-        FileHeader fileHeader = fileHeaderDeserializer.parseClientResourceFile(fileReader);
-        TopLevelClientResource result = parseClientResourceFile(fileReader);
-        if (fileReader.hasRemaining()) {
-            throw new FileParsingIncompleteException(fileHeader, fileReader.getRemainingCount(), fileReader.getLimit());
+    public TopLevelClientResource deserialize(BufferReader bufferReader) {
+        FileHeader fileHeader = fileHeaderDeserializer.parseClientResourceFile(bufferReader);
+        TopLevelClientResource result = parseClientResourceFile(bufferReader);
+        if (bufferReader.hasRemaining()) {
+            throw new FileParsingIncompleteException(fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
         }
-        result.setFileSize(fileReader.getLimit());
+        result.setFileSize(bufferReader.getLimit());
         result.setFileHeader(fileHeader);
         return result;
     }
 
-    protected abstract TopLevelClientResource parseClientResourceFile(FileReader fileReader);
+    protected abstract TopLevelClientResource parseClientResourceFile(BufferReader bufferReader);
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.base.LandAreaInfo;
@@ -11,15 +11,15 @@ public class LandInfoDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static LandAreaInfo readLandAreaInfo(FileReader fileReader) {
+    private static LandAreaInfo readLandAreaInfo(BufferReader bufferReader) {
         return new LandAreaInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(FileReader::readUnsignedInteger)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger)
         );
     }
 
     @Override
-    protected LandAreaInfoList parseClientResourceFile(FileReader fileReader) {
-        return new LandAreaInfoList(fileReader.readArray(LandInfoDeserializer::readLandAreaInfo));
+    protected LandAreaInfoList parseClientResourceFile(BufferReader bufferReader) {
+        return new LandAreaInfoList(bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo));
     }
 }

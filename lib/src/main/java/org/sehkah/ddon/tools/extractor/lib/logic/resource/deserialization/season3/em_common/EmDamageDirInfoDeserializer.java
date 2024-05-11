@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.em_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.em_common.EmDamageDirInfo;
@@ -11,21 +11,21 @@ public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static EmDamageDirInfo readEmDamageDirInfo(FileReader fileReader) {
+    private static EmDamageDirInfo readEmDamageDirInfo(BufferReader bufferReader) {
         return new EmDamageDirInfo(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected EmDamageDirInfoList parseClientResourceFile(FileReader fileReader) {
-        return new EmDamageDirInfoList(fileReader.readArray(EmDamageDirInfoDeserializer::readEmDamageDirInfo));
+    protected EmDamageDirInfoList parseClientResourceFile(BufferReader bufferReader) {
+        return new EmDamageDirInfoList(bufferReader.readArray(EmDamageDirInfoDeserializer::readEmDamageDirInfo));
     }
 }

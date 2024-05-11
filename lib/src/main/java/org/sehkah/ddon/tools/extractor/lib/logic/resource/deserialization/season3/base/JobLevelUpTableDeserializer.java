@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.IncreaseParam;
@@ -11,18 +11,18 @@ public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static IncreaseParam readIncreaseParam(FileReader fileReader) {
+    private static IncreaseParam readIncreaseParam(BufferReader bufferReader) {
         return new IncreaseParam(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected JobLevelUpTable parseClientResourceFile(FileReader fileReader) {
-        return new JobLevelUpTable(fileReader.readArray(JobLevelUpTableDeserializer::readIncreaseParam));
+    protected JobLevelUpTable parseClientResourceFile(BufferReader bufferReader) {
+        return new JobLevelUpTable(bufferReader.readArray(JobLevelUpTableDeserializer::readIncreaseParam));
     }
 }

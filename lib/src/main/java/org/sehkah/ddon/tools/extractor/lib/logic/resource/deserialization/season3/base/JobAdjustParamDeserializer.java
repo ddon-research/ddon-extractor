@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.AdjustParam;
@@ -11,12 +11,12 @@ public class JobAdjustParamDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AdjustParam readAdjustParam(FileReader fileReader) {
-        return new AdjustParam(fileReader.readFloat());
+    private static AdjustParam readAdjustParam(BufferReader bufferReader) {
+        return new AdjustParam(bufferReader.readFloat());
     }
 
     @Override
-    protected AdjustParamList parseClientResourceFile(FileReader fileReader) {
-        return new AdjustParamList(fileReader.readArray(JobAdjustParamDeserializer::readAdjustParam));
+    protected AdjustParamList parseClientResourceFile(BufferReader bufferReader) {
+        return new AdjustParamList(bufferReader.readArray(JobAdjustParamDeserializer::readAdjustParam));
     }
 }

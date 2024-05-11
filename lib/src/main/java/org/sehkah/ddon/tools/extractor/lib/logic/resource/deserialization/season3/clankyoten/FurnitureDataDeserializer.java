@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.clankyoten;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.clankyoten.FurnitureData;
@@ -11,17 +11,17 @@ public class FurnitureDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static FurnitureData readFurnitureData(FileReader fileReader) {
+    private static FurnitureData readFurnitureData(BufferReader bufferReader) {
         return new FurnitureData(
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readVector3f()
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readVector3f()
         );
     }
 
     @Override
-    protected FurnitureDataList parseClientResourceFile(FileReader fileReader) {
-        return new FurnitureDataList(fileReader.readArray(FurnitureDataDeserializer::readFurnitureData));
+    protected FurnitureDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new FurnitureDataList(bufferReader.readArray(FurnitureDataDeserializer::readFurnitureData));
     }
 }

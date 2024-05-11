@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.ChildRegionStatusParamList;
@@ -13,24 +13,24 @@ public class ChildRegionStatusParamListTableDeserializer extends ClientResourceF
         super(clientResourceFile);
     }
 
-    private static ChildRegionStatusParamTable readChildRegionStatusParamTable(FileReader fileReader) {
-        long version = fileReader.readUnsignedInteger();
-        ChildRegionStatusParamTable childRegionStatusParamTable = new ChildRegionStatusParamTable(fileReader.readArray(ChildRegionStatusParamDeserializer::readChildRegionStatusParam));
+    private static ChildRegionStatusParamTable readChildRegionStatusParamTable(BufferReader bufferReader) {
+        long version = bufferReader.readUnsignedInteger();
+        ChildRegionStatusParamTable childRegionStatusParamTable = new ChildRegionStatusParamTable(bufferReader.readArray(ChildRegionStatusParamDeserializer::readChildRegionStatusParam));
         childRegionStatusParamTable.setFileHeader(new FileHeader(version, 4));
         return childRegionStatusParamTable;
     }
 
-    private static ChildRegionStatusParamList readChildRegionStatusParamList(FileReader fileReader) {
+    private static ChildRegionStatusParamList readChildRegionStatusParamList(BufferReader bufferReader) {
         return new ChildRegionStatusParamList(
-                readChildRegionStatusParamTable(fileReader),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
+                readChildRegionStatusParamTable(bufferReader),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger()
         );
     }
 
     @Override
-    protected ChildRegionStatusParamListTable parseClientResourceFile(FileReader fileReader) {
-        return new ChildRegionStatusParamListTable(fileReader.readArray(ChildRegionStatusParamListTableDeserializer::readChildRegionStatusParamList));
+    protected ChildRegionStatusParamListTable parseClientResourceFile(BufferReader bufferReader) {
+        return new ChildRegionStatusParamListTable(bufferReader.readArray(ChildRegionStatusParamListTableDeserializer::readChildRegionStatusParamList));
     }
 }

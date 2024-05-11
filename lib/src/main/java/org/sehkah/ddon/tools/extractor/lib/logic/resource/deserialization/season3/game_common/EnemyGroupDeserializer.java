@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.EnemyGroup;
@@ -11,16 +11,16 @@ public class EnemyGroupDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static EnemyGroup readEnemyGroup(FileReader fileReader) {
+    private static EnemyGroup readEnemyGroup(BufferReader bufferReader) {
         return new EnemyGroup(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(FileReader::readUnsignedInteger)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger)
         );
     }
 
     @Override
-    protected EnemyGroupList parseClientResourceFile(FileReader fileReader) {
-        return new EnemyGroupList(fileReader.readArray(EnemyGroupDeserializer::readEnemyGroup));
+    protected EnemyGroupList parseClientResourceFile(BufferReader bufferReader) {
+        return new EnemyGroupList(bufferReader.readArray(EnemyGroupDeserializer::readEnemyGroup));
     }
 }

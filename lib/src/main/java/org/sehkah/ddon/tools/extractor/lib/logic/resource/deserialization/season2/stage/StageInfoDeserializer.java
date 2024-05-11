@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.StageInfo;
@@ -11,66 +11,66 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static StageResourcePointer readStageResourcePointer(FileReader fileReader) {
-        String Type = fileReader.readNullTerminatedString();
-        return Type.isEmpty() ? null : new StageResourcePointer(Type, fileReader.readNullTerminatedString());
+    private static StageResourcePointer readStageResourcePointer(BufferReader bufferReader) {
+        String Type = bufferReader.readNullTerminatedString();
+        return Type.isEmpty() ? null : new StageResourcePointer(Type, bufferReader.readNullTerminatedString());
     }
 
-    private static StageInfo readStageStageInfo(FileReader fileReader) {
+    private static StageInfo readStageStageInfo(BufferReader bufferReader) {
         return new StageInfo(
-                fileReader.readSignedInteger(),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readFixedLengthArray(4, StageInfoDeserializer::readStageResourcePointer),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger(),
-                fileReader.readFixedLengthArray(3, StageInfoDeserializer::readStageResourcePointer),
-                readStageResourcePointer(fileReader),
-                fileReader.readFixedLengthArray(3, StageInfoDeserializer::readStageResourcePointer),
-                fileReader.readFixedLengthArray(4, FileReader::readFloat),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                readStageResourcePointer(fileReader),
-                fileReader.readBoolean(),
-                readStageResourcePointer(fileReader),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedShort(),
-                fileReader.readNullTerminatedString()
+                bufferReader.readSignedInteger(),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readFixedLengthArray(4, StageInfoDeserializer::readStageResourcePointer),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readFixedLengthArray(3, StageInfoDeserializer::readStageResourcePointer),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readFixedLengthArray(3, StageInfoDeserializer::readStageResourcePointer),
+                bufferReader.readFixedLengthArray(4, BufferReader::readFloat),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readBoolean(),
+                readStageResourcePointer(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readNullTerminatedString()
         );
     }
 
     @Override
-    protected StageInfo parseClientResourceFile(FileReader fileReader) {
-        return readStageStageInfo(fileReader);
+    protected StageInfo parseClientResourceFile(BufferReader bufferReader) {
+        return readStageStageInfo(bufferReader);
     }
 }

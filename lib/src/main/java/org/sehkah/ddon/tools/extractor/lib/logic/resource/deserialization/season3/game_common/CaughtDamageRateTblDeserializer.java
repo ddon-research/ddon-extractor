@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.CaughtDamageRate;
@@ -11,12 +11,12 @@ public class CaughtDamageRateTblDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static CaughtDamageRate readCaughtDamageRate(FileReader fileReader) {
-        return new CaughtDamageRate(fileReader.readFloat());
+    private static CaughtDamageRate readCaughtDamageRate(BufferReader bufferReader) {
+        return new CaughtDamageRate(bufferReader.readFloat());
     }
 
     @Override
-    protected CaughtDamageRateTbl parseClientResourceFile(FileReader fileReader) {
-        return new CaughtDamageRateTbl(fileReader.readArray(CaughtDamageRateTblDeserializer::readCaughtDamageRate));
+    protected CaughtDamageRateTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new CaughtDamageRateTbl(bufferReader.readArray(CaughtDamageRateTblDeserializer::readCaughtDamageRate));
     }
 }

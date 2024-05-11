@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.launcher;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.launcher.ArchiveListArray;
@@ -14,33 +14,33 @@ public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static ArchiveListNode readArchiveListNode(FileReader fileReader) {
+    private static ArchiveListNode readArchiveListNode(BufferReader bufferReader) {
         return new ArchiveListNode(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static ArchiveListTag readArchiveListTag(FileReader fileReader) {
-        int ArchPathPointer = (int) fileReader.readUnsignedInteger();
-        int currentOffset = fileReader.getPosition();
-        fileReader.setPosition(ArchPathPointer);
-        String ArcPath = fileReader.readNullTerminatedString();
-        fileReader.setPosition(currentOffset);
+    private static ArchiveListTag readArchiveListTag(BufferReader bufferReader) {
+        int ArchPathPointer = (int) bufferReader.readUnsignedInteger();
+        int currentOffset = bufferReader.getPosition();
+        bufferReader.setPosition(ArchPathPointer);
+        String ArcPath = bufferReader.readNullTerminatedString();
+        bufferReader.setPosition(currentOffset);
 
-        long TagId = fileReader.readUnsignedInteger();
-        long Group = fileReader.readUnsignedInteger();
-        long Type = fileReader.readUnsignedInteger();
+        long TagId = bufferReader.readUnsignedInteger();
+        long Group = bufferReader.readUnsignedInteger();
+        long Type = bufferReader.readUnsignedInteger();
 
-        int NodeNum = (int) fileReader.readUnsignedInteger();
-        int NodeArrayPointer = (int) fileReader.readUnsignedInteger();
-        currentOffset = fileReader.getPosition();
-        fileReader.setPosition(NodeArrayPointer);
-        List<ArchiveListNode> NodeArray = fileReader.readFixedLengthArray(NodeNum, ArchiveListArrayDeserializer::readArchiveListNode);
-        fileReader.setPosition(currentOffset);
+        int NodeNum = (int) bufferReader.readUnsignedInteger();
+        int NodeArrayPointer = (int) bufferReader.readUnsignedInteger();
+        currentOffset = bufferReader.getPosition();
+        bufferReader.setPosition(NodeArrayPointer);
+        List<ArchiveListNode> NodeArray = bufferReader.readFixedLengthArray(NodeNum, ArchiveListArrayDeserializer::readArchiveListNode);
+        bufferReader.setPosition(currentOffset);
 
         return new ArchiveListTag(
                 ArchPathPointer,
@@ -55,20 +55,20 @@ public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected ArchiveListArray parseClientResourceFile(FileReader fileReader) {
-        long MagicNo = fileReader.readUnsignedInteger();
-        long ConvHash = fileReader.readUnsignedInteger();
-        int TagNum = fileReader.readUnsignedShort();
-        int TargetTagNo = fileReader.readUnsignedShort();
+    protected ArchiveListArray parseClientResourceFile(BufferReader bufferReader) {
+        long MagicNo = bufferReader.readUnsignedInteger();
+        long ConvHash = bufferReader.readUnsignedInteger();
+        int TagNum = bufferReader.readUnsignedShort();
+        int TargetTagNo = bufferReader.readUnsignedShort();
         ArchiveListArray archiveListArray = new ArchiveListArray(
                 MagicNo,
                 ConvHash,
                 TagNum,
                 TargetTagNo,
-                fileReader.readFixedLengthArray(TagNum, ArchiveListArrayDeserializer::readArchiveListTag)
+                bufferReader.readFixedLengthArray(TagNum, ArchiveListArrayDeserializer::readArchiveListTag)
         );
         // FIXME: hacky workaround due to jumping around
-        fileReader.setPosition(fileReader.getLimit());
+        bufferReader.setPosition(bufferReader.getLimit());
         return archiveListArray;
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.BinaryHeaderDeserializer;
@@ -15,33 +15,33 @@ public class TexDetailEditDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static TexDetailEditParam readTexDetailEditParam(FileReader fileReader) {
+    private static TexDetailEditParam readTexDetailEditParam(BufferReader bufferReader) {
         return new TexDetailEditParam(
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static TexDetailEditBinaryBody readTexDetailEditBinaryBody(FileReader fileReader) {
-        long count1 = fileReader.readUnsignedInteger();
-        long bufferSize1 = fileReader.readUnsignedInteger();
-        long unknown1 = fileReader.readUnsignedInteger();
-        long unknown2 = fileReader.readUnsignedInteger();
-        long unknown3 = fileReader.readUnsignedInteger();
-        int index1 = fileReader.readUnsignedShort();
-        int index2 = fileReader.readUnsignedShort();
-        long bufferSize2 = fileReader.readUnsignedInteger();
-        long count2 = fileReader.readUnsignedInteger();
-        boolean autoDelete = fileReader.readBoolean();
-        long length = fileReader.readUnsignedInteger();
-        List<TexDetailEditParam> EditList = fileReader.readFixedLengthArray(length, TexDetailEditDeserializer::readTexDetailEditParam);
+    private static TexDetailEditBinaryBody readTexDetailEditBinaryBody(BufferReader bufferReader) {
+        long count1 = bufferReader.readUnsignedInteger();
+        long bufferSize1 = bufferReader.readUnsignedInteger();
+        long unknown1 = bufferReader.readUnsignedInteger();
+        long unknown2 = bufferReader.readUnsignedInteger();
+        long unknown3 = bufferReader.readUnsignedInteger();
+        int index1 = bufferReader.readUnsignedShort();
+        int index2 = bufferReader.readUnsignedShort();
+        long bufferSize2 = bufferReader.readUnsignedInteger();
+        long count2 = bufferReader.readUnsignedInteger();
+        boolean autoDelete = bufferReader.readBoolean();
+        long length = bufferReader.readUnsignedInteger();
+        List<TexDetailEditParam> EditList = bufferReader.readFixedLengthArray(length, TexDetailEditDeserializer::readTexDetailEditParam);
 
         return new TexDetailEditBinaryBody(
                 count1,
@@ -60,12 +60,12 @@ public class TexDetailEditDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected TexDetailEdit parseClientResourceFile(FileReader fileReader) {
+    protected TexDetailEdit parseClientResourceFile(BufferReader bufferReader) {
         // Account for hacky workaround to make a unique version by reading in both the deserializer and class version initially
-        fileReader.setPosition(fileReader.getPosition() - 2);
+        bufferReader.setPosition(bufferReader.getPosition() - 2);
         return new TexDetailEdit(
-                BinaryHeaderDeserializer.parseClientResourceFile(fileReader),
-                readTexDetailEditBinaryBody(fileReader)
+                BinaryHeaderDeserializer.parseClientResourceFile(bufferReader),
+                readTexDetailEditBinaryBody(bufferReader)
         );
     }
 }

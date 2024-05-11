@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.ShrinkBlowValue;
@@ -11,19 +11,19 @@ public class ShrinkBlowValueDeserializer extends ClientResourceFileDeserializer 
         super(clientResourceFile);
     }
 
-    private static ShrinkBlowValue readShrinkBlowValue(FileReader fileReader) {
+    private static ShrinkBlowValue readShrinkBlowValue(BufferReader bufferReader) {
         return new ShrinkBlowValue(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected ShrinkBlowValueList parseClientResourceFile(FileReader fileReader) {
-        return new ShrinkBlowValueList(fileReader.readArray(ShrinkBlowValueDeserializer::readShrinkBlowValue));
+    protected ShrinkBlowValueList parseClientResourceFile(BufferReader bufferReader) {
+        return new ShrinkBlowValueList(bufferReader.readArray(ShrinkBlowValueDeserializer::readShrinkBlowValue));
     }
 }

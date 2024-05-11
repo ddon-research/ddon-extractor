@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.AdjLimitParam;
@@ -11,55 +11,55 @@ public class AdjLimitParamTblDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static AdjLimitParam readAdjLimitParam(FileReader fileReader) {
+    private static AdjLimitParam readAdjLimitParam(BufferReader bufferReader) {
         return new AdjLimitParam(
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(7, FileReader::readFloat),
-                fileReader.readFixedLengthArray(7, FileReader::readFloat),
-                fileReader.readFixedLengthArray(7, FileReader::readFloat),
-                fileReader.readFixedLengthArray(7, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readFixedLengthArray(5, FileReader::readFloat),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(7, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(7, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(7, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(7, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readFixedLengthArray(5, BufferReader::readFloat),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected AdjLimitParamTbl parseClientResourceFile(FileReader fileReader) {
-        return new AdjLimitParamTbl(fileReader.readArray(AdjLimitParamTblDeserializer::readAdjLimitParam));
+    protected AdjLimitParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new AdjLimitParamTbl(bufferReader.readArray(AdjLimitParamTblDeserializer::readAdjLimitParam));
     }
 }

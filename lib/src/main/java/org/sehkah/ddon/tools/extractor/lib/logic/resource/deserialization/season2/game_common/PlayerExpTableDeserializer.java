@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.game_common.PlayerExpTable;
@@ -14,19 +14,19 @@ public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static PlayerExpTable readPlayerExpTable(FileReader fileReader, int level) {
+    private static PlayerExpTable readPlayerExpTable(BufferReader bufferReader, int level) {
         return new PlayerExpTable(level,
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected PlayerExpTableList parseClientResourceFile(FileReader fileReader) {
-        long length = fileReader.readUnsignedInteger();
+    protected PlayerExpTableList parseClientResourceFile(BufferReader bufferReader) {
+        long length = bufferReader.readUnsignedInteger();
         List<PlayerExpTable> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {
-            entities.add(readPlayerExpTable(fileReader, i));
+            entities.add(readPlayerExpTable(bufferReader, i));
         }
         return new PlayerExpTableList(entities);
     }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.craft_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.craft_common.CraftSkillCostData;
@@ -11,18 +11,18 @@ public class CraftSkillCostDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static CraftSkillCostData readCraftSkillCostData(FileReader fileReader) {
+    private static CraftSkillCostData readCraftSkillCostData(BufferReader bufferReader) {
         return new CraftSkillCostData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected CraftSkillCostList parseClientResourceFile(FileReader fileReader) {
-        return new CraftSkillCostList(fileReader.readArray(CraftSkillCostDeserializer::readCraftSkillCostData));
+    protected CraftSkillCostList parseClientResourceFile(BufferReader bufferReader) {
+        return new CraftSkillCostList(bufferReader.readArray(CraftSkillCostDeserializer::readCraftSkillCostData));
     }
 }

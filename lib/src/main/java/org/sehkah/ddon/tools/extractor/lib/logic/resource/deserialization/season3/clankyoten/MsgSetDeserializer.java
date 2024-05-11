@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.clankyoten;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.clankyoten.MsgData;
@@ -15,41 +15,41 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static MsgData readMsgData(FileReader fileReader) {
-        fileReader.readUnsignedByte();
+    private static MsgData readMsgData(BufferReader bufferReader) {
+        bufferReader.readUnsignedByte();
         return new MsgData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedByte()
         );
     }
 
-    private static MsgGroup readMsgGroup(FileReader fileReader) {
-        fileReader.readUnsignedByte();
+    private static MsgGroup readMsgGroup(BufferReader bufferReader) {
+        bufferReader.readUnsignedByte();
         return new MsgGroup(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readArray(MsgSetDeserializer::readMsgData)
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readArray(MsgSetDeserializer::readMsgData)
         );
     }
 
     @Override
-    protected MsgSet parseClientResourceFile(FileReader fileReader) {
-        long NativeMsgGroupArrayNum = fileReader.readUnsignedInteger();
-        long NativeMsgDataArrayNum = fileReader.readUnsignedInteger();
+    protected MsgSet parseClientResourceFile(BufferReader bufferReader) {
+        long NativeMsgGroupArrayNum = bufferReader.readUnsignedInteger();
+        long NativeMsgDataArrayNum = bufferReader.readUnsignedInteger();
 
         List<MsgGroup> NativeMsgGroupArray = new ArrayList<>((int) NativeMsgGroupArrayNum);
         for (int i = 0; i < NativeMsgGroupArrayNum; i++) {
-            NativeMsgGroupArray.add(readMsgGroup(fileReader));
+            NativeMsgGroupArray.add(readMsgGroup(bufferReader));
         }
 
         return new MsgSet(

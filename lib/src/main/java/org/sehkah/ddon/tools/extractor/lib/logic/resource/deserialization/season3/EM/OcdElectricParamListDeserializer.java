@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.OcdElectricParam;
@@ -11,14 +11,14 @@ public class OcdElectricParamListDeserializer extends ClientResourceFileDeserial
         super(clientResourceFile);
     }
 
-    private static OcdElectricParam readOcdElectricParam(FileReader fileReader) {
+    private static OcdElectricParam readOcdElectricParam(BufferReader bufferReader) {
         return new OcdElectricParam(
-                fileReader.readSignedInteger()
+                bufferReader.readSignedInteger()
         );
     }
 
     @Override
-    protected OcdElectricParamList parseClientResourceFile(FileReader fileReader) {
-        return new OcdElectricParamList(fileReader.readArray(OcdElectricParamListDeserializer::readOcdElectricParam));
+    protected OcdElectricParamList parseClientResourceFile(BufferReader bufferReader) {
+        return new OcdElectricParamList(bufferReader.readArray(OcdElectricParamListDeserializer::readOcdElectricParam));
     }
 }

@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.AIPawnAutoMotionNode;
@@ -11,23 +11,23 @@ public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static AIPawnAutoMotionNode readAIPawnAutoMotionNode(FileReader fileReader) {
+    private static AIPawnAutoMotionNode readAIPawnAutoMotionNode(BufferReader bufferReader) {
         return new AIPawnAutoMotionNode(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected AIPawnAutoMotionTbl parseClientResourceFile(FileReader fileReader) {
+    protected AIPawnAutoMotionTbl parseClientResourceFile(BufferReader bufferReader) {
         return new AIPawnAutoMotionTbl(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(AIPawnAutoMotionTblDeserializer::readAIPawnAutoMotionNode));
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(AIPawnAutoMotionTblDeserializer::readAIPawnAutoMotionNode));
     }
 }

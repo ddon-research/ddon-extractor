@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.PrologueHmStatus;
@@ -11,30 +11,30 @@ public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static PrologueHmStatus readPrologueHmStatus(FileReader fileReader) {
+    private static PrologueHmStatus readPrologueHmStatus(BufferReader bufferReader) {
         return new PrologueHmStatus(
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected PrologueHmStatusList parseClientResourceFile(FileReader fileReader) {
-        return new PrologueHmStatusList(fileReader.readArray(PrologueHmStatusDeserializer::readPrologueHmStatus));
+    protected PrologueHmStatusList parseClientResourceFile(BufferReader bufferReader) {
+        return new PrologueHmStatusList(bufferReader.readArray(PrologueHmStatusDeserializer::readPrologueHmStatus));
     }
 }

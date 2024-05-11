@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.scr;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.scr.MapSpotData;
@@ -11,18 +11,18 @@ public class MapSpotDataDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static MapSpotData readMapSpotData(FileReader fileReader) {
+    private static MapSpotData readMapSpotData(BufferReader bufferReader) {
         return new MapSpotData(
-                fileReader.readVector3f(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readBoolean()
+                bufferReader.readVector3f(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected MapSpotDataList parseClientResourceFile(FileReader fileReader) {
-        return new MapSpotDataList(fileReader.readArray(MapSpotDataDeserializer::readMapSpotData));
+    protected MapSpotDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new MapSpotDataList(bufferReader.readArray(MapSpotDataDeserializer::readMapSpotData));
     }
 }

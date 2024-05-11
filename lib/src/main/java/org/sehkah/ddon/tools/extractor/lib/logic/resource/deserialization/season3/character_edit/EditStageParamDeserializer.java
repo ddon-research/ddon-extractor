@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.character_edit;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.character_edit.EditStageParam;
@@ -13,47 +13,47 @@ public class EditStageParamDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static EditStageParamList readEditStageParamList(FileReader fileReader) {
+    private static EditStageParamList readEditStageParamList(BufferReader bufferReader) {
         return new EditStageParamList(
-                fileReader.readFixedLengthArray(8, FileReader::readSignedByte)
+                bufferReader.readFixedLengthArray(8, BufferReader::readSignedByte)
         );
     }
 
-    private static EditStageParamInfoWeatherData readEditStageParamInfoWeatherData(FileReader fileReader) {
+    private static EditStageParamInfoWeatherData readEditStageParamInfoWeatherData(BufferReader bufferReader) {
         return new EditStageParamInfoWeatherData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
-    private static EditStageParamInfo readEditStageParamInfo(FileReader fileReader) {
+    private static EditStageParamInfo readEditStageParamInfo(BufferReader bufferReader) {
         return new EditStageParamInfo(
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readNullTerminatedString(),
-                fileReader.readFixedLengthArray(2, EditStageParamDeserializer::readEditStageParamInfoWeatherData),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readUnsignedLong(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readNullTerminatedString(),
+                bufferReader.readFixedLengthArray(2, EditStageParamDeserializer::readEditStageParamInfoWeatherData),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readUnsignedLong(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected EditStageParam parseClientResourceFile(FileReader fileReader) {
+    protected EditStageParam parseClientResourceFile(BufferReader bufferReader) {
         return new EditStageParam(
-                fileReader.readArray(EditStageParamDeserializer::readEditStageParamInfo),
-                fileReader.readArray(EditStageParamDeserializer::readEditStageParamList)
+                bufferReader.readArray(EditStageParamDeserializer::readEditStageParamInfo),
+                bufferReader.readArray(EditStageParamDeserializer::readEditStageParamList)
         );
     }
 }

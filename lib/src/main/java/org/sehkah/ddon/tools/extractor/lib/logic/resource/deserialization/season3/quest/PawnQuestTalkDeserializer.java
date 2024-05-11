@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest.PawnQuestTalk;
@@ -12,17 +12,17 @@ public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static TalkData readTalkData(FileReader fileReader) {
+    private static TalkData readTalkData(BufferReader bufferReader) {
         return new TalkData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte(),
-                fileReader.readUnsignedByte()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedByte()
         );
     }
 
     @Override
-    protected PawnQuestTalk parseClientResourceFile(FileReader fileReader) {
-        return new PawnQuestTalk(fileReader.readArray(PawnQuestTalkDeserializer::readTalkData));
+    protected PawnQuestTalk parseClientResourceFile(BufferReader bufferReader) {
+        return new PawnQuestTalk(bufferReader.readArray(PawnQuestTalkDeserializer::readTalkData));
     }
 }

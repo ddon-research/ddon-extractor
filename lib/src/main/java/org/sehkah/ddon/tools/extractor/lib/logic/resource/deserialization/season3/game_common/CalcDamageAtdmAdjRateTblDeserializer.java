@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.CalcDamageAtdmAdjRate;
@@ -11,15 +11,15 @@ public class CalcDamageAtdmAdjRateTblDeserializer extends ClientResourceFileDese
         super(clientResourceFile);
     }
 
-    private static CalcDamageAtdmAdjRate readCalcDamageAtdmAdjRate(FileReader fileReader) {
+    private static CalcDamageAtdmAdjRate readCalcDamageAtdmAdjRate(BufferReader bufferReader) {
         return new CalcDamageAtdmAdjRate(
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected CalcDamageAtdmAdjRateTbl parseClientResourceFile(FileReader fileReader) {
-        return new CalcDamageAtdmAdjRateTbl(fileReader.readArray(CalcDamageAtdmAdjRateTblDeserializer::readCalcDamageAtdmAdjRate));
+    protected CalcDamageAtdmAdjRateTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new CalcDamageAtdmAdjRateTbl(bufferReader.readArray(CalcDamageAtdmAdjRateTblDeserializer::readCalcDamageAtdmAdjRate));
     }
 }

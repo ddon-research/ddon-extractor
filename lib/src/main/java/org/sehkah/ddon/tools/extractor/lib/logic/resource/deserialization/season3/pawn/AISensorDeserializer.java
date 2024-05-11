@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.pawn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.pawn.AISensor;
@@ -12,21 +12,21 @@ public class AISensorDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static AISensorNodeRes readAISensorNodeRes(FileReader fileReader) {
+    private static AISensorNodeRes readAISensorNodeRes(BufferReader bufferReader) {
         return new AISensorNodeRes(
-                fileReader.readSphere(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readArray(FileReader::readUnsignedInteger),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readSphere(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readArray(BufferReader::readUnsignedInteger),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected AISensor parseClientResourceFile(FileReader fileReader) {
-        return new AISensor(fileReader.readArray(AISensorDeserializer::readAISensorNodeRes));
+    protected AISensor parseClientResourceFile(BufferReader bufferReader) {
+        return new AISensor(bufferReader.readArray(AISensorDeserializer::readAISensorNodeRes));
     }
 }

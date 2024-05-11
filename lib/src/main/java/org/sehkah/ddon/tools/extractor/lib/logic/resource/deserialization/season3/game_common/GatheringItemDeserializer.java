@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GatheringItem;
@@ -11,15 +11,15 @@ public class GatheringItemDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static GatheringItem readGatheringItem(FileReader fileReader) {
+    private static GatheringItem readGatheringItem(BufferReader bufferReader) {
         return new GatheringItem(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 
     @Override
-    protected GatheringItemList parseClientResourceFile(FileReader fileReader) {
-        return new GatheringItemList(fileReader.readArray(GatheringItemDeserializer::readGatheringItem));
+    protected GatheringItemList parseClientResourceFile(BufferReader bufferReader) {
+        return new GatheringItemList(bufferReader.readArray(GatheringItemDeserializer::readGatheringItem));
     }
 }

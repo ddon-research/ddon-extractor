@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.gui_cmn.ReplaceWardGmd;
@@ -11,12 +11,12 @@ public class ReplaceWardGmdListDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static ReplaceWardGmd readReplaceWardGmd(FileReader fileReader) {
-        return new ReplaceWardGmd(fileReader.readUnsignedLong());
+    private static ReplaceWardGmd readReplaceWardGmd(BufferReader bufferReader) {
+        return new ReplaceWardGmd(bufferReader.readUnsignedLong());
     }
 
     @Override
-    protected ReplaceWardGmdList parseClientResourceFile(FileReader fileReader) {
-        return new ReplaceWardGmdList(fileReader.readArray(ReplaceWardGmdListDeserializer::readReplaceWardGmd));
+    protected ReplaceWardGmdList parseClientResourceFile(BufferReader bufferReader) {
+        return new ReplaceWardGmdList(bufferReader.readArray(ReplaceWardGmdListDeserializer::readReplaceWardGmd));
     }
 }

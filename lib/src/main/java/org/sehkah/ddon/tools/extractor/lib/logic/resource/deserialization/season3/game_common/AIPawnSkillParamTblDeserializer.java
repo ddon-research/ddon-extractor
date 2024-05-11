@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.AIPawnSkillParamNode;
@@ -11,26 +11,26 @@ public class AIPawnSkillParamTblDeserializer extends ClientResourceFileDeseriali
         super(clientResourceFile);
     }
 
-    private static AIPawnSkillParamNode readAIPawnSkillParamNode(FileReader fileReader) {
+    private static AIPawnSkillParamNode readAIPawnSkillParamNode(BufferReader bufferReader) {
         return new AIPawnSkillParamNode(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFixedLengthArray(16, FileReader::readUnsignedInteger),
-                fileReader.readArray(FileReader::readUnsignedInteger)
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFixedLengthArray(16, BufferReader::readUnsignedInteger),
+                bufferReader.readArray(BufferReader::readUnsignedInteger)
         );
     }
 
     @Override
-    protected AIPawnSkillParamTbl parseClientResourceFile(FileReader fileReader) {
+    protected AIPawnSkillParamTbl parseClientResourceFile(BufferReader bufferReader) {
         return new AIPawnSkillParamTbl(
-                fileReader.readUnsignedInteger(),
-                fileReader.readArray(AIPawnSkillParamTblDeserializer::readAIPawnSkillParamNode));
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readArray(AIPawnSkillParamTblDeserializer::readAIPawnSkillParamNode));
     }
 }

@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.seaso
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.AxisAlignedBoundingBox;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.StageCustomPartsFilter;
@@ -19,79 +19,79 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         super(clientResourceFile);
     }
 
-    private static StageCustomPartsExPattern readStageCustomPartsExPattern(FileReader fileReader) {
+    private static StageCustomPartsExPattern readStageCustomPartsExPattern(BufferReader bufferReader) {
         return new StageCustomPartsExPattern(
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger()
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger()
         );
     }
 
-    private static StageCustomPartsExInfiLight readStageCustomPartsExInfiLight(FileReader fileReader) {
+    private static StageCustomPartsExInfiLight readStageCustomPartsExInfiLight(BufferReader bufferReader) {
         return new StageCustomPartsExInfiLight(
-                fileReader.readVector3f(),
-                fileReader.readVector3f()
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f()
         );
     }
 
-    private static StageCustomPartsExHemiSphLight readStageCustomPartsExHemiSphLight(FileReader fileReader) {
+    private static StageCustomPartsExHemiSphLight readStageCustomPartsExHemiSphLight(BufferReader bufferReader) {
         return new StageCustomPartsExHemiSphLight(
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f(),
-                fileReader.readVector3f()
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f(),
+                bufferReader.readVector3f()
         );
     }
 
-    private static StageCustomPartsExColorFogDayNightColorFogParam readStageCustomPartsExColorFogDayNightColorFogParam(FileReader fileReader) {
+    private static StageCustomPartsExColorFogDayNightColorFogParam readStageCustomPartsExColorFogDayNightColorFogParam(BufferReader bufferReader) {
         return new StageCustomPartsExColorFogDayNightColorFogParam(
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat()
         );
     }
 
-    private static StageCustomPartsExColorFog readStageCustomPartsExColorFog(FileReader fileReader) {
+    private static StageCustomPartsExColorFog readStageCustomPartsExColorFog(BufferReader bufferReader) {
         return new StageCustomPartsExColorFog(
-                readStageCustomPartsExColorFogDayNightColorFogParam(fileReader),
-                readStageCustomPartsExColorFogDayNightColorFogParam(fileReader)
+                readStageCustomPartsExColorFogDayNightColorFogParam(bufferReader),
+                readStageCustomPartsExColorFogDayNightColorFogParam(bufferReader)
         );
     }
 
-    private static StageCustomPartsFilter readStageCustomPartsFilter(FileReader fileReader) {
+    private static StageCustomPartsFilter readStageCustomPartsFilter(BufferReader bufferReader) {
         return new StageCustomPartsFilter(
-                fileReader.readNullTerminatedString()
+                bufferReader.readNullTerminatedString()
         );
     }
 
-    private static ZoneShapeInfoBase readZoneShapeInfoBase(FileReader fileReader) {
+    private static ZoneShapeInfoBase readZoneShapeInfoBase(BufferReader bufferReader) {
         return new ZoneShapeInfoBase(
-                fileReader.readFloat()
+                bufferReader.readFloat()
         );
     }
 
-    private static ZoneShapeInfoOBB readZoneShapeInfoOBB(FileReader fileReader) {
+    private static ZoneShapeInfoOBB readZoneShapeInfoOBB(BufferReader bufferReader) {
         return new ZoneShapeInfoOBB(
-                readZoneShapeInfoBase(fileReader),
-                fileReader.readOrientedBoundingBox(),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readBoolean()
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readOrientedBoundingBox(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean()
         );
     }
 
-    private static ZoneShapeInfoAABB readZoneShapeInfoAABB(FileReader fileReader) {
-        ZoneShapeInfoBase ZoneShapeInfoBase = readZoneShapeInfoBase(fileReader);
-        AxisAlignedBoundingBox AABB = fileReader.readAxisAlignedBoundingBox();
-        float DecayY = fileReader.readFloat();
-        float DecayZ = fileReader.readFloat();
-        boolean IsEnableExtendedDecay = fileReader.readBoolean();
+    private static ZoneShapeInfoAABB readZoneShapeInfoAABB(BufferReader bufferReader) {
+        ZoneShapeInfoBase ZoneShapeInfoBase = readZoneShapeInfoBase(bufferReader);
+        AxisAlignedBoundingBox AABB = bufferReader.readAxisAlignedBoundingBox();
+        float DecayY = bufferReader.readFloat();
+        float DecayZ = bufferReader.readFloat();
+        boolean IsEnableExtendedDecay = bufferReader.readBoolean();
 
         return new ZoneShapeInfoAABB(
                 ZoneShapeInfoBase,
@@ -102,72 +102,72 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         );
     }
 
-    private static ZoneShapeInfoCone readZoneShapeInfoCone(FileReader fileReader) {
+    private static ZoneShapeInfoCone readZoneShapeInfoCone(BufferReader bufferReader) {
         return new ZoneShapeInfoCone(
-                readZoneShapeInfoBase(fileReader),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readVector3f(),
-                fileReader.readFloat()
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat()
         );
     }
 
-    private static ZoneShapeInfoCylinder readZoneShapeInfoCylinder(FileReader fileReader) {
+    private static ZoneShapeInfoCylinder readZoneShapeInfoCylinder(BufferReader bufferReader) {
         return new ZoneShapeInfoCylinder(
-                readZoneShapeInfoBase(fileReader),
-                fileReader.readCylinder()
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readCylinder()
         );
     }
 
-    private static ZoneShapeInfoSphere readZoneShapeInfoSphere(FileReader fileReader) {
+    private static ZoneShapeInfoSphere readZoneShapeInfoSphere(BufferReader bufferReader) {
         return new ZoneShapeInfoSphere(
-                readZoneShapeInfoBase(fileReader),
-                fileReader.readSphere()
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readSphere()
         );
     }
 
-    private static ZoneShapeInfoArea readZoneShapeInfoArea(FileReader fileReader) {
+    private static ZoneShapeInfoArea readZoneShapeInfoArea(BufferReader bufferReader) {
         return new ZoneShapeInfoArea(
-                readZoneShapeInfoBase(fileReader),
-                fileReader.readFloat(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readFixedLengthArray(4, FileReader::readVector3f),
-                fileReader.readVector3f()
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readFixedLengthArray(4, BufferReader::readVector3f),
+                bufferReader.readVector3f()
         );
     }
 
-    private static AreaHitShape readAreaHitShape(FileReader fileReader) {
-        String Name = fileReader.readJapaneseNullTerminatedString();
-        float CheckAngle = fileReader.readFloat();
-        float CheckRange = fileReader.readFloat();
-        float CheckToward = fileReader.readFloat();
-        boolean AngleFlag = fileReader.readBoolean();
-        boolean TowardFlag = fileReader.readBoolean();
-        int ShapeType = fileReader.readUnsignedByte();
+    private static AreaHitShape readAreaHitShape(BufferReader bufferReader) {
+        String Name = bufferReader.readJapaneseNullTerminatedString();
+        float CheckAngle = bufferReader.readFloat();
+        float CheckRange = bufferReader.readFloat();
+        float CheckToward = bufferReader.readFloat();
+        boolean AngleFlag = bufferReader.readBoolean();
+        boolean TowardFlag = bufferReader.readBoolean();
+        int ShapeType = bufferReader.readUnsignedByte();
 
         ZoneShapeInfoBase Zone;
         switch (ShapeType) {
             case 0 -> Zone = null;
-            case 1 -> Zone = readZoneShapeInfoArea(fileReader);
-            case 2 -> Zone = readZoneShapeInfoSphere(fileReader);
-            case 3 -> Zone = readZoneShapeInfoCylinder(fileReader);
-            case 6 -> Zone = readZoneShapeInfoCone(fileReader);
-            case 8 -> Zone = readZoneShapeInfoAABB(fileReader);
-            case 9 -> Zone = readZoneShapeInfoOBB(fileReader);
-            default -> Zone = readZoneShapeInfoBase(fileReader);
+            case 1 -> Zone = readZoneShapeInfoArea(bufferReader);
+            case 2 -> Zone = readZoneShapeInfoSphere(bufferReader);
+            case 3 -> Zone = readZoneShapeInfoCylinder(bufferReader);
+            case 6 -> Zone = readZoneShapeInfoCone(bufferReader);
+            case 8 -> Zone = readZoneShapeInfoAABB(bufferReader);
+            case 9 -> Zone = readZoneShapeInfoOBB(bufferReader);
+            default -> Zone = readZoneShapeInfoBase(bufferReader);
         }
 
         AxisAlignedBoundingBox ZoneBoundingBox;
         if (ShapeType == 8) {
             // FIXME: No idea what is expected in this case, but this at least fixes parsing.
             ZoneBoundingBox = new AxisAlignedBoundingBox(
-                    fileReader.readVector3f(),
+                    bufferReader.readVector3f(),
                     new Vector3f(0, 0, 0)
             );
         } else {
-            ZoneBoundingBox = fileReader.readAxisAlignedBoundingBox();
+            ZoneBoundingBox = bufferReader.readAxisAlignedBoundingBox();
         }
 
         return new AreaHitShape(Name,
@@ -182,52 +182,52 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         );
     }
 
-    private static StageCustomPartsExAreaParam readStageCustomPartsExAreaParam(FileReader fileReader) {
+    private static StageCustomPartsExAreaParam readStageCustomPartsExAreaParam(BufferReader bufferReader) {
         return new StageCustomPartsExAreaParam(
-                fileReader.readBoolean(),
-                fileReader.readSignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readArray(StageCustomPartsExDeserializer::readAreaHitShape)
+                bufferReader.readBoolean(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readArray(StageCustomPartsExDeserializer::readAreaHitShape)
         );
     }
 
-    private static StageCustomPartsExInfoEx readStageCustomPartsExInfoEx(FileReader fileReader) {
-        String Model = fileReader.readNullTerminatedString();
-        String ScrSbc1 = fileReader.readNullTerminatedString();
-        String EffSbc1 = fileReader.readNullTerminatedString();
-        String ScrSbc2 = fileReader.readNullTerminatedString();
-        String EffSbc2 = fileReader.readNullTerminatedString();
-        String ScrSbc3 = fileReader.readNullTerminatedString();
-        String EffSbc3 = fileReader.readNullTerminatedString();
-        String Light = fileReader.readNullTerminatedString();
-        String NaviMesh = fileReader.readNullTerminatedString();
-        String Epv = fileReader.readNullTerminatedString();
-        String Occluder = fileReader.readNullTerminatedString();
+    private static StageCustomPartsExInfoEx readStageCustomPartsExInfoEx(BufferReader bufferReader) {
+        String Model = bufferReader.readNullTerminatedString();
+        String ScrSbc1 = bufferReader.readNullTerminatedString();
+        String EffSbc1 = bufferReader.readNullTerminatedString();
+        String ScrSbc2 = bufferReader.readNullTerminatedString();
+        String EffSbc2 = bufferReader.readNullTerminatedString();
+        String ScrSbc3 = bufferReader.readNullTerminatedString();
+        String EffSbc3 = bufferReader.readNullTerminatedString();
+        String Light = bufferReader.readNullTerminatedString();
+        String NaviMesh = bufferReader.readNullTerminatedString();
+        String Epv = bufferReader.readNullTerminatedString();
+        String Occluder = bufferReader.readNullTerminatedString();
 
-        int AreaNo = fileReader.readUnsignedShort();
-        int Type = fileReader.readUnsignedShort();
-        long Size = fileReader.readUnsignedInteger();
-        float OffsetZ = fileReader.readFloat();
-        int EpvIndexAlways = fileReader.readSignedInteger();
-        int EpvIndexDay = fileReader.readSignedInteger();
-        int EpvIndexNight = fileReader.readSignedInteger();
-        Color Color = fileReader.readColor();
+        int AreaNo = bufferReader.readUnsignedShort();
+        int Type = bufferReader.readUnsignedShort();
+        long Size = bufferReader.readUnsignedInteger();
+        float OffsetZ = bufferReader.readFloat();
+        int EpvIndexAlways = bufferReader.readSignedInteger();
+        int EpvIndexDay = bufferReader.readSignedInteger();
+        int EpvIndexNight = bufferReader.readSignedInteger();
+        Color Color = bufferReader.readColor();
 
-        BigInteger EfcColorZone = fileReader.readUnsignedLong();
-        BigInteger EfcCtrlZone = fileReader.readUnsignedLong();
-        BigInteger IndoorZoneScr = fileReader.readUnsignedLong();
-        BigInteger IndoorZoneEfc = fileReader.readUnsignedLong();
-        BigInteger LightAndFogZone = fileReader.readUnsignedLong();
-        BigInteger SoundAreaInfo = fileReader.readUnsignedLong();
-        List<BigInteger> ZoneUnitCtrl = fileReader.readFixedLengthArray(3, FileReader::readUnsignedLong);
-        BigInteger ZoneStatus = fileReader.readUnsignedLong();
+        BigInteger EfcColorZone = bufferReader.readUnsignedLong();
+        BigInteger EfcCtrlZone = bufferReader.readUnsignedLong();
+        BigInteger IndoorZoneScr = bufferReader.readUnsignedLong();
+        BigInteger IndoorZoneEfc = bufferReader.readUnsignedLong();
+        BigInteger LightAndFogZone = bufferReader.readUnsignedLong();
+        BigInteger SoundAreaInfo = bufferReader.readUnsignedLong();
+        List<BigInteger> ZoneUnitCtrl = bufferReader.readFixedLengthArray(3, BufferReader::readUnsignedLong);
+        BigInteger ZoneStatus = bufferReader.readUnsignedLong();
 
-        String Comment = fileReader.readJapaneseNullTerminatedString();
+        String Comment = bufferReader.readJapaneseNullTerminatedString();
 
-        long AddVersion = fileReader.readUnsignedInteger();
+        long AddVersion = bufferReader.readUnsignedInteger();
         List<StageCustomPartsExAreaParam> AreaParamList = new ArrayList<>();
         for (long i = 0; i < AddVersion; i++) {
-            StageCustomPartsExAreaParam stageCustomPartsExAreaParam = readStageCustomPartsExAreaParam(fileReader);
+            StageCustomPartsExAreaParam stageCustomPartsExAreaParam = readStageCustomPartsExAreaParam(bufferReader);
             AreaParamList.add(stageCustomPartsExAreaParam);
         }
 
@@ -238,28 +238,28 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         return stageCustomPartsExInfoEx;
     }
 
-    private static StageCustomPartsParam readStageCustomPartsParam(FileReader fileReader) {
+    private static StageCustomPartsParam readStageCustomPartsParam(BufferReader bufferReader) {
         return new StageCustomPartsParam(
-                fileReader.readFloat(),
-                fileReader.readFloat()
+                bufferReader.readFloat(),
+                bufferReader.readFloat()
         );
     }
 
     @Override
-    protected StageCustomPartsEx parseClientResourceFile(FileReader fileReader) {
-        StageCustomPartsParam Param = readStageCustomPartsParam(fileReader);
+    protected StageCustomPartsEx parseClientResourceFile(BufferReader bufferReader) {
+        StageCustomPartsParam Param = readStageCustomPartsParam(bufferReader);
 
         List<StageCustomPartsExInfoEx> ArrayInfo = new ArrayList<>();
-        long num = fileReader.readUnsignedInteger();
+        long num = bufferReader.readUnsignedInteger();
         for (long i = 0; i < num; i++) {
-            StageCustomPartsExInfoEx stageCustomPartsExInfoEx = readStageCustomPartsExInfoEx(fileReader);
+            StageCustomPartsExInfoEx stageCustomPartsExInfoEx = readStageCustomPartsExInfoEx(bufferReader);
             ArrayInfo.add(stageCustomPartsExInfoEx);
         }
-        List<StageCustomPartsFilter> ArrayFilter = fileReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsFilter);
-        List<StageCustomPartsExColorFog> ArrayColorFog = fileReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExColorFog);
-        List<StageCustomPartsExHemiSphLight> ArrayHemiSphLight = fileReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExHemiSphLight);
-        List<StageCustomPartsExInfiLight> ArrayInfiLight = fileReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExInfiLight);
-        List<StageCustomPartsExPattern> ArrayPattern = fileReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExPattern);
+        List<StageCustomPartsFilter> ArrayFilter = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsFilter);
+        List<StageCustomPartsExColorFog> ArrayColorFog = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExColorFog);
+        List<StageCustomPartsExHemiSphLight> ArrayHemiSphLight = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExHemiSphLight);
+        List<StageCustomPartsExInfiLight> ArrayInfiLight = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExInfiLight);
+        List<StageCustomPartsExPattern> ArrayPattern = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsExPattern);
 
         StageCustomPartsEx stageCustomPartsEx = new StageCustomPartsEx(
                 Param,

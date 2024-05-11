@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.ui.history;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.ui.history.QuestHistoryData;
@@ -11,16 +11,16 @@ public class QuestHistoryDataDeserializer extends ClientResourceFileDeserializer
         super(clientResourceFile);
     }
 
-    private static QuestHistoryData readQuestHistoryData(FileReader fileReader) {
+    private static QuestHistoryData readQuestHistoryData(BufferReader bufferReader) {
         return new QuestHistoryData(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedShort(),
-                fileReader.readUnsignedShort()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedShort()
         );
     }
 
     @Override
-    protected QuestHistoryDataList parseClientResourceFile(FileReader fileReader) {
-        return new QuestHistoryDataList(fileReader.readArray(QuestHistoryDataDeserializer::readQuestHistoryData));
+    protected QuestHistoryDataList parseClientResourceFile(BufferReader bufferReader) {
+        return new QuestHistoryDataList(bufferReader.readArray(QuestHistoryDataDeserializer::readQuestHistoryData));
     }
 }

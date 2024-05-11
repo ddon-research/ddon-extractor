@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.EmSound;
@@ -11,21 +11,21 @@ public class EmSoundTableDeserializer extends ClientResourceFileDeserializer {
         super(clientResourceFile);
     }
 
-    private static EmSound readEmSoundData(FileReader fileReader) {
+    private static EmSound readEmSoundData(BufferReader bufferReader) {
         return new EmSound(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readSignedInteger(),
-                fileReader.readVector3f(),
-                fileReader.readBoolean()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedInteger(),
+                bufferReader.readVector3f(),
+                bufferReader.readBoolean()
         );
     }
 
     @Override
-    protected EmSoundTable parseClientResourceFile(FileReader fileReader) {
-        return new EmSoundTable(fileReader.readArray(EmSoundTableDeserializer::readEmSoundData));
+    protected EmSoundTable parseClientResourceFile(BufferReader bufferReader) {
+        return new EmSoundTable(bufferReader.readArray(EmSoundTableDeserializer::readEmSoundData));
     }
 }

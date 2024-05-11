@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GUIMessage;
@@ -17,14 +17,14 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected GUIMessage parseClientResourceFile(FileReader fileReader) {
-        long languageId = fileReader.readUnsignedInteger();
-        BigInteger updateTime = fileReader.readUnsignedLong();
-        long indexNum = fileReader.readUnsignedInteger();
-        long messageNum = fileReader.readUnsignedInteger();
-        long indexNameBufferSize = fileReader.readUnsignedInteger();
-        long bufferSize = fileReader.readUnsignedInteger();
-        String packageName = fileReader.readMtString();
+    protected GUIMessage parseClientResourceFile(BufferReader bufferReader) {
+        long languageId = bufferReader.readUnsignedInteger();
+        BigInteger updateTime = bufferReader.readUnsignedLong();
+        long indexNum = bufferReader.readUnsignedInteger();
+        long messageNum = bufferReader.readUnsignedInteger();
+        long indexNameBufferSize = bufferReader.readUnsignedInteger();
+        long bufferSize = bufferReader.readUnsignedInteger();
+        String packageName = bufferReader.readMtString();
 
         long maxEntries = Math.max(indexNum, messageNum);
         List<GUIMessageIndex> indices = new ArrayList<>((int) maxEntries);
@@ -36,25 +36,25 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
         if (indexNum > 0) {
             for (int i = 0; i < indexNum; i++) {
                 GUIMessageIndex index = indices.get(i);
-                index.Index = fileReader.readUnsignedInteger();
-                index.KeyCrcHashDouble = fileReader.readUnsignedInteger();
-                index.KeyCrcHashTriple = fileReader.readUnsignedInteger();
-                index.KeyOffset = fileReader.readUnsignedInteger();
-                index.LinkOffset = fileReader.readUnsignedInteger();
+                index.Index = bufferReader.readUnsignedInteger();
+                index.KeyCrcHashDouble = bufferReader.readUnsignedInteger();
+                index.KeyCrcHashTriple = bufferReader.readUnsignedInteger();
+                index.KeyOffset = bufferReader.readUnsignedInteger();
+                index.LinkOffset = bufferReader.readUnsignedInteger();
             }
 
             for (int i = 0; i < hashTable.length; i++) {
-                hashTable[i] = fileReader.readUnsignedInteger();
+                hashTable[i] = bufferReader.readUnsignedInteger();
             }
 
             for (int i = 0; i < indexNum; i++) {
-                indices.get(i).Key = fileReader.readNullTerminatedString();
+                indices.get(i).Key = bufferReader.readNullTerminatedString();
             }
         }
 
         for (int i = 0; i < messageNum; i++) {
             GUIMessageIndex index = indices.get(i);
-            index.Message = fileReader.readNullTerminatedString(StandardCharsets.UTF_8);
+            index.Message = bufferReader.readNullTerminatedString(StandardCharsets.UTF_8);
             index.MessageIndex = i;
         }
 

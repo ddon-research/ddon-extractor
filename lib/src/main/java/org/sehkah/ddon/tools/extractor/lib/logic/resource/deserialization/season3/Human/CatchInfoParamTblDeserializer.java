@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.Human;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.Human.CatchInfoParam;
@@ -12,23 +12,23 @@ public class CatchInfoParamTblDeserializer extends ClientResourceFileDeserialize
         super(clientResourceFile);
     }
 
-    private static CatchInfoParam readCatchInfoParam(FileReader fileReader) {
+    private static CatchInfoParam readCatchInfoParam(BufferReader bufferReader) {
         return new CatchInfoParam(
-                fileReader.readUnsignedInteger(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readBoolean(),
-                fileReader.readFloat(),
-                fileReader.readUnsignedInteger(),
-                fileReader.readFloat(),
-                fileReader.readSignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readFloat(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFloat(),
+                bufferReader.readSignedInteger()
         );
     }
 
     @Override
-    protected CatchInfoParamTbl parseClientResourceFile(FileReader fileReader) {
-        return new CatchInfoParamTbl(fileReader.readArray(CatchInfoParamTblDeserializer::readCatchInfoParam));
+    protected CatchInfoParamTbl parseClientResourceFile(BufferReader bufferReader) {
+        return new CatchInfoParamTbl(bufferReader.readArray(CatchInfoParamTblDeserializer::readCatchInfoParam));
     }
 }
