@@ -65,7 +65,7 @@ public class PacketHeaderDeserializer {
         return true;
     }
 
-    public static PacketHeader parseOptimistic(FileReader fileReader) {
+    public static PacketHeader parseQuick(FileReader fileReader) {
         int position = fileReader.getPosition();
 
         int group = fileReader.readUnsignedByte();
@@ -76,7 +76,7 @@ public class PacketHeaderDeserializer {
 
         fileReader.setPosition(position);
 
-        PacketHeader packetHeader = PacketHeader.of(group, id, subId, source);
+        PacketHeader packetHeader = new PacketHeader(group, id, subId, source);
         packetHeader.setCount(count);
 
         return packetHeader;
@@ -104,7 +104,8 @@ public class PacketHeaderDeserializer {
         }
 
         long count = fileReader.readUnsignedInteger();
-        PacketHeader packetHeader = PacketHeader.of(group, id, subId, source);
+        PacketHeader packetHeader = new PacketHeader(group, id, subId, source);
+        packetHeader.setIdentifier(expectedPacketHeader.getIdentifier());
         packetHeader.setCount(count);
 
         log.debug("Parsed packet header: '{}'", packetHeader);

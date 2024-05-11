@@ -1,6 +1,5 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +12,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.meta.Platform
 @EqualsAndHashCode(callSuper = true)
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonPropertyOrder(alphabetic = true)
 public class C2LLoginReq extends Packet {
     public final String oneTimeToken;
     public final int platform;

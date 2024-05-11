@@ -5,27 +5,28 @@ import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.PacketHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.packet.serialization.PacketSerializer;
 
 import java.lang.reflect.InvocationTargetException;
 
 @Data
-public class GamePacketFile {
+public class GamePacket {
     private PacketHeader packetHeader;
     private PacketDeserializer<Packet> deserializer;
+    private PacketSerializer<Packet> serializer;
 
-    public GamePacketFile(PacketHeader packetHeader) {
-        this(packetHeader, null, null);
-    }
-
-    public GamePacketFile(PacketHeader packetHeader, Class<?> deserializerClass) {
+    public GamePacket(PacketHeader packetHeader, Class<?> deserializerClass) {
         this(packetHeader, deserializerClass, null);
     }
 
-    public GamePacketFile(PacketHeader packetHeader, Class<?> deserializerClass, Class<?> serializerClass) {
+    public GamePacket(PacketHeader packetHeader, Class<?> deserializerClass, Class<?> serializerClass) {
         try {
             this.packetHeader = packetHeader;
             if (deserializerClass != null) {
-                this.deserializer = (PacketDeserializer<Packet>) deserializerClass.getConstructor(GamePacketFile.class).newInstance(this);
+                this.deserializer = (PacketDeserializer<Packet>) deserializerClass.getConstructor(GamePacket.class).newInstance(this);
+            }
+            if (serializerClass != null) {
+                this.serializer = (PacketSerializer<Packet>) serializerClass.getConstructor(GamePacket.class).newInstance(this);
             }
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                  NoSuchMethodException e) {

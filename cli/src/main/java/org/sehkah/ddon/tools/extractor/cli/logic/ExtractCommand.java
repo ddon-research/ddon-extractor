@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExte
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import picocli.CommandLine;
 
 import java.io.IOException;

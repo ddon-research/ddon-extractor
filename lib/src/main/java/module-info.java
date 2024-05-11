@@ -18,13 +18,17 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.common.packet;
     exports org.sehkah.ddon.tools.extractor.lib.common.error;
     exports org.sehkah.ddon.tools.extractor.lib.common.io;
+    exports org.sehkah.ddon.tools.extractor.lib.common.serialization;
+
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet;
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization;
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.c2l;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.l2c;
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.meta;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2s;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource;
 
@@ -97,6 +101,4 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.ui.uGUISkill;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.wep_res_table.meta;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.wep_res_table;
-    exports org.sehkah.ddon.tools.extractor.lib.common.serialization;
-    exports org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.l2c;
 }

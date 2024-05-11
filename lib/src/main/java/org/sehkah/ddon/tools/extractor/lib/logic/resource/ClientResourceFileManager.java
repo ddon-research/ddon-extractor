@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.EncryptedArchiveDeserializer;
@@ -63,7 +64,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.wep_res_table.WepCateResTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientStringSerializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.season3.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.season3.game_common.GUIMessageSerializer;
 

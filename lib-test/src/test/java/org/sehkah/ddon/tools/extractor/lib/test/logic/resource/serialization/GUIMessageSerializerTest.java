@@ -4,11 +4,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.GenericStringSerializer;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.GenericStringSerializer;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

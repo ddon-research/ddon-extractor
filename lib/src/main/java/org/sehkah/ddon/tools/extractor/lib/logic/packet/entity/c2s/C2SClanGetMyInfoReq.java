@@ -1,17 +1,16 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.l2c;
+package org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2s;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class L2CLoginRes extends Packet {
-    private final long Error;
-    private final long Result;
-    private final String OnetimeToken;
+public class C2SClanGetMyInfoReq extends Packet {
+    public C2SClanGetMyInfoReq() {
+    }
 }

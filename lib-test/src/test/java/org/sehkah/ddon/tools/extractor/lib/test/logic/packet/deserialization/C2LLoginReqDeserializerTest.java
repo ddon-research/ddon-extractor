@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryFileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.FileReader;
 import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.C2LLoginReq;
@@ -12,6 +14,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.meta.Platform
 import java.nio.ByteOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class C2LLoginReqDeserializerTest {
     @Test
@@ -29,11 +32,14 @@ class C2LLoginReqDeserializerTest {
                 0x01
         }, ByteOrder.BIG_ENDIAN);
 
-        PacketManager packetManager = PacketManager.get();
+        PacketManager packetManager = PacketManager.get(SerializationFormat.json, true);
         PacketDeserializer<Packet> deserializer = packetManager.getDeserializer(input);
         C2LLoginReq deserialized = (C2LLoginReq) deserializer.deserialize(input);
+        Serializer<Packet> stringSerializer = packetManager.getStringSerializer();
+        String serialized = stringSerializer.serialize(deserialized);
 
         assertEquals("bd0ax76btfcwwcwo00gg", deserialized.getOneTimeToken());
         assertEquals(PlatformType.PLATFORM_TYPE_PC, deserialized.getPlatformTypeName());
+        assertTrue(serialized.contains("PLATFORM_TYPE_PC"));
     }
 }
