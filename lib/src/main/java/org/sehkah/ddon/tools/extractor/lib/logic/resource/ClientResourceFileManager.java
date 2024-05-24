@@ -248,6 +248,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rStatusGainTable, new FileHeader(257, 4), StatusGainTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTbl2ChatMacro, new FileHeader(256, 4), Tbl2ChatMacroDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTexDetailEdit, new FileHeader("XFS\0", 393231, 4), TexDetailEditDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStartPos, new FileHeader("XFS\0", 196623, 4), StartPosDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), TutorialDialogMessageDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialList, new FileHeader("TLT\0", 6, 4), TutorialListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rTutorialQuestGroup, new FileHeader("TQG\0", 1, 2), TutorialQuestGroupDeserializer.class));
@@ -292,6 +293,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(9, 4), WeaponResTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rOcdImmuneParamRes, new FileHeader(23, 4), OcdImmuneParamResTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rJumpParamTbl, new FileHeader(3, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.job.JumpParamTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStartPos, new FileHeader("XFS\0", 131087, 4), StartPosDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {

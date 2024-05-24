@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary
 
 import lombok.RequiredArgsConstructor;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.meta.PropertyType;
 
 @RequiredArgsConstructor
 public class PropertyHeader {
@@ -12,6 +13,8 @@ public class PropertyHeader {
     public long propertyParam;
     @MetaInformation
     public int propertyParamType;
+    @MetaInformation
+    public PropertyType propertyParamTypeName;
     @MetaInformation
     public int propertyParamAttr;
     @MetaInformation

@@ -14,6 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class TexDetailEdit extends TopLevelClientResource {
-    private final List<TexDetailEditParam> EditList;
+public final class StartPos extends TopLevelClientResource {
+    private final List<StartPosInfo> InfoList;
 }

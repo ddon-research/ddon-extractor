@@ -27,7 +27,7 @@ public class StageListDeserializer extends ClientResourceFileDeserializer {
     @Override
     protected StageListInfoList parseClientResourceFile(BufferReader bufferReader) {
         long stageListInfoSize = bufferReader.readUnsignedInteger();
-        List<StageListInfo> stageListInfo = new ArrayList<>((int)stageListInfoSize);
+        List<StageListInfo> stageListInfo = new ArrayList<>((int) stageListInfoSize);
         for (long i = 0; i < stageListInfoSize; i++) {
             stageListInfo.add(readStageListInfo(bufferReader));
         }

@@ -79,6 +79,7 @@ public final class GUIMessage extends TopLevelClientResource {
         Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.MessageIndex == index).findFirst();
         return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Message).orElse(null);
     }
+
     public String getMessageKeyByIndexNaive(long index) {
         Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.MessageIndex == index).findFirst();
         return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Key).orElse(null);

@@ -1,34 +1,33 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary;
 
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.TexDetailEditParam;
 
 import java.util.List;
 
-public record TexDetailEditBinaryBody(
+public record BinaryBody<T>(
         @MetaInformation
         long index,
         @MetaInformation
         long bufferSizeForBody,
         @MetaInformation
-        long unknown1,
+        long propertyCount1, // cResource -> mQuality
         @MetaInformation
-        long unknown2,
+        long quality,
         @MetaInformation
-        long unknown3,
+        long propertyCount2, // rTexDetailEdit -> mEditList
         @MetaInformation
         int index1,
         @MetaInformation
-        int index2,
+        int propertyIndex,
         @MetaInformation
         long bufferSize2,
         @MetaInformation
-        long count2,
+        long propertyCount3, // MtArray -> mAutoDelete
         @MetaInformation
-        boolean autoDelete, // MtArray
+        boolean autoDelete,
         @MetaInformation
-        long length, // MtArray
-        List<TexDetailEditParam> EditList
+        long length,
+        List<T> Data
 ) {
 
 }

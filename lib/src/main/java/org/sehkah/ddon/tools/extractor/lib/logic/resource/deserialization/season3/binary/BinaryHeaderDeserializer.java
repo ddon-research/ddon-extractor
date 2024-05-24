@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.ClassData;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.ClassHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.PropertyHeader;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.meta.PropertyType;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public class BinaryHeaderDeserializer {
         propertyHeader.propertyParam = bufferReader.readUnsignedInteger();
 
         propertyHeader.propertyParamType = BitUtil.extractInt(propertyHeader.propertyParam, 0, 8);
+        propertyHeader.propertyParamTypeName = PropertyType.of(propertyHeader.propertyParamType);
+
         propertyHeader.propertyParamAttr = BitUtil.extractInt(propertyHeader.propertyParam, 8, 16);
         propertyHeader.propertyParamBytes = BitUtil.extractInt(propertyHeader.propertyParam, 16, 31);
         propertyHeader.propertyParamDisable = BitUtil.extractInt(propertyHeader.propertyParam, 31, 32);

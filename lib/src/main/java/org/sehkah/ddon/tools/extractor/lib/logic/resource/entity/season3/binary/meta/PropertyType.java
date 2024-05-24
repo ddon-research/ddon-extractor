@@ -78,7 +78,7 @@ public enum PropertyType {
     TYPE_SIZEF(0x48),
     TYPE_RECTF(0x49),
     TYPE_EVENT64(0x4A),
-    TYPE_END(0x4B),
+    TYPE_ENUM_RESOURCE_QUALITY(0x106),
     TYPE_CUSTOM(0x80);
 
     public final long value;

@@ -144,6 +144,7 @@ public enum ClientResourceFileExtension {
     rStageToSpot,
     rStaminaDecTbl,
     rStartPosArea,
+    rStartPos,
     rStatusCheck,
     rStatusGainTable,
     rTbl2ChatMacro,
@@ -312,6 +313,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
         fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
+        fileExtensionToResourceMap.put(".stp", rStartPos);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
         fileExtensionToResourceMap.put(".tlt", rTutorialList);
         fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);
