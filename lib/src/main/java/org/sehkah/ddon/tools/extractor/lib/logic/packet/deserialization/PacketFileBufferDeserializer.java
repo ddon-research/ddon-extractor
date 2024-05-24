@@ -25,7 +25,7 @@ public abstract class PacketFileBufferDeserializer implements PacketBufferDeseri
         packet.setHeader(packetHeader);
         packet.setSize(bufferReader.getLimit());
         packet.setDataSize(bufferReader.getPosition());
-        if (bufferReader.hasRemaining() && bufferReader.getRemainingCount() < 16) {
+        if (bufferReader.getRemainingCount() < 16) {
             log.debug("Assuming {} bytes of padding, skipping reading.", bufferReader.getRemainingCount());
             bufferReader.setPosition(bufferReader.getLimit());
         } else {
