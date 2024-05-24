@@ -75,7 +75,7 @@ public class BinaryHeaderDeserializer {
         );
     }
 
-    public static BinaryHeader parseClientResourceFile(BufferReader bufferReader) {
+    public static BinaryHeader parseHeader(BufferReader bufferReader) {
         return new BinaryHeader(
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedInteger(),

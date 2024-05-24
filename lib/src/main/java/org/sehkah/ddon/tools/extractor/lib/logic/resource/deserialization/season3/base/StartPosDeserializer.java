@@ -53,11 +53,11 @@ public class StartPosDeserializer extends ClientResourceFileDeserializer {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 
-        BinaryHeader binaryHeader = BinaryHeaderDeserializer.parseClientResourceFile(bufferReader);
-        BinaryBody<StartPosInfo> binaryBody = BinaryBodyDeserializer.parseClientResourceFile(bufferReader, StartPosDeserializer::readStartPosInfo);
+        BinaryHeader binaryHeader = BinaryHeaderDeserializer.parseHeader(bufferReader);
+        BinaryBody binaryBody = BinaryBodyDeserializer.parseBody(bufferReader);
 
         return new StartPos(
-                binaryBody.Data()
+                BinaryBodyDeserializer.parseBinaryList(bufferReader, StartPosDeserializer::readStartPosInfo)
         );
     }
 }
