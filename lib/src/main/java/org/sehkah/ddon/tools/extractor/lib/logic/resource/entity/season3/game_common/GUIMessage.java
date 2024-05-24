@@ -64,6 +64,10 @@ public final class GUIMessage extends TopLevelClientResource {
         return getMessageByIndexNaive(index);
     }
 
+    public String getMessageKeyByIndex(long index) {
+        return getMessageKeyByIndexNaive(index);
+    }
+
     public String getMessageByIndexBinarySearch(long index) {
         GUIMessageIndex tmp = new GUIMessageIndex();
         tmp.MessageIndex = index;
@@ -74,6 +78,10 @@ public final class GUIMessage extends TopLevelClientResource {
     public String getMessageByIndexNaive(long index) {
         Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.MessageIndex == index).findFirst();
         return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Message).orElse(null);
+    }
+    public String getMessageKeyByIndexNaive(long index) {
+        Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.MessageIndex == index).findFirst();
+        return optionalIndex.map(guiMessageIndex -> guiMessageIndex.Key).orElse(null);
     }
 
     @MetaInformation

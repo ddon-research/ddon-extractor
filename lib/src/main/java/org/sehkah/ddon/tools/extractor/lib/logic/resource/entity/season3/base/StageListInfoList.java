@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public final class StageListInfoList extends TopLevelClientResource {
+    @MetaInformation
+    private final long StageListInfoListSize;
     private final List<StageListInfo> StageListInfoList;
 
 }
