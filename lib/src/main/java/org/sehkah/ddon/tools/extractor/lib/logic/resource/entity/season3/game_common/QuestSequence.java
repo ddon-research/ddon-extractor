@@ -2,6 +2,6 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_c
 
 public record QuestSequence(
         long SeqNo,
-        long QstId
+        long QuestId
 ) {
 }

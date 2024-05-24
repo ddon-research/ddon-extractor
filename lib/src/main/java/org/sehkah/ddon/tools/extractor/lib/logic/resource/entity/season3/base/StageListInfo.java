@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.me
 
 public record StageListInfo(
         long StageNo,
+        @MetaInformation
+        long StageId,
         long Type,
         @MetaInformation
         StageInfoType TypeName,
@@ -18,7 +20,7 @@ public record StageListInfo(
 ) {
     public StageListInfo(long stageNo, long type, int recommendLevel, long messageId, long version) {
         this(
-                stageNo,
+                stageNo, Long.parseLong(DynamicResourceLookupUtil.getMessageKey(ResourceFileLookupType.STAGE_LIST, messageId).replace("STAGE_NAME_", "")),
                 type, StageInfoType.of(type),
                 recommendLevel,
                 messageId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.STAGE_LIST, messageId),

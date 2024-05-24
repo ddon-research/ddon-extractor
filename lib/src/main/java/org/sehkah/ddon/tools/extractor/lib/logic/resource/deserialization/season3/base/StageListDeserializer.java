@@ -6,6 +6,9 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StageListInfo;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StageListInfoList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StageListDeserializer extends ClientResourceFileDeserializer {
     public StageListDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
@@ -23,6 +26,14 @@ public class StageListDeserializer extends ClientResourceFileDeserializer {
 
     @Override
     protected StageListInfoList parseClientResourceFile(BufferReader bufferReader) {
-        return new StageListInfoList(bufferReader.readArray(StageListDeserializer::readStageListInfo));
+        long stageListInfoSize = bufferReader.readUnsignedInteger();
+        List<StageListInfo> stageListInfo = new ArrayList<>((int)stageListInfoSize);
+        for (long i = 0; i < stageListInfoSize; i++) {
+            stageListInfo.add(readStageListInfo(bufferReader));
+        }
+        return new StageListInfoList(
+                stageListInfoSize,
+                stageListInfo
+        );
     }
 }

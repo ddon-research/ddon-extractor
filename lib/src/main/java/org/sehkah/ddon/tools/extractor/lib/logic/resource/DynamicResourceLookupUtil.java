@@ -63,6 +63,14 @@ public class DynamicResourceLookupUtil {
         return ((GUIMessage) DYNAMIC_RESOURCE_CACHE.putIfAbsent(resourceFileLookupType, resource)).getMessageByIndex(messageIndex);
     }
 
+    public static String getMessageKey(ResourceFileLookupType resourceFileLookupType, long messageIndex) {
+        TopLevelClientResource resource = getResource(resourceFileLookupType, GUI_MESSAGE_DESERIALIZER);
+        if (resource == null) {
+            return null;
+        }
+        return ((GUIMessage) DYNAMIC_RESOURCE_CACHE.putIfAbsent(resourceFileLookupType, resource)).getMessageKeyByIndex(messageIndex);
+    }
+
     public static String getMessage(ResourceFileLookupType resourceFileLookupType, String key) {
         TopLevelClientResource resource = getResource(resourceFileLookupType, GUI_MESSAGE_DESERIALIZER);
         if (resource == null) {
