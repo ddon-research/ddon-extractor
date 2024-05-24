@@ -11,8 +11,9 @@ module org.sehkah.ddon.tools.extractor.lib.test {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.dataformat.yaml;
 
-    opens org.sehkah.ddon.tools.extractor.lib.test.logic to org.junit.platform.commons;
-    opens org.sehkah.ddon.tools.extractor.lib.test.logic.serialization to org.junit.platform.commons;
-    opens org.sehkah.ddon.tools.extractor.lib.test.logic.deserialization to org.junit.platform.commons;
+    opens org.sehkah.ddon.tools.extractor.lib.test.logic.packet.deserialization to org.junit.platform.commons;
+    opens org.sehkah.ddon.tools.extractor.lib.test.logic.resource.serialization to org.junit.platform.commons;
+    opens org.sehkah.ddon.tools.extractor.lib.test.logic.resource.deserialization to org.junit.platform.commons;
+    opens org.sehkah.ddon.tools.extractor.lib.test.logic.resource to org.junit.platform.commons;
     opens org.sehkah.ddon.tools.extractor.lib.test.common.crypto to org.junit.platform.commons;
 }

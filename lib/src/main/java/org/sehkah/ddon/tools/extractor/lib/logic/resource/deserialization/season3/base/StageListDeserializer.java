@@ -1,0 +1,28 @@
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
+
+import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StageListInfo;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StageListInfoList;
+
+public class StageListDeserializer extends ClientResourceFileDeserializer {
+    public StageListDeserializer(ClientResourceFile clientResourceFile) {
+        super(clientResourceFile);
+    }
+
+    private static StageListInfo readStageListInfo(BufferReader bufferReader) {
+        return new StageListInfo(
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedByte(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
+        );
+    }
+
+    @Override
+    protected StageListInfoList parseClientResourceFile(BufferReader bufferReader) {
+        return new StageListInfoList(bufferReader.readArray(StageListDeserializer::readStageListInfo));
+    }
+}
