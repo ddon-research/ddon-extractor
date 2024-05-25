@@ -39,10 +39,12 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc_common.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.om.OmKeyDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.om.OmParamPartDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.pawn.AIPawnActNoSwitchTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.PawnQuestTalkDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest.QuestListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.QuestTextDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.scr.MapSpotDataDeserializer;
@@ -295,6 +297,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rOcdImmuneParamRes, new FileHeader(23, 4), OcdImmuneParamResTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rJumpParamTbl, new FileHeader(3, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.job.JumpParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStartPos, new FileHeader("XFS\0", 131087, 4), StartPosDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rQuestList, new FileHeader("XFS\0", 7667727, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest.QuestListDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {

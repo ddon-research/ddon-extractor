@@ -1,15 +1,12 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.stage;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.BinaryBodyDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.BinaryHeaderDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StartPos;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.StartPosInfo;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.BinaryBody;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.BinaryHeader;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.XfsDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.StartPos;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.StartPosInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +50,11 @@ public class StartPosDeserializer extends ClientResourceFileDeserializer {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 
-        BinaryHeader binaryHeader = BinaryHeaderDeserializer.parseHeader(bufferReader);
-        BinaryBody binaryBody = BinaryBodyDeserializer.parseBody(bufferReader);
+        XfsDeserializer.readHeader(bufferReader);
+        XfsDeserializer.readResource(bufferReader);
 
         return new StartPos(
-                BinaryBodyDeserializer.parseBinaryList(bufferReader, StartPosDeserializer::readStartPosInfo)
+                XfsDeserializer.readMtArray(bufferReader, StartPosDeserializer::readStartPosInfo)
         );
     }
 }

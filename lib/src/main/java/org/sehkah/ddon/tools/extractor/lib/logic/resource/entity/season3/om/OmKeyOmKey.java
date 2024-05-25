@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.om;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 

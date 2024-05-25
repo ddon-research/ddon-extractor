@@ -52,6 +52,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.npc;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.skill;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage;
+    exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.quest;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.ui.uGUIAreaMaster;
 

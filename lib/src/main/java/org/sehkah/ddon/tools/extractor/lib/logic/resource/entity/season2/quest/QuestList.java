@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
@@ -14,6 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class StartPos extends TopLevelClientResource {
-    private final List<StartPosInfo> InfoList;
+public final class QuestList extends TopLevelClientResource {
+    private final List<QuestStage> QuestStageList;
 }

@@ -1,16 +1,13 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.base;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.om;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.BinaryBodyDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.BinaryHeaderDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.OmKey;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.OmKeyItem;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.OmKeyOmKey;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.BinaryBody;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.BinaryHeader;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.XfsDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.om.OmKey;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.om.OmKeyItem;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.om.OmKeyOmKey;
 
 public class OmKeyDeserializer extends ClientResourceFileDeserializer {
     public OmKeyDeserializer(ClientResourceFile clientResourceFile) {
@@ -65,12 +62,12 @@ public class OmKeyDeserializer extends ClientResourceFileDeserializer {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 
-        BinaryHeader binaryHeader = BinaryHeaderDeserializer.parseHeader(bufferReader);
-        BinaryBody binaryBody = BinaryBodyDeserializer.parseBody(bufferReader);
+        XfsDeserializer.readHeader(bufferReader);
+        XfsDeserializer.readResource(bufferReader);
 
         return new OmKey(
-                BinaryBodyDeserializer.parseBinaryList(bufferReader, OmKeyDeserializer::readOmKeyOmKey),
-                BinaryBodyDeserializer.parseBinaryList(bufferReader, OmKeyDeserializer::readOmKeyItem)
+                XfsDeserializer.readMtArray(bufferReader, OmKeyDeserializer::readOmKeyOmKey),
+                XfsDeserializer.readMtArray(bufferReader, OmKeyDeserializer::readOmKeyItem)
         );
     }
 }

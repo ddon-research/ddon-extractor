@@ -435,8 +435,33 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rWepCateResTbl", ".wcrt");
         resourceToFileExtensionMap.put("rZone", ".zon");
         resourceToFileExtensionMap.put("rkThinkData", ".pen");
-        resourceToFileExtensionMap.put("rTexDetailEdit::DetailParam", ".tde_detailparam");
-        resourceToFileExtensionMap.put("MtArray", ".mtarray");
+        resourceToFileExtensionMap.put("rTexDetailEdit::DetailParam", ".tde_DetailParam");
+        resourceToFileExtensionMap.put("MtArray", ".MtArray");
+        resourceToFileExtensionMap.put("cSetInfoNpc", ".cSetInfoNpc");
+        resourceToFileExtensionMap.put("cSetInfoOm", ".cSetInfoOm");
+        resourceToFileExtensionMap.put("cSetInfo", ".cSetInfo");
+        resourceToFileExtensionMap.put("cQuestSet", ".cQuestSet");
+        resourceToFileExtensionMap.put("cQuestGroup", ".cQuestGroup");
+        resourceToFileExtensionMap.put("cQuestStage", ".cQuestStage");
+        resourceToFileExtensionMap.put("cSetInfoCharacter", ".cSetInfoCharacter");
+        resourceToFileExtensionMap.put("cFSMRelate", ".cFSMRelate");
+        resourceToFileExtensionMap.put("cSetInfoEnemy", ".cSetInfoEnemy");
+        resourceToFileExtensionMap.put("cSetInfoCoord", ".cSetInfoCoord");
+        resourceToFileExtensionMap.put("cSetInfoOmWall", ".cSetInfoOmWall");
+        resourceToFileExtensionMap.put("cSetInfoOmWarp", ".cSetInfoOmWarp");
+        resourceToFileExtensionMap.put("cSetInfoOmDoor", ".cSetInfoOmDoor");
+        resourceToFileExtensionMap.put("cSetInfoOmBowlOfLife", ".cSetInfoOmBowlOfLife");
+        resourceToFileExtensionMap.put("cSetInfoOmText", ".cSetInfoOmText");
+        resourceToFileExtensionMap.put("cSetInfoOmBadStatus", ".cSetInfoOmBadStatus");
+        resourceToFileExtensionMap.put("cSetInfoOmBreakTarget", ".cSetInfoOmBreakTarget");
+        resourceToFileExtensionMap.put("cSetInfoOmGather", ".cSetInfoOmGather");
+        resourceToFileExtensionMap.put("cSetInfoOmTreasureBox", ".cSetInfoOmTreasureBox");
+        resourceToFileExtensionMap.put("cSetInfoOmRange", ".cSetInfoOmRange");
+        resourceToFileExtensionMap.put("cSetInfoOmHakuryuu", ".cSetInfoOmHakuryuu");
+        resourceToFileExtensionMap.put("cSetInfoOmCtrl", ".cSetInfoOmCtrl");
+        resourceToFileExtensionMap.put("cSetInfoOmCtrl::cLinkParam", ".cSetInfoOmCtrl_cLinkParam");
+        resourceToFileExtensionMap.put("cSetInfoOmLever", ".cSetInfoOmLever");
+        resourceToFileExtensionMap.put("cSetInfoOmHeal", ".cSetInfoOmHeal");
 
         resourceToFileExtensionMap.forEach((key, value) -> {
             long id = FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(key);
