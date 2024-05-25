@@ -14,9 +14,9 @@ public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer 
 
     private static QuestMarkerInfoInfo readQuestMarkerInfoInfo(BufferReader bufferReader) {
         return new QuestMarkerInfoInfo(
+                bufferReader.readVector3f(),
                 bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readVector3f()
+                bufferReader.readUnsignedInteger()
         );
     }
 
