@@ -44,7 +44,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.pawn.AIPawnActNoSwitchTblDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.PawnQuestTalkDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest.QuestListDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.QuestListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest.QuestTextDataDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.scr.MapSpotDataDeserializer;
@@ -263,6 +263,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rWeaponResTable, new FileHeader(11, 4), WeaponResTableDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), WeatherStageInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rWepCateResTbl, new FileHeader(1, 4), WepCateResTblDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rQuestList, new FileHeader("XFS\0", 9043983, 4), QuestListDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonTwo(Set<ClientResourceFile> clientResourceFileSet) {

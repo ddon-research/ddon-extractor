@@ -1,15 +1,19 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.SetInfo;
 
 @RequiredArgsConstructor
 @Getter
 @JsonPropertyOrder(alphabetic = true)
-public class SetInfoNpc extends SetInfo {
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class QuestSetInfoNpc extends SetInfo {
+    private final QuestSetInfoCoord InfoCharacter;
     private final int NpcId;
-    private final String FilePath;
+    private final FSMRelate FsmResource;
     private final boolean IsCommunicate;
     private final int ClothType;
     private final byte DefNPCMotCategory;
@@ -31,5 +35,4 @@ public class SetInfoNpc extends SetInfo {
     private final boolean UseJobParamEx;
     private final boolean DispOnWeapon;
     private final short InitEffectType;
-    private final SetInfoCoord InfoCharacter;
 }

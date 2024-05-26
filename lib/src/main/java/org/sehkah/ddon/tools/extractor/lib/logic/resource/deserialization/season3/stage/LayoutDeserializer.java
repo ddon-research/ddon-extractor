@@ -55,11 +55,13 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer {
                 bufferReader.readBoolean(),
                 bufferReader.readBoolean(),
                 bufferReader.readBoolean(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
                 bufferReader.readSignedShort(),
                 readSetInfoCoord(bufferReader)
         );

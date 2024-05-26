@@ -462,6 +462,8 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("cSetInfoOmCtrl::cLinkParam", ".cSetInfoOmCtrl_cLinkParam");
         resourceToFileExtensionMap.put("cSetInfoOmLever", ".cSetInfoOmLever");
         resourceToFileExtensionMap.put("cSetInfoOmHeal", ".cSetInfoOmHeal");
+        resourceToFileExtensionMap.put("cSetInfoOmCannon", ".cSetInfoOmCannon");
+        resourceToFileExtensionMap.put("cSetInfoOmTimer", ".cSetInfoOmCannon");
 
         resourceToFileExtensionMap.forEach((key, value) -> {
             long id = FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(key);

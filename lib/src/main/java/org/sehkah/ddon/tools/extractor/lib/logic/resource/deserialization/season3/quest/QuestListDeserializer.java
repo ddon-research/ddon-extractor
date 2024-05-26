@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.quest;
 
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.OrientedBoundingBox;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
@@ -6,12 +6,12 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.XfsDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.quest.*;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.SetInfo;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.meta.LayoutUnitKind;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.ClassData;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.XfsObjectData;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest.*;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.SetInfo;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.meta.LayoutUnitKind;
 
 import java.util.List;
 import java.util.Map;
@@ -55,10 +55,18 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
         boolean DisableLedgerFinger = XfsDeserializer.readBoolean(bufferReader);
         boolean IsForceListTalk = XfsDeserializer.readBoolean(bufferReader);
         boolean IsAttand = XfsDeserializer.readBoolean(bufferReader);
+        boolean UseAttendComponent = XfsDeserializer.readBoolean(bufferReader);
         boolean DisableTouchAction = XfsDeserializer.readBoolean(bufferReader);
         boolean DispElseQuestTalk = XfsDeserializer.readBoolean(bufferReader);
+        boolean ForceSwitchGreeting = XfsDeserializer.readBoolean(bufferReader);
+        long TalkStateId = XfsDeserializer.readUnsignedInteger(bufferReader);
+        boolean UseLiteMotion = XfsDeserializer.readBoolean(bufferReader);
+        boolean IsNoSetOnPS3 = XfsDeserializer.readBoolean(bufferReader);
+        boolean UseJobParamEx = XfsDeserializer.readBoolean(bufferReader);
+        boolean DispOnWeapon = XfsDeserializer.readBoolean(bufferReader);
+        short InitEffectType = XfsDeserializer.readSignedShort(bufferReader);
 
-        return new QuestSetInfoNpc(InfoCharacter, NpcId, FsmResource, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, DisableTouchAction, DispElseQuestTalk);
+        return new QuestSetInfoNpc(InfoCharacter, NpcId, FsmResource, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, UseAttendComponent, DisableTouchAction, DispElseQuestTalk, ForceSwitchGreeting, TalkStateId, UseLiteMotion, IsNoSetOnPS3, UseJobParamEx, DispOnWeapon, InitEffectType);
     }
 
     private static QuestSetInfoOm readQuestSetInfoOm(BufferReader bufferReader) {
@@ -105,12 +113,14 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
         long TextType = XfsDeserializer.readUnsignedInteger(bufferReader);
         long TextQuestNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         long TextNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        boolean NoWarp = XfsDeserializer.readBoolean(bufferReader);
 
-        return new QuestSetInfoOmWarp(InfoOm, StageNo, StartPosNo, QuestNo, FlagNo, SpotId, TextType, TextQuestNo, TextNo);
+        return new QuestSetInfoOmWarp(InfoOm, StageNo, StartPosNo, QuestNo, FlagNo, SpotId, TextType, TextQuestNo, TextNo, NoWarp);
     }
 
     private static QuestSetInfoOmDoor readQuestSetInfoOmDoor(BufferReader bufferReader) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
+
         boolean PRT = XfsDeserializer.readBoolean(bufferReader);
         Vector3f PRTPos = XfsDeserializer.readVector3f(bufferReader);
         float PRTScale = XfsDeserializer.readFloat(bufferReader);
@@ -146,6 +156,17 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
         long TextType = XfsDeserializer.readUnsignedInteger(bufferReader);
 
         return new QuestSetInfoOmText(InfoOm, TextNo, TextQuestNo, TextType);
+    }
+
+    private static QuestSetInfoOmTextUnknown readQuestSetInfoOmTextUnknown(BufferReader bufferReader) {
+        QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
+
+        long TextNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        long TextQuestNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        long TextType = XfsDeserializer.readUnsignedInteger(bufferReader);
+        long PLActNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+
+        return new QuestSetInfoOmTextUnknown(InfoOm, TextNo, TextQuestNo, TextType, PLActNo);
     }
 
     private static QuestSetInfoOmBadStatus readQuestSetInfoOmBadStatus(BufferReader bufferReader) {
@@ -231,8 +252,9 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
         List<QuestSetInfoOmCtrlLinkParam> LinkParam = bufferReader.readArray(QuestListDeserializer::readQuestSetInfoOmCtrlLinkParam);
         int AddGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
         int AddSubGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
+        long EmHpRate = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        return new QuestSetInfoOmCtrl(InfoOm, KeyItemNo, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo);
+        return new QuestSetInfoOmCtrl(InfoOm, KeyItemNo, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo, EmHpRate);
     }
 
     private static QuestSetInfoOmLever readQuestSetInfoOmLever(BufferReader bufferReader) {
@@ -251,6 +273,34 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
         long HealType = XfsDeserializer.readUnsignedInteger(bufferReader);
 
         return new QuestSetInfoOmHeal(InfoOm, HealType);
+    }
+
+    private static QuestSetInfoOmCannon readQuestSetInfoOmCannon(BufferReader bufferReader) {
+        QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
+
+        boolean Homing = XfsDeserializer.readBoolean(bufferReader);
+        boolean AutoFire = XfsDeserializer.readBoolean(bufferReader);
+        float AngleX = XfsDeserializer.readFloat(bufferReader);
+        long CannonType = XfsDeserializer.readUnsignedInteger(bufferReader);
+        long BreakHitNum = XfsDeserializer.readUnsignedInteger(bufferReader);
+        short Group = XfsDeserializer.readSignedShort(bufferReader);
+        short GroupID = XfsDeserializer.readSignedShort(bufferReader);
+        float CannonHeightLimit = XfsDeserializer.readFloat(bufferReader);
+        float DistanceLimitMin = XfsDeserializer.readFloat(bufferReader);
+        float DistanceLimitMax = XfsDeserializer.readFloat(bufferReader);
+        long ShotInterval = XfsDeserializer.readUnsignedInteger(bufferReader);
+        int ShotIdleFrequency = XfsDeserializer.readUnsignedByte(bufferReader);
+        int CheckAngle = XfsDeserializer.readUnsignedByte(bufferReader);
+
+        return new QuestSetInfoOmCannon(InfoOm, Homing, AutoFire, AngleX, CannonType, BreakHitNum, Group, GroupID, CannonHeightLimit, DistanceLimitMin, DistanceLimitMax, ShotInterval, ShotIdleFrequency, CheckAngle);
+    }
+
+    private static QuestSetInfoOmTimer readQuestSetInfoOmTimer(BufferReader bufferReader) {
+        QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
+
+        float Timer = XfsDeserializer.readFloat(bufferReader);
+
+        return new QuestSetInfoOmTimer(InfoOm, Timer);
     }
 
     private static SetInfo readSetInfo(BufferReader bufferReader, XfsHeader xfsHeader, long kind) {
@@ -275,7 +325,15 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
                 case "cSetInfoOmCtrl" -> readQuestSetInfoOmCtrl(bufferReader);
                 case "cSetInfoOmLever" -> readQuestSetInfoOmLever(bufferReader);
                 case "cSetInfoOmHeal" -> readQuestSetInfoOmHeal(bufferReader);
-                default -> readQuestSetInfoOm(bufferReader);
+                case "cSetInfoOmCannon" -> readQuestSetInfoOmCannon(bufferReader);
+                case "cSetInfoOmTimer" -> readQuestSetInfoOmTimer(bufferReader);
+                default -> {
+                    if (classHeaderIndexMap.get(setInfoObjectData.classIndex()).ID() == 100955604L) {
+                        yield readQuestSetInfoOmTextUnknown(bufferReader);
+                    } else {
+                        yield readQuestSetInfoOm(bufferReader);
+                    }
+                }
             };
             case U_NPC -> readQuestSetInfoNpc(bufferReader);
             default -> throw new IllegalStateException("Unexpected value: " + LayoutUnitKind.of(kind));
