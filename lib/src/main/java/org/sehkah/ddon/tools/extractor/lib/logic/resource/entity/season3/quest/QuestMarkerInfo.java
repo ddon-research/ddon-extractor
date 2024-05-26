@@ -1,21 +1,26 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.sehkah.ddon.tools.extractor.lib.common.deserialization.ArrayDataType;
+import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DDONPrimitiveDataType;
+import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DataType;
+import org.sehkah.ddon.tools.extractor.lib.common.deserialization.ResourceHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class QuestMarkerInfo extends TopLevelClientResource {
-    private final long StageNo;
-    private final List<QuestMarkerInfoInfo> InfoList;
-
+@ResourceHeader(magicStringSize = DDONPrimitiveDataType.u32, magicNumberSize = DDONPrimitiveDataType.u32)
+public class QuestMarkerInfo extends TopLevelClientResource {
+    @DataType(size = DDONPrimitiveDataType.u32)
+    public long StageNo;
+    @ArrayDataType(size = DDONPrimitiveDataType.u32)
+    public List<QuestMarkerInfoInfo> InfoList;
 }
