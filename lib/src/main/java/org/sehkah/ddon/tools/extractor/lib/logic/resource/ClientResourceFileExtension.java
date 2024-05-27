@@ -45,6 +45,9 @@ public enum ClientResourceFileExtension {
     rCraftUpGradeExp,
     rCustomSkillData,
     rCycleQuestInfo,
+    rCycleContentsSortieInfo,
+    rEndContentsSortieInfo,
+    rPackageQuestInfo,
     rDungeonMarker,
     rEmBaseInfoSv,
     rEmDamageDirInfo,
@@ -133,6 +136,7 @@ public enum ClientResourceFileExtension {
     rShrinkBlowValue,
     rSituationMsgCtrl,
     rStageAdjoinList,
+    rStageAdjoinList2,
     rStageConnect,
     rStageCustom,
     rStageCustomParts,
@@ -204,6 +208,9 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".cks", rCraftSkillSpd);
         fileExtensionToResourceMap.put(".cpe", rCharParamEnemy);
         fileExtensionToResourceMap.put(".cqi", rCycleQuestInfo);
+        fileExtensionToResourceMap.put(".csi", rCycleContentsSortieInfo);
+        fileExtensionToResourceMap.put(".esi", rEndContentsSortieInfo);
+        fileExtensionToResourceMap.put(".pqi", rPackageQuestInfo);
         fileExtensionToResourceMap.put(".cqr", rCraftQuality);
         fileExtensionToResourceMap.put(".csd", rCustomSkillData);
         fileExtensionToResourceMap.put(".cuex", rCraftUpGradeExp);
@@ -294,6 +301,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".repgmdlist", rReplaceWardGmdList);
         fileExtensionToResourceMap.put(".rwr", rRoomWearParam);
         fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
+        fileExtensionToResourceMap.put(".sal2", rStageAdjoinList2);
         fileExtensionToResourceMap.put(".sbv", rShrinkBlowValue);
         fileExtensionToResourceMap.put(".sca", rStageCustom);
         fileExtensionToResourceMap.put(".scc", rStageConnect);

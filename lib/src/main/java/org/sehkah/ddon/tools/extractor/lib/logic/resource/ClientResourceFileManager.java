@@ -36,6 +36,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.job.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.launcher.ArchiveListArrayDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker.DungeonMarkerDeserializer;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker.StageAdjoinList2Deserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.npc_common.*;
@@ -149,6 +150,9 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rCraftUpGradeExp, new FileHeader(1, 4), CraftUpGradeExpDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCustomSkillData, new FileHeader(3, 4), CustomSkillDataDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rCycleQuestInfo, new FileHeader("CQI\0", 2, 4), CycleQuestInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCycleContentsSortieInfo, new FileHeader(1, 4), CycleContentsSortieInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rEndContentsSortieInfo, new FileHeader(4, 4), EndContentsSortieInfoDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rPackageQuestInfo, new FileHeader("PQI\0", 2, 4), PackageQuestInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rDungeonMarker, new FileHeader("DMI\0", 1, 4), DungeonMarkerDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmBaseInfoSv, new FileHeader(21, 4), EmBaseInfoSvDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rEmDamageDirInfo, new FileHeader(2, 4), EmDamageDirInfoDeserializer.class));
@@ -236,6 +240,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rShrinkBlowValue, new FileHeader(2, 4), ShrinkBlowValueDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), SituationMsgCtrlDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), StageAdjoinListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList2, new FileHeader("SAL2", 1, 4), StageAdjoinList2Deserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageConnect, new FileHeader("scc\0", 7, 4), StageConnectDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageCustom, new FileHeader("sca\0", 9, 4), StageCustomDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageCustomPartsEx, new FileHeader("scpx", 5, 4), StageCustomPartsExDeserializer.class));
