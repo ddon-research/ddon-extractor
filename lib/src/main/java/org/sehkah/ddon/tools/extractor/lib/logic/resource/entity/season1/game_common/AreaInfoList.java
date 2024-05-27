@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base;
+package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season1.game_common;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
@@ -15,6 +15,6 @@ import java.util.List;
 @Getter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public final class AreaInfoList extends TopLevelClientResource {
-    private final List<org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season1.game_common.AreaInfo> AreaInfoList;
+    private final List<AreaInfo> AreaInfoList;
 
 }

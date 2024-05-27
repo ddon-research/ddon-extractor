@@ -29,6 +29,12 @@ public enum ClientResourceFileExtension {
     rBakeJoint,
     rBitTable,
     rBlowSaveEmLvParam,
+    rCraftSkillGain,
+    rCraftSkillStr,
+    rCraftSkillBurst,
+    rCraftRecipe,
+    rCraftArmQualityParam,
+    rCraftWepQualityParam,
     rCalcDamageAtdmAdj,
     rCalcDamageAtdmAdjRate,
     rCalcDamageLvAdj,
@@ -174,6 +180,18 @@ public enum ClientResourceFileExtension {
     private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
 
     static {
+        fileExtensionToResourceMap.put(".cqa", rCraftArmQualityParam);
+        fileExtensionToResourceMap.put(".767645BE", rCraftArmQualityParam);
+        fileExtensionToResourceMap.put(".cqw", rCraftWepQualityParam);
+        fileExtensionToResourceMap.put(".60BA5E0B", rCraftWepQualityParam);
+        fileExtensionToResourceMap.put(".ckg", rCraftSkillGain);
+        fileExtensionToResourceMap.put(".3FD51519", rCraftSkillGain);
+        fileExtensionToResourceMap.put(".ckst", rCraftSkillStr);
+        fileExtensionToResourceMap.put(".46ECE09C", rCraftSkillStr);
+        fileExtensionToResourceMap.put(".ckb", rCraftSkillBurst);
+        fileExtensionToResourceMap.put(".4BB8A7C5", rCraftSkillBurst);
+        fileExtensionToResourceMap.put(".rcp", rCraftRecipe);
+        fileExtensionToResourceMap.put(".5810D1F1", rCraftRecipe);
         fileExtensionToResourceMap.put(".aad", rAbilityAddData);
         fileExtensionToResourceMap.put(".abd", rAbilityData);
         fileExtensionToResourceMap.put(".abl", rAbilityList);
@@ -221,6 +239,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
         fileExtensionToResourceMap.put(".esl", rEmScaleTable);
         fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);
+        fileExtensionToResourceMap.put(".5362A636", rPartsCtrlTable);
         fileExtensionToResourceMap.put(".ele", rEnemyLocalEst);
         fileExtensionToResourceMap.put(".ema", rEnemyMaterialTable);
         fileExtensionToResourceMap.put(".esn", rEmSoundTable);
@@ -241,6 +260,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".evl", rEvaluationTable);
         fileExtensionToResourceMap.put(".evp", rEventParam);
         fileExtensionToResourceMap.put(".exp", rPlayerExpTable);
+        fileExtensionToResourceMap.put(".2EA55F30", rPlayerExpTable);
         fileExtensionToResourceMap.put(".faa", rFieldAreaAdjoinList);
         fileExtensionToResourceMap.put(".fal", rFieldAreaList);
         fileExtensionToResourceMap.put(".fmd", rFieldMapData);

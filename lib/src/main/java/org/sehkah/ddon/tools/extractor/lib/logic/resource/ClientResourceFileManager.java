@@ -307,12 +307,26 @@ public class ClientResourceFileManager {
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {
+        clientResourceFileSet.add(new ClientResourceFile(rAreaInfo, new FileHeader("ARI\0", 1, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.AreaInfoDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageAdjoinList, new FileHeader("SAL\0", 2, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.marker.StageAdjoinListDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStageCustomParts, new FileHeader("scp\0", 16, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.stage.StageCustomPartsDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCraftWepQualityParam, new FileHeader(2, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftWepQualityParamTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCraftArmQualityParam, new FileHeader(3, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftArmQualityParamTableDeserializer.class));
+
+        clientResourceFileSet.add(new ClientResourceFile(rCraftRecipe, new FileHeader("RCP\0", 6, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftRecipeDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCraftSkillGain, new FileHeader(2, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftSkillGainTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCraftSkillStr, new FileHeader(4, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftSkillStrTableDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rCraftSkillBurst, new FileHeader(2, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season1.game_common.CraftSkillBurstTableDeserializer.class));
     }
 
     public ClientResourceDeserializer<TopLevelClientResource> getDeserializer(String fileName, BufferReader bufferReader) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
+
+        if (fileNameExtension.isBlank()) {
+            log.warn("File '%s' has no extension, unable to look up deserializer.".formatted(fileName));
+            return null;
+        }
+
         ClientResourceFileExtension clientResourceFileExtension = ClientResourceFileExtension.of(fileNameExtension);
         ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer;
         Set<FileHeader> fileHeaderCandidates = ClientResourceFileDeserializer.identifyFileHeaderCandidates(bufferReader);
