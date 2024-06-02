@@ -8,9 +8,9 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
-import org.sehkah.ddon.tools.extractor.season3.packet.PacketManagerSeason3;
-import org.sehkah.ddon.tools.extractor.season3.packet.entity.c2l.C2LLoginReq;
-import org.sehkah.ddon.tools.extractor.season3.packet.entity.c2l.meta.PlatformType;
+import org.sehkah.ddon.tools.extractor.season3.logic.packet.PacketManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.logic.packet.entity.c2l.C2LLoginReq;
+import org.sehkah.ddon.tools.extractor.season3.logic.packet.entity.c2l.meta.PlatformType;
 
 import java.nio.ByteOrder;
 

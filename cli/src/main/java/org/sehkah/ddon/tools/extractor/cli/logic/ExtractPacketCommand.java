@@ -12,10 +12,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientVersion;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
-import org.sehkah.ddon.tools.extractor.season3.packet.PacketManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.logic.packet.PacketManagerSeason3;
 import picocli.CommandLine;
 
 import java.io.IOException;

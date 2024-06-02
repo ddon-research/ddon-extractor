@@ -9,9 +9,9 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.se
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.ClassData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.XfsObjectData;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.quest.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.stage.SetInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.stage.meta.LayoutUnitKind;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.quest.*;
 
 import java.util.List;
 import java.util.Map;

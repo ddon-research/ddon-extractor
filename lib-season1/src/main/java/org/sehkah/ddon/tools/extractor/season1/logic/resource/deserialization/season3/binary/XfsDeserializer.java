@@ -5,8 +5,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.FrameworkResourcesUtil;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.meta.PropertyType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.*;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.binary.meta.PropertyType;
 
 import java.math.BigInteger;
 import java.util.HashMap;

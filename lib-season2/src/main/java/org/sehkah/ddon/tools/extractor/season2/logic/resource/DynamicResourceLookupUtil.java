@@ -8,8 +8,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.season3.game_common.GUIMessageDeserializer;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.season3.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.game_common.GUIMessageDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.GUIMessage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -38,9 +38,9 @@ public class DynamicResourceLookupUtil {
     }
 
     public static void initialize(Path clientRootFolder) {
-        if(clientRootFolder != null) {
+        if (clientRootFolder != null) {
             DynamicResourceLookupUtil.clientResourceFolder = clientRootFolder.resolve("nativePC").resolve("rom");
-        }else{
+        } else {
             log.warn("The client root folder is not configured, dynamic look ups will fail.");
         }
     }

@@ -1,8 +1,8 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.base;
 
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.base.meta.StageInfoType;
 
 public record StageListInfo(

@@ -18,7 +18,12 @@ public record ChildRegionStatusParam(
         float ShakeAdjShake,
         float HitStopAdj,
         float HitSlowAdj,
-        List<Float> Unknown, //33
+        List<Float> ShrinkDamageRatePhys,//4
+        List<Float> ShrinkDamageRateMagic,//7
+        List<Float> BlowDamageRatePhys,//4
+        List<Float> BlowDamageRateMagic,//7
+        List<Float> DownDamageRatePhys,//4
+        List<Float> DownDamageRateMagic,//7
         long HitStopDefenceAttr,
         long Surface,
         boolean IsClimbBonus,

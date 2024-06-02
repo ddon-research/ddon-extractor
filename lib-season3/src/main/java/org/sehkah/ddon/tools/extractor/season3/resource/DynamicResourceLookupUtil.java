@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.resource.deserialization.season3.game_common.GUIMessageDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.resource.deserialization.game_common.GUIMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.season3.resource.serialization.game_common.GUIMessageSerializer;
 

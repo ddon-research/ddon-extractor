@@ -38,9 +38,9 @@ public class DynamicResourceLookupUtil {
     }
 
     public static void initialize(Path clientRootFolder) {
-        if(clientRootFolder != null) {
+        if (clientRootFolder != null) {
             DynamicResourceLookupUtil.clientResourceFolder = clientRootFolder.resolve("nativePC").resolve("rom");
-        }else{
+        } else {
             log.warn("The client root folder is not configured, dynamic look ups will fail.");
         }
     }

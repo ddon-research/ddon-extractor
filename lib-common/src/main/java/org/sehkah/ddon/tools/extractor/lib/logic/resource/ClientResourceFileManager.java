@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;

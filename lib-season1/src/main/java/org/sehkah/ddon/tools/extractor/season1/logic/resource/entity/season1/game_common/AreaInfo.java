@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 
 @ToString
 @EqualsAndHashCode

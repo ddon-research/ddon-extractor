@@ -1,8 +1,8 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.npc_common;
 
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.npc_common.meta.NpcSexType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.npc_common.meta.NpcUnitType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season3.npc_common.meta.NpcVoiceType;

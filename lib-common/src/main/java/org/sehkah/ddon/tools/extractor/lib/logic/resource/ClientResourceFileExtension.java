@@ -312,7 +312,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
         fileExtensionToResourceMap.put(".prs", rParentRegionStatusParam);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);
-        fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);
+        fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);//Overlaps with rPawnThinkControl from season 3
         fileExtensionToResourceMap.put(".push_rate", rPushRate);
         fileExtensionToResourceMap.put(".qhd", rQuestHistoryData);
         fileExtensionToResourceMap.put(".qmi", rQuestMarkerInfo);

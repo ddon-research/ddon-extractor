@@ -4,8 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.season2.base.meta.*;
 
 import java.util.List;
