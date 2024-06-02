@@ -30,14 +30,14 @@ import static org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceF
 public class DynamicResourceLookupUtil {
     private static final GUIMessageDeserializer GUI_MESSAGE_DESERIALIZER = new GUIMessageDeserializer(new ClientResourceFile(rGUIMessage, new FileHeader("GMD\0", 66306, 4), GUIMessageDeserializer.class, GUIMessageSerializer.class));
     private static final Map<ResourceFileLookupType, TopLevelClientResource> DYNAMIC_RESOURCE_CACHE = HashMap.newHashMap(128);
-    private static Path clientResourceBasePath;
+    private static Path clientResourceFolder;
 
     private DynamicResourceLookupUtil() {
 
     }
 
-    public static void initialize(Path clientResourceBasePath) {
-        DynamicResourceLookupUtil.clientResourceBasePath = clientResourceBasePath;
+    public static void initialize(Path clientRootFolder) {
+        DynamicResourceLookupUtil.clientResourceFolder = clientRootFolder.resolve("nativePC").resolve("rom");
     }
 
     private static TopLevelClientResource loadResource(ClientResourceFileDeserializer deserializer, Path folderPath, String fileName) {
@@ -51,7 +51,7 @@ public class DynamicResourceLookupUtil {
     }
 
     public static TopLevelClientResource getResource(ResourceFileLookupType resourceFileLookupType, ClientResourceFileDeserializer deserializer) {
-        DYNAMIC_RESOURCE_CACHE.putIfAbsent(resourceFileLookupType, loadResource(deserializer, clientResourceBasePath.resolve(resourceFileLookupType.folderPath), resourceFileLookupType.fileName));
+        DYNAMIC_RESOURCE_CACHE.putIfAbsent(resourceFileLookupType, loadResource(deserializer, clientResourceFolder.resolve(resourceFileLookupType.folderPath), resourceFileLookupType.fileName));
         return DYNAMIC_RESOURCE_CACHE.get(resourceFileLookupType);
     }
 

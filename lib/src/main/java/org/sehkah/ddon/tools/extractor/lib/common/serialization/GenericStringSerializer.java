@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
@@ -31,6 +32,7 @@ public class GenericStringSerializer {
                 jsonBuilder.enable(SerializationFeature.INDENT_OUTPUT);
                 jsonBuilder.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
                 jsonBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
+                jsonBuilder.propertyNamingStrategy(PropertyNamingStrategies.UPPER_CAMEL_CASE);
                 yield jsonBuilder.build();
             }
             case yaml -> {
@@ -39,6 +41,7 @@ public class GenericStringSerializer {
                 yamlBuilder.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
                 yamlBuilder.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
                 yamlBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
+                yamlBuilder.propertyNamingStrategy(PropertyNamingStrategies.UPPER_CAMEL_CASE);
                 yield yamlBuilder.build();
             }
         };

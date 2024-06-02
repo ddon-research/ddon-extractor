@@ -1,9 +1,9 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource.serialization;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
 
@@ -27,6 +27,6 @@ class EnemyGroupSerializerTest {
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
 
-        assertEquals("bdb9b87f3126706640f823e9d85c88338c7c99f1", DigestUtils.sha1Hex(bytes));
+        assertEquals("bdb9b87f3126706640f823e9d85c88338c7c99f1", DigestUtil.sha1Hex(bytes));
     }
 }

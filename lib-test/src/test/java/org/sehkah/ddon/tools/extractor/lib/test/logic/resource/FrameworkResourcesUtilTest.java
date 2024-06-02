@@ -77,4 +77,13 @@ class FrameworkResourcesUtilTest {
 
         assertEquals(".ptc", fileExtension);
     }
+
+    @Test
+    void testFileClassNameForResourceFileEqualsExpected() {
+        long resourceTypeId = 1379483132;
+
+        String className = FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(resourceTypeId);
+
+        assertEquals("cFSMOrderParamSetLocationName", className);
+    }
 }

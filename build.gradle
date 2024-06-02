@@ -2,7 +2,6 @@ plugins {
     id 'org.javamodularity.moduleplugin' apply false
     id 'io.freefair.lombok' apply false
     id 'com.github.ben-manes.versions'
-    id 'nl.littlerobots.version-catalog-update'
 }
 
 subprojects {

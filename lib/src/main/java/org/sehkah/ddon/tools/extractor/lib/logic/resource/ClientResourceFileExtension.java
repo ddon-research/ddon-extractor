@@ -10,6 +10,7 @@ public enum ClientResourceFileExtension {
     rAchievementHeader,
     rAdjLimitParam,
     rAdjustParam,
+    rAIFSM,
     rAIPawnActNoSwitch,
     rAIPawnAutoMotionTbl,
     rAIPawnAutoWordTbl,
@@ -29,12 +30,6 @@ public enum ClientResourceFileExtension {
     rBakeJoint,
     rBitTable,
     rBlowSaveEmLvParam,
-    rCraftSkillGain,
-    rCraftSkillStr,
-    rCraftSkillBurst,
-    rCraftRecipe,
-    rCraftArmQualityParam,
-    rCraftWepQualityParam,
     rCalcDamageAtdmAdj,
     rCalcDamageAtdmAdjRate,
     rCalcDamageLvAdj,
@@ -43,39 +38,39 @@ public enum ClientResourceFileExtension {
     rCaughtDamageRateTbl,
     rCaughtInfoParam,
     rCharParamEnemy,
+    rChildRegionStatusParam,
+    rChildRegionStatusParamList,
+    rCraftArmQualityParam,
     rCraftCapPass,
     rCraftElementExp,
     rCraftQuality,
+    rCraftRecipe,
+    rCraftSkillBurst,
     rCraftSkillCost,
+    rCraftSkillGain,
     rCraftSkillSpd,
+    rCraftSkillStr,
     rCraftUpGradeExp,
+    rCraftWepQualityParam,
     rCustomSkillData,
-    rCycleQuestInfo,
     rCycleContentsSortieInfo,
-    rEndContentsSortieInfo,
-    rPackageQuestInfo,
+    rCycleQuestInfo,
     rDungeonMarker,
+    rEditStageParam,
     rEmBaseInfoSv,
     rEmDamageDirInfo,
-    rEmScaleTable,
-    rPartsCtrlTable,
-    rEnemyLocalEst,
-    rEnemyMaterialTable,
-    rEmSoundTable,
-    rOcdElectricParam,
-    rEnemyStatusChange,
-    rEmWorkRateTable,
-    rJointOrder,
-    rOcdImmuneParamRes,
-    rParentRegionStatusParam,
-    rChildRegionStatusParamList,
-    rChildRegionStatusParam,
-    rEnemyReactResEx,
-    rJointInfo,
     rEmDmgTimerTbl,
     rEmLvUpParam,
+    rEmScaleTable,
+    rEmSoundTable,
+    rEmWarpParam,
+    rEmWorkRateTable,
+    rEndContentsSortieInfo,
     rEnemyGroup,
-    rEditStageParam,
+    rEnemyLocalEst,
+    rEnemyMaterialTable,
+    rEnemyReactResEx,
+    rEnemyStatusChange,
     rEquipPreset,
     rEvaluationTable,
     rEventParam,
@@ -96,9 +91,10 @@ public enum ClientResourceFileExtension {
     rJobBaseParam,
     rJobLevelUpTbl2,
     rJobMasterCtrl,
-    rJumpParamTbl,
-    rEmWarpParam,
     rJobTutorialQuestList,
+    rJointInfo,
+    rJointOrder,
+    rJumpParamTbl,
     rKeyConfigTextTable,
     rLandInfo,
     rLayout,
@@ -119,17 +115,24 @@ public enum ClientResourceFileExtension {
     rNpcIsUseJobParamEx,
     rNpcLedgerList,
     rNpcMeetingPlace,
+    rOcdElectricParam,
+    rOcdImmuneParamRes,
     rOcdStatusParamRes,
+    rOmKey,
     rOmParam,
     rOmParamPart,
+    rPackageQuestInfo,
+    rParentRegionStatusParam,
     rPartnerPawnTalk,
     rPartnerReactParam,
+    rPartsCtrlTable,
     rPawnQuestTalk,
     rPlayerExpTable,
     rPlPartsInfo,
     rPrologueHmStatus,
     rPushRate,
     rQuestHistoryData,
+    rQuestList,
     rQuestMarkerInfo,
     rQuestSequenceList,
     rQuestTextData,
@@ -153,10 +156,8 @@ public enum ClientResourceFileExtension {
     rStageMap,
     rStageToSpot,
     rStaminaDecTbl,
-    rStartPosArea,
     rStartPos,
-    rOmKey,
-    rQuestList,
+    rStartPosArea,
     rStatusCheck,
     rStatusGainTable,
     rTbl2ChatMacro,
@@ -180,18 +181,14 @@ public enum ClientResourceFileExtension {
     private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
 
     static {
-        fileExtensionToResourceMap.put(".cqa", rCraftArmQualityParam);
-        fileExtensionToResourceMap.put(".767645BE", rCraftArmQualityParam);
-        fileExtensionToResourceMap.put(".cqw", rCraftWepQualityParam);
-        fileExtensionToResourceMap.put(".60BA5E0B", rCraftWepQualityParam);
-        fileExtensionToResourceMap.put(".ckg", rCraftSkillGain);
+        fileExtensionToResourceMap.put(".2EA55F30", rPlayerExpTable);
         fileExtensionToResourceMap.put(".3FD51519", rCraftSkillGain);
-        fileExtensionToResourceMap.put(".ckst", rCraftSkillStr);
-        fileExtensionToResourceMap.put(".46ECE09C", rCraftSkillStr);
-        fileExtensionToResourceMap.put(".ckb", rCraftSkillBurst);
         fileExtensionToResourceMap.put(".4BB8A7C5", rCraftSkillBurst);
-        fileExtensionToResourceMap.put(".rcp", rCraftRecipe);
+        fileExtensionToResourceMap.put(".46ECE09C", rCraftSkillStr);
+        fileExtensionToResourceMap.put(".60BA5E0B", rCraftWepQualityParam);
+        fileExtensionToResourceMap.put(".5362A636", rPartsCtrlTable);
         fileExtensionToResourceMap.put(".5810D1F1", rCraftRecipe);
+        fileExtensionToResourceMap.put(".767645BE", rCraftArmQualityParam);
         fileExtensionToResourceMap.put(".aad", rAbilityAddData);
         fileExtensionToResourceMap.put(".abd", rAbilityData);
         fileExtensionToResourceMap.put(".abl", rAbilityList);
@@ -222,45 +219,42 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".cee", rCraftElementExp);
         fileExtensionToResourceMap.put(".chant", rMagicChantParam);
         fileExtensionToResourceMap.put(".cip", rCatchInfoParam);
+        fileExtensionToResourceMap.put(".ckb", rCraftSkillBurst);
         fileExtensionToResourceMap.put(".ckc", rCraftSkillCost);
+        fileExtensionToResourceMap.put(".ckg", rCraftSkillGain);
         fileExtensionToResourceMap.put(".cks", rCraftSkillSpd);
+        fileExtensionToResourceMap.put(".ckst", rCraftSkillStr);
         fileExtensionToResourceMap.put(".cpe", rCharParamEnemy);
+        fileExtensionToResourceMap.put(".cqa", rCraftArmQualityParam);
         fileExtensionToResourceMap.put(".cqi", rCycleQuestInfo);
-        fileExtensionToResourceMap.put(".csi", rCycleContentsSortieInfo);
-        fileExtensionToResourceMap.put(".esi", rEndContentsSortieInfo);
-        fileExtensionToResourceMap.put(".pqi", rPackageQuestInfo);
         fileExtensionToResourceMap.put(".cqr", rCraftQuality);
+        fileExtensionToResourceMap.put(".cqw", rCraftWepQualityParam);
+        fileExtensionToResourceMap.put(".crs", rChildRegionStatusParam);
         fileExtensionToResourceMap.put(".csd", rCustomSkillData);
+        fileExtensionToResourceMap.put(".csi", rCycleContentsSortieInfo);
         fileExtensionToResourceMap.put(".cuex", rCraftUpGradeExp);
         fileExtensionToResourceMap.put(".dgm", rGUIDogmaOrb);
         fileExtensionToResourceMap.put(".dmi", rDungeonMarker);
         fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
         fileExtensionToResourceMap.put(".ebi_sv", rEmBaseInfoSv);
         fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
-        fileExtensionToResourceMap.put(".esl", rEmScaleTable);
-        fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);
-        fileExtensionToResourceMap.put(".5362A636", rPartsCtrlTable);
         fileExtensionToResourceMap.put(".ele", rEnemyLocalEst);
-        fileExtensionToResourceMap.put(".ema", rEnemyMaterialTable);
-        fileExtensionToResourceMap.put(".esn", rEmSoundTable);
-        fileExtensionToResourceMap.put(".eoc", rOcdElectricParam);
-        fileExtensionToResourceMap.put(".est", rEnemyStatusChange);
-        fileExtensionToResourceMap.put(".ewk", rEmWorkRateTable);
-        fileExtensionToResourceMap.put(".jnt_order", rJointOrder);
-        fileExtensionToResourceMap.put(".oIp", rOcdImmuneParamRes);
-        fileExtensionToResourceMap.put(".prs", rParentRegionStatusParam);
-        fileExtensionToResourceMap.put(".rsl", rChildRegionStatusParamList);
-        fileExtensionToResourceMap.put(".crs", rChildRegionStatusParam);
-        fileExtensionToResourceMap.put(".era", rEnemyReactResEx);
-        fileExtensionToResourceMap.put(".jnt_info", rJointInfo);
         fileExtensionToResourceMap.put(".eli", rVfxLightInfluence);
+        fileExtensionToResourceMap.put(".ema", rEnemyMaterialTable);
         fileExtensionToResourceMap.put(".emg", rEnemyGroup);
-        fileExtensionToResourceMap.put(".esp", rEditStageParam);
+        fileExtensionToResourceMap.put(".eoc", rOcdElectricParam);
         fileExtensionToResourceMap.put(".equip_preset", rEquipPreset);
+        fileExtensionToResourceMap.put(".era", rEnemyReactResEx);
+        fileExtensionToResourceMap.put(".esi", rEndContentsSortieInfo);
+        fileExtensionToResourceMap.put(".esl", rEmScaleTable);
+        fileExtensionToResourceMap.put(".esn", rEmSoundTable);
+        fileExtensionToResourceMap.put(".esp", rEditStageParam);
+        fileExtensionToResourceMap.put(".est", rEnemyStatusChange);
         fileExtensionToResourceMap.put(".evl", rEvaluationTable);
         fileExtensionToResourceMap.put(".evp", rEventParam);
+        fileExtensionToResourceMap.put(".ewk", rEmWorkRateTable);
+        fileExtensionToResourceMap.put(".ewp", rEmWarpParam);
         fileExtensionToResourceMap.put(".exp", rPlayerExpTable);
-        fileExtensionToResourceMap.put(".2EA55F30", rPlayerExpTable);
         fileExtensionToResourceMap.put(".faa", rFieldAreaAdjoinList);
         fileExtensionToResourceMap.put(".fal", rFieldAreaList);
         fileExtensionToResourceMap.put(".fmd", rFieldMapData);
@@ -269,6 +263,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".fng", rFurnitureGroup);
         fileExtensionToResourceMap.put(".fni", rFurnitureItem);
         fileExtensionToResourceMap.put(".fnl", rFurnitureLayout);
+        fileExtensionToResourceMap.put(".fsm", rAIFSM);
         fileExtensionToResourceMap.put(".gat", rGatheringItem);
         fileExtensionToResourceMap.put(".gmd", rGUIMessage);
         fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
@@ -277,7 +272,8 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".jlt2", rJobLevelUpTbl2);
         fileExtensionToResourceMap.put(".jmc", rJobMasterCtrl);
         fileExtensionToResourceMap.put(".jmp", rJumpParamTbl);
-        fileExtensionToResourceMap.put(".ewp", rEmWarpParam);
+        fileExtensionToResourceMap.put(".jnt_info", rJointInfo);
+        fileExtensionToResourceMap.put(".jnt_order", rJointOrder);
         fileExtensionToResourceMap.put(".jobbase", rJobBaseParam);
         fileExtensionToResourceMap.put(".jtq", rJobTutorialQuestList);
         fileExtensionToResourceMap.put(".kctt", rKeyConfigTextTable);
@@ -299,6 +295,8 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".nmp", rNpcMeetingPlace);
         fileExtensionToResourceMap.put(".nsd", rNormalSkillData);
         fileExtensionToResourceMap.put(".nsp", rNpcIsNoSetPS3);
+        fileExtensionToResourceMap.put(".oIp", rOcdImmuneParamRes);
+        fileExtensionToResourceMap.put(".omk", rOmKey);
         fileExtensionToResourceMap.put(".omp", rOmParam);
         fileExtensionToResourceMap.put(".ompp", rOmParamPart);
         fileExtensionToResourceMap.put(".osp", rOcdStatusParamRes);
@@ -310,15 +308,21 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
         fileExtensionToResourceMap.put(".ppr", rPartnerReactParam);
         fileExtensionToResourceMap.put(".ppt", rPartnerPawnTalk);
+        fileExtensionToResourceMap.put(".pqi", rPackageQuestInfo);
         fileExtensionToResourceMap.put(".pqt", rPawnQuestTalk);
+        fileExtensionToResourceMap.put(".prs", rParentRegionStatusParam);
         fileExtensionToResourceMap.put(".psi", rPlPartsInfo);
+        fileExtensionToResourceMap.put(".ptc", rPartsCtrlTable);
         fileExtensionToResourceMap.put(".push_rate", rPushRate);
         fileExtensionToResourceMap.put(".qhd", rQuestHistoryData);
         fileExtensionToResourceMap.put(".qmi", rQuestMarkerInfo);
         fileExtensionToResourceMap.put(".qsq", rQuestSequenceList);
+        fileExtensionToResourceMap.put(".qst", rQuestList);
         fileExtensionToResourceMap.put(".qtd", rQuestTextData);
         fileExtensionToResourceMap.put(".rag", rRageTable);
+        fileExtensionToResourceMap.put(".rcp", rCraftRecipe);
         fileExtensionToResourceMap.put(".repgmdlist", rReplaceWardGmdList);
+        fileExtensionToResourceMap.put(".rsl", rChildRegionStatusParamList);
         fileExtensionToResourceMap.put(".rwr", rRoomWearParam);
         fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
         fileExtensionToResourceMap.put(".sal2", rStageAdjoinList2);
@@ -340,12 +344,10 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sri2", rShotReqInfo2);
         fileExtensionToResourceMap.put(".sta", rStartPosArea);
         fileExtensionToResourceMap.put(".sti", rStageInfo);
+        fileExtensionToResourceMap.put(".stp", rStartPos);
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
         fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
-        fileExtensionToResourceMap.put(".stp", rStartPos);
-        fileExtensionToResourceMap.put(".omk", rOmKey);
-        fileExtensionToResourceMap.put(".qst", rQuestList);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
         fileExtensionToResourceMap.put(".tlt", rTutorialList);
         fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);

@@ -6,13 +6,17 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.LayoutPreset;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.base.LayoutPresetList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LayoutPresetDeserializer extends ClientResourceFileDeserializer {
     public LayoutPresetDeserializer(ClientResourceFile clientResourceFile) {
         super(clientResourceFile);
     }
 
-    private static LayoutPreset readLayoutPreset(BufferReader bufferReader) {
+    private static LayoutPreset readLayoutPreset(BufferReader bufferReader, int presetNo) {
         return new LayoutPreset(
+                presetNo,
                 bufferReader.readNullTerminatedString(),
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger()
@@ -21,6 +25,11 @@ public class LayoutPresetDeserializer extends ClientResourceFileDeserializer {
 
     @Override
     protected LayoutPresetList parseClientResourceFile(BufferReader bufferReader) {
-        return new LayoutPresetList(bufferReader.readArray(LayoutPresetDeserializer::readLayoutPreset));
+        int arraySize = (int) bufferReader.readUnsignedInteger();
+        List<LayoutPreset> presets = new ArrayList<>(arraySize);
+        for (int i = 0; i < arraySize; i++) {
+            presets.add(readLayoutPreset(bufferReader, i));
+        }
+        return new LayoutPresetList(presets);
     }
 }

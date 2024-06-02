@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
@@ -70,6 +71,8 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientSt
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.season3.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.season3.game_common.GUIMessageSerializer;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -85,28 +88,57 @@ public class ClientResourceFileManager {
     private final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile> clientResourceFileMap;
     private final Serializer<TopLevelClientResource> stringSerializer;
 
-    protected ClientResourceFileManager(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    protected ClientResourceFileManager(Path clientRootFolder, ClientVersion clientVersion, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
-        DynamicResourceLookupUtil.initialize(clientResourceBasePath);
+        DynamicResourceLookupUtil.initialize(clientRootFolder);
         clientResourceFileSet = HashSet.newHashSet(128);
         clientResourceFileMap = HashMap.newHashMap(128);
+
         setupClientResourceFiles(clientResourceFileSet);
+
+        // TODO: rework and split into individual seasons
+        switch (clientVersion) {
+            case VERSION_1_1 -> {
+                setupClientResourceFilesSeasonThree(clientResourceFileSet);
+                setupClientResourceFilesSeasonTwo(clientResourceFileSet);
+                setupClientResourceFilesSeasonOne(clientResourceFileSet);
+            }
+            case VERSION_2_3 -> {
+                setupClientResourceFilesSeasonThree(clientResourceFileSet);
+                setupClientResourceFilesSeasonTwo(clientResourceFileSet);
+                setupClientResourceFilesSeasonOne(clientResourceFileSet);
+            }
+            case VERSION_3_4 -> {
+                setupClientResourceFilesSeasonThree(clientResourceFileSet);
+                setupClientResourceFilesSeasonTwo(clientResourceFileSet);
+                setupClientResourceFilesSeasonOne(clientResourceFileSet);
+            }
+        }
+
         for (ClientResourceFile clientResourceFile : clientResourceFileSet) {
             clientResourceFileMap.put(clientResourceFile.getIdentifier(), clientResourceFile);
         }
     }
 
-    public static ClientResourceFileManager get(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        return new ClientResourceFileManager(clientResourceBasePath, preferredSerializationType, shouldSerializeMetaInformation);
+    public static ClientResourceFileManager get(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return new ClientResourceFileManager(clientRootFolder, clientVersion, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     private static void setupClientResourceFiles(Set<ClientResourceFile> clientResourceFileSet) {
         clientResourceFileSet.add(new ClientResourceFile(rArchive, new FileHeader("ARCC", 7, 2), EncryptedArchiveDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rArchive, new FileHeader("ARCS", 7, 2), ReferenceArchiveDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rArchiveListArray, new FileHeader(11, 4), ArchiveListArrayDeserializer.class));
-        setupClientResourceFilesSeasonThree(clientResourceFileSet);
-        setupClientResourceFilesSeasonTwo(clientResourceFileSet);
-        setupClientResourceFilesSeasonOne(clientResourceFileSet);
     }
 
     private static void setupClientResourceFilesSeasonThree(Set<ClientResourceFile> clientResourceFileSet) {
@@ -304,6 +336,7 @@ public class ClientResourceFileManager {
         clientResourceFileSet.add(new ClientResourceFile(rJumpParamTbl, new FileHeader(3, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.job.JumpParamTblDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rStartPos, new FileHeader("XFS\0", 131087, 4), StartPosDeserializer.class));
         clientResourceFileSet.add(new ClientResourceFile(rQuestList, new FileHeader("XFS\0", 7667727, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest.QuestListDeserializer.class));
+        clientResourceFileSet.add(new ClientResourceFile(rAIFSM, new FileHeader("XFS\0", 131087, 4), org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season2.quest.AIFSMDeserializer.class));
     }
 
     private static void setupClientResourceFilesSeasonOne(Set<ClientResourceFile> clientResourceFileSet) {

@@ -29,9 +29,9 @@ public class PacketManager {
     private final Map<PacketHeader, GamePacket> gamePacketFileMap;
     private final Serializer<Packet> stringSerializer;
 
-    protected PacketManager(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    protected PacketManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = PacketStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
-        DynamicResourceLookupUtil.initialize(clientResourceBasePath);
+        DynamicResourceLookupUtil.initialize(clientRootFolder);
         gamePacketSet = HashSet.newHashSet(128);
         gamePacketFileMap = HashMap.newHashMap(128);
         setupGamePacketFiles(gamePacketSet);
@@ -40,8 +40,8 @@ public class PacketManager {
         }
     }
 
-    public static PacketManager get(Path clientResourceBasePath, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        return new PacketManager(clientResourceBasePath, preferredSerializationType, shouldSerializeMetaInformation);
+    public static PacketManager get(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        return new PacketManager(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     private void setupGamePacketFiles(Set<GamePacket> gamePacketSet) {

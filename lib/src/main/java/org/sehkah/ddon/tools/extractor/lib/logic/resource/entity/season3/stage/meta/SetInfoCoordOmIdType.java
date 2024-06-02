@@ -2,6 +2,9 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.
 
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum SetInfoCoordOmIdType {
     OM_ID_PAWN_DOOR(511140),
@@ -34,13 +37,14 @@ public enum SetInfoCoordOmIdType {
     OM_ID_WARP_CRYSTAL(522157),
     OM_ID_STRUCTURE_WALL1(522540);
 
-    public final long value;
+    private static final Map<Integer, SetInfoCoordOmIdType> ordinalMap = Arrays.stream(values()).collect(Collectors.toMap(e -> e.value, Function.identity()));
+    private final int value;
 
-    SetInfoCoordOmIdType(long value) {
+    SetInfoCoordOmIdType(final int value) {
         this.value = value;
     }
 
-    public static SetInfoCoordOmIdType of(long value) {
-        return Arrays.stream(SetInfoCoordOmIdType.values()).filter(t -> t.value == value).findFirst().orElse(null);
+    public static SetInfoCoordOmIdType of(Integer n) {
+        return ordinalMap.getOrDefault(n, null);
     }
 }

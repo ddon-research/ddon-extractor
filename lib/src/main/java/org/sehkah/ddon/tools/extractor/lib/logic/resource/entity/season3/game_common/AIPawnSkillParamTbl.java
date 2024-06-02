@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
 @Getter
+@JsonPropertyOrder({"UnknownArrayMetaData", "AIPawnSkillParamTbl"})
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public final class AIPawnSkillParamTbl extends TopLevelClientResource {
     private final long UnknownArrayMetaData;

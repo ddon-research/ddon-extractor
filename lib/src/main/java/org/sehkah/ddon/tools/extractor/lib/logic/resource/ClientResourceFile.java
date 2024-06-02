@@ -13,6 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 @Data
 public class ClientResourceFile {
     private ClientResourceFileExtension fileExtension;
+    //TODO: Get rid of fileheader here, should be part of top level resource file instead
     private FileHeader fileHeader;
     private Pair<ClientResourceFileExtension, FileHeader> identifier;
     private ClientResourceDeserializer<TopLevelClientResource> deserializer;

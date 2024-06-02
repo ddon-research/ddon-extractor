@@ -42,13 +42,13 @@ public class ExtractResourceCommand implements Callable<Integer> {
     private SerializationFormat outputFormat;
 
     @CommandLine.Parameters(index = "0", arity = "1", description = """
-            Specifies the DDON client resource file path. 
+            Specifies the DDON client root folder.
             This will be used as a basis to derive further meta information for certain files where supported and enabled.
             See the meta information flag for further information
             Example:
-                extract "D:\\DDON\\nativePC\\rom" <resource file>
+                extract "D:\\DDON" <resource file>
             """)
-    private Path clientResourceBasePath;
+    private Path clientRootFolder;
 
     @CommandLine.Parameters(index = "1", arity = "1", description = """
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
@@ -180,9 +180,9 @@ public class ExtractResourceCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Path fullPath = clientResourceBasePath.resolve(inputFilePath);
+        Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
         if (Files.exists(fullPath)) {
-            clientResourceFileManager = ClientResourceFileManager.get(clientResourceBasePath, outputFormat, addMetaInformation);
+            clientResourceFileManager = ClientResourceFileManager.get(clientRootFolder, outputFormat, addMetaInformation);
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {

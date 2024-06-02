@@ -1,11 +1,11 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource.serialization;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.GenericStringSerializer;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
@@ -29,7 +29,8 @@ class GUIMessageSerializerTest {
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
 
-        assertEquals("b3fe63563340b8b070661b3b9a824acdffa971c2", DigestUtils.sha1Hex(bytes));
+
+        assertEquals("b3fe63563340b8b070661b3b9a824acdffa971c2", DigestUtil.sha1Hex(bytes));
     }
 
     @Test
@@ -48,6 +49,6 @@ class GUIMessageSerializerTest {
         }));
         byte[] bytes = serializer.serializeResource(deserialized);
 
-        assertEquals("67f549b487d0bac721a9d58bd2ba4b7bd241c25e", DigestUtils.sha1Hex(bytes));
+        assertEquals("67f549b487d0bac721a9d58bd2ba4b7bd241c25e", DigestUtil.sha1Hex(bytes));
     }
 }

@@ -19,7 +19,7 @@ module org.sehkah.ddon.tools.extractor.lib {
     exports org.sehkah.ddon.tools.extractor.lib.common.error;
     exports org.sehkah.ddon.tools.extractor.lib.common.io;
     exports org.sehkah.ddon.tools.extractor.lib.common.serialization;
-
+    exports org.sehkah.ddon.tools.extractor.lib.common.util;
 
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet;
     exports org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization;

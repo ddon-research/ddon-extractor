@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.crypto.CrcUtil;
+import org.sehkah.ddon.tools.extractor.lib.common.util.StringUtil;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -14,7 +15,57 @@ public class FrameworkResourcesUtil {
     private static final Map<Long, String> jamCrcToFileExtensionMap = HashMap.newHashMap(420);
 
     static {
+        //        resourceToFileExtensionMap.put("cSetInfoOmHvLever", ".cSetInfoOmHvLever"); //TODO Unsure
+        //        resourceToFileExtensionMap.put("cSetInfoOmMine", ".cSetInfoOmMine"); //TODO Unsure
+        resourceToFileExtensionMap.put("cAICopiableParameter", ".cAICopiableParameter");
+        resourceToFileExtensionMap.put("cAIDEnum", ".cAIDEnum");
+        resourceToFileExtensionMap.put("cAIFSMCluster", ".cAIFSMCluster");
+        resourceToFileExtensionMap.put("cAIFSMLink", ".cAIFSMLink");
+        resourceToFileExtensionMap.put("cAIFSMNode", ".cAIFSMNode");
+        resourceToFileExtensionMap.put("cAIFSMNodeProcess", ".cAIFSMNodeProcess");
+        resourceToFileExtensionMap.put("cAIUserProcess", ".cAIUserProcess");
+        resourceToFileExtensionMap.put("cFSMBase::cParamCallMessage", ".cFSMBase_cParamCallMessage");
+        resourceToFileExtensionMap.put("cFSMBase::cParamCallMessageFortDef_BattleStart", ".cFSMBase_cParamCallMessageFortDef_BattleStart");
+        resourceToFileExtensionMap.put("cFSMBase::cParamCallMessageFortDef_Common", ".cFSMBase_cParamCallMessageFortDef_Common");
+        resourceToFileExtensionMap.put("cFSMOrderParam", ".cFSMOrderParam");
+        resourceToFileExtensionMap.put("cFSMOrderParamCallAnnounce", ".cFSMOrderParamCallAnnounce");
+        resourceToFileExtensionMap.put("cFSMOrderParamFlagCommon", ".cFSMOrderParamFlagCommon");
+        resourceToFileExtensionMap.put("cFSMOrderParamFlagQuest", ".cFSMOrderParamFlagQuest");
+        resourceToFileExtensionMap.put("cFSMOrderParamFSMFreeFlag", ".cFSMOrderParamFSMFreeFlag");
+        resourceToFileExtensionMap.put("cFSMOrderParamIsMyQuestFlag", ".cFSMOrderParamIsMyQuestFlag");
+        resourceToFileExtensionMap.put("cFSMOrderParamLayoutFlag", ".cFSMOrderParamLayoutFlag");
+        resourceToFileExtensionMap.put("cFSMOrderParamQuestInfo", ".cFSMOrderParamQuestInfo");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetOpenDoor", ".cFSMOrderParamSetOpenDoor");
+        resourceToFileExtensionMap.put("cFSMOrderParamAreaHit", ".cFSMOrderParamAreaHit");
+        resourceToFileExtensionMap.put("cFSMOrderParamCallEvent", ".cFSMOrderParamCallEvent");
+        resourceToFileExtensionMap.put("cFSMOrderParamCallEvent::cNpcId", ".cFSMOrderParamCallEvent_cNpcId");
+        resourceToFileExtensionMap.put("cFSMOrderParamJumpPos", ".cFSMOrderParamJumpPos");
+        resourceToFileExtensionMap.put("cFSMOrderParamCamera", ".cFSMOrderParamCamera");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetLocationName", ".cFSMOrderParamSetLocationName");
+        resourceToFileExtensionMap.put("cFSMOrderParamBGMRequest", ".cFSMOrderParamBGMRequest");
+        resourceToFileExtensionMap.put("cFSMOrderParamBGMStop", ".cFSMOrderParamBGMStop");
+        resourceToFileExtensionMap.put("cFSMCamEv", ".cFSMCamEv");
         resourceToFileExtensionMap.put("cFSMRelate", ".cFSMRelate");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamAddAttendPoint", ".cFSMUnit_cParamAddAttendPoint");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamCheckGauge", ".cFSMUnit_cParamCheckGauge");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamRandomChoice", ".cFSMUnit_cParamRandomChoice");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSelectedChoiceTalk", ".cFSMUnit_cParamSelectedChoiceTalk");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetAction", ".cFSMUnit_cParamSetAction");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetAdjustScrHit", ".cFSMUnit_cParamSetAdjustScrHit");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetAttendComp", ".cFSMUnit_cParamSetAttendComp");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetAttendNpc", ".cFSMUnit_cParamSetAttendNpc");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetChangeThink", ".cFSMUnit_cParamSetChangeThink");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetDisableTouchAction", ".cFSMUnit_cParamSetDisableTouchAction");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetDispMiniMap", ".cFSMUnit_cParamSetDispMiniMap");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEffect", "cFSMUnit_cParamSetEffect");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEyeClose", ".cFSMUnit_cParamSetEyeClose");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetGoto", ".cFSMUnit_cParamSetGoto");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetGotoTarget", ".cFSMUnit_cParamSetGotoTarget");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetHeadCtrl", ".cFSMUnit_cParamSetHeadCtrl");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetMotion", ".cFSMUnit_cParamSetMotion");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetNeck", ".cFSMUnit_cParamSetNeck");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetWait", ".cFSMUnit_cParamSetWait");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetWaypoint", ".cFSMUnit_cParamSetWaypoint");
         resourceToFileExtensionMap.put("cQuestGroup", ".cQuestGroup");
         resourceToFileExtensionMap.put("cQuestSet", ".cQuestSet");
         resourceToFileExtensionMap.put("cQuestStage", ".cQuestStage");
@@ -22,38 +73,37 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("cSetInfoCharacter", ".cSetInfoCharacter");
         resourceToFileExtensionMap.put("cSetInfoCoord", ".cSetInfoCoord");
         resourceToFileExtensionMap.put("cSetInfoEnemy", ".cSetInfoEnemy");
+        resourceToFileExtensionMap.put("cSetInfoGeneralPoint", ".cSetInfoGeneralPoint");
         resourceToFileExtensionMap.put("cSetInfoNpc", ".cSetInfoNpc");
         resourceToFileExtensionMap.put("cSetInfoOm", ".cSetInfoOm");
         resourceToFileExtensionMap.put("cSetInfoOmBadStatus", ".cSetInfoOmBadStatus");
+        resourceToFileExtensionMap.put("cSetInfoOmBlock", ".cSetInfoOmBlock");
+        resourceToFileExtensionMap.put("cSetInfoOmBoard", ".cSetInfoOmBoard");
         resourceToFileExtensionMap.put("cSetInfoOmBowlOfLife", ".cSetInfoOmBowlOfLife");
         resourceToFileExtensionMap.put("cSetInfoOmBreakTarget", ".cSetInfoOmBreakTarget");
         resourceToFileExtensionMap.put("cSetInfoOmCannon", ".cSetInfoOmCannon");
         resourceToFileExtensionMap.put("cSetInfoOmCtrl", ".cSetInfoOmCtrl");
         resourceToFileExtensionMap.put("cSetInfoOmCtrl::cLinkParam", ".cSetInfoOmCtrl_cLinkParam");
         resourceToFileExtensionMap.put("cSetInfoOmDoor", ".cSetInfoOmDoor");
+        resourceToFileExtensionMap.put("cSetInfoOmElfSW", ".cSetInfoOmElfSW");
+        resourceToFileExtensionMap.put("cSetInfoOmEx", ".cSetInfoOmEx");
+        resourceToFileExtensionMap.put("cSetInfoOmFall", ".cSetInfoOmFall");
         resourceToFileExtensionMap.put("cSetInfoOmGather", ".cSetInfoOmGather");
         resourceToFileExtensionMap.put("cSetInfoOmHakuryuu", ".cSetInfoOmHakuryuu");
         resourceToFileExtensionMap.put("cSetInfoOmHeal", ".cSetInfoOmHeal");
+        resourceToFileExtensionMap.put("cSetInfoOmLadder", ".cSetInfoOmLadder");
         resourceToFileExtensionMap.put("cSetInfoOmLever", ".cSetInfoOmLever");
+        resourceToFileExtensionMap.put("cSetInfoOmNav", ".cSetInfoOmNav");
+        resourceToFileExtensionMap.put("cSetInfoOmOldDoor", ".cSetInfoOmOldDoor");
+        resourceToFileExtensionMap.put("cSetInfoOmOneWay", ".cSetInfoOmOneWay");
         resourceToFileExtensionMap.put("cSetInfoOmRange", ".cSetInfoOmRange");
         resourceToFileExtensionMap.put("cSetInfoOmText", ".cSetInfoOmText");
         resourceToFileExtensionMap.put("cSetInfoOmTimer", ".cSetInfoOmCannon");
         resourceToFileExtensionMap.put("cSetInfoOmTreasureBox", ".cSetInfoOmTreasureBox");
         resourceToFileExtensionMap.put("cSetInfoOmWall", ".cSetInfoOmWall");
         resourceToFileExtensionMap.put("cSetInfoOmWarp", ".cSetInfoOmWarp");
-//        resourceToFileExtensionMap.put("cSetInfoOmMine", ".cSetInfoOmMine"); //TODO Unsure
-//        resourceToFileExtensionMap.put("cSetInfoOmHvLever", ".cSetInfoOmHvLever"); //TODO Unsure
-        resourceToFileExtensionMap.put("cSetInfoOmFall", ".cSetInfoOmFall");
-        resourceToFileExtensionMap.put("cSetInfoOmLadder", ".cSetInfoOmLadder");
-        resourceToFileExtensionMap.put("cSetInfoGeneralPoint", ".cSetInfoGeneralPoint");
-        resourceToFileExtensionMap.put("cSetInfoOmBoard", ".cSetInfoOmBoard");
-        resourceToFileExtensionMap.put("cSetInfoOmElfSW", ".cSetInfoOmElfSW");
-        resourceToFileExtensionMap.put("cSetInfoOmNav", ".cSetInfoOmNav");
-        resourceToFileExtensionMap.put("cSetInfoOmBlock", ".cSetInfoOmBlock");
-        resourceToFileExtensionMap.put("cSetInfoOmEx", ".cSetInfoOmEx");
-        resourceToFileExtensionMap.put("cSetInfoOmOldDoor", ".cSetInfoOmOldDoor");
-        resourceToFileExtensionMap.put("cSetInfoOmOneWay", ".cSetInfoOmOneWay");
         resourceToFileExtensionMap.put("MtArray", ".MtArray");
+        resourceToFileExtensionMap.put("nAI::EnumProp", ".nAI_EnumProp");
         resourceToFileExtensionMap.put("rAbilityList", ".abl");
         resourceToFileExtensionMap.put("rAchievement", ".acv");
         resourceToFileExtensionMap.put("rAchievementHeader", ".ach");
@@ -68,32 +118,18 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rAdjustParam", ".ajp");
         resourceToFileExtensionMap.put("rAI", ".ais");
         resourceToFileExtensionMap.put("rAIConditionTree", ".cdt");
+        resourceToFileExtensionMap.put("rAIConditionTree::ConstF32Node", ".rAIConditionTree_ConstF32Node");
+        resourceToFileExtensionMap.put("rAIConditionTree::OperationNode", ".rAIConditionTree_OperationNode");
+        resourceToFileExtensionMap.put("rAIConditionTree::StateNode", ".rAIConditionTree_StateNode");
+        resourceToFileExtensionMap.put("rAIConditionTree::TreeInfo", ".rAIConditionTree_TreeInfo");
+        resourceToFileExtensionMap.put("rAIConditionTree::VariableNode", ".rAIConditionTree_VariableNode");
+        resourceToFileExtensionMap.put("rAIConditionTree::VariableNode::VariableInfo", ".rAIConditionTree_VariableNode_VariableInfo");
+        resourceToFileExtensionMap.put("rAIConditionTreeNode", ".rAIConditionTreeNode");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetCallSe", ".cFSMOrderParamSetCallSe");
         resourceToFileExtensionMap.put("rAIDynamicLayout", ".dpth");
         resourceToFileExtensionMap.put("rAIFSM", ".fsm");
         resourceToFileExtensionMap.put("rAIFSMList", ".fsl");
         resourceToFileExtensionMap.put("rAIFSMList::Info", ".fsl_info");
-        resourceToFileExtensionMap.put("cAIFSMCluster", ".cAIFSMCluster");
-        resourceToFileExtensionMap.put("cAIFSMNode", ".cAIFSMNode");
-        resourceToFileExtensionMap.put("cAIFSMNodeProcess", ".cAIFSMNodeProcess");
-        resourceToFileExtensionMap.put("cAIFSMLink", ".cAIFSMLink");
-        resourceToFileExtensionMap.put("cAICopiableParameter", ".cAICopiableParameter");
-        resourceToFileExtensionMap.put("cAIUserProcess", ".cAIUserProcess");
-        resourceToFileExtensionMap.put("cFSMOrderParamIsMyQuestFlag", ".cFSMOrderParamIsMyQuestFlag");
-        resourceToFileExtensionMap.put("cFSMOrderParam", ".cFSMOrderParam");
-        resourceToFileExtensionMap.put("cFSMUnit::cParamSetAction", ".cFSMUnit_cParamSetAction");
-        resourceToFileExtensionMap.put("cFSMUnit::cParamSetGoto", ".cFSMUnit_cParamSetGoto");
-        resourceToFileExtensionMap.put("cFSMUnit::cParamSetDisableTouchAction", ".cFSMUnit_cParamSetDisableTouchAction");
-        resourceToFileExtensionMap.put("cFSMUnit::cParamSetWait", ".cFSMUnit_cParamSetWait");
-        resourceToFileExtensionMap.put("rAIConditionTree::TreeInfo", ".rAIConditionTree_TreeInfo");
-        resourceToFileExtensionMap.put("rAIConditionTree::VariableNode", ".rAIConditionTree_VariableNode");
-        resourceToFileExtensionMap.put("rAIConditionTree::VariableNode::VariableInfo", ".rAIConditionTree_VariableNode_VariableInfo");
-        resourceToFileExtensionMap.put("nAI::EnumProp", ".nAI_EnumProp");
-        resourceToFileExtensionMap.put("rAIConditionTree::OperationNode", ".rAIConditionTree_OperationNode");
-        resourceToFileExtensionMap.put("rAIConditionTree::StateNode", ".rAIConditionTree_StateNode");
-        resourceToFileExtensionMap.put("rAIConditionTreeNode", ".rAIConditionTreeNode");
-        resourceToFileExtensionMap.put("cAIDEnum", ".cAIDEnum");
-        resourceToFileExtensionMap.put("cFSMUnit::cParamSetHeadCtrl", ".cFSMUnit_cParamSetHeadCtrl");
-        resourceToFileExtensionMap.put("rAIConditionTree::ConstF32Node", ".rAIConditionTree_ConstF32Node");
         resourceToFileExtensionMap.put("rAIPathBase", ".are");
         resourceToFileExtensionMap.put("rAIPathBaseXml", ".are.xml");
         resourceToFileExtensionMap.put("rAIPawnActNoSwitch", ".pas");
@@ -464,6 +500,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rStaminaDecTbl", ".sdt");
         resourceToFileExtensionMap.put("rStarCatalog", ".stc");
         resourceToFileExtensionMap.put("rStartPos", ".stp");
+        resourceToFileExtensionMap.put("rStartPos::Info", ".stp_Info");
         resourceToFileExtensionMap.put("rStartPosArea", ".sta");
         resourceToFileExtensionMap.put("rStatusCheck", ".sck");
         resourceToFileExtensionMap.put("rStatusGainTable", ".sg_tbl");
@@ -476,11 +513,11 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rTbl2ItemIconId", ".tii");
         resourceToFileExtensionMap.put("rTblMenuComm", ".tmc");
         resourceToFileExtensionMap.put("rTblMenuOption", ".tmo");
-        resourceToFileExtensionMap.put("rTblMenuOption::cCtgr", ".rTblMenuOption_cCtgr");
-        resourceToFileExtensionMap.put("rTblMenuOption::cTab", ".rTblMenuOption_cTab");
         resourceToFileExtensionMap.put("rTblMenuOption::cCaption", ".rTblMenuOption_cCaption");
+        resourceToFileExtensionMap.put("rTblMenuOption::cCtgr", ".rTblMenuOption_cCtgr");
         resourceToFileExtensionMap.put("rTblMenuOption::cData", ".rTblMenuOption_cData");
         resourceToFileExtensionMap.put("rTblMenuOption::cPulldown", ".rTblMenuOption_cPulldown");
+        resourceToFileExtensionMap.put("rTblMenuOption::cTab", ".rTblMenuOption_cTab");
         resourceToFileExtensionMap.put("rTexDetailEdit", ".tde");
         resourceToFileExtensionMap.put("rTexDetailEdit::DetailParam", ".tde_DetailParam");
         resourceToFileExtensionMap.put("rTexture", ".tex");
@@ -531,11 +568,19 @@ public class FrameworkResourcesUtil {
     }
 
     public static String getFileExtension(long crc) {
-        return jamCrcToFileExtensionMap.getOrDefault(crc, String.valueOf(crc));
+        String fileExtension = jamCrcToFileExtensionMap.getOrDefault(crc, String.valueOf(crc));
+        if (StringUtil.isNumeric(fileExtension)) {
+            log.warn("File extension for JamCRC '{}' could not be found", crc);
+        }
+        return fileExtension;
     }
 
     public static String getFrameworkResourceClassNameByCrc(long crc) {
-        return jamCrcToResourceMap.getOrDefault(crc, String.valueOf(crc));
+        String className = jamCrcToResourceMap.getOrDefault(crc, String.valueOf(crc));
+        if (StringUtil.isNumeric(className)) {
+            log.warn("Class name for JamCRC '{}' could not be found", crc);
+        }
+        return className;
     }
 
     public static BigInteger convertToResourceId(String dataTypeName, String path) {

@@ -29,7 +29,7 @@ tasks.withType(Jar).configureEach {
 }
 
 jlink {
-    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages', '--ignore-signing-information']
+    options = ['--strip-debug', '--compress', 'zip-6', '--no-header-files', '--no-man-pages', '--ignore-signing-information']
     launcher {
         name = rootProject.name
         jvmArgs = ['-Dfile.encoding=UTF-8']

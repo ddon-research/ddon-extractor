@@ -23,6 +23,7 @@ public enum ResourceFileLookupType {
     ACHIEVEMENT_INFO("ui/uGUIAchievement/ui/00_message/achievement", "achievement_info.gmd"),
     ACHIEVEMENT_CATEGORY("ui/uGUIAchievement/ui/00_message/achievement", "achievement_category.gmd"),
     EVENT_NAME("EventViewRoom/ui/00_message/event", "event_name.gmd"),
+    NAMED_PARAM("ui/gui_cmn/ui/00_message/named", "named_param.gmd"),
     // NLL
     NPC_NLL("npc/npc_common/etc/npc/", "npc.nll"),
     // SLT

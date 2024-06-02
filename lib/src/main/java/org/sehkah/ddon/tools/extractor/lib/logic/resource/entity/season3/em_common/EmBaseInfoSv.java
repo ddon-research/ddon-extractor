@@ -1,20 +1,24 @@
 package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.em_common;
 
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.em_common.meta.EnemyCategoryType;
+
+import java.util.Set;
 
 public record EmBaseInfoSv(
         @MetaInformation
-        int Num,
+        int EnemyNo,
         long EnemyID,
         long EmCategory,
         @MetaInformation
-        EnemyCategoryType EnemyCategoryName
+        Set<EnemyCategoryType> EnemyCategoryNames
 ) {
-    public EmBaseInfoSv(int Num, long enemyID, long emCategory) {
+    public EmBaseInfoSv(int EnemyNo, long enemyID, long emCategory) {
         this(
-                Num,
+                EnemyNo,
                 enemyID,
-                emCategory, EnemyCategoryType.of(emCategory));
+                emCategory, BitUtil.extractBitSetUnsignedIntegerFlag(EnemyCategoryType::of, emCategory)
+        );
     }
 }
