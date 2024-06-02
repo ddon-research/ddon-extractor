@@ -1,0 +1,50 @@
+package org.sehkah.ddon.tools.extractor.season3.resource.entity.game_common;
+
+import java.util.List;
+
+
+public record AdjLimitParam(
+        List<Float> GuardAtkAdjMax,
+        List<Float> GuardAtkAdjMin,
+        List<Float> GuardDefAdjMax,
+        List<Float> GuardDefAdjMin,
+        List<Float> StaminaDamageAdjMax,
+        List<Float> StaminaDamageAdjMin,
+        List<Float> HpDamageAtkAdjMax,
+        List<Float> HpDamageAtkAdjMin,
+        List<Float> HpDamageDefAdjMax,
+        List<Float> HpDamageDefAdjMin,
+        List<Float> ShrinkAtkAdjMax,
+        List<Float> ShrinkAtkAdjMin,
+        List<Float> ShrinkDefAdjMax,
+        List<Float> ShrinkDefAdjMin,
+        List<Float> BlowAtkAdjMax,
+        List<Float> BlowAtkAdjMin,
+        List<Float> BlowDefAdjMax,
+        List<Float> BlowDefAdjMin,
+        List<Float> ShakeAtkAdjMax,
+        List<Float> ShakeAtkAdjMin,
+        List<Float> ShakeDefAdjMax,
+        List<Float> ShakeDefAdjMin,
+        List<Float> DownAtkAdjMax,
+        List<Float> DownAtkAdjMin,
+        List<Float> DownDefAdjMax,
+        List<Float> DownDefAdjMin,
+        List<Float> OcdAtkAdjMax,
+        List<Float> OcdAtkAdjMin,
+        List<Float> OcdDefAdjMax,
+        List<Float> OcdDefAdjMin,
+        List<Float> HpHealAtkAdjMax,
+        List<Float> HpHealAtkAdjMin,
+        List<Float> HpHealDefAdjMax,
+        List<Float> HpHealDefAdjMin,
+        List<Float> StaminaHealAtkAdjMax,
+        List<Float> StaminaHealAtkAdjMin,
+        List<Float> StaminaHealDefAdjMax,
+        List<Float> StaminaHealDefAdjMin,
+        int HolyAbsorpMax,
+        int HolyAbsorpMin,
+        float DamageMax,
+        float DamageMin
+) {
+}

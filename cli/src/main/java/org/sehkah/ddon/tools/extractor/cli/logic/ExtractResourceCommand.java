@@ -4,14 +4,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
+import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
+import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientVersion;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
+import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -32,6 +37,7 @@ import java.util.stream.Stream;
         description = "Extracts the provided DDON resource file(s).")
 public class ExtractResourceCommand implements Callable<Integer> {
     private ClientResourceFileManager clientResourceFileManager;
+
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -178,11 +184,33 @@ public class ExtractResourceCommand implements Callable<Integer> {
         }
     }
 
+    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return switch (clientVersion) {
+            case VERSION_1_1 ->
+                    new ClientResourceFileManagerSeason1(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_2_3 ->
+                    new ClientResourceFileManagerSeason2(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_3_4 ->
+                    new ClientResourceFileManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+        };
+    }
+
     @Override
     public Integer call() throws Exception {
         Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
         if (Files.exists(fullPath)) {
-            clientResourceFileManager = ClientResourceFileManager.get(clientRootFolder, outputFormat, addMetaInformation);
+            clientResourceFileManager = getClientResourceFileManager(clientRootFolder, outputFormat, addMetaInformation);
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {

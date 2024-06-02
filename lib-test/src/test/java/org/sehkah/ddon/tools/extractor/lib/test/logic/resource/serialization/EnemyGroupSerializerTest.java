@@ -6,6 +6,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
+import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,7 +22,7 @@ class EnemyGroupSerializerTest {
         String inputFile = "season3/game_common/param/enemy_group.emg.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
 
         TopLevelClientResource deserialized = clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);

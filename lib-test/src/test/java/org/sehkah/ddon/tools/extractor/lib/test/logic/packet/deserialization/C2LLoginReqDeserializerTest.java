@@ -8,8 +8,9 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.C2LLoginReq;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.c2l.meta.PlatformType;
+import org.sehkah.ddon.tools.extractor.season3.packet.PacketManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.packet.entity.c2l.C2LLoginReq;
+import org.sehkah.ddon.tools.extractor.season3.packet.entity.c2l.meta.PlatformType;
 
 import java.nio.ByteOrder;
 
@@ -32,7 +33,7 @@ class C2LLoginReqDeserializerTest {
                 0x01
         }, ByteOrder.BIG_ENDIAN);
 
-        PacketManager packetManager = PacketManager.get(null, SerializationFormat.json, true);
+        PacketManager packetManager = new PacketManagerSeason3(null, SerializationFormat.json, true);
         PacketBufferDeserializer<Packet> deserializer = packetManager.getDeserializer(input);
         C2LLoginReq deserialized = (C2LLoginReq) deserializer.deserialize(input);
         Serializer<Packet> stringSerializer = packetManager.getStringSerializer();

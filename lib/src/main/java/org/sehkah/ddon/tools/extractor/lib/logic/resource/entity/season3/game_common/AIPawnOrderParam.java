@@ -2,7 +2,6 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_c
 
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.meta.*;
 
 import java.util.List;
 import java.util.Set;

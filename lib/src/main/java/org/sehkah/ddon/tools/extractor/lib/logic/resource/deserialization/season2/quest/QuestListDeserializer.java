@@ -6,7 +6,6 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.season3.binary.XfsDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.quest.*;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.SetInfo;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.meta.LayoutUnitKind;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.binary.ClassData;

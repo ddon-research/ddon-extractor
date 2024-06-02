@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileMana
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.ResourceInfo;
+import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -25,7 +26,7 @@ class EncryptedArchiveDeserializerTest {
         String inputFile = "season3/sg300000.arc";
         byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
         ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, bufferReader);
         Archive deserialized = (Archive) deserializer.deserialize(bufferReader);

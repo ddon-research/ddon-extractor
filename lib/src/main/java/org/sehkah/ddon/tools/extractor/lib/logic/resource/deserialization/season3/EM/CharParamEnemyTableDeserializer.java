@@ -3,7 +3,6 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.seaso
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.EM.*;
 
 public class CharParamEnemyTableDeserializer extends ClientResourceFileDeserializer {
     public CharParamEnemyTableDeserializer(ClientResourceFile clientResourceFile) {

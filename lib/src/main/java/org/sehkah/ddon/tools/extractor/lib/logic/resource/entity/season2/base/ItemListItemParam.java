@@ -6,7 +6,6 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.DynamicResourceLookupUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.base.meta.*;
 
 import java.util.List;
 import java.util.Set;

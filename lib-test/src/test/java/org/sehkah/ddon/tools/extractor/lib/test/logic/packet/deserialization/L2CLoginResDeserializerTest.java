@@ -7,7 +7,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.entity.l2c.L2CLoginRes;
+import org.sehkah.ddon.tools.extractor.season3.packet.PacketManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.packet.entity.l2c.L2CLoginRes;
 
 import java.nio.ByteOrder;
 
@@ -31,7 +32,7 @@ class L2CLoginResDeserializerTest {
                 0x34, 0x32, 0x00, 0x00, 0x00, 0x01, 0x00, 0x74, (byte) 0x93, (byte) 0x82, 0x00, 0x00, 0x00, 0x00
         }, ByteOrder.BIG_ENDIAN);
 
-        PacketManager packetManager = PacketManager.get(null, SerializationFormat.json, false);
+        PacketManager packetManager = new PacketManagerSeason3(null, SerializationFormat.json, false);
         PacketBufferDeserializer<Packet> deserializer = packetManager.getDeserializer(input);
         L2CLoginRes deserialized = (L2CLoginRes) deserializer.deserialize(input);
 

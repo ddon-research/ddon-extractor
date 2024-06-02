@@ -8,7 +8,6 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.StageCustomPartsFilter;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season2.stage.StageCustomPartsParam;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.stage.*;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

@@ -84,7 +84,10 @@ rootProject.name = 'ddon-extractor'
 // TODO: separate into lib-common, lib-season1, lib-season2, lib-season3 and architecturally prevent access between versions
 String[] modules = [
         'cli',
-        'lib',
+        'lib-common',
+        'lib-season1',
+        'lib-season2',
+        'lib-season3',
         'lib-test'
 ]
 

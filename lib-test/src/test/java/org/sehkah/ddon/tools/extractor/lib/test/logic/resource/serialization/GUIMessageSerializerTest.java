@@ -7,8 +7,9 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.GenericStringSer
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.season3.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
+import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.resource.entity.game_common.GUIMessage;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -24,11 +25,10 @@ class GUIMessageSerializerTest {
         String inputFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.gmd.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
-
 
         assertEquals("b3fe63563340b8b070661b3b9a824acdffa971c2", DigestUtil.sha1Hex(bytes));
     }
@@ -40,7 +40,7 @@ class GUIMessageSerializerTest {
         String inputTranslationFile = "season3/ui/uGUIOption/ui/00_message/ui/option_res_win.en.yaml";
         String inputTranslation = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputTranslationFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         serializer.setModdingAllowed(true);
