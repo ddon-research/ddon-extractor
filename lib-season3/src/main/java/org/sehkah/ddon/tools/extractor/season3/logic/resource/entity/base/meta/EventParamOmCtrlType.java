@@ -10,7 +10,7 @@ public enum EventParamOmCtrlType {
     OM_CTRL_ARC_LOAD(0x4),
     OM_CTRL_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     EventParamOmCtrlType(long value) {
         this.value = value;

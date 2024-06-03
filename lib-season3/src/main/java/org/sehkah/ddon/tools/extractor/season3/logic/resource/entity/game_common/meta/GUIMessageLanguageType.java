@@ -11,7 +11,7 @@ public enum GUIMessageLanguageType {
     LANGUAGE_ITALIAN(0x5);
 
 
-    public final long value;
+    public long value;
 
     GUIMessageLanguageType(long value) {
         this.value = value;

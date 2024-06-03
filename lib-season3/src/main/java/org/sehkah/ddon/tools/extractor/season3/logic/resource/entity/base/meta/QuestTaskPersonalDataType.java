@@ -8,7 +8,7 @@ public enum QuestTaskPersonalDataType {
     PERSONAL_DATA_TYPE_LEADER(0x2);
 
 
-    public final long value;
+    public long value;
 
     QuestTaskPersonalDataType(long value) {
         this.value = value;

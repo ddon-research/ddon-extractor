@@ -33,7 +33,7 @@ public enum MagicChantWordType {
     MAGIC_WORD_Y(0x19),
     MAGIC_WORD_Z(0x1A);
 
-    public final long value;
+    public long value;
 
     MagicChantWordType(long value) {
         this.value = value;

@@ -18,7 +18,7 @@ public enum QuestType {
     QUEST_TYPE_DEBUG_TOOL(0xB),
     QUEST_TYPE_MANAGER_NUM(0xC);
 
-    public final long value;
+    public long value;
 
     QuestType(long value) {
         this.value = value;

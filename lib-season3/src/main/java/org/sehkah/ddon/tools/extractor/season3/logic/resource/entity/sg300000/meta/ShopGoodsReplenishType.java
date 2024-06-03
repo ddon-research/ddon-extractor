@@ -7,7 +7,7 @@ public enum ShopGoodsReplenishType {
     REPLENISH_REAL_DATE(0x1);
 
 
-    public final long value;
+    public long value;
 
     ShopGoodsReplenishType(long value) {
         this.value = value;

@@ -1,25 +1,22 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMOrderParamBGMRequest extends AICopiableParameter {
-    private final long BgmRequestType;
-    private final long BgmRequestNo;
-    private final long BgmRequestEditType;
+public class FSMOrderParamBGMRequest extends AICopiableParameter {
+    private long BgmRequestType;
+    private long BgmRequestNo;
+    private long BgmRequestEditType;
 
     //TODO: season 3 exclusive
-    private final boolean BgmRequestIsChangeFadeTime;
-    private final long BgmRequestFadeTime;
+    private boolean BgmRequestIsChangeFadeTime;
+    private long BgmRequestFadeTime;
 }

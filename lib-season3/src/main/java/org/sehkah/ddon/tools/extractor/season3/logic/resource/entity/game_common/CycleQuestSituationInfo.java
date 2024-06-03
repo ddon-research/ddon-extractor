@@ -1,9 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common;
 
-public record CycleQuestSituationInfo(
-        long SituationNo,
-        long SituationNameIdx,
-        long SituationStateIdx,
-        long SituationDetailIdx
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CycleQuestSituationInfo {
+    private long SituationNo;
+    private long SituationNameIdx;
+    private long SituationStateIdx;
+    private long SituationDetailIdx;
 }

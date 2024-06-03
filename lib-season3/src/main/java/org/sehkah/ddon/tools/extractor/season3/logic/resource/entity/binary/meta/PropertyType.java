@@ -81,7 +81,7 @@ public enum PropertyType {
     TYPE_ENUM_RESOURCE_QUALITY(0x106),
     TYPE_CUSTOM(0x80);
 
-    public final long value;
+    public long value;
 
     PropertyType(long value) {
         this.value = value;

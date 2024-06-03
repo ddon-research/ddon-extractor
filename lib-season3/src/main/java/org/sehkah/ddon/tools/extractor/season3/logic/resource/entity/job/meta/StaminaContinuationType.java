@@ -6,7 +6,7 @@ public enum StaminaContinuationType {
     TYPE_ALWAYS(0x00),
     TYPE_ONE_TIME(0x01);
 
-    public final long value;
+    public long value;
 
     StaminaContinuationType(long value) {
         this.value = value;

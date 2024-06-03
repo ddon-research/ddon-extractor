@@ -1,14 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common;
 
-public record HumanEnemyCustomSkill(
-        long Id,
-        long CustomSkill0,
-        long CustomSkill1,
-        long CustomSkill2,
-        long CustomSkill3,
-        long CustomLevel0,
-        long CustomLevel1,
-        long CustomLevel2,
-        long CustomLevel3
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class HumanEnemyCustomSkill {
+    private long Id;
+    private long CustomSkill0;
+    private long CustomSkill1;
+    private long CustomSkill2;
+    private long CustomSkill3;
+    private long CustomLevel0;
+    private long CustomLevel1;
+    private long CustomLevel2;
+    private long CustomLevel3;
 }

@@ -66,7 +66,7 @@ public enum AIPawnActionGroupType {
     AIPAWN_ACT_GROUP_SP_NO_ELEMENT(0x3C);
 
 
-    public final long value;
+    public long value;
 
     AIPawnActionGroupType(long value) {
         this.value = value;

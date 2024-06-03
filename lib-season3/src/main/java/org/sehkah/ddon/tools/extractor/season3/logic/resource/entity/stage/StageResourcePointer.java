@@ -1,8 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-public record StageResourcePointer(
-        String Type,
-        String Path
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageResourcePointer {
+    private String Type;
+    private String Path;
 }

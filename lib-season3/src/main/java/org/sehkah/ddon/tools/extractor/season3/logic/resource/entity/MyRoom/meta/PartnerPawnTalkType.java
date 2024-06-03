@@ -6,7 +6,7 @@ public enum PartnerPawnTalkType {
     TYPE_GREETING(0x0),
     TYPE_TALK(0x1);
 
-    public final long value;
+    public long value;
 
     PartnerPawnTalkType(long value) {
         this.value = value;

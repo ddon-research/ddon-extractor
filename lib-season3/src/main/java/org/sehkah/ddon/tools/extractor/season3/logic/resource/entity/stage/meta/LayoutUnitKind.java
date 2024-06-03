@@ -13,7 +13,7 @@ public enum LayoutUnitKind {
     U_SHL(0x6),
     U_QUEST(0x7);
 
-    public final long value;
+    public long value;
 
     LayoutUnitKind(long value) {
         this.value = value;

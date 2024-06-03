@@ -30,7 +30,7 @@ class GUIMessageSerializerTest {
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
         byte[] bytes = serializer.serializeResource(deserialized);
 
-        assertEquals("b3fe63563340b8b070661b3b9a824acdffa971c2", DigestUtil.sha1Hex(bytes));
+        assertEquals("2d77ba98862a92d3eb5f12167cd058e89b29e52a", DigestUtil.sha1Hex(bytes));
     }
 
     @Test
@@ -43,12 +43,11 @@ class GUIMessageSerializerTest {
         ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         GUIMessage deserialized = (GUIMessage) clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<TopLevelClientResource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);
-        serializer.setModdingAllowed(true);
         GenericStringSerializer genericStringSerializer = GenericStringSerializer.get(SerializationFormat.yaml);
         deserialized.updateMessages(genericStringSerializer.deserialize(inputTranslation, new TypeReference<>() {
         }));
         byte[] bytes = serializer.serializeResource(deserialized);
 
-        assertEquals("67f549b487d0bac721a9d58bd2ba4b7bd241c25e", DigestUtil.sha1Hex(bytes));
+        assertEquals("7175255b5e9ea79f39267d7594956f8b55f357ce", DigestUtil.sha1Hex(bytes));
     }
 }

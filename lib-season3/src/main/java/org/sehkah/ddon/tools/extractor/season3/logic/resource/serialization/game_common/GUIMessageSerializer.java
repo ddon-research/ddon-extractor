@@ -23,11 +23,11 @@ public class GUIMessageSerializer extends ClientResourceFileSerializer<GUIMessag
         if (clientResource.getIndexNum() > 0) {
             for (int i = 0; i < clientResource.getIndexNum(); i++) {
                 GUIMessageIndex index = indices.get(i);
-                bufferWriter.writeUnsignedInteger(index.Index);
-                bufferWriter.writeUnsignedInteger(index.KeyCrcHashDouble);
-                bufferWriter.writeUnsignedInteger(index.KeyCrcHashTriple);
-                bufferWriter.writeUnsignedInteger(index.KeyOffset);
-                bufferWriter.writeUnsignedInteger(index.LinkOffset);
+                bufferWriter.writeUnsignedInteger(index.getIndex());
+                bufferWriter.writeUnsignedInteger(index.getKeyCrcHashDouble());
+                bufferWriter.writeUnsignedInteger(index.getKeyCrcHashTriple());
+                bufferWriter.writeUnsignedInteger(index.getKeyOffset());
+                bufferWriter.writeUnsignedInteger(index.getLinkOffset());
             }
 
             for (long hash : clientResource.getHashTable()) {
@@ -35,12 +35,12 @@ public class GUIMessageSerializer extends ClientResourceFileSerializer<GUIMessag
             }
 
             for (int i = 0; i < clientResource.getIndexNum(); i++) {
-                bufferWriter.writeNullTerminatedString(indices.get(i).Key);
+                bufferWriter.writeNullTerminatedString(indices.get(i).getKey());
             }
         }
 
         for (int i = 0; i < clientResource.getMessageNum(); i++) {
-            bufferWriter.writeNullTerminatedString(indices.get(i).Message, StandardCharsets.UTF_8);
+            bufferWriter.writeNullTerminatedString(indices.get(i).getMessage(), StandardCharsets.UTF_8);
         }
 
     }

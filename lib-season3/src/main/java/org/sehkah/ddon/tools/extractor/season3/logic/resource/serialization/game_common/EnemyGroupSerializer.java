@@ -8,9 +8,9 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common
 public class EnemyGroupSerializer extends ClientResourceFileSerializer<EnemyGroupList> {
 
     private static void writeEnemyGroup(EnemyGroup enemyGroup, BufferWriter bufferWriter) {
-        bufferWriter.writeUnsignedInteger(enemyGroup.EnemyGroupId());
-        bufferWriter.writeUnsignedInteger(enemyGroup.MsgIndex());
-        bufferWriter.writeArray(enemyGroup.EmList(), () -> bufferWriter::writeUnsignedInteger);
+        bufferWriter.writeUnsignedInteger(enemyGroup.getEnemyGroupId());
+        bufferWriter.writeUnsignedInteger(enemyGroup.getMsgIndex());
+        bufferWriter.writeArray(enemyGroup.getEmList(), () -> bufferWriter::writeUnsignedInteger);
     }
 
     @Override

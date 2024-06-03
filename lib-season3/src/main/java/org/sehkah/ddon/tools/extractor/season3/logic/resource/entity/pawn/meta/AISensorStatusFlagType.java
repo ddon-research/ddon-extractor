@@ -9,7 +9,7 @@ public enum AISensorStatusFlagType {
     SENSOR_STATUSFLAG_CHECK_SND_LV(0x4),
     SENSOR_STATUSFLAG_ROTATE_ONLY_Y(0x8);
 
-    public final long value;
+    public long value;
 
     AISensorStatusFlagType(long value) {
         this.value = value;

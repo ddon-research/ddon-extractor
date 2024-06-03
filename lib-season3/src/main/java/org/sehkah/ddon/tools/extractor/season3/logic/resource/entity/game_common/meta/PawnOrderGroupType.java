@@ -7,7 +7,7 @@ public enum PawnOrderGroupType {
     PAWN_ORDER_GROUP_01(0x1),
     PAWN_ORDER_GROUP_02(0x2);
 
-    public final long value;
+    public long value;
 
     PawnOrderGroupType(long value) {
         this.value = value;

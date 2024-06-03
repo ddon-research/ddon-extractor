@@ -6,7 +6,7 @@ public enum OmBlinkType {
     OM_BLINK_NONE(0x0),
     OM_BLINK_NORMAL(0x1);
 
-    public final long value;
+    public long value;
 
     OmBlinkType(long value) {
         this.value = value;

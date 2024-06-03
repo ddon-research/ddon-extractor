@@ -1,10 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-
-public record StageCustomPartsExInfiLight(
-        Vector3f LightColor,
-        Vector3f NightColor
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageCustomPartsExInfiLight {
+    private Vector3f LightColor;
+    private Vector3f NightColor;
 }

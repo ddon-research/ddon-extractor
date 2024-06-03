@@ -1,13 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmHakuryuu extends SetInfo {
-    private final long StoneLevel;
-    private final SetInfoOmOld InfoOm;
+    private long StoneLevel;
+    private SetInfoOmOld InfoOm;
 }

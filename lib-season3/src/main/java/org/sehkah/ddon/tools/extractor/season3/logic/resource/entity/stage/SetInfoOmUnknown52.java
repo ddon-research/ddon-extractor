@@ -1,19 +1,22 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown52 extends SetInfo {
-    private final Vector3f Unknown1;
-    private final Vector3f Unknown2;
-    private final float Unknown3;
-    private final float Unknown4;
-    private final long Unknown5;
-    private final long Unknown6;
-    private final SetInfoOmOld InfoOm;
+    private Vector3f Unknown1;
+    private Vector3f Unknown2;
+    private float Unknown3;
+    private float Unknown4;
+    private long Unknown5;
+    private long Unknown6;
+    private SetInfoOmOld InfoOm;
 }

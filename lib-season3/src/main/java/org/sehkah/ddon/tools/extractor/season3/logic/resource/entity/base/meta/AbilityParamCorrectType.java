@@ -7,7 +7,7 @@ public enum AbilityParamCorrectType {
     CORRECT_TYPE_RATE(0x1),
     CORRECT_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     AbilityParamCorrectType(long value) {
         this.value = value;

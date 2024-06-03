@@ -83,7 +83,7 @@ public enum NpcVoiceType {
     VOICE_TYPE_F_06_1(0x61),
     VOICE_TYPE_F_06_2(0x62);
 
-    public final long value;
+    public long value;
 
     NpcVoiceType(long value) {
         this.value = value;

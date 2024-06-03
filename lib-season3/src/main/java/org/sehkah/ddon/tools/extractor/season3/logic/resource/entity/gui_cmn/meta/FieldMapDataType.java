@@ -24,7 +24,7 @@ public enum FieldMapDataType {
     TYPE_AREA_WARP(0x12),
     TYPE_MAX_5(0x13);
 
-    public final long value;
+    public long value;
 
     FieldMapDataType(long value) {
         this.value = value;

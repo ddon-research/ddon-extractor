@@ -9,7 +9,7 @@ public enum AIPawnAutoMotionGroupSelectType {
     AIPAWN_AUTOMOT_GROUP_SEL_WOMAN(0x3);
 
 
-    public final long value;
+    public long value;
 
     AIPawnAutoMotionGroupSelectType(long value) {
         this.value = value;

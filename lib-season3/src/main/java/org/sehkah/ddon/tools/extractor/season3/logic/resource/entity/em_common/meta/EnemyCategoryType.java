@@ -22,7 +22,7 @@ public enum EnemyCategoryType {
     EM_CATEGORY_EROSION(0x10), // https://h1g.jp/dd-on/?侵食
     EM_CATEGORY_ARMORED(0x11); // https://h1g.jp/dd-on/?戦甲
 
-    public final long value;
+    public long value;
 
     EnemyCategoryType(long value) {
         this.value = value;

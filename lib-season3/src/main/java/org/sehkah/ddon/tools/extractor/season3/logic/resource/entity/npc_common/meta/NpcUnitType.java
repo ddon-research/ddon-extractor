@@ -24,7 +24,7 @@ public enum NpcUnitType {
     UNIT_TYPE_CLAN_MY_PAWN(0x12),
     UNIT_TYPE_CLAN_MEMBER_PAWN(0x13);
 
-    public final long value;
+    public long value;
 
     NpcUnitType(long value) {
         this.value = value;

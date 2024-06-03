@@ -11,7 +11,7 @@ public enum GameElementType {
     ELEMENT_TYPE_HOLY(0x5),
     ELEMENT_TYPE_DARK(0x6);
 
-    public final long value;
+    public long value;
 
     GameElementType(long value) {
         this.value = value;

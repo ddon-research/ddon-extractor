@@ -1,32 +1,29 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.meta.ParamCallMessageType;
 
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMBaseParamCallMessage extends AICopiableParameter {
-    private final long MsgType;
+    private long MsgType;
     @MetaInformation
-    private final ParamCallMessageType MsgTypeName;
-    private final long QuestId;//QuestNo
-    private final long MsgNo;
-    private final float MsgDispTime;
-    private final float MsgWaitTime;
-    private final boolean IsUseSerial;
-    private final boolean IsHideMessage;
+    private ParamCallMessageType MsgTypeName;
+    private long QuestId;//QuestNo
+    private long MsgNo;
+    private float MsgDispTime;
+    private float MsgWaitTime;
+    private boolean IsUseSerial;
+    private boolean IsHideMessage;
 
     public FSMBaseParamCallMessage(long msgType, long questId, long msgNo, float msgDispTime, float msgWaitTime, boolean isUseSerial, boolean isHideMessage) {
         MsgType = msgType;

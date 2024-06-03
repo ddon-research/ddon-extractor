@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class EnemyGroupList extends TopLevelClientResource {
+public class EnemyGroupList extends TopLevelClientResource {
     private List<EnemyGroup> EnemyGroupList;
 }

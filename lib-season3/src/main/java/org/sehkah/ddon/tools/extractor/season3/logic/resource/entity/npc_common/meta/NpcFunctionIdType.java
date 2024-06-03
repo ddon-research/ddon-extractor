@@ -60,7 +60,7 @@ public enum NpcFunctionIdType {
     FUNC_ID_TRAINING_ROOM(0x3B),
     FUNC_ID_CLAN_DUNGEON(0x3C);
 
-    public final long value;
+    public long value;
 
     NpcFunctionIdType(long value) {
         this.value = value;

@@ -109,7 +109,7 @@ public enum AIPawnAutoWordSituationType {
     AIPAWN_AUTOWORD_SITUATION_BIG_ATTACK(0x67);
 
 
-    public final long value;
+    public long value;
 
     AIPawnAutoWordSituationType(long value) {
         this.value = value;

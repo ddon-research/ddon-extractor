@@ -10,7 +10,7 @@ public enum PawnOrderCategoryType {
     PAWN_ORDER_CATEGORY_04(0x4),
     PAWN_ORDER_CATEGORY_05(0x5);
 
-    public final long value;
+    public long value;
 
     PawnOrderCategoryType(long value) {
         this.value = value;

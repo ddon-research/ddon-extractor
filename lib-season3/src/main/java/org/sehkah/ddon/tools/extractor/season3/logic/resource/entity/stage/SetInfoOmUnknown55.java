@@ -1,29 +1,32 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown55 extends SetInfo {
-    private final long Unknown1;
-    private final long Unknown2;
-    private final long Unknown3;
-    private final long Unknown4;
-    private final long Unknown5;
-    private final long Unknown6;
-    private final long Unknown7;
-    private final long Unknown8;
-    private final long Unknown9;
-    private final boolean Unknown10;
-    private final float Unknown11;
-    private final boolean Unknown12;
-    private final long Unknown13;
-    private final int Unknown14;
-    private final boolean IsQuest;
-    private final long QuestId; // set to 0 when IsQuest is false
-    private final long QuestFlag; // set to 0 when IsQuest is false
-    private final SetInfoOmOld InfoOm;
+    private long Unknown1;
+    private long Unknown2;
+    private long Unknown3;
+    private long Unknown4;
+    private long Unknown5;
+    private long Unknown6;
+    private long Unknown7;
+    private long Unknown8;
+    private long Unknown9;
+    private boolean Unknown10;
+    private float Unknown11;
+    private boolean Unknown12;
+    private long Unknown13;
+    private int Unknown14;
+    private boolean IsQuest;
+    private long QuestId; // set to 0 when IsQuest is false
+    private long QuestFlag; // set to 0 when IsQuest is false
+    private SetInfoOmOld InfoOm;
 }

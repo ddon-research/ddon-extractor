@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
@@ -8,27 +10,33 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.meta.Sho
 
 import java.util.Set;
 
-public record ShotReqInfo2Param(
-        boolean IsUse,
-        long ShotFlag,
-        @MetaInformation
-        Set<ShotReqInfo2Type> ShotFlagTypes,
-        long ShotGroup,
-        long ShotIndex,
-        long SetTarget,
-        long JointNo,
-        boolean IsConst,
-        Vector3f OffsetPos,
-        Vector3f OffsetDir,
-        boolean IsLockOnTarget,
-        long LiveRegionNo,
-        int EnchantElementType,
-        @MetaInformation
-        GameElementType EnchantElementTypeName,
-        boolean UseAbsolutePos,
-        float HpRateLimit1,
-        float HpRateLimit2
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ShotReqInfo2Param {
+    private boolean IsUse;
+    private long ShotFlag;
+    @MetaInformation
+    private Set<ShotReqInfo2Type> ShotFlagTypes;
+    private long ShotGroup;
+    private long ShotIndex;
+    private long SetTarget;
+    private long JointNo;
+    private boolean IsConst;
+    private Vector3f OffsetPos;
+    private Vector3f OffsetDir;
+    private boolean IsLockOnTarget;
+    private long LiveRegionNo;
+    private int EnchantElementType;
+    @MetaInformation
+    private GameElementType EnchantElementTypeName;
+    private boolean UseAbsolutePos;
+    private float HpRateLimit1;
+    private float HpRateLimit2;
 
     public ShotReqInfo2Param(boolean isUse, long shotFlag, long shotGroup, long shotIndex, long setTarget,
                              long jointNo, boolean isConst, Vector3f offsetPos, Vector3f offsetDir,

@@ -1,6 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
 
-public record CharParamEnemyGuardCounter(
-        int Times,
-        int Percent) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CharParamEnemyGuardCounter {
+    private int Times;
+    private int Percent;
 }

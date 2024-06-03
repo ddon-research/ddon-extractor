@@ -1,10 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary;
 
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.meta.PropertyType;
 
-@RequiredArgsConstructor
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class PropertyHeader {
     public String name;
     // offset from base

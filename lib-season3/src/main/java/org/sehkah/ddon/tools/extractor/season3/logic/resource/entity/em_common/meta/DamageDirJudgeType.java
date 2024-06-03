@@ -8,7 +8,7 @@ public enum DamageDirJudgeType {
     DIR_TYPE_2DIR_LR(0x2),
     DIR_TYPE_4DIR(0x3);
 
-    public final long value;
+    public long value;
 
     DamageDirJudgeType(long value) {
         this.value = value;

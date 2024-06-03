@@ -81,7 +81,7 @@ public enum ObjConditionOcdType {
     OCD_ENEMY_RAGE_SHRINK_AFTER_CHANCE(0x4003);
 
 
-    public final long value;
+    public long value;
 
     ObjConditionOcdType(long value) {
         this.value = value;

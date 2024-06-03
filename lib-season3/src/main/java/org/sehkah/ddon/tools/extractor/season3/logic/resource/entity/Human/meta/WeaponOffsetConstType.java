@@ -7,7 +7,7 @@ public enum WeaponOffsetConstType {
     CONST_SKIN(0x1);
 
 
-    public final long value;
+    public long value;
 
     WeaponOffsetConstType(long value) {
         this.value = value;

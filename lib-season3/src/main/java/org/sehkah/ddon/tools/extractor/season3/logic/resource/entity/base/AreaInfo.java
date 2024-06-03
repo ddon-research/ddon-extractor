@@ -1,24 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaInfo {
-    private final long AreaId;
-    private final int PosX;
-    private final int PosY;
-
-    public AreaInfo(long areaId, int posX, int posY) {
-        this.AreaId = areaId;
-        this.PosX = posX;
-        this.PosY = posY;
-    }
+    private long AreaId;
+    private int PosX;
+    private int PosY;
 }

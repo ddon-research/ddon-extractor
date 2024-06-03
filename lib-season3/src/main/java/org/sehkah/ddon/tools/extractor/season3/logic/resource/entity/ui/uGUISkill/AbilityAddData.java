@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUISkill;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record AbilityAddData(
-        int Id,
-        int SortCategory,
-        List<AbilityLevelData> LvArray
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AbilityAddData {
+    private int Id;
+    private int SortCategory;
+    private List<AbilityLevelData> LvArray;
 }

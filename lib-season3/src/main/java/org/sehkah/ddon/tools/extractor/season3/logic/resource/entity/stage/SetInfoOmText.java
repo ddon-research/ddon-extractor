@@ -1,15 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmText extends SetInfo {
-    private final long TextNo;
-    private final long TextQuestNo;
-    private final long TextType;
-    private final SetInfoOmOld InfoOm;
+    private long TextNo;
+    private long TextQuestNo;
+    private long TextType;
+    private SetInfoOmOld InfoOm;
 }

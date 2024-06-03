@@ -10,7 +10,7 @@ public enum BitCommandType {
     COMMAND_NOT(0x4),
     COMMAND_INVALID(0xFFFFFFFFL);
 
-    public final long value;
+    public long value;
 
     BitCommandType(long value) {
         this.value = value;

@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.w
 import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table.WeaponRes;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table.WeaponResTable;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WeaponRes;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WeaponResTable;
 
 public class WeaponResTableDeserializer extends ClientResourceFileDeserializer {
     public WeaponResTableDeserializer(ClientResourceFile clientResourceFile) {

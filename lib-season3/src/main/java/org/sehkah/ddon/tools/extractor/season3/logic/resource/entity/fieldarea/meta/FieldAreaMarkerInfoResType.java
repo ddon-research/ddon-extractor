@@ -8,7 +8,7 @@ public enum FieldAreaMarkerInfoResType {
     RES_TYPE_RETURNAREA(0x2),
     RES_TYPE_OM(0x3);
 
-    public final long value;
+    public long value;
 
     FieldAreaMarkerInfoResType(long value) {
         this.value = value;

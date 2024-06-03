@@ -31,7 +31,7 @@ public enum PawnOrderAttrFlagType {
     PAWN_ORDER_ATTR_FLG_TARGET_POWER_DN_OCD(0x2000000),
     PAWN_ORDER_ATTR_FLG_ALL(0xFFFFFFFFL);
 
-    public final long value;
+    public long value;
 
     PawnOrderAttrFlagType(long value) {
         this.value = value;

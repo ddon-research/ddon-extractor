@@ -8,7 +8,7 @@ public enum MagicChantEndType {
     END_TYPE_SHL_DEAD(0x2),
     END_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     MagicChantEndType(long value) {
         this.value = value;

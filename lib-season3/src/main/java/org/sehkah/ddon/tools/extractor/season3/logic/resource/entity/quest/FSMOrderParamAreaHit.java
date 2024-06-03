@@ -1,21 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMOrderParamAreaHit extends AICopiableParameter {
-    private final long Act;
-    private final long TaskType;
-    private final long SceNo;
+public class FSMOrderParamAreaHit extends AICopiableParameter {
+    private long Act;
+    private long TaskType;
+    private long SceNo;
 }

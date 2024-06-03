@@ -1,35 +1,38 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoNpc extends SetInfo {
-    private final int NpcId;
-    private final String FilePath;
-    private final boolean IsCommunicate;
-    private final int ClothType;
-    private final byte DefNPCMotCategory;
-    private final byte DefNPCMotNo;
-    private final int ThinkIndex;
-    private final int JobLv;
-    private final int Lantern;
-    private final boolean DisableScrAdj;
-    private final boolean DisableLedgerFinger;
-    private final boolean IsForceListTalk;
-    private final boolean IsAttand;
-    private final boolean UseAttendComponent;
-    private final boolean DisableTouchAction;
-    private final boolean DispElseQuestTalk;
-    private final boolean ForceSwitchGreeting;
-    private final long TalkStateId;
-    private final boolean UseLiteMotion;
-    private final boolean IsNoSetOnPS3;
-    private final boolean UseJobParamEx;
-    private final boolean DispOnWeapon;
-    private final short InitEffectType;
-    private final SetInfoCoord InfoCharacter;
+    private int NpcId;
+    private String FilePath;
+    private boolean IsCommunicate;
+    private int ClothType;
+    private byte DefNPCMotCategory;
+    private byte DefNPCMotNo;
+    private int ThinkIndex;
+    private int JobLv;
+    private int Lantern;
+    private boolean DisableScrAdj;
+    private boolean DisableLedgerFinger;
+    private boolean IsForceListTalk;
+    private boolean IsAttand;
+    private boolean UseAttendComponent;
+    private boolean DisableTouchAction;
+    private boolean DispElseQuestTalk;
+    private boolean ForceSwitchGreeting;
+    private long TalkStateId;
+    private boolean UseLiteMotion;
+    private boolean IsNoSetOnPS3;
+    private boolean UseJobParamEx;
+    private boolean DispOnWeapon;
+    private short InitEffectType;
+    private SetInfoCoord InfoCharacter;
 }

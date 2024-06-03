@@ -8,7 +8,7 @@ public enum OmLotSetType {
     OM_LOT_SET_TYPE_HM(0x2),
     OM_LOT_SET_TYPE_NONE(0x3);
 
-    public final long value;
+    public long value;
 
     OmLotSetType(long value) {
         this.value = value;

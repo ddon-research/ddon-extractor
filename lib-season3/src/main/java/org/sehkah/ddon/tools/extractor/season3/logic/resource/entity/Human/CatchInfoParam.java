@@ -1,25 +1,34 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.meta.CatchType;
 
 import java.util.Set;
 
-public record CatchInfoParam(
-        long CatchInfoType,
-        @MetaInformation
-        Set<CatchType> CatchTypes,
-        long CatchActionTblNo,
-        boolean IsConst,
-        boolean RevAdjust,
-        boolean ConstScaleOff,
-        boolean IsCheckSlaveDist,
-        float CheckSlaveDist,
-        long ConstJointNo,
-        float LoopTimer,
-        int LeverGachaPoint
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CatchInfoParam {
+    private long CatchInfoType;
+    @MetaInformation
+    private Set<CatchType> CatchTypes;
+    private long CatchActionTblNo;
+    private boolean IsConst;
+    private boolean RevAdjust;
+    private boolean ConstScaleOff;
+    private boolean IsCheckSlaveDist;
+    private float CheckSlaveDist;
+    private long ConstJointNo;
+    private float LoopTimer;
+    private int LeverGachaPoint;
+
     public CatchInfoParam(long catchInfoType,
                           long catchActionTblNo,
                           boolean isConst,

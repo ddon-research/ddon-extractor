@@ -10,7 +10,7 @@ public enum ShopGoodsCategoryType {
     CATEGORY_JOB(0x4);
 
 
-    public final long value;
+    public long value;
 
     ShopGoodsCategoryType(long value) {
         this.value = value;

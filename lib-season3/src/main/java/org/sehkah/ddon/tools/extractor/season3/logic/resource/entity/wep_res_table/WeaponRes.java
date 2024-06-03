@@ -1,25 +1,34 @@
-package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table;
+package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table.meta.WeaponSexType;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.meta.WeaponSexType;
 
 import java.math.BigInteger;
 
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 // TODO decode information from resource IDs as meta info
-public record WeaponRes(
-        long MTag,
-        String ArcTag,
-        long Sex,
-        @MetaInformation
-        WeaponSexType SexType,
-        BigInteger ModelResId,
-        BigInteger ModelResId2,
-        BigInteger DeformWeightMapResId,
-        BigInteger EffectProviderResId,
-        BigInteger SoundRequestResId,
-        BigInteger DDOModelMontageResId,
-        BigInteger DDOModelMontageResId2
-) {
+public class WeaponRes {
+    private long MTag;
+    private String ArcTag;
+    private long Sex;
+    @MetaInformation
+    private WeaponSexType SexType;
+    private BigInteger ModelResId;
+    private BigInteger ModelResId2;
+    private BigInteger DeformWeightMapResId;
+    private BigInteger EffectProviderResId;
+    private BigInteger SoundRequestResId;
+    private BigInteger DDOModelMontageResId;
+    private BigInteger DDOModelMontageResId2;
+
     public WeaponRes(long MTag,
                      String arcTag,
                      long sex,

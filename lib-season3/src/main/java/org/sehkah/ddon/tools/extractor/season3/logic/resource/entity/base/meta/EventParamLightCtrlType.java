@@ -9,7 +9,7 @@ public enum EventParamLightCtrlType {
     LIGHT_CTRL_ONLY_NIGHT(0x3),
     LIGHT_CTRL_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     EventParamLightCtrlType(long value) {
         this.value = value;

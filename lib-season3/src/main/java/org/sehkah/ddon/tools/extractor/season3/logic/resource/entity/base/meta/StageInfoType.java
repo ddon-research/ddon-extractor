@@ -10,7 +10,7 @@ public enum StageInfoType {
     STAGE_TYPE_DUNGEON(0x4),
     STAGE_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     StageInfoType(long value) {
         this.value = value;

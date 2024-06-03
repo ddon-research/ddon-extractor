@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common;
 
-public record StageToSpot(
-        long StageNo,
-        long SpotId,
-        int RecommendLevel
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageToSpot {
+    private long StageNo;
+    private long SpotId;
+    private int RecommendLevel;
 }

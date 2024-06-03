@@ -20,7 +20,7 @@ public enum ShotReqInfo2Type {
     SHOT_REQ_TYPE_CHECK_HP_RATE(0x4000),
     SHOT_REQ_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     ShotReqInfo2Type(long value) {
         this.value = value;

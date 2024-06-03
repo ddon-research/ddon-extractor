@@ -6,7 +6,7 @@ public enum LocationDataType {
     TYPE_ONCE(0x0),
     TYPE_TRIGGER(0x1);
 
-    public final long value;
+    public long value;
 
     LocationDataType(long value) {
         this.value = value;

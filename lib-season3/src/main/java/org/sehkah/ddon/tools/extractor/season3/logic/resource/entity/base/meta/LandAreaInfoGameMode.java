@@ -8,7 +8,7 @@ public enum LandAreaInfoGameMode {
     MODE_CLAN(0x2),
     MODE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     LandAreaInfoGameMode(long value) {
         this.value = value;

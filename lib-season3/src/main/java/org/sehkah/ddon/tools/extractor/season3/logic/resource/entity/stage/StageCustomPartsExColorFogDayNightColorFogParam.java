@@ -1,16 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-public record StageCustomPartsExColorFogDayNightColorFogParam(
-        float HeightStart,
-        float HeightEnd,
-        float HeightDensity,
-        Vector3f HeightColor,
-        float Start,
-        float End,
-        float Density,
-        Vector3f Color,
-        float DiffuseBlendFactor
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageCustomPartsExColorFogDayNightColorFogParam {
+    private float HeightStart;
+    private float HeightEnd;
+    private float HeightDensity;
+    private Vector3f HeightColor;
+    private float Start;
+    private float End;
+    private float Density;
+    private Vector3f Color;
+    private float DiffuseBlendFactor;
 }

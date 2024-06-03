@@ -22,7 +22,7 @@ public enum ObjCollisionShrinkBlowType {
     SHRINK_BLOW_TYPE_BLOW_WIND_AIR(0x106),
     SHRINK_BLOW_TYPE_NON(0x107);
 
-    public final long value;
+    public long value;
 
     ObjCollisionShrinkBlowType(long value) {
         this.value = value;

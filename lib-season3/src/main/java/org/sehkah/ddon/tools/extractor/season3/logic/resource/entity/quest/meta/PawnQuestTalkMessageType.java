@@ -18,7 +18,7 @@ public enum PawnQuestTalkMessageType {
     MSGTYPE_PHOTO_TALK(0xC),
     MSGTYPE_PHOTO_CLEAR(0xD);
 
-    public final long value;
+    public long value;
 
     PawnQuestTalkMessageType(long value) {
         this.value = value;

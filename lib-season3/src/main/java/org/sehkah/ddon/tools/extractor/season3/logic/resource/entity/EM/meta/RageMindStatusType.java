@@ -6,7 +6,7 @@ public enum RageMindStatusType {
     MIND_NORMAL(0x0),
     MIND_ANGER(0x1);
 
-    public final long value;
+    public long value;
 
     RageMindStatusType(long value) {
         this.value = value;

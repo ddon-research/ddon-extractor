@@ -1,15 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-public record EmSound(
-        long Idx,
-        long SoundResNo,
-        long SoundNo,
-        boolean AttachFlag,
-        long RequestType,
-        int BoneNo,
-        Vector3f OffsetPos,
-        boolean DieIsNoCall
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EmSound {
+    private long Idx;
+    private long SoundResNo;
+    private long SoundNo;
+    private boolean AttachFlag;
+    private long RequestType;
+    private int BoneNo;
+    private Vector3f OffsetPos;
+    private boolean DieIsNoCall;
 }

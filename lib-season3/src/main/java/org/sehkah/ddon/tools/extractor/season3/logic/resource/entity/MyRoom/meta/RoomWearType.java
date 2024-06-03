@@ -8,7 +8,7 @@ public enum RoomWearType {
     TYPE_PAWN_BATH(0x2),
     TYPE_PAWN_SLEEP(0x3);
 
-    public final long value;
+    public long value;
 
     RoomWearType(long value) {
         this.value = value;

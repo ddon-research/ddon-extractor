@@ -6,7 +6,7 @@ public enum NpcFunctionType {
     INST_TYPE_CLOSED(0x0),
     INST_TYPE_OPEN(0x1);
 
-    public final long value;
+    public long value;
 
     NpcFunctionType(long value) {
         this.value = value;

@@ -8,7 +8,7 @@ public enum PawnOrderType {
     PAWN_ORDER_TYPE_TARGET(0x2),
     PAWN_ORDER_TYPE_RELEASE(0x3);
 
-    public final long value;
+    public long value;
 
     PawnOrderType(long value) {
         this.value = value;

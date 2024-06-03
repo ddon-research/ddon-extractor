@@ -67,7 +67,7 @@ public class XfsDeserializer {
         final int baseOffset = bufferReader.getPosition();
         final List<Long> classDataOffset = bufferReader.readFixedLengthArray(numClasses, BufferReader::readUnsignedInteger);
         final List<ClassData> classDataList = bufferReader.readFixedLengthArray(classDataOffset.size(), XfsDeserializer::readClassData);
-        classDataList.forEach(classData -> classData.properties().forEach(property -> {
+        classDataList.forEach(classData -> classData.getProperties().forEach(property -> {
             bufferReader.setPosition(baseOffset + (int) property.propertyNameOffset);
             property.name = bufferReader.readNullTerminatedString();
         }));
@@ -87,10 +87,10 @@ public class XfsDeserializer {
         int classIndex = bufferReader.readUnsignedShort();
         int objIndex = bufferReader.readUnsignedShort();
         ClassHeader classHeader = readClassHeader(bufferReader);
-        Map<Integer, ClassData> classDataIndexMap = HashMap.newHashMap((int) classHeader.numClasses());
+        Map<Integer, ClassData> classDataIndexMap = HashMap.newHashMap((int) classHeader.getNumClasses());
         // TODO: empiric data shows this is the value, but unclear how this calculation makes sense
         int classDataIndex = 1;
-        for (ClassData classData : classHeader.classDataList()) {
+        for (ClassData classData : classHeader.getClassDataList()) {
             classDataIndexMap.put(classDataIndex, classData);
             classDataIndex += 2;
         }

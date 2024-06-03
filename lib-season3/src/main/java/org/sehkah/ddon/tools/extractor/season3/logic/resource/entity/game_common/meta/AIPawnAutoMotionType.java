@@ -13,7 +13,7 @@ public enum AIPawnAutoMotionType {
     AIPAWN_AUTOMOT_TYPE_RESERVE_02(0x7);
 
 
-    public final long value;
+    public long value;
 
     AIPawnAutoMotionType(long value) {
         this.value = value;

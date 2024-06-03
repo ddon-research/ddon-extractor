@@ -8,7 +8,7 @@ public enum EventParamEventType {
     TYPE_FSM(0x2),
     TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     EventParamEventType(long value) {
         this.value = value;

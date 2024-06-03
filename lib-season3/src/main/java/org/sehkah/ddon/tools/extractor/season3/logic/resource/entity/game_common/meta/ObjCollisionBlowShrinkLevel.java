@@ -10,7 +10,7 @@ public enum ObjCollisionBlowShrinkLevel {
     BLOW_SHRINK_LV_VERY_HIGH(0x4),
     BLOW_SHRINK_LV_CUSTOM(0x5);
 
-    public final long value;
+    public long value;
 
     ObjCollisionBlowShrinkLevel(long value) {
         this.value = value;

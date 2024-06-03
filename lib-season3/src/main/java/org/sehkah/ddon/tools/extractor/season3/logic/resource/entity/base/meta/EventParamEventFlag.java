@@ -13,7 +13,7 @@ public enum EventParamEventFlag {
     FLAG_ON_BTL_BGM(0x40),
     FLAG_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     EventParamEventFlag(long value) {
         this.value = value;

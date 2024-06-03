@@ -8,7 +8,7 @@ public enum NpcSexType {
     SEX_FEMALE(0x2),
     SEX_NOT_APPLICABLE(0x3);
 
-    public final long value;
+    public long value;
 
     NpcSexType(long value) {
         this.value = value;

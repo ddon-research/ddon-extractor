@@ -6,7 +6,7 @@ public enum CraftSkillSpdDataSpeedRateType {
     RATE_TYPE_MAIN(0x0),
     RATE_TYPE_SUB(0x1);
 
-    public final long value;
+    public long value;
 
     CraftSkillSpdDataSpeedRateType(long value) {
         this.value = value;

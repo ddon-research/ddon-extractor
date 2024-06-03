@@ -27,7 +27,7 @@ public enum CatchType {
     CATCH_TYPE_BLACK_KNIGHT(0x15);
 
 
-    public final long value;
+    public long value;
 
     CatchType(long value) {
         this.value = value;

@@ -1,21 +1,20 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class DungeonMarker extends TopLevelClientResource {
-    private final int WarpStageNo;
-    private final List<DungeonMarkerWarpInfo> WarpInfoList;
-    private final List<DungeonMarkerPosition> PositionList;
+public class DungeonMarker extends TopLevelClientResource {
+    private int WarpStageNo;
+    private List<DungeonMarkerWarpInfo> WarpInfoList;
+    private List<DungeonMarkerPosition> PositionList;
 }

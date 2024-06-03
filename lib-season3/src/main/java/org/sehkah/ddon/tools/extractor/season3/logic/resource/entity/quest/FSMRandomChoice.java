@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
-public record FSMRandomChoice(
-        boolean IsEnable,
-        long Index,
-        long Weight
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class FSMRandomChoice {
+    private boolean IsEnable;
+    private long Index;
+    private long Weight;
 }

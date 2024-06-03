@@ -7,7 +7,7 @@ public enum MagicChantShotOption {
     CHANT_SHOT_OPTION_GO_TARGET(0x1),
     CHANT_SHOT_OPTION_USE_CALC(0x2);
 
-    public final long value;
+    public long value;
 
     MagicChantShotOption(long value) {
         this.value = value;

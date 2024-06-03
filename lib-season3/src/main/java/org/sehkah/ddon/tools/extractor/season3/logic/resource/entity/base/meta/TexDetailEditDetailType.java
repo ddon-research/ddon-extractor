@@ -9,7 +9,7 @@ public enum TexDetailEditDetailType {
     DETAIL_TYPE_LOW(0x3),
     DETAIL_TYPE_LOWEST(0x4);
 
-    public final long value;
+    public long value;
 
     TexDetailEditDetailType(long value) {
         this.value = value;

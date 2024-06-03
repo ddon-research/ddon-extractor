@@ -2,22 +2,22 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
+
+@JsonPropertyOrder({"UnknownArrayMetaData", "AIPawnSkillParamTbl"})
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder({"UnknownArrayMetaData", "AIPawnSkillParamTbl"})
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class AIPawnSkillParamTbl extends TopLevelClientResource {
-    private final long UnknownArrayMetaData;
-    private final List<AIPawnSkillParamNode> AIPawnSkillParamTbl;
+public class AIPawnSkillParamTbl extends TopLevelClientResource {
+    private long UnknownArrayMetaData;
+    private List<AIPawnSkillParamNode> AIPawnSkillParamTbl;
 
 }

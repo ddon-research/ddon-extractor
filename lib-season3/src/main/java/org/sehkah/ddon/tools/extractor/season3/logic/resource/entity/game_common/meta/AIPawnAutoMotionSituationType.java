@@ -15,7 +15,7 @@ public enum AIPawnAutoMotionSituationType {
     AIPAWN_AUTOMOT_SITUATION_BATTLE_END(0x9);
 
 
-    public final long value;
+    public long value;
 
     AIPawnAutoMotionSituationType(long value) {
         this.value = value;

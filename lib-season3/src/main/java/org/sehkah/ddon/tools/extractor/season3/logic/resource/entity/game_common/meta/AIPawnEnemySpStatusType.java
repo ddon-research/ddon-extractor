@@ -9,7 +9,7 @@ public enum AIPawnEnemySpStatusType {
     SP_STATE_YUSA_CHANGE_ALL(0x3);
 
 
-    public final long value;
+    public long value;
 
     AIPawnEnemySpStatusType(long value) {
         this.value = value;

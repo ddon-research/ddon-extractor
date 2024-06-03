@@ -1,25 +1,34 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record StageConnectConnect(
-        short Start,
-        short Goal,
-        String floor,
-        long unk1,
-        long unk2,
-        long unk3,
-        long unk4,
-        short unk5,
-        long questOrMarkerId,
-        boolean unk6,
-        List<Short> Index,
-        long unk7,
-        List<Short> Index2,
-        long unk8,
-        long questOrMarkerId2,
-        long questOrMarkerId3,
-        boolean unk9,
-        long IndexNum
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageConnectConnect {
+    private short Start;
+    private short Goal;
+    private String floor;
+    private long unk1;
+    private long unk2;
+    private long unk3;
+    private long unk4;
+    private short unk5;
+    private long questOrMarkerId;
+    private boolean unk6;
+    private List<Short> Index;
+    private long unk7;
+    private List<Short> Index2;
+    private long unk8;
+    private long questOrMarkerId2;
+    private long questOrMarkerId3;
+    private boolean unk9;
+    private long IndexNum;
 }

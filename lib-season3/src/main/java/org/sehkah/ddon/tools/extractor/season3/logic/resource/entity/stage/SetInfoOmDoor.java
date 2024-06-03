@@ -1,21 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmDoor extends SetInfo {
-    private final boolean PRT;
-    private final Vector3f PRTPos;
-    private final float PRTScale;
-    private final long TextType;
-    private final long TextQuestNo;
-    private final long TextNo;
-    private final long QuestID;
-    private final long QuestFlag;
-    private final SetInfoOmOld InfoOm;
+    private boolean PRT;
+    private Vector3f PRTPos;
+    private float PRTScale;
+    private long TextType;
+    private long TextQuestNo;
+    private long TextNo;
+    private long QuestID;
+    private long QuestFlag;
+    private SetInfoOmOld InfoOm;
 }

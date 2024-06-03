@@ -42,7 +42,7 @@ public enum SetInfoOmGatherType {
     OM_GATHER_KEY_LV4(0x23),
     OM_GATHER_ONE_OFF(0x24);
 
-    public final long value;
+    public long value;
 
     SetInfoOmGatherType(long value) {
         this.value = value;

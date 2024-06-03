@@ -7,7 +7,7 @@ public enum AIPawnOrderSpType {
     AIPAWN_ORDER_SP_ID_IRON_F(0x1),
     AIPAWN_ORDER_SP_ID_QUICK_CHARGE(0x2);
 
-    public final long value;
+    public long value;
 
     AIPawnOrderSpType(long value) {
         this.value = value;

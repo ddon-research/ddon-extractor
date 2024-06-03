@@ -49,7 +49,7 @@ public enum AIPawnAutoMotionGroupType {
     AIPAWN_AUTOMOT_GROUP_HAPPY_GREET(0x2B);
 
 
-    public final long value;
+    public long value;
 
     AIPawnAutoMotionGroupType(long value) {
         this.value = value;

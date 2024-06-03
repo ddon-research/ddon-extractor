@@ -26,7 +26,7 @@ public enum PawnAIActCancelType {
     PAWNAI_ACT_CANCEL_JOB10_CS03(0x14),
     PAWNAI_ACT_CANCEL_JOB10_CS04(0x15);
 
-    public final long value;
+    public long value;
 
     PawnAIActCancelType(long value) {
         this.value = value;

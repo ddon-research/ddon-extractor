@@ -60,7 +60,7 @@ public enum AbilityParamType {
     PARAM_TYPE_DEF_ITEM_SEAL(0x36),
     PARAM_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     AbilityParamType(long value) {
         this.value = value;

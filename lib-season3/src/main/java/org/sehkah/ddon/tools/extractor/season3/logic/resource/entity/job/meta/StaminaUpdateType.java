@@ -6,7 +6,7 @@ public enum StaminaUpdateType {
     TYPE_DECREASE(0x00),
     TYPE_RECOVERY(0x01);
 
-    public final long value;
+    public long value;
 
     StaminaUpdateType(long value) {
         this.value = value;

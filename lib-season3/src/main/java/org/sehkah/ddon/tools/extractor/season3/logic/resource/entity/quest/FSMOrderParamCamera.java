@@ -1,26 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMOrderParamCamera extends AICopiableParameter {
-    private final int ActType;//Camera:ActType
-    private final int CamRes;//Camera:CamRes
-    private final boolean IsBtlNoCancel;//season 3 exclusive
-    private final int CamId1;
-    private final int CamId2;
-    private final int CameraEnemyActType;//CameraEnemy:ActType
-    private final boolean CantActPl;
-    private final int CamId3;
+public class FSMOrderParamCamera extends AICopiableParameter {
+    private int ActType;//Camera:ActType
+    private int CamRes;//Camera:CamRes
+    private boolean IsBtlNoCancel;//season 3 exclusive
+    private int CamId1;
+    private int CamId2;
+    private int CameraEnemyActType;//CameraEnemy:ActType
+    private boolean CantActPl;
+    private int CamId3;
 }

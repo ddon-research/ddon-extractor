@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
-public record AIFSMNodeProcess(
-        String ContainerName,
-        String CategoryName,
-        AICopiableParameter Parameter
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AIFSMNodeProcess {
+    private String ContainerName;
+    private String CategoryName;
+    private AICopiableParameter Parameter;
 }

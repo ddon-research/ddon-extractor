@@ -6,7 +6,7 @@ public enum PawnQuestTalkResourceType {
     RESTYPE_PAWN_STAGE(0x0),
     RESTYPE_QUEST(0x1);
 
-    public final long value;
+    public long value;
 
     PawnQuestTalkResourceType(long value) {
         this.value = value;

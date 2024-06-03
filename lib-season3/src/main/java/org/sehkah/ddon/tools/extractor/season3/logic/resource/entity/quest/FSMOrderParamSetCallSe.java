@@ -1,26 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMOrderParamSetCallSe extends AICopiableParameter {
-    private final long SeId;
-    private final long Target;
-    private final int Group;
-    private final int Id;
-    private final int JointNo;
-    private final long DelayFrame;
-    private final Vector3f Pos;
+public class FSMOrderParamSetCallSe extends AICopiableParameter {
+    private long SeId;
+    private long Target;
+    private int Group;
+    private int Id;
+    private int JointNo;
+    private long DelayFrame;
+    private Vector3f Pos;
 }

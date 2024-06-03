@@ -20,7 +20,7 @@ public enum WeaponCategory {
     WIRE(0xE),
     WEAPON_CATEGORY_UNKNOWN(Integer.MAX_VALUE);
 
-    public final long value;
+    public long value;
 
     WeaponCategory(long value) {
         this.value = value;

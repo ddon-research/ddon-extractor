@@ -1,23 +1,30 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.AbilityParamCorrectType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.AbilityParamType;
 
 import java.util.List;
 
-public record AbilityParam(
-        int ParamType,
-        @MetaInformation
-        AbilityParamType ParamTypeName,
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AbilityParam {
+    private int ParamType;
+    @MetaInformation
+    private AbilityParamType ParamTypeName;
+    private int CorrectType;
+    @MetaInformation
+    private AbilityParamCorrectType CorrectTypeName;
+    private long ParamDataArrayNum;
+    private List<AbilityParamData> ParamDataArray;
 
-        int CorrectType,
-        @MetaInformation
-        AbilityParamCorrectType CorrectTypeName,
-
-        long ParamDataArrayNum,
-        List<AbilityParamData> ParamDataArray
-) {
     public AbilityParam(int ParamType, int CorrectType, List<AbilityParamData> ParamDataArray) {
         this(
                 ParamType, AbilityParamType.of(ParamType),

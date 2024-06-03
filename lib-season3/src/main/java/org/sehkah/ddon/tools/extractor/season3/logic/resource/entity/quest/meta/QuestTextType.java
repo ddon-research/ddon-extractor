@@ -13,7 +13,7 @@ public enum QuestTextType {
     QUEST_TEXT_TYPE_GM_INFO(0x7),
     QUEST_TEXT_TYPE_SAY_PATTERN(0x8);
 
-    public final long value;
+    public long value;
 
     QuestTextType(long value) {
         this.value = value;

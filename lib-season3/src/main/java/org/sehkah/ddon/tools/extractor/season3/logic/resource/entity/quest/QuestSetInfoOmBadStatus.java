@@ -1,20 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.SetInfo;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestSetInfoOmBadStatus extends SetInfo {
-    private final QuestSetInfoOm InfoOm;
-    private final float BadRadius;
-    private final float BadHeight;
-    private final Vector3f BadPos;
-    private final long BreakHitNum;
+    private QuestSetInfoOm InfoOm;
+    private float BadRadius;
+    private float BadHeight;
+    private Vector3f BadPos;
+    private long BreakHitNum;
 }

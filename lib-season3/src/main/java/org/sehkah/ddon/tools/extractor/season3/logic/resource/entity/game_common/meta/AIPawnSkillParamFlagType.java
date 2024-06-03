@@ -20,7 +20,7 @@ public enum AIPawnSkillParamFlagType {
     AIPAWN_SKILLPARAM_FLAG_UNKNOWN_SEASON_3_FLAG(0xE);
 
 
-    public final long value;
+    public long value;
 
     AIPawnSkillParamFlagType(long value) {
         this.value = value;

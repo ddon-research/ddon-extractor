@@ -105,6 +105,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIDogmaOrb;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIKeyConfig;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUISkill;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table.meta;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.wep_res_table;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.meta;
 }

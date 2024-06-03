@@ -1,10 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
@@ -14,14 +11,16 @@ import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FieldAreaAdjoinList extends TopLevelClientResource {
-    private final short FieldAreaId;
+public class FieldAreaAdjoinList extends TopLevelClientResource {
+    private short FieldAreaId;
     @MetaInformation
-    private final String FieldAreaName;
-    private final List<AdjoinInfo> Array;
+    private String FieldAreaName;
+    private List<AdjoinInfo> Array;
 
     public FieldAreaAdjoinList(short fieldAreaId, List<AdjoinInfo> array) {
         FieldAreaId = fieldAreaId;

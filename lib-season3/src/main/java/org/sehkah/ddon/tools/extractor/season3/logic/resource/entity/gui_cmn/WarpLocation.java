@@ -1,15 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn;
 
-public record WarpLocation(
-        long Id,
-        long SortNo,
-        long AreaId,
-        long SpotId,
-        int StageNo,
-        long PosNo,
-        int MapPosX,
-        int MapPosY,
-        int IconType,
-        long Padding
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class WarpLocation {
+    private long Id;
+    private long SortNo;
+    private long AreaId;
+    private long SpotId;
+    private int StageNo;
+    private long PosNo;
+    private int MapPosX;
+    private int MapPosY;
+    private int IconType;
+    private long Padding;
 }

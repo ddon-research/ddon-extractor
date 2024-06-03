@@ -57,7 +57,7 @@ public enum LayoutSetInfoType {
     SetInfoOmUnknown55(55),
     SetInfoEnemyV2(200);
 
-    public final long value;
+    public long value;
 
     LayoutSetInfoType(long value) {
         this.value = value;

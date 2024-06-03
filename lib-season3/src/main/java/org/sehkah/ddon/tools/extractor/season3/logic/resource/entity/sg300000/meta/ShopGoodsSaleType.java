@@ -8,7 +8,7 @@ public enum ShopGoodsSaleType {
     SALE_FAVORITE(0x2);
 
 
-    public final long value;
+    public long value;
 
     ShopGoodsSaleType(long value) {
         this.value = value;

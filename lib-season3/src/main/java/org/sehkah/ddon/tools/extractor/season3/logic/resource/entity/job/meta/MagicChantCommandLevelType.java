@@ -7,7 +7,7 @@ public enum MagicChantCommandLevelType {
     CHANT_COMMAND_NORMAL(0x1),
     CHANT_COMMAND_HARD(0x2);
 
-    public final long value;
+    public long value;
 
     MagicChantCommandLevelType(long value) {
         this.value = value;

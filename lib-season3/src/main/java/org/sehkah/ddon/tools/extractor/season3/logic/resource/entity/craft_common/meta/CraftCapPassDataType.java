@@ -6,7 +6,7 @@ public enum CraftCapPassDataType {
     TYPE_NON(0x0),
     TYPE_CAP_PASS(0x1);
 
-    public final long value;
+    public long value;
 
     CraftCapPassDataType(long value) {
         this.value = value;

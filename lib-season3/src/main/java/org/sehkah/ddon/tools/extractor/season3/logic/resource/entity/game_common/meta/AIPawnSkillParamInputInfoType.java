@@ -18,7 +18,7 @@ public enum AIPawnSkillParamInputInfoType {
     AIPAWN_SKILLPARAM_INPUTINFO_TOUCH_TRG(0xC),
     AIPAWN_SKILLPARAM_INPUTINFO_MAIN_SHOOT_TRG(0xD);
 
-    public final long value;
+    public long value;
 
     AIPawnSkillParamInputInfoType(long value) {
         this.value = value;

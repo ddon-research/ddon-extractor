@@ -10,7 +10,7 @@ public enum EnemyDmgTimerType {
     DTT_FROM_SWAYED(0x4),
     DTT_FROM_YOROYORO(0x5);
 
-    public final long value;
+    public long value;
 
     EnemyDmgTimerType(long value) {
         this.value = value;

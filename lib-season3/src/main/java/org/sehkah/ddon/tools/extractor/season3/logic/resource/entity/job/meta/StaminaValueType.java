@@ -6,7 +6,7 @@ public enum StaminaValueType {
     TYPE_REAL(0x00),
     TYPE_RATE(0x01);
 
-    public final long value;
+    public long value;
 
     StaminaValueType(long value) {
         this.value = value;

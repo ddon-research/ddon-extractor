@@ -8,7 +8,7 @@ public enum NamedParamType {
     NAMED_TYPE_SUFFIX(0x3),
     NAMED_TYPE_REPLACE(0x4);
 
-    public final long value;
+    public long value;
 
     NamedParamType(long value) {
         this.value = value;

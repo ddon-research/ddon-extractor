@@ -13,7 +13,7 @@ public enum AIPawnPersonalityType {
     AIPAWN_PERSONALITY_WILD(0x7),
     AIPAWN_PERSONALITY_SEXY(0x8);
 
-    public final long value;
+    public long value;
 
     AIPawnPersonalityType(long value) {
         this.value = value;

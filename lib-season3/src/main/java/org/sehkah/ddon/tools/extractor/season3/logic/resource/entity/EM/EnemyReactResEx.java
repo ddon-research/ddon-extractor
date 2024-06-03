@@ -1,59 +1,68 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.math.BigInteger;
 import java.util.List;
 
-public record EnemyReactResEx(
-        long OverallConditionsType,
-        float OverallConditions0,
-        float OverallConditions1,
-        boolean OverallConditionsReverse,
-        boolean OverallConditionsBitMode,
-        long WhereType,//8
-        int WhereNo,//8
-        long WhereType1,
-        int WhereNo1,
-        long WhereType2,
-        int WhereNo2,
-        long WhereType3,
-        int WhereNo3,
-        long WhereType4,
-        int WhereNo4,
-        long WhereType5,
-        int WhereNo5,
-        long WhereType6,
-        int WhereNo6,
-        long WhereType7,
-        int WhereNo7,
-        boolean WhereNoRev,
-        long PlayTypeGuard,
-        long PlayTypeNamed,
-        long PlayTypeAnger,
-        long PlayTypeNanteki,
-        long PlayTypeYojinoboriAttack,
-        boolean PlayTypeHP,
-        List<Float> PlayTypeHPParam, //2
-        boolean PlayTypeHPParamReverse,
-        long PlayTypeUseSeq,
-        long PlayTypeUseSeqWorkNo,
-        long PlayTypeSeqNo,
-        long PlayTypeSeqWorkNo,
-        List<Boolean> CountType, //12
-        boolean ResetTypeBlow,
-        long ResetTypeBlowCount,
-        boolean ResetTypeShrink,
-        long ResetTypeShrinkCount,
-        boolean ResetTypeDown,
-        long ResetTypeDownCount,
-        long ResetType,
-        float FResetParam,
-        long UResetParam,
-        boolean ResultThinkTable,
-        int ResultThinkTableNo,
-        boolean ResultThinkTableActionGet,
-        boolean ResultAction,
-        long ResultActionNo,
-        BigInteger OverallConditionsBit,
-        List<EnemyReactRes> EnemyReactResList
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EnemyReactResEx {
+    private long OverallConditionsType;
+    private float OverallConditions0;
+    private float OverallConditions1;
+    private boolean OverallConditionsReverse;
+    private boolean OverallConditionsBitMode;
+    private long WhereType;
+    private int WhereNo;
+    private long WhereType1;
+    private int WhereNo1;
+    private long WhereType2;
+    private int WhereNo2;
+    private long WhereType3;
+    private int WhereNo3;
+    private long WhereType4;
+    private int WhereNo4;
+    private long WhereType5;
+    private int WhereNo5;
+    private long WhereType6;
+    private int WhereNo6;
+    private long WhereType7;
+    private int WhereNo7;
+    private boolean WhereNoRev;
+    private long PlayTypeGuard;
+    private long PlayTypeNamed;
+    private long PlayTypeAnger;
+    private long PlayTypeNanteki;
+    private long PlayTypeYojinoboriAttack;
+    private boolean PlayTypeHP;
+    private List<Float> PlayTypeHPParam;//2
+    private boolean PlayTypeHPParamReverse;
+    private long PlayTypeUseSeq;
+    private long PlayTypeUseSeqWorkNo;
+    private long PlayTypeSeqNo;
+    private long PlayTypeSeqWorkNo;
+    private List<Boolean> CountType;//12
+    private boolean ResetTypeBlow;
+    private long ResetTypeBlowCount;
+    private boolean ResetTypeShrink;
+    private long ResetTypeShrinkCount;
+    private boolean ResetTypeDown;
+    private long ResetTypeDownCount;
+    private long ResetType;
+    private float FResetParam;
+    private long UResetParam;
+    private boolean ResultThinkTable;
+    private int ResultThinkTableNo;
+    private boolean ResultThinkTableActionGet;
+    private boolean ResultAction;
+    private long ResultActionNo;
+    private BigInteger OverallConditionsBit;
+    private List<EnemyReactRes> EnemyReactResList;
 }

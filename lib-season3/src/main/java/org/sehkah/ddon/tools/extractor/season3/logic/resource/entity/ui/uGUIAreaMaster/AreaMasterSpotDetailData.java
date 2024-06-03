@@ -1,11 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record AreaMasterSpotDetailData(
-        long SpotId,
-        List<SpotItemData> ItemArray,
-        List<SpotEnemyData> EnemyArray
-
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AreaMasterSpotDetailData {
+    private long SpotId;
+    private List<SpotItemData> ItemArray;
+    private List<SpotEnemyData> EnemyArray;
 }
