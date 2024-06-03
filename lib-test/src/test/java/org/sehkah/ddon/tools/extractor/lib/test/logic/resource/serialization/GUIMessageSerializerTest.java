@@ -8,8 +8,8 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceSerializer;
-import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
-import org.sehkah.ddon.tools.extractor.season3.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessage;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

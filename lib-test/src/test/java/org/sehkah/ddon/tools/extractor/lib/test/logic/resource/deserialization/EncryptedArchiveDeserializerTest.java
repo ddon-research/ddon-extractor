@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileMana
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.ResourceInfo;
-import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

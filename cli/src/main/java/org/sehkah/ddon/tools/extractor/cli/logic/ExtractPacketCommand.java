@@ -85,6 +85,26 @@ public class ExtractPacketCommand implements Callable<Integer> {
             """, defaultValue = "true")
     private boolean runInParallel;
 
+    private static PacketManager getPacketManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return switch (clientVersion) {
+            case VERSION_1_1 -> null;
+            case VERSION_2_3 -> null;
+            case VERSION_3_4 ->
+                    new PacketManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+        };
+    }
+
     private StatusCode extractSingleFile(Path filePath, Serializer<Packet> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
@@ -143,28 +163,6 @@ public class ExtractPacketCommand implements Callable<Integer> {
             log.error("Deserialization has failed.");
             return StatusCode.ERROR;
         }
-    }
-
-    private static PacketManager getPacketManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
-        String versionlistString;
-        ClientVersion clientVersion;
-        try {
-            versionlistString = Files.readString(versionlist);
-            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
-        } catch (IOException e) {
-            throw new TechnicalException("Could not load DDON version file!", e);
-        }
-        log.info("Identified DDON client version v'{}'", versionlistString);
-
-        return switch (clientVersion) {
-            case VERSION_1_1 ->
-                    null;
-            case VERSION_2_3 ->
-                    null;
-            case VERSION_3_4 ->
-                    new PacketManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
-        };
     }
 
     @Override

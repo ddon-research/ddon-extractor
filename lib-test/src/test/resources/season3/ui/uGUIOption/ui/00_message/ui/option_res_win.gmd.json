@@ -1,5 +1,5 @@
 {
-  "@class": "org.sehkah.ddon.tools.extractor.season3.resource.entity.game_common.GUIMessage",
+  "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessage",
   "packageName": "TextWeb",
   "language": "LANGUAGE_JAPANESE",
   "messageBufferSize": 7477,

@@ -11,12 +11,12 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFor
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientVersion;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
-import org.sehkah.ddon.tools.extractor.season3.resource.ClientResourceFileManagerSeason3;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -107,6 +107,28 @@ public class ExtractResourceCommand implements Callable<Integer> {
             """, defaultValue = "true")
     private boolean runInParallel;
 
+    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return switch (clientVersion) {
+            case VERSION_1_1 ->
+                    new ClientResourceFileManagerSeason1(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_2_3 ->
+                    new ClientResourceFileManagerSeason2(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_3_4 ->
+                    new ClientResourceFileManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+        };
+    }
+
     private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
@@ -182,28 +204,6 @@ public class ExtractResourceCommand implements Callable<Integer> {
             log.error("Deserialization has failed.");
             return StatusCode.ERROR;
         }
-    }
-
-    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
-        String versionlistString;
-        ClientVersion clientVersion;
-        try {
-            versionlistString = Files.readString(versionlist);
-            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
-        } catch (IOException e) {
-            throw new TechnicalException("Could not load DDON version file!", e);
-        }
-        log.info("Identified DDON client version v'{}'", versionlistString);
-
-        return switch (clientVersion) {
-            case VERSION_1_1 ->
-                    new ClientResourceFileManagerSeason1(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
-            case VERSION_2_3 ->
-                    new ClientResourceFileManagerSeason2(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
-            case VERSION_3_4 ->
-                    new ClientResourceFileManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
-        };
     }
 
     @Override

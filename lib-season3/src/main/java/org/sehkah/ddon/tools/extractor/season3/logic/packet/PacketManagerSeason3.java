@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.lib.logic.packet.GamePacket;
 import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.deserialization.c2l.C2LLoginReqBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.deserialization.l2c.L2CLoginResBufferDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.DynamicResourceLookupUtil;
 
 import java.nio.file.Path;
 import java.util.Set;
