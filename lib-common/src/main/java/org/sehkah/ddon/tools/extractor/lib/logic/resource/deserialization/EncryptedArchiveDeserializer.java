@@ -49,13 +49,13 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
 
         Map<String, byte[]> resourceFileMap = HashMap.newHashMap(resourceInfos.size());
         for (ResourceInfo resourceInfo : resourceInfos) {
-            byte[] compressedEncryptedData = bufferReader.copySignedByte((int) resourceInfo.DataSize(), (int) resourceInfo.Offset());
-            byte[] decompressedData = ZipUtil.decompress(BlowFishUtil.decrypt(compressedEncryptedData), (int) resourceInfo.OriginalSize());
-            if (decompressedData.length != (int) resourceInfo.OriginalSize()) {
-                throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.OriginalSize()));
+            byte[] compressedEncryptedData = bufferReader.copySignedByte((int) resourceInfo.getDataSize(), (int) resourceInfo.getOffset());
+            byte[] decompressedData = ZipUtil.decompress(BlowFishUtil.decrypt(compressedEncryptedData), (int) resourceInfo.getOriginalSize());
+            if (decompressedData.length != (int) resourceInfo.getOriginalSize()) {
+                throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.getOriginalSize()));
             }
-            bufferReader.setPosition((int) (resourceInfo.DataSize() + resourceInfo.Offset()));
-            resourceFileMap.put(resourceInfo.Path() + FrameworkResourcesUtil.getFileExtension(resourceInfo.TypeName()), decompressedData);
+            bufferReader.setPosition((int) (resourceInfo.getDataSize() + resourceInfo.getOffset()));
+            resourceFileMap.put(resourceInfo.getPath() + FrameworkResourcesUtil.getFileExtension(resourceInfo.getTypeName()), decompressedData);
         }
 
         return new Archive(

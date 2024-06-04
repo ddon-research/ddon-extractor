@@ -1,22 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
-
+import lombok.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMBaseParamCallNpcMessage extends AICopiableParameter {
-    private final long Type;
-    private final long QuestId;
-    private final long MsgNo;
+    private long Type;
+    private long QuestId;
+    private long MsgNo;
 }

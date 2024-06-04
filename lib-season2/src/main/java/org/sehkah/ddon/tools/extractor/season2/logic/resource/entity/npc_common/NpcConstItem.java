@@ -1,7 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common;
 
-public record NpcConstItem(
-        long MTag,
-        long Offset
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class NpcConstItem {
+    private long MTag;
+    private long Offset;
 }

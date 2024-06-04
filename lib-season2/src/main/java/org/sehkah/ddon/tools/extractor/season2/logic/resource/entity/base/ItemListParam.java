@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListElementParamKind;
@@ -9,17 +11,18 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.I
 import java.util.List;
 
 @Slf4j
-public record ItemListParam(
-        short KindType,
-        @MetaInformation
-        String KindTypeName,
-        List<Integer> Parameters // TODO typification
-) {
-    public ItemListParam {
-        if (KindTypeName.equals("ELEMENT_PARAM_KIND_UNKNOWN") || KindTypeName.equals("PARAM_KIND_UNKNOWN")) {
-            log.warn("KindType '{}' is unknown.", KindType);
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ItemListParam {
+    private short KindType;
+    @MetaInformation
+    private String KindTypeName;
+    private List<Integer> Parameters; // TODO typification;
 
     public ItemListParam(int category, short kindType, List<Integer> parameters) {
         this(

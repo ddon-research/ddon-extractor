@@ -1,20 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmCtrl extends SetInfo {
-    private final long KeyItemNo;
-    private final boolean IsQuest;
-    private final long QuestId;
-    private final List<SetInfoOmCtrlLinkParam> LinkParam; // 4
-    private final int AddGroupNo;
-    private final int AddSubGroupNo;
-    private final SetInfoOm InfoOm;
+    private long KeyItemNo;
+    private boolean IsQuest;
+    private long QuestId;
+    private List<SetInfoOmCtrlLinkParam> LinkParam; // 4
+    private int AddGroupNo;
+    private int AddSubGroupNo;
+    private SetInfoOm InfoOm;
 }

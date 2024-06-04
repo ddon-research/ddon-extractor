@@ -13,23 +13,23 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.meta
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class PropertyHeader {
-    public String name;
+    private String name;
     // offset from base
-    public long propertyNameOffset;
+    private long propertyNameOffset;
     // bitfield FieldFlag { type : 8; attr : 8; bytes : 15; disable : 1; };
-    public long propertyParam;
+    private long propertyParam;
     @MetaInformation
-    public int propertyParamType;
+    private int propertyParamType;
     @MetaInformation
-    public PropertyType propertyParamTypeName;
+    private PropertyType propertyParamTypeName;
     @MetaInformation
-    public int propertyParamAttr;
+    private int propertyParamAttr;
     @MetaInformation
-    public int propertyParamBytes;
+    private int propertyParamBytes;
     @MetaInformation
-    public int propertyParamDisable;
-    public long unk1;
-    public long unk2;
-    public long unk3;
-    public long unk4;
+    private int propertyParamDisable;
+    private long unknown1;
+    private long unknown2;
+    private long unknown3;
+    private long unknown4;
 }

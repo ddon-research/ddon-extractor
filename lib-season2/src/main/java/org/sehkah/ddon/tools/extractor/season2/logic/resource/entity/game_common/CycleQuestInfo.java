@@ -1,16 +1,25 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record CycleQuestInfo(
-        long CycleNo,
-        long CycleSubNo,
-        long ContentNameIdx,
-        long ContentInfoIdx,
-        long GatherInfoIdx,
-        List<CycleQuestSituationInfo> SituationInfo,
-        long GatherNpcId,
-        long GatherStageNo,
-        long GatherStartPos
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CycleQuestInfo {
+    private long CycleNo;
+    private long CycleSubNo;
+    private long ContentNameIdx;
+    private long ContentInfoIdx;
+    private long GatherInfoIdx;
+    private List<CycleQuestSituationInfo> SituationInfo;
+    private long GatherNpcId;
+    private long GatherStageNo;
+    private long GatherStartPos;
 }

@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.meta.AIPawnAutoMotionGroupSelectType;
@@ -10,26 +12,31 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common
 import java.util.List;
 import java.util.Set;
 
-
-public record AIPawnAutoMotionNode(
-        long EMotActionNo,
-        long MotType,
-        @MetaInformation
-        AIPawnAutoMotionType AutoMotionType,
-        long GroupNo,
-        @MetaInformation
-        AIPawnAutoMotionGroupType AutoMotionGroupType,
-        long GroupSelectType,
-        @MetaInformation
-        AIPawnAutoMotionGroupSelectType AutoMotionGroupSelectType,
-        float BeginMinFrame,
-        float BeginMaxFrame,
-        // Synonymous for cBitSet<10>, which is defined as u32 mBits[1], i.e. there will always be exactly 1 value
-        List<Long> EnableSituation,
-        @MetaInformation
-        Set<AIPawnAutoMotionSituationType> EnableSituationTypes,
-        long WaitMoveType
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AIPawnAutoMotionNode {
+    private long EMotActionNo;
+    private long MotType;
+    @MetaInformation
+    private AIPawnAutoMotionType AutoMotionType;
+    private long GroupNo;
+    @MetaInformation
+    private AIPawnAutoMotionGroupType AutoMotionGroupType;
+    private long GroupSelectType;
+    @MetaInformation
+    private AIPawnAutoMotionGroupSelectType AutoMotionGroupSelectType;
+    private float BeginMinFrame;
+    private float BeginMaxFrame;
+    // Synonymous for cBitSet<10>, which is defined as u32 mBits[1], i.e. there will always be exactly 1 value
+    private List<Long> EnableSituation;
+    @MetaInformation
+    private Set<AIPawnAutoMotionSituationType> EnableSituationTypes;
+    private long WaitMoveType;
 
     public AIPawnAutoMotionNode(
             long EMotActionNo,

@@ -1,25 +1,33 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-public record MyRoomActParam(
-        Vector3f Pos,
-        float AngleY,
-        int Waypoint,
-        int NpcMotNo,
-        int StartIdx,
-        long NeedOM,
-        short Message,
-        int Condition,
-        short LinkActNo,
-        int LinkActLv,
-        short ChangeEquip,
-        boolean IsGriffin,
-        boolean IsNotAvoid,
-        boolean IsSingle,
-        long NeedOM2,
-        long NeedOM3,
-        long NeedOM4,
-        long NeedOM5
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class MyRoomActParam {
+    private Vector3f Pos;
+    private float AngleY;
+    private int Waypoint;
+    private int NpcMotNo;
+    private int StartIdx;
+    private long NeedOM;
+    private short Message;
+    private int Condition;
+    private short LinkActNo;
+    private int LinkActLv;
+    private short ChangeEquip;
+    private boolean IsGriffin;
+    private boolean IsNotAvoid;
+    private boolean IsSingle;
+    private long NeedOM2;
+    private long NeedOM3;
+    private long NeedOM4;
+    private long NeedOM5;
 }

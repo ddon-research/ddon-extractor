@@ -1,21 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.SetInfoOmGatherType;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmGather extends SetInfo {
-    private final long ItemListID;
-    private final long GatheringType;
+    private long ItemListID;
+    private long GatheringType;
     @MetaInformation
-    private final SetInfoOmGatherType GatheringTypeName;
-    private final boolean IsGatherEnemy;
-    private final SetInfoOm InfoOm;
+    private SetInfoOmGatherType GatheringTypeName;
+    private boolean IsGatherEnemy;
+    private SetInfoOm InfoOm;
 
     public SetInfoOmGather(long itemListID, long gatheringType, boolean isGatherEnemy, SetInfoOm infoOm) {
         this(itemListID,

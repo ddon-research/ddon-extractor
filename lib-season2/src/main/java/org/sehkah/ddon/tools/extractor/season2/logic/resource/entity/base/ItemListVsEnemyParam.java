@@ -1,20 +1,22 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListEmPhylogenyKind;
 
-public record ItemListVsEnemyParam(
-        int KindType,
-        @MetaInformation
-        ItemListEmPhylogenyKind KindTypeName,
-        int Param
-) {
-    public ItemListVsEnemyParam {
-        if (KindTypeName == ItemListEmPhylogenyKind.EM_PHYLOGENY_KIND_UNKNOWN) {
-            throw new TechnicalException("KindType is unknown: " + KindType);
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ItemListVsEnemyParam {
+    private int KindType;
+    @MetaInformation
+    private ItemListEmPhylogenyKind KindTypeName;
+    private int Param;
 
     public ItemListVsEnemyParam(int kindType, int parameter) {
         this(

@@ -30,6 +30,6 @@ class ReferenceArchiveDeserializerTest {
         ArchiveS deserialized = (ArchiveS) deserializer.deserialize(bufferReader);
 
         assertEquals(1, deserialized.getResourceNum());
-        assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().get(0).TypeName());
+        assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().getFirst().getTypeName());
     }
 }

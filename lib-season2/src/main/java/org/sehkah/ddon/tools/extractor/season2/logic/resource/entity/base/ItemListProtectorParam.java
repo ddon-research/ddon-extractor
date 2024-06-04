@@ -1,37 +1,39 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListSexType;
 
 import java.util.List;
 
-public record ItemListProtectorParam(
-        long ModelTagId,
-        long PowerRev,
-        long Chance,
-        long Defense,
-        long MagicDefense,
-        long Durability,
-        long Attack,
-        long MagicAttack,
-        int Weight,
-        int MaxHpRev,
-        int MaxStRev,
-        int ColorNo,
-        int Sex,
-        @MetaInformation
-        ItemListSexType SexName,
-        int ModelParts,
-        int EleSlot,
-        int EquipParamS8Num,
-        List<ItemListEquipParamS8> EquipParamS8List
-) {
-    public ItemListProtectorParam {
-        if (SexName == ItemListSexType.SEX_TYPE_UNKNOWN) {
-            throw new TechnicalException("Sex is unknown: " + Sex);
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ItemListProtectorParam {
+    private long ModelTagId;
+    private long PowerRev;
+    private long Chance;
+    private long Defense;
+    private long MagicDefense;
+    private long Durability;
+    private long Attack;
+    private long MagicAttack;
+    private int Weight;
+    private int MaxHpRev;
+    private int MaxStRev;
+    private int ColorNo;
+    private int Sex;
+    @MetaInformation
+    private ItemListSexType SexName;
+    private int ModelParts;
+    private int EleSlot;
+    private int EquipParamS8Num;
+    private List<ItemListEquipParamS8> EquipParamS8List;
 
     public ItemListProtectorParam(long modelTagId, long powerRev, long chance, long defense, long magicDefense, long durability, long attack, long magicAttack, int weight, int maxHpRev, int maxStRev, int colorNo, int sex, int modelParts, int eleSlot, List<ItemListEquipParamS8> equipParamS8List) {
         this(modelTagId,

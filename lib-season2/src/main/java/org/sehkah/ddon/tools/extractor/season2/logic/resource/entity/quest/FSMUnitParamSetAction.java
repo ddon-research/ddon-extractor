@@ -1,25 +1,22 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.meta.ParamSetActionType;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMUnitParamSetAction extends AICopiableParameter {
-    private final long ActionType;
+public class FSMUnitParamSetAction extends AICopiableParameter {
+    private long ActionType;
     @MetaInformation
-    private final ParamSetActionType ActionTypeName;
+    private ParamSetActionType ActionTypeName;
 
     public FSMUnitParamSetAction(long actionType) {
         ActionType = actionType;

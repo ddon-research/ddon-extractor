@@ -12,13 +12,13 @@ import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class GUIMessageIndex {
-    public long Index;
-    public long KeyCrcHashDouble;
-    public long KeyCrcHashTriple;
-    public long LinkOffset;
-    public long KeyOffset;
-    public String Key;
+    private long Index;
+    private long KeyCrcHashDouble;
+    private long KeyCrcHashTriple;
+    private long LinkOffset;
+    private long KeyOffset;
+    private String Key;
     @MetaInformation
-    public long MessageIndex;
-    public String Message;
+    private long MessageIndex;
+    private String Message;
 }

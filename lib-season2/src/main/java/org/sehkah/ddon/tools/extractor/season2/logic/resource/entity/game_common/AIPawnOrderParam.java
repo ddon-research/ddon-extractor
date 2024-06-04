@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.meta.*;
@@ -7,33 +9,39 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common
 import java.util.List;
 import java.util.Set;
 
-public record AIPawnOrderParam(
-        long ID,
-        long OrderType,
-        @MetaInformation
-        PawnOrderType pawnOrderType,
-        long OrderGroup,
-        @MetaInformation
-        PawnOrderGroupType OrderGroupType,
-        long OrderCategory,
-        @MetaInformation
-        PawnOrderCategoryType OrderCategoryType,
-        float EnableFrame,
-        long OrderAttrFlag,
-        @MetaInformation
-        Set<PawnOrderAttrFlagType> OrderAttrFlagType,
-        long OrderSpID,
-        @MetaInformation
-        AIPawnOrderSpType pawnOrderSpType,
-        long OrderAttrActID,
-        List<Long> OrderAttrActGroup,
-        @MetaInformation
-        Set<AIPawnActionGroupType> OrderAttrActGroupType,
-        long ActionCancelFlag,
-        @MetaInformation
-        PawnAIActCancelType ActionCancelFlagType
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AIPawnOrderParam {
+    private long ID;
+    private long OrderType;
+    @MetaInformation
+    private PawnOrderType pawnOrderType;
+    private long OrderGroup;
+    @MetaInformation
+    private PawnOrderGroupType OrderGroupType;
+    private long OrderCategory;
+    @MetaInformation
+    private PawnOrderCategoryType OrderCategoryType;
+    private float EnableFrame;
+    private long OrderAttrFlag;
+    @MetaInformation
+    private Set<PawnOrderAttrFlagType> OrderAttrFlagType;
+    private long OrderSpID;
+    @MetaInformation
+    private AIPawnOrderSpType pawnOrderSpType;
+    private long OrderAttrActID;
+    private List<Long> OrderAttrActGroup;
+    @MetaInformation
+    private Set<AIPawnActionGroupType> OrderAttrActGroupType;
+    private long ActionCancelFlag;
+    @MetaInformation
+    private PawnAIActCancelType ActionCancelFlagType;
 
-) {
     public AIPawnOrderParam(long ID,
                             long OrderType,
                             long OrderGroup,

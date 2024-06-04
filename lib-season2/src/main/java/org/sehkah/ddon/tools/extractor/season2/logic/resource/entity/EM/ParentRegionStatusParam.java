@@ -1,28 +1,37 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record ParentRegionStatusParam(
-        long No,
-        long RegionCategory,
-        boolean IsReGenerate,
-        long RegenerateProperty,
-        List<Long> HpForEdit,
-        float ShPMax,
-        float ShPSpeed,
-        float ShPResetTimerMax,
-        float BlPMax,
-        float BlPSpeed,
-        float BlResetTimerMax,
-        float DownPMax,
-        float DownPSpeed,
-        float DownPResetTimerMax,
-        float ShakePMax,
-        float ShakePSpeed,
-        float ShakeResetTimerMax,
-        float RageShrinkMax,
-        boolean IsDamageToMain,
-        long BreakReactionNo,
-        RegionBreakInfoTable BreakInfo
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ParentRegionStatusParam {
+    private long No;
+    private long RegionCategory;
+    private boolean IsReGenerate;
+    private long RegenerateProperty;
+    private List<Long> HpForEdit;
+    private float ShPMax;
+    private float ShPSpeed;
+    private float ShPResetTimerMax;
+    private float BlPMax;
+    private float BlPSpeed;
+    private float BlResetTimerMax;
+    private float DownPMax;
+    private float DownPSpeed;
+    private float DownPResetTimerMax;
+    private float ShakePMax;
+    private float ShakePSpeed;
+    private float ShakeResetTimerMax;
+    private float RageShrinkMax;
+    private boolean IsDamageToMain;
+    private long BreakReactionNo;
+    private RegionBreakInfoTable BreakInfo;
 }

@@ -1,12 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job;
 
-public record JumpParam(
-        float SpeedY,
-        float SpeedZ,
-        float Gravity,
-        float DampingZ,
-        float AddMoveSpeedXZ,
-        boolean IsAwakening,
-        float AwakeJumpAdd
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class JumpParam {
+    private float SpeedY;
+    private float SpeedZ;
+    private float Gravity;
+    private float DampingZ;
+    private float AddMoveSpeedXZ;
+    private boolean IsAwakening;
+    private float AwakeJumpAdd;
 }

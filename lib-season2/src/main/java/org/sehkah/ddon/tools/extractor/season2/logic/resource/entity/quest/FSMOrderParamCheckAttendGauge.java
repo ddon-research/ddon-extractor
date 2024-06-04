@@ -1,20 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMOrderParamCheckAttendGauge extends AICopiableParameter {
-    private final long Max;
-    private final long Min;
+public class FSMOrderParamCheckAttendGauge extends AICopiableParameter {
+    private long Max;
+    private long Min;
 }

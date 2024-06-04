@@ -369,11 +369,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer {
         long BgmRequestNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         long BgmRequestEditType = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        //TODO: Season 3 exclusive
-        boolean BgmRequestIsChangeFadeTime = XfsDeserializer.readBoolean(bufferReader);
-        long BgmRequestFadeTime = XfsDeserializer.readUnsignedInteger(bufferReader);
-
-        return new FSMOrderParamBGMRequest(BgmRequestType, BgmRequestNo, BgmRequestEditType, BgmRequestIsChangeFadeTime, BgmRequestFadeTime);
+        return new FSMOrderParamBGMRequest(BgmRequestType, BgmRequestNo, BgmRequestEditType);
     }
 
     private static FSMOrderParamSetLocationName readFSMOrderParamSetLocationName(BufferReader bufferReader) {

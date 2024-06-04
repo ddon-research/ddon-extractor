@@ -1,22 +1,31 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
-public record PrologueHmStatus(
-        int Job,
-        int Lv,
-        int Atk,
-        int Def,
-        int MAtk,
-        int MDef,
-        int CustomSkillId1,
-        int CustomSkillId2,
-        int CustomSkillId3,
-        int CustomSkillId4,
-        int CustomSkillId1Lv,
-        int CustomSkillId2Lv,
-        int CustomSkillId3Lv,
-        int CustomSkillId4Lv,
-        int NormalSkillId1,
-        int NormalSkillId2,
-        int NormalSkillId3
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class PrologueHmStatus {
+    private int Job;
+    private int Lv;
+    private int Atk;
+    private int Def;
+    private int MAtk;
+    private int MDef;
+    private int CustomSkillId1;
+    private int CustomSkillId2;
+    private int CustomSkillId3;
+    private int CustomSkillId4;
+    private int CustomSkillId1Lv;
+    private int CustomSkillId2Lv;
+    private int CustomSkillId3Lv;
+    private int CustomSkillId4Lv;
+    private int NormalSkillId1;
+    private int NormalSkillId2;
+    private int NormalSkillId3;
 }

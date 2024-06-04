@@ -1,20 +1,27 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
 import java.util.List;
 
-
-public record ArchiveListTag(
-        @MetaInformation
-        long ArcPathPointer,
-        String ArcPath,
-        long TagId,
-        long Group,
-        long Type,
-        long NodeNum,
-        @MetaInformation
-        long NodeArrayPointer,
-        List<ArchiveListNode> NodeArray
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ArchiveListTag {
+    @MetaInformation
+    private long ArcPathPointer;
+    private String ArcPath;
+    private long TagId;
+    private long Group;
+    private long Type;
+    private long NodeNum;
+    @MetaInformation
+    private long NodeArrayPointer;
+    private List<ArchiveListNode> NodeArray;
 }

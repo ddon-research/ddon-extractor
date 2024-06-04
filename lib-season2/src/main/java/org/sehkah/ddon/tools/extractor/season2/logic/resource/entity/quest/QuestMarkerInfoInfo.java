@@ -16,9 +16,9 @@ import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DataType;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestMarkerInfoInfo {
     @DataType(size = DDONPrimitiveDataType.vector3f)
-    public Vector3f Pos;
+    private Vector3f Pos;
     @DataType(size = DDONPrimitiveDataType.u32)
-    public long GroupNo;
+    private long GroupNo;
     @DataType(size = DDONPrimitiveDataType.u32)
-    public long UniqueId;
+    private long UniqueId;
 }

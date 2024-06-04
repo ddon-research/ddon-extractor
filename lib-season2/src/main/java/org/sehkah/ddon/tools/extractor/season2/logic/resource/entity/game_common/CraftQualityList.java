@@ -1,19 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class CraftQualityList extends TopLevelClientResource {
-    private final List<CraftQualityData> CraftQualityDataList;
+public class CraftQualityList extends TopLevelClientResource {
+    private List<CraftQualityData> CraftQualityDataList;
 }

@@ -1,26 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMUnitParamSetGoto extends AICopiableParameter {
-    private final Vector3f TargetPos;
-    private final int RunType;
-    private final float StopBorder;
-    private final boolean IsSetDir;
-    private final boolean IsPathFinding;
-    private final Vector3f Dir;
-    private final float Speed;
+public class FSMUnitParamSetGoto extends AICopiableParameter {
+    private Vector3f TargetPos;
+    private int RunType;
+    private float StopBorder;
+    private boolean IsSetDir;
+    private boolean IsPathFinding;
+    private Vector3f Dir;
+    private float Speed;
 }

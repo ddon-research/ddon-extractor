@@ -1,21 +1,28 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.binary;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
 import java.util.List;
 
-public record ClassData(
-        long ID,
-        @MetaInformation
-        String resourceName,
-        long classParam,
-        @MetaInformation
-        int propNum,
-        @MetaInformation
-        int init,
-        @MetaInformation
-        int reserved,
-        List<PropertyHeader> properties
-) {
-
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ClassData {
+    private long ID;
+    @MetaInformation
+    private String resourceName;
+    private long classParam;
+    @MetaInformation
+    private int propNum;
+    @MetaInformation
+    private int init;
+    @MetaInformation
+    private int reserved;
+    private List<PropertyHeader> properties;
 }

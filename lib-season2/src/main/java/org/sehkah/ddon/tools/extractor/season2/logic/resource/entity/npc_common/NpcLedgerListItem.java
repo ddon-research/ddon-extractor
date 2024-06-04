@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.DynamicResourceLookupUtil;
@@ -9,28 +11,35 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.
 
 import java.util.List;
 
-public record NpcLedgerListItem(
-        long NpcId,
-        int Sex,
-        @MetaInformation
-        NpcSexType SexType,
-        long NameId,
-        @MetaInformation
-        String NpcName,
-        long ClassNameId,
-        @MetaInformation
-        String NpcClassName,
-        int JobId,
-        int Finger,
-        int VoiceType,
-        @MetaInformation
-        NpcVoiceType VoiceTypeName,
-        int UnitType,
-        @MetaInformation
-        NpcUnitType UnitTypeName,
-        long UnitTypeParam,
-        List<NpcLedgerListItemInstitution> InstitutionList
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class NpcLedgerListItem {
+    private long NpcId;
+    private int Sex;
+    @MetaInformation
+    private NpcSexType SexType;
+    private long NameId;
+    @MetaInformation
+    private String NpcName;
+    private long ClassNameId;
+    @MetaInformation
+    private String NpcClassName;
+    private int JobId;
+    private int Finger;
+    private int VoiceType;
+    @MetaInformation
+    private NpcVoiceType VoiceTypeName;
+    private int UnitType;
+    @MetaInformation
+    private NpcUnitType UnitTypeName;
+    private long UnitTypeParam;
+    private List<NpcLedgerListItemInstitution> InstitutionList;
+
     public NpcLedgerListItem(long npcId, int sex, long nameId, long classNameId, int jobId, int finger, int voiceType,
                              int unitType, long unitTypeParam, List<NpcLedgerListItemInstitution> institutionList) {
         this(npcId,

@@ -1,22 +1,25 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmWarp extends SetInfo {
-    private final List<Long> StageNo;
-    private final List<Long> StartPosNo;
-    private final List<Long> QuestNo;
-    private final List<Long> FlagNo;
-    private final List<Long> SpotId;
-    private final long TextType;
-    private final long TextQuestNo;
-    private final long TextNo;
-    private final SetInfoOm InfoOm;
+    private List<Long> StageNo;
+    private List<Long> StartPosNo;
+    private List<Long> QuestNo;
+    private List<Long> FlagNo;
+    private List<Long> SpotId;
+    private long TextType;
+    private long TextQuestNo;
+    private long TextNo;
+    private SetInfoOm InfoOm;
 }

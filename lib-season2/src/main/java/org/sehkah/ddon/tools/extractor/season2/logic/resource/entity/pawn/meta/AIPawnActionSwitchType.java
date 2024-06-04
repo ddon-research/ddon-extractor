@@ -10,7 +10,7 @@ public enum AIPawnActionSwitchType {
     PW_ACT_SW_TYPE_ACTION(0x4),
     PW_ACT_SW_TYPE_NO_WAIT(0x5);
 
-    public final long value;
+    public long value;
 
     AIPawnActionSwitchType(long value) {
         this.value = value;

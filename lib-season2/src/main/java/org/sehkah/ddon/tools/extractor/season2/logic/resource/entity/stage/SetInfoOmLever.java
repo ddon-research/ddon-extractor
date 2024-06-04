@@ -1,17 +1,20 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
 import java.math.BigInteger;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmLever extends SetInfo {
-    private final boolean ReqLever;
-    private final int CamEvNo;
-    private final BigInteger FSMCamEvResId; // rAIFSM
-    private final SetInfoOm InfoOm;
+    private boolean ReqLever;
+    private int CamEvNo;
+    private BigInteger FSMCamEvResId; // rAIFSM
+    private SetInfoOm InfoOm;
 }

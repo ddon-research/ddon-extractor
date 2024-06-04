@@ -1,20 +1,29 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record EnemyStatusChange(
-        long GroupNo,
-        long GroupSubNo,
-        long NextGroupSubNo,
-        boolean NextGroupSubOneGo,
-        long SelectNo,
-        long Type,
-        long RepeatSetting,
-        long ChangeStatus,
-        List<Float> Param,
-        List<Float> SystemParam,
-        float SystemParamWait,
-        long BitContrlCommand,
-        boolean TypeReverse
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EnemyStatusChange {
+    private long GroupNo;
+    private long GroupSubNo;
+    private long NextGroupSubNo;
+    private boolean NextGroupSubOneGo;
+    private long SelectNo;
+    private long Type;
+    private long RepeatSetting;
+    private long ChangeStatus;
+    private List<Float> Param;
+    private List<Float> SystemParam;
+    private float SystemParamWait;
+    private long BitContrlCommand;
+    private boolean TypeReverse;
 }

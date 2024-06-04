@@ -1,7 +1,8 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
@@ -12,57 +13,47 @@ import java.util.List;
 import java.util.Set;
 
 @Slf4j
-public record ItemListItemParam(
-        long ItemId,
-        long NameId,
-        @MetaInformation
-        String ItemName,
-        int Category, // Can be either a generic u32, USE_CATEGORY, MATERIAL_CATEGORY or SUB_CATEGORY
-        @MetaInformation
-        Object CategoryName, // TODO typification
-        int SubCategory,
-        @MetaInformation
-        ItemListEquipSubCategory SubCategoryName,
-        long Price,
-        long SortNo,
-        long NameSortNo,
-        long AttackStatus,
-        long IsUseJob,
-        int Flag,
-        @MetaInformation
-        Set<ItemListFlagType> FlagTypes,
-        int IconNo,
-        int IsUseLv,
-        int ItemCategory,
-        @MetaInformation
-        ItemListItemCategory ItemCategoryName,
-        int StackMax,
-        int Rank,
-        int Grade,
-        int IconColNo,
-        long ParamNum,
-        List<ItemListParam> ItemParamList,
-        long VsEmNum,
-        List<ItemListVsEnemyParam> VsEmList,
-        ItemListWeaponParam WeaponParam,
-        ItemListProtectorParam ProtectorParam
-) {
-
-    public ItemListItemParam {
-        if (SubCategoryName == ItemListEquipSubCategory.EQUIP_SUB_CATEGORY_UNKNOWN) {
-            throw new TechnicalException("SubCategory is unknown: " + SubCategory);
-        }
-        // Flag with value above 6 is valid but currently unknown, only output a warning.
-        if (FlagTypes.contains(ItemListFlagType.FLAG_TYPE_UNKNOWN)) {
-            log.warn("Flag '{}' has unknown values.", Flag);
-        }
-        if (ItemCategoryName == ItemListItemCategory.CATEGORY_UNKNOWN) {
-            throw new TechnicalException("ItemCategory is unknown: " + ItemCategory);
-        }
-        if (CategoryName == "CATEGORY_UNKNOWN") {
-            throw new TechnicalException("Category is unknown: " + Category);
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ItemListItemParam {
+    private long ItemId;
+    private long NameId;
+    @MetaInformation
+    private String ItemName;
+    private int Category; // Can be either a generic u32, USE_CATEGORY, MATERIAL_CATEGORY or SUB_CATEGORY
+    @MetaInformation
+    private Object CategoryName; // TODO typification
+    private int SubCategory;
+    @MetaInformation
+    private ItemListEquipSubCategory SubCategoryName;
+    private long Price;
+    private long SortNo;
+    private long NameSortNo;
+    private long AttackStatus;
+    private long IsUseJob;
+    private int Flag;
+    @MetaInformation
+    private Set<ItemListFlagType> FlagTypes;
+    private int IconNo;
+    private int IsUseLv;
+    private int ItemCategory;
+    @MetaInformation
+    private ItemListItemCategory ItemCategoryName;
+    private int StackMax;
+    private int Rank;
+    private int Grade;
+    private int IconColNo;
+    private long ParamNum;
+    private List<ItemListParam> ItemParamList;
+    private long VsEmNum;
+    private List<ItemListVsEnemyParam> VsEmList;
+    private ItemListWeaponParam WeaponParam;
+    private ItemListProtectorParam ProtectorParam;
 
     public ItemListItemParam(long itemId, long nameId, int category, int subCategory, long price, long sortNo,
                              long nameSortNo, long attackStatus, long isUseJob, int flag, int iconNo, int isUseLv,

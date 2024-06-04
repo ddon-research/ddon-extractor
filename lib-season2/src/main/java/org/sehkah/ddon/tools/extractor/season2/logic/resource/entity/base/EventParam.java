@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamEventFlag;
@@ -10,37 +11,35 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.E
 import java.util.List;
 import java.util.Set;
 
-public record EventParam(
-        int Type,
-        @MetaInformation
-        EventParamEventType TypeName,
-        int Stage,
-        int EvNo,
-        int Flag,
-        @MetaInformation
-        Set<EventParamEventFlag> FlagTypes,
-        String FileName,
-        @MetaInformation
-        String EventName,
-        long QuestId,
-        long LightCtrl,
-        @MetaInformation
-        EventParamLightCtrlType LightCtrlName,
-        int StartFadeType,
-        int EndFadeType,
-        short SubMixerBefore,
-        short SubMixerAfter,
-        float OmAQCScale,
-        List<org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.OmList> OmList
-) {
-    public EventParam {
-        if (!FileName.startsWith("event")) {
-            throw new TechnicalException("Event file name does not start with event!");
-        }
-        if (Float.isNaN(OmAQCScale)) {
-            throw new TechnicalException("OmAQCScale can not be NaN!");
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EventParam {
+    private int Type;
+    @MetaInformation
+    private EventParamEventType TypeName;
+    private int Stage;
+    private int EvNo;
+    private int Flag;
+    @MetaInformation
+    private Set<EventParamEventFlag> FlagTypes;
+    private String FileName;
+    @MetaInformation
+    private String EventName;
+    private long QuestId;
+    private long LightCtrl;
+    @MetaInformation
+    private EventParamLightCtrlType LightCtrlName;
+    private int StartFadeType;
+    private int EndFadeType;
+    private short SubMixerBefore;
+    private short SubMixerAfter;
+    private float OmAQCScale;
+    private List<OmList> OmList;
 
     public EventParam(int type, int stage, int evNo, int flag, String fileName, long questId, long lightCtrl, int startFadeType, int endFadeType, short subMixerBefore, short subMixerAfter, float omAQCScale, List<OmList> omList) {
         this(

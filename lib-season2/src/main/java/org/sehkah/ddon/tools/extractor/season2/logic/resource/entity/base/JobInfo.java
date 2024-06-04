@@ -1,52 +1,61 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.math.BigInteger;
 
-public record JobInfo(
-        int Lv,
-        BigInteger Exp,
-        long Atk,
-        long Def,
-        long MAtk,
-        long MDef,
-        long Strength,
-        long DownPower,
-        long ShakePower,
-        long StanPower,
-        long Constitution,
-        long Guts,
-        BigInteger JobPoint,
-        int FireResist,
-        int IceResist,
-        int ThunderResist,
-        int HolyResist,
-        int DarkResist,
-        int SpreadResist,
-        int FreezeResist,
-        int ShockResist,
-        int AbsorbResist,
-        int DarkElmResist,
-        int PoisonResist,
-        int SlowResist,
-        int SleepResist,
-        int StunResist,
-        int WetResist,
-        int OilResist,
-        int SealResist,
-        int CurseResist,
-        int SoftResist,
-        int StoneResist,
-        int GoldResist,
-        int FireReduceResist,
-        int IceReduceResist,
-        int ThunderReduceResist,
-        int HolyReduceResist,
-        int DarkReduceResist,
-        int AtkDownResist,
-        int DefDownResist,
-        int MAtkDownResist,
-        int MDefDownResist,
-        int ErosionResist,
-        int ItemSealResist
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class JobInfo {
+    private int Lv;
+    private BigInteger Exp;
+    private long Atk;
+    private long Def;
+    private long MAtk;
+    private long MDef;
+    private long Strength;
+    private long DownPower;
+    private long ShakePower;
+    private long StanPower;
+    private long Constitution;
+    private long Guts;
+    private BigInteger JobPoint;
+    private int FireResist;
+    private int IceResist;
+    private int ThunderResist;
+    private int HolyResist;
+    private int DarkResist;
+    private int SpreadResist;
+    private int FreezeResist;
+    private int ShockResist;
+    private int AbsorbResist;
+    private int DarkElmResist;
+    private int PoisonResist;
+    private int SlowResist;
+    private int SleepResist;
+    private int StunResist;
+    private int WetResist;
+    private int OilResist;
+    private int SealResist;
+    private int CurseResist;
+    private int SoftResist;
+    private int StoneResist;
+    private int GoldResist;
+    private int FireReduceResist;
+    private int IceReduceResist;
+    private int ThunderReduceResist;
+    private int HolyReduceResist;
+    private int DarkReduceResist;
+    private int AtkDownResist;
+    private int DefDownResist;
+    private int MAtkDownResist;
+    private int MDefDownResist;
+    private int ErosionResist;
+    private int ItemSealResist;
 }

@@ -1,30 +1,39 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.Human;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.Human.meta.WeaponOffsetConstType;
 
-public record WeaponOffset(
-        long ConstType,
-        @MetaInformation
-        WeaponOffsetConstType ConstTypeName,
-        int JntNo,
-        Vector3f Rot,
-        Vector3f Ofs,
-        float Fat,
-        int JntNoHold,
-        Vector3f RotHold,
-        Vector3f OfsHold,
-        float FatHold,
-        int JntNoDamage,
-        Vector3f RotDamage,
-        Vector3f OfsDamage,
-        float FatDamage,
-        int JntNoSpecial,
-        Vector3f RotSpecial,
-        Vector3f OfsSpecial,
-        float FatSpecial
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class WeaponOffset {
+    private long ConstType;
+    @MetaInformation
+    private WeaponOffsetConstType ConstTypeName;
+    private int JntNo;
+    private Vector3f Rot;
+    private Vector3f Ofs;
+    private float Fat;
+    private int JntNoHold;
+    private Vector3f RotHold;
+    private Vector3f OfsHold;
+    private float FatHold;
+    private int JntNoDamage;
+    private Vector3f RotDamage;
+    private Vector3f OfsDamage;
+    private float FatDamage;
+    private int JntNoSpecial;
+    private Vector3f RotSpecial;
+    private Vector3f OfsSpecial;
+    private float FatSpecial;
+
     public WeaponOffset(long constType, int jntNo, Vector3f rot, Vector3f ofs, float fat, int jntNoHold,
                         Vector3f rotHold, Vector3f ofsHold, float fatHold, int jntNoDamage, Vector3f rotDamage,
                         Vector3f ofsDamage, float fatDamage, int jntNoSpecial, Vector3f rotSpecial, Vector3f ofsSpecial,

@@ -1,68 +1,66 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
-
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class StageInfo extends TopLevelClientResource {
-    public final int StageNo;
-    public final StageResourcePointer SchedulerModel;
-    public final StageResourcePointer SchedulerFilter;
-    public final StageResourcePointer CollisionScrSbc0;
-    public final StageResourcePointer CollisionEffSbc0;
-    public final StageResourcePointer CollisionScrSbc1;
-    public final StageResourcePointer CollisionEffSbc1;
-    public final StageResourcePointer CollisionScrSbc2;
-    public final StageResourcePointer CollisionEffSbc2;
-    public final StageResourcePointer NavigationMeshNaviMesh;
-    public final StageResourcePointer AIPathConsecutiverWayPoint;
-    public final StageResourcePointer OccluderExOCC;
-    public final StageResourcePointer StartPosStartPos;
-    public final StageResourcePointer CameraParamListFld;
-    public final StageResourcePointer CameraParamListEvt;
-    public final Vector3f Pos;
-    public final float Ang;
-    public final long SceLoadFlag;
-    public final long Flag;
-    public final StageResourcePointer WeatherStageInfo;
-    public final StageResourcePointer WeatherParamInfoTbl;
-    public final StageResourcePointer WeatherParamEfcInfo;
-    public final StageResourcePointer WeatherEffectParam;
-    public final StageResourcePointer SchedulerStageLightSchdl;
-    public final StageResourcePointer EffectProvider;
-    public final int EpvIndexAlways;
-    public final int EpvIndexDay;
-    public final int EpvIndexNight;
-    public final List<StageResourcePointer> ZoneList;//4
-    public final StageResourcePointer ZoneIndoorScr;
-    public final StageResourcePointer ZoneIndoorEfc;
-    public final float DayNightLightChgFrame;
-    public final float DayNightFogChgFrame;
-    public final int SkyInfiniteLightGroup;
-    public final List<StageResourcePointer> ZoneUnitCtrl;//3
-    public final StageResourcePointer ZoneStatus;
-    public final List<StageResourcePointer> SoundZone; //3
-    public final List<Float> EqLength; //4
-    public final StageResourcePointer SoundAreaInfo;
-    public final StageResourcePointer SchedulerEffectSchdl;
-    public final StageResourcePointer SchedulerLanternSchdl;
-    public final boolean IsCraftStage;
-    public final StageResourcePointer LocationData;
-    public final float GrassVisiblePercentMulValue;
-    public final float GrassFadeBeginDistance;
-    public final float GrassFadeEndDistance;
-    public final int PerformanceFlag;
-    public final String AnotherMapName;
+public class StageInfo extends TopLevelClientResource {
+    public int StageNo;
+    public StageResourcePointer SchedulerModel;
+    public StageResourcePointer SchedulerFilter;
+    public StageResourcePointer CollisionScrSbc0;
+    public StageResourcePointer CollisionEffSbc0;
+    public StageResourcePointer CollisionScrSbc1;
+    public StageResourcePointer CollisionEffSbc1;
+    public StageResourcePointer CollisionScrSbc2;
+    public StageResourcePointer CollisionEffSbc2;
+    public StageResourcePointer NavigationMeshNaviMesh;
+    public StageResourcePointer AIPathConsecutiverWayPoint;
+    public StageResourcePointer OccluderExOCC;
+    public StageResourcePointer StartPosStartPos;
+    public StageResourcePointer CameraParamListFld;
+    public StageResourcePointer CameraParamListEvt;
+    public Vector3f Pos;
+    public float Ang;
+    public long SceLoadFlag;
+    public long Flag;
+    public StageResourcePointer WeatherStageInfo;
+    public StageResourcePointer WeatherParamInfoTbl;
+    public StageResourcePointer WeatherParamEfcInfo;
+    public StageResourcePointer WeatherEffectParam;
+    public StageResourcePointer SchedulerStageLightSchdl;
+    public StageResourcePointer EffectProvider;
+    public int EpvIndexAlways;
+    public int EpvIndexDay;
+    public int EpvIndexNight;
+    public List<StageResourcePointer> ZoneList;//4
+    public StageResourcePointer ZoneIndoorScr;
+    public StageResourcePointer ZoneIndoorEfc;
+    public float DayNightLightChgFrame;
+    public float DayNightFogChgFrame;
+    public int SkyInfiniteLightGroup;
+    public List<StageResourcePointer> ZoneUnitCtrl;//3
+    public StageResourcePointer ZoneStatus;
+    public List<StageResourcePointer> SoundZone; //3
+    public List<Float> EqLength; //4
+    public StageResourcePointer SoundAreaInfo;
+    public StageResourcePointer SchedulerEffectSchdl;
+    public StageResourcePointer SchedulerLanternSchdl;
+    public boolean IsCraftStage;
+    public StageResourcePointer LocationData;
+    public float GrassVisiblePercentMulValue;
+    public float GrassFadeBeginDistance;
+    public float GrassFadeEndDistance;
+    public int PerformanceFlag;
+    public String AnotherMapName;
 }

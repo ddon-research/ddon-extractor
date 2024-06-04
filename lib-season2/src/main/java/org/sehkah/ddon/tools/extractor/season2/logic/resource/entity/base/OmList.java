@@ -1,20 +1,29 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamOmCtrlType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamOmLotSetType;
 
-public record OmList(
-        long OmId,
-        int CtrlType,
-        @MetaInformation
-        EventParamOmCtrlType CtrlTypeName,
-        int LotType,
-        @MetaInformation
-        EventParamOmLotSetType LotTypeName,
-        short GroupNo,
-        short SetId
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class OmList {
+    private long OmId;
+    private int CtrlType;
+    @MetaInformation
+    private EventParamOmCtrlType CtrlTypeName;
+    private int LotType;
+    @MetaInformation
+    private EventParamOmLotSetType LotTypeName;
+    private short GroupNo;
+    private short SetId;
+
     public OmList(long omId, int ctrlType, int lotType, short groupNo, short setId) {
         this(
                 omId,

@@ -1,17 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.meta.NpcFunctionType;
 
-// See sNpcManager::getFunctionOpenData
-// mType = FunctionOpenData->mType;
-public record NpcLedgerListItemInstitutionOpenData(
-        long Type,
-        @MetaInformation
-        NpcFunctionType TypeName,
-// isEnableContents = sQuestManagerExt::isMyQuestFlag(isClear, FunctionOpenData->mFlagNo) ^ (mType != 1);
-        long FlagNo
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class NpcLedgerListItemInstitutionOpenData {
+    private long Type;
+    @MetaInformation
+    private NpcFunctionType TypeName;
+    // isEnableContents = sQuestManagerExt::isMyQuestFlag(isClear, FunctionOpenData->mFlagNo) ^ (mType != 1);
+    private long FlagNo;
+
     public NpcLedgerListItemInstitutionOpenData(long type, long flagNo) {
         this(
                 type, NpcFunctionType.of(type),

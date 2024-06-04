@@ -11,5 +11,5 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestId {
-    private long Id;
+    private long QuestId;
 }

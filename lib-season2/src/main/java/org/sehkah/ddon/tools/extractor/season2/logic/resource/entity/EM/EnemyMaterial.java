@@ -1,11 +1,20 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM;
 
-public record EnemyMaterial(
-        long Idx,
-        long MaterialType,
-        int MaterialNo,
-        long MaterialWeakPointNo,
-        long MaterialAnimationType,
-        boolean DieIsNoCall
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EnemyMaterial {
+    private long Idx;
+    private long MaterialType;
+    private int MaterialNo;
+    private long MaterialWeakPointNo;
+    private long MaterialAnimationType;
+    private boolean DieIsNoCall;
 }

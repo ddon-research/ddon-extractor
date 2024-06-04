@@ -1,15 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.math.BigInteger;
 
-public record SetInfoOmCtrlLinkParam(
-        int Kind,
-        int Group,
-        int ID,
-        long Transition,
-        long State,
-        int CamEvNo,
-        BigInteger FSMCamResID // rAIFSM
-) {
-
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class SetInfoOmCtrlLinkParam {
+    private int Kind;
+    private int Group;
+    private int ID;
+    private long Transition;
+    private long State;
+    private int CamEvNo;
+    private BigInteger FSMCamResID; // rAIFSM;
 }

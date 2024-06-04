@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record CalcDamageLvAdj(
-        short LvDiff,
-        List<Float> LvAdj
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CalcDamageLvAdj {
+    private short LvDiff;
+    private List<Float> LvAdj;
 }

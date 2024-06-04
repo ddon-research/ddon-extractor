@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
 public record QuestId(
-        long Id
+        long QuestId
 ) {
 }

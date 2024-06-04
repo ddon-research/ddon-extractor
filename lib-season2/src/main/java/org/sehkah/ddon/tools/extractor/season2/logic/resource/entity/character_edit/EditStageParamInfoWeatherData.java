@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.character_edit;
 
-public record EditStageParamInfoWeatherData(
-        long WeatherID,
-        long Hour,
-        long Minute
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EditStageParamInfoWeatherData {
+    private long WeatherID;
+    private long Hour;
+    private long Minute;
 }

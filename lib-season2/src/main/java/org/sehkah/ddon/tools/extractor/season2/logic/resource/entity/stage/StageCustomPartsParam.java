@@ -1,7 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
-public record StageCustomPartsParam(
-        float Delta,
-        float OffsetY
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class StageCustomPartsParam {
+    private float Delta;
+    private float OffsetY;
 }

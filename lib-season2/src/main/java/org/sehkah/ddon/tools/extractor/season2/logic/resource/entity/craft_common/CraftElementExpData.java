@@ -1,13 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.craft_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
 import java.math.BigInteger;
 
-public record CraftElementExpData(
-        @MetaInformation
-        int Level,
-        BigInteger Exp,
-        long Price
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CraftElementExpData {
+    @MetaInformation
+    private int Level;
+    private BigInteger Exp;
+    private long Price;
 }

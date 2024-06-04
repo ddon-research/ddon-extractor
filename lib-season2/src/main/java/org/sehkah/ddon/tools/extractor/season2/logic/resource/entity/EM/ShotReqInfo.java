@@ -1,15 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-public record ShotReqInfo(
-        long ShotGroup,
-        long ShotIndex,
-        long SetTarget,
-        long JointNo,
-        boolean IsConst,
-        Vector3f OffsetPos,
-        Vector3f OffsetDir,
-        boolean IsLockOnTarget
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ShotReqInfo {
+    private long ShotGroup;
+    private long ShotIndex;
+    private long SetTarget;
+    private long JointNo;
+    private boolean IsConst;
+    private Vector3f OffsetPos;
+    private Vector3f OffsetDir;
+    private boolean IsLockOnTarget;
 }

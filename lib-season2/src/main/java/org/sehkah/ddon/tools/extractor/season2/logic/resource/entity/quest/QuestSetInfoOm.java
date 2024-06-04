@@ -1,35 +1,36 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.SetInfo;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestSetInfoOm extends SetInfo {
-    private final QuestSetInfoCoord InfoCoord;
-    private final boolean DisableEffect;
-    private final boolean DisableOnlyEffect;
-    private final boolean OpenFlag;
-    private final boolean EnableSyncLight;
-    private final boolean EnableZone;
-    private final long InitMtnNo;
-    private final long AreaMasterNo;
-    private final int AreaReleaseNo;
-    private final boolean AreaReleaseON;
-    private final boolean AreaReleaseOFF;
-    private final long WarpPointId;
-    private final long KeyNo;
-    private final boolean IsBreakLink;
-    private final boolean IsBreakQuest;
-    private final int BreakKind;
-    private final int BreakGroup;
-    private final int BreakID;
-    private final long QuestFlag;
-    private final boolean IsNoSbc;
-    private final boolean IsMyQuest;
+    private QuestSetInfoCoord InfoCoord;
+    private boolean DisableEffect;
+    private boolean DisableOnlyEffect;
+    private boolean OpenFlag;
+    private boolean EnableSyncLight;
+    private boolean EnableZone;
+    private long InitMtnNo;
+    private long AreaMasterNo;
+    private int AreaReleaseNo;
+    private boolean AreaReleaseON;
+    private boolean AreaReleaseOFF;
+    private long WarpPointId;
+    private long KeyNo;
+    private boolean IsBreakLink;
+    private boolean IsBreakQuest;
+    private int BreakKind;
+    private int BreakGroup;
+    private int BreakID;
+    private long QuestFlag;
+    private boolean IsNoSbc;
+    private boolean IsMyQuest;
 }

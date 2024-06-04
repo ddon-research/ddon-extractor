@@ -2,10 +2,7 @@ package org.sehkah.ddon.tools.extractor.lib.logic.resource.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
@@ -13,14 +10,16 @@ import java.util.Map;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class Archive extends TopLevelClientResource {
-    private final int ResourceNum;
-    private final List<ResourceInfo> Resource;
+    private int ResourceNum;
+    private List<ResourceInfo> Resource;
     @JsonIgnore
-    private final Map<String, byte[]> ResourceFiles;
+    private Map<String, byte[]> ResourceFiles;
 
     @JsonIgnore
     public Map<String, byte[]> getResourceFiles() {

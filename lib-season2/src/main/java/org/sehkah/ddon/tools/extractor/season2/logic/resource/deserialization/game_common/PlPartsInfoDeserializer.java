@@ -20,7 +20,7 @@ public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer {
                 bufferReader.readUnsignedInteger()
         );
 
-        long length = header.PartsNum();
+        long length = header.getPartsNum();
         List<List<Short>> parts = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {
             parts.add(new ArrayList<>());

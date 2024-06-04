@@ -1,11 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
-public record PlayerExpTable(
-        @MetaInformation
-        int Level,
-        long NeedExp,
-        long GainJobPoint
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class PlayerExpTable {
+    @MetaInformation
+    private int Level;
+    private long NeedExp;
+    private long GainJobPoint;
 }
