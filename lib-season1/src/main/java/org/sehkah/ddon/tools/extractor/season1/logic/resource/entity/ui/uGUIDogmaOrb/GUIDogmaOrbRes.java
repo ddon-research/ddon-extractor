@@ -1,11 +1,20 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIDogmaOrb;
 
-public record GUIDogmaOrbRes(
-        long ElementId,
-        long ParamType,
-        long ParamId,
-        long ParamValue,
-        long RequireOrb,
-        long IconNo
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class GUIDogmaOrbRes {
+    private long ElementId;
+    private long ParamType;
+    private long ParamId;
+    private long ParamValue;
+    private long RequireOrb;
+    private long IconNo;
 }

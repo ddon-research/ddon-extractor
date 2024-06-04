@@ -1,20 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class JointInfoTable extends TopLevelClientResource {
-    private final List<JointInfo> JointInfoTable;
-
+public class JointInfoTable extends TopLevelClientResource {
+    private List<JointInfo> JointInfoTable;
 }

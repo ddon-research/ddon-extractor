@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc;
 
-public record SituationData(
-        long GroupSerial,
-        long StartQuestId,
-        boolean IsStartQuestIdStart,
-        long EndQuestId,
-        boolean IsEndQuestIdStart
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class SituationData {
+    private long GroupSerial;
+    private long StartQuestId;
+    private boolean IsStartQuestIdStart;
+    private long EndQuestId;
+    private boolean IsEndQuestIdStart;
 }

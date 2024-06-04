@@ -1,7 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
-public record QuestSequence(
-        long SeqNo,
-        long QuestId
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class QuestSequence {
+    private long SeqNo;
+    private long QuestId;
 }

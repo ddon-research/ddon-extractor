@@ -82,9 +82,4 @@ public class GUIMessage extends TopLevelClientResource {
         Optional<GUIMessageIndex> optionalIndex = Indices.stream().filter(i -> i.getMessageIndex() == index).findFirst();
         return optionalIndex.map(GUIMessageIndex::getKey).orElse(null);
     }
-
-    @MetaInformation
-    public GUIMessageLanguageType getLanguage() {
-        return Language;
-    }
 }

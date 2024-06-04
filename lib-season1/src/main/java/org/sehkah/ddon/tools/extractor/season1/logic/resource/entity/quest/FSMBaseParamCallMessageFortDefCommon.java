@@ -7,14 +7,19 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMBaseParamCallMessageFortDefCommon extends FSMBaseParamCallMessage {
-    private final long Type;
-    private final int GotoPointNo;
+public class FSMBaseParamCallMessageFortDefCommon extends FSMBaseParamCallMessage {
+    private long Type;
+    private int GotoPointNo;
 
     public FSMBaseParamCallMessageFortDefCommon(FSMBaseParamCallMessage callMessage, long type, int gotoPointNo) {
         super(callMessage.getMsgType(), callMessage.getQuestId(), callMessage.getMsgNo(), callMessage.getMsgDispTime(), callMessage.getMsgWaitTime(), callMessage.isIsUseSerial(), callMessage.isIsHideMessage());

@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill;
 
-public record SkillLevelData(
-        int MsgExpIndex,
-        int NeedLv,
-        long NeedJp
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class SkillLevelData {
+    private int MsgExpIndex;
+    private int NeedLv;
+    private long NeedJp;
 }

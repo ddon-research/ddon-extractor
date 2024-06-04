@@ -1,9 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
 
-public record WaypointPoint(
-        Vector3f Pos,
-        float Radius
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class WaypointPoint {
+    private Vector3f Pos;
+    private float Radius;
 }

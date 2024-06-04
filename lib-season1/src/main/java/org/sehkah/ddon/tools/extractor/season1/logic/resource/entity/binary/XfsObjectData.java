@@ -1,9 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
 
-public record XfsObjectData(
-        int classIndex,
-        int objIndex,
-        long bufferSize
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class XfsObjectData {
+    private int classIndex;
+    private int objIndex;
+    private long bufferSize;
 }

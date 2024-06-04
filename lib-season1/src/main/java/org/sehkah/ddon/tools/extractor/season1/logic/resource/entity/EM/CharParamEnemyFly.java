@@ -1,25 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonPropertyOrder(alphabetic = true)
 public class CharParamEnemyFly extends CharParamEnemy {
-    private final float hoverSpeed;
-    private final List<Float> hoverAltitude;
-    private final int hoverLevelMax;
-    private final int hoverLevelRange;
-    private final float flySpeed;
-    private final float flyAltitude;
+    private float hoverSpeed;
+    private List<Float> hoverAltitude;
+    private int hoverLevelMax;
+    private int hoverLevelRange;
+    private float flySpeed;
+    private float flyAltitude;
 
     public CharParamEnemyFly(CharParamEnemy charParamEnemy, float hoverSpeed, List<Float> hoverAltitude, int hoverLevelMax, int hoverLevelRange, float flySpeed, float flyAltitude) {
         super(charParamEnemy.getAttackBasePhys(), charParamEnemy.getAttackBaseMagic(), charParamEnemy.getAttackWepPhys(), charParamEnemy.getAttackWepMagic(), charParamEnemy.getDefenceBasePhys(), charParamEnemy.getDefenceBaseMagic(), charParamEnemy.getDefenceWepPhys(), charParamEnemy.getDefenceWepMagic(),

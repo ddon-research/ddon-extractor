@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.datatype.Matrix;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
@@ -10,60 +12,67 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.meta.Ma
 import java.util.List;
 import java.util.Set;
 
-public record MagicChantParam(
-        long ChantMot,
-        float ChantTime_Gi,
-        long EndType,
-        @MetaInformation
-        Set<MagicChantEndType> EndTypes,
-        boolean IsChant2,
-        long Chant2Mot,
-        float Chant2Time_Gi,
-        long SetType,
-        boolean IsConst,
-        int JointNo,
-        long ShotOption,
-        @MetaInformation
-        MagicChantShotOption ShotOptionType,
-        Matrix ShotPosOffset,
-        Matrix NoneLockOnPos,
-        Matrix NoneLockOnPosNext,
-        long ShotMot,
-        boolean IsMotLoop,
-        float ShotLoopingTime,
-        boolean IsUseShotLimitXAngle,
-        float ShotLimitXAngle,
-        long EndMotion,
-        long ChantCameraNumber,
-        long ShotCameraNumber,
-        long EndCameraNumber,
-        float ShlBornFrame,
-        long ShlGroupNumber,
-        long ShlIndexNumber,
-        long ShlGroupNumberNext,
-        long ShlIndexNumberNext,
-        boolean IsCanMove,
-        long ChantAttribute,
-        boolean IsUseChantCommand,
-        int ChantCommandLevel,
-        @MetaInformation
-        MagicChantCommandLevelType ChantCommandLevelType,
-        int MagicCommandNo,
-        boolean IsUseAutoRock,
-        float AutoRockRange,
-        float AutoRockAngle,
-        int Chant2EffectIndex,
-        int Chant2EffectNumber,
-        float Chant2EffectFrame,
-        float Chant2SeFrame,
-        boolean IsSetCustomChantTime,
-        List<Float> CustomChantTime_Gi,
-        boolean IsAimTargetSpot,
-        float AimTargetSpotMaxRange,
-        float AimTargetSpotMinRange,
-        boolean IsNoChantSe,
-        float AddHealHate
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class MagicChantParam {
+    private long ChantMot;
+    private float ChantTime_Gi;
+    private long EndType;
+    @MetaInformation
+    private Set<MagicChantEndType> EndTypes;
+    private boolean IsChant2;
+    private long Chant2Mot;
+    private float Chant2Time_Gi;
+    private long SetType;
+    private boolean IsConst;
+    private int JointNo;
+    private long ShotOption;
+    @MetaInformation
+    private MagicChantShotOption ShotOptionType;
+    private Matrix ShotPosOffset;
+    private Matrix NoneLockOnPos;
+    private Matrix NoneLockOnPosNext;
+    private long ShotMot;
+    private boolean IsMotLoop;
+    private float ShotLoopingTime;
+    private boolean IsUseShotLimitXAngle;
+    private float ShotLimitXAngle;
+    private long EndMotion;
+    private long ChantCameraNumber;
+    private long ShotCameraNumber;
+    private long EndCameraNumber;
+    private float ShlBornFrame;
+    private long ShlGroupNumber;
+    private long ShlIndexNumber;
+    private long ShlGroupNumberNext;
+    private long ShlIndexNumberNext;
+    private boolean IsCanMove;
+    private long ChantAttribute;
+    private boolean IsUseChantCommand;
+    private int ChantCommandLevel;
+    @MetaInformation
+    private MagicChantCommandLevelType ChantCommandLevelType;
+    private int MagicCommandNo;
+    private boolean IsUseAutoRock;
+    private float AutoRockRange;
+    private float AutoRockAngle;
+    private int Chant2EffectIndex;
+    private int Chant2EffectNumber;
+    private float Chant2EffectFrame;
+    private float Chant2SeFrame;
+    private boolean IsSetCustomChantTime;
+    private List<Float> CustomChantTime_Gi;
+    private boolean IsAimTargetSpot;
+    private float AimTargetSpotMaxRange;
+    private float AimTargetSpotMinRange;
+    private boolean IsNoChantSe;
+    private float AddHealHate;
+
     public MagicChantParam(long chantMot, float chantTime_Gi, long endType, boolean isChant2, long chant2Mot,
                            float chant2Time_Gi, long setType, boolean isConst, int jointNo, long shotOption,
                            Matrix shotPosOffset, Matrix noneLockOnPos, Matrix noneLockOnPosNext, long shotMot,

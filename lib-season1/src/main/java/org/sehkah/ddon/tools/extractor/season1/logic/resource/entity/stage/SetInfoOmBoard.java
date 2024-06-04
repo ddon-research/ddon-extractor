@@ -1,13 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmBoard extends SetInfo {
-    private final long BoardID;
-    private final SetInfoOm InfoOm;
+    private long BoardID;
+    private SetInfoOm InfoOm;
 }

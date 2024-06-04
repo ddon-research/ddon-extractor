@@ -1,19 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 
-@RequiredArgsConstructor
-@JsonPropertyOrder(alphabetic = true)
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class GUIMessageIndex {
-    public long Index;
-    public long KeyCrcHashDouble;
-    public long KeyCrcHashTriple;
-    public long LinkOffset;
-    public long KeyOffset;
-    public String Key;
+    private long Index;
+    private long KeyCrcHashDouble;
+    private long KeyCrcHashTriple;
+    private long LinkOffset;
+    private long KeyOffset;
+    private String Key;
     @MetaInformation
-    public long MessageIndex;
-    public String Message;
+    private long MessageIndex;
+    private String Message;
 }

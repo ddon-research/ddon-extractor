@@ -1,31 +1,28 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.meta.ParamSetEffectActType;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMUnitParamSetEffect extends AICopiableParameter {
-    private final long EfcId;
-    private final boolean HaveItem;
-    private final int Act;
+public class FSMUnitParamSetEffect extends AICopiableParameter {
+    private long EfcId;
+    private boolean HaveItem;
+    private int Act;
     @MetaInformation
-    private final ParamSetEffectActType ActType;
-    private final int Type;
-    private final long OmId;
-    private final int Index;
-    private final int Element;
+    private ParamSetEffectActType ActType;
+    private int Type;
+    private long OmId;
+    private int Index;
+    private int Element;
 
     public FSMUnitParamSetEffect(long efcId, boolean haveItem, int act, int type, long omId, int index, int element) {
         EfcId = efcId;

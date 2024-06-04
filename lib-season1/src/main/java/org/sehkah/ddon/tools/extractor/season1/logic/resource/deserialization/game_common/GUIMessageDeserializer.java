@@ -36,11 +36,11 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
         if (indexNum > 0) {
             for (int i = 0; i < indexNum; i++) {
                 GUIMessageIndex index = indices.get(i);
-                index.Index = bufferReader.readUnsignedInteger();
-                index.KeyCrcHashDouble = bufferReader.readUnsignedInteger();
-                index.KeyCrcHashTriple = bufferReader.readUnsignedInteger();
-                index.KeyOffset = bufferReader.readUnsignedInteger();
-                index.LinkOffset = bufferReader.readUnsignedInteger();
+                index.setIndex(bufferReader.readUnsignedInteger());
+                index.setKeyCrcHashDouble(bufferReader.readUnsignedInteger());
+                index.setKeyCrcHashTriple(bufferReader.readUnsignedInteger());
+                index.setKeyOffset(bufferReader.readUnsignedInteger());
+                index.setLinkOffset(bufferReader.readUnsignedInteger());
             }
 
             for (int i = 0; i < hashTable.length; i++) {
@@ -48,14 +48,14 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
             }
 
             for (int i = 0; i < indexNum; i++) {
-                indices.get(i).Key = bufferReader.readNullTerminatedString();
+                indices.get(i).setKey(bufferReader.readNullTerminatedString());
             }
         }
 
         for (int i = 0; i < messageNum; i++) {
             GUIMessageIndex index = indices.get(i);
-            index.Message = bufferReader.readNullTerminatedString(StandardCharsets.UTF_8);
-            index.MessageIndex = i;
+            index.setMessage(bufferReader.readNullTerminatedString(StandardCharsets.UTF_8));
+            index.setMessageIndex(i);
         }
 
         return new GUIMessage(languageId, updateTime, indexNum, messageNum, indexNameBufferSize, bufferSize, packageName, indices, hashTable);

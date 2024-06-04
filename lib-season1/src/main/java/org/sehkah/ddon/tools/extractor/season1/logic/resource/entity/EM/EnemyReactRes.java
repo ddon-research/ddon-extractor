@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
 
-public record EnemyReactRes(
-        long CountStart,
-        long CountEnd,
-        float Percent,
-        int Param0,
-        int Param1
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class EnemyReactRes {
+    private long CountStart;
+    private long CountEnd;
+    private float Percent;
+    private int Param0;
+    private int Param1;
 }

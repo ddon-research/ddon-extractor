@@ -1,25 +1,26 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.SetInfo;
 
 import java.util.List;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestSetInfoOmWarp extends SetInfo {
-    private final QuestSetInfoOm InfoOm;
-    private final List<Long> StageNo;
-    private final List<Long> StartPosNo;
-    private final List<Long> QuestNo;
-    private final List<Long> FlagNo;
-    private final List<Long> SpotId;
-    private final long TextType;
-    private final long TextQuestNo;
-    private final long TextNo;
+    private QuestSetInfoOm InfoOm;
+    private List<Long> StageNo;
+    private List<Long> StartPosNo;
+    private List<Long> QuestNo;
+    private List<Long> FlagNo;
+    private List<Long> SpotId;
+    private long TextType;
+    private long TextQuestNo;
+    private long TextNo;
 }

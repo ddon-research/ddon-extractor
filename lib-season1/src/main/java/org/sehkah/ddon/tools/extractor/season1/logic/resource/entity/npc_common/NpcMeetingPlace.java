@@ -1,8 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common;
 
-public record NpcMeetingPlace(
-        long NpcId,
-        int StageNo,
-        long StartPosNo
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class NpcMeetingPlace {
+    private long NpcId;
+    private int StageNo;
+    private long StartPosNo;
 }

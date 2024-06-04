@@ -9,12 +9,15 @@ import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
+import lombok.*;
+
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class EventParamList extends TopLevelClientResource {
-    private final List<EventParam> EventParamList;
-
+public class EventParamList extends TopLevelClientResource {
+    private List<EventParam> EventParamList;
 }

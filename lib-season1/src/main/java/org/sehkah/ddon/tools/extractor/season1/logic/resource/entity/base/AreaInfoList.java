@@ -1,10 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AreaInfo;
 
@@ -12,10 +9,11 @@ import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class AreaInfoList extends TopLevelClientResource {
-    private final List<AreaInfo> AreaInfoList;
-
+public class AreaInfoList extends TopLevelClientResource {
+    private List<AreaInfo> AreaInfoList;
 }

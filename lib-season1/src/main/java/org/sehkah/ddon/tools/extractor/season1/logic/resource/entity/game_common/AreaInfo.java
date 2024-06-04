@@ -1,26 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
 
 @ToString
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaInfo {
-    private final long AreaId;
+    private long AreaId;
     @MetaInformation
-    private final String AreaName;
+    private String AreaName;
 
     public AreaInfo(long areaId) {
         this(areaId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.AREA_LIST, areaId - 1));
     }
-
 }

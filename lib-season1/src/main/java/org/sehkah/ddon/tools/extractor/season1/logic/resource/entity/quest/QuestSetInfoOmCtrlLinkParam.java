@@ -1,13 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
 
-public record QuestSetInfoOmCtrlLinkParam(
-        int Kind,
-        int Group,
-        int ID,
-        long Transition,
-        long State,
-        int CamEvNo,
-        String FSM // rAIFSM
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class QuestSetInfoOmCtrlLinkParam {
+    private int Kind;
+    private int Group;
+    private int ID;
+    private long Transition;
+    private long State;
+    private int CamEvNo;
+    private String FSM; // rAIFSM;
 }

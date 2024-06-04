@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.marker;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 import java.util.List;
 
-public record AdjoinInfo(
-        int DestinationStageNo,
-        int NextStageNo,
-        List<JumpPosition> Positions
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AdjoinInfo {
+    private int DestinationStageNo;
+    private int NextStageNo;
+    private List<JumpPosition> Positions;
 }

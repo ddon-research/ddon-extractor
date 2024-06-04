@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta.AIPawnSkillParamFlagType;
@@ -9,26 +11,33 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common
 import java.util.List;
 import java.util.Set;
 
-public record AIPawnSkillParamNode(
-        int Job,
-        int ActNo,
-        int NormalSkillId,
-        long InputInfo,
-        @MetaInformation
-        AIPawnSkillParamInputInfoType InputInfoType,
-        long InputInfoReady,
-        float MaxRangeXZ,
-        float MinRangeXZ,
-        float MaxRangeY,
-        float MinRangeY,
-        // Refers to Object Condition / ObjCond
-        List<Long> SkillOcd,
-        @MetaInformation
-        List<ObjConditionOcdType> SkillOcdTypes,
-        List<Long> AIPawnSkillParamFlag,
-        @MetaInformation
-        Set<AIPawnSkillParamFlagType> aiPawnSkillParamFlagType
-) {
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class AIPawnSkillParamNode {
+    private int Job;
+    private int ActNo;
+    private int NormalSkillId;
+    private long InputInfo;
+    @MetaInformation
+    private AIPawnSkillParamInputInfoType InputInfoType;
+    private long InputInfoReady;
+    private float MaxRangeXZ;
+    private float MinRangeXZ;
+    private float MaxRangeY;
+    private float MinRangeY;
+    // Refers to Object Condition / ObjCond
+    private List<Long> SkillOcd;
+    @MetaInformation
+    private List<ObjConditionOcdType> SkillOcdTypes;
+    private List<Long> AIPawnSkillParamFlag;
+    @MetaInformation
+    private Set<AIPawnSkillParamFlagType> aiPawnSkillParamFlagType;
+
     public AIPawnSkillParamNode(int Job,
                                 int ActNo,
                                 int NormalSkillId,

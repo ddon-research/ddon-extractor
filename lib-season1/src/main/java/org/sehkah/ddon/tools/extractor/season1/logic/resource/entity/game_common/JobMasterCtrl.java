@@ -1,14 +1,23 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
-public record JobMasterCtrl(
-        long JobId,
-        long StartJobLevel,
-        long FirstTalkGrpSerial,
-        long TraningTalkGrpSerial,
-        long FirstOrderTalkGrpSerial,
-        long JobTutorialQuestId,
-        long JobMasterTutorialQuestId,
-        long AreaId,
-        long AreaRank
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class JobMasterCtrl {
+    private long JobId;
+    private long StartJobLevel;
+    private long FirstTalkGrpSerial;
+    private long TraningTalkGrpSerial;
+    private long FirstOrderTalkGrpSerial;
+    private long JobTutorialQuestId;
+    private long JobMasterTutorialQuestId;
+    private long AreaId;
+    private long AreaRank;
 }

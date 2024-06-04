@@ -1,28 +1,26 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListEquipParamS8FormType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListEquipParamS8Kind;
 
-public record ItemListEquipParamS8(
-        int KindType,
-        @MetaInformation
-        ItemListEquipParamS8Kind KindTypeName,
-        int Form,
-        @MetaInformation
-        ItemListEquipParamS8FormType FormType,
-        int Parameter
-) {
-
-    public ItemListEquipParamS8 {
-        if (KindTypeName == ItemListEquipParamS8Kind.KIND_TYPE_UNKNOWN) {
-            throw new TechnicalException("KindType is unknown: " + KindType);
-        }
-        if (FormType == ItemListEquipParamS8FormType.FORM_TYPE_UNKNOWN) {
-            throw new TechnicalException("Form is unknown: " + KindType);
-        }
-    }
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class ItemListEquipParamS8 {
+    private int KindType;
+    @MetaInformation
+    private ItemListEquipParamS8Kind KindTypeName;
+    private int Form;
+    @MetaInformation
+    private ItemListEquipParamS8FormType FormType;
+    private int Parameter;
 
     public ItemListEquipParamS8(int kindType, int form, int parameter) {
         this(

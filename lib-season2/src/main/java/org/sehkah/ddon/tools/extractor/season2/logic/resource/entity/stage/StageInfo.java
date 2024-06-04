@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageInfo extends TopLevelClientResource {
+    //TODO: public -> private
     public int StageNo;
     public StageResourcePointer SchedulerModel;
     public StageResourcePointer SchedulerFilter;

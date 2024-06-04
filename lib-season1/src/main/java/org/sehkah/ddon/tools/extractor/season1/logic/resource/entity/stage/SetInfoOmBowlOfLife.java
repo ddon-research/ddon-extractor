@@ -1,21 +1,24 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmBowlOfLife extends SetInfo {
-    private final boolean WaitBowlOfLife;
-    private final boolean FullBowlOfLife;
-    private final boolean SetEM;
-    private final boolean Invisible;
-    private final boolean IsQuest;
-    private final long QuestId;
-    private final int Kind;
-    private final int Group;
-    private final int ID;
-    private final SetInfoOm InfoOm;
+    private boolean WaitBowlOfLife;
+    private boolean FullBowlOfLife;
+    private boolean SetEM;
+    private boolean Invisible;
+    private boolean IsQuest;
+    private long QuestId;
+    private int Kind;
+    private int Group;
+    private int ID;
+    private SetInfoOm InfoOm;
 }

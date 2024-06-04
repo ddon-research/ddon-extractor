@@ -256,11 +256,11 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
     private static SetInfo readSetInfo(BufferReader bufferReader, XfsHeader xfsHeader, long kind) {
         XfsObjectData setInfoObjectData = XfsDeserializer.readXfsObjectData(bufferReader);
 
-        Map<Integer, ClassData> classHeaderIndexMap = xfsHeader.classHeaderIndex();
+        Map<Integer, ClassData> classHeaderIndexMap = xfsHeader.getClassHeaderIndex();
         LayoutUnitKind layoutUnitKind = LayoutUnitKind.of(kind);
 
         return switch (layoutUnitKind) {
-            case U_OM -> switch (classHeaderIndexMap.get(setInfoObjectData.classIndex()).resourceName()) {
+            case U_OM -> switch (classHeaderIndexMap.get(setInfoObjectData.getClassIndex()).getResourceName()) {
                 case "cSetInfoOmWall" -> readQuestSetInfoOmWall(bufferReader);
                 case "cSetInfoOmWarp" -> readQuestSetInfoOmWarp(bufferReader);
                 case "cSetInfoOmDoor" -> readQuestSetInfoOmDoor(bufferReader);

@@ -1,10 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
-public record CraftSkillBurstData(
-        long Total,
-        float SpdRate1,
-        float SpdRate2,
-        float SpdRate3,
-        float SpdRate4
-) {
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class CraftSkillBurstData {
+    private long Total;
+    private float SpdRate1;
+    private float SpdRate2;
+    private float SpdRate3;
+    private float SpdRate4;
 }

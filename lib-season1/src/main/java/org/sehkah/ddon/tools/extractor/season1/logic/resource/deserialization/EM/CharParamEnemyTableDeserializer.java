@@ -100,15 +100,11 @@ public class CharParamEnemyTableDeserializer extends ClientResourceFileDeseriali
             CharParamEnemy = readCharParamEnemy(bufferReader);
         }
         float ScaleDispGui = bufferReader.readFloat();
-        long Unknown1 = bufferReader.readUnsignedInteger();
-        long Unknown2 = bufferReader.readUnsignedInteger();
 
         return new CharParamEnemyTable(
                 FlgEnemyFly,
                 CharParamEnemy,
-                ScaleDispGui,
-                Unknown1,
-                Unknown2
+                ScaleDispGui
         );
     }
 }

@@ -1,20 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class ReplaceWardGmdList extends TopLevelClientResource {
-    private final List<ReplaceWardGmd> GUIMessageResPathIds;
-
+public class ReplaceWardGmdList extends TopLevelClientResource {
+    private List<ReplaceWardGmd> GUIMessageResPathIds;
 }

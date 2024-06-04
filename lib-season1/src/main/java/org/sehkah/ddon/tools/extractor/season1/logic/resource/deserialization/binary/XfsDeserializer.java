@@ -24,21 +24,21 @@ public class XfsDeserializer {
     private static PropertyHeader readPropertyHeader(BufferReader bufferReader) {
         PropertyHeader propertyHeader = new PropertyHeader();
 
-        propertyHeader.propertyNameOffset = bufferReader.readUnsignedInteger();
+        propertyHeader.setPropertyNameOffset(bufferReader.readUnsignedInteger());
         // bitfield FieldFlag { type : 8; attr : 8; bytes : 15; disable : 1; };
-        propertyHeader.propertyParam = bufferReader.readUnsignedInteger();
+        propertyHeader.setPropertyParam(bufferReader.readUnsignedInteger());
 
-        propertyHeader.propertyParamType = BitUtil.extractInt(propertyHeader.propertyParam, 0, 8);
-        propertyHeader.propertyParamTypeName = PropertyType.of(propertyHeader.propertyParamType);
+        propertyHeader.setPropertyParamType(BitUtil.extractInt(propertyHeader.getPropertyParam(), 0, 8));
+        propertyHeader.setPropertyParamTypeName(PropertyType.of(propertyHeader.getPropertyParamType()));
 
-        propertyHeader.propertyParamAttr = BitUtil.extractInt(propertyHeader.propertyParam, 8, 16);
-        propertyHeader.propertyParamBytes = BitUtil.extractInt(propertyHeader.propertyParam, 16, 31);
-        propertyHeader.propertyParamDisable = BitUtil.extractInt(propertyHeader.propertyParam, 31, 32);
+        propertyHeader.setPropertyParamAttr(BitUtil.extractInt(propertyHeader.getPropertyParam(), 8, 16));
+        propertyHeader.setPropertyParamBytes(BitUtil.extractInt(propertyHeader.getPropertyParam(), 16, 31));
+        propertyHeader.setPropertyParamDisable(BitUtil.extractInt(propertyHeader.getPropertyParam(), 31, 32));
 
-        propertyHeader.unk1 = bufferReader.readUnsignedInteger();
-        propertyHeader.unk2 = bufferReader.readUnsignedInteger();
-        propertyHeader.unk3 = bufferReader.readUnsignedInteger();
-        propertyHeader.unk4 = bufferReader.readUnsignedInteger();
+        propertyHeader.setUnknown1(bufferReader.readUnsignedInteger());
+        propertyHeader.setUnknown2(bufferReader.readUnsignedInteger());
+        propertyHeader.setUnknown3(bufferReader.readUnsignedInteger());
+        propertyHeader.setUnknown4(bufferReader.readUnsignedInteger());
 
         return propertyHeader;
     }
@@ -67,9 +67,9 @@ public class XfsDeserializer {
         final int baseOffset = bufferReader.getPosition();
         final List<Long> classDataOffset = bufferReader.readFixedLengthArray(numClasses, BufferReader::readUnsignedInteger);
         final List<ClassData> classDataList = bufferReader.readFixedLengthArray(classDataOffset.size(), XfsDeserializer::readClassData);
-        classDataList.forEach(classData -> classData.properties().forEach(property -> {
-            bufferReader.setPosition(baseOffset + (int) property.propertyNameOffset);
-            property.name = bufferReader.readNullTerminatedString();
+        classDataList.forEach(classData -> classData.getProperties().forEach(property -> {
+            bufferReader.setPosition(baseOffset + (int) property.getPropertyNameOffset());
+            property.setName(bufferReader.readNullTerminatedString());
         }));
         bufferReader.setPosition(baseOffset + (int) bufferSize);
 
@@ -87,10 +87,10 @@ public class XfsDeserializer {
         int classIndex = bufferReader.readUnsignedShort();
         int objIndex = bufferReader.readUnsignedShort();
         ClassHeader classHeader = readClassHeader(bufferReader);
-        Map<Integer, ClassData> classDataIndexMap = HashMap.newHashMap((int) classHeader.numClasses());
+        Map<Integer, ClassData> classDataIndexMap = HashMap.newHashMap((int) classHeader.getNumClasses());
         // TODO: empiric data shows this is the value, but unclear how this calculation makes sense
         int classDataIndex = 1;
-        for (ClassData classData : classHeader.classDataList()) {
+        for (ClassData classData : classHeader.getClassDataList()) {
             classDataIndexMap.put(classDataIndex, classData);
             classDataIndex += 2;
         }

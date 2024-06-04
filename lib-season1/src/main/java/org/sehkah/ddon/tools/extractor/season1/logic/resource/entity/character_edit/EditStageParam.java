@@ -1,21 +1,19 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class EditStageParam extends TopLevelClientResource {
-    private final List<EditStageParamInfo> ArrayInfo;
-    private final List<EditStageParamList> ArrayList;
-
+public class EditStageParam extends TopLevelClientResource {
+    private List<EditStageParamInfo> ArrayInfo;
+    private List<EditStageParamList> ArrayList;
 }

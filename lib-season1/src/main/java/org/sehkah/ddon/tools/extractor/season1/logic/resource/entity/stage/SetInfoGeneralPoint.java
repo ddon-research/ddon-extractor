@@ -1,15 +1,18 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 
-@RequiredArgsConstructor
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoGeneralPoint extends SetInfo {
-    private final SetInfoCoord InfoCoord;
-    private final float Radius;
-    private final int ObjectID;
-    private final int Group;
+    private SetInfoCoord InfoCoord;
+    private float Radius;
+    private int ObjectID;
+    private int Group;
 }

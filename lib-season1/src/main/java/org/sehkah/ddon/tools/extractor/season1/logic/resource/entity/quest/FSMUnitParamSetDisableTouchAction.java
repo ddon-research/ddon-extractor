@@ -8,12 +8,16 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@JsonPropertyOrder(alphabetic = true)
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class FSMUnitParamSetDisableTouchAction extends AICopiableParameter {
-    private final boolean IsDisableTouch;
+public class FSMUnitParamSetDisableTouchAction extends AICopiableParameter {
+    private boolean IsDisableTouch;
 }

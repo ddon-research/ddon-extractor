@@ -1,28 +1,35 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
 
-import lombok.RequiredArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.meta.PropertyType;
 
-@RequiredArgsConstructor
+@ToString
+@EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class PropertyHeader {
-    public String name;
+    private String name;
     // offset from base
-    public long propertyNameOffset;
+    private long propertyNameOffset;
     // bitfield FieldFlag { type : 8; attr : 8; bytes : 15; disable : 1; };
-    public long propertyParam;
+    private long propertyParam;
     @MetaInformation
-    public int propertyParamType;
+    private int propertyParamType;
     @MetaInformation
-    public PropertyType propertyParamTypeName;
+    private PropertyType propertyParamTypeName;
     @MetaInformation
-    public int propertyParamAttr;
+    private int propertyParamAttr;
     @MetaInformation
-    public int propertyParamBytes;
+    private int propertyParamBytes;
     @MetaInformation
-    public int propertyParamDisable;
-    public long unk1;
-    public long unk2;
-    public long unk3;
-    public long unk4;
+    private int propertyParamDisable;
+    private long unknown1;
+    private long unknown2;
+    private long unknown3;
+    private long unknown4;
 }

@@ -1,22 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
 
 import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public final class AIPawnEmParam extends TopLevelClientResource {
-    private final float Distance;
-    private final float RangeSize;
-    private final long RootPoint;
-    private final List<AIPawnEmNode> AIPawnEmNodeList;
+public class AIPawnEmParam extends TopLevelClientResource {
+    private float Distance;
+    private float RangeSize;
+    private long RootPoint;
+    private List<AIPawnEmNode> AIPawnEmNodeList;
 }
