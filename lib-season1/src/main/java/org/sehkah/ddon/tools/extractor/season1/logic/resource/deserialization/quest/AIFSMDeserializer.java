@@ -1,10 +1,11 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.*;
@@ -12,9 +13,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.*;
 import java.util.List;
 
 public class AIFSMDeserializer extends ClientResourceFileDeserializer {
-    public AIFSMDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static FSMOrderParamIsMyQuestFlag readFSMOrderParamIsMyQuestFlag(BufferReader bufferReader) {
         long QuestId = XfsDeserializer.readUnsignedInteger(bufferReader);
@@ -526,7 +525,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected AIFSM parseClientResourceFile(BufferReader bufferReader) {
+    protected AIFSM parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

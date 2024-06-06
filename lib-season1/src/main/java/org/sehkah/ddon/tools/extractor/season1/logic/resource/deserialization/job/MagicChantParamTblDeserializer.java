@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParamTbl;
 
 public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializer {
-    public MagicChantParamTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static MagicChantParam readMagicChantParam(BufferReader bufferReader) {
         return new MagicChantParam(
@@ -63,7 +62,7 @@ public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected MagicChantParamTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected MagicChantParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MagicChantParamTbl(bufferReader.readArray(MagicChantParamTblDeserializer::readMagicChantParam));
     }
 }

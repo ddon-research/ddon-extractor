@@ -1,16 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.FieldAreaInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.FieldAreaList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.StageNo;
 
 public class FieldAreaListDeserializer extends ClientResourceFileDeserializer {
-    public FieldAreaListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
 
     private static StageNo readStageNo(BufferReader bufferReader) {
@@ -31,7 +29,7 @@ public class FieldAreaListDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected FieldAreaList parseClientResourceFile(BufferReader bufferReader) {
+    protected FieldAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FieldAreaList(bufferReader.readArray(FieldAreaListDeserializer::readFieldAreaInfo));
     }
 }

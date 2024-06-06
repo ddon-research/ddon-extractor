@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommand;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandListTbl;
 
 public class MagicCommandListTblDeserializer extends ClientResourceFileDeserializer {
-    public MagicCommandListTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static MagicCommand readMagicCommand(BufferReader bufferReader) {
         return new MagicCommand(bufferReader.readFloat());
@@ -25,7 +24,7 @@ public class MagicCommandListTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected MagicCommandListTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected MagicCommandListTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // MGCC is the only format to not have a file header, instead exporting all its data in "binary" format directly
         //  As a workaround to how file header identification is a basis of everything, treat the number of items as version
         //  afterward reset to position 0

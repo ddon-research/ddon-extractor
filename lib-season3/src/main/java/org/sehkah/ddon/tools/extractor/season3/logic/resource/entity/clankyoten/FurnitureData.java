@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 
 @ToString
 @EqualsAndHashCode

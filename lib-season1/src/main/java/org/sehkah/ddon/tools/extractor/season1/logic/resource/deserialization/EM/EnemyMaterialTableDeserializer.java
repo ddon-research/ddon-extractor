@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterial;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterialTable;
 
 public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializer {
-    public EnemyMaterialTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static EnemyMaterial readEnemyMaterialData(BufferReader bufferReader) {
         return new EnemyMaterial(
@@ -23,7 +22,7 @@ public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected EnemyMaterialTable parseClientResourceFile(BufferReader bufferReader) {
+    protected EnemyMaterialTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyMaterialTable(bufferReader.readArray(EnemyMaterialTableDeserializer::readEnemyMaterialData));
     }
 }

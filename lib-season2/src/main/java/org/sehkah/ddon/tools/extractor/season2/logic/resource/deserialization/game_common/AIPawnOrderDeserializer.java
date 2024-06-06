@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnOrder;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnOrderParam;
 
 public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer {
-    public AIPawnOrderDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static AIPawnOrderParam readAIPawnOrderParam(BufferReader bufferReader) {
         return new AIPawnOrderParam(
@@ -27,7 +26,7 @@ public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected AIPawnOrder parseClientResourceFile(BufferReader bufferReader) {
+    protected AIPawnOrder parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnOrder(bufferReader.readArray(AIPawnOrderDeserializer::readAIPawnOrderParam));
     }
 }

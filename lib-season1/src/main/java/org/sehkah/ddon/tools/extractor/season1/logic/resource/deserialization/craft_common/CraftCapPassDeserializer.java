@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.craft_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftCapPassData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftCapPassList;
 
 public class CraftCapPassDeserializer extends ClientResourceFileDeserializer {
-    public CraftCapPassDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static CraftCapPassData readCraftCapPassData(BufferReader bufferReader) {
         return new CraftCapPassData(
@@ -23,7 +22,7 @@ public class CraftCapPassDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected CraftCapPassList parseClientResourceFile(BufferReader bufferReader) {
+    protected CraftCapPassList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftCapPassList(bufferReader.readArray(CraftCapPassDeserializer::readCraftCapPassData));
     }
 }

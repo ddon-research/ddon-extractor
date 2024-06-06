@@ -1,11 +1,12 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.AxisAlignedBoundingBox;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Color;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.datatype.AxisAlignedBoundingBox;
+import org.sehkah.ddon.tools.extractor.api.datatype.Color;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
 import java.math.BigInteger;
@@ -13,9 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializer {
-    public StageCustomPartsExDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageCustomPartsExPattern readStageCustomPartsExPattern(BufferReader bufferReader) {
         return new StageCustomPartsExPattern(
@@ -244,7 +243,7 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected StageCustomPartsEx parseClientResourceFile(BufferReader bufferReader) {
+    protected StageCustomPartsEx parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         StageCustomPartsParam Param = readStageCustomPartsParam(bufferReader);
 
         List<StageCustomPartsExInfoEx> ArrayInfo = new ArrayList<>();

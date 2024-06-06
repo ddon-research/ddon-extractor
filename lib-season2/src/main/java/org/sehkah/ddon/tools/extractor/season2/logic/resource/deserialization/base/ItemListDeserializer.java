@@ -1,22 +1,21 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.base;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.*;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListEquipParamS8FormType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListItemCategory;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
-public class ItemListDeserializer extends ClientResourceFileDeserializer {
-    public ItemListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
-
+public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemList> {
     private static ItemListEquipParamS8 readEquipParamS8(BufferReader bufferReader) {
         int KindType = bufferReader.readUnsignedByte();
         int Form = bufferReader.readUnsignedByte();
@@ -99,20 +98,37 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer {
         );
     }
 
-    private static ItemListItemParam readItemParam(BufferReader bufferReader) {
+    private static ItemListItemParam readItemParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ItemId = bufferReader.readUnsignedInteger();
         long NameId = bufferReader.readUnsignedInteger();
+        String ItemName = null;
+        if (lookupUtil != null) {
+            ItemName = lookupUtil.getMessage(ResourceFileLookupType.ITEM_NAME.getFilePath(), NameId);
+        }
         int Category = bufferReader.readUnsignedShort();
         int SubCategory = bufferReader.readUnsignedShort();
+        ItemListEquipSubCategory SubCategoryName = ItemListEquipSubCategory.of(SubCategory);
         long Price = bufferReader.readUnsignedInteger();
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
         long AttackStatus = bufferReader.readUnsignedInteger();
         long IsUseJob = bufferReader.readUnsignedInteger();
         int Flag = bufferReader.readUnsignedShort();
+        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, Flag);
         int IconNo = bufferReader.readUnsignedShort();
         int IsUseLv = bufferReader.readUnsignedShort();
         int ItemCategory = bufferReader.readUnsignedByte();
+        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
+        Object CategoryName = switch (ItemCategoryName) {
+            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
+            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
+            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
+            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
+                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
+                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
+                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            default -> "CATEGORY_UNKNOWN";
+        };
         int StackMax = bufferReader.readUnsignedByte();
         int Rank = bufferReader.readUnsignedByte();
         int Grade = bufferReader.readUnsignedByte();
@@ -142,18 +158,18 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer {
 
         return new ItemListItemParam(
                 ItemId,
-                NameId,
-                Category,
-                SubCategory,
+                NameId, ItemName,
+                Category, CategoryName,
+                SubCategory, SubCategoryName,
                 Price,
                 SortNo,
                 NameSortNo,
                 AttackStatus,
                 IsUseJob,
-                Flag,
+                Flag, FlagTypes,
                 IconNo,
                 IsUseLv,
-                ItemCategory,
+                ItemCategory, ItemCategoryName,
                 StackMax,
                 Rank,
                 Grade,
@@ -168,7 +184,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected ItemList parseClientResourceFile(BufferReader bufferReader) {
+    protected ItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long ArrayDataNum = bufferReader.readUnsignedInteger();
         long ArrayParamDataNum = bufferReader.readUnsignedInteger();
         long ArrayVsParamDataNum = bufferReader.readUnsignedInteger();
@@ -178,7 +194,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer {
 
         List<ItemListItemParam> ItemParamList = new ArrayList<>((int) ArrayDataNum);
         for (int i = 0; i < ArrayDataNum; i++) {
-            ItemParamList.add(readItemParam(bufferReader));
+            ItemParamList.add(readItemParam(bufferReader, lookupUtil));
         }
 
         return new ItemList(

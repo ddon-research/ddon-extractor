@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsNoSetPS3;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsNoSetPS3Tbl;
 
 public class NpcIsNoSetPS3TblDeserializer extends ClientResourceFileDeserializer {
-    public NpcIsNoSetPS3TblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static NpcIsNoSetPS3 readNpcConstItem(BufferReader bufferReader) {
         return new NpcIsNoSetPS3(
@@ -21,7 +20,7 @@ public class NpcIsNoSetPS3TblDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected NpcIsNoSetPS3Tbl parseClientResourceFile(BufferReader bufferReader) {
+    protected NpcIsNoSetPS3Tbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcIsNoSetPS3Tbl(bufferReader.readArray(NpcIsNoSetPS3TblDeserializer::readNpcConstItem));
     }
 }

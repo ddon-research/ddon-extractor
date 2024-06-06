@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.scr;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.scr.MapSpotData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.scr.MapSpotDataList;
 
 public class MapSpotDataDeserializer extends ClientResourceFileDeserializer {
-    public MapSpotDataDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static MapSpotData readMapSpotData(BufferReader bufferReader) {
         return new MapSpotData(
@@ -22,7 +21,7 @@ public class MapSpotDataDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected MapSpotDataList parseClientResourceFile(BufferReader bufferReader) {
+    protected MapSpotDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MapSpotDataList(bufferReader.readArray(MapSpotDataDeserializer::readMapSpotData));
     }
 }

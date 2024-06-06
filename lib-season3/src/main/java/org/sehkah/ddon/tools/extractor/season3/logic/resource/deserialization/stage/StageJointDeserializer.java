@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageJoint;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageJointInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageJointParam;
@@ -11,9 +12,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class StageJointDeserializer extends ClientResourceFileDeserializer {
-    public StageJointDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
 
     private static StageJointInfo readStageJointInfo(BufferReader bufferReader) {
@@ -70,7 +68,7 @@ public class StageJointDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageJoint parseClientResourceFile(BufferReader bufferReader) {
+    protected StageJoint parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageJoint(
                 readStageJointParam(bufferReader),
                 bufferReader.readArray(StageJointDeserializer::readStageJointInfo),

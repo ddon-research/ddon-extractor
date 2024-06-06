@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.sg300000;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.ShopGoods;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.ShopGoodsDate;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.ShopGoodsList;
 
 public class ShopGoodsDeserializer extends ClientResourceFileDeserializer {
-    public ShopGoodsDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static ShopGoodsDate readShopGoodsDate(BufferReader bufferReader) {
         return new ShopGoodsDate(
@@ -40,7 +39,7 @@ public class ShopGoodsDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected ShopGoodsList parseClientResourceFile(BufferReader bufferReader) {
+    protected ShopGoodsList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ShopGoodsList(bufferReader.readArray(ShopGoodsDeserializer::readShopGoods));
     }
 }

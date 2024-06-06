@@ -1,10 +1,10 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.OrientedBoundingBox;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.FrameworkResourcesUtil;
+import org.sehkah.ddon.tools.extractor.api.datatype.OrientedBoundingBox;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
+import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.meta.PropertyType;
 

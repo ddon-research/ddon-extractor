@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EnemyReactRes;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EnemyReactResEx;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EnemyReactResExTable;
 
 public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserializer {
-    public EnemyReactResExTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static EnemyReactRes readEnemyReactRes(BufferReader bufferReader) {
         return new EnemyReactRes(
@@ -79,7 +78,7 @@ public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserial
     }
 
     @Override
-    protected EnemyReactResExTable parseClientResourceFile(BufferReader bufferReader) {
+    protected EnemyReactResExTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyReactResExTable(readEnemyReactResEx(bufferReader));
     }
 }

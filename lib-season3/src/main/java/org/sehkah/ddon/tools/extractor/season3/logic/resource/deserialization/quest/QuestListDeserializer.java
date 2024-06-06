@@ -1,10 +1,11 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.OrientedBoundingBox;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.datatype.OrientedBoundingBox;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.ClassData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.XfsHeader;
@@ -17,9 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public class QuestListDeserializer extends ClientResourceFileDeserializer {
-    public QuestListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static QuestSetInfoCoord readQuestSetInfoCoord(BufferReader bufferReader) {
         String Name = XfsDeserializer.readNullTerminatedString(bufferReader);
@@ -374,7 +373,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected QuestList parseClientResourceFile(BufferReader bufferReader) {
+    protected QuestList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.AdjoinInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.AdjoinInfoVector3;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.FieldAreaAdjoinList;
 
 public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeserializer {
-    public FieldAreaAdjoinListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static AdjoinInfoVector3 readAdjoinInfoVector3(BufferReader bufferReader) {
         return new AdjoinInfoVector3(
@@ -30,7 +29,7 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected FieldAreaAdjoinList parseClientResourceFile(BufferReader bufferReader) {
+    protected FieldAreaAdjoinList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FieldAreaAdjoinList(
                 bufferReader.readSignedShort(),
                 bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo)

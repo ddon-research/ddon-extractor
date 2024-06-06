@@ -9,6 +9,8 @@ module org.sehkah.ddon.tools.extractor.lib.season2 {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
+
+    requires org.sehkah.ddon.tools.extractor.lib.api;
     requires org.sehkah.ddon.tools.extractor.lib.common;
 
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.base;

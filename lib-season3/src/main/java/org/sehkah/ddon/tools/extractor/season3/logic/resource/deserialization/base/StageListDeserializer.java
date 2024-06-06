@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfoList;
 
@@ -10,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageListDeserializer extends ClientResourceFileDeserializer {
-    public StageListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageListInfo readStageListInfo(BufferReader bufferReader) {
         return new StageListInfo(
@@ -25,7 +24,7 @@ public class StageListDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageListInfoList parseClientResourceFile(BufferReader bufferReader) {
+    protected StageListInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long stageListInfoSize = bufferReader.readUnsignedInteger();
         List<StageListInfo> stageListInfo = new ArrayList<>((int) stageListInfoSize);
         for (long i = 0; i < stageListInfoSize; i++) {

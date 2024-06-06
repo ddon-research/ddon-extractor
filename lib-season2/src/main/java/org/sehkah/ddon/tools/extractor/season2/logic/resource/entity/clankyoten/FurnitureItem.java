@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.ResourceMetadataLookupUtilSeason2;
 
 @ToString
 @EqualsAndHashCode
@@ -21,7 +21,7 @@ public class FurnitureItem {
 
     public FurnitureItem(long itemId, long layoutId, long omId) {
         this(itemId,
-                layoutId, DynamicResourceLookupUtil.getFurnitureLayoutName("FURNITURE_LAYOUT_NAME_" + layoutId),
+                layoutId, ResourceMetadataLookupUtilSeason2.getFurnitureLayoutName("FURNITURE_LAYOUT_NAME_" + layoutId),
                 omId);
     }
 }

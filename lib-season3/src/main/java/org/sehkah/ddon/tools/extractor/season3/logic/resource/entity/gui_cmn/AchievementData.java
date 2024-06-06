@@ -2,9 +2,9 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 @ToString
 @EqualsAndHashCode
@@ -29,8 +29,8 @@ public class AchievementData {
     public AchievementData(long ID, long targetNum, long messageIndex, int category, int trophy) {
         this(ID,
                 targetNum,
-                messageIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ACHIEVEMENT_NAME, messageIndex), DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ACHIEVEMENT_INFO, messageIndex),
-                category, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ACHIEVEMENT_CATEGORY, "ACHIEVEMENT_CATEGORY_" + category),
+                messageIndex, ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.ACHIEVEMENT_NAME, messageIndex), ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.ACHIEVEMENT_INFO, messageIndex),
+                category, ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.ACHIEVEMENT_CATEGORY, "ACHIEVEMENT_CATEGORY_" + category),
                 trophy);
     }
 }

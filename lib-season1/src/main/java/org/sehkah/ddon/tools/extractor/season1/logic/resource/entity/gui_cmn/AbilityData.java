@@ -2,9 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -25,14 +23,4 @@ public class AbilityData {
     private int Cost;
     private int SortNo;
     private boolean IsPawnDisable;
-
-    public AbilityData(int id, int msgNameIndex, int msgExpIndex, int iconId, int cost, int sortNo, boolean isPawnDisable) {
-        this(id,
-                msgNameIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ABILITY_NAME, msgNameIndex),
-                msgExpIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ABILITY_INFO, msgExpIndex),
-                iconId,
-                cost,
-                sortNo,
-                isPawnDisable);
-    }
 }

@@ -2,10 +2,10 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class FieldAreaMarkerInfo extends TopLevelClientResource {
 
     public FieldAreaMarkerInfo(long fieldAreaId, List<MarkerInfo> markerInfoArray) {
         FieldAreaId = fieldAreaId;
-        FieldAreaName = DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.FIELD_AREA_NAME, fieldAreaId - 1);
+        FieldAreaName = ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.FIELD_AREA_NAME, fieldAreaId - 1);
         MarkerInfoArray = markerInfoArray;
     }
 }

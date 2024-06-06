@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.NamedParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.NamedParamList;
 
 public class NamedParamDeserializer extends ClientResourceFileDeserializer {
-    public NamedParamDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static NamedParam readNamedParam(BufferReader bufferReader) {
         return new NamedParam(
@@ -41,7 +40,7 @@ public class NamedParamDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected NamedParamList parseClientResourceFile(BufferReader bufferReader) {
+    protected NamedParamList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NamedParamList(bufferReader.readArray(NamedParamDeserializer::readNamedParam));
     }
 }

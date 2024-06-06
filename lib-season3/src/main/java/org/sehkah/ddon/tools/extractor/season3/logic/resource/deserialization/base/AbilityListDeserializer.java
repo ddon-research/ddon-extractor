@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.*;
 
 import java.util.ArrayList;
@@ -10,9 +11,6 @@ import java.util.List;
 
 public class AbilityListDeserializer extends ClientResourceFileDeserializer {
 
-    public AbilityListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static AdditionalAbilityParamData readAdditionalAbilityParamData(BufferReader bufferReader) {
         return new AdditionalAbilityParamData(
@@ -52,7 +50,7 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected AbilityList parseClientResourceFile(BufferReader bufferReader) {
+    protected AbilityList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long BufferSize = bufferReader.readUnsignedInteger();
         long DataListNum = bufferReader.readUnsignedInteger();
         List<AbilityData> DataList = new ArrayList<>((int) DataListNum);

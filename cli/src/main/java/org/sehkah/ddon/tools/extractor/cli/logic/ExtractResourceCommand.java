@@ -1,19 +1,19 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
-import org.sehkah.ddon.tools.extractor.lib.common.error.TechnicalException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExtension;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientVersion;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
@@ -31,6 +31,8 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion.*;
 
 @Slf4j
 @CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "extract 1.0",
@@ -141,69 +143,63 @@ public class ExtractResourceCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         String fileName = filePath.getFileName().toString();
-        ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer = clientResourceFileManager.getDeserializer(fileName, bufferReader);
-        if (clientResourceDeserializer == null) {
+        TopLevelClientResource deserializedOutput = clientResourceFileManager.deserialize(fileName, bufferReader);
+        if (deserializedOutput == null) {
             log.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;
         }
         log.debug("Extracting resource data from file '{}'.", filePath);
-        TopLevelClientResource deserializedOutput = clientResourceDeserializer.deserialize(bufferReader);
-        if (deserializedOutput != null) {
-            String serializedOutput;
+        String serializedOutput;
+        try {
+            serializedOutput = serializer.serialize(deserializedOutput);
+        } catch (SerializerException e) {
+            log.error("Failed to serialize object '{}'.", deserializedOutput);
+            if (log.isDebugEnabled()) {
+                log.error("", e);
+            }
+            return StatusCode.ERROR;
+        }
+        if (writeOutputToFile) {
+            String outputFile = fileName + "." + outputFormat;
+            Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
+            boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
+            if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
+                log.error("Failed to create folders for output file.");
+                return StatusCode.ERROR;
+            }
+            Path outputFilePath = outputFolder.resolve(outputFile);
+            log.info("Outputting to file '{}'.", outputFilePath);
             try {
-                serializedOutput = serializer.serialize(deserializedOutput);
-            } catch (SerializerException e) {
-                log.error("Failed to serialize object '{}'.", deserializedOutput);
+                Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
+                    outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
+                    for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
+                        String arcFile = entry.getKey();
+                        byte[] bytes = entry.getValue();
+                        Path arcFilePath = Paths.get(arcFile);
+                        Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
+                        boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
+                        if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
+                            log.error("Failed to create folders for arc file.");
+                            return StatusCode.ERROR;
+                        }
+                        Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
+                        log.info("Outputting to file '{}'.", arcOutputFilePath);
+                        Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Failed to write file '{}'.", outputFilePath);
                 if (log.isDebugEnabled()) {
                     log.error("", e);
                 }
                 return StatusCode.ERROR;
             }
-            if (writeOutputToFile) {
-                String outputFile = fileName + "." + outputFormat;
-                Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
-                boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
-                if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
-                    log.error("Failed to create folders for output file.");
-                    return StatusCode.ERROR;
-                }
-                Path outputFilePath = outputFolder.resolve(outputFile);
-                log.info("Outputting to file '{}'.", outputFilePath);
-                try {
-                    Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                    if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
-                        outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
-                        for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
-                            String arcFile = entry.getKey();
-                            byte[] bytes = entry.getValue();
-                            Path arcFilePath = Paths.get(arcFile);
-                            Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
-                            boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
-                            if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
-                                log.error("Failed to create folders for arc file.");
-                                return StatusCode.ERROR;
-                            }
-                            Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
-                            log.info("Outputting to file '{}'.", arcOutputFilePath);
-                            Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                        }
-                    }
-                } catch (IOException e) {
-                    log.error("Failed to write file '{}'.", outputFilePath);
-                    if (log.isDebugEnabled()) {
-                        log.error("", e);
-                    }
-                    return StatusCode.ERROR;
-                }
-            } else {
-                log.debug("Outputting to console.");
-                log.info(serializedOutput);
-            }
-            return StatusCode.OK;
         } else {
-            log.error("Deserialization has failed.");
-            return StatusCode.ERROR;
+            log.debug("Outputting to console.");
+            log.info(serializedOutput);
         }
+        return StatusCode.OK;
     }
 
     @Override

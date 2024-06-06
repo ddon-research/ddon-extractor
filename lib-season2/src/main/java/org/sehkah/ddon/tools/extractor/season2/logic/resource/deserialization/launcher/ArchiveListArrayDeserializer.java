@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.launcher;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.ArchiveListArray;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.ArchiveListNode;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.ArchiveListTag;
@@ -10,9 +11,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.Ar
 import java.util.List;
 
 public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer {
-    public ArchiveListArrayDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static ArchiveListNode readArchiveListNode(BufferReader bufferReader) {
         return new ArchiveListNode(
@@ -55,7 +54,7 @@ public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected ArchiveListArray parseClientResourceFile(BufferReader bufferReader) {
+    protected ArchiveListArray parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long MagicNo = bufferReader.readUnsignedInteger();
         long ConvHash = bufferReader.readUnsignedInteger();
         int TagNum = bufferReader.readUnsignedShort();

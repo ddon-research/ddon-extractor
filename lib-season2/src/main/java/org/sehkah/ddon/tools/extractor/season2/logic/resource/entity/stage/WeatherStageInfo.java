@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
 
 import java.util.List;
 

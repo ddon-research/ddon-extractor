@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.GatheringItem;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.GatheringItemList;
 
 public class GatheringItemDeserializer extends ClientResourceFileDeserializer {
-    public GatheringItemDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static GatheringItem readGatheringItem(BufferReader bufferReader) {
         return new GatheringItem(
@@ -19,7 +18,7 @@ public class GatheringItemDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected GatheringItemList parseClientResourceFile(BufferReader bufferReader) {
+    protected GatheringItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new GatheringItemList(bufferReader.readArray(GatheringItemDeserializer::readGatheringItem));
     }
 }

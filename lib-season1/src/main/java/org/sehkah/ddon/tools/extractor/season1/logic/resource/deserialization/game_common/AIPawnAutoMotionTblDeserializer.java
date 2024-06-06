@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnAutoMotionNode;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnAutoMotionTbl;
 
 public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeserializer {
-    public AIPawnAutoMotionTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static AIPawnAutoMotionNode readAIPawnAutoMotionNode(BufferReader bufferReader) {
         return new AIPawnAutoMotionNode(
@@ -25,7 +24,7 @@ public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected AIPawnAutoMotionTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected AIPawnAutoMotionTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnAutoMotionTbl(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readArray(AIPawnAutoMotionTblDeserializer::readAIPawnAutoMotionNode));

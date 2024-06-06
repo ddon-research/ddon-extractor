@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageConnect;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageConnectConnect;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageConnectData;
 
 public class StageConnectDeserializer extends ClientResourceFileDeserializer {
-    public StageConnectDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageConnectConnect readStageConnectConnect(BufferReader bufferReader) {
         return new StageConnectConnect(
@@ -31,7 +30,7 @@ public class StageConnectDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageConnect parseClientResourceFile(BufferReader bufferReader) {
+    protected StageConnect parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageConnect(
                 bufferReader.readArray(StageConnectDeserializer::readStageConnectData),
                 bufferReader.readArray(StageConnectDeserializer::readStageConnectConnect)

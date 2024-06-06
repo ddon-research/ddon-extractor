@@ -2,8 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AreaInfo;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
 
 import java.util.List;
 

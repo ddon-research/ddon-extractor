@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.JumpParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.JumpParamTbl;
 
 public class JumpParamTblDeserializer extends ClientResourceFileDeserializer {
-    public JumpParamTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static JumpParam readJumpParam(BufferReader bufferReader) {
         return new JumpParam(
@@ -24,7 +23,7 @@ public class JumpParamTblDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected JumpParamTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected JumpParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JumpParamTbl(bufferReader.readArray(JumpParamTblDeserializer::readJumpParam));
     }
 }

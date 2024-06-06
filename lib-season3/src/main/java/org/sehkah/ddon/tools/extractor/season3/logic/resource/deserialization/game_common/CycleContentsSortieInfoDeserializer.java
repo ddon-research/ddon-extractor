@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoTable;
 
 public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeserializer {
-    public CycleContentsSortieInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static CycleContentsSortieInfoData readCycleContentsSortieInfoData(BufferReader bufferReader) {
         return new CycleContentsSortieInfoData(
@@ -23,7 +22,7 @@ public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeser
     }
 
     @Override
-    protected CycleContentsSortieInfoTable parseClientResourceFile(BufferReader bufferReader) {
+    protected CycleContentsSortieInfoTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CycleContentsSortieInfoTable(bufferReader.readArray(CycleContentsSortieInfoDeserializer::readCycleContentsSortieInfoData));
     }
 }

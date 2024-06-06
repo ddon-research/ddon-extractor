@@ -2,10 +2,10 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.tutorial_g
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class TutorialDialogMessage extends TopLevelClientResource {
     private List<TutorialDialogMessageDialogPage> PageInfo;
 
     public TutorialDialogMessage(long titleGmdIdx, long categoryGmdIdx, List<TutorialDialogMessageDialogPage> pageInfo) {
-        this(titleGmdIdx, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.TUTORIAL_GUIDE, "TUTORIAL_" + titleGmdIdx),
+        this(titleGmdIdx, ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.TUTORIAL_GUIDE, "TUTORIAL_" + titleGmdIdx),
                 categoryGmdIdx,
                 pageInfo
         );

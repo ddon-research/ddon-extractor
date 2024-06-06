@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureDataList;
 
 public class FurnitureDataDeserializer extends ClientResourceFileDeserializer {
-    public FurnitureDataDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static FurnitureData readFurnitureData(BufferReader bufferReader) {
         return new FurnitureData(
@@ -20,7 +19,7 @@ public class FurnitureDataDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected FurnitureDataList parseClientResourceFile(BufferReader bufferReader) {
+    protected FurnitureDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FurnitureDataList(bufferReader.readArray(FurnitureDataDeserializer::readFurnitureData));
     }
 }

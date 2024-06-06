@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.meta.SetInfoCoordOmIdType;
 
 @ToString

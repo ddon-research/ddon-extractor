@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.serialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferWriter;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.serialization.ClientResourceFileSerializer;
+import org.sehkah.ddon.tools.extractor.api.io.BufferWriter;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.serialization.ClientResourceFileSerializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex;
 

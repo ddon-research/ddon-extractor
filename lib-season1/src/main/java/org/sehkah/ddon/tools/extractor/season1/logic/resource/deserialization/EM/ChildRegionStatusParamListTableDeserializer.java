@@ -1,17 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.ChildRegionStatusParamList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.ChildRegionStatusParamListTable;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.ChildRegionStatusParamTable;
 
 public class ChildRegionStatusParamListTableDeserializer extends ClientResourceFileDeserializer {
-    public ChildRegionStatusParamListTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static ChildRegionStatusParamTable readChildRegionStatusParamTable(BufferReader bufferReader) {
         long version = bufferReader.readUnsignedInteger();
@@ -30,7 +28,7 @@ public class ChildRegionStatusParamListTableDeserializer extends ClientResourceF
     }
 
     @Override
-    protected ChildRegionStatusParamListTable parseClientResourceFile(BufferReader bufferReader) {
+    protected ChildRegionStatusParamListTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ChildRegionStatusParamListTable(bufferReader.readArray(ChildRegionStatusParamListTableDeserializer::readChildRegionStatusParamList));
     }
 }

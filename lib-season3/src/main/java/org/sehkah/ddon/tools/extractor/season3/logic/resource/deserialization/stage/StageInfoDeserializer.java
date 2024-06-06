@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageResourcePointer;
 
 public class StageInfoDeserializer extends ClientResourceFileDeserializer {
-    public StageInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageResourcePointer readStageResourcePointer(BufferReader bufferReader) {
         String Path = bufferReader.readNullTerminatedString();
@@ -73,7 +72,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageInfo parseClientResourceFile(BufferReader bufferReader) {
+    protected StageInfo parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readStageStageInfo(bufferReader);
     }
 }

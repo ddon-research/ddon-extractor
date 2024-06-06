@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
+import org.sehkah.ddon.tools.extractor.api.datatype.Sphere;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -14,7 +14,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere;
 public class ZoneShapeInfoSphere extends ZoneShapeInfoBase {
     private Sphere Sphere;
 
-    public ZoneShapeInfoSphere(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.lib.common.datatype.Sphere sphere) {
+    public ZoneShapeInfoSphere(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.api.datatype.Sphere sphere) {
         super(base.getDecay());
         Sphere = sphere;
     }

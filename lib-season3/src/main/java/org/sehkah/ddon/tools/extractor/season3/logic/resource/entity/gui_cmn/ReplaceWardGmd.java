@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.FrameworkResourcesUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.math.BigInteger;
 

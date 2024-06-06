@@ -2,8 +2,8 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.common.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta.AIPawnAutoMotionGroupSelectType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta.AIPawnAutoMotionGroupType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta.AIPawnAutoMotionSituationType;

@@ -2,9 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.tutorial_g
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -21,12 +19,4 @@ public class TutorialNode {
     private String TutorialTitleName;
     private long Category;
     private long OpenQuestId;
-
-    public TutorialNode(long id, long sortNo, long titleGmdIdx, long category, long openQuestId) {
-        this(id,
-                sortNo,
-                titleGmdIdx, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.TUTORIAL_GUIDE, titleGmdIdx),
-                category,
-                openQuestId);
-    }
 }

@@ -2,9 +2,9 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class EnemyGroup {
 
     public EnemyGroup(long enemyGroupId, long msgIndex, List<Long> emList) {
         this(enemyGroupId,
-                msgIndex, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.ENEMY_NAME, msgIndex),
+                msgIndex, ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.ENEMY_NAME, msgIndex),
                 emList);
     }
 }

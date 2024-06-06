@@ -13,8 +13,6 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class EnemyGroupSerializerTest {
 
     @Test

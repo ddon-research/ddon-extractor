@@ -10,6 +10,9 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
 
+    requires java.desktop;
+
+    requires org.sehkah.ddon.tools.extractor.lib.api;
     requires org.sehkah.ddon.tools.extractor.lib.common;
 
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;

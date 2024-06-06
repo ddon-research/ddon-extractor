@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosArea;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosAreaList;
 
 public class StartPosAreaDeserializer extends ClientResourceFileDeserializer {
-    public StartPosAreaDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StartPosArea readStartPosArea(BufferReader bufferReader) {
         return new StartPosArea(
@@ -19,7 +18,7 @@ public class StartPosAreaDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StartPosAreaList parseClientResourceFile(BufferReader bufferReader) {
+    protected StartPosAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StartPosAreaList(bufferReader.readArray(StartPosAreaDeserializer::readStartPosArea));
     }
 }

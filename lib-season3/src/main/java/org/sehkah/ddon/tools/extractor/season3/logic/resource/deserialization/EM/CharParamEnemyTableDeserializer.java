@@ -1,14 +1,12 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.*;
 
 public class CharParamEnemyTableDeserializer extends ClientResourceFileDeserializer {
-    public CharParamEnemyTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
 
     private static CharParamEnemyGuardCounter readCharParamEnemyGuardCounter(BufferReader bufferReader) {
@@ -91,7 +89,7 @@ public class CharParamEnemyTableDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected CharParamEnemyTable parseClientResourceFile(BufferReader bufferReader) {
+    protected CharParamEnemyTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         boolean FlgEnemyFly = bufferReader.readBoolean();
         CharParamEnemy CharParamEnemy;
         if (FlgEnemyFly) {

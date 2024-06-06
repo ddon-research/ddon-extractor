@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PlPartsInfoHeader;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PlPartsInfoList;
 
@@ -10,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer {
-    public PlPartsInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static PlPartsInfoList readEntity(BufferReader bufferReader) {
         PlPartsInfoHeader header = new PlPartsInfoHeader(
@@ -41,7 +40,7 @@ public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected PlPartsInfoList parseClientResourceFile(BufferReader bufferReader) {
+    protected PlPartsInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readEntity(bufferReader);
     }
 }

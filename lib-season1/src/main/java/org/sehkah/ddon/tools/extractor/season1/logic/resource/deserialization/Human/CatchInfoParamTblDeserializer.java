@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.CatchInfoParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.CatchInfoParamTbl;
 
 // Works for both v18 (season 2) + v19 (season 3)
 public class CatchInfoParamTblDeserializer extends ClientResourceFileDeserializer {
-    public CatchInfoParamTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static CatchInfoParam readCatchInfoParam(BufferReader bufferReader) {
         return new CatchInfoParam(
@@ -28,7 +27,7 @@ public class CatchInfoParamTblDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected CatchInfoParamTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected CatchInfoParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CatchInfoParamTbl(bufferReader.readArray(CatchInfoParamTblDeserializer::readCatchInfoParam));
     }
 }

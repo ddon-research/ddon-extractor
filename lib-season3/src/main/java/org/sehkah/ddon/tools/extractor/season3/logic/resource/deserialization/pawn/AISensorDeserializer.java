@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.pawn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.pawn.AISensor;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.pawn.AISensorNodeRes;
 
 // FIXME: Unsure about the order of parameters
 public class AISensorDeserializer extends ClientResourceFileDeserializer {
-    public AISensorDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static AISensorNodeRes readAISensorNodeRes(BufferReader bufferReader) {
         return new AISensorNodeRes(
@@ -26,7 +25,7 @@ public class AISensorDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected AISensor parseClientResourceFile(BufferReader bufferReader) {
+    protected AISensor parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AISensor(bufferReader.readArray(AISensorDeserializer::readAISensorNodeRes));
     }
 }

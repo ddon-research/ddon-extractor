@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.PartsCtrlData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.PartsCtrlTable;
 
 public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer {
-    public PartsCtrlTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static PartsCtrlData readPartsCtrlData(BufferReader bufferReader) {
         return new PartsCtrlData(
@@ -19,7 +18,7 @@ public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected PartsCtrlTable parseClientResourceFile(BufferReader bufferReader) {
+    protected PartsCtrlTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PartsCtrlTable(bufferReader.readArray(PartsCtrlTableDeserializer::readPartsCtrlData));
     }
 }

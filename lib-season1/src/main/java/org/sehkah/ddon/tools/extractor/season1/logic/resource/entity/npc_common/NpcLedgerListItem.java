@@ -2,9 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.meta.NpcSexType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.meta.NpcUnitType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.meta.NpcVoiceType;
@@ -39,18 +37,4 @@ public class NpcLedgerListItem {
     private NpcUnitType UnitTypeName;
     private long UnitTypeParam;
     private List<NpcLedgerListItemInstitution> InstitutionList;
-
-    public NpcLedgerListItem(long npcId, int sex, long nameId, long classNameId, int jobId, int finger, int voiceType,
-                             int unitType, long unitTypeParam, List<NpcLedgerListItemInstitution> institutionList) {
-        this(npcId,
-                sex, NpcSexType.of(sex),
-                nameId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.NPC_NAME, nameId),
-                classNameId, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.NPC_CLASS_NAME, classNameId),
-                jobId,
-                finger,
-                voiceType, NpcVoiceType.of(voiceType),
-                unitType, NpcUnitType.of(unitType),
-                unitTypeParam,
-                institutionList);
-    }
 }

@@ -1,15 +1,17 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource.deserialization;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.common.util.DigestUtil;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.ResourceInfo;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceDeserializer;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.api.util.DigestUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EncryptedArchiveDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ResourceInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 
 import java.io.IOException;
@@ -18,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension.rArchive;
 
 class EncryptedArchiveDeserializerTest {
 
@@ -28,8 +31,9 @@ class EncryptedArchiveDeserializerTest {
 
         ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
-        ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, bufferReader);
-        Archive deserialized = (Archive) deserializer.deserialize(bufferReader);
+        ClientResourceDeserializer<Archive> deserializer = clientResourceFileManager.getDeserializer(inputFile, bufferReader);
+        ClientResourceFile<Archive> archiveClientResourceFile = new ClientResourceFile<>(rArchive, new FileHeader("ARCC", 7, 2), new EncryptedArchiveDeserializer());
+        Archive deserialized = deserializer.deserialize(archiveClientResourceFile, bufferReader, null);
 
         ResourceInfo goods_general = deserialized.getResource().get(0);
         assertEquals(7, deserialized.getResourceNum());

@@ -1,15 +1,13 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.om;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmParamPart;
 
 public class OmParamPartDeserializer extends ClientResourceFileDeserializer {
 
-    public OmParamPartDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static OmParamPart readOmParamPart(BufferReader bufferReader) {
         return new OmParamPart(
@@ -87,7 +85,7 @@ public class OmParamPartDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected OmParamPart parseClientResourceFile(BufferReader bufferReader) {
+    protected OmParamPart parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readOmParamPart(bufferReader);
     }
 }

@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.TexDetailEdit;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.TexDetailEditParam;
 
 public class TexDetailEditDeserializer extends ClientResourceFileDeserializer {
-    public TexDetailEditDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static TexDetailEditParam readTexDetailEditParam(BufferReader bufferReader) {
         XfsDeserializer.readXfsObjectData(bufferReader);
@@ -27,7 +26,7 @@ public class TexDetailEditDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected TexDetailEdit parseClientResourceFile(BufferReader bufferReader) {
+    protected TexDetailEdit parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

@@ -1,28 +1,29 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AreaInfo;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AreaInfoList;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AreaInfo;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AreaInfoList;
 
-import java.util.List;
+/**
+ * Season 1, season 2 & season 3 all share the same header version 2, but season 1 lacks the position data for areas.
+ */
+public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInfoList> {
+    private static AreaInfo readAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long AreaId = bufferReader.readUnsignedInteger();
+        String AreaName = null;
+        if (lookupUtil != null) {
+            AreaName = lookupUtil.getMessage(ResourceFileLookupType.AREA_LIST.getFilePath(), AreaId - 1);
+        }
 
-public class AreaInfoDeserializer extends ClientResourceFileDeserializer {
-    public AreaInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
-
-    private static AreaInfo readAreaInfo(BufferReader bufferReader) {
-        return new AreaInfo(
-                bufferReader.readUnsignedInteger()
-        );
+        return new AreaInfo(AreaId, AreaName);
     }
 
     @Override
-    protected AreaInfoList parseClientResourceFile(BufferReader bufferReader) {
-        List<AreaInfo> areaInfos = bufferReader.readArray(AreaInfoDeserializer::readAreaInfo);
-
-        return new AreaInfoList(areaInfos);
+    protected AreaInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+        return new AreaInfoList(bufferReader.readArray(AreaInfoDeserializer::readAreaInfo, lookupUtil));
     }
 }

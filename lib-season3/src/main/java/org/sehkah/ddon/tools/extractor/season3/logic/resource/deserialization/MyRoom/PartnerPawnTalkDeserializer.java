@@ -1,17 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.PartnerPawnTalk;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.PartnerPawnTalkInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.PartnerPawnTalkInfoData;
 
 public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer {
 
-    public PartnerPawnTalkDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static PartnerPawnTalkInfoData readPartnerPawnTalkInfoData(BufferReader bufferReader) {
         return new PartnerPawnTalkInfoData(
@@ -25,7 +23,7 @@ public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer 
     }
 
     @Override
-    protected PartnerPawnTalk parseClientResourceFile(BufferReader bufferReader) {
+    protected PartnerPawnTalk parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         final long PartnerPawnTalkNum = bufferReader.readUnsignedInteger();
         final long BufferSize = bufferReader.readUnsignedInteger();
         return new PartnerPawnTalk(

@@ -2,9 +2,9 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ResourceFileLookupType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.DynamicResourceLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.ResourceMetadataLookupUtilSeason2;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.meta.NamedParamType;
 
 @ToString
@@ -46,7 +46,7 @@ public class NamedParam {
 
     public NamedParam(long ID, long type, long hpRate, int experience, int attackBasePhys, int attackWepPhys, int defenceBasePhys, int defenceWepPhys, int attackBaseMagic, int attackWepMagic, int defenceBaseMagic, int defenceWepMagic, int power, int guardDefenceBase, int guardDefenceWep, int shrinkEnduranceMain, int blowEnduranceMain, int downEnduranceMain, int shakeEnduranceMain, int hpSub, int shrinkEnduranceSub, int blowEnduranceSub, int ocdEndurance, int ailmentDamage) {
         this(
-                ID, DynamicResourceLookupUtil.getMessage(ResourceFileLookupType.NAMED_PARAM, "namedparam_" + ID),
+                ID, ResourceMetadataLookupUtilSeason2.getMessage(ResourceFileLookupType.NAMED_PARAM, "namedparam_" + ID),
                 type, NamedParamType.of(type),
                 hpRate,
                 experience,

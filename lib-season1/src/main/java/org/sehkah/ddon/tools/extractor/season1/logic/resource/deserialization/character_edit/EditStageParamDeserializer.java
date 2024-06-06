@@ -1,17 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.character_edit;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParamInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParamInfoWeatherData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParamList;
 
 public class EditStageParamDeserializer extends ClientResourceFileDeserializer {
-    public EditStageParamDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static EditStageParamList readEditStageParamList(BufferReader bufferReader) {
         return new EditStageParamList(
@@ -50,7 +49,7 @@ public class EditStageParamDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected EditStageParam parseClientResourceFile(BufferReader bufferReader) {
+    protected EditStageParam parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EditStageParam(
                 bufferReader.readArray(EditStageParamDeserializer::readEditStageParamInfo),
                 bufferReader.readArray(EditStageParamDeserializer::readEditStageParamList)

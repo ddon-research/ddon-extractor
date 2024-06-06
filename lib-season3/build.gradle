@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    implementation project(path: ':lib-api')
     implementation project(path: ':lib-common')
 
     implementation lib.jackson.dataformat.yaml

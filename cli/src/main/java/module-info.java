@@ -9,6 +9,7 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires org.sehkah.ddon.tools.extractor.lib.season1;
     requires org.sehkah.ddon.tools.extractor.lib.season3;
     requires org.sehkah.ddon.tools.extractor.lib.season2;
+    requires org.sehkah.ddon.tools.extractor.lib.api;
 
     opens org.sehkah.ddon.tools.extractor.cli.logic to info.picocli;
 }

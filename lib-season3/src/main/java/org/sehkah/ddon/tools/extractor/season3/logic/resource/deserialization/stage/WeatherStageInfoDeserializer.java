@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageResourcePointer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.WeatherStageInfo;
 
 public class WeatherStageInfoDeserializer extends ClientResourceFileDeserializer {
-    public WeatherStageInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageResourcePointer readTypedStageResourcePointer(BufferReader bufferReader) {
         String Type = bufferReader.readNullTerminatedString();
@@ -17,7 +16,7 @@ public class WeatherStageInfoDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected WeatherStageInfo parseClientResourceFile(BufferReader bufferReader) {
+    protected WeatherStageInfo parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WeatherStageInfo(
                 readTypedStageResourcePointer(bufferReader),
                 readTypedStageResourcePointer(bufferReader),

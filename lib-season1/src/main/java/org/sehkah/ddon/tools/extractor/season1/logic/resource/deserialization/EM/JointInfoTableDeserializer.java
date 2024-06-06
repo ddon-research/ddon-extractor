@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.JointInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.JointInfoTable;
 
 public class JointInfoTableDeserializer extends ClientResourceFileDeserializer {
-    public JointInfoTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static JointInfo readJointInfo(BufferReader bufferReader) {
         return new JointInfo(
@@ -22,7 +21,7 @@ public class JointInfoTableDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected JointInfoTable parseClientResourceFile(BufferReader bufferReader) {
+    protected JointInfoTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JointInfoTable(bufferReader.readArray(JointInfoTableDeserializer::readJointInfo));
     }
 }

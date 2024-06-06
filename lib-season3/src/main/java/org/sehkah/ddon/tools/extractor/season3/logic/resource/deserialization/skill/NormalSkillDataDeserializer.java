@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.skill;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.NormalSkillData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.NormalSkillDataList;
 
 public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer {
-    public NormalSkillDataDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static NormalSkillData readNormalSkillData(BufferReader bufferReader) {
         return new NormalSkillData(
@@ -27,7 +26,7 @@ public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer 
 
 
     @Override
-    protected NormalSkillDataList parseClientResourceFile(BufferReader bufferReader) {
+    protected NormalSkillDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NormalSkillDataList(bufferReader.readArray(NormalSkillDataDeserializer::readNormalSkillData));
     }
 }

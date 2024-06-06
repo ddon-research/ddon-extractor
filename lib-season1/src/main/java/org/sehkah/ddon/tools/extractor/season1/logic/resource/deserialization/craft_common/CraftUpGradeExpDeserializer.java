@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.craft_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftUpGradeExpData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftUpGradeExpList;
 
@@ -10,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CraftUpGradeExpDeserializer extends ClientResourceFileDeserializer {
-    public CraftUpGradeExpDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static CraftUpGradeExpData readCraftUpGradeExpData(BufferReader bufferReader, int level) {
         return new CraftUpGradeExpData(
@@ -22,7 +21,7 @@ public class CraftUpGradeExpDeserializer extends ClientResourceFileDeserializer 
     }
 
     @Override
-    protected CraftUpGradeExpList parseClientResourceFile(BufferReader bufferReader) {
+    protected CraftUpGradeExpList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long length = bufferReader.readUnsignedInteger();
         List<CraftUpGradeExpData> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {

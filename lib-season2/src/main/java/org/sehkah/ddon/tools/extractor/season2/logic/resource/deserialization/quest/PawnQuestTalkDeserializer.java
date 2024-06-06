@@ -1,16 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.quest;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.PawnQuestTalk;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.TalkData;
 
 public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer {
 
-    public PawnQuestTalkDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static TalkData readTalkData(BufferReader bufferReader) {
         return new TalkData(
@@ -22,7 +20,7 @@ public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected PawnQuestTalk parseClientResourceFile(BufferReader bufferReader) {
+    protected PawnQuestTalk parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PawnQuestTalk(bufferReader.readArray(PawnQuestTalkDeserializer::readTalkData));
     }
 }

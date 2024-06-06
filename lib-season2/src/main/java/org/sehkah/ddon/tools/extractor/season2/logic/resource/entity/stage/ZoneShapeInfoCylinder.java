@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Cylinder;
+import org.sehkah.ddon.tools.extractor.api.datatype.Cylinder;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -14,7 +14,7 @@ import org.sehkah.ddon.tools.extractor.lib.common.datatype.Cylinder;
 public class ZoneShapeInfoCylinder extends ZoneShapeInfoBase {
     private Cylinder Cylinder;
 
-    public ZoneShapeInfoCylinder(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.lib.common.datatype.Cylinder cylinder) {
+    public ZoneShapeInfoCylinder(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.api.datatype.Cylinder cylinder) {
         super(base.getDecay());
         Cylinder = cylinder;
     }

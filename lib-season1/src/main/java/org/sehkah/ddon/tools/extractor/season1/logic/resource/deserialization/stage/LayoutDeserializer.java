@@ -1,18 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.meta.LayoutSetInfoType;
 
 
 @Slf4j
 public class LayoutDeserializer extends ClientResourceFileDeserializer {
-    public LayoutDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
 
     private static SetInfoCoord readSetInfoCoord(BufferReader bufferReader) {
@@ -353,7 +351,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected Layout parseClientResourceFile(BufferReader bufferReader) {
+    protected Layout parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new Layout(
                 bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
                 bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo)

@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.gui_cmn;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.StageMap;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.StageMapList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.StageMapParam;
 
 public class StageMapDeserializer extends ClientResourceFileDeserializer {
-    public StageMapDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static StageMapParam readParam(BufferReader reader) {
         return new StageMapParam(
@@ -32,7 +31,7 @@ public class StageMapDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected StageMapList parseClientResourceFile(BufferReader bufferReader) {
+    protected StageMapList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageMapList(bufferReader.readArray(StageMapDeserializer::readStageMap));
     }
 }

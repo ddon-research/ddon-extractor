@@ -8,8 +8,6 @@ import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
 
 import java.util.HexFormat;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class ZipUtilTest {
 
     @Test

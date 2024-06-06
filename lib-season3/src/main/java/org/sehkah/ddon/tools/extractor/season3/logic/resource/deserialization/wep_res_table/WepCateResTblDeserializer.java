@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.wep_res_table;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WepCateRes;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WepCateResTbl;
 
 public class WepCateResTblDeserializer extends ClientResourceFileDeserializer {
-    public WepCateResTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static WepCateRes readWepCateRes(BufferReader bufferReader) {
         return new WepCateRes(
@@ -21,7 +20,7 @@ public class WepCateResTblDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected WepCateResTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected WepCateResTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WepCateResTbl(bufferReader.readArray(WepCateResTblDeserializer::readWepCateRes));
     }
 }

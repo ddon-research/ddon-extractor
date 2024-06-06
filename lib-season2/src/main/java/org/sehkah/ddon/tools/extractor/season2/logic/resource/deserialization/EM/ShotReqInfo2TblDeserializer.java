@@ -1,16 +1,15 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqInfo2;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqInfo2Param;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqInfo2Tbl;
 
 public class ShotReqInfo2TblDeserializer extends ClientResourceFileDeserializer {
-    public ShotReqInfo2TblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static ShotReqInfo2Param readShotReqInfo2Param(BufferReader bufferReader) {
         return new ShotReqInfo2Param(
@@ -37,7 +36,7 @@ public class ShotReqInfo2TblDeserializer extends ClientResourceFileDeserializer 
     }
 
     @Override
-    protected ShotReqInfo2Tbl parseClientResourceFile(BufferReader bufferReader) {
+    protected ShotReqInfo2Tbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ShotReqInfo2Tbl(bufferReader.readArray(ShotReqInfo2TblDeserializer::readShotReqInfo2));
     }
 }

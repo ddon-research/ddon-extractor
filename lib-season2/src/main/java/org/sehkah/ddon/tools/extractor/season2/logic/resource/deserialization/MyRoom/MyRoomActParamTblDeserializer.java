@@ -1,16 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.MyRoomActParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.MyRoomActParamTbl;
 
 public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserializer {
 
-    public MyRoomActParamTblDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static MyRoomActParam readMyRoomActParam(BufferReader bufferReader) {
         return new MyRoomActParam(
@@ -36,7 +34,7 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected MyRoomActParamTbl parseClientResourceFile(BufferReader bufferReader) {
+    protected MyRoomActParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MyRoomActParamTbl(bufferReader.readArray(MyRoomActParamTblDeserializer::readMyRoomActParam));
     }
 }

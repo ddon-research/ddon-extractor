@@ -1,17 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.EventParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.EventParamList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.OmList;
 
 public class EventParamDeserializer extends ClientResourceFileDeserializer {
-    public EventParamDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
-
     private static OmList readOmList(BufferReader bufferReader) {
         return new OmList(
                 bufferReader.readUnsignedInteger(),
@@ -41,7 +38,7 @@ public class EventParamDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected EventParamList parseClientResourceFile(BufferReader bufferReader) {
+    protected EventParamList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EventParamList(bufferReader.readArray(EventParamDeserializer::readEventParam));
     }
 }

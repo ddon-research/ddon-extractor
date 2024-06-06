@@ -1,26 +1,30 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.EnemyGroup;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.EnemyGroupList;
 
-public class EnemyGroupDeserializer extends ClientResourceFileDeserializer {
-    public EnemyGroupDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+import java.util.List;
 
-    private static EnemyGroup readEnemyGroup(BufferReader bufferReader) {
-        return new EnemyGroup(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(BufferReader::readUnsignedInteger)
-        );
+public class EnemyGroupDeserializer extends ClientResourceFileDeserializer<EnemyGroupList> {
+    private static EnemyGroup readEnemyGroup(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long EnemyGroupId = bufferReader.readUnsignedInteger();
+        long MsgIndex = bufferReader.readUnsignedInteger();
+        String EnemyGroupName = null;
+        if (lookupUtil != null) {
+            EnemyGroupName = lookupUtil.getMessage(ResourceFileLookupType.ENEMY_NAME.getFilePath(), MsgIndex);
+        }
+        List<Long> EmList = bufferReader.readArray(BufferReader::readUnsignedInteger);
+
+        return new EnemyGroup(EnemyGroupId, MsgIndex, EnemyGroupName, EmList);
     }
 
     @Override
-    protected EnemyGroupList parseClientResourceFile(BufferReader bufferReader) {
-        return new EnemyGroupList(bufferReader.readArray(EnemyGroupDeserializer::readEnemyGroup));
+    protected EnemyGroupList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+        return new EnemyGroupList(bufferReader.readArray(EnemyGroupDeserializer::readEnemyGroup, lookupUtil));
     }
 }

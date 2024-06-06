@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcCustomSkill;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcCustomSkillList;
 
 public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializer {
-    public NpcCustomSkillListDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static NpcCustomSkill readNpcCustomSkill(BufferReader bufferReader) {
         return new NpcCustomSkill(
@@ -27,7 +26,7 @@ public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected NpcCustomSkillList parseClientResourceFile(BufferReader bufferReader) {
+    protected NpcCustomSkillList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcCustomSkillList(bufferReader.readArray(NpcCustomSkillListDeserializer::readNpcCustomSkill));
     }
 }

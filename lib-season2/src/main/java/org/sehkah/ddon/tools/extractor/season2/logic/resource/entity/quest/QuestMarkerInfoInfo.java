@@ -2,9 +2,9 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DDONPrimitiveDataType;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DataType;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.deserialization.DDONPrimitiveDataType;
+import org.sehkah.ddon.tools.extractor.api.deserialization.DataType;
 
 
 @ToString

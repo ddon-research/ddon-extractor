@@ -1,18 +1,17 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.om;
 
-import org.sehkah.ddon.tools.extractor.lib.common.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKey;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyOmKey;
 
 public class OmKeyDeserializer extends ClientResourceFileDeserializer {
-    public OmKeyDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static OmKeyItem readOmKeyItem(BufferReader bufferReader) {
         int index1 = bufferReader.readUnsignedShort();
@@ -58,7 +57,7 @@ public class OmKeyDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected OmKey parseClientResourceFile(BufferReader bufferReader) {
+    protected OmKey parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

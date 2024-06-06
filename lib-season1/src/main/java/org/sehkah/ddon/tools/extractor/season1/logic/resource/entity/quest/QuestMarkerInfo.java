@@ -2,11 +2,11 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.ArrayDataType;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DDONPrimitiveDataType;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.DataType;
-import org.sehkah.ddon.tools.extractor.lib.common.deserialization.ResourceHeader;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.deserialization.ArrayDataType;
+import org.sehkah.ddon.tools.extractor.api.deserialization.DDONPrimitiveDataType;
+import org.sehkah.ddon.tools.extractor.api.deserialization.DataType;
+import org.sehkah.ddon.tools.extractor.api.deserialization.ResourceHeader;
+import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
 
 import java.util.List;
 

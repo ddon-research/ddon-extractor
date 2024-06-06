@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EnemyLocalEst;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EnemyLocalEstTable;
 
 public class EnemyLocalEstTableDeserializer extends ClientResourceFileDeserializer {
-    public EnemyLocalEstTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static EnemyLocalEst readEnemyLocalEst(BufferReader bufferReader) {
         return new EnemyLocalEst(
@@ -26,7 +25,7 @@ public class EnemyLocalEstTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected EnemyLocalEstTable parseClientResourceFile(BufferReader bufferReader) {
+    protected EnemyLocalEstTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyLocalEstTable(bufferReader.readArray(EnemyLocalEstTableDeserializer::readEnemyLocalEst));
     }
 }

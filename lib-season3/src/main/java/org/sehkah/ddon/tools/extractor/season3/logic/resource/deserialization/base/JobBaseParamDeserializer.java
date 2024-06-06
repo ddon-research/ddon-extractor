@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.JobBaseParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.JobInfo;
 
 public class JobBaseParamDeserializer extends ClientResourceFileDeserializer {
-    public JobBaseParamDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static JobInfo readJobInfo(BufferReader bufferReader) {
         return new JobInfo(
@@ -62,7 +61,7 @@ public class JobBaseParamDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected JobBaseParam parseClientResourceFile(BufferReader bufferReader) {
+    protected JobBaseParam parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JobBaseParam(bufferReader.readArray(JobBaseParamDeserializer::readJobInfo));
     }
 }

@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EvaluationTable;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EvaluationTableList;
 
 public class EvaluationTableDeserializer extends ClientResourceFileDeserializer {
-    public EvaluationTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static EvaluationTable readEvaluationTable(BufferReader bufferReader) {
         return new EvaluationTable(
@@ -22,7 +21,7 @@ public class EvaluationTableDeserializer extends ClientResourceFileDeserializer 
     }
 
     @Override
-    protected EvaluationTableList parseClientResourceFile(BufferReader bufferReader) {
+    protected EvaluationTableList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EvaluationTableList(bufferReader.readArray(EvaluationTableDeserializer::readEvaluationTable));
     }
 }

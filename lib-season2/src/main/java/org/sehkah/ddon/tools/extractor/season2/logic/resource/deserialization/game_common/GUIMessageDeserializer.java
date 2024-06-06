@@ -1,8 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.game_common;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.GUIMessageIndex;
 
@@ -12,12 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUIMessageDeserializer extends ClientResourceFileDeserializer {
-    public GUIMessageDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     @Override
-    protected GUIMessage parseClientResourceFile(BufferReader bufferReader) {
+    protected GUIMessage parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long languageId = bufferReader.readUnsignedInteger();
         BigInteger updateTime = bufferReader.readUnsignedLong();
         long indexNum = bufferReader.readUnsignedInteger();

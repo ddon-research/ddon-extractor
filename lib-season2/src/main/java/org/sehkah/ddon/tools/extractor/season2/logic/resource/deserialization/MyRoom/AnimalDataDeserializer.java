@@ -1,16 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.MyRoom;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.AnimalData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.AnimalDataList;
 
 public class AnimalDataDeserializer extends ClientResourceFileDeserializer {
 
-    public AnimalDataDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
 
     private static AnimalData readAnimalData(BufferReader bufferReader) {
         return new AnimalData(
@@ -20,7 +18,7 @@ public class AnimalDataDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected AnimalDataList parseClientResourceFile(BufferReader bufferReader) {
+    protected AnimalDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AnimalDataList(bufferReader.readArray(AnimalDataDeserializer::readAnimalData));
 
     }

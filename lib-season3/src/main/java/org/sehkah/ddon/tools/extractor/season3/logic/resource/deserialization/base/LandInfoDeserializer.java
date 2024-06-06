@@ -1,27 +1,33 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfoList;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.LandAreaInfoGameMode;
 
-public class LandInfoDeserializer extends ClientResourceFileDeserializer {
-    public LandInfoDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+import java.util.List;
 
-    private static LandAreaInfo readLandAreaInfo(BufferReader bufferReader) {
-        return new LandAreaInfo(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readArray(BufferReader::readUnsignedInteger)
-        );
+public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandAreaInfoList> {
+    private static LandAreaInfo readLandAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long LandId = bufferReader.readUnsignedInteger();
+        String LandName = null;
+        if (lookupUtil != null) {
+            LandName = lookupUtil.getMessage(ResourceFileLookupType.LAND_NAME.getFilePath(), LandId - 1);
+        }
+        boolean IsDispNews = bufferReader.readBoolean();
+        int GameMode = bufferReader.readUnsignedByte();
+        LandAreaInfoGameMode GameModeName = LandAreaInfoGameMode.of(GameMode);
+        List<Long> AreaIds = bufferReader.readArray(BufferReader::readUnsignedInteger);
+
+        return new LandAreaInfo(LandId, LandName, IsDispNews, GameMode, GameModeName, AreaIds);
     }
 
     @Override
-    protected LandAreaInfoList parseClientResourceFile(BufferReader bufferReader) {
-        return new LandAreaInfoList(bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo));
+    protected LandAreaInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+        return new LandAreaInfoList(bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo, lookupUtil));
     }
 }

@@ -1,17 +1,16 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ParentRegionStatusParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ParentRegionStatusParamTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfoTable;
 
 public class ParentRegionStatusParamTableDeserializer extends ClientResourceFileDeserializer {
-    public ParentRegionStatusParamTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static RegionBreakInfo readRegionBreakInfo(BufferReader bufferReader) {
         return new RegionBreakInfo(
@@ -55,7 +54,7 @@ public class ParentRegionStatusParamTableDeserializer extends ClientResourceFile
     }
 
     @Override
-    protected ParentRegionStatusParamTable parseClientResourceFile(BufferReader bufferReader) {
+    protected ParentRegionStatusParamTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ParentRegionStatusParamTable(bufferReader.readArray(ParentRegionStatusParamTableDeserializer::readParentRegionStatusParam));
     }
 }

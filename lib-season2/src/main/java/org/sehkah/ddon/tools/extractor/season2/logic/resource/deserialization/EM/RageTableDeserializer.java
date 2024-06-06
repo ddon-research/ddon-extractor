@@ -1,15 +1,14 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM;
 
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFile;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.Rage;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RageTable;
 
 public class RageTableDeserializer extends ClientResourceFileDeserializer {
-    public RageTableDeserializer(ClientResourceFile clientResourceFile) {
-        super(clientResourceFile);
-    }
+
 
     private static Rage readRage(BufferReader bufferReader) {
         return new Rage(
@@ -21,7 +20,7 @@ public class RageTableDeserializer extends ClientResourceFileDeserializer {
     }
 
     @Override
-    protected RageTable parseClientResourceFile(BufferReader bufferReader) {
+    protected RageTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new RageTable(bufferReader.readArray(RageTableDeserializer::readRage));
     }
 }
