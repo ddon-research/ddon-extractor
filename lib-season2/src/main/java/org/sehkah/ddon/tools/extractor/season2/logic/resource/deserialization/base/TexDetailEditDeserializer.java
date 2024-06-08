@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.bi
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.TexDetailEdit;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.TexDetailEditParam;
 
+import java.nio.file.Path;
+
 public class TexDetailEditDeserializer extends ClientResourceFileDeserializer<TexDetailEdit> {
 
 
@@ -26,7 +28,7 @@ public class TexDetailEditDeserializer extends ClientResourceFileDeserializer<Te
     }
 
     @Override
-    protected TexDetailEdit parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected TexDetailEdit parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

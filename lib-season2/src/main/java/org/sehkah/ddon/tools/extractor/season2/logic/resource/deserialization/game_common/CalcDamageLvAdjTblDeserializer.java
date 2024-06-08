@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CalcDamageLvAdj;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CalcDamageLvAdjTbl;
 
+import java.nio.file.Path;
+
 public class CalcDamageLvAdjTblDeserializer extends ClientResourceFileDeserializer<CalcDamageLvAdjTbl> {
 
 
@@ -18,7 +20,7 @@ public class CalcDamageLvAdjTblDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected CalcDamageLvAdjTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CalcDamageLvAdjTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CalcDamageLvAdjTbl(bufferReader.readArray(CalcDamageLvAdjTblDeserializer::readCalcDamageLvAdj));
     }
 }

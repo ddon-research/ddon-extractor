@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUISkil
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUISkill.AbilityAddDataList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUISkill.AbilityLevelData;
 
+import java.nio.file.Path;
+
 public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<AbilityAddDataList> {
 
 
@@ -27,7 +29,7 @@ public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<A
     }
 
     @Override
-    protected AbilityAddDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AbilityAddDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AbilityAddDataList(bufferReader.readArray(AbilityAddDataDeserializer::readAbilityAddData));
     }
 }

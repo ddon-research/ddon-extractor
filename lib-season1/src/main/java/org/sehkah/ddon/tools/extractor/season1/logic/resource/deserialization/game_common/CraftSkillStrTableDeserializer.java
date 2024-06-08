@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillStrData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillStrTable;
 
+import java.nio.file.Path;
+
 public class CraftSkillStrTableDeserializer extends ClientResourceFileDeserializer<CraftSkillStrTable> {
 
 
@@ -20,7 +22,7 @@ public class CraftSkillStrTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected CraftSkillStrTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftSkillStrTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftSkillStrTable(bufferReader.readArray(CraftSkillStrTableDeserializer::readCraftSkillStrData));
     }
 }

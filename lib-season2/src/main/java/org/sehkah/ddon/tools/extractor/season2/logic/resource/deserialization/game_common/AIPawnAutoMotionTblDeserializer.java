@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnAutoMotionNode;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnAutoMotionTbl;
 
+import java.nio.file.Path;
+
 public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeserializer<AIPawnAutoMotionTbl> {
 
 
@@ -24,7 +26,7 @@ public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected AIPawnAutoMotionTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AIPawnAutoMotionTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnAutoMotionTbl(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readArray(AIPawnAutoMotionTblDeserializer::readAIPawnAutoMotionNode));

@@ -6,6 +6,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.*;
 
+import java.nio.file.Path;
+
 public class CharParamEnemyTableDeserializer extends ClientResourceFileDeserializer<CharParamEnemyTable> {
 
 
@@ -90,7 +92,7 @@ public class CharParamEnemyTableDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected CharParamEnemyTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CharParamEnemyTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         boolean FlgEnemyFly = bufferReader.readBoolean();
         CharParamEnemy CharParamEnemy;
         if (FlgEnemyFly) {

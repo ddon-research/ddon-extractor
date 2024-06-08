@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.AreaInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.AreaInfoList;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInfoList> {
@@ -21,7 +22,7 @@ public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInf
     }
 
     @Override
-    protected AreaInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<AreaInfo> areaInfos = bufferReader.readArray(AreaInfoDeserializer::readAreaInfo);
 
         return new AreaInfoList(areaInfos);

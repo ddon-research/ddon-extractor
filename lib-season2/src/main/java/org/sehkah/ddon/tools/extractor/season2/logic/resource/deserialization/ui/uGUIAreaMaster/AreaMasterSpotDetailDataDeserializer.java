@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIArea
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster.SpotEnemyData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster.SpotItemData;
 
+import java.nio.file.Path;
+
 public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDetailDataList> {
 
 
@@ -38,7 +40,7 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
     }
 
     @Override
-    protected AreaMasterSpotDetailDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaMasterSpotDetailDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaMasterSpotDetailDataList(bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData));
     }
 }

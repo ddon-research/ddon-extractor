@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.history.QuestHistoryData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.history.QuestHistoryDataList;
 
+import java.nio.file.Path;
+
 public class QuestHistoryDataDeserializer extends ClientResourceFileDeserializer<QuestHistoryDataList> {
 
 
@@ -19,7 +21,7 @@ public class QuestHistoryDataDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected QuestHistoryDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected QuestHistoryDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new QuestHistoryDataList(bufferReader.readArray(QuestHistoryDataDeserializer::readQuestHistoryData));
     }
 }

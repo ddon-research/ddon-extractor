@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class GUIMessageDeserializer extends ClientResourceFileDeserializer<GUIMe
 
 
     @Override
-    protected GUIMessage parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected GUIMessage parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long languageId = bufferReader.readUnsignedInteger();
         GUIMessageLanguageType language = GUIMessageLanguageType.of(languageId);
         BigInteger updateTime = bufferReader.readUnsignedLong();

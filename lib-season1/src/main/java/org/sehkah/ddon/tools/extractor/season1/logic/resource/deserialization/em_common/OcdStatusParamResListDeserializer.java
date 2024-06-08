@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.OcdStatusParamRes;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.OcdStatusParamResList;
 
+import java.nio.file.Path;
+
 public class OcdStatusParamResListDeserializer extends ClientResourceFileDeserializer<OcdStatusParamResList> {
 
 
@@ -25,7 +27,7 @@ public class OcdStatusParamResListDeserializer extends ClientResourceFileDeseria
     }
 
     @Override
-    protected OcdStatusParamResList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected OcdStatusParamResList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new OcdStatusParamResList(bufferReader.readArray(OcdStatusParamResListDeserializer::readOcdStatusParamRes));
     }
 }

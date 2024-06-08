@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.FieldMapData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.FieldMapDataList;
 
+import java.nio.file.Path;
+
 public class FieldMapDataDeserializer extends ClientResourceFileDeserializer<FieldMapDataList> {
 
 
@@ -24,7 +26,7 @@ public class FieldMapDataDeserializer extends ClientResourceFileDeserializer<Fie
     }
 
     @Override
-    protected FieldMapDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected FieldMapDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FieldMapDataList(bufferReader.readArray(FieldMapDataDeserializer::readFieldMapData));
     }
 }

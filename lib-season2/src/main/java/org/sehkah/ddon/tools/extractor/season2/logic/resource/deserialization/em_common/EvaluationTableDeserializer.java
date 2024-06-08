@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.EvaluationTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.EvaluationTableList;
 
+import java.nio.file.Path;
+
 public class EvaluationTableDeserializer extends ClientResourceFileDeserializer<EvaluationTableList> {
 
 
@@ -21,7 +23,7 @@ public class EvaluationTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected EvaluationTableList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EvaluationTableList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EvaluationTableList(bufferReader.readArray(EvaluationTableDeserializer::readEvaluationTable));
     }
 }

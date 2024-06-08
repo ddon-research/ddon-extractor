@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmWorkRate;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmWorkRateTable;
 
+import java.nio.file.Path;
+
 public class EmWorkRateTableDeserializer extends ClientResourceFileDeserializer<EmWorkRateTable> {
 
 
@@ -18,7 +20,7 @@ public class EmWorkRateTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected EmWorkRateTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EmWorkRateTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EmWorkRateTable(bufferReader.readArray(EmWorkRateTableDeserializer::readEmWorkRate));
     }
 }

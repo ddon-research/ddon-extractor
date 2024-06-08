@@ -27,4 +27,5 @@ public abstract class ResourceMetadataLookupUtil {
 
     public abstract String getMessage(String filePath, String key);
 
+    public abstract String getNpcName(long npcId);
 }

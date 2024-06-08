@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AbilityData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AbilityDataList;
 
+import java.nio.file.Path;
+
 public class AbilityDataDeserializer extends ClientResourceFileDeserializer<AbilityDataList> {
     private static AbilityData readAbilityData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int Id = bufferReader.readUnsignedShort();
@@ -29,7 +31,7 @@ public class AbilityDataDeserializer extends ClientResourceFileDeserializer<Abil
     }
 
     @Override
-    protected AbilityDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AbilityDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AbilityDataList(bufferReader.readArray(AbilityDataDeserializer::readAbilityData, lookupUtil));
     }
 }

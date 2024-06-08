@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcMeetingPlace;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcMeetingPlaceList;
 
+import java.nio.file.Path;
+
 public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<NpcMeetingPlaceList> {
 
 
@@ -19,7 +21,7 @@ public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected NpcMeetingPlaceList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NpcMeetingPlaceList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcMeetingPlaceList(bufferReader.readArray(NpcMeetingPlaceDeserializer::readNpcMeetingPlace));
     }
 }

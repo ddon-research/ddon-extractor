@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.ShrinkBlowValue;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.ShrinkBlowValueList;
 
+import java.nio.file.Path;
+
 public class ShrinkBlowValueDeserializer extends ClientResourceFileDeserializer<ShrinkBlowValueList> {
     private static ShrinkBlowValue readShrinkBlowValue(BufferReader bufferReader) {
         return new ShrinkBlowValue(
@@ -20,7 +22,7 @@ public class ShrinkBlowValueDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected ShrinkBlowValueList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ShrinkBlowValueList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ShrinkBlowValueList(bufferReader.readArray(ShrinkBlowValueDeserializer::readShrinkBlowValue));
     }
 }

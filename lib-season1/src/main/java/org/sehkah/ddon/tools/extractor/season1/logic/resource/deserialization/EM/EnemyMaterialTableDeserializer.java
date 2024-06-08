@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterial;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterialTable;
 
+import java.nio.file.Path;
+
 public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializer<EnemyMaterialTable> {
 
 
@@ -22,7 +24,7 @@ public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected EnemyMaterialTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EnemyMaterialTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyMaterialTable(bufferReader.readArray(EnemyMaterialTableDeserializer::readEnemyMaterialData));
     }
 }

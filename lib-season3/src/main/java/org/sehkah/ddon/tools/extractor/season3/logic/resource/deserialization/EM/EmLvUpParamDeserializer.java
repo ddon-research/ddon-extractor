@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.EmLvUpParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.EmLvUpParamList;
 
+import java.nio.file.Path;
+
 public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer<EmLvUpParamList> {
 
 
@@ -34,7 +36,7 @@ public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer<EmLv
     }
 
     @Override
-    protected EmLvUpParamList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EmLvUpParamList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EmLvUpParamList(bufferReader.readArray(EmLvUpParamDeserializer::readEmLvUpParam));
     }
 }

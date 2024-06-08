@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqI
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqInfo2Param;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ShotReqInfo2Tbl;
 
+import java.nio.file.Path;
+
 public class ShotReqInfo2TblDeserializer extends ClientResourceFileDeserializer<ShotReqInfo2Tbl> {
 
 
@@ -36,7 +38,7 @@ public class ShotReqInfo2TblDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected ShotReqInfo2Tbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ShotReqInfo2Tbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ShotReqInfo2Tbl(bufferReader.readArray(ShotReqInfo2TblDeserializer::readShotReqInfo2));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.AIPawnOrder;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.AIPawnOrderParam;
 
+import java.nio.file.Path;
+
 public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer<AIPawnOrder> {
 
 
@@ -26,7 +28,7 @@ public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer<AIPa
     }
 
     @Override
-    protected AIPawnOrder parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AIPawnOrder parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnOrder(bufferReader.readArray(AIPawnOrderDeserializer::readAIPawnOrderParam));
     }
 }

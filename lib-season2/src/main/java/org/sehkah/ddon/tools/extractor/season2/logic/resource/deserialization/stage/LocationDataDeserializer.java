@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.LocationData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.LocationDataList;
 
+import java.nio.file.Path;
+
 public class LocationDataDeserializer extends ClientResourceFileDeserializer<LocationDataList> {
 
 
@@ -24,7 +26,7 @@ public class LocationDataDeserializer extends ClientResourceFileDeserializer<Loc
     }
 
     @Override
-    protected LocationDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected LocationDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new LocationDataList(bufferReader.readArray(LocationDataDeserializer::readLocationData));
     }
 }

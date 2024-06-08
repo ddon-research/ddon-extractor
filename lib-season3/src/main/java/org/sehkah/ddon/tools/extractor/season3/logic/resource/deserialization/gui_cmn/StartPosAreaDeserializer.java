@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosArea;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosAreaList;
 
+import java.nio.file.Path;
+
 public class StartPosAreaDeserializer extends ClientResourceFileDeserializer<StartPosAreaList> {
 
 
@@ -18,7 +20,7 @@ public class StartPosAreaDeserializer extends ClientResourceFileDeserializer<Sta
     }
 
     @Override
-    protected StartPosAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StartPosAreaList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StartPosAreaList(bufferReader.readArray(StartPosAreaDeserializer::readStartPosArea));
     }
 }

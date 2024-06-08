@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ParentRe
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfoTable;
 
+import java.nio.file.Path;
+
 public class ParentRegionStatusParamTableDeserializer extends ClientResourceFileDeserializer<ParentRegionStatusParamTable> {
 
 
@@ -54,7 +56,7 @@ public class ParentRegionStatusParamTableDeserializer extends ClientResourceFile
     }
 
     @Override
-    protected ParentRegionStatusParamTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ParentRegionStatusParamTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ParentRegionStatusParamTable(bufferReader.readArray(ParentRegionStatusParamTableDeserializer::readParentRegionStatusParam));
     }
 }

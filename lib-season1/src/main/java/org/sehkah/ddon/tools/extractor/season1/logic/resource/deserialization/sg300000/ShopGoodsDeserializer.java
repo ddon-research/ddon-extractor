@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.Sh
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.ShopGoodsDate;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000.ShopGoodsList;
 
+import java.nio.file.Path;
+
 public class ShopGoodsDeserializer extends ClientResourceFileDeserializer<ShopGoodsList> {
 
 
@@ -39,7 +41,7 @@ public class ShopGoodsDeserializer extends ClientResourceFileDeserializer<ShopGo
     }
 
     @Override
-    protected ShopGoodsList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ShopGoodsList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ShopGoodsList(bufferReader.readArray(ShopGoodsDeserializer::readShopGoods));
     }
 }

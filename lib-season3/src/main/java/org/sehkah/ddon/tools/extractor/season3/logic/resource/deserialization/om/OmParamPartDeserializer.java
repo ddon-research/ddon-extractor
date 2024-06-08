@@ -6,6 +6,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmParamPart;
 
+import java.nio.file.Path;
+
 public class OmParamPartDeserializer extends ClientResourceFileDeserializer<OmParamPart> {
 
 
@@ -85,7 +87,7 @@ public class OmParamPartDeserializer extends ClientResourceFileDeserializer<OmPa
     }
 
     @Override
-    protected OmParamPart parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected OmParamPart parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readOmParamPart(bufferReader);
     }
 }

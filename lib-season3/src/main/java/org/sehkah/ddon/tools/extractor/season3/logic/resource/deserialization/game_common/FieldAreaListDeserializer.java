@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.FieldAreaList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.StageNo;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<FieldAreaList> {
@@ -36,7 +37,7 @@ public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<Fi
     }
 
     @Override
-    protected FieldAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected FieldAreaList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FieldAreaList(bufferReader.readArray(FieldAreaListDeserializer::readFieldAreaInfo, lookupUtil));
     }
 }

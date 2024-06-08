@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.pawn.AISensor;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.pawn.AISensorNodeRes;
 
+import java.nio.file.Path;
+
 // FIXME: Unsure about the order of parameters
 public class AISensorDeserializer extends ClientResourceFileDeserializer<AISensor> {
 
@@ -25,7 +27,7 @@ public class AISensorDeserializer extends ClientResourceFileDeserializer<AISenso
     }
 
     @Override
-    protected AISensor parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AISensor parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AISensor(bufferReader.readArray(AISensorDeserializer::readAISensorNodeRes));
     }
 }

@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.Adjo
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.JumpPosition2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.StageAdjoinList2;
 
+import java.nio.file.Path;
+
 public class StageAdjoinList2Deserializer extends ClientResourceFileDeserializer<StageAdjoinList2> {
 
 
@@ -38,7 +40,7 @@ public class StageAdjoinList2Deserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected StageAdjoinList2 parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageAdjoinList2 parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageAdjoinList2(
                 bufferReader.readUnsignedShort(),
                 bufferReader.readArray(StageAdjoinList2Deserializer::readAdjoinInfo),

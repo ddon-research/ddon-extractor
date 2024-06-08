@@ -13,6 +13,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFile
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,11 +23,12 @@ class EncryptedArchiveDeserializerTest {
     @Test
     void deserializeResourceSeasonThree() throws URISyntaxException, IOException {
         String inputFile = "season3/sg300000.arc";
-        byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
+        Path inputFilePath = Paths.get(getClass().getClassLoader().getResource(inputFile).toURI());
+        byte[] input = Files.readAllBytes(inputFilePath);
 
         ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
-        Archive deserialized = clientResourceFileManager.deserialize(inputFile, bufferReader);
+        Archive deserialized = clientResourceFileManager.deserialize(inputFilePath, bufferReader);
 
         ResourceInfo goods_general = deserialized.getResource().get(0);
         assertEquals(7, deserialized.getResourceNum());

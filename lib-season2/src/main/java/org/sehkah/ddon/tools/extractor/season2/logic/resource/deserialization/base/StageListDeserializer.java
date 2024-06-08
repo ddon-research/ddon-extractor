@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.StageL
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.StageListInfoList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.StageInfoType;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class StageListDeserializer extends ClientResourceFileDeserializer<StageL
     }
 
     @Override
-    protected StageListInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageListInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long stageListInfoSize = bufferReader.readUnsignedInteger();
         List<StageListInfo> stageListInfo = new ArrayList<>((int) stageListInfoSize);
         for (long i = 0; i < stageListInfoSize; i++) {

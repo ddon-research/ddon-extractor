@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.ReplaceWardGmd;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.ReplaceWardGmdList;
 
+import java.nio.file.Path;
+
 public class ReplaceWardGmdListDeserializer extends ClientResourceFileDeserializer<ReplaceWardGmdList> {
 
 
@@ -15,7 +17,7 @@ public class ReplaceWardGmdListDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected ReplaceWardGmdList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ReplaceWardGmdList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ReplaceWardGmdList(bufferReader.readArray(ReplaceWardGmdListDeserializer::readReplaceWardGmd));
     }
 }

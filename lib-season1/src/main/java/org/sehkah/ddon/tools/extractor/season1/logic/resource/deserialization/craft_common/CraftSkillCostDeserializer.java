@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftSkillCostData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.CraftSkillCostList;
 
+import java.nio.file.Path;
+
 public class CraftSkillCostDeserializer extends ClientResourceFileDeserializer<CraftSkillCostList> {
 
 
@@ -21,7 +23,7 @@ public class CraftSkillCostDeserializer extends ClientResourceFileDeserializer<C
     }
 
     @Override
-    protected CraftSkillCostList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftSkillCostList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftSkillCostList(bufferReader.readArray(CraftSkillCostDeserializer::readCraftSkillCostData));
     }
 }

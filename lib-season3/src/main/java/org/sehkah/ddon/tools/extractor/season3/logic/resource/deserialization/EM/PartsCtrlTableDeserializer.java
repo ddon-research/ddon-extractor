@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.PartsCtrlData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.PartsCtrlTable;
 
+import java.nio.file.Path;
+
 public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer<PartsCtrlTable> {
 
 
@@ -18,7 +20,7 @@ public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer<P
     }
 
     @Override
-    protected PartsCtrlTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PartsCtrlTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PartsCtrlTable(bufferReader.readArray(PartsCtrlTableDeserializer::readPartsCtrlData));
     }
 }

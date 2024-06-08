@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.QuestSequence;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.QuestSequenceList;
 
+import java.nio.file.Path;
+
 public class QuestSequenceListDeserializer extends ClientResourceFileDeserializer<QuestSequenceList> {
 
 
@@ -18,7 +20,7 @@ public class QuestSequenceListDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected QuestSequenceList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected QuestSequenceList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new QuestSequenceList(bufferReader.readArray(QuestSequenceListDeserializer::readQuestSequence));
     }
 }

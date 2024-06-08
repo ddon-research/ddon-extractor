@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.LayoutPreset;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.LayoutPresetList;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class LayoutPresetDeserializer extends ClientResourceFileDeserializer<Lay
     }
 
     @Override
-    protected LayoutPresetList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected LayoutPresetList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         int arraySize = (int) bufferReader.readUnsignedInteger();
         List<LayoutPreset> presets = new ArrayList<>(arraySize);
         for (int i = 0; i < arraySize; i++) {

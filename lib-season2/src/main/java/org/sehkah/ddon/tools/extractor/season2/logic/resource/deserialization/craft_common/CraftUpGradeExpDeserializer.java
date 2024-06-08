@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.craft_common.CraftUpGradeExpData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.craft_common.CraftUpGradeExpList;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class CraftUpGradeExpDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected CraftUpGradeExpList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftUpGradeExpList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long length = bufferReader.readUnsignedInteger();
         List<CraftUpGradeExpData> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {

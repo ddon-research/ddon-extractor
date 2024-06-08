@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.PackageQuestInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.PackageQuestInfoList;
 
+import java.nio.file.Path;
+
 public class PackageQuestInfoDeserializer extends ClientResourceFileDeserializer<PackageQuestInfoList> {
     private static PackageQuestInfo readPackageQuestInfo(BufferReader bufferReader) {
         return new PackageQuestInfo(
@@ -19,7 +21,7 @@ public class PackageQuestInfoDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected PackageQuestInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PackageQuestInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PackageQuestInfoList(bufferReader.readArray(PackageQuestInfoDeserializer::readPackageQuestInfo));
     }
 }

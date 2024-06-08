@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandWord;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandWordTbl;
 
+import java.nio.file.Path;
+
 public class MagicCommandWordTblDeserializer extends ClientResourceFileDeserializer<MagicCommandWordTbl> {
 
 
@@ -15,7 +17,7 @@ public class MagicCommandWordTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected MagicCommandWordTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected MagicCommandWordTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MagicCommandWordTbl(bufferReader.readArray(MagicCommandWordTblDeserializer::readMagicCommandWord));
     }
 }

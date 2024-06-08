@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AchievementData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AchievementDataList;
 
+import java.nio.file.Path;
+
 public class AchievementDeserializer extends ClientResourceFileDeserializer<AchievementDataList> {
     private static AchievementData readAchievementData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ID = bufferReader.readUnsignedInteger();
@@ -28,7 +30,7 @@ public class AchievementDeserializer extends ClientResourceFileDeserializer<Achi
     }
 
     @Override
-    protected AchievementDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AchievementDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AchievementDataList(bufferReader.readArray(AchievementDeserializer::readAchievementData, lookupUtil));
     }
 }

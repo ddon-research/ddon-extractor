@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc.SituationData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc.SituationMsgCtrl;
 
+import java.nio.file.Path;
+
 public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer<SituationMsgCtrl> {
 
 
@@ -23,7 +25,7 @@ public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected SituationMsgCtrl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected SituationMsgCtrl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new SituationMsgCtrl(bufferReader.readArray(SituationMsgCtrlDeserializer::readSituationData));
     }
 }

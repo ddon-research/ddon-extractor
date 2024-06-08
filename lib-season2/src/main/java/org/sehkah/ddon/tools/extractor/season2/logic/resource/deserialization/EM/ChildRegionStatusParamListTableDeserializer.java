@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ChildReg
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ChildRegionStatusParamListTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ChildRegionStatusParamTable;
 
+import java.nio.file.Path;
+
 public class ChildRegionStatusParamListTableDeserializer extends ClientResourceFileDeserializer<ChildRegionStatusParamListTable> {
 
 
@@ -28,7 +30,7 @@ public class ChildRegionStatusParamListTableDeserializer extends ClientResourceF
     }
 
     @Override
-    protected ChildRegionStatusParamListTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ChildRegionStatusParamListTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new ChildRegionStatusParamListTable(bufferReader.readArray(ChildRegionStatusParamListTableDeserializer::readChildRegionStatusParamList));
     }
 }

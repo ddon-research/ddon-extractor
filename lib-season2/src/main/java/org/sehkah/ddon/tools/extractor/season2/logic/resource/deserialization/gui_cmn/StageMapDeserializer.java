@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.Sta
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.StageMapList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.StageMapParam;
 
+import java.nio.file.Path;
+
 public class StageMapDeserializer extends ClientResourceFileDeserializer<StageMapList> {
     private static StageMapParam readParam(BufferReader reader) {
         return new StageMapParam(
@@ -29,7 +31,7 @@ public class StageMapDeserializer extends ClientResourceFileDeserializer<StageMa
     }
 
     @Override
-    protected StageMapList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageMapList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageMapList(bufferReader.readArray(StageMapDeserializer::readStageMap));
     }
 }

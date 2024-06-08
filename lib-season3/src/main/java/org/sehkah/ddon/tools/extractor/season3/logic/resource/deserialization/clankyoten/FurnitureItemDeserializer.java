@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten.FurnitureItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten.FurnitureItemList;
 
+import java.nio.file.Path;
+
 public class FurnitureItemDeserializer extends ClientResourceFileDeserializer<FurnitureItemList> {
     private static FurnitureItem readFurnitureItem(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ItemId = bufferReader.readUnsignedInteger();
@@ -22,7 +24,7 @@ public class FurnitureItemDeserializer extends ClientResourceFileDeserializer<Fu
     }
 
     @Override
-    protected FurnitureItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected FurnitureItemList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new FurnitureItemList(bufferReader.readArray(FurnitureItemDeserializer::readFurnitureItem, lookupUtil));
     }
 }

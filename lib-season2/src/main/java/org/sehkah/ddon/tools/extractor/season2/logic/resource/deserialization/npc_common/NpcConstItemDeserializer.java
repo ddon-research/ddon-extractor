@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcConstItem;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcConstItemList;
 
+import java.nio.file.Path;
+
 public class NpcConstItemDeserializer extends ClientResourceFileDeserializer<NpcConstItemList> {
 
 
@@ -18,7 +20,7 @@ public class NpcConstItemDeserializer extends ClientResourceFileDeserializer<Npc
     }
 
     @Override
-    protected NpcConstItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NpcConstItemList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcConstItemList(bufferReader.readArray(NpcConstItemDeserializer::readNpcConstItem));
     }
 }

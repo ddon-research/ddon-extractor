@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoTable;
 
+import java.nio.file.Path;
+
 public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeserializer<CycleContentsSortieInfoTable> {
 
 
@@ -22,7 +24,7 @@ public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeser
     }
 
     @Override
-    protected CycleContentsSortieInfoTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CycleContentsSortieInfoTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CycleContentsSortieInfoTable(bufferReader.readArray(CycleContentsSortieInfoDeserializer::readCycleContentsSortieInfoData));
     }
 }

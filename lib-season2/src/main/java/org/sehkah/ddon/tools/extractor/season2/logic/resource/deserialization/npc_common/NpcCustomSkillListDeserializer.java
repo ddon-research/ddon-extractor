@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcCustomSkill;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcCustomSkillList;
 
+import java.nio.file.Path;
+
 public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializer<NpcCustomSkillList> {
 
 
@@ -26,7 +28,7 @@ public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected NpcCustomSkillList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NpcCustomSkillList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcCustomSkillList(bufferReader.readArray(NpcCustomSkillListDeserializer::readNpcCustomSkill));
     }
 }

@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.Stage
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.StageCustomPartsInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.StageCustomPartsParam;
 
+import java.nio.file.Path;
+
 public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer<StageCustomParts> {
 
 
@@ -62,7 +64,7 @@ public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected StageCustomParts parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageCustomParts parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageCustomParts(
                 readStageCustomPartsParam(bufferReader),
                 bufferReader.readArray(StageCustomPartsDeserializer::readStageCustomPartsInfo),

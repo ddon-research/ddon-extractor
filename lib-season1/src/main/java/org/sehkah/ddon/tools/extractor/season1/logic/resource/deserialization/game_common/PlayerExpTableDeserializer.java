@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.PlayerExpTable;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.PlayerExpTableList;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer<P
     }
 
     @Override
-    protected PlayerExpTableList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PlayerExpTableList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long length = bufferReader.readUnsignedInteger();
         List<PlayerExpTable> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {

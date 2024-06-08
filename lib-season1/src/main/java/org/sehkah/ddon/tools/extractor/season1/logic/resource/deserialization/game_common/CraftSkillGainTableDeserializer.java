@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillGainData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillGainTable;
 
+import java.nio.file.Path;
+
 public class CraftSkillGainTableDeserializer extends ClientResourceFileDeserializer<CraftSkillGainTable> {
 
 
@@ -19,7 +21,7 @@ public class CraftSkillGainTableDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected CraftSkillGainTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftSkillGainTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftSkillGainTable(bufferReader.readArray(CraftSkillGainTableDeserializer::readCraftSkillGainData));
     }
 }

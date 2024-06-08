@@ -14,6 +14,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.SetInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.LayoutUnitKind;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
@@ -315,7 +316,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
     }
 
     @Override
-    protected QuestList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected QuestList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

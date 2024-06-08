@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.AnimalData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.AnimalDataList;
 
+import java.nio.file.Path;
+
 public class AnimalDataDeserializer extends ClientResourceFileDeserializer<AnimalDataList> {
 
 
@@ -18,7 +20,7 @@ public class AnimalDataDeserializer extends ClientResourceFileDeserializer<Anima
     }
 
     @Override
-    protected AnimalDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AnimalDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AnimalDataList(bufferReader.readArray(AnimalDataDeserializer::readAnimalData));
 
     }

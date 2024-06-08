@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WepCateRes;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WepCateResTbl;
 
+import java.nio.file.Path;
+
 public class WepCateResTblDeserializer extends ClientResourceFileDeserializer<WepCateResTbl> {
 
 
@@ -20,7 +22,7 @@ public class WepCateResTblDeserializer extends ClientResourceFileDeserializer<We
     }
 
     @Override
-    protected WepCateResTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected WepCateResTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WepCateResTbl(bufferReader.readArray(WepCateResTblDeserializer::readWepCateRes));
     }
 }

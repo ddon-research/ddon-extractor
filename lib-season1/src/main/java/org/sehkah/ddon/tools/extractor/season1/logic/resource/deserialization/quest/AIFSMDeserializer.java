@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.bi
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
@@ -525,7 +526,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
     }
 
     @Override
-    protected AIFSM parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AIFSM parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

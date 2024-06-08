@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStageList;
 
+import java.nio.file.Path;
+
 public class AreaInfoStageDeserializer extends ClientResourceFileDeserializer<AreaInfoStageList> {
     private static AreaInfoStage readAreaInfoStage(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long StageNo = bufferReader.readUnsignedInteger();
@@ -22,7 +24,7 @@ public class AreaInfoStageDeserializer extends ClientResourceFileDeserializer<Ar
     }
 
     @Override
-    protected AreaInfoStageList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaInfoStageList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaInfoStageList(bufferReader.readArray(br -> readAreaInfoStage(br, lookupUtil)));
     }
 }

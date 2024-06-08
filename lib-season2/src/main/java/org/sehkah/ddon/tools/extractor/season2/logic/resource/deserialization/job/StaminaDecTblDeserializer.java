@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.Stamina
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.StaminaDecParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.StaminaDecTbl;
 
+import java.nio.file.Path;
+
 public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<StaminaDecTbl> {
 
 
@@ -26,7 +28,7 @@ public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<St
     }
 
     @Override
-    protected StaminaDecTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StaminaDecTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StaminaDecTbl(bufferReader.readArray(StaminaDecTblDeserializer::readStaminaDecList));
     }
 }

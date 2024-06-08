@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.JobMasterCtrl;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.JobMasterCtrlList;
 
+import java.nio.file.Path;
+
 public class JobMasterCtrlDeserializer extends ClientResourceFileDeserializer<JobMasterCtrlList> {
 
 
@@ -25,7 +27,7 @@ public class JobMasterCtrlDeserializer extends ClientResourceFileDeserializer<Jo
     }
 
     @Override
-    protected JobMasterCtrlList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected JobMasterCtrlList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JobMasterCtrlList(bufferReader.readArray(JobMasterCtrlDeserializer::readJobMasterCtrl));
     }
 }

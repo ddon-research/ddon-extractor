@@ -25,7 +25,9 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gam
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AbilityDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AchievementDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.MsgSetDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.GUIMessageSerializer;
 
@@ -43,12 +45,12 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
  * a season-specific manager take care of setting up such associations.
  * <p>
  * The super class takes care of caching mechanism, file header identification and retrieval of the correct
- * client resource given a file and its buffer via {@link ClientResourceFileManager#deserialize(String, BufferReader)}.
+ * client resource given a file and its buffer via {@link ClientResourceFileManager#deserialize(Path, BufferReader)}.
  * <p>
  * Regarding initialization:
  * It is mandatory that the season-specific resources are initialized before the resource cache and lookup util
  * can be provided.
- * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path)}.
+ * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, ClientResourceFile, ClientResourceFile)}.
  */
 @Slf4j
 @Getter
@@ -58,6 +60,7 @@ public abstract class ClientResourceFileManager {
     protected final Serializer<Resource> stringSerializer;
     protected final ResourceMetadataLookupUtil lookupUtil;
     protected ClientResourceFile<GUIMessage> GUIMessageResourceFile;
+    protected ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
 
     protected ClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
@@ -65,7 +68,7 @@ public abstract class ClientResourceFileManager {
         addCommonResourceMapping(clientResourceFileSet);
 
         if (shouldSerializeMetaInformation) {
-            lookupUtil = setupResourceLookupUtil(clientRootFolder);
+            lookupUtil = setupResourceLookupUtil(clientRootFolder, GUIMessageResourceFile, NpcLedgerListResourceFile);
         } else {
             lookupUtil = null;
         }
@@ -87,6 +90,7 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityData, new FileHeader(3, 4), new AbilityDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievement, new FileHeader(2, 4), new AchievementDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), new TutorialDialogMessageDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
 
         GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
         clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
@@ -96,10 +100,12 @@ public abstract class ClientResourceFileManager {
      * Initializes a {@link ResourceMetadataLookupUtil}.
      * To accomplish this, a client root folder is required as well as a season-specific resource setup stored in {@link ClientResourceFileManager#clientResourceFileSet}.
      *
-     * @param clientRootFolder root installation folder, e.g. C:\DDON
+     * @param clientRootFolder          root installation folder, e.g. C:\DDON
+     * @param GUIMessageResourceFile
+     * @param npcLedgerListResourceFile
      * @return an initialized lookup util
      */
-    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder);
+    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile);
 
     /**
      * Initializes the season-specific resource file setup in {@link ClientResourceFileManager#clientResourceFileSet}.
@@ -108,11 +114,12 @@ public abstract class ClientResourceFileManager {
      */
     public abstract <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping();
 
-    public <T extends Resource> T deserialize(String fileName, BufferReader bufferReader) {
+    public <T extends Resource> T deserialize(Path filePath, BufferReader bufferReader) {
+        String fileName = filePath.getFileName().toString();
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
 
         if (fileNameExtension.isBlank()) {
-            log.warn("File '%s' has no extension, unable to look up deserializer.".formatted(fileName));
+            log.warn("File '%s' has no extension, unable to look up deserializer.".formatted(filePath));
             return null;
         }
 
@@ -126,10 +133,10 @@ public abstract class ClientResourceFileManager {
                 ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.get(candidateKey);
                 clientResourceDeserializer = clientResourceFile.getDeserializer();
                 log.debug("File matches deserializer {}.", clientResourceDeserializer.getClass().getSimpleName());
-                return clientResourceDeserializer.deserialize(clientResourceFile, bufferReader, lookupUtil);
+                return clientResourceDeserializer.deserialize(filePath, clientResourceFile, bufferReader, lookupUtil);
             }
         }
-        log.debug("No deserializer found for file '%s'.".formatted(fileName));
+        log.debug("No deserializer found for file '%s'.".formatted(filePath));
         return null;
     }
 

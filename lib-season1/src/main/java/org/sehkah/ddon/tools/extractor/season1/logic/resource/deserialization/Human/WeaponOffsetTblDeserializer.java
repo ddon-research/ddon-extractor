@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.WeaponOffset;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.WeaponOffsetTbl;
 
+import java.nio.file.Path;
+
 public class WeaponOffsetTblDeserializer extends ClientResourceFileDeserializer<WeaponOffsetTbl> {
 
 
@@ -33,7 +35,7 @@ public class WeaponOffsetTblDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected WeaponOffsetTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected WeaponOffsetTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WeaponOffsetTbl(bufferReader.readArray(WeaponOffsetTblDeserializer::readWeaponOffset));
     }
 }

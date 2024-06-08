@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.OmParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.OmParamTable;
 
+import java.nio.file.Path;
+
 public class OmParamDeserializer extends ClientResourceFileDeserializer<OmParamTable> {
 
 
@@ -73,7 +75,7 @@ public class OmParamDeserializer extends ClientResourceFileDeserializer<OmParamT
     }
 
     @Override
-    protected OmParamTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected OmParamTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new OmParamTable(bufferReader.readArray(OmParamDeserializer::readOmParam));
     }
 }

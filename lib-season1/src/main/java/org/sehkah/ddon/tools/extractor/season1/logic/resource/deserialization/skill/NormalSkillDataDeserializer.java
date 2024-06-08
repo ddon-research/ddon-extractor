@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill.NormalSkillData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill.NormalSkillDataList;
 
+import java.nio.file.Path;
+
 public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer<NormalSkillDataList> {
 
 
@@ -26,7 +28,7 @@ public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer<
 
 
     @Override
-    protected NormalSkillDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NormalSkillDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NormalSkillDataList(bufferReader.readArray(NormalSkillDataDeserializer::readNormalSkillData));
     }
 }

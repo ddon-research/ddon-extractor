@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.*;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -184,7 +185,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
     }
 
     @Override
-    protected ItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ItemList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long ArrayDataNum = bufferReader.readUnsignedInteger();
         long ArrayParamDataNum = bufferReader.readUnsignedInteger();
         long ArrayVsParamDataNum = bufferReader.readUnsignedInteger();

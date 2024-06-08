@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.FieldAreaMarkerInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.MarkerInfo;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class FieldAreaMarkerInfoDeserializer extends ClientResourceFileDeserializer<FieldAreaMarkerInfo> {
@@ -21,7 +22,7 @@ public class FieldAreaMarkerInfoDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected FieldAreaMarkerInfo parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected FieldAreaMarkerInfo parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long FieldAreaId = bufferReader.readUnsignedInteger();
         String FieldAreaName = null;
         if (lookupUtil != null) {

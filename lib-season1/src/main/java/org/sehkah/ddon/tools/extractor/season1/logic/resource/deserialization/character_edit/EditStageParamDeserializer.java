@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_e
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParamInfoWeatherData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit.EditStageParamList;
 
+import java.nio.file.Path;
+
 public class EditStageParamDeserializer extends ClientResourceFileDeserializer<EditStageParam> {
 
 
@@ -49,7 +51,7 @@ public class EditStageParamDeserializer extends ClientResourceFileDeserializer<E
     }
 
     @Override
-    protected EditStageParam parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EditStageParam parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EditStageParam(
                 bufferReader.readArray(EditStageParamDeserializer::readEditStageParamInfo),
                 bufferReader.readArray(EditStageParamDeserializer::readEditStageParamList)

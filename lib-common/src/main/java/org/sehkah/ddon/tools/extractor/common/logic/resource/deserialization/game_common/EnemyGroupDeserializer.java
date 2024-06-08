@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class EnemyGroupDeserializer extends ClientResourceFileDeserializer<EnemyGroupList> {
@@ -24,7 +25,7 @@ public class EnemyGroupDeserializer extends ClientResourceFileDeserializer<Enemy
     }
 
     @Override
-    protected EnemyGroupList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EnemyGroupList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyGroupList(bufferReader.readArray(EnemyGroupDeserializer::readEnemyGroup, lookupUtil));
     }
 }

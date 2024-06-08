@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill.Custo
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill.CustomSkillDataList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.skill.SkillLevelData;
 
+import java.nio.file.Path;
+
 public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<CustomSkillDataList> {
 
 
@@ -29,7 +31,7 @@ public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected CustomSkillDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CustomSkillDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CustomSkillDataList(bufferReader.readArray(CustomSkillDataDeserializer::readCustomSkillData));
     }
 }

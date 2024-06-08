@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.Part
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.PartnerPawnTalkInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.PartnerPawnTalkInfoData;
 
+import java.nio.file.Path;
+
 public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer<PartnerPawnTalk> {
 
 
@@ -23,7 +25,7 @@ public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected PartnerPawnTalk parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PartnerPawnTalk parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         final long PartnerPawnTalkNum = bufferReader.readUnsignedInteger();
         final long BufferSize = bufferReader.readUnsignedInteger();
         return new PartnerPawnTalk(

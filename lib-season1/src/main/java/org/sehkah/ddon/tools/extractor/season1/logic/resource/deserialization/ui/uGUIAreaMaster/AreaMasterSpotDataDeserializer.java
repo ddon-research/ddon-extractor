@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDataList;
 
+import java.nio.file.Path;
+
 public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDataList> {
 
 
@@ -28,7 +30,7 @@ public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected AreaMasterSpotDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaMasterSpotDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaMasterSpotDataList(bufferReader.readArray(AreaMasterSpotDataDeserializer::readAreaMasterSpotData));
     }
 }

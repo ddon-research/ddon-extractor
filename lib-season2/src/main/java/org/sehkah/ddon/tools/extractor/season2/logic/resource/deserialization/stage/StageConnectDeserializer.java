@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.Stage
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageConnectConnect;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageConnectData;
 
+import java.nio.file.Path;
+
 public class StageConnectDeserializer extends ClientResourceFileDeserializer<StageConnect> {
 
 
@@ -30,7 +32,7 @@ public class StageConnectDeserializer extends ClientResourceFileDeserializer<Sta
     }
 
     @Override
-    protected StageConnect parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageConnect parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageConnect(
                 bufferReader.readArray(StageConnectDeserializer::readStageConnectData),
                 bufferReader.readArray(StageConnectDeserializer::readStageConnectConnect)

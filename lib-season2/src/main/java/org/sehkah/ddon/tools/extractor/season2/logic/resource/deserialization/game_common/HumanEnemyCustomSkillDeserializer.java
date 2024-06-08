@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyCustomSkill;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyCustomSkillList;
 
+import java.nio.file.Path;
+
 public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeserializer<HumanEnemyCustomSkillList> {
 
 
@@ -25,7 +27,7 @@ public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeseria
     }
 
     @Override
-    protected HumanEnemyCustomSkillList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected HumanEnemyCustomSkillList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new HumanEnemyCustomSkillList(bufferReader.readArray(HumanEnemyCustomSkillDeserializer::readHumanEnemyCustomSkill));
     }
 }

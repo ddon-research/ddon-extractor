@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common.BlowSaveEmLvParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common.BlowSaveEmLvParamTbl;
 
+import java.nio.file.Path;
+
 public class BlowSaveEmLvParamTblDeserializer extends ClientResourceFileDeserializer<BlowSaveEmLvParamTbl> {
 
 
@@ -18,7 +20,7 @@ public class BlowSaveEmLvParamTblDeserializer extends ClientResourceFileDeserial
     }
 
     @Override
-    protected BlowSaveEmLvParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected BlowSaveEmLvParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new BlowSaveEmLvParamTbl(bufferReader.readArray(BlowSaveEmLvParamTblDeserializer::readBlowSaveEmLvParam));
     }
 }

@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.PartnerReactParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.PartnerReactParamTbl;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class PartnerReactParamTblDeserializer extends ClientResourceFileDeserializer<PartnerReactParamTbl> {
@@ -24,7 +25,7 @@ public class PartnerReactParamTblDeserializer extends ClientResourceFileDeserial
     }
 
     @Override
-    protected PartnerReactParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PartnerReactParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<PartnerReactParam> partnerReactParams = bufferReader.readArray(PartnerReactParamTblDeserializer::readPartnerReactParam);
         PartnerReactParamTbl partnerReactParamTbl = new PartnerReactParamTbl(partnerReactParams);
         return partnerReactParamTbl;

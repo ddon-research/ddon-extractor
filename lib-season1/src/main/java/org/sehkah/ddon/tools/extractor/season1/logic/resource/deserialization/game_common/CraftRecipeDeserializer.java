@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftRecipeList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftRecipeMaterialData;
 
+import java.nio.file.Path;
+
 public class CraftRecipeDeserializer extends ClientResourceFileDeserializer<CraftRecipeList> {
 
 
@@ -34,7 +36,7 @@ public class CraftRecipeDeserializer extends ClientResourceFileDeserializer<Craf
     }
 
     @Override
-    protected CraftRecipeList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftRecipeList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftRecipeList(bufferReader.readArray(CraftRecipeDeserializer::readCraftRecipe));
     }
 }

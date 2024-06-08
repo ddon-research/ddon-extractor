@@ -11,6 +11,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFile
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,11 +21,12 @@ class ReferenceArchiveDeserializerTest {
     @Test
     void deserializeResourceSeasonThree() throws URISyntaxException, IOException {
         String inputFile = "season3/eye0_fedt_jntpreset.arc";
-        byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
+        Path inputFilePath = Paths.get(getClass().getClassLoader().getResource(inputFile).toURI());
+        byte[] input = Files.readAllBytes(inputFilePath);
 
         ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
-        ArchiveS deserialized = clientResourceFileManager.deserialize(inputFile, bufferReader);
+        ArchiveS deserialized = clientResourceFileManager.deserialize(inputFilePath, bufferReader);
 
         assertEquals(1, deserialized.getResourceNum());
         assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().getFirst().getTypeName());

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.CaughtInfoParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.CaughtInfoParamTbl;
 
+import java.nio.file.Path;
+
 // Works for v15 (season 2) & v16 (season 3)
 public class CaughtInfoParamTblDeserializer extends ClientResourceFileDeserializer<CaughtInfoParamTbl> {
 
@@ -21,7 +23,7 @@ public class CaughtInfoParamTblDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected CaughtInfoParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CaughtInfoParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CaughtInfoParamTbl(bufferReader.readArray(CaughtInfoParamTblDeserializer::readCaughtInfoParam));
     }
 }

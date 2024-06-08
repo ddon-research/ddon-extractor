@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.RoomWearParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.RoomWearParamTbl;
 
+import java.nio.file.Path;
+
 public class RoomWearParamTblDeserializer extends ClientResourceFileDeserializer<RoomWearParamTbl> {
 
 
@@ -32,7 +34,7 @@ public class RoomWearParamTblDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected RoomWearParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected RoomWearParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new RoomWearParamTbl(bufferReader.readArray(RoomWearParamTblDeserializer::readRoomWearParam));
     }
 }

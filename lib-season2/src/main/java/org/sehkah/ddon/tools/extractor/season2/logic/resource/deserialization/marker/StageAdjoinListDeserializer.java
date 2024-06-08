@@ -8,9 +8,11 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker.season3.StageAdjoinList;
 
+import java.nio.file.Path;
+
 public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<Resource> {
     @Override
-    protected Resource parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected Resource parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         if (fileHeader.versionNumber() == 3) {
             return new org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker.season2.StageAdjoinList(
                     bufferReader.readSignedInteger(),
@@ -23,7 +25,7 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<
                     bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season3.StageAdjoinListDeserializer::readJumpPosition)
             );
         } else {
-                throw new TechnicalException("SAL in unsupported version encountered in season2 unexpectedly: v" + fileHeader.versionNumber());
+            throw new TechnicalException("SAL in unsupported version encountered in season2 unexpectedly: v" + fileHeader.versionNumber());
         }
     }
 }

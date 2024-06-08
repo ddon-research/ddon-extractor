@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CaughtDamageRate;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CaughtDamageRateTbl;
 
+import java.nio.file.Path;
+
 public class CaughtDamageRateTblDeserializer extends ClientResourceFileDeserializer<CaughtDamageRateTbl> {
 
 
@@ -15,7 +17,7 @@ public class CaughtDamageRateTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected CaughtDamageRateTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CaughtDamageRateTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CaughtDamageRateTbl(bufferReader.readArray(CaughtDamageRateTblDeserializer::readCaughtDamageRate));
     }
 }

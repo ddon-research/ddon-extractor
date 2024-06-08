@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.pawn.AIPawnActNoSwitch;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.pawn.AIPawnActNoSwitchTbl;
 
+import java.nio.file.Path;
+
 public class AIPawnActNoSwitchTblDeserializer extends ClientResourceFileDeserializer<AIPawnActNoSwitchTbl> {
 
 
@@ -19,7 +21,7 @@ public class AIPawnActNoSwitchTblDeserializer extends ClientResourceFileDeserial
     }
 
     @Override
-    protected AIPawnActNoSwitchTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AIPawnActNoSwitchTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnActNoSwitchTbl(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readArray(AIPawnActNoSwitchTblDeserializer::readAIPawnActNoSwitch));

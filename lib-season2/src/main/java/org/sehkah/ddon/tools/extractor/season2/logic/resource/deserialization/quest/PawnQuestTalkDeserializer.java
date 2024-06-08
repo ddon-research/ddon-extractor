@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.PawnQuestTalk;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.TalkData;
 
+import java.nio.file.Path;
+
 public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer<PawnQuestTalk> {
 
 
@@ -20,7 +22,7 @@ public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer<Pa
     }
 
     @Override
-    protected PawnQuestTalk parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PawnQuestTalk parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PawnQuestTalk(bufferReader.readArray(PawnQuestTalkDeserializer::readTalkData));
     }
 }

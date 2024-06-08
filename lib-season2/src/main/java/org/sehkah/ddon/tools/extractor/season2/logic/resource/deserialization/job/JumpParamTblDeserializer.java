@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.JumpParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.JumpParamTbl;
 
+import java.nio.file.Path;
+
 public class JumpParamTblDeserializer extends ClientResourceFileDeserializer<JumpParamTbl> {
 
 
@@ -23,7 +25,7 @@ public class JumpParamTblDeserializer extends ClientResourceFileDeserializer<Jum
     }
 
     @Override
-    protected JumpParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected JumpParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JumpParamTbl(bufferReader.readArray(JumpParamTblDeserializer::readJumpParam));
     }
 }

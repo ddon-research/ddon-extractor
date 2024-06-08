@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ArchiveS;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ResourceInfoS;
 
 import java.math.BigInteger;
+import java.nio.file.Path;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class ReferenceArchiveDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected ArchiveS parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ArchiveS parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<ResourceInfoS> resourceReferenceIds = bufferReader.readArray(BufferReader::readUnsignedShort, ReferenceArchiveDeserializer::readResourceInfoS);
 
         return new ArchiveS(

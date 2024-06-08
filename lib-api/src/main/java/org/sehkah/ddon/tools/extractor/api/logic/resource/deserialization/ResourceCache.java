@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,25 +26,29 @@ public class ResourceCache {
         }
     }
 
-    private static <T extends Resource> T loadResource(ClientResourceFile<T> clientResourceFile, Path folderPath, String fileName) {
-        return loadResource(clientResourceFile, folderPath.resolve(fileName));
+    private static <T extends Resource> T loadResource(ClientResourceFile<T> clientResourceFile, Path filePath) {
+        return loadResource(clientResourceFile, filePath, null);
     }
 
-    private static <T extends Resource> T loadResource(ClientResourceFile<T> clientResourceFile, Path filePath) {
+    private static <T extends Resource> T loadResource(ClientResourceFile<T> clientResourceFile, Path filePath, ResourceMetadataLookupUtil lookupUtil) {
         byte[] input;
         try {
             input = Files.readAllBytes(filePath);
         } catch (IOException e) {
             throw new TechnicalException(e);
         }
-        return clientResourceFile.getDeserializer().deserialize(clientResourceFile, new BinaryReader(input), null);
+        return clientResourceFile.getDeserializer().deserialize(filePath, clientResourceFile, new BinaryReader(input), lookupUtil);
     }
 
     public <T extends Resource> T getResource(String filePath, ClientResourceFile<T> clientResourceFile) {
+        return getResource(filePath, clientResourceFile, null);
+    }
+
+    public <T extends Resource> T getResource(String filePath, ClientResourceFile<T> clientResourceFile, ResourceMetadataLookupUtil lookupUtil) {
         if (cache.containsKey(filePath)) {
             return (T) cache.get(filePath);
         } else {
-            T resource = loadResource(clientResourceFile, clientResourceFolder.resolve(filePath));
+            T resource = loadResource(clientResourceFile, clientResourceFolder.resolve(filePath), lookupUtil);
             cache.put(filePath, resource);
             return resource;
         }

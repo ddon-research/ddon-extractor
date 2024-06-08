@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoJointArea;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoJointAreaList;
 
+import java.nio.file.Path;
+
 public class AreaInfoJointAreaDeserializer extends ClientResourceFileDeserializer<AreaInfoJointAreaList> {
     private static AreaInfoJointArea readAreaInfoJointArea(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long MAJAId = bufferReader.readUnsignedInteger();
@@ -21,7 +23,7 @@ public class AreaInfoJointAreaDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected AreaInfoJointAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaInfoJointAreaList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaInfoJointAreaList(bufferReader.readArray(br -> readAreaInfoJointArea(br, lookupUtil)));
     }
 }

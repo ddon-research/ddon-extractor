@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmBaseInfoSv;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmBaseInfoSvList;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class EmBaseInfoSvDeserializer extends ClientResourceFileDeserializer<EmB
     }
 
     @Override
-    protected EmBaseInfoSvList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EmBaseInfoSvList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long length = bufferReader.readUnsignedInteger();
         List<EmBaseInfoSv> entities = new ArrayList<>((int) length);
         for (int i = 0; i < length; i++) {

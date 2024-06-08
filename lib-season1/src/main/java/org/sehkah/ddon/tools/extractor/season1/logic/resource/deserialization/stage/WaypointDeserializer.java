@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.Waypo
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.WaypointPoint;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.WaypointRoute;
 
+import java.nio.file.Path;
+
 public class WaypointDeserializer extends ClientResourceFileDeserializer<Waypoint> {
 
 
@@ -26,7 +28,7 @@ public class WaypointDeserializer extends ClientResourceFileDeserializer<Waypoin
     }
 
     @Override
-    protected Waypoint parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected Waypoint parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new Waypoint(
                 bufferReader.readArray(WaypointDeserializer::readWaypointPoint),
                 bufferReader.readArray(WaypointDeserializer::readWaypointRoute)

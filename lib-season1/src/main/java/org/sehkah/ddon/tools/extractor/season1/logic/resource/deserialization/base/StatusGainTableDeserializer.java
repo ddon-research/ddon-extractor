@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StatusGain;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StatusGainTable;
 
+import java.nio.file.Path;
+
 public class StatusGainTableDeserializer extends ClientResourceFileDeserializer<StatusGainTable> {
 
 
@@ -18,7 +20,7 @@ public class StatusGainTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected StatusGainTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StatusGainTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StatusGainTable(bufferReader.readArray(StatusGainTableDeserializer::readStatusGain));
     }
 }

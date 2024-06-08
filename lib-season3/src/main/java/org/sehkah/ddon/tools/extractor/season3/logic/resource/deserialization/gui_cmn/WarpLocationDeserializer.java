@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.WarpLocation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.WarpLocationList;
 
+import java.nio.file.Path;
+
 public class WarpLocationDeserializer extends ClientResourceFileDeserializer<WarpLocationList> {
 
 
@@ -26,7 +28,7 @@ public class WarpLocationDeserializer extends ClientResourceFileDeserializer<War
     }
 
     @Override
-    protected WarpLocationList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected WarpLocationList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WarpLocationList(bufferReader.readArray(WarpLocationDeserializer::readWarpLocation));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EndContentsSortieInfoData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EndContentsSortieInfoTable;
 
+import java.nio.file.Path;
+
 public class EndContentsSortieInfoDeserializer extends ClientResourceFileDeserializer<EndContentsSortieInfoTable> {
 
 
@@ -24,7 +26,7 @@ public class EndContentsSortieInfoDeserializer extends ClientResourceFileDeseria
     }
 
     @Override
-    protected EndContentsSortieInfoTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EndContentsSortieInfoTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EndContentsSortieInfoTable(bufferReader.readArray(EndContentsSortieInfoDeserializer::readEndContentsSortieInfoData));
     }
 }

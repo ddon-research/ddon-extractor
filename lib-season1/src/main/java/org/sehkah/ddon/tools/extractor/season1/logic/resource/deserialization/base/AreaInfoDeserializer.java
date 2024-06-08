@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AreaInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AreaInfoList;
 
+import java.nio.file.Path;
+
 /**
  * Season 1, season 2 & season 3 all share the same header version 2, but season 1 lacks the position data for areas.
  */
@@ -23,7 +25,7 @@ public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInf
     }
 
     @Override
-    protected AreaInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AreaInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaInfoList(bufferReader.readArray(AreaInfoDeserializer::readAreaInfo, lookupUtil));
     }
 }

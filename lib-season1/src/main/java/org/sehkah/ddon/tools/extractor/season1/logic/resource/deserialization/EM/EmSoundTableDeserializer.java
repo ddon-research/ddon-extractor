@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmSound;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmSoundTable;
 
+import java.nio.file.Path;
+
 public class EmSoundTableDeserializer extends ClientResourceFileDeserializer<EmSoundTable> {
 
 
@@ -24,7 +26,7 @@ public class EmSoundTableDeserializer extends ClientResourceFileDeserializer<EmS
     }
 
     @Override
-    protected EmSoundTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EmSoundTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EmSoundTable(bufferReader.readArray(EmSoundTableDeserializer::readEmSoundData));
     }
 }

@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -43,15 +44,16 @@ public abstract class ClientResourceFileDeserializer<T extends Resource> impleme
     }
 
     /**
+     * @param filePath
      * @param clientResourceFile
      * @param bufferReader
      * @param lookupUtil         a cache-backed lookup util, may be null, otherwise an infinite loop of lookups would be performed
      * @return
      */
     @Override
-    public T deserialize(ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    public T deserialize(Path filePath, ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         FileHeader fileHeader = FileHeaderDeserializer.parseClientResourceFileUnsafe(bufferReader, clientResourceFile.getFileHeader());
-        T result = parseClientResourceFile(bufferReader, fileHeader, lookupUtil);
+        T result = parseClientResourceFile(filePath, bufferReader, fileHeader, lookupUtil);
         if (bufferReader.hasRemaining()) {
             // TODO: deactivate while debugging rAIFSM
             throw new FileParsingIncompleteException(fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
@@ -61,5 +63,5 @@ public abstract class ClientResourceFileDeserializer<T extends Resource> impleme
         return result;
     }
 
-    protected abstract T parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil);
+    protected abstract T parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil);
 }

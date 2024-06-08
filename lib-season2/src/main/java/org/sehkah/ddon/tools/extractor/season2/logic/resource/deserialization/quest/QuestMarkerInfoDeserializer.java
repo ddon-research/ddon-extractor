@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.QuestMarkerInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.QuestMarkerInfoInfo;
 
+import java.nio.file.Path;
+
 public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer<QuestMarkerInfo> {
 
 
@@ -19,7 +21,7 @@ public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected QuestMarkerInfo parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected QuestMarkerInfo parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new QuestMarkerInfo(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readArray(QuestMarkerInfoDeserializer::readQuestMarkerInfoInfo)

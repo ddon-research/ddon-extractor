@@ -138,10 +138,10 @@ public class ExtractResourceCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        String fileName = filePath.getFileName().toString();
-        Resource deserializedOutput = clientResourceFileManager.deserialize(fileName, bufferReader);
+
+        Resource deserializedOutput = clientResourceFileManager.deserialize(filePath, bufferReader);
         if (deserializedOutput == null) {
-            log.error("File '{}' is not supported.", fileName);
+            log.error("File '{}' is not supported.", filePath);
             return StatusCode.ERROR;
         }
         log.debug("Extracting resource data from file '{}'.", filePath);
@@ -156,6 +156,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         if (writeOutputToFile) {
+            String fileName = filePath.getFileName().toString();
             String outputFile = fileName + "." + outputFormat;
             Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
             boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.Tbl2ChatMacro;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.Tbl2ChatMacroList;
 
+import java.nio.file.Path;
+
 public class Tbl2ChatMacroDeserializer extends ClientResourceFileDeserializer<Tbl2ChatMacroList> {
 
 
@@ -19,7 +21,7 @@ public class Tbl2ChatMacroDeserializer extends ClientResourceFileDeserializer<Tb
     }
 
     @Override
-    protected Tbl2ChatMacroList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected Tbl2ChatMacroList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new Tbl2ChatMacroList(bufferReader.readArray(Tbl2ChatMacroDeserializer::readTbl2ChatMacro));
     }
 }

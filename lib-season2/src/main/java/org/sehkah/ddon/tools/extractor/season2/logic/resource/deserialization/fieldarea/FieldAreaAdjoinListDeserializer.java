@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.fieldarea.A
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.fieldarea.AdjoinInfoVector3;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.fieldarea.FieldAreaAdjoinList;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeserializer<FieldAreaAdjoinList> {
@@ -30,7 +31,7 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected FieldAreaAdjoinList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected FieldAreaAdjoinList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         short FieldAreaId = bufferReader.readSignedShort();
         String FieldAreaName = null;
         if (lookupUtil != null) {

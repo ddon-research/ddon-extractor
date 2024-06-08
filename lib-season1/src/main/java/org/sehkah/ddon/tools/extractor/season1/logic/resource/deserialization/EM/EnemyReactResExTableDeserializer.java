@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyRea
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyReactResEx;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyReactResExTable;
 
+import java.nio.file.Path;
+
 public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserializer<EnemyReactResExTable> {
 
 
@@ -78,7 +80,7 @@ public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserial
     }
 
     @Override
-    protected EnemyReactResExTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EnemyReactResExTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EnemyReactResExTable(readEnemyReactResEx(bufferReader));
     }
 }

@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.NamedParamList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.NamedParamType;
 
+import java.nio.file.Path;
+
 public class NamedParamDeserializer extends ClientResourceFileDeserializer<NamedParamList> {
     private static NamedParam readNamedParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ID = bufferReader.readUnsignedInteger();
@@ -45,7 +47,7 @@ public class NamedParamDeserializer extends ClientResourceFileDeserializer<Named
     }
 
     @Override
-    protected NamedParamList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NamedParamList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NamedParamList(bufferReader.readArray(NamedParamDeserializer::readNamedParam, lookupUtil));
     }
 }

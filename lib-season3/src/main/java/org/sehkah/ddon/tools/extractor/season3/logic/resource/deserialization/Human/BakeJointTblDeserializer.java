@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.BakeJoint;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.BakeJointTbl;
 
+import java.nio.file.Path;
+
 public class BakeJointTblDeserializer extends ClientResourceFileDeserializer<BakeJointTbl> {
 
 
@@ -18,7 +20,7 @@ public class BakeJointTblDeserializer extends ClientResourceFileDeserializer<Bak
     }
 
     @Override
-    protected BakeJointTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected BakeJointTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new BakeJointTbl(bufferReader.readArray(BakeJointTblDeserializer::readBakeJoint));
     }
 }

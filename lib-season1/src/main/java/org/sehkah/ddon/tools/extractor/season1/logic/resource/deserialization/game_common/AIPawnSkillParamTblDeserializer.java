@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnSkillParamNode;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnSkillParamTbl;
 
+import java.nio.file.Path;
+
 public class AIPawnSkillParamTblDeserializer extends ClientResourceFileDeserializer<AIPawnSkillParamTbl> {
 
 
@@ -27,7 +29,7 @@ public class AIPawnSkillParamTblDeserializer extends ClientResourceFileDeseriali
     }
 
     @Override
-    protected AIPawnSkillParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AIPawnSkillParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new AIPawnSkillParamTbl(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readArray(AIPawnSkillParamTblDeserializer::readAIPawnSkillParamNode));

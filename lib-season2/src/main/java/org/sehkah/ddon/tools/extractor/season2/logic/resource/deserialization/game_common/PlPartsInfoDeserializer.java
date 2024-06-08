@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PlPartsInfoHeader;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PlPartsInfoList;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer<PlPa
     }
 
     @Override
-    protected PlPartsInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PlPartsInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readEntity(bufferReader);
     }
 }

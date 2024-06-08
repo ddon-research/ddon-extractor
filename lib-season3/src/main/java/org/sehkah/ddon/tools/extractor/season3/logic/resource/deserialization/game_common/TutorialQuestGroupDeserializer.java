@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.TutorialQuestGroup;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.TutorialQuestGroupList;
 
+import java.nio.file.Path;
+
 public class TutorialQuestGroupDeserializer extends ClientResourceFileDeserializer<TutorialQuestGroupList> {
     private static TutorialQuestGroup readTutorialQuestGroup(BufferReader bufferReader) {
         return new TutorialQuestGroup(
@@ -16,7 +18,7 @@ public class TutorialQuestGroupDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected TutorialQuestGroupList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected TutorialQuestGroupList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new TutorialQuestGroupList(bufferReader.readArray(TutorialQuestGroupDeserializer::readTutorialQuestGroup));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyEquip;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyEquipList;
 
+import java.nio.file.Path;
+
 public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer<HumanEnemyEquipList> {
 
 
@@ -27,7 +29,7 @@ public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected HumanEnemyEquipList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected HumanEnemyEquipList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new HumanEnemyEquipList(bufferReader.readArray(HumanEnemyEquipDeserializer::readHumanEnemyEquip));
     }
 }

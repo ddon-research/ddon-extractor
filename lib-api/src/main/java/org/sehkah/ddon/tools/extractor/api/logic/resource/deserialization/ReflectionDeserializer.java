@@ -13,6 +13,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.nio.file.Path;
 
 /**
  * TODO Experimental deserializer which should reduce boilerplate at the cost of performance, tested successfully with QMI
@@ -95,7 +96,7 @@ public class ReflectionDeserializer<T extends Resource> implements ClientResourc
     }
 
     @Override
-    public T deserialize(ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    public T deserialize(Path filePath, ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         FileHeader fileHeader = FileHeaderDeserializer.parseClientResourceFile(bufferReader, clientResourceFile.getFileHeader());
         T result = parseEntity(resourceClass, bufferReader);
         if (bufferReader.hasRemaining()) {

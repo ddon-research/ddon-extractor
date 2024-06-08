@@ -9,6 +9,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.Dung
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.DungeonMarkerWarpInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.DungeonMarkerWarpInfoIndex;
 
+import java.nio.file.Path;
+
 public class DungeonMarkerDeserializer extends ClientResourceFileDeserializer<DungeonMarker> {
 
 
@@ -30,7 +32,7 @@ public class DungeonMarkerDeserializer extends ClientResourceFileDeserializer<Du
     }
 
     @Override
-    protected DungeonMarker parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected DungeonMarker parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new DungeonMarker(
                 bufferReader.readUnsignedShort(),
                 bufferReader.readArray(DungeonMarkerDeserializer::readDungeonMarkerWarpInfo),

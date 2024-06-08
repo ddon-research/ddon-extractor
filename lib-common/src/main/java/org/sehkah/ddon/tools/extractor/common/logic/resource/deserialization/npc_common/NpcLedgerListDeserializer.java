@@ -11,6 +11,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.N
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItemInstitutionOpenData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.meta.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<NpcLedgerList> {
@@ -60,7 +61,7 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<Np
     }
 
     @Override
-    protected NpcLedgerList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected NpcLedgerList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new NpcLedgerList(bufferReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItem, lookupUtil));
     }
 }

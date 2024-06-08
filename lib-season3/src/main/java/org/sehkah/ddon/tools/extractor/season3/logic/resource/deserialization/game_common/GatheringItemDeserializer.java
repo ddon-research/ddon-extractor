@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GatheringItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GatheringItemList;
 
+import java.nio.file.Path;
+
 public class GatheringItemDeserializer extends ClientResourceFileDeserializer<GatheringItemList> {
 
 
@@ -18,7 +20,7 @@ public class GatheringItemDeserializer extends ClientResourceFileDeserializer<Ga
     }
 
     @Override
-    protected GatheringItemList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected GatheringItemList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new GatheringItemList(bufferReader.readArray(GatheringItemDeserializer::readGatheringItem));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIKeyConfig.KeyConfigTextTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIKeyConfig.KeyText;
 
+import java.nio.file.Path;
+
 public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializer<KeyConfigTextTable> {
 
 
@@ -20,7 +22,7 @@ public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected KeyConfigTextTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected KeyConfigTextTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new KeyConfigTextTable(bufferReader.readArray(KeyConfigTextTableDeserializer::readKeyText));
     }
 }

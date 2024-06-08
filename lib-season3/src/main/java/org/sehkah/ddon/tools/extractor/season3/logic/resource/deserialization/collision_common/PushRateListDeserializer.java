@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common.PushRate;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common.PushRateList;
 
+import java.nio.file.Path;
+
 public class PushRateListDeserializer extends ClientResourceFileDeserializer<PushRateList> {
 
 
@@ -17,7 +19,7 @@ public class PushRateListDeserializer extends ClientResourceFileDeserializer<Pus
     }
 
     @Override
-    protected PushRateList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PushRateList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PushRateList(bufferReader.readArray(PushRateListDeserializer::readPushRate));
     }
 }

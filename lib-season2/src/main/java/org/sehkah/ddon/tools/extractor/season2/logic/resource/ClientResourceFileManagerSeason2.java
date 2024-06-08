@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcLedgerListDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.Human.BakeJointTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
@@ -16,7 +18,10 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.Hu
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.base.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.character_edit.EditStageParamDeserializer;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.*;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureDataDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureGroupDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureItemDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureLayoutDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.collision_common.PushRateListDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.craft_common.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.effect_common.VfxLightInfluenceListDeserializer;
@@ -69,8 +74,8 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder) {
-        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, GUIMessageResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, this.GUIMessageResourceFile, NpcLedgerListResourceFile);
     }
 
     @Override
@@ -165,14 +170,16 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandWord, new FileHeader(1, 4), new MagicCommandWordTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMapSpotData, new FileHeader("msd\0", 0, 4), new MapSpotDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMapSpotStageList, new FileHeader("msl\0", 0, 4), new MapSpotStageListDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMyRoomActParam, new FileHeader(14, 4), new MyRoomActParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNormalSkillData, new FileHeader(5, 4), new NormalSkillDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcConstItem, new FileHeader(2, 4), new NpcConstItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcCustomSkill, new FileHeader(5, 4), new NpcCustomSkillListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcIsNoSetPS3, new FileHeader(1, 4), new NpcIsNoSetPS3TblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcIsUseJobParamEx, new FileHeader(1, 4), new NpcIsUseJobParamExDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer()));
+
+        NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
+
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcMeetingPlace, new FileHeader(0, 4), new NpcMeetingPlaceDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOcdElectricParam, new FileHeader(1, 4), new OcdElectricParamListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOcdImmuneParamRes, new FileHeader(23, 4), new OcdImmuneParamResTableDeserializer()));

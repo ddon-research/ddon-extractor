@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.MyRoomActParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.MyRoomActParamTbl;
 
+import java.nio.file.Path;
+
 public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserializer<MyRoomActParamTbl> {
 
 
@@ -27,7 +29,7 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
     }
 
     @Override
-    protected MyRoomActParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected MyRoomActParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MyRoomActParamTbl(bufferReader.readArray(MyRoomActParamTblDeserializer::readMyRoomActParam));
     }
 }

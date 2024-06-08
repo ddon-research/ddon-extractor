@@ -18,7 +18,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.character_edit;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.collision_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.craft_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common;
@@ -52,7 +51,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_edit;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.collision_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_common;

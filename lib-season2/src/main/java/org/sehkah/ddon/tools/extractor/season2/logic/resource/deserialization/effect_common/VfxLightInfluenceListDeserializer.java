@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.effect_common.VfxLightInfluence;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.effect_common.VfxLightInfluenceList;
 
+import java.nio.file.Path;
+
 public class VfxLightInfluenceListDeserializer extends ClientResourceFileDeserializer<VfxLightInfluenceList> {
 
 
@@ -24,7 +26,7 @@ public class VfxLightInfluenceListDeserializer extends ClientResourceFileDeseria
     }
 
     @Override
-    protected VfxLightInfluenceList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected VfxLightInfluenceList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new VfxLightInfluenceList(bufferReader.readArray(VfxLightInfluenceListDeserializer::readVfxLightInfluence));
     }
 }

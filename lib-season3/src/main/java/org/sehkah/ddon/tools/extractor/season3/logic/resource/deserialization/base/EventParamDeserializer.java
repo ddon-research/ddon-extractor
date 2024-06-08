@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.EventP
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.EventParamList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.OmList;
 
+import java.nio.file.Path;
+
 public class EventParamDeserializer extends ClientResourceFileDeserializer<EventParamList> {
 
 
@@ -40,7 +42,7 @@ public class EventParamDeserializer extends ClientResourceFileDeserializer<Event
     }
 
     @Override
-    protected EventParamList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EventParamList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EventParamList(bufferReader.readArray(EventParamDeserializer::readEventParam));
     }
 }

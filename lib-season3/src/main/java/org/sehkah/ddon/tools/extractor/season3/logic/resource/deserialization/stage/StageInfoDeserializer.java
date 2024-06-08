@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageResourcePointer;
 
+import java.nio.file.Path;
+
 public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageInfo> {
 
 
@@ -72,7 +74,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
     }
 
     @Override
-    protected StageInfo parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageInfo parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return readStageStageInfo(bufferReader);
     }
 }

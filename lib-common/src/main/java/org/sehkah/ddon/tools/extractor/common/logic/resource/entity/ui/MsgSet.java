@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten;
+package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;

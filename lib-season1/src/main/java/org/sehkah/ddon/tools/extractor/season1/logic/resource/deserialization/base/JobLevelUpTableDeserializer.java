@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.IncreaseParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.JobLevelUpTable;
 
+import java.nio.file.Path;
+
 public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer<JobLevelUpTable> {
     private static IncreaseParam readIncreaseParam(BufferReader bufferReader) {
         return new IncreaseParam(
@@ -19,7 +21,7 @@ public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected JobLevelUpTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected JobLevelUpTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JobLevelUpTable(bufferReader.readArray(JobLevelUpTableDeserializer::readIncreaseParam));
     }
 }

@@ -6,6 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.*;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class AbilityListDeserializer extends ClientResourceFileDeserializer<Abil
     }
 
     @Override
-    protected AbilityList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected AbilityList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long BufferSize = bufferReader.readUnsignedInteger();
         long DataListNum = bufferReader.readUnsignedInteger();
         List<AbilityData> DataList = new ArrayList<>((int) DataListNum);

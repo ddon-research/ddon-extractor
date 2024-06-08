@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.equip.EquipPreset;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.equip.EquipPresetList;
 
+import java.nio.file.Path;
+
 public class EquipPresetDeserializer extends ClientResourceFileDeserializer<EquipPresetList> {
 
 
@@ -15,7 +17,7 @@ public class EquipPresetDeserializer extends ClientResourceFileDeserializer<Equi
     }
 
     @Override
-    protected EquipPresetList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EquipPresetList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EquipPresetList(bufferReader.readArray(EquipPresetDeserializer::readEquipPreset));
     }
 }

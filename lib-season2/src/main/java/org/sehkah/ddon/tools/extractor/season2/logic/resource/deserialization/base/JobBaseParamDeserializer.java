@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.JobBaseParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.JobInfo;
 
+import java.nio.file.Path;
+
 public class JobBaseParamDeserializer extends ClientResourceFileDeserializer<JobBaseParam> {
 
 
@@ -61,7 +63,7 @@ public class JobBaseParamDeserializer extends ClientResourceFileDeserializer<Job
     }
 
     @Override
-    protected JobBaseParam parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected JobBaseParam parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JobBaseParam(bufferReader.readArray(JobBaseParamDeserializer::readJobInfo));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.craft_common.CraftCapPassData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.craft_common.CraftCapPassList;
 
+import java.nio.file.Path;
+
 public class CraftCapPassDeserializer extends ClientResourceFileDeserializer<CraftCapPassList> {
 
 
@@ -22,7 +24,7 @@ public class CraftCapPassDeserializer extends ClientResourceFileDeserializer<Cra
     }
 
     @Override
-    protected CraftCapPassList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftCapPassList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftCapPassList(bufferReader.readArray(CraftCapPassDeserializer::readCraftCapPassData));
     }
 }

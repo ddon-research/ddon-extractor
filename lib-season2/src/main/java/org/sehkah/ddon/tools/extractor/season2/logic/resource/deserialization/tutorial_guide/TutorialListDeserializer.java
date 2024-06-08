@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.tutorial_guide.TutorialList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.tutorial_guide.TutorialNode;
 
+import java.nio.file.Path;
+
 public class TutorialListDeserializer extends ClientResourceFileDeserializer<TutorialList> {
     private static TutorialNode readTutorialNode(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long Id = bufferReader.readUnsignedInteger();
@@ -26,7 +28,7 @@ public class TutorialListDeserializer extends ClientResourceFileDeserializer<Tut
     }
 
     @Override
-    protected TutorialList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected TutorialList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new TutorialList(bufferReader.readArray(br -> readTutorialNode(bufferReader, lookupUtil)));
     }
 }

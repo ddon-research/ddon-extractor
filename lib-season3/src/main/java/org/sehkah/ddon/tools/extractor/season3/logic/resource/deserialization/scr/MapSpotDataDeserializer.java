@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.scr.MapSpotData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.scr.MapSpotDataList;
 
+import java.nio.file.Path;
+
 public class MapSpotDataDeserializer extends ClientResourceFileDeserializer<MapSpotDataList> {
 
 
@@ -21,7 +23,7 @@ public class MapSpotDataDeserializer extends ClientResourceFileDeserializer<MapS
     }
 
     @Override
-    protected MapSpotDataList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected MapSpotDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MapSpotDataList(bufferReader.readArray(MapSpotDataDeserializer::readMapSpotData));
     }
 }

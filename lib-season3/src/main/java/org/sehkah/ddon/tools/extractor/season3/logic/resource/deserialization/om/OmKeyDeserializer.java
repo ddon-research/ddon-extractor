@@ -10,6 +10,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKey;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyOmKey;
 
+import java.nio.file.Path;
+
 public class OmKeyDeserializer extends ClientResourceFileDeserializer<OmKey> {
 
 
@@ -57,7 +59,7 @@ public class OmKeyDeserializer extends ClientResourceFileDeserializer<OmKey> {
     }
 
     @Override
-    protected OmKey parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected OmKey parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         // Account for hacky workaround to make a unique resourceVersion by reading in both the deserializer and class resourceVersion initially
         bufferReader.setPosition(bufferReader.getPosition() - 2);
 

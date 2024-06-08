@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.LandAreaInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.LandAreaInfoList;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandAreaInfoList> {
@@ -23,7 +24,7 @@ public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandAre
     }
 
     @Override
-    protected LandAreaInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected LandAreaInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new LandAreaInfoList(bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo, lookupUtil));
     }
 }

@@ -10,6 +10,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
 import java.math.BigInteger;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -243,7 +244,7 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected StageCustomPartsEx parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageCustomPartsEx parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         StageCustomPartsParam Param = readStageCustomPartsParam(bufferReader);
 
         List<StageCustomPartsExInfoEx> ArrayInfo = new ArrayList<>();

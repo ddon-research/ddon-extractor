@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.Ar
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.ArchiveListNode;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.ArchiveListTag;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer<ArchiveListArray> {
@@ -54,7 +55,7 @@ public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected ArchiveListArray parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected ArchiveListArray parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long MagicNo = bufferReader.readUnsignedInteger();
         long ConvHash = bufferReader.readUnsignedInteger();
         int TagNum = bufferReader.readUnsignedShort();

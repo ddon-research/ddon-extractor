@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIDogmaOrb.GUIDogmaOrb;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIDogmaOrb.GUIDogmaOrbRes;
 
+import java.nio.file.Path;
+
 public class GUIDogmaOrbDeserializer extends ClientResourceFileDeserializer<GUIDogmaOrb> {
 
 
@@ -22,7 +24,7 @@ public class GUIDogmaOrbDeserializer extends ClientResourceFileDeserializer<GUID
     }
 
     @Override
-    protected GUIDogmaOrb parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected GUIDogmaOrb parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new GUIDogmaOrb(bufferReader.readArray(GUIDogmaOrbDeserializer::readGUIDogmaOrbRes));
     }
 }

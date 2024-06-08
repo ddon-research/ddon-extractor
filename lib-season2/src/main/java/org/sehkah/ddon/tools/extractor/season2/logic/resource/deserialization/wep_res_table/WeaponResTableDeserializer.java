@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.wep_res_table.WeaponRes;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.wep_res_table.WeaponResTable;
 
+import java.nio.file.Path;
+
 public class WeaponResTableDeserializer extends ClientResourceFileDeserializer<WeaponResTable> {
 
 
@@ -26,7 +28,7 @@ public class WeaponResTableDeserializer extends ClientResourceFileDeserializer<W
     }
 
     @Override
-    protected WeaponResTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected WeaponResTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new WeaponResTable(bufferReader.readArray(WeaponResTableDeserializer::readWeaponRes));
     }
 }

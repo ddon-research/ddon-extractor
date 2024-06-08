@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParamTbl;
 
+import java.nio.file.Path;
+
 public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializer<MagicChantParamTbl> {
 
 
@@ -62,7 +64,7 @@ public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializ
     }
 
     @Override
-    protected MagicChantParamTbl parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected MagicChantParamTbl parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new MagicChantParamTbl(bufferReader.readArray(MagicChantParamTblDeserializer::readMagicChantParam));
     }
 }

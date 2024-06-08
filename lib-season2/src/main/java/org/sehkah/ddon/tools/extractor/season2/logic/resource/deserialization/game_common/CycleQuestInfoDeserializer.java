@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CycleQuestInfoList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CycleQuestSituationInfo;
 
+import java.nio.file.Path;
+
 public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<CycleQuestInfoList> {
 
 
@@ -35,7 +37,7 @@ public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<C
     }
 
     @Override
-    protected CycleQuestInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CycleQuestInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CycleQuestInfoList(bufferReader.readArray(CycleQuestInfoDeserializer::readCycleQuestInfo));
     }
 }

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageCustom;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageCustomArea;
 
+import java.nio.file.Path;
+
 public class StageCustomDeserializer extends ClientResourceFileDeserializer<StageCustom> {
 
 
@@ -19,7 +21,7 @@ public class StageCustomDeserializer extends ClientResourceFileDeserializer<Stag
     }
 
     @Override
-    protected StageCustom parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageCustom parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageCustom(
                 bufferReader.readNullTerminatedString(),
                 bufferReader.readNullTerminatedString(),

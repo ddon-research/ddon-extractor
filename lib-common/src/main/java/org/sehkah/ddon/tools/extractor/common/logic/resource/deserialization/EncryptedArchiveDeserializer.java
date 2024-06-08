@@ -12,6 +12,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ResourceInfo;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected Archive parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected Archive parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<ResourceInfo> resourceInfos = bufferReader.readArray(BufferReader::readUnsignedShort, EncryptedArchiveDeserializer::readResourceInfo);
 
         Map<String, byte[]> resourceFileMap = HashMap.newHashMap(resourceInfos.size());

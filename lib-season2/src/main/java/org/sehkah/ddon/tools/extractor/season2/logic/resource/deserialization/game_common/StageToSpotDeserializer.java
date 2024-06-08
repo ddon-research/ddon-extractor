@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.StageToSpot;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.StageToSpotList;
 
+import java.nio.file.Path;
+
 public class StageToSpotDeserializer extends ClientResourceFileDeserializer<StageToSpotList> {
 
 
@@ -19,7 +21,7 @@ public class StageToSpotDeserializer extends ClientResourceFileDeserializer<Stag
     }
 
     @Override
-    protected StageToSpotList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected StageToSpotList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new StageToSpotList(bufferReader.readArray(StageToSpotDeserializer::readStageToSpot));
     }
 }

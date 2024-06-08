@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmDamageDirInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmDamageDirInfoList;
 
+import java.nio.file.Path;
+
 public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer<EmDamageDirInfoList> {
 
 
@@ -24,7 +26,7 @@ public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected EmDamageDirInfoList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected EmDamageDirInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new EmDamageDirInfoList(bufferReader.readArray(EmDamageDirInfoDeserializer::readEmDamageDirInfo));
     }
 }

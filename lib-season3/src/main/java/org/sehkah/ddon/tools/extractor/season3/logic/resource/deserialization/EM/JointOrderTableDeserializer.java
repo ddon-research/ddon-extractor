@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.JointOrder;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.JointOrderTable;
 
+import java.nio.file.Path;
+
 public class JointOrderTableDeserializer extends ClientResourceFileDeserializer<JointOrderTable> {
 
 
@@ -17,7 +19,7 @@ public class JointOrderTableDeserializer extends ClientResourceFileDeserializer<
     }
 
     @Override
-    protected JointOrderTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected JointOrderTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new JointOrderTable(bufferReader.readArray(JointOrderTableDeserializer::readJointOrder));
     }
 }

@@ -8,6 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.LayoutSetInfoType;
 
+import java.nio.file.Path;
+
 
 @Slf4j
 public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
@@ -683,7 +685,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
     }
 
     @Override
-    protected Layout parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new Layout(
                 bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
                 bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo)

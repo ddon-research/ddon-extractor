@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.PrologueHmStatus;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.PrologueHmStatusList;
 
+import java.nio.file.Path;
+
 public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer<PrologueHmStatusList> {
 
 
@@ -33,7 +35,7 @@ public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer
     }
 
     @Override
-    protected PrologueHmStatusList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected PrologueHmStatusList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new PrologueHmStatusList(bufferReader.readArray(PrologueHmStatusDeserializer::readPrologueHmStatus));
     }
 }

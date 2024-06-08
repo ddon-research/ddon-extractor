@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_guide.TutorialDialogMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_guide.TutorialDialogMessageDialogPage;
 
+import java.nio.file.Path;
 import java.util.List;
 
 public class TutorialDialogMessageDeserializer extends ClientResourceFileDeserializer<TutorialDialogMessage> {
@@ -20,7 +21,7 @@ public class TutorialDialogMessageDeserializer extends ClientResourceFileDeseria
 
 
     @Override
-    protected TutorialDialogMessage parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected TutorialDialogMessage parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long TitleGmdIdx = bufferReader.readUnsignedInteger();
         String TutorialTitleName = null;
         if (lookupUtil != null) {

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.BitData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.BitTable;
 
+import java.nio.file.Path;
+
 public class BitTableDeserializer extends ClientResourceFileDeserializer<BitTable> {
 
 
@@ -18,7 +20,7 @@ public class BitTableDeserializer extends ClientResourceFileDeserializer<BitTabl
     }
 
     @Override
-    protected BitTable parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected BitTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new BitTable(bufferReader.readArray(BitTableDeserializer::readBitData));
     }
 }

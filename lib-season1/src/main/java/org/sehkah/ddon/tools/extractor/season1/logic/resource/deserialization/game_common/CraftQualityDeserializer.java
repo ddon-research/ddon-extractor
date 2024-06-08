@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftQualityData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftQualityList;
 
+import java.nio.file.Path;
+
 public class CraftQualityDeserializer extends ClientResourceFileDeserializer<CraftQualityList> {
 
 
@@ -20,7 +22,7 @@ public class CraftQualityDeserializer extends ClientResourceFileDeserializer<Cra
     }
 
     @Override
-    protected CraftQualityList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+    protected CraftQualityList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new CraftQualityList(
                 bufferReader.readArray(CraftQualityDeserializer::readCraftQualityData)
         );
