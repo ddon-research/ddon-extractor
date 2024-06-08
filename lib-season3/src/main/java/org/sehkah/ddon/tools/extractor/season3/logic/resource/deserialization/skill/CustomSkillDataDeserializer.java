@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.Custo
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.CustomSkillDataList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.SkillLevelData;
 
-public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer {
+public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<CustomSkillDataList> {
 
 
     private static SkillLevelData readSkillLevelData(BufferReader bufferReader) {

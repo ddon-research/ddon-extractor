@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsUseJobParamEx;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsUseJobParamExList;
 
-public class NpcIsUseJobParamExDeserializer extends ClientResourceFileDeserializer {
+public class NpcIsUseJobParamExDeserializer extends ClientResourceFileDeserializer<NpcIsUseJobParamExList> {
 
 
     private static NpcIsUseJobParamEx readNpcIsUseJobParamEx(BufferReader bufferReader) {

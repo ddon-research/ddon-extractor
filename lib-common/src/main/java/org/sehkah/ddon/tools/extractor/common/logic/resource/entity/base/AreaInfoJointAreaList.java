@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class AreaInfoJointAreaList extends TopLevelClientResource {
+public class AreaInfoJointAreaList extends Resource {
     private List<AreaInfoJointArea> AreaInfoJointAreaList;
 }

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.JumpParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.JumpParamTbl;
 
-public class JumpParamTblDeserializer extends ClientResourceFileDeserializer {
+public class JumpParamTblDeserializer extends ClientResourceFileDeserializer<JumpParamTbl> {
 
 
     private static JumpParam readJumpParam(BufferReader bufferReader) {

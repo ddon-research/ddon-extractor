@@ -1,6 +1,6 @@
 package org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization;
 
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -12,6 +12,6 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
  * TODO #2 Replace a majority of manually crafted deserializer logic once everything is stable and avoid record classes
  */
 
-public interface ClientResourceDeserializer<T extends TopLevelClientResource> {
+public interface ClientResourceDeserializer<T extends Resource> {
     T deserialize(ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil);
 }

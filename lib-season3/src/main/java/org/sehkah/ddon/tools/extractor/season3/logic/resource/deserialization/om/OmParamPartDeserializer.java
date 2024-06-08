@@ -6,7 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmParamPart;
 
-public class OmParamPartDeserializer extends ClientResourceFileDeserializer {
+public class OmParamPartDeserializer extends ClientResourceFileDeserializer<OmParamPart> {
 
 
     private static OmParamPart readOmParamPart(BufferReader bufferReader) {

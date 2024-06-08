@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.b
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
@@ -103,7 +103,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long NameId = bufferReader.readUnsignedInteger();
         String ItemName = null;
         if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessage(ResourceFileLookupType.ITEM_NAME.getFilePath(), NameId);
+            ItemName = lookupUtil.getMessage(GUIMessageLookupTable.ITEM_NAME.getFilePath(), NameId);
         }
         int Category = bufferReader.readUnsignedShort();
         int SubCategory = bufferReader.readUnsignedShort();

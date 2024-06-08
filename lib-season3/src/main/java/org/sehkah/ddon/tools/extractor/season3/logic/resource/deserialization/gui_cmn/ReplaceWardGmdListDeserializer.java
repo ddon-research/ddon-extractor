@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.ReplaceWardGmd;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.ReplaceWardGmdList;
 
-public class ReplaceWardGmdListDeserializer extends ClientResourceFileDeserializer {
+public class ReplaceWardGmdListDeserializer extends ClientResourceFileDeserializer<ReplaceWardGmdList> {
 
 
     private static ReplaceWardGmd readReplaceWardGmd(BufferReader bufferReader) {

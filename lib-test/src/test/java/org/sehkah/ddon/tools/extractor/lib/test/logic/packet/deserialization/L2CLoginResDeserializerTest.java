@@ -1,12 +1,12 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.packet.deserialization;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.packet.deserialization.PacketBufferDeserializer;
+import org.sehkah.ddon.tools.extractor.api.logic.packet.deserialization.PacketManager;
+import org.sehkah.ddon.tools.extractor.api.packet.Packet;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.PacketManagerSeason3;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.entity.l2c.L2CLoginRes;
 

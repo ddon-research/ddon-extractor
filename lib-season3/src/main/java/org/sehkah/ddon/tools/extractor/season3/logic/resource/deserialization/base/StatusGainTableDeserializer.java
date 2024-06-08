@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StatusGain;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StatusGainTable;
 
-public class StatusGainTableDeserializer extends ClientResourceFileDeserializer {
+public class StatusGainTableDeserializer extends ClientResourceFileDeserializer<StatusGainTable> {
 
 
     private static StatusGain readStatusGain(BufferReader bufferReader) {

@@ -2,9 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.ResourceMetadataLookupUtilSeason2;
 
 @ToString
 @EqualsAndHashCode
@@ -20,11 +18,4 @@ public class FurnitureGroup {
     @MetaInformation
     private String FurnitureGroupName;
     private int SortNo;
-
-    public FurnitureGroup(long ID, long cameraNo, long gmdIdx, int sortNo) {
-        this(ID,
-                cameraNo,
-                gmdIdx, ResourceMetadataLookupUtilSeason2.getMessage(ResourceFileLookupType.FURNITURE_GROUP_NAME, gmdIdx),
-                sortNo);
-    }
 }

@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.Stamina
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.StaminaDecParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.job.StaminaDecTbl;
 
-public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer {
+public class StaminaDecTblDeserializer extends ClientResourceFileDeserializer<StaminaDecTbl> {
 
 
     private static StaminaDecParam readStaminaDecParam(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.BakeJoint;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.Human.BakeJointTbl;
 
-public class BakeJointTblDeserializer extends ClientResourceFileDeserializer {
+public class BakeJointTblDeserializer extends ClientResourceFileDeserializer<BakeJointTbl> {
 
 
     private static BakeJoint readBakeJoint(BufferReader bufferReader) {

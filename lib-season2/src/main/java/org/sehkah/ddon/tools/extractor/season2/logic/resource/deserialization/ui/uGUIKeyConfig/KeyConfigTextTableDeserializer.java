@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIKeyConfig.KeyConfigTextTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIKeyConfig.KeyText;
 
-public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializer {
+public class KeyConfigTextTableDeserializer extends ClientResourceFileDeserializer<KeyConfigTextTable> {
 
 
     private static KeyText readKeyText(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AdjLimitParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AdjLimitParamTbl;
 
-public class AdjLimitParamTblDeserializer extends ClientResourceFileDeserializer {
+public class AdjLimitParamTblDeserializer extends ClientResourceFileDeserializer<AdjLimitParamTbl> {
 
 
     private static AdjLimitParam readAdjLimitParam(BufferReader bufferReader) {

@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKey;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om.OmKeyOmKey;
 
-public class OmKeyDeserializer extends ClientResourceFileDeserializer {
+public class OmKeyDeserializer extends ClientResourceFileDeserializer<OmKey> {
 
 
     private static OmKeyItem readOmKeyItem(BufferReader bufferReader) {

@@ -6,7 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.*;
 
-public class CharParamEnemyTableDeserializer extends ClientResourceFileDeserializer {
+public class CharParamEnemyTableDeserializer extends ClientResourceFileDeserializer<CharParamEnemyTable> {
 
 
     private static CharParamEnemyGuardCounter readCharParamEnemyGuardCounter(BufferReader bufferReader) {

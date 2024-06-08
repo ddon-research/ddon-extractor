@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.JointInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.JointInfoTable;
 
-public class JointInfoTableDeserializer extends ClientResourceFileDeserializer {
+public class JointInfoTableDeserializer extends ClientResourceFileDeserializer<JointInfoTable> {
 
 
     private static JointInfo readJointInfo(BufferReader bufferReader) {

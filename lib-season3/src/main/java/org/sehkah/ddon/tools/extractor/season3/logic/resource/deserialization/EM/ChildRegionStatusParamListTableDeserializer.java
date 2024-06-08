@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.ChildReg
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.ChildRegionStatusParamListTable;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.ChildRegionStatusParamTable;
 
-public class ChildRegionStatusParamListTableDeserializer extends ClientResourceFileDeserializer {
+public class ChildRegionStatusParamListTableDeserializer extends ClientResourceFileDeserializer<ChildRegionStatusParamListTable> {
 
 
     private static ChildRegionStatusParamTable readChildRegionStatusParamTable(BufferReader bufferReader) {

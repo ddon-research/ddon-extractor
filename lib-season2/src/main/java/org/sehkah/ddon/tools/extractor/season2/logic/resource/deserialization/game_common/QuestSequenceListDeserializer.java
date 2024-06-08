@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.QuestSequence;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.QuestSequenceList;
 
-public class QuestSequenceListDeserializer extends ClientResourceFileDeserializer {
+public class QuestSequenceListDeserializer extends ClientResourceFileDeserializer<QuestSequenceList> {
 
 
     private static QuestSequence readQuestSequence(BufferReader bufferReader) {

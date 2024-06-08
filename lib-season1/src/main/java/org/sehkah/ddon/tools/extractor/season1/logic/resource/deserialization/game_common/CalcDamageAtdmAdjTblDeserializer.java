@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CalcDamageAtdmAdj;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CalcDamageAtdmAdjTbl;
 
-public class CalcDamageAtdmAdjTblDeserializer extends ClientResourceFileDeserializer {
+public class CalcDamageAtdmAdjTblDeserializer extends ClientResourceFileDeserializer<CalcDamageAtdmAdjTbl> {
 
 
     private static CalcDamageAtdmAdj readCalcDamageAtdmAdj(BufferReader bufferReader) {

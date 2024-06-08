@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIArea
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.SpotEnemyData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.SpotItemData;
 
-public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer {
+public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDetailDataList> {
 
 
     private static SpotEnemyData readSpotEnemyData(BufferReader bufferReader) {

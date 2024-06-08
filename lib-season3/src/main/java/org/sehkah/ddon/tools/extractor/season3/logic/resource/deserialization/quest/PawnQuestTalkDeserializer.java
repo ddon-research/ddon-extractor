@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.PawnQuestTalk;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.TalkData;
 
-public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer {
+public class PawnQuestTalkDeserializer extends ClientResourceFileDeserializer<PawnQuestTalk> {
 
 
     private static TalkData readTalkData(BufferReader bufferReader) {

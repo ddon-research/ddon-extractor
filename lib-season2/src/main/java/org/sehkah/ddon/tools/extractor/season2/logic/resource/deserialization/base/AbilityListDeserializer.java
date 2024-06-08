@@ -12,7 +12,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.Abilit
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbilityListDeserializer extends ClientResourceFileDeserializer {
+public class AbilityListDeserializer extends ClientResourceFileDeserializer<AbilityList> {
 
 
     private static AbilityParamData readAbilityParamData(BufferReader bufferReader) {

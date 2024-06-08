@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.equip.EquipPreset;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.equip.EquipPresetList;
 
-public class EquipPresetDeserializer extends ClientResourceFileDeserializer {
+public class EquipPresetDeserializer extends ClientResourceFileDeserializer<EquipPresetList> {
 
 
     private static EquipPreset readEquipPreset(BufferReader bufferReader) {

@@ -5,7 +5,7 @@
     <option name="PROGRAM_PARAMETERS" value="-o -m -f json D:\DDON_03040008\nativePC\rom\ui\uGUIDogmaOrb" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />
+        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyRea
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyReactResEx;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyReactResExTable;
 
-public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserializer {
+public class EnemyReactResExTableDeserializer extends ClientResourceFileDeserializer<EnemyReactResExTable> {
 
 
     private static EnemyReactRes readEnemyReactRes(BufferReader bufferReader) {

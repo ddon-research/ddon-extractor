@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.StageResourcePointer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.WeatherStageInfo;
 
-public class WeatherStageInfoDeserializer extends ClientResourceFileDeserializer {
+public class WeatherStageInfoDeserializer extends ClientResourceFileDeserializer<WeatherStageInfo> {
 
 
     private static StageResourcePointer readTypedStageResourcePointer(BufferReader bufferReader) {

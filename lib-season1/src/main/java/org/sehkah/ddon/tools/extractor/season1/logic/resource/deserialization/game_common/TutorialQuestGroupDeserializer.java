@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.TutorialQuestGroup;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.TutorialQuestGroupList;
 
-public class TutorialQuestGroupDeserializer extends ClientResourceFileDeserializer {
+public class TutorialQuestGroupDeserializer extends ClientResourceFileDeserializer<TutorialQuestGroupList> {
 
 
     private static TutorialQuestGroup readTutorialQuestGroup(BufferReader bufferReader) {

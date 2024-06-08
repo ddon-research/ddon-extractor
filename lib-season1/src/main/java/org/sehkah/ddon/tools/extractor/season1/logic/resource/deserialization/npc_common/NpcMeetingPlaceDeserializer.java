@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcMeetingPlace;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcMeetingPlaceList;
 
-public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer {
+public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<NpcMeetingPlaceList> {
 
 
     private static NpcMeetingPlace readNpcMeetingPlace(BufferReader bufferReader) {

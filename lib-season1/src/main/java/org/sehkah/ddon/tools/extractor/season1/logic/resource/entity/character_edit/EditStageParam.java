@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.character_
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class EditStageParam extends TopLevelClientResource {
+public class EditStageParam extends Resource {
     private List<EditStageParamInfo> ArrayInfo;
     private List<EditStageParamList> ArrayList;
 }

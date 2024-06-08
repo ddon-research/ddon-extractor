@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer {
+public class PlayerExpTableDeserializer extends ClientResourceFileDeserializer<PlayerExpTableList> {
 
 
     private static PlayerExpTable readPlayerExpTable(BufferReader bufferReader, int level) {

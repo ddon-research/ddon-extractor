@@ -2,11 +2,9 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common.GUIMessageDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 
 import java.nio.file.Path;
 

@@ -8,21 +8,21 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformationIntrospector;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
 
 // TODO: Create factory method for serializers: Client, Generic, Packet
-public class ClientStringSerializer implements Serializer<TopLevelClientResource> {
+public class ClientStringSerializer implements Serializer<Resource> {
     private final ObjectMapper objectMapper;
 
     private ClientStringSerializer(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
-    public static Serializer<TopLevelClientResource> get(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    public static Serializer<Resource> get(SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         ObjectMapper objectMapper = initializeMapper(preferredSerializationType, shouldSerializeMetaInformation);
         return new ClientStringSerializer(objectMapper);
     }
@@ -58,7 +58,7 @@ public class ClientStringSerializer implements Serializer<TopLevelClientResource
     }
 
     @Override
-    public String serialize(TopLevelClientResource deserialized) {
+    public String serialize(Resource deserialized) {
         try {
             return objectMapper.writeValueAsString(deserialized);
         } catch (JsonProcessingException e) {
@@ -67,9 +67,9 @@ public class ClientStringSerializer implements Serializer<TopLevelClientResource
     }
 
     @Override
-    public TopLevelClientResource deserialize(String serialized) {
+    public Resource deserialize(String serialized) {
         try {
-            return objectMapper.readValue(serialized, TopLevelClientResource.class);
+            return objectMapper.readValue(serialized, Resource.class);
         } catch (JsonProcessingException e) {
             throw new SerializerException(e);
         }

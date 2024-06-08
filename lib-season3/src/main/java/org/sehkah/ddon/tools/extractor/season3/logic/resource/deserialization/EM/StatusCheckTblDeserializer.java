@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.StatusCheck;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.StatusCheckTbl;
 
-public class StatusCheckTblDeserializer extends ClientResourceFileDeserializer {
+public class StatusCheckTblDeserializer extends ClientResourceFileDeserializer<StatusCheckTbl> {
 
 
     private static StatusCheck readStatusCheck(BufferReader bufferReader) {

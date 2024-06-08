@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIArisenCard.AchievementHeader;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIArisenCard.AchievementHeaderData;
 
-public class AchievementHeaderDeserializer extends ClientResourceFileDeserializer {
+public class AchievementHeaderDeserializer extends ClientResourceFileDeserializer<AchievementHeader> {
 
 
     private static AchievementHeaderData readAchievementHeaderData(BufferReader bufferReader) {

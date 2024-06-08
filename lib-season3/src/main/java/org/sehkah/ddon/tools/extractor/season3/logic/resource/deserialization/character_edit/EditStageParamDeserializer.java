@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.character_e
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.character_edit.EditStageParamInfoWeatherData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.character_edit.EditStageParamList;
 
-public class EditStageParamDeserializer extends ClientResourceFileDeserializer {
+public class EditStageParamDeserializer extends ClientResourceFileDeserializer<EditStageParam> {
 
 
     private static EditStageParamList readEditStageParamList(BufferReader bufferReader) {

@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.om;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmBlinkType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmLotSetType;
@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class OmParamPart extends TopLevelClientResource {
+public class OmParamPart extends Resource {
     private int OmID;
     private BigInteger ResPathModel;
     private BigInteger ResPathObjCollision;

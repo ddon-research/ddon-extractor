@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnAutoMotionNode;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.AIPawnAutoMotionTbl;
 
-public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeserializer {
+public class AIPawnAutoMotionTblDeserializer extends ClientResourceFileDeserializer<AIPawnAutoMotionTbl> {
 
 
     private static AIPawnAutoMotionNode readAIPawnAutoMotionNode(BufferReader bufferReader) {

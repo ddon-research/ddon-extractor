@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PrologueHmStatus;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.PrologueHmStatusList;
 
-public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer {
+public class PrologueHmStatusDeserializer extends ClientResourceFileDeserializer<PrologueHmStatusList> {
 
 
     private static PrologueHmStatus readPrologueHmStatus(BufferReader bufferReader) {

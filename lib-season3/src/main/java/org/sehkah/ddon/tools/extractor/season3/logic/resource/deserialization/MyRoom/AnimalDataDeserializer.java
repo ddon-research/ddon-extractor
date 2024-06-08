@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.AnimalData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.AnimalDataList;
 
-public class AnimalDataDeserializer extends ClientResourceFileDeserializer {
+public class AnimalDataDeserializer extends ClientResourceFileDeserializer<AnimalDataList> {
 
 
     private static AnimalData readAnimalData(BufferReader bufferReader) {

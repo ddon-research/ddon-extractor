@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmDamageDirInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.EmDamageDirInfoList;
 
-public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer {
+public class EmDamageDirInfoDeserializer extends ClientResourceFileDeserializer<EmDamageDirInfoList> {
 
 
     private static EmDamageDirInfo readEmDamageDirInfo(BufferReader bufferReader) {

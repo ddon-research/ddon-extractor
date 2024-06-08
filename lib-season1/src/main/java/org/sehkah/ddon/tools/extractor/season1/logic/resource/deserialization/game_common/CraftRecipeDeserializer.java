@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftRecipeList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftRecipeMaterialData;
 
-public class CraftRecipeDeserializer extends ClientResourceFileDeserializer {
+public class CraftRecipeDeserializer extends ClientResourceFileDeserializer<CraftRecipeList> {
 
 
     private static CraftRecipeMaterialData readCraftRecipeMaterialData(BufferReader bufferReader) {

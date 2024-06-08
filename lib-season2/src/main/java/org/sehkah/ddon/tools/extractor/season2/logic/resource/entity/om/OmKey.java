@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.om;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class OmKey extends TopLevelClientResource {
+public class OmKey extends Resource {
     private List<OmKeyOmKey> OmKeyList;
     private List<OmKeyItem> ItemList;
 }

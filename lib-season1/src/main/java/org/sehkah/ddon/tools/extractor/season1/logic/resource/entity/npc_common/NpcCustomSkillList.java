@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class NpcCustomSkillList extends TopLevelClientResource {
+public class NpcCustomSkillList extends Resource {
     private List<NpcCustomSkill> NpcIsUseJobParamExList;
 }

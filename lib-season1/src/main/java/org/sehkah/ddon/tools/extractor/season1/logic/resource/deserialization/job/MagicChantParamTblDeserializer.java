@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job.MagicChantParamTbl;
 
-public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializer {
+public class MagicChantParamTblDeserializer extends ClientResourceFileDeserializer<MagicChantParamTbl> {
 
 
     private static MagicChantParam readMagicChantParam(BufferReader bufferReader) {

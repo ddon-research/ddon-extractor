@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.OcdElectricParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.OcdElectricParamList;
 
-public class OcdElectricParamListDeserializer extends ClientResourceFileDeserializer {
+public class OcdElectricParamListDeserializer extends ClientResourceFileDeserializer<OcdElectricParamList> {
 
 
     private static OcdElectricParam readOcdElectricParam(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.BitData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.BitTable;
 
-public class BitTableDeserializer extends ClientResourceFileDeserializer {
+public class BitTableDeserializer extends ClientResourceFileDeserializer<BitTable> {
 
 
     private static BitData readBitData(BufferReader bufferReader) {

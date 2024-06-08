@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.PartsCtrlData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.PartsCtrlTable;
 
-public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer {
+public class PartsCtrlTableDeserializer extends ClientResourceFileDeserializer<PartsCtrlTable> {
 
 
     private static PartsCtrlData readPartsCtrlData(BufferReader bufferReader) {

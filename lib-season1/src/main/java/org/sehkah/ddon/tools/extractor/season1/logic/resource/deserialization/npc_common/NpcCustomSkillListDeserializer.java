@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcCustomSkill;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common.NpcCustomSkillList;
 
-public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializer {
+public class NpcCustomSkillListDeserializer extends ClientResourceFileDeserializer<NpcCustomSkillList> {
 
 
     private static NpcCustomSkill readNpcCustomSkill(BufferReader bufferReader) {

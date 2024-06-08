@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageResourcePointer;
 
-public class StageInfoDeserializer extends ClientResourceFileDeserializer {
+public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageInfo> {
 
 
     private static StageResourcePointer readStageResourcePointer(BufferReader bufferReader) {

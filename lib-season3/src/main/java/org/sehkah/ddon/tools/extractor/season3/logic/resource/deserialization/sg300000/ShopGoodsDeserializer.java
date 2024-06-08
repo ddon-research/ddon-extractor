@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.sg300000.Sh
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.sg300000.ShopGoodsDate;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.sg300000.ShopGoodsList;
 
-public class ShopGoodsDeserializer extends ClientResourceFileDeserializer {
+public class ShopGoodsDeserializer extends ClientResourceFileDeserializer<ShopGoodsList> {
 
 
     private static ShopGoodsDate readShopGoodsDate(BufferReader bufferReader) {

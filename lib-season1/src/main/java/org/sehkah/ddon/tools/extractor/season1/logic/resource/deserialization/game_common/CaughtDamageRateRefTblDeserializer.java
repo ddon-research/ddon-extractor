@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CaughtDamageRateRef;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CaughtDamageRateRefTbl;
 
-public class CaughtDamageRateRefTblDeserializer extends ClientResourceFileDeserializer {
+public class CaughtDamageRateRefTblDeserializer extends ClientResourceFileDeserializer<CaughtDamageRateRefTbl> {
 
 
     private static CaughtDamageRateRef readCaughtDamageRateRef(BufferReader bufferReader) {

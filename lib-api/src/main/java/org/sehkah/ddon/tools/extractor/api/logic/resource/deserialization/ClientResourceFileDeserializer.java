@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization;
 
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.FileParsingIncompleteException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public abstract class ClientResourceFileDeserializer<T extends TopLevelClientResource> implements ClientResourceDeserializer<T> {
+public abstract class ClientResourceFileDeserializer<T extends Resource> implements ClientResourceDeserializer<T> {
     public static Set<FileHeader> identifyFileHeaderCandidates(BufferReader bufferReader) {
         // case 1: 4 + 4
         String magicStringBeforeFourByteVersion = bufferReader.readString(4);

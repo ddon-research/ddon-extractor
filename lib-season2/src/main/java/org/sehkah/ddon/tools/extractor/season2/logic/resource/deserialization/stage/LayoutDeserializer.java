@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.
 
 
 @Slf4j
-public class LayoutDeserializer extends ClientResourceFileDeserializer {
+public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
 
     private static SetInfoCoord readSetInfoCoord(BufferReader bufferReader) {

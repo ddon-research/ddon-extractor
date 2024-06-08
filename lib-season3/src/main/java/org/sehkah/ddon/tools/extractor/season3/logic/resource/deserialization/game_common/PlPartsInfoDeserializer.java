@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer {
+public class PlPartsInfoDeserializer extends ClientResourceFileDeserializer<PlPartsInfoList> {
 
 
     private static PlPartsInfoList readEntity(BufferReader bufferReader) {

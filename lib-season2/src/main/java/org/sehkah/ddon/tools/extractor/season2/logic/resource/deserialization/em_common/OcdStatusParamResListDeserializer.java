@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.OcdStatusParamRes;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.OcdStatusParamResList;
 
-public class OcdStatusParamResListDeserializer extends ClientResourceFileDeserializer {
+public class OcdStatusParamResListDeserializer extends ClientResourceFileDeserializer<OcdStatusParamResList> {
 
 
     private static OcdStatusParamRes readOcdStatusParamRes(BufferReader bufferReader) {

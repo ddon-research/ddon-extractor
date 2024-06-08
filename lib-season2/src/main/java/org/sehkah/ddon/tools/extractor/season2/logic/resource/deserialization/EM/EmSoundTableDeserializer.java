@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmSound;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmSoundTable;
 
-public class EmSoundTableDeserializer extends ClientResourceFileDeserializer {
+public class EmSoundTableDeserializer extends ClientResourceFileDeserializer<EmSoundTable> {
 
 
     private static EmSound readEmSoundData(BufferReader bufferReader) {

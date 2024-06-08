@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmLvUpParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmLvUpParamList;
 
-public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer {
+public class EmLvUpParamDeserializer extends ClientResourceFileDeserializer<EmLvUpParamList> {
 
 
     private static EmLvUpParam readEmLvUpParam(BufferReader bufferReader) {

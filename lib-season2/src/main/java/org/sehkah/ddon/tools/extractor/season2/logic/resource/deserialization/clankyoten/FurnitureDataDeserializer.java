@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureDataList;
 
-public class FurnitureDataDeserializer extends ClientResourceFileDeserializer {
+public class FurnitureDataDeserializer extends ClientResourceFileDeserializer<FurnitureDataList> {
 
 
     private static FurnitureData readFurnitureData(BufferReader bufferReader) {

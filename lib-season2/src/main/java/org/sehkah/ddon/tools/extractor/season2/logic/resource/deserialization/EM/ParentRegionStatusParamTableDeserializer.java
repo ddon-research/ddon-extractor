@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.ParentRe
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.RegionBreakInfoTable;
 
-public class ParentRegionStatusParamTableDeserializer extends ClientResourceFileDeserializer {
+public class ParentRegionStatusParamTableDeserializer extends ClientResourceFileDeserializer<ParentRegionStatusParamTable> {
 
 
     private static RegionBreakInfo readRegionBreakInfo(BufferReader bufferReader) {

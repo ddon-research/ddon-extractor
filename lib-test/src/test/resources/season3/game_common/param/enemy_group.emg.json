@@ -1,5 +1,5 @@
 {
-  "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroupList",
+  "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList",
   "FileHeader": {
     "MagicBytesLength": 0,
     "VersionNumber": 1,
@@ -7,7 +7,7 @@
   },
   "EnemyGroupList": [
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 1,
       "MsgIndex": 0,
       "EnemyGroupName": "Goblin",
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 2,
       "MsgIndex": 1,
       "EnemyGroupName": "Goblin Fighter",
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 3,
       "MsgIndex": 2,
       "EnemyGroupName": "Shield Goblin",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 4,
       "MsgIndex": 3,
       "EnemyGroupName": "Sling Goblin",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 5,
       "MsgIndex": 4,
       "EnemyGroupName": "Goblin Leader",
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 6,
       "MsgIndex": 5,
       "EnemyGroupName": "Hobgoblin",
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 7,
       "MsgIndex": 6,
       "EnemyGroupName": "Hobgoblin Fighter",
@@ -81,7 +81,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 8,
       "MsgIndex": 7,
       "EnemyGroupName": "Sling Hobgoblin",
@@ -91,7 +91,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 9,
       "MsgIndex": 8,
       "EnemyGroupName": "Hobgoblin Leader",
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 10,
       "MsgIndex": 9,
       "EnemyGroupName": "Gigant Machina",
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 11,
       "MsgIndex": 10,
       "EnemyGroupName": "Mogok",
@@ -118,7 +118,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 12,
       "MsgIndex": 11,
       "EnemyGroupName": "General Orc",
@@ -127,7 +127,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 13,
       "MsgIndex": 12,
       "EnemyGroupName": "Captain Orc",
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 14,
       "MsgIndex": 13,
       "EnemyGroupName": "Orc Battler",
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 15,
       "MsgIndex": 14,
       "EnemyGroupName": "Orc Soldier",
@@ -159,7 +159,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 16,
       "MsgIndex": 15,
       "EnemyGroupName": "Slime",
@@ -168,7 +168,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 17,
       "MsgIndex": 16,
       "EnemyGroupName": "Deep Slime",
@@ -177,7 +177,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 18,
       "MsgIndex": 17,
       "EnemyGroupName": "Blob",
@@ -186,7 +186,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 19,
       "MsgIndex": 18,
       "EnemyGroupName": "Glutton Ooze",
@@ -195,7 +195,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 20,
       "MsgIndex": 19,
       "EnemyGroupName": "Ooze",
@@ -204,7 +204,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 21,
       "MsgIndex": 20,
       "EnemyGroupName": "Mist Wyrm",
@@ -213,7 +213,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 22,
       "MsgIndex": 21,
       "EnemyGroupName": "Mist Drake",
@@ -222,7 +222,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 23,
       "MsgIndex": 22,
       "EnemyGroupName": "Behemoth",
@@ -232,7 +232,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 24,
       "MsgIndex": 23,
       "EnemyGroupName": "Angules",
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 25,
       "MsgIndex": 24,
       "EnemyGroupName": "Lindwurm",
@@ -252,7 +252,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 26,
       "MsgIndex": 25,
       "EnemyGroupName": "Wyrm",
@@ -262,7 +262,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 27,
       "MsgIndex": 26,
       "EnemyGroupName": "Drake",
@@ -272,7 +272,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 180,
       "MsgIndex": 27,
       "EnemyGroupName": "Damned Wolf",
@@ -281,7 +281,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 28,
       "MsgIndex": 28,
       "EnemyGroupName": "Alchemized Wolf",
@@ -290,7 +290,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 29,
       "MsgIndex": 29,
       "EnemyGroupName": "Shadow Wolf",
@@ -299,7 +299,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 30,
       "MsgIndex": 30,
       "EnemyGroupName": "Grimwarg",
@@ -308,7 +308,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 31,
       "MsgIndex": 31,
       "EnemyGroupName": "Direwolf",
@@ -317,7 +317,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 32,
       "MsgIndex": 32,
       "EnemyGroupName": "Wolf",
@@ -326,7 +326,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 33,
       "MsgIndex": 33,
       "EnemyGroupName": "Alchemized Skeleton",
@@ -335,7 +335,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 34,
       "MsgIndex": 34,
       "EnemyGroupName": "Ghost Mail",
@@ -344,7 +344,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 35,
       "MsgIndex": 35,
       "EnemyGroupName": "Death Knight",
@@ -353,7 +353,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 36,
       "MsgIndex": 36,
       "EnemyGroupName": "Skeleton Sorcerer",
@@ -364,7 +364,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 37,
       "MsgIndex": 37,
       "EnemyGroupName": "Skeleton Mage",
@@ -375,7 +375,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 38,
       "MsgIndex": 38,
       "EnemyGroupName": "Skeleton Warrior",
@@ -384,7 +384,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 39,
       "MsgIndex": 39,
       "EnemyGroupName": "Skeleton Knight",
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 40,
       "MsgIndex": 40,
       "EnemyGroupName": "Skeleton",
@@ -402,7 +402,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 41,
       "MsgIndex": 41,
       "EnemyGroupName": "Blue Newt",
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 42,
       "MsgIndex": 42,
       "EnemyGroupName": "Rock Saurian",
@@ -420,7 +420,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 43,
       "MsgIndex": 43,
       "EnemyGroupName": "Giant Sulfur Saurian",
@@ -429,7 +429,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 44,
       "MsgIndex": 44,
       "EnemyGroupName": "Sulfur Saurian",
@@ -438,7 +438,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 45,
       "MsgIndex": 45,
       "EnemyGroupName": "Giant Saurian",
@@ -447,7 +447,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 46,
       "MsgIndex": 46,
       "EnemyGroupName": "Saurian",
@@ -456,7 +456,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 47,
       "MsgIndex": 47,
       "EnemyGroupName": "Frost Corpse Torturer",
@@ -465,7 +465,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 48,
       "MsgIndex": 48,
       "EnemyGroupName": "Frost Corpse Punisher",
@@ -474,7 +474,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 49,
       "MsgIndex": 49,
       "EnemyGroupName": "Sludgeman",
@@ -483,7 +483,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 50,
       "MsgIndex": 50,
       "EnemyGroupName": "Mudman",
@@ -492,7 +492,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 51,
       "MsgIndex": 51,
       "EnemyGroupName": "Warrior Undead",
@@ -501,7 +501,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 52,
       "MsgIndex": 52,
       "EnemyGroupName": "Sword Undead",
@@ -510,7 +510,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 53,
       "MsgIndex": 53,
       "EnemyGroupName": "Stout Undead",
@@ -519,7 +519,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 54,
       "MsgIndex": 54,
       "EnemyGroupName": "Undead",
@@ -529,7 +529,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 55,
       "MsgIndex": 55,
       "EnemyGroupName": "Shadow Harpy",
@@ -538,7 +538,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 56,
       "MsgIndex": 56,
       "EnemyGroupName": "Alchemized Harpy",
@@ -547,7 +547,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 57,
       "MsgIndex": 57,
       "EnemyGroupName": "Snow Harpy",
@@ -556,7 +556,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 58,
       "MsgIndex": 58,
       "EnemyGroupName": "Harpy",
@@ -565,14 +565,14 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 59,
       "MsgIndex": 59,
       "EnemyGroupName": "Mist Alchemist",
       "EmList": []
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 60,
       "MsgIndex": 60,
       "EnemyGroupName": "Mist Warrior",
@@ -581,7 +581,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 61,
       "MsgIndex": 61,
       "EnemyGroupName": "Mist Sorcerer",
@@ -590,7 +590,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 62,
       "MsgIndex": 62,
       "EnemyGroupName": "Mist Priest",
@@ -599,7 +599,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 63,
       "MsgIndex": 63,
       "EnemyGroupName": "Mist Hunter",
@@ -608,7 +608,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 64,
       "MsgIndex": 64,
       "EnemyGroupName": "Mist Fighter",
@@ -617,7 +617,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 65,
       "MsgIndex": 65,
       "EnemyGroupName": "Mergan Seeker",
@@ -626,7 +626,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 66,
       "MsgIndex": 66,
       "EnemyGroupName": "Banded Fighter",
@@ -635,7 +635,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 67,
       "MsgIndex": 67,
       "EnemyGroupName": "Rogue Fighter",
@@ -644,7 +644,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 68,
       "MsgIndex": 68,
       "EnemyGroupName": "Leech",
@@ -653,7 +653,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 69,
       "MsgIndex": 69,
       "EnemyGroupName": "Worm",
@@ -662,7 +662,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 70,
       "MsgIndex": 70,
       "EnemyGroupName": "Cyclops",
@@ -678,7 +678,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 71,
       "MsgIndex": 71,
       "EnemyGroupName": "Mole Troll",
@@ -688,7 +688,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 72,
       "MsgIndex": 72,
       "EnemyGroupName": "Troll",
@@ -697,7 +697,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 73,
       "MsgIndex": 73,
       "EnemyGroupName": "Ent",
@@ -706,7 +706,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 74,
       "MsgIndex": 74,
       "EnemyGroupName": "Grand Ent",
@@ -717,7 +717,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 75,
       "MsgIndex": 75,
       "EnemyGroupName": "Colossus",
@@ -728,7 +728,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 76,
       "MsgIndex": 76,
       "EnemyGroupName": "Armored Cyclops",
@@ -738,7 +738,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 77,
       "MsgIndex": 77,
       "EnemyGroupName": "Shadow Chimera",
@@ -747,7 +747,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 78,
       "MsgIndex": 78,
       "EnemyGroupName": "White Chimera",
@@ -757,7 +757,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 79,
       "MsgIndex": 79,
       "EnemyGroupName": "Chimera",
@@ -767,7 +767,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 80,
       "MsgIndex": 80,
       "EnemyGroupName": "Geo Golem",
@@ -776,7 +776,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 81,
       "MsgIndex": 81,
       "EnemyGroupName": "Damned Golem",
@@ -785,7 +785,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 82,
       "MsgIndex": 82,
       "EnemyGroupName": "Goliath",
@@ -794,7 +794,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 83,
       "MsgIndex": 83,
       "EnemyGroupName": "Golem",
@@ -803,7 +803,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 84,
       "MsgIndex": 84,
       "EnemyGroupName": "Griffin",
@@ -813,7 +813,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 85,
       "MsgIndex": 85,
       "EnemyGroupName": "Cockatrice",
@@ -822,7 +822,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 86,
       "MsgIndex": 86,
       "EnemyGroupName": "Nightmare",
@@ -831,7 +831,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 87,
       "MsgIndex": 87,
       "EnemyGroupName": "Alchemized Griffin",
@@ -840,7 +840,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 88,
       "MsgIndex": 88,
       "EnemyGroupName": "Black Griffin",
@@ -850,7 +850,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 89,
       "MsgIndex": 89,
       "EnemyGroupName": "Sphinx",
@@ -860,7 +860,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 90,
       "MsgIndex": 90,
       "EnemyGroupName": "Alchemy Eye",
@@ -869,7 +869,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 91,
       "MsgIndex": 91,
       "EnemyGroupName": "Emerald Eye",
@@ -878,7 +878,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 92,
       "MsgIndex": 92,
       "EnemyGroupName": "Lapis Eye",
@@ -887,7 +887,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 93,
       "MsgIndex": 93,
       "EnemyGroupName": "Ruby Eye",
@@ -896,7 +896,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 94,
       "MsgIndex": 94,
       "EnemyGroupName": "Crystal Eye",
@@ -905,7 +905,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 95,
       "MsgIndex": 95,
       "EnemyGroupName": "Brute Ape",
@@ -914,7 +914,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 96,
       "MsgIndex": 96,
       "EnemyGroupName": "Ghoul",
@@ -924,7 +924,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 97,
       "MsgIndex": 97,
       "EnemyGroupName": "Dread Ape",
@@ -933,7 +933,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 98,
       "MsgIndex": 98,
       "EnemyGroupName": "Ogre",
@@ -942,7 +942,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 99,
       "MsgIndex": 99,
       "EnemyGroupName": "Empress Ghost",
@@ -951,7 +951,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 100,
       "MsgIndex": 100,
       "EnemyGroupName": "Witch",
@@ -960,7 +960,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 101,
       "MsgIndex": 101,
       "EnemyGroupName": "Wight",
@@ -970,7 +970,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 102,
       "MsgIndex": 102,
       "EnemyGroupName": "Golgorran",
@@ -980,7 +980,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 103,
       "MsgIndex": 103,
       "EnemyGroupName": "Elder Dragon",
@@ -991,7 +991,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 104,
       "MsgIndex": 104,
       "EnemyGroupName": "The White Dragon",
@@ -1000,7 +1000,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 105,
       "MsgIndex": 105,
       "EnemyGroupName": "Diamantes",
@@ -1010,7 +1010,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 106,
       "MsgIndex": 106,
       "EnemyGroupName": "Zuhl",
@@ -1021,7 +1021,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 107,
       "MsgIndex": 107,
       "EnemyGroupName": "Spider",
@@ -1030,7 +1030,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 108,
       "MsgIndex": 108,
       "EnemyGroupName": "Pig",
@@ -1040,7 +1040,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 109,
       "MsgIndex": 109,
       "EnemyGroupName": "Boar",
@@ -1049,7 +1049,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 110,
       "MsgIndex": 110,
       "EnemyGroupName": "Giant Rat",
@@ -1058,7 +1058,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 111,
       "MsgIndex": 111,
       "EnemyGroupName": "Ox",
@@ -1067,7 +1067,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 112,
       "MsgIndex": 112,
       "EnemyGroupName": "Doe",
@@ -1076,7 +1076,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 113,
       "MsgIndex": 113,
       "EnemyGroupName": "Buck",
@@ -1085,7 +1085,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 114,
       "MsgIndex": 114,
       "EnemyGroupName": "Rabbit",
@@ -1094,7 +1094,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 115,
       "MsgIndex": 115,
       "EnemyGroupName": "Skull Lord",
@@ -1103,7 +1103,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 116,
       "MsgIndex": 116,
       "EnemyGroupName": "Alchemized Goblin Fighter",
@@ -1112,7 +1112,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 117,
       "MsgIndex": 117,
       "EnemyGroupName": "Iris",
@@ -1121,7 +1121,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 118,
       "MsgIndex": 118,
       "EnemyGroupName": "Leo",
@@ -1130,7 +1130,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 119,
       "MsgIndex": 119,
       "EnemyGroupName": "Pawn Fighter",
@@ -1139,7 +1139,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 120,
       "MsgIndex": 120,
       "EnemyGroupName": "Pawn Seeker",
@@ -1148,7 +1148,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 121,
       "MsgIndex": 121,
       "EnemyGroupName": "Pawn Hunter",
@@ -1157,7 +1157,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 122,
       "MsgIndex": 122,
       "EnemyGroupName": "Pawn Healer",
@@ -1166,7 +1166,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 123,
       "MsgIndex": 123,
       "EnemyGroupName": "Pawn Defender",
@@ -1175,7 +1175,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 124,
       "MsgIndex": 124,
       "EnemyGroupName": "Pawn Mage",
@@ -1184,7 +1184,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 125,
       "MsgIndex": 125,
       "EnemyGroupName": "Pawn Warrior",
@@ -1193,7 +1193,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 126,
       "MsgIndex": 126,
       "EnemyGroupName": "Pawn Element Archer",
@@ -1202,14 +1202,14 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 127,
       "MsgIndex": 127,
       "EnemyGroupName": "Pawn Alchemist",
       "EmList": []
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 128,
       "MsgIndex": 128,
       "EnemyGroupName": "Forest Goblin",
@@ -1218,7 +1218,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 129,
       "MsgIndex": 129,
       "EnemyGroupName": "Forest Goblin Fighter",
@@ -1227,7 +1227,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 130,
       "MsgIndex": 130,
       "EnemyGroupName": "Sling Forest Goblin",
@@ -1236,7 +1236,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 131,
       "MsgIndex": 131,
       "EnemyGroupName": "Redcap",
@@ -1245,7 +1245,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 132,
       "MsgIndex": 132,
       "EnemyGroupName": "Redcap Fighter",
@@ -1254,7 +1254,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 133,
       "MsgIndex": 133,
       "EnemyGroupName": "Sling Redcap",
@@ -1263,7 +1263,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 134,
       "MsgIndex": 134,
       "EnemyGroupName": "Alchemized Goblin",
@@ -1272,14 +1272,14 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 135,
       "MsgIndex": 135,
       "EnemyGroupName": "Mergan Alchemist",
       "EmList": []
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 136,
       "MsgIndex": 136,
       "EnemyGroupName": "Rogue Seeker",
@@ -1288,7 +1288,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 137,
       "MsgIndex": 137,
       "EnemyGroupName": "Rogue Hunter",
@@ -1297,7 +1297,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 138,
       "MsgIndex": 138,
       "EnemyGroupName": "Rogue Healer",
@@ -1306,7 +1306,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 139,
       "MsgIndex": 139,
       "EnemyGroupName": "Rogue Defender",
@@ -1315,7 +1315,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 140,
       "MsgIndex": 140,
       "EnemyGroupName": "Rogue Mage",
@@ -1324,7 +1324,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 141,
       "MsgIndex": 141,
       "EnemyGroupName": "Rogue Warrior",
@@ -1333,7 +1333,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 142,
       "MsgIndex": 142,
       "EnemyGroupName": "Banded Seeker",
@@ -1342,7 +1342,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 143,
       "MsgIndex": 143,
       "EnemyGroupName": "Banded Hunter",
@@ -1351,7 +1351,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 144,
       "MsgIndex": 144,
       "EnemyGroupName": "Banded Healer",
@@ -1360,7 +1360,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 145,
       "MsgIndex": 145,
       "EnemyGroupName": "Banded Defender",
@@ -1369,7 +1369,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 146,
       "MsgIndex": 146,
       "EnemyGroupName": "Banded Mage",
@@ -1378,7 +1378,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 147,
       "MsgIndex": 147,
       "EnemyGroupName": "Banded Warrior",
@@ -1387,7 +1387,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 148,
       "MsgIndex": 148,
       "EnemyGroupName": "Mergan Hunter",
@@ -1396,7 +1396,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 149,
       "MsgIndex": 149,
       "EnemyGroupName": "Mergan Healer",
@@ -1405,7 +1405,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 150,
       "MsgIndex": 150,
       "EnemyGroupName": "Mergan Defender",
@@ -1414,7 +1414,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 151,
       "MsgIndex": 151,
       "EnemyGroupName": "Mergan Mage",
@@ -1423,7 +1423,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 152,
       "MsgIndex": 152,
       "EnemyGroupName": "Mergan Warrior",
@@ -1432,7 +1432,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 153,
       "MsgIndex": 153,
       "EnemyGroupName": "Mergan Element Archer",
@@ -1441,7 +1441,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 154,
       "MsgIndex": 154,
       "EnemyGroupName": "Living Armor",
@@ -1450,7 +1450,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 155,
       "MsgIndex": 155,
       "EnemyGroupName": "Orc Aimer",
@@ -1459,7 +1459,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 156,
       "MsgIndex": 156,
       "EnemyGroupName": "Orc Banger",
@@ -1468,7 +1468,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 157,
       "MsgIndex": 157,
       "EnemyGroupName": "Orc Bringer",
@@ -1477,7 +1477,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 158,
       "MsgIndex": 158,
       "EnemyGroupName": "Orc Trooper",
@@ -1486,7 +1486,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 159,
       "MsgIndex": 159,
       "EnemyGroupName": "Killer Bee",
@@ -1495,7 +1495,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 160,
       "MsgIndex": 160,
       "EnemyGroupName": "Shadow Goblin Leader",
@@ -1504,7 +1504,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 161,
       "MsgIndex": 161,
       "EnemyGroupName": "Goblin Bomber",
@@ -1513,7 +1513,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 162,
       "MsgIndex": 162,
       "EnemyGroupName": "Goblin King",
@@ -1522,7 +1522,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 163,
       "MsgIndex": 163,
       "EnemyGroupName": "Shadow Sling Goblin",
@@ -1531,7 +1531,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 164,
       "MsgIndex": 164,
       "EnemyGroupName": "Shadow Goblin Fighter",
@@ -1540,7 +1540,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 165,
       "MsgIndex": 165,
       "EnemyGroupName": "Shadow Goblin",
@@ -1549,7 +1549,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 166,
       "MsgIndex": 166,
       "EnemyGroupName": "Damned Goblin Fighter",
@@ -1558,7 +1558,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 167,
       "MsgIndex": 167,
       "EnemyGroupName": "Damned Sling Goblin",
@@ -1567,7 +1567,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 168,
       "MsgIndex": 168,
       "EnemyGroupName": "Damned Goblin",
@@ -1576,7 +1576,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 169,
       "MsgIndex": 169,
       "EnemyGroupName": "Alchemized Sling Goblin",
@@ -1585,7 +1585,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 170,
       "MsgIndex": 170,
       "EnemyGroupName": "Silver Roar",
@@ -1594,7 +1594,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 171,
       "MsgIndex": 171,
       "EnemyGroupName": "Rock Saurian Spinel",
@@ -1603,7 +1603,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 172,
       "MsgIndex": 172,
       "EnemyGroupName": "Piglet",
@@ -1613,7 +1613,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 173,
       "MsgIndex": 173,
       "EnemyGroupName": "Giant Unspeakable Meat",
@@ -1622,7 +1622,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 174,
       "MsgIndex": 174,
       "EnemyGroupName": "Unspeakable Meat",
@@ -1631,7 +1631,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 175,
       "MsgIndex": 175,
       "EnemyGroupName": "Mergan Fighter",
@@ -1640,7 +1640,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 179,
       "MsgIndex": 176,
       "EnemyGroupName": "？？？",
@@ -1649,7 +1649,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 292,
       "MsgIndex": 177,
       "EnemyGroupName": "Pixie",
@@ -1658,7 +1658,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 181,
       "MsgIndex": 178,
       "EnemyGroupName": "Pixie Jabber",
@@ -1667,7 +1667,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 182,
       "MsgIndex": 179,
       "EnemyGroupName": "Infected Hobgoblin",
@@ -1676,7 +1676,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 184,
       "MsgIndex": 180,
       "EnemyGroupName": "Warg",
@@ -1685,7 +1685,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 185,
       "MsgIndex": 181,
       "EnemyGroupName": "Infected Direwolf",
@@ -1694,7 +1694,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 186,
       "MsgIndex": 182,
       "EnemyGroupName": "Green Guardian",
@@ -1703,7 +1703,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 187,
       "MsgIndex": 183,
       "EnemyGroupName": "Bolt Grimwarg",
@@ -1712,7 +1712,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 188,
       "MsgIndex": 184,
       "EnemyGroupName": "Severely Infected Warg",
@@ -1721,7 +1721,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 189,
       "MsgIndex": 185,
       "EnemyGroupName": "Skeleton Brute",
@@ -1730,7 +1730,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 190,
       "MsgIndex": 186,
       "EnemyGroupName": "Flame Skeleton",
@@ -1739,7 +1739,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 191,
       "MsgIndex": 187,
       "EnemyGroupName": "Frost Skeleton",
@@ -1748,7 +1748,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 192,
       "MsgIndex": 188,
       "EnemyGroupName": "Bolt Skeleton",
@@ -1757,7 +1757,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 193,
       "MsgIndex": 189,
       "EnemyGroupName": "Lux Skeleton",
@@ -1766,7 +1766,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 194,
       "MsgIndex": 190,
       "EnemyGroupName": "Dark Skeleton",
@@ -1775,7 +1775,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 195,
       "MsgIndex": 191,
       "EnemyGroupName": "Flame Skeleton Brute",
@@ -1784,7 +1784,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 196,
       "MsgIndex": 192,
       "EnemyGroupName": "Frost Skeleton Brute",
@@ -1793,7 +1793,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 197,
       "MsgIndex": 193,
       "EnemyGroupName": "Bolt Skeleton Brute",
@@ -1802,7 +1802,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 198,
       "MsgIndex": 194,
       "EnemyGroupName": "Lux Skeleton Brute",
@@ -1811,7 +1811,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 199,
       "MsgIndex": 195,
       "EnemyGroupName": "Dark Skeleton Brute",
@@ -1820,7 +1820,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 200,
       "MsgIndex": 196,
       "EnemyGroupName": "Large Newt",
@@ -1829,7 +1829,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 201,
       "MsgIndex": 197,
       "EnemyGroupName": "Foot-Biter",
@@ -1838,7 +1838,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 202,
       "MsgIndex": 198,
       "EnemyGroupName": "Eliminator",
@@ -1847,7 +1847,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 203,
       "MsgIndex": 199,
       "EnemyGroupName": "Flame Corpse Punisher",
@@ -1856,7 +1856,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 204,
       "MsgIndex": 200,
       "EnemyGroupName": "Bolt Corpse Punisher",
@@ -1865,7 +1865,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 205,
       "MsgIndex": 201,
       "EnemyGroupName": "Lux Corpse Punisher",
@@ -1874,7 +1874,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 206,
       "MsgIndex": 202,
       "EnemyGroupName": "Dark Corpse Punisher",
@@ -1883,7 +1883,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 207,
       "MsgIndex": 203,
       "EnemyGroupName": "Flame Corpse Torturer",
@@ -1892,7 +1892,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 208,
       "MsgIndex": 204,
       "EnemyGroupName": "Bolt Corpse Torturer",
@@ -1901,7 +1901,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 209,
       "MsgIndex": 205,
       "EnemyGroupName": "Lux Corpse Torturer",
@@ -1910,7 +1910,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 210,
       "MsgIndex": 206,
       "EnemyGroupName": "Dark Corpse Torturer",
@@ -1919,7 +1919,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 211,
       "MsgIndex": 207,
       "EnemyGroupName": "Gargoyle",
@@ -1928,7 +1928,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 212,
       "MsgIndex": 208,
       "EnemyGroupName": "Siren",
@@ -1937,7 +1937,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 213,
       "MsgIndex": 209,
       "EnemyGroupName": "Stymphalídes",
@@ -1946,7 +1946,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 214,
       "MsgIndex": 210,
       "EnemyGroupName": "Strix",
@@ -1955,7 +1955,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 215,
       "MsgIndex": 211,
       "EnemyGroupName": "Infected Snow Harpy",
@@ -1964,7 +1964,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 216,
       "MsgIndex": 212,
       "EnemyGroupName": "Severely Infected Stymphalídes",
@@ -1973,7 +1973,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 217,
       "MsgIndex": 213,
       "EnemyGroupName": "Armored Insect",
@@ -1983,7 +1983,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 219,
       "MsgIndex": 214,
       "EnemyGroupName": "Aqua Jelly",
@@ -1992,7 +1992,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 220,
       "MsgIndex": 215,
       "EnemyGroupName": "Pyro Slime",
@@ -2001,7 +2001,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 221,
       "MsgIndex": 216,
       "EnemyGroupName": "Freezing Slime",
@@ -2010,7 +2010,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 222,
       "MsgIndex": 217,
       "EnemyGroupName": "Electric Slime",
@@ -2019,7 +2019,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 223,
       "MsgIndex": 218,
       "EnemyGroupName": "Photon Slime",
@@ -2028,7 +2028,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 224,
       "MsgIndex": 219,
       "EnemyGroupName": "Dim Slime",
@@ -2037,7 +2037,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 225,
       "MsgIndex": 220,
       "EnemyGroupName": "Phindymian Fighter",
@@ -2046,7 +2046,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 226,
       "MsgIndex": 221,
       "EnemyGroupName": "Phindymian Seeker",
@@ -2055,7 +2055,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 227,
       "MsgIndex": 222,
       "EnemyGroupName": "Phindymian Hunter",
@@ -2064,7 +2064,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 228,
       "MsgIndex": 223,
       "EnemyGroupName": "Phindymian Priest",
@@ -2073,7 +2073,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 229,
       "MsgIndex": 224,
       "EnemyGroupName": "Phindymian Defender",
@@ -2082,7 +2082,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 230,
       "MsgIndex": 225,
       "EnemyGroupName": "Phindymian Warrior",
@@ -2091,7 +2091,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 231,
       "MsgIndex": 226,
       "EnemyGroupName": "Phindymian Sorcerer",
@@ -2100,7 +2100,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 232,
       "MsgIndex": 227,
       "EnemyGroupName": "Phindymian Element Archer",
@@ -2109,7 +2109,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 235,
       "MsgIndex": 228,
       "EnemyGroupName": "Moth",
@@ -2119,7 +2119,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 237,
       "MsgIndex": 229,
       "EnemyGroupName": "Mandragora",
@@ -2129,7 +2129,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 239,
       "MsgIndex": 230,
       "EnemyGroupName": "Gorecyclops",
@@ -2140,7 +2140,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 240,
       "MsgIndex": 231,
       "EnemyGroupName": "Infected Gorecyclops",
@@ -2149,7 +2149,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 241,
       "MsgIndex": 232,
       "EnemyGroupName": "Severely Infected Gorecyclops",
@@ -2158,7 +2158,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 242,
       "MsgIndex": 233,
       "EnemyGroupName": "Manticore",
@@ -2168,7 +2168,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 244,
       "MsgIndex": 234,
       "EnemyGroupName": "Gorechimera",
@@ -2178,7 +2178,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 245,
       "MsgIndex": 235,
       "EnemyGroupName": "Severely Infected Griffin",
@@ -2187,7 +2187,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 246,
       "MsgIndex": 236,
       "EnemyGroupName": "Infected Griffin",
@@ -2196,7 +2196,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 247,
       "MsgIndex": 237,
       "EnemyGroupName": "Vile Eye",
@@ -2205,7 +2205,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 248,
       "MsgIndex": 238,
       "EnemyGroupName": "Evil Eye",
@@ -2215,7 +2215,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 249,
       "MsgIndex": 239,
       "EnemyGroupName": "Maneater",
@@ -2224,7 +2224,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 250,
       "MsgIndex": 240,
       "EnemyGroupName": "Spineback",
@@ -2235,7 +2235,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 251,
       "MsgIndex": 241,
       "EnemyGroupName": "Medusa",
@@ -2244,7 +2244,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 252,
       "MsgIndex": 242,
       "EnemyGroupName": "Ghost",
@@ -2253,7 +2253,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 253,
       "MsgIndex": 243,
       "EnemyGroupName": "Cursed Dragon",
@@ -2262,7 +2262,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 254,
       "MsgIndex": 244,
       "EnemyGroupName": "Infected Behemoth",
@@ -2271,7 +2271,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 255,
       "MsgIndex": 245,
       "EnemyGroupName": "Severely Infected Behemoth",
@@ -2280,7 +2280,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 257,
       "MsgIndex": 246,
       "EnemyGroupName": "Infected Orc Soldier",
@@ -2289,7 +2289,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 258,
       "MsgIndex": 247,
       "EnemyGroupName": "Tarasque",
@@ -2298,7 +2298,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 259,
       "MsgIndex": 248,
       "EnemyGroupName": "Frost Machina",
@@ -2307,7 +2307,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 260,
       "MsgIndex": 249,
       "EnemyGroupName": "Grigori",
@@ -2316,7 +2316,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 261,
       "MsgIndex": 250,
       "EnemyGroupName": "Severely Infected Demon",
@@ -2325,7 +2325,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 264,
       "MsgIndex": 251,
       "EnemyGroupName": "Chicken",
@@ -2335,7 +2335,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 266,
       "MsgIndex": 252,
       "EnemyGroupName": "Goat",
@@ -2344,7 +2344,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 267,
       "MsgIndex": 253,
       "EnemyGroupName": "Frog",
@@ -2354,7 +2354,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 269,
       "MsgIndex": 254,
       "EnemyGroupName": "Wild Boar",
@@ -2364,7 +2364,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 271,
       "MsgIndex": 255,
       "EnemyGroupName": "Altered Zuhl",
@@ -2373,7 +2373,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 272,
       "MsgIndex": 256,
       "EnemyGroupName": "Scourge",
@@ -2383,7 +2383,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 274,
       "MsgIndex": 257,
       "EnemyGroupName": "Black Knight",
@@ -2396,7 +2396,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 275,
       "MsgIndex": 258,
       "EnemyGroupName": "Phantasmic Great Dragon",
@@ -2405,7 +2405,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 276,
       "MsgIndex": 259,
       "EnemyGroupName": "Spirit Dragon Willmia",
@@ -2416,7 +2416,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 277,
       "MsgIndex": 260,
       "EnemyGroupName": "Saurian Sage",
@@ -2425,7 +2425,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 278,
       "MsgIndex": 261,
       "EnemyGroupName": "Infected Hobgoblin Fighter",
@@ -2434,7 +2434,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 279,
       "MsgIndex": 262,
       "EnemyGroupName": "Infected Sling Hobgoblin",
@@ -2443,7 +2443,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 280,
       "MsgIndex": 263,
       "EnemyGroupName": "Phindymian Ent",
@@ -2453,7 +2453,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 281,
       "MsgIndex": 264,
       "EnemyGroupName": "White Griffin",
@@ -2463,7 +2463,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 282,
       "MsgIndex": 265,
       "EnemyGroupName": "Bifrest",
@@ -2474,7 +2474,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 283,
       "MsgIndex": 266,
       "EnemyGroupName": "Tentacle",
@@ -2484,7 +2484,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 284,
       "MsgIndex": 267,
       "EnemyGroupName": "Infected Orc Aimer",
@@ -2493,7 +2493,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 285,
       "MsgIndex": 268,
       "EnemyGroupName": "Infected Orc Banger",
@@ -2502,7 +2502,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 286,
       "MsgIndex": 269,
       "EnemyGroupName": "Wisened Tarasque",
@@ -2512,7 +2512,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 287,
       "MsgIndex": 270,
       "EnemyGroupName": "Bearded Grigori",
@@ -2521,7 +2521,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 288,
       "MsgIndex": 271,
       "EnemyGroupName": "Pixie Biff",
@@ -2530,7 +2530,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 289,
       "MsgIndex": 272,
       "EnemyGroupName": "Pixie Din",
@@ -2539,7 +2539,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 290,
       "MsgIndex": 273,
       "EnemyGroupName": "Pixie Pow",
@@ -2548,7 +2548,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 291,
       "MsgIndex": 274,
       "EnemyGroupName": "Severely Infected Pixie",
@@ -2559,7 +2559,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 294,
       "MsgIndex": 275,
       "EnemyGroupName": "High Pixie Biff",
@@ -2568,7 +2568,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 295,
       "MsgIndex": 276,
       "EnemyGroupName": "High Pixie Zolda",
@@ -2577,7 +2577,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 296,
       "MsgIndex": 277,
       "EnemyGroupName": "High Pixie Pow",
@@ -2586,7 +2586,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 297,
       "MsgIndex": 278,
       "EnemyGroupName": "Pixie King",
@@ -2595,7 +2595,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 298,
       "MsgIndex": 279,
       "EnemyGroupName": "Goblin Orc",
@@ -2604,7 +2604,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 299,
       "MsgIndex": 280,
       "EnemyGroupName": "Acid Blob",
@@ -2613,7 +2613,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 300,
       "MsgIndex": 281,
       "EnemyGroupName": "Oil Jelly",
@@ -2622,7 +2622,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 301,
       "MsgIndex": 282,
       "EnemyGroupName": "Scarlet Fighter",
@@ -2631,7 +2631,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 302,
       "MsgIndex": 283,
       "EnemyGroupName": "Scarlet Seeker",
@@ -2640,7 +2640,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 303,
       "MsgIndex": 284,
       "EnemyGroupName": "Scarlet Hunter",
@@ -2649,7 +2649,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 304,
       "MsgIndex": 285,
       "EnemyGroupName": "Scarlet Healer",
@@ -2658,7 +2658,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 305,
       "MsgIndex": 286,
       "EnemyGroupName": "Scarlet Defender",
@@ -2667,7 +2667,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 306,
       "MsgIndex": 287,
       "EnemyGroupName": "Scarlet Mage",
@@ -2676,7 +2676,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 307,
       "MsgIndex": 288,
       "EnemyGroupName": "Scarlet Warrior",
@@ -2685,7 +2685,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 308,
       "MsgIndex": 289,
       "EnemyGroupName": "Giant Saurian Sage",
@@ -2694,7 +2694,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 309,
       "MsgIndex": 290,
       "EnemyGroupName": "Little Spine",
@@ -2703,7 +2703,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 310,
       "MsgIndex": 291,
       "EnemyGroupName": "Dragon Crystal of Praying",
@@ -2712,7 +2712,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 311,
       "MsgIndex": 292,
       "EnemyGroupName": "Dragon Crystal of Groaning",
@@ -2721,7 +2721,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 312,
       "MsgIndex": 293,
       "EnemyGroupName": "Eliminator Slay",
@@ -2730,7 +2730,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 313,
       "MsgIndex": 294,
       "EnemyGroupName": "Black Knight Phantom",
@@ -2740,7 +2740,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 314,
       "MsgIndex": 295,
       "EnemyGroupName": "Grim Goblin",
@@ -2749,7 +2749,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 315,
       "MsgIndex": 296,
       "EnemyGroupName": "Grim Goblin Fighter",
@@ -2758,7 +2758,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 316,
       "MsgIndex": 297,
       "EnemyGroupName": "Sling Grim Goblin",
@@ -2767,7 +2767,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 317,
       "MsgIndex": 298,
       "EnemyGroupName": "Greater Goblin",
@@ -2777,7 +2777,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 318,
       "MsgIndex": 299,
       "EnemyGroupName": "Goblin Shaman",
@@ -2786,7 +2786,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 319,
       "MsgIndex": 300,
       "EnemyGroupName": "Goblin Aid Shaman",
@@ -2795,7 +2795,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 320,
       "MsgIndex": 301,
       "EnemyGroupName": "Hellhound",
@@ -2804,7 +2804,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 321,
       "MsgIndex": 302,
       "EnemyGroupName": "Blaze Wolf",
@@ -2813,7 +2813,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 322,
       "MsgIndex": 303,
       "EnemyGroupName": "Skeleton Warg",
@@ -2822,7 +2822,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 323,
       "MsgIndex": 304,
       "EnemyGroupName": "War-Ready Grimwarg",
@@ -2831,7 +2831,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 324,
       "MsgIndex": 305,
       "EnemyGroupName": "Skeleton Lord (Abyss)",
@@ -2840,7 +2840,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 325,
       "MsgIndex": 306,
       "EnemyGroupName": "Geo Saurian",
@@ -2849,7 +2849,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 326,
       "MsgIndex": 307,
       "EnemyGroupName": "Giant Geo Saurian",
@@ -2858,7 +2858,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 327,
       "MsgIndex": 308,
       "EnemyGroupName": "War-Ready Saurian",
@@ -2867,7 +2867,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 328,
       "MsgIndex": 309,
       "EnemyGroupName": "War-Ready Giant Saurian",
@@ -2876,7 +2876,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 329,
       "MsgIndex": 310,
       "EnemyGroupName": "Blaze Harpy",
@@ -2886,7 +2886,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 331,
       "MsgIndex": 311,
       "EnemyGroupName": "Stone Blob",
@@ -2895,7 +2895,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 332,
       "MsgIndex": 312,
       "EnemyGroupName": "Blaze Goblin",
@@ -2906,7 +2906,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 333,
       "MsgIndex": 313,
       "EnemyGroupName": "Habanero",
@@ -2915,7 +2915,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 335,
       "MsgIndex": 314,
       "EnemyGroupName": "Burned Ent",
@@ -2924,7 +2924,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 336,
       "MsgIndex": 315,
       "EnemyGroupName": "Fodden",
@@ -2933,7 +2933,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 337,
       "MsgIndex": 316,
       "EnemyGroupName": "Skeleton Cyclops",
@@ -2942,7 +2942,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 338,
       "MsgIndex": 317,
       "EnemyGroupName": "War-Ready Gorecyclops",
@@ -2951,7 +2951,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 339,
       "MsgIndex": 318,
       "EnemyGroupName": "Blaze Chimera",
@@ -2960,7 +2960,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 340,
       "MsgIndex": 319,
       "EnemyGroupName": "Goremanticore",
@@ -2969,7 +2969,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 341,
       "MsgIndex": 320,
       "EnemyGroupName": "War-Ready Goremanticore",
@@ -2978,7 +2978,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 342,
       "MsgIndex": 321,
       "EnemyGroupName": "War-Ready Nightmare",
@@ -2987,7 +2987,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 344,
       "MsgIndex": 322,
       "EnemyGroupName": "Cragger",
@@ -2996,7 +2996,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 345,
       "MsgIndex": 323,
       "EnemyGroupName": "Little Crag",
@@ -3005,7 +3005,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 346,
       "MsgIndex": 324,
       "EnemyGroupName": "War-Ready Ogre",
@@ -3014,7 +3014,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 347,
       "MsgIndex": 325,
       "EnemyGroupName": "Misery Ghost",
@@ -3023,7 +3023,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 348,
       "MsgIndex": 326,
       "EnemyGroupName": "Grudge Ghost",
@@ -3032,7 +3032,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 349,
       "MsgIndex": 327,
       "EnemyGroupName": "Lotus Fin",
@@ -3041,7 +3041,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 350,
       "MsgIndex": 328,
       "EnemyGroupName": "White Tarasque",
@@ -3050,7 +3050,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 351,
       "MsgIndex": 329,
       "EnemyGroupName": "Catoblepas",
@@ -3059,7 +3059,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 352,
       "MsgIndex": 330,
       "EnemyGroupName": "Sword Soldier Dwarf Orc",
@@ -3068,7 +3068,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 353,
       "MsgIndex": 331,
       "EnemyGroupName": "Squad Leader Dwarf Orc",
@@ -3077,7 +3077,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 354,
       "MsgIndex": 332,
       "EnemyGroupName": "Ancestor Orc",
@@ -3088,7 +3088,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 355,
       "MsgIndex": 333,
       "EnemyGroupName": "Captain Ancestor Orc",
@@ -3097,7 +3097,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 356,
       "MsgIndex": 334,
       "EnemyGroupName": "War Master",
@@ -3107,7 +3107,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 357,
       "MsgIndex": 335,
       "EnemyGroupName": "Beast Commander",
@@ -3117,7 +3117,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 358,
       "MsgIndex": 336,
       "EnemyGroupName": "Necro Master",
@@ -3126,7 +3126,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 359,
       "MsgIndex": 337,
       "EnemyGroupName": "Shadow Master",
@@ -3136,7 +3136,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 360,
       "MsgIndex": 338,
       "EnemyGroupName": "Ancestor Origin",
@@ -3145,7 +3145,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 361,
       "MsgIndex": 339,
       "EnemyGroupName": "Blaze Grigori",
@@ -3154,7 +3154,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 362,
       "MsgIndex": 340,
       "EnemyGroupName": "Baphomet",
@@ -3166,7 +3166,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 363,
       "MsgIndex": 341,
       "EnemyGroupName": "Ifrit",
@@ -3176,7 +3176,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 364,
       "MsgIndex": 342,
       "EnemyGroupName": "Ushumgal",
@@ -3185,7 +3185,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 365,
       "MsgIndex": 343,
       "EnemyGroupName": "The Evil Dragon",
@@ -3195,7 +3195,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 366,
       "MsgIndex": 344,
       "EnemyGroupName": "Blunt Soldier Dwarf Orc",
@@ -3204,7 +3204,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 367,
       "MsgIndex": 345,
       "EnemyGroupName": "Heavy Soldier Dwarf Orc",
@@ -3213,7 +3213,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 368,
       "MsgIndex": 346,
       "EnemyGroupName": "Ranged Soldier Dwarf Orc",
@@ -3222,7 +3222,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 369,
       "MsgIndex": 347,
       "EnemyGroupName": "Grim Goblin Leader",
@@ -3231,7 +3231,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 371,
       "MsgIndex": 348,
       "EnemyGroupName": "Pyre Saurian",
@@ -3240,7 +3240,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 372,
       "MsgIndex": 349,
       "EnemyGroupName": "Severely Infected Scourge",
@@ -3249,7 +3249,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 373,
       "MsgIndex": 350,
       "EnemyGroupName": "Red Zuhl",
@@ -3258,7 +3258,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 380,
       "MsgIndex": 351,
       "EnemyGroupName": "Blaze Goblin Leader",
@@ -3267,7 +3267,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 381,
       "MsgIndex": 352,
       "EnemyGroupName": "Volt Eye",
@@ -3276,7 +3276,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 382,
       "MsgIndex": 353,
       "EnemyGroupName": "Tentacle",
@@ -3286,7 +3286,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 383,
       "MsgIndex": 354,
       "EnemyGroupName": "Blazing Boulder",
@@ -3295,7 +3295,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 384,
       "MsgIndex": 355,
       "EnemyGroupName": "Evil Dragon Test",
@@ -3306,7 +3306,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 385,
       "MsgIndex": 356,
       "EnemyGroupName": "Grudge",
@@ -3315,7 +3315,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 386,
       "MsgIndex": 357,
       "EnemyGroupName": "Megado Guard",
@@ -3327,7 +3327,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 390,
       "MsgIndex": 358,
       "EnemyGroupName": "Invisible aggro enemy",
@@ -3336,7 +3336,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 391,
       "MsgIndex": 359,
       "EnemyGroupName": "Dwarf Orc",
@@ -3345,7 +3345,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 392,
       "MsgIndex": 360,
       "EnemyGroupName": "Death",
@@ -3354,7 +3354,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 393,
       "MsgIndex": 361,
       "EnemyGroupName": "The Evil Dragon",
@@ -3363,7 +3363,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 394,
       "MsgIndex": 362,
       "EnemyGroupName": "Abaddon",
@@ -3373,7 +3373,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 395,
       "MsgIndex": 363,
       "EnemyGroupName": "Insect Mound",
@@ -3384,7 +3384,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 396,
       "MsgIndex": 364,
       "EnemyGroupName": "Albe",
@@ -3394,7 +3394,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 397,
       "MsgIndex": 365,
       "EnemyGroupName": "Frost Skeleton Cyclops",
@@ -3403,7 +3403,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 398,
       "MsgIndex": 366,
       "EnemyGroupName": "Legion",
@@ -3414,7 +3414,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 399,
       "MsgIndex": 367,
       "EnemyGroupName": "Legion Leader",
@@ -3423,7 +3423,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 400,
       "MsgIndex": 368,
       "EnemyGroupName": "Shadow Grigori",
@@ -3432,7 +3432,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 401,
       "MsgIndex": 369,
       "EnemyGroupName": "Merman",
@@ -3441,7 +3441,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 402,
       "MsgIndex": 370,
       "EnemyGroupName": "Poison Merman",
@@ -3450,7 +3450,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 403,
       "MsgIndex": 371,
       "EnemyGroupName": "Dagon",
@@ -3459,7 +3459,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 404,
       "MsgIndex": 372,
       "EnemyGroupName": "Bolt Skeleton Cyclops",
@@ -3468,7 +3468,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 405,
       "MsgIndex": 373,
       "EnemyGroupName": "Ukobach",
@@ -3477,7 +3477,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 406,
       "MsgIndex": 374,
       "EnemyGroupName": "Arisen of the Black Dragon",
@@ -3487,7 +3487,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 407,
       "MsgIndex": 375,
       "EnemyGroupName": "Gorgon",
@@ -3496,7 +3496,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 408,
       "MsgIndex": 376,
       "EnemyGroupName": "Flame Skeleton Cyclops",
@@ -3505,7 +3505,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 409,
       "MsgIndex": 377,
       "EnemyGroupName": "Valefar",
@@ -3514,7 +3514,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 410,
       "MsgIndex": 378,
       "EnemyGroupName": "Black Dragon",
@@ -3525,7 +3525,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 411,
       "MsgIndex": 379,
       "EnemyGroupName": "Former Arisen Corps Leader Leo",
@@ -3534,7 +3534,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 412,
       "MsgIndex": 380,
       "EnemyGroupName": "Bolt Machina",
@@ -3543,7 +3543,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 413,
       "MsgIndex": 381,
       "EnemyGroupName": "Rage Ghost",
@@ -3552,7 +3552,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 414,
       "MsgIndex": 382,
       "EnemyGroupName": "Gigant Machina Trinity",
@@ -3561,7 +3561,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 415,
       "MsgIndex": 383,
       "EnemyGroupName": "Frost Machina Trinity",
@@ -3570,7 +3570,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 416,
       "MsgIndex": 384,
       "EnemyGroupName": "Bolt Machina Trinity",
@@ -3579,7 +3579,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 418,
       "MsgIndex": 385,
       "EnemyGroupName": "Dragon Crystal of Darkness",
@@ -3589,7 +3589,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 419,
       "MsgIndex": 386,
       "EnemyGroupName": "Crystal of Blessing",
@@ -3598,7 +3598,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 420,
       "MsgIndex": 387,
       "EnemyGroupName": "Darkness Emitting Dragon Crystal",
@@ -3607,7 +3607,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 421,
       "MsgIndex": 388,
       "EnemyGroupName": "Samyaza",
@@ -3616,7 +3616,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 422,
       "MsgIndex": 389,
       "EnemyGroupName": "Power that Destroys Reason",
@@ -3627,7 +3627,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 423,
       "MsgIndex": 390,
       "EnemyGroupName": "Black Dragon (Event)",
@@ -3638,7 +3638,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 424,
       "MsgIndex": 391,
       "EnemyGroupName": "Dragon Crystal of Destruction",
@@ -3649,7 +3649,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 425,
       "MsgIndex": 392,
       "EnemyGroupName": "Golgorran",
@@ -3658,7 +3658,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 426,
       "MsgIndex": 393,
       "EnemyGroupName": "Black Sword",
@@ -3668,7 +3668,7 @@
       ]
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.EnemyGroup",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 427,
       "MsgIndex": 394,
       "EnemyGroupName": "Dragon Crystal of Binding",

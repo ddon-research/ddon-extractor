@@ -12,7 +12,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.Start
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartPosDeserializer extends ClientResourceFileDeserializer {
+public class StartPosDeserializer extends ClientResourceFileDeserializer<StartPos> {
 
 
     private static StartPosInfo readStartPosInfo(BufferReader bufferReader) {

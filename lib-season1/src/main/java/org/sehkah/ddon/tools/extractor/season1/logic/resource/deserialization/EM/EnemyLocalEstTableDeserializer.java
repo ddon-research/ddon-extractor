@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyLocalEst;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyLocalEstTable;
 
-public class EnemyLocalEstTableDeserializer extends ClientResourceFileDeserializer {
+public class EnemyLocalEstTableDeserializer extends ClientResourceFileDeserializer<EnemyLocalEstTable> {
 
 
     private static EnemyLocalEst readEnemyLocalEst(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.pawn.AIPawnActNoSwitch;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.pawn.AIPawnActNoSwitchTbl;
 
-public class AIPawnActNoSwitchTblDeserializer extends ClientResourceFileDeserializer {
+public class AIPawnActNoSwitchTblDeserializer extends ClientResourceFileDeserializer<AIPawnActNoSwitchTbl> {
 
 
     private static AIPawnActNoSwitch readAIPawnActNoSwitch(BufferReader bufferReader) {

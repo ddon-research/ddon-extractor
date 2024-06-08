@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.MapSpotStageList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.MapSpotStageListData;
 
-public class MapSpotStageListDeserializer extends ClientResourceFileDeserializer {
+public class MapSpotStageListDeserializer extends ClientResourceFileDeserializer<MapSpotStageList> {
 
 
     private static MapSpotStageListData readMapSpotStageListData(BufferReader bufferReader) {

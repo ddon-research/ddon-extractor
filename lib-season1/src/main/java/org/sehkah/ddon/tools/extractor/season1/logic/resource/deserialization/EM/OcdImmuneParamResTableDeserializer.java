@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.OcdImmuneParamRes;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.OcdImmuneParamResTable;
 
-public class OcdImmuneParamResTableDeserializer extends ClientResourceFileDeserializer {
+public class OcdImmuneParamResTableDeserializer extends ClientResourceFileDeserializer<OcdImmuneParamResTable> {
 
 
     private static OcdImmuneParamRes readOcdImmuneParamRes(BufferReader bufferReader) {

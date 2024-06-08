@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.AIPawnSkillParamNode;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.AIPawnSkillParamTbl;
 
-public class AIPawnSkillParamTblDeserializer extends ClientResourceFileDeserializer {
+public class AIPawnSkillParamTblDeserializer extends ClientResourceFileDeserializer<AIPawnSkillParamTbl> {
 
 
     private static AIPawnSkillParamNode readAIPawnSkillParamNode(BufferReader bufferReader) {

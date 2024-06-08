@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.LocationData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.LocationDataList;
 
-public class LocationDataDeserializer extends ClientResourceFileDeserializer {
+public class LocationDataDeserializer extends ClientResourceFileDeserializer<LocationDataList> {
 
 
     private static LocationData readLocationData(BufferReader bufferReader) {

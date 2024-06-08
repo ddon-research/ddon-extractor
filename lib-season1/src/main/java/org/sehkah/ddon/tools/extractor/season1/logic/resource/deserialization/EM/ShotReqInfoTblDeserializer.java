@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.ShotReqInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.ShotReqInfoTbl;
 
-public class ShotReqInfoTblDeserializer extends ClientResourceFileDeserializer {
+public class ShotReqInfoTblDeserializer extends ClientResourceFileDeserializer<ShotReqInfoTbl> {
 
 
     private static ShotReqInfo readShotReqInfo(BufferReader bufferReader) {

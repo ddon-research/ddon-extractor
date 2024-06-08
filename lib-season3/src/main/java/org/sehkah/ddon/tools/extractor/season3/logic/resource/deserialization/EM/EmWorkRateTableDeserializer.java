@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.EmWorkRate;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.EmWorkRateTable;
 
-public class EmWorkRateTableDeserializer extends ClientResourceFileDeserializer {
+public class EmWorkRateTableDeserializer extends ClientResourceFileDeserializer<EmWorkRateTable> {
 
 
     private static EmWorkRate readEmWorkRate(BufferReader bufferReader) {

@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.EventP
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.EventParamList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.OmList;
 
-public class EventParamDeserializer extends ClientResourceFileDeserializer {
+public class EventParamDeserializer extends ClientResourceFileDeserializer<EventParamList> {
 
 
     private static OmList readOmList(BufferReader bufferReader) {

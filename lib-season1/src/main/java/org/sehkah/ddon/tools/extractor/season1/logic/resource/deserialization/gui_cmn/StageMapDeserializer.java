@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.Sta
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.StageMapList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.StageMapParam;
 
-public class StageMapDeserializer extends ClientResourceFileDeserializer {
+public class StageMapDeserializer extends ClientResourceFileDeserializer<StageMapList> {
 
 
     private static StageMapParam readParam(BufferReader reader) {

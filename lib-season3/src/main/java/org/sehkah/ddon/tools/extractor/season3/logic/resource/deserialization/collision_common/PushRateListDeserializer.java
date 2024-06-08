@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common.PushRate;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common.PushRateList;
 
-public class PushRateListDeserializer extends ClientResourceFileDeserializer {
+public class PushRateListDeserializer extends ClientResourceFileDeserializer<PushRateList> {
 
 
     private static PushRate readPushRate(BufferReader bufferReader) {

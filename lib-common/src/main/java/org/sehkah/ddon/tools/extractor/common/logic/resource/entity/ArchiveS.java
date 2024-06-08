@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class ArchiveS extends TopLevelClientResource {
+public class ArchiveS extends Resource {
     private int ResourceNum;
     private List<ResourceInfoS> ResourceReference;
 }

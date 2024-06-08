@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc.SituationData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc.SituationMsgCtrl;
 
-public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer {
+public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer<SituationMsgCtrl> {
 
 
     private static SituationData readSituationData(BufferReader bufferReader) {

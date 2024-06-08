@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
@@ -19,6 +19,15 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Enc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.AreaInfoJointAreaDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.AreaInfoStageDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.EnemyGroupDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.GUIMessageDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.NamedParamDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AbilityDataDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AchievementDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.GUIMessageSerializer;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -34,7 +43,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
  * a season-specific manager take care of setting up such associations.
  * <p>
  * The super class takes care of caching mechanism, file header identification and retrieval of the correct
- * client resource given a file and its buffer via {@link ClientResourceFileManager#getDeserializer(String, BufferReader)}.
+ * client resource given a file and its buffer via {@link ClientResourceFileManager#deserialize(String, BufferReader)}.
  * <p>
  * Regarding initialization:
  * It is mandatory that the season-specific resources are initialized before the resource cache and lookup util
@@ -44,15 +53,15 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 @Slf4j
 @Getter
 public abstract class ClientResourceFileManager {
-    protected final Set<ClientResourceFile<TopLevelClientResource>> clientResourceFileSet;
-    protected final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile<TopLevelClientResource>> clientResourceFileMap;
-    protected final Serializer<TopLevelClientResource> stringSerializer;
+    protected final Set<ClientResourceFile<Resource>> clientResourceFileSet;
+    protected final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile<Resource>> clientResourceFileMap;
+    protected final Serializer<Resource> stringSerializer;
     protected final ResourceMetadataLookupUtil lookupUtil;
+    protected ClientResourceFile<GUIMessage> GUIMessageResourceFile;
 
     protected ClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
         clientResourceFileSet = setupResourceMapping();
-
         addCommonResourceMapping(clientResourceFileSet);
 
         if (shouldSerializeMetaInformation) {
@@ -62,17 +71,25 @@ public abstract class ClientResourceFileManager {
         }
 
         clientResourceFileMap = HashMap.newHashMap(clientResourceFileSet.size());
-        for (ClientResourceFile<TopLevelClientResource> clientResourceFile : clientResourceFileSet) {
+        for (ClientResourceFile<Resource> clientResourceFile : clientResourceFileSet) {
             clientResourceFileMap.put(clientResourceFile.getIdentifier(), clientResourceFile);
         }
     }
 
-    private <T extends TopLevelClientResource> void addCommonResourceMapping(Set<ClientResourceFile<T>> clientResourceFileSet) {
+    private <T extends Resource> void addCommonResourceMapping(Set<ClientResourceFile<T>> clientResourceFileSet) {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCC", 7, 2), new EncryptedArchiveDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCS", 7, 2), new ReferenceArchiveDeserializer()));
 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), new AreaInfoJointAreaDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNamedParam, new FileHeader(5, 4), new NamedParamDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityData, new FileHeader(3, 4), new AbilityDataDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievement, new FileHeader(2, 4), new AchievementDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), new TutorialDialogMessageDeserializer()));
+
+        GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
     }
 
     /**
@@ -89,9 +106,9 @@ public abstract class ClientResourceFileManager {
      *
      * @return a unique set of season-specific resource files associated with their serializers and deserializers.
      */
-    public abstract <T extends TopLevelClientResource> Set<ClientResourceFile<T>> setupResourceMapping();
+    public abstract <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping();
 
-    public <T extends TopLevelClientResource> T deserialize(String fileName, BufferReader bufferReader) {
+    public <T extends Resource> T deserialize(String fileName, BufferReader bufferReader) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.'));
 
         if (fileNameExtension.isBlank()) {
@@ -109,14 +126,14 @@ public abstract class ClientResourceFileManager {
                 ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.get(candidateKey);
                 clientResourceDeserializer = clientResourceFile.getDeserializer();
                 log.debug("File matches deserializer {}.", clientResourceDeserializer.getClass().getSimpleName());
-                clientResourceDeserializer.deserialize(clientResourceFile, bufferReader, lookupUtil);
+                return clientResourceDeserializer.deserialize(clientResourceFile, bufferReader, lookupUtil);
             }
         }
         log.debug("No deserializer found for file '%s'.".formatted(fileName));
         return null;
     }
 
-    public <T extends TopLevelClientResource> ClientResourceSerializer<T> getSerializer(String fileName, T deserialized) {
+    public <T extends Resource> ClientResourceSerializer<T> getSerializer(String fileName, T deserialized) {
         String fileNameExtension = fileName.substring(fileName.indexOf('.')).replace(".json", "").replace(".yaml", "");
         ClientResourceFileExtension clientResourceFileExtension = ClientResourceFileExtension.of(fileNameExtension);
         ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.getOrDefault(Pair.of(clientResourceFileExtension, deserialized.getFileHeader()), null);

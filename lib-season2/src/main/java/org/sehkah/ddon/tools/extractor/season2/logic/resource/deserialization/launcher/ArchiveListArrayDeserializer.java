@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.launcher.Ar
 
 import java.util.List;
 
-public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer {
+public class ArchiveListArrayDeserializer extends ClientResourceFileDeserializer<ArchiveListArray> {
 
 
     private static ArchiveListNode readArchiveListNode(BufferReader bufferReader) {

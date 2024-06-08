@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.effect_common.VfxLightInfluence;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.effect_common.VfxLightInfluenceList;
 
-public class VfxLightInfluenceListDeserializer extends ClientResourceFileDeserializer {
+public class VfxLightInfluenceListDeserializer extends ClientResourceFileDeserializer<VfxLightInfluenceList> {
 
 
     private static VfxLightInfluence readVfxLightInfluence(BufferReader bufferReader) {

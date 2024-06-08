@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosArea;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.StartPosAreaList;
 
-public class StartPosAreaDeserializer extends ClientResourceFileDeserializer {
+public class StartPosAreaDeserializer extends ClientResourceFileDeserializer<StartPosAreaList> {
 
 
     private static StartPosArea readStartPosArea(BufferReader bufferReader) {

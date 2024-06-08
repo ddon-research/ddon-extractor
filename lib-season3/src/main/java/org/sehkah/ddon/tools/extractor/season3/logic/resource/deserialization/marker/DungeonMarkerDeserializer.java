@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.Dung
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.DungeonMarkerWarpInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.DungeonMarkerWarpInfoIndex;
 
-public class DungeonMarkerDeserializer extends ClientResourceFileDeserializer {
+public class DungeonMarkerDeserializer extends ClientResourceFileDeserializer<DungeonMarker> {
 
 
     private static DungeonMarkerPosition readDungeonMarkerPosition(BufferReader bufferReader) {

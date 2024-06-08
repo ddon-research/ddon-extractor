@@ -5,7 +5,7 @@
     <option name="PROGRAM_PARAMETERS" value="-o -m D:\DDON_02030004\nativePC\rom\equip_preset_job01" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />
+        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

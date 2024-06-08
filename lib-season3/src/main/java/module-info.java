@@ -13,8 +13,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     requires org.sehkah.ddon.tools.extractor.lib.api;
     requires org.sehkah.ddon.tools.extractor.lib.common;
 
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.serialization.game_common;
-
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.character_edit;

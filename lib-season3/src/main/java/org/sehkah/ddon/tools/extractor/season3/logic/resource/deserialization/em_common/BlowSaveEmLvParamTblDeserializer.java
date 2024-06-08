@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common.BlowSaveEmLvParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common.BlowSaveEmLvParamTbl;
 
-public class BlowSaveEmLvParamTblDeserializer extends ClientResourceFileDeserializer {
+public class BlowSaveEmLvParamTblDeserializer extends ClientResourceFileDeserializer<BlowSaveEmLvParamTbl> {
 
 
     private static BlowSaveEmLvParam readBlowSaveEmLvParam(BufferReader bufferReader) {

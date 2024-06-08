@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmWarpParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmWarpParamTable;
 
-public class EmWarpParamTableDeserializer extends ClientResourceFileDeserializer {
+public class EmWarpParamTableDeserializer extends ClientResourceFileDeserializer<EmWarpParamTable> {
 
 
     private static EmWarpParam readEmWarpParam(BufferReader bufferReader) {

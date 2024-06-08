@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WeaponRes;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.wep_res_table.WeaponResTable;
 
-public class WeaponResTableDeserializer extends ClientResourceFileDeserializer {
+public class WeaponResTableDeserializer extends ClientResourceFileDeserializer<WeaponResTable> {
 
 
     private static WeaponRes readWeaponRes(BufferReader bufferReader) {

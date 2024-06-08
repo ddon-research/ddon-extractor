@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.JointOrder;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.JointOrderTable;
 
-public class JointOrderTableDeserializer extends ClientResourceFileDeserializer {
+public class JointOrderTableDeserializer extends ClientResourceFileDeserializer<JointOrderTable> {
 
 
     private static JointOrder readJointOrder(BufferReader bufferReader) {

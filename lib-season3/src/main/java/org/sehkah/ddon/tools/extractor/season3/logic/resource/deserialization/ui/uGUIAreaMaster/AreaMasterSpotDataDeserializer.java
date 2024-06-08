@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDataList;
 
-public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializer {
+public class AreaMasterSpotDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDataList> {
 
 
     private static AreaMasterSpotData readAreaMasterSpotData(BufferReader bufferReader) {

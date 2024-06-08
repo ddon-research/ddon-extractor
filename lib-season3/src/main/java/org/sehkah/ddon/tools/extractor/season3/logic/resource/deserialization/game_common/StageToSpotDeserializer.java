@@ -7,9 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.StageToSpot;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.StageToSpotList;
 
-public class StageToSpotDeserializer extends ClientResourceFileDeserializer {
-
-
+public class StageToSpotDeserializer extends ClientResourceFileDeserializer<StageToSpotList> {
     static StageToSpot readStageToSpot(BufferReader bufferReader) {
         return new StageToSpot(
                 bufferReader.readUnsignedInteger(),

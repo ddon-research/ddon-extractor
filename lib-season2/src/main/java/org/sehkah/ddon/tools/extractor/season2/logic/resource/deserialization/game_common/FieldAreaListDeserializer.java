@@ -2,13 +2,16 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.g
 
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.FieldAreaInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.FieldAreaList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.StageNo;
 
-public class FieldAreaListDeserializer extends ClientResourceFileDeserializer {
+import java.util.List;
+
+public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<FieldAreaList> {
 
 
     private static StageNo readStageNo(BufferReader bufferReader) {
@@ -17,19 +20,23 @@ public class FieldAreaListDeserializer extends ClientResourceFileDeserializer {
         );
     }
 
-    private static FieldAreaInfo readFieldAreaInfo(BufferReader bufferReader) {
-        return new FieldAreaInfo(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readArray(FieldAreaListDeserializer::readStageNo),
-                bufferReader.readArray(FieldAreaListDeserializer::readStageNo)
-        );
+    private static FieldAreaInfo readFieldAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long FieldAreaId = bufferReader.readUnsignedInteger();
+        long GmdIdx = bufferReader.readUnsignedInteger();
+        String FieldAreaName = null;
+        if (lookupUtil != null) {
+            FieldAreaName = lookupUtil.getMessage(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), GmdIdx);
+        }
+        int LandId = bufferReader.readUnsignedShort();
+        int AreaId = bufferReader.readUnsignedShort();
+        List<StageNo> StageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
+        List<StageNo> BelongStageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
+
+        return new FieldAreaInfo(FieldAreaId, GmdIdx, FieldAreaName, LandId, AreaId, StageNoList, BelongStageNoList);
     }
 
     @Override
     protected FieldAreaList parseClientResourceFile(BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new FieldAreaList(bufferReader.readArray(FieldAreaListDeserializer::readFieldAreaInfo));
+        return new FieldAreaList(bufferReader.readArray(FieldAreaListDeserializer::readFieldAreaInfo, lookupUtil));
     }
 }

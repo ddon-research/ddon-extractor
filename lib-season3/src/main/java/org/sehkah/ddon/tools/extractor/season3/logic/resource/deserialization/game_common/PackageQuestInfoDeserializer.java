@@ -7,9 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.PackageQuestInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.PackageQuestInfoList;
 
-public class PackageQuestInfoDeserializer extends ClientResourceFileDeserializer {
-
-
+public class PackageQuestInfoDeserializer extends ClientResourceFileDeserializer<PackageQuestInfoList> {
     private static PackageQuestInfo readPackageQuestInfo(BufferReader bufferReader) {
         return new PackageQuestInfo(
                 bufferReader.readUnsignedInteger(),

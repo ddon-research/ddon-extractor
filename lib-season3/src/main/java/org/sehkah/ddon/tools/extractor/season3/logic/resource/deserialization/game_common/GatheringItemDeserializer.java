@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GatheringItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GatheringItemList;
 
-public class GatheringItemDeserializer extends ClientResourceFileDeserializer {
+public class GatheringItemDeserializer extends ClientResourceFileDeserializer<GatheringItemList> {
 
 
     private static GatheringItem readGatheringItem(BufferReader bufferReader) {

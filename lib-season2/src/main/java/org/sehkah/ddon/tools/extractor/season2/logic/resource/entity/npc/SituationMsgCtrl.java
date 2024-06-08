@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SituationMsgCtrl extends TopLevelClientResource {
+public class SituationMsgCtrl extends Resource {
     private List<SituationData> SituationMsgCtrl;
 }

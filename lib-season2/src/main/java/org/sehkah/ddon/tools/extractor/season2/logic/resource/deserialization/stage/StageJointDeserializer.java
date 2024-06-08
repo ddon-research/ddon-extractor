@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.Stage
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class StageJointDeserializer extends ClientResourceFileDeserializer {
+public class StageJointDeserializer extends ClientResourceFileDeserializer<StageJoint> {
 
 
     private static StageJointInfo readStageJointInfo(BufferReader bufferReader) {

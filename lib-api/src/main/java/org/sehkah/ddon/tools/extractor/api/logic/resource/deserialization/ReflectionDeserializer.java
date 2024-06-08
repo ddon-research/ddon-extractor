@@ -4,7 +4,7 @@ import lombok.SneakyThrows;
 import org.sehkah.ddon.tools.extractor.api.deserialization.ArrayDataType;
 import org.sehkah.ddon.tools.extractor.api.deserialization.DataType;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.FileParsingIncompleteException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
@@ -17,7 +17,7 @@ import java.lang.reflect.ParameterizedType;
 /**
  * TODO Experimental deserializer which should reduce boilerplate at the cost of performance, tested successfully with QMI
  */
-public class ReflectionDeserializer<T extends TopLevelClientResource> implements ClientResourceDeserializer<T> {
+public class ReflectionDeserializer<T extends Resource> implements ClientResourceDeserializer<T> {
     private final Class<T> resourceClass;
 
     public ReflectionDeserializer(Class<T> resourceClass) {

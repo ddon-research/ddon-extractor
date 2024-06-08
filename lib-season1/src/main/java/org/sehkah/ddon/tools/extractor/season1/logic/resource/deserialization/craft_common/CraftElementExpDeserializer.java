@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_commo
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftElementExpDeserializer extends ClientResourceFileDeserializer {
+public class CraftElementExpDeserializer extends ClientResourceFileDeserializer<CraftElementExpList> {
 
 
     private static CraftElementExpData readCraftElementExpData(BufferReader bufferReader, int level) {

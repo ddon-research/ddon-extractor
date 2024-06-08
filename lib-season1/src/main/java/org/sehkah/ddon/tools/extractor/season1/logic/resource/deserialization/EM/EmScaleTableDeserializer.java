@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmScale;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EmScaleTable;
 
-public class EmScaleTableDeserializer extends ClientResourceFileDeserializer {
+public class EmScaleTableDeserializer extends ClientResourceFileDeserializer<EmScaleTable> {
 
 
     private static EmScale readEmScaleData(BufferReader bufferReader) {

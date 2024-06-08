@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.Rage;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.RageTable;
 
-public class RageTableDeserializer extends ClientResourceFileDeserializer {
+public class RageTableDeserializer extends ClientResourceFileDeserializer<RageTable> {
 
 
     private static Rage readRage(BufferReader bufferReader) {

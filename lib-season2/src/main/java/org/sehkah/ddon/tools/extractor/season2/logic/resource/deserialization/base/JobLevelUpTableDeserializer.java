@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.IncreaseParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.JobLevelUpTable;
 
-public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer {
+public class JobLevelUpTableDeserializer extends ClientResourceFileDeserializer<JobLevelUpTable> {
 
 
     private static IncreaseParam readIncreaseParam(BufferReader bufferReader) {

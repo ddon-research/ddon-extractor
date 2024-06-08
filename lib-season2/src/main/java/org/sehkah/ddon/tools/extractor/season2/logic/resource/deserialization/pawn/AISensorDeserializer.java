@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.pawn.AISens
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.pawn.AISensorNodeRes;
 
 // FIXME: Unsure about the order of parameters
-public class AISensorDeserializer extends ClientResourceFileDeserializer {
+public class AISensorDeserializer extends ClientResourceFileDeserializer<AISensor> {
 
 
     private static AISensorNodeRes readAISensorNodeRes(BufferReader bufferReader) {

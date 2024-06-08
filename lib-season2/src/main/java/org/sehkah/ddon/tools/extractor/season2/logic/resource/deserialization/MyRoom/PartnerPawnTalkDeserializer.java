@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.Part
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.PartnerPawnTalkInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.PartnerPawnTalkInfoData;
 
-public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer {
+public class PartnerPawnTalkDeserializer extends ClientResourceFileDeserializer<PartnerPawnTalk> {
 
 
     private static PartnerPawnTalkInfoData readPartnerPawnTalkInfoData(BufferReader bufferReader) {

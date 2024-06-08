@@ -4,7 +4,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 
 import java.nio.file.Path;
 

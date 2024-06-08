@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.history.QuestHistoryData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.history.QuestHistoryDataList;
 
-public class QuestHistoryDataDeserializer extends ClientResourceFileDeserializer {
+public class QuestHistoryDataDeserializer extends ClientResourceFileDeserializer<QuestHistoryDataList> {
 
 
     private static QuestHistoryData readQuestHistoryData(BufferReader bufferReader) {

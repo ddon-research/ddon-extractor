@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageCustom;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageCustomArea;
 
-public class StageCustomDeserializer extends ClientResourceFileDeserializer {
+public class StageCustomDeserializer extends ClientResourceFileDeserializer<StageCustom> {
 
 
     private static StageCustomArea readStageCustomArea(BufferReader bufferReader) {

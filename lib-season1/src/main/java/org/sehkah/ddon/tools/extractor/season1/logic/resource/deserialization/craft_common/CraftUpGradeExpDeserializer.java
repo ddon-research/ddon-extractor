@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.craft_commo
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftUpGradeExpDeserializer extends ClientResourceFileDeserializer {
+public class CraftUpGradeExpDeserializer extends ClientResourceFileDeserializer<CraftUpGradeExpList> {
 
 
     private static CraftUpGradeExpData readCraftUpGradeExpData(BufferReader bufferReader, int level) {

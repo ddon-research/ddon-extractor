@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.RoomWearParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.RoomWearParamTbl;
 
-public class RoomWearParamTblDeserializer extends ClientResourceFileDeserializer {
+public class RoomWearParamTblDeserializer extends ClientResourceFileDeserializer<RoomWearParamTbl> {
 
 
     private static RoomWearParam readRoomWearParam(BufferReader bufferReader) {

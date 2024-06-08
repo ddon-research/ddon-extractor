@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.Catch
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.CatchInfoParamTbl;
 
 // Works for both v18 (season 2) + v19 (season 3)
-public class CatchInfoParamTblDeserializer extends ClientResourceFileDeserializer {
+public class CatchInfoParamTblDeserializer extends ClientResourceFileDeserializer<CatchInfoParamTbl> {
 
 
     private static CatchInfoParam readCatchInfoParam(BufferReader bufferReader) {

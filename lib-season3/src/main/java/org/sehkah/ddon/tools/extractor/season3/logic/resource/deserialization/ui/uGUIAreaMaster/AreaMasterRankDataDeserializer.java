@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterRankData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterRankDataList;
 
-public class AreaMasterRankDataDeserializer extends ClientResourceFileDeserializer {
+public class AreaMasterRankDataDeserializer extends ClientResourceFileDeserializer<AreaMasterRankDataList> {
 
 
     private static AreaMasterRankData readAreaMasterRankData(BufferReader bufferReader) {

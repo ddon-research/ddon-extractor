@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterial;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyMaterialTable;
 
-public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializer {
+public class EnemyMaterialTableDeserializer extends ClientResourceFileDeserializer<EnemyMaterialTable> {
 
 
     private static EnemyMaterial readEnemyMaterialData(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.wep_res_table.WepCateRes;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.wep_res_table.WepCateResTbl;
 
-public class WepCateResTblDeserializer extends ClientResourceFileDeserializer {
+public class WepCateResTblDeserializer extends ClientResourceFileDeserializer<WepCateResTbl> {
 
 
     private static WepCateRes readWepCateRes(BufferReader bufferReader) {

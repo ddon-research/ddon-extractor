@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsNoSetPS3;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc_common.NpcIsNoSetPS3Tbl;
 
-public class NpcIsNoSetPS3TblDeserializer extends ClientResourceFileDeserializer {
+public class NpcIsNoSetPS3TblDeserializer extends ClientResourceFileDeserializer<NpcIsNoSetPS3Tbl> {
 
 
     private static NpcIsNoSetPS3 readNpcConstItem(BufferReader bufferReader) {

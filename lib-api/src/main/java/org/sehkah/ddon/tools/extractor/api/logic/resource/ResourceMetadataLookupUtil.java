@@ -17,7 +17,7 @@ import java.nio.file.Path;
 public abstract class ResourceMetadataLookupUtil {
     protected final ResourceCache cache;
 
-    public ResourceMetadataLookupUtil(Path clientRootFolder) {
+    protected ResourceMetadataLookupUtil(Path clientRootFolder) {
         cache = new ResourceCache(clientRootFolder);
     }
 

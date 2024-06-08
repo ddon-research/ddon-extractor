@@ -1,5 +1,5 @@
 {
-  "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessage",
+  "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage",
   "FileHeader": {
     "MagicString": "GMD\u0000",
     "MagicBytesLength": 4,
@@ -11,7 +11,7 @@
   "MessageBufferSize": 4756,
   "Indices": [
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 0,
       "KeyCrcHashDouble": 2131304001,
       "KeyCrcHashTriple": 4072804613,
@@ -22,7 +22,7 @@
       "Message": "Display"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 1,
       "KeyCrcHashDouble": 876212552,
       "KeyCrcHashTriple": 151138001,
@@ -33,7 +33,7 @@
       "Message": "Gamma Correction"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 2,
       "KeyCrcHashDouble": 1622870932,
       "KeyCrcHashTriple": 629360504,
@@ -44,7 +44,7 @@
       "Message": "Sound"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 3,
       "KeyCrcHashDouble": 1369390046,
       "KeyCrcHashTriple": 113501613,
@@ -55,7 +55,7 @@
       "Message": "System"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 4,
       "KeyCrcHashDouble": 2842909124,
       "KeyCrcHashTriple": 670853135,
@@ -66,7 +66,7 @@
       "Message": "<PFWD 0> Setting"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 5,
       "KeyCrcHashDouble": 2692482853,
       "KeyCrcHashTriple": 2380902044,
@@ -77,7 +77,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 6,
       "KeyCrcHashDouble": 1362786596,
       "KeyCrcHashTriple": 687196248,
@@ -88,7 +88,7 @@
       "Message": "Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 7,
       "KeyCrcHashDouble": 3841130472,
       "KeyCrcHashTriple": 1671077313,
@@ -99,7 +99,7 @@
       "Message": "BGM"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 8,
       "KeyCrcHashDouble": 3861286238,
       "KeyCrcHashTriple": 4138118710,
@@ -110,7 +110,7 @@
       "Message": "Sound Effects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 9,
       "KeyCrcHashDouble": 1934098647,
       "KeyCrcHashTriple": 2500759390,
@@ -121,7 +121,7 @@
       "Message": "<PFWD 0> General Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 10,
       "KeyCrcHashDouble": 1442271864,
       "KeyCrcHashTriple": 2763685310,
@@ -132,7 +132,7 @@
       "Message": "Tell Sound"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 11,
       "KeyCrcHashDouble": 2819848899,
       "KeyCrcHashTriple": 905694576,
@@ -143,7 +143,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 12,
       "KeyCrcHashDouble": 2393917105,
       "KeyCrcHashTriple": 3272862565,
@@ -154,7 +154,7 @@
       "Message": "NPC Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 13,
       "KeyCrcHashDouble": 3208792567,
       "KeyCrcHashTriple": 1533854045,
@@ -165,7 +165,7 @@
       "Message": "Pawn Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 14,
       "KeyCrcHashDouble": 2666474572,
       "KeyCrcHashTriple": 915971491,
@@ -176,7 +176,7 @@
       "Message": "Player Action Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 15,
       "KeyCrcHashDouble": 3853647891,
       "KeyCrcHashTriple": 601079863,
@@ -187,7 +187,7 @@
       "Message": "Party Action Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 16,
       "KeyCrcHashDouble": 953440358,
       "KeyCrcHashTriple": 2346410758,
@@ -198,7 +198,7 @@
       "Message": "Enemy Action Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 17,
       "KeyCrcHashDouble": 1899412657,
       "KeyCrcHashTriple": 3597965623,
@@ -209,7 +209,7 @@
       "Message": "Communication Voices"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 18,
       "KeyCrcHashDouble": 1142621226,
       "KeyCrcHashTriple": 1063839260,
@@ -220,7 +220,7 @@
       "Message": "Combat BGM"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 19,
       "KeyCrcHashDouble": 2183961755,
       "KeyCrcHashTriple": 537451575,
@@ -231,7 +231,7 @@
       "Message": "Ambient"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 20,
       "KeyCrcHashDouble": 1959972647,
       "KeyCrcHashTriple": 3042403445,
@@ -242,7 +242,7 @@
       "Message": "Enemy"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 21,
       "KeyCrcHashDouble": 573538784,
       "KeyCrcHashTriple": 1693970571,
@@ -253,7 +253,7 @@
       "Message": "Player"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 22,
       "KeyCrcHashDouble": 1620028359,
       "KeyCrcHashTriple": 586471187,
@@ -264,7 +264,7 @@
       "Message": "Party Members"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 23,
       "KeyCrcHashDouble": 4286578646,
       "KeyCrcHashTriple": 672609516,
@@ -275,7 +275,7 @@
       "Message": "Enable Vibration"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 24,
       "KeyCrcHashDouble": 2842066930,
       "KeyCrcHashTriple": 3556675579,
@@ -286,7 +286,7 @@
       "Message": "Display Tutorial Pop-ups"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 25,
       "KeyCrcHashDouble": 1759799279,
       "KeyCrcHashTriple": 2238727104,
@@ -297,7 +297,7 @@
       "Message": "Automatically Set Quests as Priority"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 26,
       "KeyCrcHashDouble": 4204160814,
       "KeyCrcHashTriple": 3916645625,
@@ -308,7 +308,7 @@
       "Message": "JPEG"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 27,
       "KeyCrcHashDouble": 530995413,
       "KeyCrcHashTriple": 1298688954,
@@ -319,7 +319,7 @@
       "Message": "General"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 28,
       "KeyCrcHashDouble": 3638821383,
       "KeyCrcHashTriple": 296498277,
@@ -330,7 +330,7 @@
       "Message": "HUD"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 29,
       "KeyCrcHashDouble": 3349503154,
       "KeyCrcHashTriple": 1146847024,
@@ -341,7 +341,7 @@
       "Message": "Overhead"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 30,
       "KeyCrcHashDouble": 2512284292,
       "KeyCrcHashTriple": 1441570817,
@@ -352,7 +352,7 @@
       "Message": "Chat"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 31,
       "KeyCrcHashDouble": 2301999070,
       "KeyCrcHashTriple": 3142822967,
@@ -363,7 +363,7 @@
       "Message": "Notice & Privacy"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 32,
       "KeyCrcHashDouble": 3394396051,
       "KeyCrcHashTriple": 109513294,
@@ -374,7 +374,7 @@
       "Message": "Character"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 33,
       "KeyCrcHashDouble": 1493303186,
       "KeyCrcHashTriple": 2239430436,
@@ -385,7 +385,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 34,
       "KeyCrcHashDouble": 2905061872,
       "KeyCrcHashTriple": 424638792,
@@ -396,7 +396,7 @@
       "Message": "NPC"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 35,
       "KeyCrcHashDouble": 2023922493,
       "KeyCrcHashTriple": 794145870,
@@ -407,7 +407,7 @@
       "Message": "Notice"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 36,
       "KeyCrcHashDouble": 289147534,
       "KeyCrcHashTriple": 1492246244,
@@ -418,7 +418,7 @@
       "Message": "Privacy"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 37,
       "KeyCrcHashDouble": 2997581327,
       "KeyCrcHashTriple": 4246287217,
@@ -429,7 +429,7 @@
       "Message": "System Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 38,
       "KeyCrcHashDouble": 2871025112,
       "KeyCrcHashTriple": 2588584167,
@@ -440,7 +440,7 @@
       "Message": "System Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 39,
       "KeyCrcHashDouble": 2176655777,
       "KeyCrcHashTriple": 868090973,
@@ -451,7 +451,7 @@
       "Message": "Game Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 40,
       "KeyCrcHashDouble": 2553678454,
       "KeyCrcHashTriple": 1424859083,
@@ -462,7 +462,7 @@
       "Message": "Game Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 41,
       "KeyCrcHashDouble": 4112969942,
       "KeyCrcHashTriple": 1680586703,
@@ -473,7 +473,7 @@
       "Message": "Online Status"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 42,
       "KeyCrcHashDouble": 3394690263,
       "KeyCrcHashTriple": 3825850872,
@@ -484,7 +484,7 @@
       "Message": "Camera: <PFWD 0>"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 43,
       "KeyCrcHashDouble": 1102456733,
       "KeyCrcHashTriple": 181030910,
@@ -495,7 +495,7 @@
       "Message": "Camera: Keyboard"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 44,
       "KeyCrcHashDouble": 3809667048,
       "KeyCrcHashTriple": 1601063931,
@@ -506,7 +506,7 @@
       "Message": "Camera Correction"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 45,
       "KeyCrcHashDouble": 1913434479,
       "KeyCrcHashTriple": 2054410774,
@@ -517,7 +517,7 @@
       "Message": "Camera Control"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 46,
       "KeyCrcHashDouble": 1700637005,
       "KeyCrcHashTriple": 3902519006,
@@ -528,7 +528,7 @@
       "Message": "Windows"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 47,
       "KeyCrcHashDouble": 2973393557,
       "KeyCrcHashTriple": 3959880547,
@@ -539,7 +539,7 @@
       "Message": "Direct Chat"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 48,
       "KeyCrcHashDouble": 1263437662,
       "KeyCrcHashTriple": 216953713,
@@ -550,7 +550,7 @@
       "Message": "Demo"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 49,
       "KeyCrcHashDouble": 3076083113,
       "KeyCrcHashTriple": 3483495996,
@@ -561,7 +561,7 @@
       "Message": "Extra Sounds"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 50,
       "KeyCrcHashDouble": 312777362,
       "KeyCrcHashTriple": 596025036,
@@ -572,7 +572,7 @@
       "Message": "Character Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 51,
       "KeyCrcHashDouble": 1646521967,
       "KeyCrcHashTriple": 1238915872,
@@ -583,7 +583,7 @@
       "Message": "Shop Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 52,
       "KeyCrcHashDouble": 2278783383,
       "KeyCrcHashTriple": 3296970398,
@@ -594,7 +594,7 @@
       "Message": "Minimap Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 53,
       "KeyCrcHashDouble": 1959215740,
       "KeyCrcHashTriple": 691829783,
@@ -605,7 +605,7 @@
       "Message": "Character Information"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 54,
       "KeyCrcHashDouble": 1642906253,
       "KeyCrcHashTriple": 1643952465,
@@ -616,7 +616,7 @@
       "Message": "Photo"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 55,
       "KeyCrcHashDouble": 3332669339,
       "KeyCrcHashTriple": 3190620931,
@@ -627,7 +627,7 @@
       "Message": "Display Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 56,
       "KeyCrcHashDouble": 4034767091,
       "KeyCrcHashTriple": 3980698437,
@@ -638,7 +638,7 @@
       "Message": "Party Members"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 57,
       "KeyCrcHashDouble": 2958243600,
       "KeyCrcHashTriple": 2506172793,
@@ -649,7 +649,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 58,
       "KeyCrcHashDouble": 4142834898,
       "KeyCrcHashTriple": 2284486853,
@@ -660,7 +660,7 @@
       "Message": "NPC"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 59,
       "KeyCrcHashDouble": 338806094,
       "KeyCrcHashTriple": 3164517393,
@@ -671,7 +671,7 @@
       "Message": "Objects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 60,
       "KeyCrcHashDouble": 2119532195,
       "KeyCrcHashTriple": 4208834258,
@@ -682,7 +682,7 @@
       "Message": "Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 61,
       "KeyCrcHashDouble": 800046270,
       "KeyCrcHashTriple": 755877989,
@@ -693,7 +693,7 @@
       "Message": "Color"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 62,
       "KeyCrcHashDouble": 2399858373,
       "KeyCrcHashTriple": 1817575347,
@@ -704,7 +704,7 @@
       "Message": "Ringtone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 63,
       "KeyCrcHashDouble": 2954842929,
       "KeyCrcHashTriple": 851340764,
@@ -715,7 +715,7 @@
       "Message": "Notification Area"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 64,
       "KeyCrcHashDouble": 3933770143,
       "KeyCrcHashTriple": 36945553,
@@ -726,7 +726,7 @@
       "Message": "Achievement"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 65,
       "KeyCrcHashDouble": 2993532165,
       "KeyCrcHashTriple": 2447493169,
@@ -737,7 +737,7 @@
       "Message": "Notice"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 66,
       "KeyCrcHashDouble": 767886837,
       "KeyCrcHashTriple": 2158713524,
@@ -748,7 +748,7 @@
       "Message": "Arisen Profile"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 67,
       "KeyCrcHashDouble": 2923540509,
       "KeyCrcHashTriple": 2117779080,
@@ -759,7 +759,7 @@
       "Message": "Your Status"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 68,
       "KeyCrcHashDouble": 2307313496,
       "KeyCrcHashTriple": 355177735,
@@ -770,7 +770,7 @@
       "Message": "Invert Vertical Camera"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 69,
       "KeyCrcHashDouble": 155795400,
       "KeyCrcHashTriple": 732286834,
@@ -781,7 +781,7 @@
       "Message": "Invert Horizontal Camera"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 70,
       "KeyCrcHashDouble": 257338803,
       "KeyCrcHashTriple": 767498000,
@@ -792,7 +792,7 @@
       "Message": "Enable Camera Correction"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 71,
       "KeyCrcHashDouble": 86839786,
       "KeyCrcHashTriple": 348370788,
@@ -803,7 +803,7 @@
       "Message": "Initial Camera Position"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 72,
       "KeyCrcHashDouble": 3704458411,
       "KeyCrcHashTriple": 1469005756,
@@ -814,7 +814,7 @@
       "Message": "Camera Speed"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 73,
       "KeyCrcHashDouble": 1343874257,
       "KeyCrcHashTriple": 1696213725,
@@ -825,7 +825,7 @@
       "Message": "Camera Speed"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 74,
       "KeyCrcHashDouble": 1330331702,
       "KeyCrcHashTriple": 258175679,
@@ -836,7 +836,7 @@
       "Message": "Automatic Window Transparency"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 75,
       "KeyCrcHashDouble": 326433420,
       "KeyCrcHashTriple": 1461563126,
@@ -847,7 +847,7 @@
       "Message": "Display Matchmaking Pop-ups"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 76,
       "KeyCrcHashDouble": 3078653069,
       "KeyCrcHashTriple": 88751455,
@@ -858,7 +858,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 77,
       "KeyCrcHashDouble": 2742900045,
       "KeyCrcHashTriple": 3013456892,
@@ -869,7 +869,7 @@
       "Message": "Enable Chat Without Pressing Enter"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 78,
       "KeyCrcHashDouble": 67640091,
       "KeyCrcHashTriple": 94561326,
@@ -880,7 +880,7 @@
       "Message": "Display Subtitles"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 79,
       "KeyCrcHashDouble": 4185254139,
       "KeyCrcHashTriple": 1223534128,
@@ -891,7 +891,7 @@
       "Message": "Accept Others' Sound"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 80,
       "KeyCrcHashDouble": 158640981,
       "KeyCrcHashTriple": 1674283598,
@@ -902,7 +902,7 @@
       "Message": "Display Arisen Helmet"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 81,
       "KeyCrcHashDouble": 3472194047,
       "KeyCrcHashTriple": 380432477,
@@ -913,7 +913,7 @@
       "Message": "Display Pawn Helmets"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 82,
       "KeyCrcHashDouble": 9055697,
       "KeyCrcHashTriple": 3817145299,
@@ -924,7 +924,7 @@
       "Message": "Display Arisen Lantern"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 83,
       "KeyCrcHashDouble": 899435407,
       "KeyCrcHashTriple": 866898188,
@@ -935,7 +935,7 @@
       "Message": "Display Pawn Lanterns"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 84,
       "KeyCrcHashDouble": 3567276455,
       "KeyCrcHashTriple": 1159287302,
@@ -946,7 +946,7 @@
       "Message": "Idle Emote"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 85,
       "KeyCrcHashDouble": 2395548722,
       "KeyCrcHashTriple": 1261048306,
@@ -957,7 +957,7 @@
       "Message": "Idle Time"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 86,
       "KeyCrcHashDouble": 2582332876,
       "KeyCrcHashTriple": 1673834779,
@@ -968,7 +968,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 87,
       "KeyCrcHashDouble": 228033997,
       "KeyCrcHashTriple": 2432910779,
@@ -979,7 +979,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 88,
       "KeyCrcHashDouble": 4208417639,
       "KeyCrcHashTriple": 166034526,
@@ -990,7 +990,7 @@
       "Message": "Visibility"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 89,
       "KeyCrcHashDouble": 3350507056,
       "KeyCrcHashTriple": 3168659181,
@@ -1001,7 +1001,7 @@
       "Message": "Enable Rotation"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 90,
       "KeyCrcHashDouble": 1501368195,
       "KeyCrcHashTriple": 1458228817,
@@ -1012,7 +1012,7 @@
       "Message": "Opacity"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 91,
       "KeyCrcHashDouble": 761783299,
       "KeyCrcHashTriple": 4141604706,
@@ -1023,7 +1023,7 @@
       "Message": "Invert Vertical Map"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 92,
       "KeyCrcHashDouble": 2257331480,
       "KeyCrcHashTriple": 3919988876,
@@ -1034,7 +1034,7 @@
       "Message": "Invert Horizontal Map"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 93,
       "KeyCrcHashDouble": 2289310062,
       "KeyCrcHashTriple": 2102932569,
@@ -1045,7 +1045,7 @@
       "Message": "Display Text"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 94,
       "KeyCrcHashDouble": 2779886040,
       "KeyCrcHashTriple": 555006173,
@@ -1056,7 +1056,7 @@
       "Message": "Opacity"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 95,
       "KeyCrcHashDouble": 3106239865,
       "KeyCrcHashTriple": 2069201733,
@@ -1067,7 +1067,7 @@
       "Message": "Display Quest Guide"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 96,
       "KeyCrcHashDouble": 2206929427,
       "KeyCrcHashTriple": 415156733,
@@ -1078,7 +1078,7 @@
       "Message": "Enable Automatic Quest Guide"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 97,
       "KeyCrcHashDouble": 4088397452,
       "KeyCrcHashTriple": 146757274,
@@ -1089,7 +1089,7 @@
       "Message": "Automatic Quest Guide Priority"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 98,
       "KeyCrcHashDouble": 893886970,
       "KeyCrcHashTriple": 723929626,
@@ -1100,7 +1100,7 @@
       "Message": "Enable Dying Effect"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 99,
       "KeyCrcHashDouble": 644560301,
       "KeyCrcHashTriple": 1191594354,
@@ -1111,7 +1111,7 @@
       "Message": "Display HUD in screenshots"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 100,
       "KeyCrcHashDouble": 3882461895,
       "KeyCrcHashTriple": 3025412732,
@@ -1122,7 +1122,7 @@
       "Message": "Overhead Name Display"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 101,
       "KeyCrcHashDouble": 2548321850,
       "KeyCrcHashTriple": 3978309680,
@@ -1133,7 +1133,7 @@
       "Message": "Name Display Type"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 102,
       "KeyCrcHashDouble": 596046278,
       "KeyCrcHashTriple": 473635508,
@@ -1144,7 +1144,7 @@
       "Message": "Display Clan Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 103,
       "KeyCrcHashDouble": 3802047907,
       "KeyCrcHashTriple": 2071514078,
@@ -1155,7 +1155,7 @@
       "Message": "Display Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 104,
       "KeyCrcHashDouble": 326939371,
       "KeyCrcHashTriple": 2269405910,
@@ -1166,7 +1166,7 @@
       "Message": "Display Title"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 105,
       "KeyCrcHashDouble": 1323672116,
       "KeyCrcHashTriple": 1060617200,
@@ -1177,7 +1177,7 @@
       "Message": "Display Clan Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 106,
       "KeyCrcHashDouble": 2947047932,
       "KeyCrcHashTriple": 47794932,
@@ -1188,7 +1188,7 @@
       "Message": "Display Timestamp"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 107,
       "KeyCrcHashDouble": 2300763128,
       "KeyCrcHashTriple": 2274163213,
@@ -1199,7 +1199,7 @@
       "Message": "Inactive Opacity"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 108,
       "KeyCrcHashDouble": 1643309596,
       "KeyCrcHashTriple": 3622680310,
@@ -1210,7 +1210,7 @@
       "Message": "Color"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 109,
       "KeyCrcHashDouble": 403069980,
       "KeyCrcHashTriple": 3386368337,
@@ -1221,7 +1221,7 @@
       "Message": "Ringtone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 110,
       "KeyCrcHashDouble": 448862779,
       "KeyCrcHashTriple": 933114301,
@@ -1232,7 +1232,7 @@
       "Message": "Display Ping"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 111,
       "KeyCrcHashDouble": 809291258,
       "KeyCrcHashTriple": 374949578,
@@ -1243,7 +1243,7 @@
       "Message": "Display Time"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 112,
       "KeyCrcHashDouble": 3146228769,
       "KeyCrcHashTriple": 687030018,
@@ -1254,7 +1254,7 @@
       "Message": "Time Zone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 113,
       "KeyCrcHashDouble": 2831208864,
       "KeyCrcHashTriple": 3850095554,
@@ -1265,7 +1265,7 @@
       "Message": "Display World"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 114,
       "KeyCrcHashDouble": 3552886344,
       "KeyCrcHashTriple": 1224703127,
@@ -1276,7 +1276,7 @@
       "Message": "Display Combat Warning"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 115,
       "KeyCrcHashDouble": 2881869073,
       "KeyCrcHashTriple": 4055775588,
@@ -1287,7 +1287,7 @@
       "Message": "Display Achievement Notifications"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 116,
       "KeyCrcHashDouble": 3849815142,
       "KeyCrcHashTriple": 1151479267,
@@ -1298,7 +1298,7 @@
       "Message": "Display Reward Overflow Warning"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 117,
       "KeyCrcHashDouble": 877762282,
       "KeyCrcHashTriple": 700509425,
@@ -1309,7 +1309,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 118,
       "KeyCrcHashDouble": 2659805503,
       "KeyCrcHashTriple": 3838713225,
@@ -1320,7 +1320,7 @@
       "Message": "Near"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 119,
       "KeyCrcHashDouble": 83895723,
       "KeyCrcHashTriple": 3080880477,
@@ -1331,7 +1331,7 @@
       "Message": "Far"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 120,
       "KeyCrcHashDouble": 113378420,
       "KeyCrcHashTriple": 3698714943,
@@ -1342,7 +1342,7 @@
       "Message": "Main Quest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 121,
       "KeyCrcHashDouble": 4274393004,
       "KeyCrcHashTriple": 920371587,
@@ -1353,7 +1353,7 @@
       "Message": "World Quest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 122,
       "KeyCrcHashDouble": 4059968729,
       "KeyCrcHashTriple": 720138276,
@@ -1364,7 +1364,7 @@
       "Message": "Personal Quest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 123,
       "KeyCrcHashDouble": 1299729900,
       "KeyCrcHashTriple": 4194376504,
@@ -1375,7 +1375,7 @@
       "Message": "Anyone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 124,
       "KeyCrcHashDouble": 3321640440,
       "KeyCrcHashTriple": 608115712,
@@ -1386,7 +1386,7 @@
       "Message": "Any"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 125,
       "KeyCrcHashDouble": 1742597285,
       "KeyCrcHashTriple": 376798842,
@@ -1397,7 +1397,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 126,
       "KeyCrcHashDouble": 3928260461,
       "KeyCrcHashTriple": 604057959,
@@ -1408,7 +1408,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 127,
       "KeyCrcHashDouble": 408424083,
       "KeyCrcHashTriple": 4176923720,
@@ -1419,7 +1419,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 128,
       "KeyCrcHashDouble": 1839453288,
       "KeyCrcHashTriple": 2322317934,
@@ -1430,7 +1430,7 @@
       "Message": "All"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 129,
       "KeyCrcHashDouble": 1851879664,
       "KeyCrcHashTriple": 3413007278,
@@ -1441,7 +1441,7 @@
       "Message": "First Initial and Last Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 130,
       "KeyCrcHashDouble": 2633404926,
       "KeyCrcHashTriple": 1221256743,
@@ -1452,7 +1452,7 @@
       "Message": "First Name and Last Initial"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 131,
       "KeyCrcHashDouble": 3289797963,
       "KeyCrcHashTriple": 676640369,
@@ -1463,7 +1463,7 @@
       "Message": "Last Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 132,
       "KeyCrcHashDouble": 4100050454,
       "KeyCrcHashTriple": 4080519900,
@@ -1474,7 +1474,7 @@
       "Message": "First Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 133,
       "KeyCrcHashDouble": 4001742325,
       "KeyCrcHashTriple": 2148489529,
@@ -1485,7 +1485,7 @@
       "Message": "■ Color １"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 134,
       "KeyCrcHashDouble": 2245722551,
       "KeyCrcHashTriple": 1852045199,
@@ -1496,7 +1496,7 @@
       "Message": "■ Color ２"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 135,
       "KeyCrcHashDouble": 365008822,
       "KeyCrcHashTriple": 877105693,
@@ -1507,7 +1507,7 @@
       "Message": "■ Color ３"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 136,
       "KeyCrcHashDouble": 1399224627,
       "KeyCrcHashTriple": 1774955682,
@@ -1518,7 +1518,7 @@
       "Message": "■ Color ４"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 137,
       "KeyCrcHashDouble": 3279744818,
       "KeyCrcHashTriple": 871352624,
@@ -1529,7 +1529,7 @@
       "Message": "■ Color ５"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 138,
       "KeyCrcHashDouble": 2820821872,
       "KeyCrcHashTriple": 3716376454,
@@ -1540,7 +1540,7 @@
       "Message": "■ Color ６"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 139,
       "KeyCrcHashDouble": 943244657,
       "KeyCrcHashTriple": 2275869204,
@@ -1551,7 +1551,7 @@
       "Message": "■ Color ７"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 140,
       "KeyCrcHashDouble": 627936890,
       "KeyCrcHashTriple": 1721441016,
@@ -1562,7 +1562,7 @@
       "Message": "■ Color ８"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 141,
       "KeyCrcHashDouble": 3044481147,
       "KeyCrcHashTriple": 1019182954,
@@ -1573,7 +1573,7 @@
       "Message": "■ Color ９"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 142,
       "KeyCrcHashDouble": 1815927673,
       "KeyCrcHashTriple": 1305653542,
@@ -1584,7 +1584,7 @@
       "Message": "■ Color １０"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 143,
       "KeyCrcHashDouble": 1974988974,
       "KeyCrcHashTriple": 713108144,
@@ -1595,7 +1595,7 @@
       "Message": "■ Color １１"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 144,
       "KeyCrcHashDouble": 1596624087,
       "KeyCrcHashTriple": 2205517322,
@@ -1606,7 +1606,7 @@
       "Message": "■ Color １２"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 145,
       "KeyCrcHashDouble": 3840015404,
       "KeyCrcHashTriple": 488031136,
@@ -1617,7 +1617,7 @@
       "Message": "Ringtone １"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 146,
       "KeyCrcHashDouble": 2411675758,
       "KeyCrcHashTriple": 4084886806,
@@ -1628,7 +1628,7 @@
       "Message": "Ringtone ２"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 147,
       "KeyCrcHashDouble": 530962031,
       "KeyCrcHashTriple": 2841512068,
@@ -1639,7 +1639,7 @@
       "Message": "Ringtone ３"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 148,
       "KeyCrcHashDouble": 1493317866,
       "KeyCrcHashTriple": 4107417147,
@@ -1650,7 +1650,7 @@
       "Message": "Ringtone ４"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 149,
       "KeyCrcHashDouble": 3373838059,
       "KeyCrcHashTriple": 2935378857,
@@ -1661,7 +1661,7 @@
       "Message": "Ringtone ５"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 150,
       "KeyCrcHashDouble": 2722501289,
       "KeyCrcHashTriple": 1083899167,
@@ -1672,7 +1672,7 @@
       "Message": "Ringtone ６"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 151,
       "KeyCrcHashDouble": 844924072,
       "KeyCrcHashTriple": 448698509,
@@ -1683,7 +1683,7 @@
       "Message": "Ringtone ７"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 152,
       "KeyCrcHashDouble": 789172131,
       "KeyCrcHashTriple": 4219633761,
@@ -1694,7 +1694,7 @@
       "Message": "Ringtone ８"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 153,
       "KeyCrcHashDouble": 2988571559,
       "KeyCrcHashTriple": 3768034033,
@@ -1705,7 +1705,7 @@
       "Message": "Lestania (GT)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 154,
       "KeyCrcHashDouble": 3690101730,
       "KeyCrcHashTriple": 4030237408,
@@ -1716,7 +1716,7 @@
       "Message": "Server (ST)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 155,
       "KeyCrcHashDouble": 339022,
       "KeyCrcHashTriple": 729779026,
@@ -1727,7 +1727,7 @@
       "Message": "Local (LT)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 156,
       "KeyCrcHashDouble": 2727617899,
       "KeyCrcHashTriple": 707136810,
@@ -1738,7 +1738,7 @@
       "Message": "Anyone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 157,
       "KeyCrcHashDouble": 3249527837,
       "KeyCrcHashTriple": 3759894938,
@@ -1749,7 +1749,7 @@
       "Message": "Friends and Clan only"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 158,
       "KeyCrcHashDouble": 209932519,
       "KeyCrcHashTriple": 4162441420,
@@ -1760,7 +1760,7 @@
       "Message": "Friends only"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 159,
       "KeyCrcHashDouble": 724797439,
       "KeyCrcHashTriple": 1587401818,
@@ -1771,7 +1771,7 @@
       "Message": "Clan only"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 160,
       "KeyCrcHashDouble": 1929818833,
       "KeyCrcHashTriple": 379216638,
@@ -1782,7 +1782,7 @@
       "Message": "Private"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 161,
       "KeyCrcHashDouble": 25927046,
       "KeyCrcHashTriple": 2136207515,
@@ -1793,7 +1793,7 @@
       "Message": "There are settings that have been changed.\nAre you sure you want to exit configuration?"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 162,
       "KeyCrcHashDouble": 1627948950,
       "KeyCrcHashTriple": 184208536,
@@ -1804,7 +1804,7 @@
       "Message": "Apply and Exit"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 163,
       "KeyCrcHashDouble": 1189687822,
       "KeyCrcHashTriple": 1117625408,
@@ -1815,7 +1815,7 @@
       "Message": "Ended"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 164,
       "KeyCrcHashDouble": 3760015975,
       "KeyCrcHashTriple": 2365686442,
@@ -1826,7 +1826,7 @@
       "Message": "Cancel"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 165,
       "KeyCrcHashDouble": 1833467880,
       "KeyCrcHashTriple": 2300448009,
@@ -1837,7 +1837,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 166,
       "KeyCrcHashDouble": 1976726250,
       "KeyCrcHashTriple": 1901403304,
@@ -1848,7 +1848,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 167,
       "KeyCrcHashDouble": 2661214284,
       "KeyCrcHashTriple": 102785559,
@@ -1859,7 +1859,7 @@
       "Message": "Invert Vertical Camera"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 168,
       "KeyCrcHashDouble": 1970700015,
       "KeyCrcHashTriple": 1670617301,
@@ -1870,7 +1870,7 @@
       "Message": "Invert Horizontal Camera"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 169,
       "KeyCrcHashDouble": 487756889,
       "KeyCrcHashTriple": 1833578484,
@@ -1881,7 +1881,7 @@
       "Message": "You want to display the action palette"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 170,
       "KeyCrcHashDouble": 3092547888,
       "KeyCrcHashTriple": 1379737246,
@@ -1892,7 +1892,7 @@
       "Message": "Help information"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 171,
       "KeyCrcHashDouble": 1978899811,
       "KeyCrcHashTriple": 3967702219,
@@ -1903,7 +1903,7 @@
       "Message": "Name Display Type"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 172,
       "KeyCrcHashDouble": 2637049451,
       "KeyCrcHashTriple": 3971250018,
@@ -1914,7 +1914,7 @@
       "Message": "Name Display Type"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 173,
       "KeyCrcHashDouble": 4182583547,
       "KeyCrcHashTriple": 902706015,
@@ -1925,7 +1925,7 @@
       "Message": "Display Clan Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 174,
       "KeyCrcHashDouble": 2187917895,
       "KeyCrcHashTriple": 3687704222,
@@ -1936,7 +1936,7 @@
       "Message": "Display Name"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 175,
       "KeyCrcHashDouble": 3067161693,
       "KeyCrcHashTriple": 3918441645,
@@ -1947,7 +1947,7 @@
       "Message": "Configuration applied"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 176,
       "KeyCrcHashDouble": 3256370477,
       "KeyCrcHashTriple": 3760526437,
@@ -1958,7 +1958,7 @@
       "Message": "Are you sure you want to reset to defaults?"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 177,
       "KeyCrcHashDouble": 3516557579,
       "KeyCrcHashTriple": 2891592888,
@@ -1969,7 +1969,7 @@
       "Message": "Yes"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 178,
       "KeyCrcHashDouble": 3358265185,
       "KeyCrcHashTriple": 328845711,
@@ -1980,7 +1980,7 @@
       "Message": "No"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 179,
       "KeyCrcHashDouble": 3848269355,
       "KeyCrcHashTriple": 311891669,
@@ -1991,7 +1991,7 @@
       "Message": "Apply"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 180,
       "KeyCrcHashDouble": 3156601666,
       "KeyCrcHashTriple": 47765443,
@@ -2002,7 +2002,7 @@
       "Message": "Reset"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 181,
       "KeyCrcHashDouble": 916183131,
       "KeyCrcHashTriple": 2302734947,
@@ -2013,7 +2013,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 182,
       "KeyCrcHashDouble": 3850232456,
       "KeyCrcHashTriple": 2742950978,
@@ -2024,7 +2024,7 @@
       "Message": "Filter"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 183,
       "KeyCrcHashDouble": 3949982857,
       "KeyCrcHashTriple": 2743815917,
@@ -2035,7 +2035,7 @@
       "Message": "Color"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 184,
       "KeyCrcHashDouble": 1872666588,
       "KeyCrcHashTriple": 45122832,
@@ -2046,7 +2046,7 @@
       "Message": "Filter"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 185,
       "KeyCrcHashDouble": 3846860251,
       "KeyCrcHashTriple": 2355189810,
@@ -2057,7 +2057,7 @@
       "Message": "Ringtone"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 186,
       "KeyCrcHashDouble": 3787792348,
       "KeyCrcHashTriple": 1906025282,
@@ -2068,7 +2068,7 @@
       "Message": " "
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 187,
       "KeyCrcHashDouble": 3861332997,
       "KeyCrcHashTriple": 2170647010,
@@ -2079,7 +2079,7 @@
       "Message": "120 Seconds"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 188,
       "KeyCrcHashDouble": 2861995808,
       "KeyCrcHashTriple": 1856681281,
@@ -2090,7 +2090,7 @@
       "Message": "60 Seconds"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 189,
       "KeyCrcHashDouble": 3005070583,
       "KeyCrcHashTriple": 167325399,
@@ -2101,7 +2101,7 @@
       "Message": "30 Seconds"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 190,
       "KeyCrcHashDouble": 2575351950,
       "KeyCrcHashTriple": 2685239917,
@@ -2112,7 +2112,7 @@
       "Message": "15 Seconds"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 191,
       "KeyCrcHashDouble": 2148264793,
       "KeyCrcHashTriple": 3344833019,
@@ -2123,7 +2123,7 @@
       "Message": "Do Not Idle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 192,
       "KeyCrcHashDouble": 3047733113,
       "KeyCrcHashTriple": 1928862933,
@@ -2134,7 +2134,7 @@
       "Message": "Publishing settings of pawn profile"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 193,
       "KeyCrcHashDouble": 3273975312,
       "KeyCrcHashTriple": 2258223627,
@@ -2145,7 +2145,7 @@
       "Message": "Pawn profile"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 194,
       "KeyCrcHashDouble": 703531211,
       "KeyCrcHashTriple": 1794025146,
@@ -2156,7 +2156,7 @@
       "Message": "60%"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 195,
       "KeyCrcHashDouble": 3212821475,
       "KeyCrcHashTriple": 4103001494,
@@ -2167,7 +2167,7 @@
       "Message": "80%"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 196,
       "KeyCrcHashDouble": 2971285762,
       "KeyCrcHashTriple": 446580242,
@@ -2178,7 +2178,7 @@
       "Message": "100%"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 197,
       "KeyCrcHashDouble": 1159981512,
       "KeyCrcHashTriple": 3582833014,
@@ -2189,7 +2189,7 @@
       "Message": "120%"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 198,
       "KeyCrcHashDouble": 2182651607,
       "KeyCrcHashTriple": 1606987419,
@@ -2200,7 +2200,7 @@
       "Message": "140％"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 199,
       "KeyCrcHashDouble": 3297087360,
       "KeyCrcHashTriple": 680231943,
@@ -2211,7 +2211,7 @@
       "Message": "Any"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 200,
       "KeyCrcHashDouble": 1035388338,
       "KeyCrcHashTriple": 2229575569,
@@ -2222,7 +2222,7 @@
       "Message": "Category"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 201,
       "KeyCrcHashDouble": 3416302124,
       "KeyCrcHashTriple": 1976066278,
@@ -2233,7 +2233,7 @@
       "Message": "Input Device"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 202,
       "KeyCrcHashDouble": 2276214577,
       "KeyCrcHashTriple": 1702691872,
@@ -2244,7 +2244,7 @@
       "Message": "<PFWD 0>"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 203,
       "KeyCrcHashDouble": 2426877101,
       "KeyCrcHashTriple": 2797330855,
@@ -2255,7 +2255,7 @@
       "Message": "Mouse & Keyboard"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 204,
       "KeyCrcHashDouble": 868917701,
       "KeyCrcHashTriple": 1444235006,
@@ -2266,7 +2266,7 @@
       "Message": "Display Current <OPCS> Plate"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 205,
       "KeyCrcHashDouble": 1202568537,
       "KeyCrcHashTriple": 3672851095,
@@ -2277,7 +2277,7 @@
       "Message": "Video Quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 206,
       "KeyCrcHashDouble": 2433992189,
       "KeyCrcHashTriple": 886612498,
@@ -2288,7 +2288,7 @@
       "Message": "Input"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 207,
       "KeyCrcHashDouble": 1496852567,
       "KeyCrcHashTriple": 3076981927,
@@ -2299,7 +2299,7 @@
       "Message": "Display Mode"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 208,
       "KeyCrcHashDouble": 1037350474,
       "KeyCrcHashTriple": 2725613899,
@@ -2310,7 +2310,7 @@
       "Message": "Resolution"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 209,
       "KeyCrcHashDouble": 2128723677,
       "KeyCrcHashTriple": 2728306758,
@@ -2321,7 +2321,7 @@
       "Message": "Drawing set(FPS)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 210,
       "KeyCrcHashDouble": 3881465320,
       "KeyCrcHashTriple": 1276579745,
@@ -2332,7 +2332,7 @@
       "Message": "Mouse & Keyboard Settings"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 211,
       "KeyCrcHashDouble": 3574349380,
       "KeyCrcHashTriple": 3602684256,
@@ -2343,7 +2343,7 @@
       "Message": "<PFWD 0> Setting"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 212,
       "KeyCrcHashDouble": 638791714,
       "KeyCrcHashTriple": 444868590,
@@ -2354,7 +2354,7 @@
       "Message": "Camera Speed"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 213,
       "KeyCrcHashDouble": 2459470971,
       "KeyCrcHashTriple": 1999407082,
@@ -2365,7 +2365,7 @@
       "Message": "Cursor Speed"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 214,
       "KeyCrcHashDouble": 2026744525,
       "KeyCrcHashTriple": 2522096596,
@@ -2376,7 +2376,7 @@
       "Message": "Calibration"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 215,
       "KeyCrcHashDouble": 2678098812,
       "KeyCrcHashTriple": 4150596653,
@@ -2387,7 +2387,7 @@
       "Message": "Players"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 216,
       "KeyCrcHashDouble": 3672715663,
       "KeyCrcHashTriple": 3537153587,
@@ -2398,7 +2398,7 @@
       "Message": "Display"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 217,
       "KeyCrcHashDouble": 3958280570,
       "KeyCrcHashTriple": 43292794,
@@ -2409,7 +2409,7 @@
       "Message": "Resolution"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 218,
       "KeyCrcHashDouble": 3214489506,
       "KeyCrcHashTriple": 3840385765,
@@ -2420,7 +2420,7 @@
       "Message": "1280×720"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 219,
       "KeyCrcHashDouble": 2436866815,
       "KeyCrcHashTriple": 1577787357,
@@ -2431,7 +2431,7 @@
       "Message": "1280×1024"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 220,
       "KeyCrcHashDouble": 2367616244,
       "KeyCrcHashTriple": 4137354988,
@@ -2442,7 +2442,7 @@
       "Message": "1440×900"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 221,
       "KeyCrcHashDouble": 3386214972,
       "KeyCrcHashTriple": 608390414,
@@ -2453,7 +2453,7 @@
       "Message": "1600×1050"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 222,
       "KeyCrcHashDouble": 1483488002,
       "KeyCrcHashTriple": 1268616302,
@@ -2464,7 +2464,7 @@
       "Message": "1920×1080"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 223,
       "KeyCrcHashDouble": 3067102929,
       "KeyCrcHashTriple": 3708496670,
@@ -2475,7 +2475,7 @@
       "Message": "1920×1200"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 224,
       "KeyCrcHashDouble": 1636819367,
       "KeyCrcHashTriple": 3985547684,
@@ -2486,7 +2486,7 @@
       "Message": "Frame Rate"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 225,
       "KeyCrcHashDouble": 2186865810,
       "KeyCrcHashTriple": 3007333249,
@@ -2497,7 +2497,7 @@
       "Message": "30fps"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 226,
       "KeyCrcHashDouble": 2702819874,
       "KeyCrcHashTriple": 1534538397,
@@ -2508,7 +2508,7 @@
       "Message": "60fps"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 227,
       "KeyCrcHashDouble": 3725302799,
       "KeyCrcHashTriple": 352453283,
@@ -2519,7 +2519,7 @@
       "Message": "Video Quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 228,
       "KeyCrcHashDouble": 1629992619,
       "KeyCrcHashTriple": 2850789804,
@@ -2530,7 +2530,7 @@
       "Message": "Textures"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 229,
       "KeyCrcHashDouble": 632996263,
       "KeyCrcHashTriple": 46258619,
@@ -2541,7 +2541,7 @@
       "Message": "General"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 230,
       "KeyCrcHashDouble": 2613268635,
       "KeyCrcHashTriple": 1053749896,
@@ -2552,7 +2552,7 @@
       "Message": "Texture Resolution"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 231,
       "KeyCrcHashDouble": 1064976895,
       "KeyCrcHashTriple": 2639739234,
@@ -2563,7 +2563,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 232,
       "KeyCrcHashDouble": 2231484890,
       "KeyCrcHashTriple": 473036091,
@@ -2574,7 +2574,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 233,
       "KeyCrcHashDouble": 4203462628,
       "KeyCrcHashTriple": 1671290667,
@@ -2585,7 +2585,7 @@
       "Message": "Anti-Aliasing"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 234,
       "KeyCrcHashDouble": 1090534710,
       "KeyCrcHashTriple": 3501153923,
@@ -2596,7 +2596,7 @@
       "Message": "Disabled"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 235,
       "KeyCrcHashDouble": 4025525087,
       "KeyCrcHashTriple": 2525652983,
@@ -2607,7 +2607,7 @@
       "Message": "Normal Quality (FXAA)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 236,
       "KeyCrcHashDouble": 3357043298,
       "KeyCrcHashTriple": 3328170465,
@@ -2618,7 +2618,7 @@
       "Message": "High Quality (FXAA3HQ)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 237,
       "KeyCrcHashDouble": 1261002923,
       "KeyCrcHashTriple": 3020811492,
@@ -2629,7 +2629,7 @@
       "Message": "Shadows"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 238,
       "KeyCrcHashDouble": 2161969881,
       "KeyCrcHashTriple": 2730070296,
@@ -2640,7 +2640,7 @@
       "Message": "Quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 239,
       "KeyCrcHashDouble": 4077694311,
       "KeyCrcHashTriple": 2592004464,
@@ -2651,7 +2651,7 @@
       "Message": "Lowest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 240,
       "KeyCrcHashDouble": 572553909,
       "KeyCrcHashTriple": 650232078,
@@ -2662,7 +2662,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 241,
       "KeyCrcHashDouble": 1178743996,
       "KeyCrcHashTriple": 2180738215,
@@ -2673,7 +2673,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 242,
       "KeyCrcHashDouble": 2022945944,
       "KeyCrcHashTriple": 2933847856,
@@ -2684,7 +2684,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 243,
       "KeyCrcHashDouble": 2974604500,
       "KeyCrcHashTriple": 331581080,
@@ -2695,7 +2695,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 244,
       "KeyCrcHashDouble": 3238963746,
       "KeyCrcHashTriple": 3420563990,
@@ -2706,7 +2706,7 @@
       "Message": "Custom"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 245,
       "KeyCrcHashDouble": 3964727235,
       "KeyCrcHashTriple": 1546164432,
@@ -2717,7 +2717,7 @@
       "Message": "Resolution"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 246,
       "KeyCrcHashDouble": 1998985298,
       "KeyCrcHashTriple": 3444005350,
@@ -2728,7 +2728,7 @@
       "Message": "Lowest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 247,
       "KeyCrcHashDouble": 3044473404,
       "KeyCrcHashTriple": 3133761156,
@@ -2739,7 +2739,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 248,
       "KeyCrcHashDouble": 1971047832,
       "KeyCrcHashTriple": 1332999425,
@@ -2750,7 +2750,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 249,
       "KeyCrcHashDouble": 2772251598,
       "KeyCrcHashTriple": 656408738,
@@ -2761,7 +2761,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 250,
       "KeyCrcHashDouble": 3903442247,
       "KeyCrcHashTriple": 4254984494,
@@ -2772,7 +2772,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 251,
       "KeyCrcHashDouble": 4002532251,
       "KeyCrcHashTriple": 969758948,
@@ -2783,7 +2783,7 @@
       "Message": "Enable Camera Effects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 252,
       "KeyCrcHashDouble": 1154139200,
       "KeyCrcHashTriple": 1762752756,
@@ -2794,7 +2794,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 253,
       "KeyCrcHashDouble": 2064905479,
       "KeyCrcHashTriple": 1647232780,
@@ -2805,7 +2805,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 254,
       "KeyCrcHashDouble": 356990285,
       "KeyCrcHashTriple": 4079459176,
@@ -2816,7 +2816,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 255,
       "KeyCrcHashDouble": 3797865589,
       "KeyCrcHashTriple": 1314046771,
@@ -2827,7 +2827,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 256,
       "KeyCrcHashDouble": 2518285782,
       "KeyCrcHashTriple": 3849796760,
@@ -2838,7 +2838,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 257,
       "KeyCrcHashDouble": 3502747120,
       "KeyCrcHashTriple": 3600886681,
@@ -2849,7 +2849,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 258,
       "KeyCrcHashDouble": 3376083941,
       "KeyCrcHashTriple": 797351622,
@@ -2860,7 +2860,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 259,
       "KeyCrcHashDouble": 1748541387,
       "KeyCrcHashTriple": 1872969603,
@@ -2871,7 +2871,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 260,
       "KeyCrcHashDouble": 1712048714,
       "KeyCrcHashTriple": 3232362220,
@@ -2882,7 +2882,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 261,
       "KeyCrcHashDouble": 1705827593,
       "KeyCrcHashTriple": 1437416846,
@@ -2893,7 +2893,7 @@
       "Message": "The shadow by lantern in the lobby"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 262,
       "KeyCrcHashDouble": 643681201,
       "KeyCrcHashTriple": 1057343546,
@@ -2904,7 +2904,7 @@
       "Message": "There"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 263,
       "KeyCrcHashDouble": 462903736,
       "KeyCrcHashTriple": 2788039319,
@@ -2915,7 +2915,7 @@
       "Message": "Any"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 264,
       "KeyCrcHashDouble": 1110386831,
       "KeyCrcHashTriple": 655828164,
@@ -2926,7 +2926,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 265,
       "KeyCrcHashDouble": 3988977011,
       "KeyCrcHashTriple": 2254110459,
@@ -2937,7 +2937,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 266,
       "KeyCrcHashDouble": 4237591513,
       "KeyCrcHashTriple": 3732367028,
@@ -2948,7 +2948,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 267,
       "KeyCrcHashDouble": 570457305,
       "KeyCrcHashTriple": 2852457,
@@ -2959,7 +2959,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 268,
       "KeyCrcHashDouble": 1112995542,
       "KeyCrcHashTriple": 2257219353,
@@ -2970,7 +2970,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 269,
       "KeyCrcHashDouble": 1087491918,
       "KeyCrcHashTriple": 622976216,
@@ -2981,7 +2981,7 @@
       "Message": ""
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 270,
       "KeyCrcHashDouble": 2514129045,
       "KeyCrcHashTriple": 3255880819,
@@ -2992,7 +2992,7 @@
       "Message": "Grass"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 271,
       "KeyCrcHashDouble": 3839288635,
       "KeyCrcHashTriple": 1056691403,
@@ -3003,7 +3003,7 @@
       "Message": "Amount"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 272,
       "KeyCrcHashDouble": 1868107552,
       "KeyCrcHashTriple": 1510512588,
@@ -3014,7 +3014,7 @@
       "Message": "Quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 273,
       "KeyCrcHashDouble": 1139818265,
       "KeyCrcHashTriple": 1060577472,
@@ -3025,7 +3025,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 274,
       "KeyCrcHashDouble": 3514829042,
       "KeyCrcHashTriple": 2565847809,
@@ -3036,7 +3036,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 275,
       "KeyCrcHashDouble": 3612966519,
       "KeyCrcHashTriple": 3507757203,
@@ -3047,7 +3047,7 @@
       "Message": "Range"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 276,
       "KeyCrcHashDouble": 1732051504,
       "KeyCrcHashTriple": 3148269496,
@@ -3058,7 +3058,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 277,
       "KeyCrcHashDouble": 4067613581,
       "KeyCrcHashTriple": 1598295374,
@@ -3069,7 +3069,7 @@
       "Message": "×2"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 278,
       "KeyCrcHashDouble": 2369274954,
       "KeyCrcHashTriple": 591920946,
@@ -3080,7 +3080,7 @@
       "Message": "×5"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 279,
       "KeyCrcHashDouble": 1950164920,
       "KeyCrcHashTriple": 3836594833,
@@ -3091,7 +3091,7 @@
       "Message": "Objects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 280,
       "KeyCrcHashDouble": 1459463070,
       "KeyCrcHashTriple": 2765204527,
@@ -3102,7 +3102,7 @@
       "Message": "General"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 281,
       "KeyCrcHashDouble": 3092314304,
       "KeyCrcHashTriple": 2255773353,
@@ -3113,7 +3113,7 @@
       "Message": "Preset of object quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 282,
       "KeyCrcHashDouble": 4215006058,
       "KeyCrcHashTriple": 2522766666,
@@ -3124,7 +3124,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 283,
       "KeyCrcHashDouble": 4258108754,
       "KeyCrcHashTriple": 1228986781,
@@ -3135,7 +3135,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 284,
       "KeyCrcHashDouble": 677323973,
       "KeyCrcHashTriple": 2566292329,
@@ -3146,7 +3146,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 285,
       "KeyCrcHashDouble": 1612682637,
       "KeyCrcHashTriple": 4222535090,
@@ -3157,7 +3157,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 286,
       "KeyCrcHashDouble": 538684035,
       "KeyCrcHashTriple": 2037835843,
@@ -3168,7 +3168,7 @@
       "Message": "Custom"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 287,
       "KeyCrcHashDouble": 4084831916,
       "KeyCrcHashTriple": 433905452,
@@ -3179,7 +3179,7 @@
       "Message": "Range"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 288,
       "KeyCrcHashDouble": 2971361964,
       "KeyCrcHashTriple": 2800499173,
@@ -3190,7 +3190,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 289,
       "KeyCrcHashDouble": 513284806,
       "KeyCrcHashTriple": 3386723834,
@@ -3201,7 +3201,7 @@
       "Message": "×2"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 290,
       "KeyCrcHashDouble": 1641186561,
       "KeyCrcHashTriple": 3051274118,
@@ -3212,7 +3212,7 @@
       "Message": "×5"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 291,
       "KeyCrcHashDouble": 3095242490,
       "KeyCrcHashTriple": 2279876808,
@@ -3223,7 +3223,7 @@
       "Message": "LOD Ratio"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 292,
       "KeyCrcHashDouble": 1350936107,
       "KeyCrcHashTriple": 1173619571,
@@ -3234,7 +3234,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 293,
       "KeyCrcHashDouble": 9988205,
       "KeyCrcHashTriple": 1130356013,
@@ -3245,7 +3245,7 @@
       "Message": "×2"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 294,
       "KeyCrcHashDouble": 2144532394,
       "KeyCrcHashTriple": 1063006033,
@@ -3256,7 +3256,7 @@
       "Message": "×5"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 295,
       "KeyCrcHashDouble": 2138712466,
       "KeyCrcHashTriple": 3155432024,
@@ -3267,7 +3267,7 @@
       "Message": "Character"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 296,
       "KeyCrcHashDouble": 4197290554,
       "KeyCrcHashTriple": 1422925511,
@@ -3278,7 +3278,7 @@
       "Message": "Limit"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 297,
       "KeyCrcHashDouble": 1479453202,
       "KeyCrcHashTriple": 3291873900,
@@ -3289,7 +3289,7 @@
       "Message": "10"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 298,
       "KeyCrcHashDouble": 3495264120,
       "KeyCrcHashTriple": 682470648,
@@ -3300,7 +3300,7 @@
       "Message": "20"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 299,
       "KeyCrcHashDouble": 466867181,
       "KeyCrcHashTriple": 720107409,
@@ -3311,7 +3311,7 @@
       "Message": "40"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 300,
       "KeyCrcHashDouble": 1471122566,
       "KeyCrcHashTriple": 778518851,
@@ -3322,7 +3322,7 @@
       "Message": "80"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 301,
       "KeyCrcHashDouble": 2686055723,
       "KeyCrcHashTriple": 2917373070,
@@ -3333,7 +3333,7 @@
       "Message": "Range"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 302,
       "KeyCrcHashDouble": 2280597584,
       "KeyCrcHashTriple": 3685584132,
@@ -3344,7 +3344,7 @@
       "Message": "30m"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 303,
       "KeyCrcHashDouble": 201813406,
       "KeyCrcHashTriple": 4288277382,
@@ -3355,7 +3355,7 @@
       "Message": "60m"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 304,
       "KeyCrcHashDouble": 33472971,
       "KeyCrcHashTriple": 124718689,
@@ -3366,7 +3366,7 @@
       "Message": "100m"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 305,
       "KeyCrcHashDouble": 2286465596,
       "KeyCrcHashTriple": 1193899470,
@@ -3377,7 +3377,7 @@
       "Message": "Effects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 306,
       "KeyCrcHashDouble": 720446969,
       "KeyCrcHashTriple": 2364191862,
@@ -3388,7 +3388,7 @@
       "Message": "General"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 307,
       "KeyCrcHashDouble": 3538679443,
       "KeyCrcHashTriple": 828084182,
@@ -3399,7 +3399,7 @@
       "Message": "Quality"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 308,
       "KeyCrcHashDouble": 1387567639,
       "KeyCrcHashTriple": 3391633855,
@@ -3410,7 +3410,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 309,
       "KeyCrcHashDouble": 1968182293,
       "KeyCrcHashTriple": 2753363371,
@@ -3421,7 +3421,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 310,
       "KeyCrcHashDouble": 3479608008,
       "KeyCrcHashTriple": 2026251664,
@@ -3432,7 +3432,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 311,
       "KeyCrcHashDouble": 2727200289,
       "KeyCrcHashTriple": 3618022950,
@@ -3443,7 +3443,7 @@
       "Message": "Display Combat Effects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 312,
       "KeyCrcHashDouble": 940997567,
       "KeyCrcHashTriple": 3875179804,
@@ -3454,7 +3454,7 @@
       "Message": "My Character"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 313,
       "KeyCrcHashDouble": 991290773,
       "KeyCrcHashTriple": 1773178463,
@@ -3465,7 +3465,7 @@
       "Message": "All Characters"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 314,
       "KeyCrcHashDouble": 1372437883,
       "KeyCrcHashTriple": 2321652800,
@@ -3476,7 +3476,7 @@
       "Message": "Limit"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 315,
       "KeyCrcHashDouble": 1776030226,
       "KeyCrcHashTriple": 1971681865,
@@ -3487,7 +3487,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 316,
       "KeyCrcHashDouble": 1566710270,
       "KeyCrcHashTriple": 3348316973,
@@ -3498,7 +3498,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 317,
       "KeyCrcHashDouble": 1715472263,
       "KeyCrcHashTriple": 2439998049,
@@ -3509,7 +3509,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 318,
       "KeyCrcHashDouble": 2517569307,
       "KeyCrcHashTriple": 3150524544,
@@ -3520,7 +3520,7 @@
       "Message": "Display Mail Overflow Warning"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 319,
       "KeyCrcHashDouble": 3195640074,
       "KeyCrcHashTriple": 1782235157,
@@ -3531,7 +3531,7 @@
       "Message": "Enable V-Sync"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 320,
       "KeyCrcHashDouble": 1068818657,
       "KeyCrcHashTriple": 871499603,
@@ -3542,7 +3542,7 @@
       "Message": "ON"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 321,
       "KeyCrcHashDouble": 4157218703,
       "KeyCrcHashTriple": 1450755674,
@@ -3553,7 +3553,7 @@
       "Message": "OFF"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 322,
       "KeyCrcHashDouble": 21984159,
       "KeyCrcHashTriple": 1867107056,
@@ -3564,7 +3564,7 @@
       "Message": "Window mode"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 323,
       "KeyCrcHashDouble": 3880508681,
       "KeyCrcHashTriple": 510391045,
@@ -3575,7 +3575,7 @@
       "Message": "Borderless mode"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 324,
       "KeyCrcHashDouble": 1685151979,
       "KeyCrcHashTriple": 4093849864,
@@ -3586,7 +3586,7 @@
       "Message": "Full-screen mode"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 325,
       "KeyCrcHashDouble": 951377828,
       "KeyCrcHashTriple": 1772646804,
@@ -3597,7 +3597,7 @@
       "Message": "Edit"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 326,
       "KeyCrcHashDouble": 247983304,
       "KeyCrcHashTriple": 2593385703,
@@ -3608,7 +3608,7 @@
       "Message": "Enlarge UI (Resolution 1600×900 or higher)"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 327,
       "KeyCrcHashDouble": 881363508,
       "KeyCrcHashTriple": 3735201271,
@@ -3619,7 +3619,7 @@
       "Message": "Clan Members"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 328,
       "KeyCrcHashDouble": 378398888,
       "KeyCrcHashTriple": 3902863675,
@@ -3630,7 +3630,7 @@
       "Message": "Provide Status to Your Clan"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 329,
       "KeyCrcHashDouble": 233159473,
       "KeyCrcHashTriple": 1238333619,
@@ -3641,7 +3641,7 @@
       "Message": "Visibility of Other Player's Effects"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 330,
       "KeyCrcHashDouble": 711553923,
       "KeyCrcHashTriple": 2698752693,
@@ -3652,7 +3652,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 331,
       "KeyCrcHashDouble": 70773073,
       "KeyCrcHashTriple": 2142999049,
@@ -3663,7 +3663,7 @@
       "Message": "Medium"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 332,
       "KeyCrcHashDouble": 3058332442,
       "KeyCrcHashTriple": 1725384948,
@@ -3674,7 +3674,7 @@
       "Message": "Any"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 333,
       "KeyCrcHashDouble": 4012144708,
       "KeyCrcHashTriple": 881700085,
@@ -3685,7 +3685,7 @@
       "Message": "Maximum Light Sources"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 334,
       "KeyCrcHashDouble": 3981132954,
       "KeyCrcHashTriple": 876267661,
@@ -3696,7 +3696,7 @@
       "Message": "High"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 335,
       "KeyCrcHashDouble": 149545590,
       "KeyCrcHashTriple": 2659469656,
@@ -3707,7 +3707,7 @@
       "Message": "Middle"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 336,
       "KeyCrcHashDouble": 3187211639,
       "KeyCrcHashTriple": 3328438190,
@@ -3718,7 +3718,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 337,
       "KeyCrcHashDouble": 2362617869,
       "KeyCrcHashTriple": 3102224247,
@@ -3729,7 +3729,7 @@
       "Message": "Low"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 338,
       "KeyCrcHashDouble": 907213075,
       "KeyCrcHashTriple": 2195942023,
@@ -3740,7 +3740,7 @@
       "Message": "Lighting Options"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 339,
       "KeyCrcHashDouble": 1604817804,
       "KeyCrcHashTriple": 2473489735,
@@ -3751,7 +3751,7 @@
       "Message": "Key Setting"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 340,
       "KeyCrcHashDouble": 4221875289,
       "KeyCrcHashTriple": 95089127,
@@ -3762,7 +3762,7 @@
       "Message": "Default"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 341,
       "KeyCrcHashDouble": 3456572994,
       "KeyCrcHashTriple": 3522639348,
@@ -3773,7 +3773,7 @@
       "Message": "Customize <VAL>"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 342,
       "KeyCrcHashDouble": 2324418399,
       "KeyCrcHashTriple": 2674131801,
@@ -3784,7 +3784,7 @@
       "Message": "Key Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 343,
       "KeyCrcHashDouble": 4104910666,
       "KeyCrcHashTriple": 1612002580,
@@ -3795,7 +3795,7 @@
       "Message": "Customize"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 344,
       "KeyCrcHashDouble": 1005653393,
       "KeyCrcHashTriple": 2029470601,
@@ -3806,7 +3806,7 @@
       "Message": "Automatic Key Config Switch on Vocation Change"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 345,
       "KeyCrcHashDouble": 3885074307,
       "KeyCrcHashTriple": 2383333660,
@@ -3817,7 +3817,7 @@
       "Message": "Customize"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 346,
       "KeyCrcHashDouble": 1634344071,
       "KeyCrcHashTriple": 3203608984,
@@ -3828,7 +3828,7 @@
       "Message": "Associate Vocation with Key Config"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 347,
       "KeyCrcHashDouble": 1404813110,
       "KeyCrcHashTriple": 1427891170,
@@ -3839,7 +3839,7 @@
       "Message": "Do Not Automatically Change."
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 348,
       "KeyCrcHashDouble": 3548557475,
       "KeyCrcHashTriple": 2573599802,
@@ -3850,7 +3850,7 @@
       "Message": "Camera Distance when Casting"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 349,
       "KeyCrcHashDouble": 715514901,
       "KeyCrcHashTriple": 2801225631,
@@ -3861,7 +3861,7 @@
       "Message": "Near"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 350,
       "KeyCrcHashDouble": 2162779502,
       "KeyCrcHashTriple": 1341059795,
@@ -3872,7 +3872,7 @@
       "Message": "Far"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 351,
       "KeyCrcHashDouble": 520224351,
       "KeyCrcHashTriple": 1180423560,
@@ -3883,7 +3883,7 @@
       "Message": "Camera Distance when Aiming Bow"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 352,
       "KeyCrcHashDouble": 3224414754,
       "KeyCrcHashTriple": 643581069,
@@ -3894,7 +3894,7 @@
       "Message": "Near"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 353,
       "KeyCrcHashDouble": 1960988349,
       "KeyCrcHashTriple": 260868785,
@@ -3905,7 +3905,7 @@
       "Message": "Far"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 354,
       "KeyCrcHashDouble": 1110048767,
       "KeyCrcHashTriple": 4020897267,
@@ -3916,7 +3916,7 @@
       "Message": "During Mini-map Operation, automatically enlarge\nthe window"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 355,
       "KeyCrcHashDouble": 3618810125,
       "KeyCrcHashTriple": 1297531611,
@@ -3927,7 +3927,7 @@
       "Message": "Rift Teleport Default Tab"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 356,
       "KeyCrcHashDouble": 1588432515,
       "KeyCrcHashTriple": 3501531873,
@@ -3938,7 +3938,7 @@
       "Message": "Portcrystal"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 357,
       "KeyCrcHashDouble": 2247026610,
       "KeyCrcHashTriple": 197274674,
@@ -3949,7 +3949,7 @@
       "Message": "Sub Portcrystals"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 358,
       "KeyCrcHashDouble": 116787804,
       "KeyCrcHashTriple": 3606121586,
@@ -3960,7 +3960,7 @@
       "Message": "Favorites"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 359,
       "KeyCrcHashDouble": 1237626701,
       "KeyCrcHashTriple": 3610099731,
@@ -3971,7 +3971,7 @@
       "Message": "All"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 360,
       "KeyCrcHashDouble": 3816963971,
       "KeyCrcHashTriple": 331541089,
@@ -3982,7 +3982,7 @@
       "Message": "Temple"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 361,
       "KeyCrcHashDouble": 1552558541,
       "KeyCrcHashTriple": 4279867347,
@@ -3993,7 +3993,7 @@
       "Message": "Key Config used by %s"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 362,
       "KeyCrcHashDouble": 2963715973,
       "KeyCrcHashTriple": 210530796,
@@ -4004,7 +4004,7 @@
       "Message": "Revert"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 363,
       "KeyCrcHashDouble": 2395876048,
       "KeyCrcHashTriple": 2773442293,
@@ -4015,7 +4015,7 @@
       "Message": "While the minimap is enlarged, a <KCTP DASH> will"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 364,
       "KeyCrcHashDouble": 397573784,
       "KeyCrcHashTriple": 3439639622,
@@ -4026,7 +4026,7 @@
       "Message": "Dash"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 365,
       "KeyCrcHashDouble": 3277008709,
       "KeyCrcHashTriple": 3329729405,
@@ -4037,7 +4037,7 @@
       "Message": "Auto-run"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 366,
       "KeyCrcHashDouble": 167395073,
       "KeyCrcHashTriple": 3225573528,
@@ -4048,7 +4048,7 @@
       "Message": "Substory Quest"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 367,
       "KeyCrcHashDouble": 3000990588,
       "KeyCrcHashTriple": 1875332338,
@@ -4059,7 +4059,7 @@
       "Message": "Use subjective camera when in NPC conversations"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 368,
       "KeyCrcHashDouble": 4020605974,
       "KeyCrcHashTriple": 2927384058,
@@ -4070,7 +4070,7 @@
       "Message": "Adventure Guide"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 369,
       "KeyCrcHashDouble": 3589948165,
       "KeyCrcHashTriple": 3460480393,
@@ -4081,7 +4081,7 @@
       "Message": "Display Quest Introduction Notice"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 370,
       "KeyCrcHashDouble": 767431918,
       "KeyCrcHashTriple": 2030529662,
@@ -4092,7 +4092,7 @@
       "Message": "Display Introduction Notice Pop-up"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 371,
       "KeyCrcHashDouble": 2392006756,
       "KeyCrcHashTriple": 989633036,
@@ -4103,7 +4103,7 @@
       "Message": "Display Navigation"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 372,
       "KeyCrcHashDouble": 1314583662,
       "KeyCrcHashTriple": 2742037122,
@@ -4114,7 +4114,7 @@
       "Message": "Wild Hunt"
     },
     {
-      "@class": "org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.GUIMessageIndex",
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessageIndex",
       "Index": 373,
       "KeyCrcHashDouble": 2636447523,
       "KeyCrcHashTriple": 3795703669,

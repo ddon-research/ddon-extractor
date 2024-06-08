@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc_common.NpcConstItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc_common.NpcConstItemList;
 
-public class NpcConstItemDeserializer extends ClientResourceFileDeserializer {
+public class NpcConstItemDeserializer extends ClientResourceFileDeserializer<NpcConstItemList> {
 
 
     private static NpcConstItem readNpcConstItem(BufferReader bufferReader) {

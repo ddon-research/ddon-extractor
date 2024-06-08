@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUISkil
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUISkill.AbilityAddDataList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUISkill.AbilityLevelData;
 
-public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer {
+public class AbilityAddDataDeserializer extends ClientResourceFileDeserializer<AbilityAddDataList> {
 
 
     private static AbilityLevelData readAbilityLevelData(BufferReader bufferReader) {

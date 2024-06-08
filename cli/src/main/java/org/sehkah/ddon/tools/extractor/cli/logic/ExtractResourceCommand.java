@@ -1,15 +1,13 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceDeserializer;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
@@ -31,8 +29,6 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-
-import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion.*;
 
 @Slf4j
 @CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "extract 1.0",
@@ -131,7 +127,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
         };
     }
 
-    private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
+    private StatusCode extractSingleFile(Path filePath, Serializer<Resource> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
             bufferReader = new BinaryReader(filePath);
@@ -143,7 +139,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             return StatusCode.ERROR;
         }
         String fileName = filePath.getFileName().toString();
-        TopLevelClientResource deserializedOutput = clientResourceFileManager.deserialize(fileName, bufferReader);
+        Resource deserializedOutput = clientResourceFileManager.deserialize(fileName, bufferReader);
         if (deserializedOutput == null) {
             log.error("File '{}' is not supported.", fileName);
             return StatusCode.ERROR;

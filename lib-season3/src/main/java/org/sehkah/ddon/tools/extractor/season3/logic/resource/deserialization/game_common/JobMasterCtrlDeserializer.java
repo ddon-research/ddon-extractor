@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.JobMasterCtrl;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.JobMasterCtrlList;
 
-public class JobMasterCtrlDeserializer extends ClientResourceFileDeserializer {
+public class JobMasterCtrlDeserializer extends ClientResourceFileDeserializer<JobMasterCtrlList> {
 
 
     private static JobMasterCtrl readJobMasterCtrl(BufferReader bufferReader) {

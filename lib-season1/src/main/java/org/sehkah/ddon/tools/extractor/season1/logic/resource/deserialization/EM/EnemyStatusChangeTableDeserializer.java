@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyStatusChange;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.EnemyStatusChangeTable;
 
-public class EnemyStatusChangeTableDeserializer extends ClientResourceFileDeserializer {
+public class EnemyStatusChangeTableDeserializer extends ClientResourceFileDeserializer<EnemyStatusChangeTable> {
 
 
     private static EnemyStatusChange readEnemyStatusChangeData(BufferReader bufferReader) {

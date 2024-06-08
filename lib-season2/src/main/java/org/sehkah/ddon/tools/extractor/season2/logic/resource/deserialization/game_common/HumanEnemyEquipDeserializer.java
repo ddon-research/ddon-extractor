@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyEquip;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.HumanEnemyEquipList;
 
-public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer {
+public class HumanEnemyEquipDeserializer extends ClientResourceFileDeserializer<HumanEnemyEquipList> {
 
 
     private static HumanEnemyEquip readHumanEnemyEquip(BufferReader bufferReader) {

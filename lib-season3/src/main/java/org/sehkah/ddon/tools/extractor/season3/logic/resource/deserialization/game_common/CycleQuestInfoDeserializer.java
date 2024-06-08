@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleQuestInfoList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleQuestSituationInfo;
 
-public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer {
+public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<CycleQuestInfoList> {
 
 
     private static CycleQuestSituationInfo readCycleQuestSituationInfo(BufferReader bufferReader) {

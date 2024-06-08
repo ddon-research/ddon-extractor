@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandWord;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.MagicCommandWordTbl;
 
-public class MagicCommandWordTblDeserializer extends ClientResourceFileDeserializer {
+public class MagicCommandWordTblDeserializer extends ClientResourceFileDeserializer<MagicCommandWordTbl> {
 
 
     private static MagicCommandWord readMagicCommandWord(BufferReader bufferReader) {

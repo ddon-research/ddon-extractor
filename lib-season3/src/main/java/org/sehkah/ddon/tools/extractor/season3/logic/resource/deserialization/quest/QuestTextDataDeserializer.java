@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.QuestTextData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.QuestTextDataList;
 
-public class QuestTextDataDeserializer extends ClientResourceFileDeserializer {
+public class QuestTextDataDeserializer extends ClientResourceFileDeserializer<QuestTextDataList> {
 
 
     private static QuestTextData readQuestTextData(BufferReader bufferReader) {

@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.Part
 
 import java.util.List;
 
-public class PartnerReactParamTblDeserializer extends ClientResourceFileDeserializer {
+public class PartnerReactParamTblDeserializer extends ClientResourceFileDeserializer<PartnerReactParamTbl> {
 
 
     private static PartnerReactParam readPartnerReactParam(BufferReader bufferReader) {

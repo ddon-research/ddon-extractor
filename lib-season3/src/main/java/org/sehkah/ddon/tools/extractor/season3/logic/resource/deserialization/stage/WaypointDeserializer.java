@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.Waypo
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.WaypointPoint;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.WaypointRoute;
 
-public class WaypointDeserializer extends ClientResourceFileDeserializer {
+public class WaypointDeserializer extends ClientResourceFileDeserializer<Waypoint> {
 
 
     private static WaypointPoint readWaypointPoint(BufferReader bufferReader) {

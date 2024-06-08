@@ -13,7 +13,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializer {
+public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializer<StageCustomPartsEx> {
 
 
     private static StageCustomPartsExPattern readStageCustomPartsExPattern(BufferReader bufferReader) {

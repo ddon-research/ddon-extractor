@@ -7,9 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.ShrinkBlowValue;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.ShrinkBlowValueList;
 
-public class ShrinkBlowValueDeserializer extends ClientResourceFileDeserializer {
-
-
+public class ShrinkBlowValueDeserializer extends ClientResourceFileDeserializer<ShrinkBlowValueList> {
     private static ShrinkBlowValue readShrinkBlowValue(BufferReader bufferReader) {
         return new ShrinkBlowValue(
                 bufferReader.readUnsignedInteger(),

@@ -1,13 +1,13 @@
 package org.sehkah.ddon.tools.extractor.api.logic.resource.serialization;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BinaryWriter;
 import org.sehkah.ddon.tools.extractor.api.io.BufferWriter;
 
 @Slf4j
-public abstract class ClientResourceFileSerializer<T extends TopLevelClientResource> implements ClientResourceSerializer<T> {
+public abstract class ClientResourceFileSerializer<T extends Resource> implements ClientResourceSerializer<T> {
     private static final FileHeaderSerializer fileHeaderSerializer = new FileHeaderSerializer();
 
     protected ClientResourceFileSerializer() {

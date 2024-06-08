@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AdjustParam;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AdjustParamList;
 
-public class JobAdjustParamDeserializer extends ClientResourceFileDeserializer {
+public class JobAdjustParamDeserializer extends ClientResourceFileDeserializer<AdjustParamList> {
     private static AdjustParam readAdjustParam(BufferReader bufferReader) {
         return new AdjustParam(bufferReader.readFloat());
     }

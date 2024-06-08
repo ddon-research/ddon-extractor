@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.HumanEnemyCustomSkill;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.HumanEnemyCustomSkillList;
 
-public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeserializer {
+public class HumanEnemyCustomSkillDeserializer extends ClientResourceFileDeserializer<HumanEnemyCustomSkillList> {
 
 
     private static HumanEnemyCustomSkill readHumanEnemyCustomSkill(BufferReader bufferReader) {

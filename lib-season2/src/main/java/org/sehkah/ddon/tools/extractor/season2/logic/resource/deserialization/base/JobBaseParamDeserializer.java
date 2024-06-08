@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.JobBaseParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.JobInfo;
 
-public class JobBaseParamDeserializer extends ClientResourceFileDeserializer {
+public class JobBaseParamDeserializer extends ClientResourceFileDeserializer<JobBaseParam> {
 
 
     private static JobInfo readJobInfo(BufferReader bufferReader) {

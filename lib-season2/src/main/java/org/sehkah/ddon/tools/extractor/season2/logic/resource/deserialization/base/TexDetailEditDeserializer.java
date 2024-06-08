@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.bi
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.TexDetailEdit;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.TexDetailEditParam;
 
-public class TexDetailEditDeserializer extends ClientResourceFileDeserializer {
+public class TexDetailEditDeserializer extends ClientResourceFileDeserializer<TexDetailEdit> {
 
 
     private static TexDetailEditParam readTexDetailEditParam(BufferReader bufferReader) {

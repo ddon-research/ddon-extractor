@@ -17,7 +17,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.
 import java.util.List;
 import java.util.Map;
 
-public class QuestListDeserializer extends ClientResourceFileDeserializer {
+public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestList> {
 
 
     private static QuestSetInfoCoord readQuestSetInfoCoord(BufferReader bufferReader) {

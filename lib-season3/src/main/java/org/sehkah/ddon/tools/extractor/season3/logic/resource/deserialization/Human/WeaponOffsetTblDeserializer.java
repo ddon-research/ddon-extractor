@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.WeaponOffset;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human.WeaponOffsetTbl;
 
-public class WeaponOffsetTblDeserializer extends ClientResourceFileDeserializer {
+public class WeaponOffsetTblDeserializer extends ClientResourceFileDeserializer<WeaponOffsetTbl> {
 
 
     private static WeaponOffset readWeaponOffset(BufferReader bufferReader) {

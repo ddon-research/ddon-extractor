@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.CycleContentsSortieInfoTable;
 
-public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeserializer {
+public class CycleContentsSortieInfoDeserializer extends ClientResourceFileDeserializer<CycleContentsSortieInfoTable> {
 
 
     private static CycleContentsSortieInfoData readCycleContentsSortieInfoData(BufferReader bufferReader) {

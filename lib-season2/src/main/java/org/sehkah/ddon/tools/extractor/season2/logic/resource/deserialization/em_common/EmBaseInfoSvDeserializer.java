@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.E
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmBaseInfoSvDeserializer extends ClientResourceFileDeserializer {
+public class EmBaseInfoSvDeserializer extends ClientResourceFileDeserializer<EmBaseInfoSvList> {
 
 
     private static EmBaseInfoSv readEmBaseInfoSv(BufferReader bufferReader, int num) {

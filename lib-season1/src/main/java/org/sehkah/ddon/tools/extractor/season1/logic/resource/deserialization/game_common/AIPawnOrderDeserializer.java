@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnOrder;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.AIPawnOrderParam;
 
-public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer {
+public class AIPawnOrderDeserializer extends ClientResourceFileDeserializer<AIPawnOrder> {
 
 
     private static AIPawnOrderParam readAIPawnOrderParam(BufferReader bufferReader) {

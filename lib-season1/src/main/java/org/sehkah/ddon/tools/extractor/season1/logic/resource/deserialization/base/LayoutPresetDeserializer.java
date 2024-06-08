@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.Layout
 import java.util.ArrayList;
 import java.util.List;
 
-public class LayoutPresetDeserializer extends ClientResourceFileDeserializer {
+public class LayoutPresetDeserializer extends ClientResourceFileDeserializer<LayoutPresetList> {
 
 
     private static LayoutPreset readLayoutPreset(BufferReader bufferReader, int presetNo) {

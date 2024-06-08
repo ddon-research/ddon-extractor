@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillBurstData;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.CraftSkillBurstTable;
 
-public class CraftSkillBurstTableDeserializer extends ClientResourceFileDeserializer {
+public class CraftSkillBurstTableDeserializer extends ClientResourceFileDeserializer<CraftSkillBurstTable> {
 
 
     private static CraftSkillBurstData readCraftSkillBurstData(BufferReader bufferReader) {

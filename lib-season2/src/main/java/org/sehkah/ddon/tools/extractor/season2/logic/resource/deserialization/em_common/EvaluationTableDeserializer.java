@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.EvaluationTable;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.em_common.EvaluationTableList;
 
-public class EvaluationTableDeserializer extends ClientResourceFileDeserializer {
+public class EvaluationTableDeserializer extends ClientResourceFileDeserializer<EvaluationTableList> {
 
 
     private static EvaluationTable readEvaluationTable(BufferReader bufferReader) {

@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.Tbl2ChatMacro;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.Tbl2ChatMacroList;
 
-public class Tbl2ChatMacroDeserializer extends ClientResourceFileDeserializer {
+public class Tbl2ChatMacroDeserializer extends ClientResourceFileDeserializer<Tbl2ChatMacroList> {
 
 
     private static Tbl2ChatMacro readTbl2ChatMacro(BufferReader bufferReader) {

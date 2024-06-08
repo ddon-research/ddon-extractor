@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.skill.NormalSkillData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.skill.NormalSkillDataList;
 
-public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer {
+public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer<NormalSkillDataList> {
 
 
     private static NormalSkillData readNormalSkillData(BufferReader bufferReader) {

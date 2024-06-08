@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.Stage
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageConnectConnect;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageConnectData;
 
-public class StageConnectDeserializer extends ClientResourceFileDeserializer {
+public class StageConnectDeserializer extends ClientResourceFileDeserializer<StageConnect> {
 
 
     private static StageConnectConnect readStageConnectConnect(BufferReader bufferReader) {

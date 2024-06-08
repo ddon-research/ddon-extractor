@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.MyRoomActParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.MyRoomActParamTbl;
 
-public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserializer {
+public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserializer<MyRoomActParamTbl> {
 
 
     private static MyRoomActParam readMyRoomActParam(BufferReader bufferReader) {

@@ -8,7 +8,6 @@ import org.sehkah.ddon.tools.extractor.api.packet.PacketHeader;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.deserialization.c2l.C2LLoginReqBufferDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.deserialization.l2c.L2CLoginResBufferDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 import java.nio.file.Path;
 import java.util.Set;

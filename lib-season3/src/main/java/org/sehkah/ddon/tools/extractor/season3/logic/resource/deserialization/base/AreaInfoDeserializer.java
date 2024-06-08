@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.AreaIn
 
 import java.util.List;
 
-public class AreaInfoDeserializer extends ClientResourceFileDeserializer {
+public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInfoList> {
 
 
     private static AreaInfo readAreaInfo(BufferReader bufferReader) {

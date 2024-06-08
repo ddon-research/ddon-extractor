@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.b
 
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfo;
@@ -16,7 +16,7 @@ public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandAre
         long LandId = bufferReader.readUnsignedInteger();
         String LandName = null;
         if (lookupUtil != null) {
-            LandName = lookupUtil.getMessage(ResourceFileLookupType.LAND_NAME.getFilePath(), LandId - 1);
+            LandName = lookupUtil.getMessage(GUIMessageLookupTable.LAND_NAME.getFilePath(), LandId - 1);
         }
         boolean IsDispNews = bufferReader.readBoolean();
         int GameMode = bufferReader.readUnsignedByte();

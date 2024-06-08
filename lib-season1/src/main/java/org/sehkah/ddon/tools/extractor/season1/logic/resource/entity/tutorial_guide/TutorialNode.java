@@ -18,5 +18,7 @@ public class TutorialNode {
     @MetaInformation
     private String TutorialTitleName;
     private long Category;
+    @MetaInformation
+    private String CategoryName;
     private long OpenQuestId;
 }

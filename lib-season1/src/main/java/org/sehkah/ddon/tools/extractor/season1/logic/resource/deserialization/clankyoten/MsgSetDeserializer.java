@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.clankyoten.
 import java.util.ArrayList;
 import java.util.List;
 
-public class MsgSetDeserializer extends ClientResourceFileDeserializer {
+public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
 
 
     private static MsgData readMsgData(BufferReader bufferReader) {

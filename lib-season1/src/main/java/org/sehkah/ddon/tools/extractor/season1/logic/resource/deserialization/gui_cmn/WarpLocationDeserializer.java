@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.WarpLocation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.WarpLocationList;
 
-public class WarpLocationDeserializer extends ClientResourceFileDeserializer {
+public class WarpLocationDeserializer extends ClientResourceFileDeserializer<WarpLocationList> {
 
 
     private static WarpLocation readWarpLocation(BufferReader bufferReader) {

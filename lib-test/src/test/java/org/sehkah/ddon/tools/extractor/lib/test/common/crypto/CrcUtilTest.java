@@ -1,7 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.test.common.crypto;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.crypto.CrcUtil;
+import org.sehkah.ddon.tools.extractor.api.crypto.CrcUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

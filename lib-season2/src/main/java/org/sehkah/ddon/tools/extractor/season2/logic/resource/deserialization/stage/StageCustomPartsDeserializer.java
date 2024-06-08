@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.Stage
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageCustomPartsInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageCustomPartsParam;
 
-public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer {
+public class StageCustomPartsDeserializer extends ClientResourceFileDeserializer<StageCustomParts> {
 
 
     private static StageCustomPartsInfo readStageCustomPartsInfo(BufferReader bufferReader) {

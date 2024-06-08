@@ -6,7 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.deserialization.ArrayDataType;
 import org.sehkah.ddon.tools.extractor.api.deserialization.DDONPrimitiveDataType;
 import org.sehkah.ddon.tools.extractor.api.deserialization.DataType;
 import org.sehkah.ddon.tools.extractor.api.deserialization.ResourceHeader;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @ResourceHeader(magicStringSize = DDONPrimitiveDataType.u32, magicNumberSize = DDONPrimitiveDataType.u32)
-public class QuestMarkerInfo extends TopLevelClientResource {
+public class QuestMarkerInfo extends Resource {
     @DataType(size = DDONPrimitiveDataType.u32)
     public long StageNo;
     @ArrayDataType(size = DDONPrimitiveDataType.u32)

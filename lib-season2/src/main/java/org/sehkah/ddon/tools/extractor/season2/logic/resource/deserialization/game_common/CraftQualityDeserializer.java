@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CraftQualityData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.CraftQualityList;
 
-public class CraftQualityDeserializer extends ClientResourceFileDeserializer {
+public class CraftQualityDeserializer extends ClientResourceFileDeserializer<CraftQualityList> {
 
 
     private static CraftQualityData readCraftQualityData(BufferReader bufferReader) {

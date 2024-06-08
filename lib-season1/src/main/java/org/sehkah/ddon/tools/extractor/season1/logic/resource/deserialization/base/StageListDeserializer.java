@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.b
 
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StageListInfo;
@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageListDeserializer extends ClientResourceFileDeserializer<StageListInfoList> {
-
-
     private static StageListInfo readStageListInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long StageNo = bufferReader.readUnsignedInteger();
         long Type = bufferReader.readUnsignedInteger();
@@ -24,8 +22,8 @@ public class StageListDeserializer extends ClientResourceFileDeserializer<StageL
         long StageId = Long.MIN_VALUE;
         String StageName = null;
         if (lookupUtil != null) {
-            StageId = Long.parseLong(lookupUtil.getMessageKey(ResourceFileLookupType.STAGE_LIST.getFilePath(), MessageId).replace("STAGE_NAME_", ""));
-            StageName = lookupUtil.getMessage(ResourceFileLookupType.STAGE_LIST.getFilePath(), MessageId);
+            StageId = Long.parseLong(lookupUtil.getMessageKey(GUIMessageLookupTable.STAGE_LIST.getFilePath(), MessageId).replace("STAGE_NAME_", ""));
+            StageName = lookupUtil.getMessage(GUIMessageLookupTable.STAGE_LIST.getFilePath(), MessageId);
         }
         long Version = bufferReader.readUnsignedInteger();
 

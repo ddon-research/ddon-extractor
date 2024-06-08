@@ -2,7 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 /**
  * Used in quests, events, stages
@@ -14,7 +14,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class AIFSM extends TopLevelClientResource {
+public class AIFSM extends Resource {
     private String OwnerObjectName;
     private AIFSMCluster RootCluster;
     //private AIConditionTree ConditionTree;

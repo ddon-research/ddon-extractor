@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIDogmaOrb.GUIDogmaOrb;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIDogmaOrb.GUIDogmaOrbRes;
 
-public class GUIDogmaOrbDeserializer extends ClientResourceFileDeserializer {
+public class GUIDogmaOrbDeserializer extends ClientResourceFileDeserializer<GUIDogmaOrb> {
 
 
     private static GUIDogmaOrbRes readGUIDogmaOrbRes(BufferReader bufferReader) {

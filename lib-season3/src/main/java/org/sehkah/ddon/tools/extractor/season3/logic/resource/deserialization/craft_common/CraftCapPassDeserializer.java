@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.craft_common.CraftCapPassData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.craft_common.CraftCapPassList;
 
-public class CraftCapPassDeserializer extends ClientResourceFileDeserializer {
+public class CraftCapPassDeserializer extends ClientResourceFileDeserializer<CraftCapPassList> {
 
 
     private static CraftCapPassData readCraftCapPassData(BufferReader bufferReader) {

@@ -2,9 +2,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceFileLookupType;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 
 import java.util.List;
 
@@ -24,13 +22,4 @@ public class FieldAreaInfo {
     private int AreaId;
     private List<StageNo> StageNoList;
     private List<StageNo> BelongStageNoList;
-
-    public FieldAreaInfo(long fieldAreaId, long gmdIdx, int landId, int areaId, List<StageNo> stageNoList, List<StageNo> belongStageNoList) {
-        this(fieldAreaId,
-                gmdIdx, ResourceMetadataLookupUtilSeason3.getMessage(ResourceFileLookupType.FIELD_AREA_NAME, gmdIdx),
-                landId,
-                areaId,
-                stageNoList,
-                belongStageNoList);
-    }
 }

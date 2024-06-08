@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.FieldMapData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn.FieldMapDataList;
 
-public class FieldMapDataDeserializer extends ClientResourceFileDeserializer {
+public class FieldMapDataDeserializer extends ClientResourceFileDeserializer<FieldMapDataList> {
 
 
     private static FieldMapData readFieldMapData(BufferReader bufferReader) {

@@ -9,7 +9,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.Adjo
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.JumpPosition2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker.StageAdjoinList2;
 
-public class StageAdjoinList2Deserializer extends ClientResourceFileDeserializer {
+public class StageAdjoinList2Deserializer extends ClientResourceFileDeserializer<StageAdjoinList2> {
 
 
     private static JumpPosition2 readJumpPosition(BufferReader bufferReader) {

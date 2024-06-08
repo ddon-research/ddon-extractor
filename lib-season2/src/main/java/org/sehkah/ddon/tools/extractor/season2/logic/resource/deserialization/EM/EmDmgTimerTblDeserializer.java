@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmDmgTimerTbl;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.EM.EmDmgTimerTblList;
 
-public class EmDmgTimerTblDeserializer extends ClientResourceFileDeserializer {
+public class EmDmgTimerTblDeserializer extends ClientResourceFileDeserializer<EmDmgTimerTblList> {
 
 
     private static EmDmgTimerTbl readEmDmgTimerTbl(BufferReader bufferReader) {

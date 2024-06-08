@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
-import org.sehkah.ddon.tools.extractor.api.entity.TopLevelClientResource;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class StageInfo extends TopLevelClientResource {
+public class StageInfo extends Resource {
     //TODO: public -> private
     public int StageNo;
     public StageResourcePointer SchedulerModel;

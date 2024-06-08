@@ -7,7 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.Client
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.QuestMarkerInfo;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.QuestMarkerInfoInfo;
 
-public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer {
+public class QuestMarkerInfoDeserializer extends ClientResourceFileDeserializer<QuestMarkerInfo> {
 
 
     private static QuestMarkerInfoInfo readQuestMarkerInfoInfo(BufferReader bufferReader) {
