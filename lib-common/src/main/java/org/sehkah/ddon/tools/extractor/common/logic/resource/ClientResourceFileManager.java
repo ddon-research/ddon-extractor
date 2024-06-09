@@ -41,14 +41,12 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.paw
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest.QuestMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest.QuestTextDataDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.shop.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherStageInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AbilityAddDataDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AchievementHeaderDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.GUIDogmaOrbDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.MsgSetDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
@@ -105,17 +103,11 @@ public abstract class ClientResourceFileManager {
 
     @SuppressWarnings("unchecked")
     private <T extends Resource> void addCommonResourceMapping(Set<ClientResourceFile<T>> clientResourceFileSet) {
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCC", 7, 2), new EncryptedArchiveDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCS", 7, 2), new ReferenceArchiveDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), new AreaInfoJointAreaDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNamedParam, new FileHeader(5, 4), new NamedParamDeserializer()));
+        GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityAddData, new FileHeader(1, 4), new AbilityAddDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityData, new FileHeader(3, 4), new AbilityDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievement, new FileHeader(2, 4), new AchievementDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), new TutorialDialogMessageDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityAddData, new FileHeader(1, 4), new AbilityAddDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievementHeader, new FileHeader(3, 4), new AchievementHeaderDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjLimitParam, new FileHeader(5, 4), new AdjLimitParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjustParam, new FileHeader(256, 4), new JobAdjustParamDeserializer()));
@@ -123,7 +115,11 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoMotionTbl, new FileHeader(6, 4), new AIPawnAutoMotionTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnSkillParamTbl, new FileHeader(6, 4), new AIPawnSkillParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAISensor, new FileHeader("SNR2", 1, 4), new AISensorDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCC", 7, 2), new EncryptedArchiveDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCS", 7, 2), new ReferenceArchiveDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchiveListArray, new FileHeader(11, 4), new ArchiveListArrayDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), new AreaInfoJointAreaDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBakeJoint, new FileHeader(3, 4), new BakeJointTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBitTable, new FileHeader(2, 4), new BitTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCalcDamageAtdmAdj, new FileHeader(1, 4), new CalcDamageAtdmAdjTblDeserializer()));
@@ -133,18 +129,20 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCaughtDamageRateTbl, new FileHeader(1, 4), new CaughtDamageRateTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftCapPass, new FileHeader(2, 4), new CraftCapPassDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftElementExp, new FileHeader(1, 4), new CraftElementExpDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftQuality, new FileHeader(1, 4), new CraftQualityDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftSkillCost, new FileHeader(2, 4), new CraftSkillCostDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftSkillSpd, new FileHeader(3, 4), new CraftSkillSpeedDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftUpGradeExp, new FileHeader(1, 4), new CraftUpGradeExpDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftQuality, new FileHeader(1, 4), new CraftQualityDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCycleQuestInfo, new FileHeader("CQI\0", 2, 4), new CycleQuestInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEditStageParam, new FileHeader("esp\0", 12, 4), new EditStageParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmDamageDirInfo, new FileHeader(2, 4), new EmDamageDirInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmDmgTimerTbl, new FileHeader(2, 4), new EmDmgTimerTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmScaleTable, new FileHeader(257, 4), new EmScaleTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmSoundTable, new FileHeader(261, 4), new EmSoundTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyLocalEst, new FileHeader(259, 4), new EnemyLocalEstTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyMaterialTable, new FileHeader(260, 4), new EnemyMaterialTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyReactResEx, new FileHeader(6, 4), new EnemyReactResExTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyStatusChange, new FileHeader(9, 4), new EnemyStatusChangeTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEquipPreset, new FileHeader(7, 4), new EquipPresetDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEvaluationTable, new FileHeader(4, 4), new EvaluationTableDeserializer()));
@@ -155,10 +153,14 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobLevelUpTbl2, new FileHeader(1, 4), new JobLevelUpTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobMasterCtrl, new FileHeader(256, 4), new JobMasterCtrlDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobTutorialQuestList, new FileHeader("JTQ\0", 1, 2), new JobTutorialQuestListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJointInfo, new FileHeader(259, 4), new JointInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJointOrder, new FileHeader(3, 4), new JointOrderTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLayoutPreset, new FileHeader(5, 4), new LayoutPresetDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicChantParam, new FileHeader(17, 4), new MagicChantParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandList, new FileHeader(27, 4), new MagicCommandListTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandWord, new FileHeader(1, 4), new MagicCommandWordTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNamedParam, new FileHeader(5, 4), new NamedParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNormalSkillData, new FileHeader(5, 4), new NormalSkillDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcConstItem, new FileHeader(2, 4), new NpcConstItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcCustomSkill, new FileHeader(5, 4), new NpcCustomSkillListDeserializer()));
@@ -168,25 +170,28 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPlPartsInfo, new FileHeader("PSI\0", 1, 4), new PlPartsInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPrologueHmStatus, new FileHeader(0, 4), new PrologueHmStatusDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPushRate, new FileHeader(256, 4), new PushRateListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestHistoryData, new FileHeader(1, 4), new QuestHistoryDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestMarkerInfo, new FileHeader("QMI\0", 1, 4), new QuestMarkerInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestSequenceList, new FileHeader(256, 4), new QuestSequenceListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestTextData, new FileHeader("QTD\0", 2, 4), new QuestTextDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRageTable, new FileHeader(257, 4), new RageTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReplaceWardGmdList, new FileHeader(1, 4), new ReplaceWardGmdListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShopGoods, new FileHeader("TBL\0", 259, 4), new ShopGoodsDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShotReqInfo, new FileHeader(9, 4), new ShotReqInfoTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShrinkBlowValue, new FileHeader(2, 4), new ShrinkBlowValueDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageMap, new FileHeader(1, 4), new StageMapDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageToSpot, new FileHeader(0, 4), new StageToSpotDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStartPosArea, new FileHeader(0, 4), new StartPosAreaDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStatusGainTable, new FileHeader(257, 4), new StatusGainTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStatusCheck, new FileHeader(4, 4), new StatusCheckTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStatusGainTable, new FileHeader(257, 4), new StatusGainTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTbl2ChatMacro, new FileHeader(256, 4), new Tbl2ChatMacroDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), new TutorialDialogMessageDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialQuestGroup, new FileHeader("TQG\0", 1, 2), new TutorialQuestGroupDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rVfxLightInfluence, new FileHeader(3, 4), new VfxLightInfluenceListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWaypoint, new FileHeader("WPT\0", 2, 4), new WaypointDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponOffset, new FileHeader(3, 4), new WeaponOffsetTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), new WeatherStageInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWepCateResTbl, new FileHeader(1, 4), new WepCateResTblDeserializer()));
-
-        GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
-        clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
     }
 
     /**

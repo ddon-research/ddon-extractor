@@ -9,13 +9,16 @@ import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmWorkRateTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EnemyReactResExTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.OcdImmuneParamResTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.StaminaDecTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcLedgerListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM.*;
@@ -26,16 +29,13 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.cl
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureItemDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureLayoutDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common.BlowSaveEmLvParamTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn.FieldMapDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn.MapSpotStageListDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn.ReplaceWardGmdListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn.WarpLocationDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.job.JumpParamTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.job.StaminaDecTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.marker.DungeonMarkerDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.marker.StageAdjoinList2Deserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.marker.StageAdjoinListDeserializer;
@@ -47,15 +47,12 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.om
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest.PawnQuestTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest.QuestListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.scr.MapSpotDataDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
 
 import java.nio.file.Path;
 import java.util.HashSet;
@@ -78,6 +75,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
 
+        //TODO: clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIFSM, new FileHeader("XFS\0", 131087, 4), new AIFSMDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityList, new FileHeader("abl0", 9, 4), new AbilityListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoWordTbl, new FileHeader(4, 4), new AIPawnAutoWordTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnEmParam, new FileHeader(17, 4), new AIPawnEmParamDeserializer()));
@@ -101,7 +99,6 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmWarpParam, new FileHeader(3, 4), new EmWarpParamTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmWorkRateTable, new FileHeader(258, 4), new EmWorkRateTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEndContentsSortieInfo, new FileHeader(4, 4), new EndContentsSortieInfoDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyReactResEx, new FileHeader(6, 4), new EnemyReactResExTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEventParam, new FileHeader(19, 4), new EventParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFieldAreaAdjoinList, new FileHeader("FAA\0", 2, 4), new FieldAreaAdjoinListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFieldAreaList, new FileHeader("FAl\0", 2, 4), new FieldAreaListDeserializer()));
@@ -112,23 +109,16 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureItem, new FileHeader(1, 4), new FurnitureItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureLayout, new FileHeader(1, 4), new FurnitureLayoutDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobBaseParam, new FileHeader(263, 4), new JobBaseParamDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJointInfo, new FileHeader(6, 4), new JointInfoTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJointInfo, new FileHeader(259, 4), new JointInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJumpParamTbl, new FileHeader(4, 4), new JumpParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rKeyConfigTextTable, new FileHeader(1, 4), new KeyConfigTextTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLandInfo, new FileHeader("LAI\0", 4, 4), new LandInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLayout, new FileHeader("lot\0", 138, 4), new LayoutDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLayoutPreset, new FileHeader(5, 4), new LayoutPresetDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLocationData, new FileHeader("lcd\0", 16, 4), new LocationDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMapSpotData, new FileHeader("msd\0", 0, 4), new MapSpotDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMapSpotStageList, new FileHeader("msl\0", 0, 4), new MapSpotStageListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMyRoomActParam, new FileHeader(15, 4), new MyRoomActParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcIsNoSetPS3, new FileHeader(1, 4), new NpcIsNoSetPS3TblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcIsUseJobParamEx, new FileHeader(1, 4), new NpcIsUseJobParamExDeserializer()));
-
-        NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
-        clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
-
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOcdImmuneParamRes, new FileHeader(37, 4), new OcdImmuneParamResTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOcdStatusParamRes, new FileHeader(37, 4), new OcdStatusParamResListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOmKey, new FileHeader("XFS\0", 15, 4), new OmKeyDeserializer()));
@@ -138,14 +128,9 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPartnerPawnTalk, new FileHeader("ppt\0", 1, 4), new PartnerPawnTalkDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPartnerReactParam, new FileHeader(4, 4), new PartnerReactParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPawnQuestTalk, new FileHeader("PQT\0", 1, 4), new PawnQuestTalkDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestHistoryData, new FileHeader(1, 4), new QuestHistoryDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestList, new FileHeader("XFS\0", 9043983, 4), new QuestListDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReplaceWardGmdList, new FileHeader(1, 4), new ReplaceWardGmdListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRoomWearParam, new FileHeader(2, 4), new RoomWearParamTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShopGoods, new FileHeader("TBL\0", 259, 4), new ShopGoodsDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShotReqInfo, new FileHeader(9, 4), new ShotReqInfoTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShotReqInfo2, new FileHeader(9, 4), new ShotReqInfo2TblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rShrinkBlowValue, new FileHeader(2, 4), new ShrinkBlowValueDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rSituationMsgCtrl, new FileHeader("SMC\0", 3, 4), new SituationMsgCtrlDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageAdjoinList, new FileHeader("SAL\0", 4, 4), new StageAdjoinListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageAdjoinList2, new FileHeader("SAL2", 1, 4), new StageAdjoinList2Deserializer()));
@@ -162,8 +147,8 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWarpLocation, new FileHeader(353, 4), new WarpLocationDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWaypoint2, new FileHeader("WP2\0", 1, 4), new WaypointDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponResTable, new FileHeader(11, 4), new WeaponResTableDeserializer()));
-        //TODO: rAIFSM continuation
-        //clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIFSM, new FileHeader("XFS\0", 131087, 4), new AIFSMDeserializer()));
+        NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
 
         return clientResourceFileSet;
     }
