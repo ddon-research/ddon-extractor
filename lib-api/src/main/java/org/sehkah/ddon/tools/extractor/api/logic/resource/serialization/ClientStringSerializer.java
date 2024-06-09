@@ -33,11 +33,12 @@ public class ClientStringSerializer implements Serializer<Resource> {
             case json -> {
                 JsonMapper.Builder jsonBuilder = JsonMapper.builder();
                 jsonBuilder.findAndAddModules();
-                jsonBuilder.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
                 jsonBuilder.enable(SerializationFeature.INDENT_OUTPUT);
+                jsonBuilder.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
                 jsonBuilder.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
                 jsonBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
                 jsonBuilder.propertyNamingStrategy(PropertyNamingStrategies.UPPER_CAMEL_CASE);
+                jsonBuilder.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
                 if (!shouldSerializeMetaInformation) {
                     jsonBuilder.annotationIntrospector(metaInformationIntrospector);
                 }
@@ -48,7 +49,9 @@ public class ClientStringSerializer implements Serializer<Resource> {
                 yamlBuilder.findAndAddModules();
                 yamlBuilder.enable(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES);
                 yamlBuilder.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+                yamlBuilder.serializationInclusion(JsonInclude.Include.NON_NULL);
                 yamlBuilder.propertyNamingStrategy(PropertyNamingStrategies.UPPER_CAMEL_CASE);
+                yamlBuilder.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
                 if (!shouldSerializeMetaInformation) {
                     yamlBuilder.annotationIntrospector(metaInformationIntrospector);
                 }

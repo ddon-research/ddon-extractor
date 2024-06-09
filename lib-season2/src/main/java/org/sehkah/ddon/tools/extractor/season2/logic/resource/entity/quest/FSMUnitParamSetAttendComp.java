@@ -1,20 +1,9 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
-@JsonPropertyOrder({
-        "Max",
-        "InitRate",
-        "OverLv",
-        "UnderLv",
-        "PointHigh",
-        "PointMiddle",
-        "PointLow",
-        "DamageInterval",
-})
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor

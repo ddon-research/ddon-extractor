@@ -4,7 +4,6 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
-// TODO: Replace JsonPropertyOrder
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
