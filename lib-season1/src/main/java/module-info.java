@@ -21,7 +21,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.equip;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.game_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.gui_cmn;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human;
@@ -36,7 +35,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.ui.history;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.ui.uGUIAreaMaster;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.ui.uGUIDogmaOrb;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.wep_res_table;
 
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource;
@@ -49,7 +47,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.equip;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn;
@@ -68,7 +65,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.history;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIAreaMaster;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.ui.uGUIDogmaOrb;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.wep_res_table.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.wep_res_table;
 }
