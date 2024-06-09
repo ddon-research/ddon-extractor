@@ -17,7 +17,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
 
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.game_common;
@@ -40,7 +39,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.effect_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta;

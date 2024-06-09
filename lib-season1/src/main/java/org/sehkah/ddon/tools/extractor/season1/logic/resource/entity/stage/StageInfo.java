@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.StageResourcePointer;
 
 import java.util.List;
 

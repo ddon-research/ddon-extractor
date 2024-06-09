@@ -4,14 +4,12 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.StageResourcePointer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageInfo;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.StageResourcePointer;
 
 import java.nio.file.Path;
 
 public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageInfo> {
-
-
     private static StageResourcePointer readStageResourcePointer(BufferReader bufferReader) {
         String Path = bufferReader.readNullTerminatedString();
         return Path.isEmpty() ? null : new StageResourcePointer(null, Path);

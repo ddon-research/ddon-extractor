@@ -13,25 +13,25 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.N
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.WeaponOffsetTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common.VfxLightInfluenceListDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.AbilityListDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.AreaInfoDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.LayoutPresetDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.TexDetailEditDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.game_common.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.gui_cmn.ReplaceWardGmdListDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.gui_cmn.StartPosAreaDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job.StaminaDecTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.sg300000.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.skill.CustomSkillDataDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage.*;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage.StageCustomPartsDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage.StartPosDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.ui.history.QuestHistoryDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
 
 import java.nio.file.Path;
 import java.util.HashSet;
@@ -55,17 +55,6 @@ public class ClientResourceFileManagerSeason1 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
         // COMMON
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageToSpot, new FileHeader(0, 4), new StageToSpotDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStartPosArea, new FileHeader(0, 4), new StartPosAreaDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStatusGainTable, new FileHeader(257, 4), new StatusGainTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStatusCheck, new FileHeader(4, 4), new StatusCheckTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTbl2ChatMacro, new FileHeader(256, 4), new Tbl2ChatMacroDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialQuestGroup, new FileHeader("TQG\0", 1, 2), new TutorialQuestGroupDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rVfxLightInfluence, new FileHeader(3, 4), new VfxLightInfluenceListDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWaypoint, new FileHeader("WPT\0", 2, 4), new WaypointDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponOffset, new FileHeader(3, 4), new WeaponOffsetTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), new WeatherStageInfoDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWepCateResTbl, new FileHeader(1, 4), new WepCateResTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexDetailEdit, new FileHeader("XFS\0", 393231, 4), new TexDetailEditDeserializer()));
 
         //SPECIFIC
