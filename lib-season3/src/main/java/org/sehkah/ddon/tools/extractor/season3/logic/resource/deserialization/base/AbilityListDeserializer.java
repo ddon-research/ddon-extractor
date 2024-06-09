@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbilityListDeserializer extends ClientResourceFileDeserializer<AbilityList> {
-
-
     private static AdditionalAbilityParamData readAdditionalAbilityParamData(BufferReader bufferReader) {
         return new AdditionalAbilityParamData(
                 bufferReader.readSignedInteger(),

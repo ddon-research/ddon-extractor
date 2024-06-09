@@ -11,8 +11,6 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.skill.Skill
 import java.nio.file.Path;
 
 public class CustomSkillDataDeserializer extends ClientResourceFileDeserializer<CustomSkillDataList> {
-
-
     private static SkillLevelData readSkillLevelData(BufferReader bufferReader) {
         return new SkillLevelData(
                 bufferReader.readUnsignedShort(),

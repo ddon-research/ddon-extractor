@@ -221,7 +221,7 @@ public abstract class ClientResourceFileManager {
         Set<FileHeader> fileHeaderCandidates = ClientResourceFileDeserializer.identifyFileHeaderCandidates(bufferReader);
         for (FileHeader fileHeaderCandidate : fileHeaderCandidates) {
             Pair<ClientResourceFileExtension, FileHeader> candidateKey = Pair.of(clientResourceFileExtension, fileHeaderCandidate);
-            log.debug("Attempting to match candidate file header '%s'.".formatted(candidateKey));
+            log.debug("Attempting to match candidate file header {}.", candidateKey);
             if (clientResourceFileMap.containsKey(candidateKey)) {
                 ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.get(candidateKey);
                 clientResourceDeserializer = clientResourceFile.getDeserializer();
