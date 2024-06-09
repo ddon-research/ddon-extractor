@@ -19,13 +19,16 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Enc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ReferenceArchiveDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.AreaInfoJointAreaDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.AreaInfoStageDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.EnemyGroupDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.GUIMessageDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.NamedParamDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.JobAdjustParamDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AbilityDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AchievementDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.pawn.AIPawnActNoSwitchTblDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.MsgSetDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
@@ -91,6 +94,14 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievement, new FileHeader(2, 4), new AchievementDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialDialogMessage, new FileHeader("TDM\0", 2, 4), new TutorialDialogMessageDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityAddData, new FileHeader(1, 4), new AbilityAddDataDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievementHeader, new FileHeader(3, 4), new AchievementHeaderDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjLimitParam, new FileHeader(5, 4), new AdjLimitParamTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjustParam, new FileHeader(256, 4), new JobAdjustParamDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnActNoSwitch, new FileHeader(5, 4), new AIPawnActNoSwitchTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoMotionTbl, new FileHeader(6, 4), new AIPawnAutoMotionTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnSkillParamTbl, new FileHeader(6, 4), new AIPawnSkillParamTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAISensor, new FileHeader("SNR2", 1, 4), new AISensorDeserializer()));
 
         GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
         clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);

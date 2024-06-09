@@ -40,8 +40,6 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.np
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.npc_common.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.om.OmKeyDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.om.OmParamPartDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.pawn.AIPawnActNoSwitchTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.pawn.AISensorDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest.PawnQuestTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest.QuestListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.quest.QuestMarkerInfoDeserializer;
@@ -56,10 +54,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIArisenCard.AchievementHeaderDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIDogmaOrb.GUIDogmaOrbDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUISkill.AbilityAddDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
 
@@ -84,18 +80,10 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
 
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityAddData, new FileHeader(1, 4), new AbilityAddDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityList, new FileHeader("abl0", 9, 4), new AbilityListDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievementHeader, new FileHeader(3, 4), new AchievementHeaderDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjLimitParam, new FileHeader(5, 4), new AdjLimitParamTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAdjustParam, new FileHeader(256, 4), new JobAdjustParamDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnActNoSwitch, new FileHeader(5, 4), new AIPawnActNoSwitchTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoMotionTbl, new FileHeader(6, 4), new AIPawnAutoMotionTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoWordTbl, new FileHeader(4, 4), new AIPawnAutoWordTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnEmParam, new FileHeader(17, 4), new AIPawnEmParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnOrder, new FileHeader(15, 4), new AIPawnOrderDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnSkillParamTbl, new FileHeader(6, 4), new AIPawnSkillParamTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAISensor, new FileHeader("SNR2", 1, 4), new AISensorDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAnimalData, new FileHeader(0, 4), new AnimalDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchiveListArray, new FileHeader(11, 4), new ArchiveListArrayDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfo, new FileHeader("ARI\0", 2, 4), new AreaInfoDeserializer()));
