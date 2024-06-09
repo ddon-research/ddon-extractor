@@ -1,17 +1,20 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileExtension;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -32,6 +35,7 @@ import java.util.stream.Stream;
         description = "Extracts the provided DDON resource file(s).")
 public class ExtractResourceCommand implements Callable<Integer> {
     private ClientResourceFileManager clientResourceFileManager;
+
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -101,7 +105,29 @@ public class ExtractResourceCommand implements Callable<Integer> {
             """, defaultValue = "true")
     private boolean runInParallel;
 
-    private StatusCode extractSingleFile(Path filePath, Serializer<TopLevelClientResource> serializer, boolean writeOutputToFile) {
+    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return switch (clientVersion) {
+            case VERSION_1_1 ->
+                    new ClientResourceFileManagerSeason1(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_2_3 ->
+                    new ClientResourceFileManagerSeason2(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+            case VERSION_3_4 ->
+                    new ClientResourceFileManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+        };
+    }
+
+    private StatusCode extractSingleFile(Path filePath, Serializer<Resource> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
             bufferReader = new BinaryReader(filePath);
@@ -112,77 +138,72 @@ public class ExtractResourceCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-        String fileName = filePath.getFileName().toString();
-        ClientResourceDeserializer<TopLevelClientResource> clientResourceDeserializer = clientResourceFileManager.getDeserializer(fileName, bufferReader);
-        if (clientResourceDeserializer == null) {
-            log.error("File '{}' is not supported.", fileName);
+
+        Resource deserializedOutput = clientResourceFileManager.deserialize(filePath, bufferReader);
+        if (deserializedOutput == null) {
+            log.error("File '{}' is not supported.", filePath);
             return StatusCode.ERROR;
         }
         log.debug("Extracting resource data from file '{}'.", filePath);
-        TopLevelClientResource deserializedOutput = clientResourceDeserializer.deserialize(bufferReader);
-        if (deserializedOutput != null) {
-            String serializedOutput;
+        String serializedOutput;
+        try {
+            serializedOutput = serializer.serialize(deserializedOutput);
+        } catch (SerializerException e) {
+            log.error("Failed to serialize object '{}'.", deserializedOutput);
+            if (log.isDebugEnabled()) {
+                log.error("", e);
+            }
+            return StatusCode.ERROR;
+        }
+        if (writeOutputToFile) {
+            String fileName = filePath.getFileName().toString();
+            String outputFile = fileName + "." + outputFormat;
+            Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
+            boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
+            if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
+                log.error("Failed to create folders for output file.");
+                return StatusCode.ERROR;
+            }
+            Path outputFilePath = outputFolder.resolve(outputFile);
+            log.info("Outputting to file '{}'.", outputFilePath);
             try {
-                serializedOutput = serializer.serialize(deserializedOutput);
-            } catch (SerializerException e) {
-                log.error("Failed to serialize object '{}'.", deserializedOutput);
+                Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
+                    outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
+                    for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
+                        String arcFile = entry.getKey();
+                        byte[] bytes = entry.getValue();
+                        Path arcFilePath = Paths.get(arcFile);
+                        Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
+                        boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
+                        if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
+                            log.error("Failed to create folders for arc file.");
+                            return StatusCode.ERROR;
+                        }
+                        Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
+                        log.info("Outputting to file '{}'.", arcOutputFilePath);
+                        Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Failed to write file '{}'.", outputFilePath);
                 if (log.isDebugEnabled()) {
                     log.error("", e);
                 }
                 return StatusCode.ERROR;
             }
-            if (writeOutputToFile) {
-                String outputFile = fileName + "." + outputFormat;
-                Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
-                boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
-                if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
-                    log.error("Failed to create folders for output file.");
-                    return StatusCode.ERROR;
-                }
-                Path outputFilePath = outputFolder.resolve(outputFile);
-                log.info("Outputting to file '{}'.", outputFilePath);
-                try {
-                    Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                    if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
-                        outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
-                        for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
-                            String arcFile = entry.getKey();
-                            byte[] bytes = entry.getValue();
-                            Path arcFilePath = Paths.get(arcFile);
-                            Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
-                            boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
-                            if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
-                                log.error("Failed to create folders for arc file.");
-                                return StatusCode.ERROR;
-                            }
-                            Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
-                            log.info("Outputting to file '{}'.", arcOutputFilePath);
-                            Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                        }
-                    }
-                } catch (IOException e) {
-                    log.error("Failed to write file '{}'.", outputFilePath);
-                    if (log.isDebugEnabled()) {
-                        log.error("", e);
-                    }
-                    return StatusCode.ERROR;
-                }
-            } else {
-                log.debug("Outputting to console.");
-                log.info(serializedOutput);
-            }
-            return StatusCode.OK;
         } else {
-            log.error("Deserialization has failed.");
-            return StatusCode.ERROR;
+            log.debug("Outputting to console.");
+            log.info(serializedOutput);
         }
+        return StatusCode.OK;
     }
 
     @Override
     public Integer call() throws Exception {
         Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
         if (Files.exists(fullPath)) {
-            clientResourceFileManager = ClientResourceFileManager.get(clientRootFolder, outputFormat, addMetaInformation);
+            clientResourceFileManager = getClientResourceFileManager(clientRootFolder, outputFormat, addMetaInformation);
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {

@@ -1,16 +1,18 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.cli.common.command.StatusCode;
-import org.sehkah.ddon.tools.extractor.lib.common.error.SerializerException;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.packet.Packet;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.Serializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketBufferDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketFileExtension;
-import org.sehkah.ddon.tools.extractor.lib.logic.packet.deserialization.PacketManager;
+import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.packet.deserialization.PacketBufferDeserializer;
+import org.sehkah.ddon.tools.extractor.api.logic.packet.deserialization.PacketFileExtension;
+import org.sehkah.ddon.tools.extractor.api.logic.packet.deserialization.PacketManager;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
+import org.sehkah.ddon.tools.extractor.api.packet.Packet;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.packet.PacketManagerSeason3;
 import picocli.CommandLine;
 
 import java.io.IOException;
@@ -30,6 +32,7 @@ import java.util.stream.Stream;
         description = "Extracts the provided DDON packet file(s).")
 public class ExtractPacketCommand implements Callable<Integer> {
     private PacketManager packetManager;
+
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -46,7 +49,7 @@ public class ExtractPacketCommand implements Callable<Integer> {
             Example:
                 extract "D:\\DDON\\nativePC\\rom" <resource file>
             """)
-    private Path clientResourceBasePath;
+    private Path clientRootFolder;
 
     @CommandLine.Parameters(index = "1", arity = "1", description = """
             Specifies the DDON packet file whose data to extract or a folder to recursively search for such files.
@@ -80,6 +83,26 @@ public class ExtractPacketCommand implements Callable<Integer> {
             Turning this off improves legibility of logs and supports debugging.
             """, defaultValue = "true")
     private boolean runInParallel;
+
+    private static PacketManager getPacketManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
+        String versionlistString;
+        ClientVersion clientVersion;
+        try {
+            versionlistString = Files.readString(versionlist);
+            clientVersion = ClientVersion.of(Integer.parseInt(versionlistString.substring(0, 2)), Integer.parseInt(versionlistString.substring(2, 4)));
+        } catch (IOException e) {
+            throw new TechnicalException("Could not load DDON version file!", e);
+        }
+        log.info("Identified DDON client version v'{}'", versionlistString);
+
+        return switch (clientVersion) {
+            case VERSION_1_1 -> null;
+            case VERSION_2_3 -> null;
+            case VERSION_3_4 ->
+                    new PacketManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+        };
+    }
 
     private StatusCode extractSingleFile(Path filePath, Serializer<Packet> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
@@ -145,7 +168,7 @@ public class ExtractPacketCommand implements Callable<Integer> {
     public Integer call() throws Exception {
         Path fullPath = inputFilePath;
         if (Files.exists(fullPath)) {
-            packetManager = PacketManager.get(clientResourceBasePath, outputFormat, addMetaInformation);
+            packetManager = getPacketManager(clientRootFolder, outputFormat, addMetaInformation);
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {

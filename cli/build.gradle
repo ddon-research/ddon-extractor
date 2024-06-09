@@ -7,7 +7,11 @@ plugins {
 }
 
 dependencies {
-    implementation project(':lib')
+    implementation project(path: ':lib-api')
+    implementation project(path: ':lib-common')
+    implementation project(path: ':lib-season1')
+    implementation project(path: ':lib-season2')
+    implementation project(path: ':lib-season3')
 
     implementation cli.picocli
     implementation cli.jackson.dataformat.yaml

@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+    id 'jacoco'
+    id 'project-report'
+}
+
+dependencies {
+    implementation project(path: ':lib-api')
+
+    implementation lib.bcprov.jdk18on
+    implementation lib.jackson.dataformat.yaml
+    implementation lib.commons.lang3
+
+    runtimeOnly lib.jackson.core
+    runtimeOnly lib.jackson.databind
+}

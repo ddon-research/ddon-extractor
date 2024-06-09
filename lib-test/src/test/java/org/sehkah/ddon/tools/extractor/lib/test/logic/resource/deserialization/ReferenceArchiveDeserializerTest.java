@@ -1,17 +1,17 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource.deserialization;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.entity.TopLevelClientResource;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.lib.common.serialization.SerializationFormat;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.ClientResourceFileManager;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.deserialization.ClientResourceDeserializer;
-import org.sehkah.ddon.tools.extractor.lib.logic.resource.entity.ArchiveS;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ArchiveS;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,14 +21,14 @@ class ReferenceArchiveDeserializerTest {
     @Test
     void deserializeResourceSeasonThree() throws URISyntaxException, IOException {
         String inputFile = "season3/eye0_fedt_jntpreset.arc";
-        byte[] input = Files.readAllBytes(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
+        Path inputFilePath = Paths.get(getClass().getClassLoader().getResource(inputFile).toURI());
+        byte[] input = Files.readAllBytes(inputFilePath);
 
-        ClientResourceFileManager clientResourceFileManager = ClientResourceFileManager.get(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
-        ClientResourceDeserializer<TopLevelClientResource> deserializer = clientResourceFileManager.getDeserializer(inputFile, bufferReader);
-        ArchiveS deserialized = (ArchiveS) deserializer.deserialize(bufferReader);
+        ArchiveS deserialized = clientResourceFileManager.deserialize(inputFilePath, bufferReader);
 
         assertEquals(1, deserialized.getResourceNum());
-        assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().get(0).TypeName());
+        assertEquals("rFacialEditJointPreset", deserialized.getResourceReference().getFirst().getTypeName());
     }
 }

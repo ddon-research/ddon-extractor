@@ -1,10 +1,10 @@
 package org.sehkah.ddon.tools.extractor.lib.test.common.crypto;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.lib.common.crypto.BlowFishUtil;
-import org.sehkah.ddon.tools.extractor.lib.common.crypto.ZipUtil;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BinaryReader;
-import org.sehkah.ddon.tools.extractor.lib.common.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.crypto.BlowFishUtil;
+import org.sehkah.ddon.tools.extractor.api.crypto.ZipUtil;
+import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
+import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 
 import java.util.HexFormat;
 
