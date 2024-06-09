@@ -16,7 +16,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.collision_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.effect_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common;
@@ -57,7 +56,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.effect_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.meta;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;

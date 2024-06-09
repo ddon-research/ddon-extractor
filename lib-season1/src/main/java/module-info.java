@@ -17,7 +17,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
 
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.collision_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common;
@@ -27,7 +26,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.marker;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.quest;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.sg300000;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.skill;
@@ -42,9 +40,7 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.collision_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.effect_common;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.EM;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.game_common.meta;
@@ -55,7 +51,6 @@ module org.sehkah.ddon.tools.extractor.lib.season1 {
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.job;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.marker;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc;
-    exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.npc_common;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.meta;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
     exports org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.sg300000;

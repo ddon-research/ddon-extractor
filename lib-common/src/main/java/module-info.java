@@ -32,6 +32,9 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.equip;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.collision_common;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest;
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base;
@@ -56,6 +59,10 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.equip;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.job;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.job.meta;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.skill;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.collision_common;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta;
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common;
 }

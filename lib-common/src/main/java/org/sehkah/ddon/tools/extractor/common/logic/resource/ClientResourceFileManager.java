@@ -24,6 +24,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.bas
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.JobAdjustParamDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base.JobLevelUpTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit.EditStageParamDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.collision_common.PushRateListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.craft_common.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EmDamageDirInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EvaluationTableDeserializer;
@@ -31,12 +32,19 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.equ
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.game_common.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AbilityDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.AchievementDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.gui_cmn.StageMapDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.MagicChantParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.MagicCommandListTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.MagicCommandWordTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.launcher.ArchiveListArrayDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcConstItemDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcCustomSkillListDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcMeetingPlaceDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.pawn.AIPawnActNoSwitchTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.pawn.AISensorDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest.QuestMarkerInfoDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest.QuestTextDataDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AbilityAddDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AchievementHeaderDeserializer;
@@ -95,10 +103,10 @@ public abstract class ClientResourceFileManager {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private <T extends Resource> void addCommonResourceMapping(Set<ClientResourceFile<T>> clientResourceFileSet) {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCC", 7, 2), new EncryptedArchiveDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCS", 7, 2), new ReferenceArchiveDeserializer()));
-
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), new AreaInfoJointAreaDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer()));
@@ -151,6 +159,20 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicChantParam, new FileHeader(17, 4), new MagicChantParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandList, new FileHeader(27, 4), new MagicCommandListTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandWord, new FileHeader(1, 4), new MagicCommandWordTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNormalSkillData, new FileHeader(5, 4), new NormalSkillDataDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcConstItem, new FileHeader(2, 4), new NpcConstItemDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcCustomSkill, new FileHeader(5, 4), new NpcCustomSkillListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcMeetingPlace, new FileHeader(0, 4), new NpcMeetingPlaceDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rOcdElectricParam, new FileHeader(1, 4), new OcdElectricParamListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPartsCtrlTable, new FileHeader(256, 4), new PartsCtrlTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPlPartsInfo, new FileHeader("PSI\0", 1, 4), new PlPartsInfoDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPrologueHmStatus, new FileHeader(0, 4), new PrologueHmStatusDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPushRate, new FileHeader(256, 4), new PushRateListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestMarkerInfo, new FileHeader("QMI\0", 1, 4), new QuestMarkerInfoDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestSequenceList, new FileHeader(256, 4), new QuestSequenceListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rQuestTextData, new FileHeader("QTD\0", 2, 4), new QuestTextDataDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRageTable, new FileHeader(257, 4), new RageTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageMap, new FileHeader(1, 4), new StageMapDeserializer()));
 
         GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
         clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
