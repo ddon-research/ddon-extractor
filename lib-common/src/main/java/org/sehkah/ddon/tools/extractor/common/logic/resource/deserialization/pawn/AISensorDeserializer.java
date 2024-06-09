@@ -24,6 +24,7 @@ public class AISensorDeserializer extends ClientResourceFileDeserializer<AISenso
         long GroupFlag = bufferReader.readUnsignedInteger();
         long UserFlag = bufferReader.readUnsignedInteger();
         long StatusFlag = bufferReader.readUnsignedInteger();
+        //TODO: pull bitshift 1 << i into a top-level function
         Set<AISensorStatusFlagType> StatusFlagType = BitUtil.extractBitSetUnsignedIntegerFlag(AISensorStatusFlagType::of, i -> 1 << i, StatusFlag);
         int JntNo = bufferReader.readSignedInteger();
 

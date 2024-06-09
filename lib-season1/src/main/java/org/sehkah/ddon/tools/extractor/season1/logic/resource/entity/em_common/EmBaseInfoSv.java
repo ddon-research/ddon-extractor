@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.em_common.meta.EnemyCategoryType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.em_common.meta.EnemyCategoryType;
 
 import java.util.Set;
 

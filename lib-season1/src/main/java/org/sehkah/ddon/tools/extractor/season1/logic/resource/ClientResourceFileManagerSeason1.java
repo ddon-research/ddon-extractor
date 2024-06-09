@@ -11,17 +11,13 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.EM.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.BakeJointTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.Human.WeaponOffsetTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.character_edit.EditStageParamDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.collision_common.PushRateListDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.craft_common.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.effect_common.VfxLightInfluenceListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.EmDamageDirInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.EvaluationTableDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.equip.EquipPresetDeserializer;
@@ -33,7 +29,6 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.jo
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job.MagicCommandListTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job.MagicCommandWordTblDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.job.StaminaDecTblDeserializer;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.launcher.ArchiveListArrayDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.marker.StageAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc.SituationMsgCtrlDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.npc_common.NpcConstItemDeserializer;
@@ -74,29 +69,6 @@ public class ClientResourceFileManagerSeason1 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
         // COMMON
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchiveListArray, new FileHeader(11, 4), new ArchiveListArrayDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBakeJoint, new FileHeader(3, 4), new BakeJointTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBitTable, new FileHeader(2, 4), new BitTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCalcDamageAtdmAdj, new FileHeader(1, 4), new CalcDamageAtdmAdjTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCalcDamageAtdmAdjRate, new FileHeader(1, 4), new CalcDamageAtdmAdjRateTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCalcDamageLvAdj, new FileHeader(17, 4), new CalcDamageLvAdjTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCaughtDamageRateRefTbl, new FileHeader(1, 4), new CaughtDamageRateRefTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCaughtDamageRateTbl, new FileHeader(1, 4), new CaughtDamageRateTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftCapPass, new FileHeader(2, 4), new CraftCapPassDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftElementExp, new FileHeader(1, 4), new CraftElementExpDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftQuality, new FileHeader(1, 4), new CraftQualityDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftSkillCost, new FileHeader(2, 4), new CraftSkillCostDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftSkillSpd, new FileHeader(3, 4), new CraftSkillSpeedDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCraftUpGradeExp, new FileHeader(1, 4), new CraftUpGradeExpDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCycleQuestInfo, new FileHeader("CQI\0", 2, 4), new CycleQuestInfoDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEditStageParam, new FileHeader("esp\0", 12, 4), new EditStageParamDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmDamageDirInfo, new FileHeader(2, 4), new EmDamageDirInfoDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmDmgTimerTbl, new FileHeader(2, 4), new EmDmgTimerTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmScaleTable, new FileHeader(257, 4), new EmScaleTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmSoundTable, new FileHeader(261, 4), new EmSoundTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyLocalEst, new FileHeader(259, 4), new EnemyLocalEstTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyMaterialTable, new FileHeader(260, 4), new EnemyMaterialTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyStatusChange, new FileHeader(9, 4), new EnemyStatusChangeTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEquipPreset, new FileHeader(7, 4), new EquipPresetDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEvaluationTable, new FileHeader(4, 4), new EvaluationTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rGatheringItem, new FileHeader(1, 4), new GatheringItemDeserializer()));

@@ -15,10 +15,8 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
 
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.character_edit;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.collision_common;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.craft_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.effect_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common;
@@ -28,7 +26,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.Human;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.job;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.launcher;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.marker;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.MyRoom;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.npc;
@@ -61,15 +58,11 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.character_edit;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.collision_common;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.craft_common.meta;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.craft_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.effect_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.meta;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common.meta;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.equip;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.meta;
@@ -80,7 +73,6 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.Human;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job.meta;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.job;
-    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.launcher;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.marker;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc;
