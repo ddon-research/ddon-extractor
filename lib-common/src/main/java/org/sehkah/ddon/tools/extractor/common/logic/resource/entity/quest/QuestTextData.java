@@ -16,12 +16,7 @@ public class QuestTextData {
     private long Type;
     @MetaInformation
     private QuestTextType TypeName;
-    // TODO: For every QTD there is a corresponding GMD, e.g. for quest/q00000010/ui: 00_param/quest_text/q00000010_00.qtd.json => 00_message/quest_info/q00000010_00.gmd.json
     private long MsgGmdIdx;
-
-    public QuestTextData(long type, long msgGmdIdx) {
-        this(
-                type, QuestTextType.of(type),
-                msgGmdIdx);
-    }
+    @MetaInformation
+    private String Message;
 }

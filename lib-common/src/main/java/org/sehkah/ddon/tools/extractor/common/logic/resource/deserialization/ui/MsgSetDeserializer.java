@@ -56,10 +56,11 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
         long NativeMsgGroupArrayNum = bufferReader.readUnsignedInteger();
         long NativeMsgDataArrayNum = bufferReader.readUnsignedInteger();
 
-        String gmdFilePath = null;
+        final String gmdFilePath;
         if (lookupUtil != null) {
-            String fileName = filePath.getFileName().toString();
-            gmdFilePath = filePath.resolveSibling(fileName.substring(0, fileName.indexOf('.')) + ".gmd").toString();
+            gmdFilePath = filePath.toString().replace(".mss", ".gmd");
+        } else {
+            gmdFilePath = null;
         }
 
         List<MsgGroup> NativeMsgGroupArray = new ArrayList<>((int) NativeMsgGroupArrayNum);

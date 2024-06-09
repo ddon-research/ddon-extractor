@@ -4,7 +4,6 @@ import lombok.Getter;
 
 @Getter
 public enum GUIMessageLookupTable {
-    // GMD
     ITEM_NAME("ui/gui_cmn/ui/00_message/common/", "item_name.gmd"),
     ENEMY_NAME("ui/gui_cmn/ui/00_message/enemy/", "enemy_name.gmd"),
     AREA_LIST("ui/gui_cmn/ui/00_message/common/", "area_list.gmd"),

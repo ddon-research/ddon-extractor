@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_gu
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -11,7 +12,8 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class TutorialDialogMessageDialogPage {
-    // TODO: Corresponds to the gmd "next to" this file, but requires memorizing the file names
     private long TextGmdIdx;
+    @MetaInformation
+    private String Message;
     private long ImageId;
 }

@@ -354,14 +354,13 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
     private static FSMOrderParamCamera readFSMOrderParamCamera(BufferReader bufferReader) {
         int ActType = XfsDeserializer.readUnsignedByte(bufferReader);
         int CamRes = XfsDeserializer.readUnsignedByte(bufferReader);
-        boolean IsBtlNoCancel = XfsDeserializer.readBoolean(bufferReader);//TODO: season 3 exclusive, handle this somehow
         int CamId1 = XfsDeserializer.readSignedInteger(bufferReader);
         int CamId2 = XfsDeserializer.readSignedInteger(bufferReader);
         int CameraEnemyActType = XfsDeserializer.readUnsignedByte(bufferReader);
         boolean mCantActPl = XfsDeserializer.readBoolean(bufferReader);
         int CamId3 = XfsDeserializer.readSignedInteger(bufferReader);
 
-        return new FSMOrderParamCamera(ActType, CamRes, IsBtlNoCancel, CamId1, CamId2, CameraEnemyActType, mCantActPl, CamId3);
+        return new FSMOrderParamCamera(ActType, CamRes, CamId1, CamId2, CameraEnemyActType, mCantActPl, CamId3);
     }
 
     private static FSMOrderParamBGMRequest readFSMOrderParamBGMRequest(BufferReader bufferReader) {
@@ -369,11 +368,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         long BgmRequestNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         long BgmRequestEditType = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        //TODO: Season 3 exclusive
-        boolean BgmRequestIsChangeFadeTime = XfsDeserializer.readBoolean(bufferReader);
-        long BgmRequestFadeTime = XfsDeserializer.readUnsignedInteger(bufferReader);
-
-        return new FSMOrderParamBGMRequest(BgmRequestType, BgmRequestNo, BgmRequestEditType, BgmRequestIsChangeFadeTime, BgmRequestFadeTime);
+        return new FSMOrderParamBGMRequest(BgmRequestType, BgmRequestNo, BgmRequestEditType);
     }
 
     private static FSMOrderParamSetLocationName readFSMOrderParamSetLocationName(BufferReader bufferReader) {

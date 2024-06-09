@@ -14,7 +14,6 @@ import lombok.*;
 public class FSMOrderParamCamera extends AICopiableParameter {
     private int ActType;//Camera:ActType
     private int CamRes;//Camera:CamRes
-    private boolean IsBtlNoCancel;//season 3 exclusive
     private int CamId1;
     private int CamId2;
     private int CameraEnemyActType;//CameraEnemy:ActType

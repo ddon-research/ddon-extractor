@@ -15,8 +15,4 @@ public class FSMOrderParamBGMRequest extends AICopiableParameter {
     private long BgmRequestType;
     private long BgmRequestNo;
     private long BgmRequestEditType;
-
-    //TODO: season 3 exclusive
-    private boolean BgmRequestIsChangeFadeTime;
-    private long BgmRequestFadeTime;
 }
