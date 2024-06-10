@@ -30,6 +30,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.sk
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage.StageCustomPartsDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.stage.StartPosDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StageListInfoList;
 
 import java.nio.file.Path;
 import java.util.HashSet;
@@ -40,13 +41,15 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 
 @Slf4j
 public class ClientResourceFileManagerSeason1 extends ClientResourceFileManager {
-    public ClientResourceFileManagerSeason1(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        super(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+    private ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+
+    public ClientResourceFileManagerSeason1(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        super(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason1(clientRootFolder, GUIMessageResourceFile, npcLedgerListResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason1(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, npcLedgerListResourceFile, StageListInfoResourceFile);
     }
 
     @Override

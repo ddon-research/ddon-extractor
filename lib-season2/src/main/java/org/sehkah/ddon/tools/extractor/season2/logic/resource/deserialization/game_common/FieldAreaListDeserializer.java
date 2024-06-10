@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.FieldAreaInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.FieldAreaList;
@@ -24,9 +25,9 @@ public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<Fi
     private static FieldAreaInfo readFieldAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long FieldAreaId = bufferReader.readUnsignedInteger();
         long GmdIdx = bufferReader.readUnsignedInteger();
-        String FieldAreaName = null;
+        Translation FieldAreaName = null;
         if (lookupUtil != null) {
-            FieldAreaName = lookupUtil.getMessage(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), GmdIdx);
+            FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) GmdIdx);
         }
         int LandId = bufferReader.readUnsignedShort();
         int AreaId = bufferReader.readUnsignedShort();

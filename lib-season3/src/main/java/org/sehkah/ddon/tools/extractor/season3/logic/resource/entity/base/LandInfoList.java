@@ -13,6 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class LandAreaInfoList extends Resource {
-    private List<LandAreaInfo> LandAreaInfoList;
+public class LandInfoList extends Resource {
+    private List<LandInfo> LandInfoList;
 }

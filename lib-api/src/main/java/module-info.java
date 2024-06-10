@@ -11,6 +11,7 @@ module org.sehkah.ddon.tools.extractor.lib.api {
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
+    requires com.fasterxml.jackson.dataformat.csv;
 
     exports org.sehkah.ddon.tools.extractor.api.crypto;
     exports org.sehkah.ddon.tools.extractor.api.datatype;

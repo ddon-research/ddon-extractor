@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.NamedParam;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.NamedParamList;
@@ -15,10 +16,11 @@ public class NamedParamDeserializer extends ClientResourceFileDeserializer<Named
     private static NamedParam readNamedParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ID = bufferReader.readUnsignedInteger();
         long Type = bufferReader.readUnsignedInteger();
-        String Name = null;
+        Translation Name = null;
         if (lookupUtil != null) {
-            Name = lookupUtil.getMessage(GUIMessageLookupTable.NAMED_PARAM.getFilePath(), "namedparam_" + ID);
+            Name = lookupUtil.getMessageTranslation(GUIMessageLookupTable.NAMED_PARAM.getFilePath(), "namedparam_" + ID);
         }
+
         NamedParamType TypeName = NamedParamType.of(Type);
         long HpRate = bufferReader.readUnsignedInteger();
         int Experience = bufferReader.readUnsignedShort();

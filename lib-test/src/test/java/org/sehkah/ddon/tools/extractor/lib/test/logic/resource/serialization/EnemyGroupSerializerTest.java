@@ -22,7 +22,7 @@ class EnemyGroupSerializerTest {
         String inputFile = "season3/game_common/param/enemy_group.emg.json";
         String input = Files.readString(Paths.get(getClass().getClassLoader().getResource(inputFile).toURI()));
 
-        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, null, SerializationFormat.json, false);
 
         Resource deserialized = clientResourceFileManager.getStringSerializer().deserialize(input);
         ClientResourceSerializer<Resource> serializer = clientResourceFileManager.getSerializer(inputFile, deserialized);

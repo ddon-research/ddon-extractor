@@ -2,7 +2,6 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.c
 
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureItem;
@@ -14,13 +13,9 @@ public class FurnitureItemDeserializer extends ClientResourceFileDeserializer<Fu
     private static FurnitureItem readFurnitureItem(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ItemId = bufferReader.readUnsignedInteger();
         long LayoutId = bufferReader.readUnsignedInteger();
-        String LayoutName = null;
-        if (lookupUtil != null) {
-            LayoutName = lookupUtil.getMessage(GUIMessageLookupTable.FURNITURE_LAYOUT_NAME.getFilePath(), "FURNITURE_LAYOUT_NAME_" + LayoutId);
-        }
         long OmId = bufferReader.readUnsignedInteger();
 
-        return new FurnitureItem(ItemId, LayoutId, LayoutName, OmId);
+        return new FurnitureItem(ItemId, LayoutId, OmId);
     }
 
     @Override

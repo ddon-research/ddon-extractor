@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AbilityData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.AbilityDataList;
@@ -15,12 +16,11 @@ public class AbilityDataDeserializer extends ClientResourceFileDeserializer<Abil
         int Id = bufferReader.readUnsignedShort();
         int MsgNameIndex = bufferReader.readUnsignedShort();
         int MsgExpIndex = bufferReader.readUnsignedShort();
-        String AbilityName = null;
-        String AbilityInfo = null;
+        Translation AbilityName = null;
+        Translation AbilityInfo = null;
         if (lookupUtil != null) {
-            AbilityName = lookupUtil.getMessage(GUIMessageLookupTable.ABILITY_NAME.getFilePath(), MsgNameIndex);
-            AbilityInfo = lookupUtil.getMessage(GUIMessageLookupTable.ABILITY_INFO.getFilePath(), MsgExpIndex);
-
+            AbilityName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ABILITY_NAME.getFilePath(), MsgNameIndex);
+            AbilityInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ABILITY_INFO.getFilePath(), MsgExpIndex);
         }
         int IconId = bufferReader.readUnsignedShort();
         int Cost = bufferReader.readUnsignedShort();

@@ -2,7 +2,8 @@
     <configuration default="false" name="tguide v3" type="Application" factoryName="Application">
         <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main"/>
         <module name="ddon-extractor.cli.main"/>
-        <option name="PROGRAM_PARAMETERS" value="-o -m -f json D:\DDON_03040008\nativePC\rom\ tguide"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="resource -o -m -f json D:\DDON_03040008 D:\DDON-translation\gmd.csv tguide"/>
         <extension name="coverage">
             <pattern>
                 <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*"/>

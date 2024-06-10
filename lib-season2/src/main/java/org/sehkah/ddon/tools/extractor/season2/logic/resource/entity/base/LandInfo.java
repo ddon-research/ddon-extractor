@@ -5,6 +5,8 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
+import java.util.List;
+
 @ToString
 @EqualsAndHashCode
 @AllArgsConstructor
@@ -12,10 +14,9 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class AreaInfo {
-    private long AreaId;
+public class LandInfo {
+    private long LandId;
     @MetaInformation
-    private Translation AreaName;
-    private int PosX;
-    private int PosY;
+    private Translation LandName;
+    private List<LandAreaInfo> AreaArray;
 }

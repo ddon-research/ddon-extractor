@@ -4,31 +4,43 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfo;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfoList;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandInfo;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandInfoList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.LandAreaInfoGameMode;
 
 import java.nio.file.Path;
 import java.util.List;
 
-public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandAreaInfoList> {
+public class LandInfoDeserializer extends ClientResourceFileDeserializer<LandInfoList> {
     private static LandAreaInfo readLandAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
-        long LandId = bufferReader.readUnsignedInteger();
-        String LandName = null;
+        long AreaId = bufferReader.readUnsignedInteger();
+        Translation AreaName = null;
         if (lookupUtil != null) {
-            LandName = lookupUtil.getMessage(GUIMessageLookupTable.LAND_NAME.getFilePath(), LandId - 1);
+            AreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.AREA_LIST.getFilePath(), (int) (AreaId - 1));
+        }
+
+        return new LandAreaInfo(AreaId, AreaName);
+    }
+
+    private static LandInfo readLandInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long LandId = bufferReader.readUnsignedInteger();
+        Translation LandName = null;
+        if (lookupUtil != null) {
+            LandName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.LAND_NAME.getFilePath(), (int) (LandId - 1));
         }
         boolean IsDispNews = bufferReader.readBoolean();
         int GameMode = bufferReader.readUnsignedByte();
         LandAreaInfoGameMode GameModeName = LandAreaInfoGameMode.of(GameMode);
-        List<Long> AreaIds = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<LandAreaInfo> AreaArray = bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo, lookupUtil);
 
-        return new LandAreaInfo(LandId, LandName, IsDispNews, GameMode, GameModeName, AreaIds);
+        return new LandInfo(LandId, LandName, IsDispNews, GameMode, GameModeName, AreaArray);
     }
 
     @Override
-    protected LandAreaInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new LandAreaInfoList(bufferReader.readArray(LandInfoDeserializer::readLandAreaInfo, lookupUtil));
+    protected LandInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
+        return new LandInfoList(bufferReader.readArray(LandInfoDeserializer::readLandInfo, lookupUtil));
     }
 }

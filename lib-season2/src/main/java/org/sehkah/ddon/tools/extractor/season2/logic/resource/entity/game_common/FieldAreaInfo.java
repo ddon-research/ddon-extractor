@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class FieldAreaInfo {
     private long FieldAreaId;
     private long GmdIdx;
     @MetaInformation
-    private String FieldAreaName;
+    private Translation FieldAreaName;
     private int LandId;
     private int AreaId;
     private List<StageNo> StageNoList;

@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
@@ -17,6 +18,6 @@ import java.util.List;
 public class FieldAreaMarkerInfo extends Resource {
     private long FieldAreaId;
     @MetaInformation
-    private String FieldAreaName;
+    private Translation FieldAreaName;
     private List<MarkerInfo> MarkerInfoArray;
 }

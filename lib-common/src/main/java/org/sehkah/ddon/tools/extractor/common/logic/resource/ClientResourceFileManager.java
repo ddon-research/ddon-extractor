@@ -72,7 +72,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
  * Regarding initialization:
  * It is mandatory that the season-specific resources are initialized before the resource cache and lookup util
  * can be provided.
- * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, ClientResourceFile, ClientResourceFile)}.
+ * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, Path, ClientResourceFile, ClientResourceFile)}.
  */
 @Slf4j
 @Getter
@@ -84,13 +84,13 @@ public abstract class ClientResourceFileManager {
     protected ClientResourceFile<GUIMessage> GUIMessageResourceFile;
     protected ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
 
-    protected ClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    protected ClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
         clientResourceFileSet = setupResourceMapping();
         addCommonResourceMapping(clientResourceFileSet);
 
         if (shouldSerializeMetaInformation) {
-            lookupUtil = setupResourceLookupUtil(clientRootFolder, GUIMessageResourceFile, NpcLedgerListResourceFile);
+            lookupUtil = setupResourceLookupUtil(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, NpcLedgerListResourceFile);
         } else {
             lookupUtil = null;
         }
@@ -199,11 +199,12 @@ public abstract class ClientResourceFileManager {
      * To accomplish this, a client root folder is required as well as a season-specific resource setup stored in {@link ClientResourceFileManager#clientResourceFileSet}.
      *
      * @param clientRootFolder          root installation folder, e.g. C:\DDON
+     * @param clientTranslationFile
      * @param GUIMessageResourceFile
      * @param npcLedgerListResourceFile
      * @return an initialized lookup util
      */
-    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile);
+    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile);
 
     /**
      * Initializes the season-specific resource file setup in {@link ClientResourceFileManager#clientResourceFileSet}.

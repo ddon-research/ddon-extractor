@@ -48,13 +48,22 @@ public class ExtractResourceCommand implements Callable<Integer> {
     @CommandLine.Parameters(index = "0", arity = "1", description = """
             Specifies the DDON client root folder.
             This will be used as a basis to derive further meta information for certain files where supported and enabled.
-            See the meta information flag for further information
+            See the meta information flag for further information.
             Example:
                 extract "D:\\DDON" <resource file>
             """)
     private Path clientRootFolder;
 
     @CommandLine.Parameters(index = "1", arity = "1", description = """
+            Specifies the DDON client translation file.
+            This will be used to dump messages in both JP and EN.
+            See the meta information flag for further information.
+            Example:
+                extract "D:\\DDON" "D:\\DDON-translation\\gmd.csv" <resource file>
+            """)
+    private Path clientTranslationFile;
+
+    @CommandLine.Parameters(index = "2", arity = "1", description = """
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
             The full path starting from the client resource base path must be specified, i.e. from "rom".
             Example:
@@ -62,6 +71,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
                 extract <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
             """)
     private Path inputFilePath;
+
     @CommandLine.Option(names = {"-o"}, arity = "0..1", description = """
             Optionally specify whether to output the extracted data as a file.
             If omitted the default behavior is to output to console.
@@ -105,7 +115,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             """, defaultValue = "true")
     private boolean runInParallel;
 
-    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+    private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
         String versionlistString;
         ClientVersion clientVersion;
@@ -119,11 +129,11 @@ public class ExtractResourceCommand implements Callable<Integer> {
 
         return switch (clientVersion) {
             case VERSION_1_1 ->
-                    new ClientResourceFileManagerSeason1(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+                    new ClientResourceFileManagerSeason1(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
             case VERSION_2_3 ->
-                    new ClientResourceFileManagerSeason2(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+                    new ClientResourceFileManagerSeason2(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
             case VERSION_3_4 ->
-                    new ClientResourceFileManagerSeason3(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+                    new ClientResourceFileManagerSeason3(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
         };
     }
 
@@ -203,7 +213,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
     public Integer call() throws Exception {
         Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
         if (Files.exists(fullPath)) {
-            clientResourceFileManager = getClientResourceFileManager(clientRootFolder, outputFormat, addMetaInformation);
+            clientResourceFileManager = getClientResourceFileManager(clientRootFolder, clientTranslationFile, outputFormat, addMetaInformation);
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {

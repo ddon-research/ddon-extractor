@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListEquipSubCategory;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListFlagType;
@@ -23,7 +24,7 @@ public class ItemListItemParam {
     private long ItemId;
     private long NameId;
     @MetaInformation
-    private String ItemName;
+    private Translation ItemName;
     private int Category; // Can be either a generic u32, USE_CATEGORY, MATERIAL_CATEGORY or SUB_CATEGORY
     @MetaInformation
     private Object CategoryName; // TODO typification

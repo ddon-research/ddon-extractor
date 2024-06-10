@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.NamedParamType;
 
@@ -15,7 +16,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.
 public class NamedParam {
     private long ID;
     @MetaInformation
-    private String Name;
+    private Translation Name;
     private long Type;
     @MetaInformation
     private NamedParamType TypeName;

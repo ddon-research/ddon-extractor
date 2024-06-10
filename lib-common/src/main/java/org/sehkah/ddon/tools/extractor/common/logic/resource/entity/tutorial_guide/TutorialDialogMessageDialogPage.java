@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_gu
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -14,6 +15,6 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 public class TutorialDialogMessageDialogPage {
     private long TextGmdIdx;
     @MetaInformation
-    private String Message;
+    private Translation Message;
     private long ImageId;
 }

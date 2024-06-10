@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public class EnemyGroup {
     private long EnemyGroupId;
     private long MsgIndex;
     @MetaInformation
-    private String EnemyGroupName;
+    private Translation EnemyGroupName;
     private List<Long> EmList;
 }

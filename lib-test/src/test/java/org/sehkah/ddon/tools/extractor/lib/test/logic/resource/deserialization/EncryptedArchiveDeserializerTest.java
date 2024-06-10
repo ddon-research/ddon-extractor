@@ -26,7 +26,7 @@ class EncryptedArchiveDeserializerTest {
         Path inputFilePath = Paths.get(getClass().getClassLoader().getResource(inputFile).toURI());
         byte[] input = Files.readAllBytes(inputFilePath);
 
-        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, SerializationFormat.json, false);
+        ClientResourceFileManager clientResourceFileManager = new ClientResourceFileManagerSeason3(null, null, SerializationFormat.json, false);
         BufferReader bufferReader = new BinaryReader(input);
         Archive deserialized = clientResourceFileManager.deserialize(inputFilePath, bufferReader);
 

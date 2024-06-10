@@ -51,6 +51,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.tu
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.StageListInfoList;
 
 import java.nio.file.Path;
 import java.util.HashSet;
@@ -60,13 +61,15 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 
 @Slf4j
 public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager {
-    public ClientResourceFileManagerSeason2(Path clientRootFolder, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
-        super(clientRootFolder, preferredSerializationType, shouldSerializeMetaInformation);
+    private ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+
+    public ClientResourceFileManagerSeason2(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
+        super(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, this.GUIMessageResourceFile, NpcLedgerListResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, npcLedgerListResourceFile, StageListInfoResourceFile);
     }
 
     @Override
@@ -137,7 +140,8 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageCustomPartsEx, new FileHeader("scpx", 5, 4), new StageCustomPartsExDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageInfo, new FileHeader("sti\0", 81, 4), new StageInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageJoint, new FileHeader("sja\0", 19, 4), new StageJointDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStageList, new FileHeader("slt\0", 34, 4), new StageListDeserializer()));
+        StageListInfoResourceFile = new ClientResourceFile<>(rStageList, new FileHeader("slt\0", 34, 4), new StageListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) StageListInfoResourceFile);
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStaminaDecTbl, new FileHeader("sdt\0", 5, 4), new StaminaDecTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStartPos, new FileHeader("XFS\0", 131087, 4), new StartPosDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexDetailEdit, new FileHeader("XFS\0", 393231, 4), new TexDetailEditDeserializer()));

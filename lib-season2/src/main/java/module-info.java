@@ -12,6 +12,7 @@ module org.sehkah.ddon.tools.extractor.lib.season2 {
 
     requires org.sehkah.ddon.tools.extractor.lib.api;
     requires org.sehkah.ddon.tools.extractor.lib.common;
+    requires java.desktop;
 
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.binary;

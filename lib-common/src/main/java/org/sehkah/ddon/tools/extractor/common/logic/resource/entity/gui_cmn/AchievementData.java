@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -16,11 +17,11 @@ public class AchievementData {
     private long TargetNum;
     private long MessageIndex;
     @MetaInformation
-    private String AchievementName;
+    private Translation AchievementName;
     @MetaInformation
-    private String AchievementInfo;
+    private Translation AchievementInfo;
     private int Category;
     @MetaInformation
-    private String AchievementCategoryName;
+    private Translation AchievementCategoryName;
     private int Trophy;
 }

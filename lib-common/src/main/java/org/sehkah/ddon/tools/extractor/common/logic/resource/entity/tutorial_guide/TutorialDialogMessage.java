@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_gu
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 public class TutorialDialogMessage extends Resource {
     private long TitleGmdIdx;
     @MetaInformation
-    private String TutorialTitleName;
+    private Translation TutorialTitleName;
     private long CategoryGmdIdx;
     private List<TutorialDialogMessageDialogPage> PageInfo;
 }

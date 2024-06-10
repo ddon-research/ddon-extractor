@@ -2,7 +2,6 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
-import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -14,7 +13,5 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 public class FurnitureItem {
     private long ItemId;
     private long LayoutId;
-    @MetaInformation
-    private String LayoutName;
     private long OmId;
 }

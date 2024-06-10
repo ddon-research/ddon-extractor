@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoJointArea;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoJointAreaList;
@@ -14,9 +15,9 @@ public class AreaInfoJointAreaDeserializer extends ClientResourceFileDeserialize
     private static AreaInfoJointArea readAreaInfoJointArea(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long MAJAId = bufferReader.readUnsignedInteger();
         long AreaId = bufferReader.readUnsignedInteger();
-        String AreaName = null;
+        Translation AreaName = null;
         if (lookupUtil != null) {
-            AreaName = lookupUtil.getMessage(GUIMessageLookupTable.AREA_LIST.getFilePath(), AreaId - 1);
+            AreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.AREA_LIST.getFilePath(), (int) AreaId);
         }
 
         return new AreaInfoJointArea(MAJAId, AreaId, AreaName);

@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItem;
@@ -25,9 +26,9 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<Np
 
     private static NpcLedgerListItemInstitution readNpcLedgerListItemInstitution(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long FunctionId = bufferReader.readUnsignedInteger();
-        String FunctionName = null;
+        Translation FunctionName = null;
         if (lookupUtil != null) {
-            FunctionName = lookupUtil.getMessage(GUIMessageLookupTable.FUNC_SELECT_NAME.getFilePath(), "FUNC_SELECT_NAME_" + FunctionId);
+            FunctionName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FUNC_SELECT_NAME.getFilePath(), "FUNC_SELECT_NAME_" + FunctionId);
         }
         NpcFunctionIdType FunctionIdType = NpcFunctionIdType.of(FunctionId);
         long FunctionParam = bufferReader.readUnsignedInteger();
@@ -42,11 +43,11 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<Np
         NpcSexType SexType = NpcSexType.of(Sex);
         long NameId = bufferReader.readUnsignedInteger();
         long ClassNameId = bufferReader.readUnsignedInteger();
-        String NpcName = null;
-        String NpcClassName = null;
+        Translation NpcName = null;
+        Translation NpcClassName = null;
         if (lookupUtil != null) {
-            NpcName = lookupUtil.getMessage(GUIMessageLookupTable.NPC_NAME.getFilePath(), NameId);
-            NpcClassName = lookupUtil.getMessage(GUIMessageLookupTable.NPC_CLASS_NAME.getFilePath(), ClassNameId);
+            NpcName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.NPC_NAME.getFilePath(), (int) NameId);
+            NpcClassName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.NPC_CLASS_NAME.getFilePath(), (int) ClassNameId);
         }
         int JobId = bufferReader.readUnsignedByte();
         int Finger = bufferReader.readUnsignedByte();

@@ -5,8 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItem;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StageListInfo;
+import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.StageListInfoList;
 
 import java.nio.file.Path;
 
@@ -15,34 +19,33 @@ import java.nio.file.Path;
 public class ResourceMetadataLookupUtilSeason1 extends ResourceMetadataLookupUtil {
     private final ClientResourceFile<GUIMessage> GUIMessageResourceFile;
     private final ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
+    private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
 
-    public ResourceMetadataLookupUtilSeason1(Path clientRootFolder, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile) {
-        super(clientRootFolder);
+    public ResourceMetadataLookupUtilSeason1(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile, ClientResourceFile<StageListInfoList> StageListInfoResourceFile) {
+        super(clientRootFolder, clientTranslationFile);
         this.GUIMessageResourceFile = GUIMessageResourceFile;
         this.NpcLedgerListResourceFile = NpcLedgerListResourceFile;
+        this.StageListInfoResourceFile = StageListInfoResourceFile;
     }
 
     @Override
-    public String getMessage(String filePath, long messageIndex) {
-        GUIMessage resource = cache.getResource(filePath, GUIMessageResourceFile);
-        return resource.getMessageByIndex(messageIndex);
+    public Translation getNpcName(long npcId) {
+        NpcLedgerList list = cache.getResource(ResourceLookupTable.NPC_NLL.getFilePath(), NpcLedgerListResourceFile, this);
+        NpcLedgerListItem npc = list.getNpcById(npcId);
+        return npc.getNpcName();
     }
 
     @Override
-    public String getMessageKey(String filePath, long messageIndex) {
-        GUIMessage resource = cache.getResource(filePath, GUIMessageResourceFile);
-        return resource.getMessageKeyByIndex(messageIndex);
+    public Translation getStageNameByStageNo(int stageNo) {
+        StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
+        StageListInfo stage = list.getStageByStageNo(stageNo);
+        return stage.getStageName();
     }
 
     @Override
-    public String getMessage(String filePath, String key) {
-        GUIMessage resource = cache.getResource(filePath, GUIMessageResourceFile);
-        return resource.getMessageByKey(key);
-    }
-
-    @Override
-    public String getNpcName(long npcId) {
-        NpcLedgerList npcLedgerList = cache.getResource(ResourceLookupTable.NPC_NLL.getFilePath(), NpcLedgerListResourceFile, this);
-        return npcLedgerList.getNpcById(npcId).getNpcName();
+    public Translation getStageNameByStageId(int stageId) {
+        StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
+        StageListInfo stage = list.getStageByStageId(stageId);
+        return stage.getStageName();
     }
 }

@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.meta.NpcSexType;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.meta.NpcUnitType;
@@ -23,10 +24,10 @@ public class NpcLedgerListItem {
     private NpcSexType SexType;
     private long NameId;
     @MetaInformation
-    private String NpcName;
+    private Translation NpcName;
     private long ClassNameId;
     @MetaInformation
-    private String NpcClassName;
+    private Translation NpcClassName;
     private int JobId;
     private int Finger;
     private int VoiceType;

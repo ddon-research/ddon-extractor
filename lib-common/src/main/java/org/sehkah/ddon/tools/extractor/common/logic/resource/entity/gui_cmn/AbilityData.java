@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -15,10 +16,10 @@ public class AbilityData {
     private int Id;
     private int MsgNameIndex;
     @MetaInformation
-    private String AbilityName;
+    private Translation AbilityName;
     private int MsgExpIndex;
     @MetaInformation
-    private String AbilityInfo;
+    private Translation AbilityInfo;
     private int IconId;
     private int Cost;
     private int SortNo;

@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -15,7 +16,7 @@ public class MsgData {
     private long MsgSerial;
     private long GmdIndex;
     @MetaInformation
-    private String Message;
+    private Translation Message;
     private long MsgType;//3 == quest examine data, 1 == quest message data
     private long JumpGroupSerial;
     private long DispType;

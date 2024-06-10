@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.tutorial_guide.TutorialList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.tutorial_guide.TutorialNode;
@@ -16,11 +17,11 @@ public class TutorialListDeserializer extends ClientResourceFileDeserializer<Tut
         long SortNo = bufferReader.readUnsignedInteger();
         long TitleGmdIdx = bufferReader.readUnsignedInteger();
         long Category = bufferReader.readUnsignedInteger();
-        String TutorialTitleName = null;
-        String CategoryName = null;
+        Translation TutorialTitleName = null;
+        Translation CategoryName = null;
         if (lookupUtil != null) {
-            TutorialTitleName = lookupUtil.getMessage(GUIMessageLookupTable.TUTORIAL_GUIDE.getFilePath(), TitleGmdIdx);
-            CategoryName = lookupUtil.getMessage(GUIMessageLookupTable.TUTORIAL_GUIDE_CATEGORY.getFilePath(), Category);
+            TutorialTitleName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.TUTORIAL_GUIDE.getFilePath(), (int) TitleGmdIdx);
+            CategoryName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.TUTORIAL_GUIDE_CATEGORY.getFilePath(), (int) Category);
         }
         long OpenQuestId = bufferReader.readUnsignedInteger();
 

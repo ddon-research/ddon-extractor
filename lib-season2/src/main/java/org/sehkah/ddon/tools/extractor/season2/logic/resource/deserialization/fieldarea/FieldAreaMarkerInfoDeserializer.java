@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.fieldarea.FieldAreaMarkerInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.fieldarea.MarkerInfo;
@@ -24,7 +25,10 @@ public class FieldAreaMarkerInfoDeserializer extends ClientResourceFileDeseriali
     @Override
     protected FieldAreaMarkerInfo parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long FieldAreaId = bufferReader.readUnsignedInteger();
-        String FieldAreaName = lookupUtil.getMessage(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), FieldAreaId - 1);
+        Translation FieldAreaName = null;
+        if (lookupUtil != null) {
+            FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) (FieldAreaId - 1));
+        }
         List<MarkerInfo> MarkerInfoArray = bufferReader.readArray(FieldAreaMarkerInfoDeserializer::readMarkerInfo);
 
         return new FieldAreaMarkerInfo(FieldAreaId, FieldAreaName, MarkerInfoArray);

@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.QuestTextType;
 
@@ -18,5 +19,5 @@ public class QuestTextData {
     private QuestTextType TypeName;
     private long MsgGmdIdx;
     @MetaInformation
-    private String Message;
+    private Translation Message;
 }

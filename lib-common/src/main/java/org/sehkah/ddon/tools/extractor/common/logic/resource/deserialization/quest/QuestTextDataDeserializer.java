@@ -3,7 +3,9 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.qu
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.util.PathUtil;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.QuestTextData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.QuestTextDataList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.QuestTextType;
@@ -15,9 +17,9 @@ public class QuestTextDataDeserializer extends ClientResourceFileDeserializer<Qu
         long Type = bufferReader.readUnsignedInteger();
         QuestTextType TypeName = QuestTextType.of(Type);
         long MsgGmdIdx = bufferReader.readUnsignedInteger();
-        String Message = null;
+        Translation Message = null;
         if (lookupUtil != null) {
-            Message = lookupUtil.getMessage(gmdFilePath, MsgGmdIdx);
+            Message = lookupUtil.getMessageTranslation(gmdFilePath, (int) MsgGmdIdx);
         }
 
         return new QuestTextData(Type, TypeName, MsgGmdIdx, Message);
@@ -27,7 +29,7 @@ public class QuestTextDataDeserializer extends ClientResourceFileDeserializer<Qu
     protected QuestTextDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         final String gmdFilePath;
         if (lookupUtil != null) {
-            gmdFilePath = filePath.toString().replace("00_param", "00_message").replace("quest_text", "quest_info").replace(".qtd", ".gmd");
+            gmdFilePath = PathUtil.getRelativeFilePathFromRom(filePath).replace("00_param", "00_message").replace("quest_text", "quest_info").replace(".qtd", ".gmd");
         } else {
             gmdFilePath = null;
         }

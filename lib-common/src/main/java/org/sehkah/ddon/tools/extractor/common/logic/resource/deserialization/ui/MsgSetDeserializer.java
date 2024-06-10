@@ -3,7 +3,9 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.util.PathUtil;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgData;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgGroup;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
@@ -19,9 +21,9 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
 
         long MsgSerial = bufferReader.readUnsignedInteger();
         long GmdIndex = bufferReader.readUnsignedInteger();
-        String Message = null;
+        Translation Message = null;
         if (lookupUtil != null) {
-            Message = lookupUtil.getMessage(gmdFilePath, GmdIndex);
+            Message = lookupUtil.getMessageTranslation(gmdFilePath, (int) GmdIndex);
         }
         long MsgType = bufferReader.readUnsignedInteger();
         long JumpGroupSerial = bufferReader.readUnsignedInteger();
@@ -39,7 +41,7 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
 
         long GroupSerial = bufferReader.readUnsignedInteger();
         long NpcId = bufferReader.readUnsignedInteger();
-        String NpcName = null;
+        Translation NpcName = null;
         if (lookupUtil != null) {
             NpcName = lookupUtil.getNpcName(NpcId);
         }
@@ -58,7 +60,7 @@ public class MsgSetDeserializer extends ClientResourceFileDeserializer<MsgSet> {
 
         final String gmdFilePath;
         if (lookupUtil != null) {
-            gmdFilePath = filePath.toString().replace(".mss", ".gmd");
+            gmdFilePath = PathUtil.getRelativeFilePathFromRom(filePath).replace(".mss", ".gmd");
         } else {
             gmdFilePath = null;
         }

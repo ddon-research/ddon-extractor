@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.meta.MsgGroupType;
 
@@ -18,7 +19,7 @@ public class MsgGroup {
     private long GroupSerial;
     private long NpcId;
     @MetaInformation
-    private String NpcName;
+    private Translation NpcName;
     private long GroupNameSerial;
     private long GroupType;
     @MetaInformation

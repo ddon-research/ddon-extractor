@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureGroup;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.clankyoten.FurnitureGroupList;
@@ -15,7 +16,10 @@ public class FurnitureGroupDeserializer extends ClientResourceFileDeserializer<F
         long ID = bufferReader.readUnsignedInteger();
         long CameraNo = bufferReader.readUnsignedInteger();
         long GmdIdx = bufferReader.readUnsignedInteger();
-        String FurnitureGroupName = lookupUtil.getMessage(GUIMessageLookupTable.FURNITURE_GROUP_NAME.getFilePath(), GmdIdx);
+        Translation FurnitureGroupName = null;
+        if (lookupUtil != null) {
+            FurnitureGroupName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FURNITURE_GROUP_NAME.getFilePath(), (int) GmdIdx);
+        }
         int SortNo = bufferReader.readUnsignedByte();
 
         return new FurnitureGroup(ID, CameraNo, GmdIdx, FurnitureGroupName, SortNo);

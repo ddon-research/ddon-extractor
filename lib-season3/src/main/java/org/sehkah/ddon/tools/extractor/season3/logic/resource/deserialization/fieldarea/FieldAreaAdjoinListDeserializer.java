@@ -4,6 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.AdjoinInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea.AdjoinInfoVector3;
@@ -33,9 +34,9 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
     @Override
     protected FieldAreaAdjoinList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         short FieldAreaId = bufferReader.readSignedShort();
-        String FieldAreaName = null;
+        Translation FieldAreaName = null;
         if (lookupUtil != null) {
-            FieldAreaName = lookupUtil.getMessage(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), FieldAreaId - 1L);
+            FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) (FieldAreaId - 1L));
         }
         List<AdjoinInfo> Array = bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo);
 

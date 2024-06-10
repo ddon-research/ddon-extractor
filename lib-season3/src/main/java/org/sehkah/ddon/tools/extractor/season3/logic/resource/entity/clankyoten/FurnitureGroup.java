@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -16,6 +17,6 @@ public class FurnitureGroup {
     private long CameraNo;
     private long GmdIdx;
     @MetaInformation
-    private String FurnitureGroupName;
+    private Translation FurnitureGroupName;
     private int SortNo;
 }

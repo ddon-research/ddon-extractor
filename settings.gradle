@@ -39,6 +39,8 @@ dependencyResolutionManagement {
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
+            // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
+            library('jackson-dataformat-csv', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-csv').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
             library('jackson-databind', 'com.fasterxml.jackson.core', 'jackson-databind').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core

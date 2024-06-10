@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.*;
@@ -102,9 +103,9 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
     private static ItemListItemParam readItemParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ItemId = bufferReader.readUnsignedInteger();
         long NameId = bufferReader.readUnsignedInteger();
-        String ItemName = null;
+        Translation ItemName = null;
         if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessage(GUIMessageLookupTable.ITEM_NAME.getFilePath(), NameId);
+            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
         }
         int Category = bufferReader.readUnsignedShort();
         int SubCategory = bufferReader.readUnsignedShort();
