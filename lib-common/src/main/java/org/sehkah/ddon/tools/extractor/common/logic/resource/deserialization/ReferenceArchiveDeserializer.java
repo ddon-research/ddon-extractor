@@ -25,9 +25,13 @@ import java.util.List;
  * For example, the ARCS file "eye0_fedt_jntpreset.arc" represents a reference to resource "eye0.fedt_jntpreset".
  */
 public class ReferenceArchiveDeserializer extends ClientResourceFileDeserializer<ArchiveS> {
-    private static ResourceInfoS readResourceInfoS(BufferReader bufferReader) {
-        BigInteger resourceId = bufferReader.readUnsignedLong();
-        return new ResourceInfoS(resourceId, FrameworkResourcesUtil.convertResourceIdToTagId(resourceId));
+    public static ResourceInfoS readResourceInfoS(BufferReader bufferReader) {
+        BigInteger ResourceID = bufferReader.readUnsignedLong();
+        long Type = FrameworkResourcesUtil.convertResourceIdToTagId(ResourceID);
+        String TypeName = FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(Type);
+        long PathCRC = FrameworkResourcesUtil.convertResourceIdToPathId(ResourceID);
+
+        return new ResourceInfoS(ResourceID, Type, TypeName, PathCRC);
     }
 
     @Override

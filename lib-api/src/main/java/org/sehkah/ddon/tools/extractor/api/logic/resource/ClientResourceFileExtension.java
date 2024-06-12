@@ -160,6 +160,7 @@ public enum ClientResourceFileExtension {
     rStartPosArea,
     rStatusCheck,
     rStatusGainTable,
+    rSoundBossBgm,
     rTbl2ChatMacro,
     rTexDetailEdit,
     rTutorialDialogMessage,
@@ -334,6 +335,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".scpx", rStageCustomPartsEx);
         fileExtensionToResourceMap.put(".sdt", rStaminaDecTbl);
         fileExtensionToResourceMap.put(".sg_tbl", rStatusGainTable);
+        fileExtensionToResourceMap.put(".sbb", rSoundBossBgm);
         fileExtensionToResourceMap.put(".sja", rStageJoint);
         fileExtensionToResourceMap.put(".slt", rStageList);
         fileExtensionToResourceMap.put(".smc", rSituationMsgCtrl);

@@ -43,6 +43,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.que
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.quest.QuestTextDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.shop.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundBossBgmDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherStageInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
@@ -192,6 +193,7 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponOffset, new FileHeader(3, 4), new WeaponOffsetTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), new WeatherStageInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWepCateResTbl, new FileHeader(1, 4), new WepCateResTblDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rSoundBossBgm, new FileHeader("SBB\0", 1, 4), new SoundBossBgmDeserializer()));
     }
 
     /**
