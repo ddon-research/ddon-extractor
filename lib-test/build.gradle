@@ -5,7 +5,12 @@ plugins {
 }
 
 dependencies {
-    testImplementation project(path: ':lib')
+    testImplementation project(path: ':lib-api')
+    testImplementation project(path: ':lib-common')
+    testImplementation project(path: ':lib-season1')
+    testImplementation project(path: ':lib-season2')
+    testImplementation project(path: ':lib-season3')
+
     testImplementation lib.jackson.dataformat.yaml
 
     testImplementation libTest.commons.codec

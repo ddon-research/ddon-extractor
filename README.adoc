@@ -13,7 +13,7 @@ toc::[]
 
 == List of supported client resource files
 
-Have a look at the files inside the `docs/extensions` folder.
+Have a look at the files inside the `docs/deserialization` folder.
 
 == How to develop
 
@@ -24,7 +24,7 @@ This is currently the only IDE the source code has been tested with.
 
 ==== IntelliJ IDEA Community Edition
 
-* Download and Install JDK17 via https://adoptium.net/releases.html[Eclipse Adoptium]
+* Download and Install JDK21 via https://adoptium.net/releases.html[Eclipse Adoptium]
 * Download and install the https://www.jetbrains.com/toolbox-app/[Toolbox App] by JetBrains
 * Install IntelliJ IDEA Community Edition via the toolbox
 * Click on Open Project and open the cloned repository
@@ -69,3 +69,145 @@ To trigger a native image build the following Gradle command suffices:
 === Native images
 
 Directly run the executable.
+
+== Command-line arguments
+
+=== How to extract all ARC files in the rom folder
+
+[source]
+----
+./ddon-extractor resource -p true -o -m -f json -u -x D:\DDON_03040008 D:\DDON-translation\gmd.csv .
+----
+
+=== How to extract all resource files in the rom folder
+
+Note that this requires a prior extraction of ARC files.
+
+[source]
+----
+./ddon-extractor resource -p true -o -m -f json D:\DDON_03040008 D:\DDON-translation\gmd.csv .
+----
+
+=== Resource vs. packet extraction
+
+[source]
+----
+$ ./ddon-extractor.exe
+Missing required subcommand
+Usage: extract [-hV] [COMMAND]
+Extracts the provided DDON resource or packet file(s).
+  -h, --help      Show this help message and exit.
+  -V, --version   Print version information and exit.
+Commands:
+  resource  Extracts the provided DDON resource file(s).
+  packet    Extracts the provided DDON packet file(s).
+----
+
+==== Resource extraction arguments
+
+[source]
+----
+$ ./ddon-extractor.exe resource
+Missing required parameters: '<clientRootFolder>', '<clientTranslationFile>', '<inputFilePath>'
+Usage: extract resource [-hV] [-f[=<outputFormat>]] [-m[=<addMetaInformation>]]
+[-o[=<writeOutputToFile>]] [-p[=<runInParallel>]] [-u
+[=<unpackArchives>]] [-x[=<unpackArchivesExclusively>]]
+<clientRootFolder> <clientTranslationFile>
+<inputFilePath>
+Extracts the provided DDON resource file(s).
+<clientRootFolder>   Specifies the DDON client root folder.
+This will be used as a basis to derive further meta
+information for certain files where supported and
+enabled.
+See the meta information flag for further
+information.
+Example:
+extract "D:\DDON" <resource file>
+
+      <clientTranslationFile>
+                           Specifies the DDON client translation file.
+                           This will be used to dump messages in both JP and EN.
+                           See the meta information flag for further
+                             information.
+                           Example:
+                               extract "D:\DDON" "D:\DDON-translation\gmd.csv"
+                             <resource file>
+
+      <inputFilePath>      Specifies the DDON client resource file whose data
+                             to extract or a folder to recursively search for
+                             such files.
+                           The full path starting from the client resource base
+                             path must be specified, i.e. from "rom".
+                           Example:
+                               extract <client resource base path>
+                             "game_common\param\enemy_group.emg" will extract
+                             the data of the enemy_group.emg resource file.
+                               extract <client resource base path>
+                             "game_common\param" will extract the data of all
+                             resource files found in this path.
+
+  -f, --format[=<outputFormat>]
+                           Optionally specify the output format (json, yaml).
+                           If omitted the default format is used (json).
+                           Example:
+                                extract --format=JSON FILE  outputs the data
+                             with the JSON format on the console
+                                extract --format FILE   outputs the data with
+                             the default format on the console"
+
+  -h, --help               Show this help message and exit.
+  -m, --meta-information[=<addMetaInformation>]
+                           Optionally specify whether to enrich the output with
+                             additional meta information (if available).
+                           If omitted the default behavior is not to add meta
+                             information.
+
+                           For example, if a numeric type has a corresponding
+                             (probable) semantic mapping this will be output as
+                             additional field.
+                           Note that this makes the output more comprehensible
+                             at the price of serialization compatibility and
+                             accuracy.
+
+  -o=[<writeOutputToFile>] Optionally specify whether to output the extracted
+                             data as a file.
+                           If omitted the default behavior is to output to
+                             console.
+                           Example:
+                               extract -o FILE outputs the data in a file
+                             relative to the current working directory based on
+                             the input file name.
+
+  -p, --parallel[=<runInParallel>]
+                           Optionally specify whether to run extraction in
+                             parallel.
+                           If omitted the default behavior is to run in
+                             parallel.
+
+                           Turning this off improves legibility of logs and
+                             supports debugging.
+
+  -u, --unpack-archives[=<unpackArchives>]
+                           Optionally specify whether to unpack .arc files if
+                             encountered.
+                           If omitted the default behavior is not to unpack
+                             archives.
+
+                           For example, if a .arc file is encountered while
+                             iterating files the contents of the archive will
+                             be written to disk and a descriptive file of the
+                             archive will be generated.
+                           Note that this can potentially be a memory hog.
+
+  -V, --version            Print version information and exit.
+  -x, --unpack-archives-exclusively[=<unpackArchivesExclusively>]
+                           Optionally specify whether to ignore all other file
+                             types and only unpack .arc files if encountered.
+                           Has no effect if specified by itself.
+                           If omitted the default behavior is to extract
+                             information for other file types as well.
+
+                           For example, if any file type other than .arc is
+                             encountered while iterating files they will be
+                             ignored.
+----

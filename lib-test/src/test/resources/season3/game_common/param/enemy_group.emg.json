@@ -1,7 +1,13 @@
 {
-  "@class": "org.sehkah.ddon.tools.extractor.lib.logic.entity.season3.game_common.EnemyGroupList",
-  "enemyGroupList": [
+  "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList",
+  "FileHeader": {
+    "MagicBytesLength": 0,
+    "VersionNumber": 1,
+    "VersionBytesLength": 4
+  },
+  "EnemyGroupList": [
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 1,
       "MsgIndex": 0,
       "EmList": [
@@ -9,6 +15,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 2,
       "MsgIndex": 1,
       "EmList": [
@@ -26,6 +33,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 3,
       "MsgIndex": 2,
       "EmList": [
@@ -33,6 +41,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 4,
       "MsgIndex": 3,
       "EmList": [
@@ -41,6 +50,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 5,
       "MsgIndex": 4,
       "EmList": [
@@ -48,6 +58,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 6,
       "MsgIndex": 5,
       "EmList": [
@@ -55,6 +66,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 7,
       "MsgIndex": 6,
       "EmList": [
@@ -62,6 +74,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 8,
       "MsgIndex": 7,
       "EmList": [
@@ -70,6 +83,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 9,
       "MsgIndex": 8,
       "EmList": [
@@ -77,6 +91,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 10,
       "MsgIndex": 9,
       "EmList": [
@@ -84,6 +99,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 11,
       "MsgIndex": 10,
       "EmList": [
@@ -91,6 +107,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 12,
       "MsgIndex": 11,
       "EmList": [
@@ -98,6 +115,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 13,
       "MsgIndex": 12,
       "EmList": [
@@ -106,6 +124,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 14,
       "MsgIndex": 13,
       "EmList": [
@@ -113,6 +132,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 15,
       "MsgIndex": 14,
       "EmList": [
@@ -124,6 +144,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 16,
       "MsgIndex": 15,
       "EmList": [
@@ -131,6 +152,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 17,
       "MsgIndex": 16,
       "EmList": [
@@ -138,6 +160,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 18,
       "MsgIndex": 17,
       "EmList": [
@@ -145,6 +168,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 19,
       "MsgIndex": 18,
       "EmList": [
@@ -152,6 +176,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 20,
       "MsgIndex": 19,
       "EmList": [
@@ -159,6 +184,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 21,
       "MsgIndex": 20,
       "EmList": [
@@ -166,6 +192,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 22,
       "MsgIndex": 21,
       "EmList": [
@@ -173,6 +200,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 23,
       "MsgIndex": 22,
       "EmList": [
@@ -181,6 +209,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 24,
       "MsgIndex": 23,
       "EmList": [
@@ -189,6 +218,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 25,
       "MsgIndex": 24,
       "EmList": [
@@ -197,6 +227,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 26,
       "MsgIndex": 25,
       "EmList": [
@@ -205,6 +236,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 27,
       "MsgIndex": 26,
       "EmList": [
@@ -213,6 +245,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 180,
       "MsgIndex": 27,
       "EmList": [
@@ -220,6 +253,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 28,
       "MsgIndex": 28,
       "EmList": [
@@ -227,6 +261,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 29,
       "MsgIndex": 29,
       "EmList": [
@@ -234,6 +269,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 30,
       "MsgIndex": 30,
       "EmList": [
@@ -241,6 +277,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 31,
       "MsgIndex": 31,
       "EmList": [
@@ -248,6 +285,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 32,
       "MsgIndex": 32,
       "EmList": [
@@ -255,6 +293,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 33,
       "MsgIndex": 33,
       "EmList": [
@@ -262,6 +301,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 34,
       "MsgIndex": 34,
       "EmList": [
@@ -269,6 +309,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 35,
       "MsgIndex": 35,
       "EmList": [
@@ -276,6 +317,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 36,
       "MsgIndex": 36,
       "EmList": [
@@ -285,6 +327,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 37,
       "MsgIndex": 37,
       "EmList": [
@@ -294,6 +337,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 38,
       "MsgIndex": 38,
       "EmList": [
@@ -301,6 +345,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 39,
       "MsgIndex": 39,
       "EmList": [
@@ -308,6 +353,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 40,
       "MsgIndex": 40,
       "EmList": [
@@ -315,6 +361,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 41,
       "MsgIndex": 41,
       "EmList": [
@@ -322,6 +369,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 42,
       "MsgIndex": 42,
       "EmList": [
@@ -329,6 +377,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 43,
       "MsgIndex": 43,
       "EmList": [
@@ -336,6 +385,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 44,
       "MsgIndex": 44,
       "EmList": [
@@ -343,6 +393,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 45,
       "MsgIndex": 45,
       "EmList": [
@@ -350,6 +401,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 46,
       "MsgIndex": 46,
       "EmList": [
@@ -357,6 +409,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 47,
       "MsgIndex": 47,
       "EmList": [
@@ -364,6 +417,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 48,
       "MsgIndex": 48,
       "EmList": [
@@ -371,6 +425,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 49,
       "MsgIndex": 49,
       "EmList": [
@@ -378,6 +433,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 50,
       "MsgIndex": 50,
       "EmList": [
@@ -385,6 +441,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 51,
       "MsgIndex": 51,
       "EmList": [
@@ -392,6 +449,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 52,
       "MsgIndex": 52,
       "EmList": [
@@ -399,6 +457,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 53,
       "MsgIndex": 53,
       "EmList": [
@@ -406,6 +465,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 54,
       "MsgIndex": 54,
       "EmList": [
@@ -414,6 +474,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 55,
       "MsgIndex": 55,
       "EmList": [
@@ -421,6 +482,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 56,
       "MsgIndex": 56,
       "EmList": [
@@ -428,6 +490,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 57,
       "MsgIndex": 57,
       "EmList": [
@@ -435,6 +498,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 58,
       "MsgIndex": 58,
       "EmList": [
@@ -442,11 +506,13 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 59,
       "MsgIndex": 59,
       "EmList": []
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 60,
       "MsgIndex": 60,
       "EmList": [
@@ -454,6 +520,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 61,
       "MsgIndex": 61,
       "EmList": [
@@ -461,6 +528,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 62,
       "MsgIndex": 62,
       "EmList": [
@@ -468,6 +536,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 63,
       "MsgIndex": 63,
       "EmList": [
@@ -475,6 +544,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 64,
       "MsgIndex": 64,
       "EmList": [
@@ -482,6 +552,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 65,
       "MsgIndex": 65,
       "EmList": [
@@ -489,6 +560,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 66,
       "MsgIndex": 66,
       "EmList": [
@@ -496,6 +568,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 67,
       "MsgIndex": 67,
       "EmList": [
@@ -503,6 +576,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 68,
       "MsgIndex": 68,
       "EmList": [
@@ -510,6 +584,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 69,
       "MsgIndex": 69,
       "EmList": [
@@ -517,6 +592,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 70,
       "MsgIndex": 70,
       "EmList": [
@@ -531,6 +607,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 71,
       "MsgIndex": 71,
       "EmList": [
@@ -539,6 +616,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 72,
       "MsgIndex": 72,
       "EmList": [
@@ -546,6 +624,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 73,
       "MsgIndex": 73,
       "EmList": [
@@ -553,6 +632,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 74,
       "MsgIndex": 74,
       "EmList": [
@@ -562,6 +642,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 75,
       "MsgIndex": 75,
       "EmList": [
@@ -571,6 +652,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 76,
       "MsgIndex": 76,
       "EmList": [
@@ -579,6 +661,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 77,
       "MsgIndex": 77,
       "EmList": [
@@ -586,6 +669,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 78,
       "MsgIndex": 78,
       "EmList": [
@@ -594,6 +678,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 79,
       "MsgIndex": 79,
       "EmList": [
@@ -602,6 +687,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 80,
       "MsgIndex": 80,
       "EmList": [
@@ -609,6 +695,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 81,
       "MsgIndex": 81,
       "EmList": [
@@ -616,6 +703,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 82,
       "MsgIndex": 82,
       "EmList": [
@@ -623,6 +711,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 83,
       "MsgIndex": 83,
       "EmList": [
@@ -630,6 +719,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 84,
       "MsgIndex": 84,
       "EmList": [
@@ -638,6 +728,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 85,
       "MsgIndex": 85,
       "EmList": [
@@ -645,6 +736,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 86,
       "MsgIndex": 86,
       "EmList": [
@@ -652,6 +744,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 87,
       "MsgIndex": 87,
       "EmList": [
@@ -659,6 +752,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 88,
       "MsgIndex": 88,
       "EmList": [
@@ -667,6 +761,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 89,
       "MsgIndex": 89,
       "EmList": [
@@ -675,6 +770,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 90,
       "MsgIndex": 90,
       "EmList": [
@@ -682,6 +778,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 91,
       "MsgIndex": 91,
       "EmList": [
@@ -689,6 +786,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 92,
       "MsgIndex": 92,
       "EmList": [
@@ -696,6 +794,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 93,
       "MsgIndex": 93,
       "EmList": [
@@ -703,6 +802,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 94,
       "MsgIndex": 94,
       "EmList": [
@@ -710,6 +810,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 95,
       "MsgIndex": 95,
       "EmList": [
@@ -717,6 +818,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 96,
       "MsgIndex": 96,
       "EmList": [
@@ -725,6 +827,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 97,
       "MsgIndex": 97,
       "EmList": [
@@ -732,6 +835,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 98,
       "MsgIndex": 98,
       "EmList": [
@@ -739,6 +843,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 99,
       "MsgIndex": 99,
       "EmList": [
@@ -746,6 +851,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 100,
       "MsgIndex": 100,
       "EmList": [
@@ -753,6 +859,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 101,
       "MsgIndex": 101,
       "EmList": [
@@ -761,6 +868,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 102,
       "MsgIndex": 102,
       "EmList": [
@@ -769,6 +877,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 103,
       "MsgIndex": 103,
       "EmList": [
@@ -778,6 +887,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 104,
       "MsgIndex": 104,
       "EmList": [
@@ -785,6 +895,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 105,
       "MsgIndex": 105,
       "EmList": [
@@ -793,6 +904,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 106,
       "MsgIndex": 106,
       "EmList": [
@@ -802,6 +914,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 107,
       "MsgIndex": 107,
       "EmList": [
@@ -809,6 +922,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 108,
       "MsgIndex": 108,
       "EmList": [
@@ -817,6 +931,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 109,
       "MsgIndex": 109,
       "EmList": [
@@ -824,6 +939,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 110,
       "MsgIndex": 110,
       "EmList": [
@@ -831,6 +947,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 111,
       "MsgIndex": 111,
       "EmList": [
@@ -838,6 +955,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 112,
       "MsgIndex": 112,
       "EmList": [
@@ -845,6 +963,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 113,
       "MsgIndex": 113,
       "EmList": [
@@ -852,6 +971,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 114,
       "MsgIndex": 114,
       "EmList": [
@@ -859,6 +979,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 115,
       "MsgIndex": 115,
       "EmList": [
@@ -866,6 +987,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 116,
       "MsgIndex": 116,
       "EmList": [
@@ -873,6 +995,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 117,
       "MsgIndex": 117,
       "EmList": [
@@ -880,6 +1003,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 118,
       "MsgIndex": 118,
       "EmList": [
@@ -887,6 +1011,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 119,
       "MsgIndex": 119,
       "EmList": [
@@ -894,6 +1019,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 120,
       "MsgIndex": 120,
       "EmList": [
@@ -901,6 +1027,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 121,
       "MsgIndex": 121,
       "EmList": [
@@ -908,6 +1035,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 122,
       "MsgIndex": 122,
       "EmList": [
@@ -915,6 +1043,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 123,
       "MsgIndex": 123,
       "EmList": [
@@ -922,6 +1051,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 124,
       "MsgIndex": 124,
       "EmList": [
@@ -929,6 +1059,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 125,
       "MsgIndex": 125,
       "EmList": [
@@ -936,6 +1067,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 126,
       "MsgIndex": 126,
       "EmList": [
@@ -943,11 +1075,13 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 127,
       "MsgIndex": 127,
       "EmList": []
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 128,
       "MsgIndex": 128,
       "EmList": [
@@ -955,6 +1089,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 129,
       "MsgIndex": 129,
       "EmList": [
@@ -962,6 +1097,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 130,
       "MsgIndex": 130,
       "EmList": [
@@ -969,6 +1105,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 131,
       "MsgIndex": 131,
       "EmList": [
@@ -976,6 +1113,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 132,
       "MsgIndex": 132,
       "EmList": [
@@ -983,6 +1121,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 133,
       "MsgIndex": 133,
       "EmList": [
@@ -990,6 +1129,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 134,
       "MsgIndex": 134,
       "EmList": [
@@ -997,11 +1137,13 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 135,
       "MsgIndex": 135,
       "EmList": []
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 136,
       "MsgIndex": 136,
       "EmList": [
@@ -1009,6 +1151,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 137,
       "MsgIndex": 137,
       "EmList": [
@@ -1016,6 +1159,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 138,
       "MsgIndex": 138,
       "EmList": [
@@ -1023,6 +1167,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 139,
       "MsgIndex": 139,
       "EmList": [
@@ -1030,6 +1175,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 140,
       "MsgIndex": 140,
       "EmList": [
@@ -1037,6 +1183,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 141,
       "MsgIndex": 141,
       "EmList": [
@@ -1044,6 +1191,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 142,
       "MsgIndex": 142,
       "EmList": [
@@ -1051,6 +1199,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 143,
       "MsgIndex": 143,
       "EmList": [
@@ -1058,6 +1207,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 144,
       "MsgIndex": 144,
       "EmList": [
@@ -1065,6 +1215,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 145,
       "MsgIndex": 145,
       "EmList": [
@@ -1072,6 +1223,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 146,
       "MsgIndex": 146,
       "EmList": [
@@ -1079,6 +1231,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 147,
       "MsgIndex": 147,
       "EmList": [
@@ -1086,6 +1239,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 148,
       "MsgIndex": 148,
       "EmList": [
@@ -1093,6 +1247,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 149,
       "MsgIndex": 149,
       "EmList": [
@@ -1100,6 +1255,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 150,
       "MsgIndex": 150,
       "EmList": [
@@ -1107,6 +1263,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 151,
       "MsgIndex": 151,
       "EmList": [
@@ -1114,6 +1271,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 152,
       "MsgIndex": 152,
       "EmList": [
@@ -1121,6 +1279,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 153,
       "MsgIndex": 153,
       "EmList": [
@@ -1128,6 +1287,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 154,
       "MsgIndex": 154,
       "EmList": [
@@ -1135,6 +1295,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 155,
       "MsgIndex": 155,
       "EmList": [
@@ -1142,6 +1303,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 156,
       "MsgIndex": 156,
       "EmList": [
@@ -1149,6 +1311,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 157,
       "MsgIndex": 157,
       "EmList": [
@@ -1156,6 +1319,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 158,
       "MsgIndex": 158,
       "EmList": [
@@ -1163,6 +1327,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 159,
       "MsgIndex": 159,
       "EmList": [
@@ -1170,6 +1335,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 160,
       "MsgIndex": 160,
       "EmList": [
@@ -1177,6 +1343,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 161,
       "MsgIndex": 161,
       "EmList": [
@@ -1184,6 +1351,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 162,
       "MsgIndex": 162,
       "EmList": [
@@ -1191,6 +1359,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 163,
       "MsgIndex": 163,
       "EmList": [
@@ -1198,6 +1367,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 164,
       "MsgIndex": 164,
       "EmList": [
@@ -1205,6 +1375,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 165,
       "MsgIndex": 165,
       "EmList": [
@@ -1212,6 +1383,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 166,
       "MsgIndex": 166,
       "EmList": [
@@ -1219,6 +1391,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 167,
       "MsgIndex": 167,
       "EmList": [
@@ -1226,6 +1399,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 168,
       "MsgIndex": 168,
       "EmList": [
@@ -1233,6 +1407,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 169,
       "MsgIndex": 169,
       "EmList": [
@@ -1240,6 +1415,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 170,
       "MsgIndex": 170,
       "EmList": [
@@ -1247,6 +1423,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 171,
       "MsgIndex": 171,
       "EmList": [
@@ -1254,6 +1431,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 172,
       "MsgIndex": 172,
       "EmList": [
@@ -1262,6 +1440,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 173,
       "MsgIndex": 173,
       "EmList": [
@@ -1269,6 +1448,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 174,
       "MsgIndex": 174,
       "EmList": [
@@ -1276,6 +1456,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 175,
       "MsgIndex": 175,
       "EmList": [
@@ -1283,6 +1464,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 179,
       "MsgIndex": 176,
       "EmList": [
@@ -1290,6 +1472,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 292,
       "MsgIndex": 177,
       "EmList": [
@@ -1297,6 +1480,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 181,
       "MsgIndex": 178,
       "EmList": [
@@ -1304,6 +1488,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 182,
       "MsgIndex": 179,
       "EmList": [
@@ -1311,6 +1496,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 184,
       "MsgIndex": 180,
       "EmList": [
@@ -1318,6 +1504,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 185,
       "MsgIndex": 181,
       "EmList": [
@@ -1325,6 +1512,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 186,
       "MsgIndex": 182,
       "EmList": [
@@ -1332,6 +1520,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 187,
       "MsgIndex": 183,
       "EmList": [
@@ -1339,6 +1528,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 188,
       "MsgIndex": 184,
       "EmList": [
@@ -1346,6 +1536,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 189,
       "MsgIndex": 185,
       "EmList": [
@@ -1353,6 +1544,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 190,
       "MsgIndex": 186,
       "EmList": [
@@ -1360,6 +1552,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 191,
       "MsgIndex": 187,
       "EmList": [
@@ -1367,6 +1560,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 192,
       "MsgIndex": 188,
       "EmList": [
@@ -1374,6 +1568,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 193,
       "MsgIndex": 189,
       "EmList": [
@@ -1381,6 +1576,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 194,
       "MsgIndex": 190,
       "EmList": [
@@ -1388,6 +1584,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 195,
       "MsgIndex": 191,
       "EmList": [
@@ -1395,6 +1592,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 196,
       "MsgIndex": 192,
       "EmList": [
@@ -1402,6 +1600,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 197,
       "MsgIndex": 193,
       "EmList": [
@@ -1409,6 +1608,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 198,
       "MsgIndex": 194,
       "EmList": [
@@ -1416,6 +1616,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 199,
       "MsgIndex": 195,
       "EmList": [
@@ -1423,6 +1624,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 200,
       "MsgIndex": 196,
       "EmList": [
@@ -1430,6 +1632,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 201,
       "MsgIndex": 197,
       "EmList": [
@@ -1437,6 +1640,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 202,
       "MsgIndex": 198,
       "EmList": [
@@ -1444,6 +1648,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 203,
       "MsgIndex": 199,
       "EmList": [
@@ -1451,6 +1656,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 204,
       "MsgIndex": 200,
       "EmList": [
@@ -1458,6 +1664,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 205,
       "MsgIndex": 201,
       "EmList": [
@@ -1465,6 +1672,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 206,
       "MsgIndex": 202,
       "EmList": [
@@ -1472,6 +1680,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 207,
       "MsgIndex": 203,
       "EmList": [
@@ -1479,6 +1688,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 208,
       "MsgIndex": 204,
       "EmList": [
@@ -1486,6 +1696,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 209,
       "MsgIndex": 205,
       "EmList": [
@@ -1493,6 +1704,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 210,
       "MsgIndex": 206,
       "EmList": [
@@ -1500,6 +1712,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 211,
       "MsgIndex": 207,
       "EmList": [
@@ -1507,6 +1720,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 212,
       "MsgIndex": 208,
       "EmList": [
@@ -1514,6 +1728,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 213,
       "MsgIndex": 209,
       "EmList": [
@@ -1521,6 +1736,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 214,
       "MsgIndex": 210,
       "EmList": [
@@ -1528,6 +1744,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 215,
       "MsgIndex": 211,
       "EmList": [
@@ -1535,6 +1752,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 216,
       "MsgIndex": 212,
       "EmList": [
@@ -1542,6 +1760,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 217,
       "MsgIndex": 213,
       "EmList": [
@@ -1550,6 +1769,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 219,
       "MsgIndex": 214,
       "EmList": [
@@ -1557,6 +1777,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 220,
       "MsgIndex": 215,
       "EmList": [
@@ -1564,6 +1785,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 221,
       "MsgIndex": 216,
       "EmList": [
@@ -1571,6 +1793,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 222,
       "MsgIndex": 217,
       "EmList": [
@@ -1578,6 +1801,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 223,
       "MsgIndex": 218,
       "EmList": [
@@ -1585,6 +1809,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 224,
       "MsgIndex": 219,
       "EmList": [
@@ -1592,6 +1817,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 225,
       "MsgIndex": 220,
       "EmList": [
@@ -1599,6 +1825,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 226,
       "MsgIndex": 221,
       "EmList": [
@@ -1606,6 +1833,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 227,
       "MsgIndex": 222,
       "EmList": [
@@ -1613,6 +1841,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 228,
       "MsgIndex": 223,
       "EmList": [
@@ -1620,6 +1849,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 229,
       "MsgIndex": 224,
       "EmList": [
@@ -1627,6 +1857,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 230,
       "MsgIndex": 225,
       "EmList": [
@@ -1634,6 +1865,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 231,
       "MsgIndex": 226,
       "EmList": [
@@ -1641,6 +1873,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 232,
       "MsgIndex": 227,
       "EmList": [
@@ -1648,6 +1881,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 235,
       "MsgIndex": 228,
       "EmList": [
@@ -1656,6 +1890,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 237,
       "MsgIndex": 229,
       "EmList": [
@@ -1664,6 +1899,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 239,
       "MsgIndex": 230,
       "EmList": [
@@ -1673,6 +1909,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 240,
       "MsgIndex": 231,
       "EmList": [
@@ -1680,6 +1917,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 241,
       "MsgIndex": 232,
       "EmList": [
@@ -1687,6 +1925,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 242,
       "MsgIndex": 233,
       "EmList": [
@@ -1695,6 +1934,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 244,
       "MsgIndex": 234,
       "EmList": [
@@ -1703,6 +1943,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 245,
       "MsgIndex": 235,
       "EmList": [
@@ -1710,6 +1951,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 246,
       "MsgIndex": 236,
       "EmList": [
@@ -1717,6 +1959,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 247,
       "MsgIndex": 237,
       "EmList": [
@@ -1724,6 +1967,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 248,
       "MsgIndex": 238,
       "EmList": [
@@ -1732,6 +1976,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 249,
       "MsgIndex": 239,
       "EmList": [
@@ -1739,6 +1984,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 250,
       "MsgIndex": 240,
       "EmList": [
@@ -1748,6 +1994,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 251,
       "MsgIndex": 241,
       "EmList": [
@@ -1755,6 +2002,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 252,
       "MsgIndex": 242,
       "EmList": [
@@ -1762,6 +2010,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 253,
       "MsgIndex": 243,
       "EmList": [
@@ -1769,6 +2018,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 254,
       "MsgIndex": 244,
       "EmList": [
@@ -1776,6 +2026,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 255,
       "MsgIndex": 245,
       "EmList": [
@@ -1783,6 +2034,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 257,
       "MsgIndex": 246,
       "EmList": [
@@ -1790,6 +2042,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 258,
       "MsgIndex": 247,
       "EmList": [
@@ -1797,6 +2050,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 259,
       "MsgIndex": 248,
       "EmList": [
@@ -1804,6 +2058,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 260,
       "MsgIndex": 249,
       "EmList": [
@@ -1811,6 +2066,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 261,
       "MsgIndex": 250,
       "EmList": [
@@ -1818,6 +2074,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 264,
       "MsgIndex": 251,
       "EmList": [
@@ -1826,6 +2083,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 266,
       "MsgIndex": 252,
       "EmList": [
@@ -1833,6 +2091,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 267,
       "MsgIndex": 253,
       "EmList": [
@@ -1841,6 +2100,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 269,
       "MsgIndex": 254,
       "EmList": [
@@ -1849,6 +2109,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 271,
       "MsgIndex": 255,
       "EmList": [
@@ -1856,6 +2117,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 272,
       "MsgIndex": 256,
       "EmList": [
@@ -1864,6 +2126,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 274,
       "MsgIndex": 257,
       "EmList": [
@@ -1875,6 +2138,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 275,
       "MsgIndex": 258,
       "EmList": [
@@ -1882,6 +2146,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 276,
       "MsgIndex": 259,
       "EmList": [
@@ -1891,6 +2156,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 277,
       "MsgIndex": 260,
       "EmList": [
@@ -1898,6 +2164,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 278,
       "MsgIndex": 261,
       "EmList": [
@@ -1905,6 +2172,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 279,
       "MsgIndex": 262,
       "EmList": [
@@ -1912,6 +2180,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 280,
       "MsgIndex": 263,
       "EmList": [
@@ -1920,6 +2189,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 281,
       "MsgIndex": 264,
       "EmList": [
@@ -1928,6 +2198,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 282,
       "MsgIndex": 265,
       "EmList": [
@@ -1937,6 +2208,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 283,
       "MsgIndex": 266,
       "EmList": [
@@ -1945,6 +2217,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 284,
       "MsgIndex": 267,
       "EmList": [
@@ -1952,6 +2225,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 285,
       "MsgIndex": 268,
       "EmList": [
@@ -1959,6 +2233,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 286,
       "MsgIndex": 269,
       "EmList": [
@@ -1967,6 +2242,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 287,
       "MsgIndex": 270,
       "EmList": [
@@ -1974,6 +2250,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 288,
       "MsgIndex": 271,
       "EmList": [
@@ -1981,6 +2258,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 289,
       "MsgIndex": 272,
       "EmList": [
@@ -1988,6 +2266,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 290,
       "MsgIndex": 273,
       "EmList": [
@@ -1995,6 +2274,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 291,
       "MsgIndex": 274,
       "EmList": [
@@ -2004,6 +2284,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 294,
       "MsgIndex": 275,
       "EmList": [
@@ -2011,6 +2292,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 295,
       "MsgIndex": 276,
       "EmList": [
@@ -2018,6 +2300,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 296,
       "MsgIndex": 277,
       "EmList": [
@@ -2025,6 +2308,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 297,
       "MsgIndex": 278,
       "EmList": [
@@ -2032,6 +2316,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 298,
       "MsgIndex": 279,
       "EmList": [
@@ -2039,6 +2324,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 299,
       "MsgIndex": 280,
       "EmList": [
@@ -2046,6 +2332,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 300,
       "MsgIndex": 281,
       "EmList": [
@@ -2053,6 +2340,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 301,
       "MsgIndex": 282,
       "EmList": [
@@ -2060,6 +2348,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 302,
       "MsgIndex": 283,
       "EmList": [
@@ -2067,6 +2356,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 303,
       "MsgIndex": 284,
       "EmList": [
@@ -2074,6 +2364,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 304,
       "MsgIndex": 285,
       "EmList": [
@@ -2081,6 +2372,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 305,
       "MsgIndex": 286,
       "EmList": [
@@ -2088,6 +2380,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 306,
       "MsgIndex": 287,
       "EmList": [
@@ -2095,6 +2388,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 307,
       "MsgIndex": 288,
       "EmList": [
@@ -2102,6 +2396,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 308,
       "MsgIndex": 289,
       "EmList": [
@@ -2109,6 +2404,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 309,
       "MsgIndex": 290,
       "EmList": [
@@ -2116,6 +2412,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 310,
       "MsgIndex": 291,
       "EmList": [
@@ -2123,6 +2420,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 311,
       "MsgIndex": 292,
       "EmList": [
@@ -2130,6 +2428,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 312,
       "MsgIndex": 293,
       "EmList": [
@@ -2137,6 +2436,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 313,
       "MsgIndex": 294,
       "EmList": [
@@ -2145,6 +2445,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 314,
       "MsgIndex": 295,
       "EmList": [
@@ -2152,6 +2453,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 315,
       "MsgIndex": 296,
       "EmList": [
@@ -2159,6 +2461,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 316,
       "MsgIndex": 297,
       "EmList": [
@@ -2166,6 +2469,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 317,
       "MsgIndex": 298,
       "EmList": [
@@ -2174,6 +2478,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 318,
       "MsgIndex": 299,
       "EmList": [
@@ -2181,6 +2486,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 319,
       "MsgIndex": 300,
       "EmList": [
@@ -2188,6 +2494,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 320,
       "MsgIndex": 301,
       "EmList": [
@@ -2195,6 +2502,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 321,
       "MsgIndex": 302,
       "EmList": [
@@ -2202,6 +2510,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 322,
       "MsgIndex": 303,
       "EmList": [
@@ -2209,6 +2518,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 323,
       "MsgIndex": 304,
       "EmList": [
@@ -2216,6 +2526,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 324,
       "MsgIndex": 305,
       "EmList": [
@@ -2223,6 +2534,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 325,
       "MsgIndex": 306,
       "EmList": [
@@ -2230,6 +2542,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 326,
       "MsgIndex": 307,
       "EmList": [
@@ -2237,6 +2550,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 327,
       "MsgIndex": 308,
       "EmList": [
@@ -2244,6 +2558,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 328,
       "MsgIndex": 309,
       "EmList": [
@@ -2251,6 +2566,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 329,
       "MsgIndex": 310,
       "EmList": [
@@ -2259,6 +2575,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 331,
       "MsgIndex": 311,
       "EmList": [
@@ -2266,6 +2583,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 332,
       "MsgIndex": 312,
       "EmList": [
@@ -2275,6 +2593,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 333,
       "MsgIndex": 313,
       "EmList": [
@@ -2282,6 +2601,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 335,
       "MsgIndex": 314,
       "EmList": [
@@ -2289,6 +2609,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 336,
       "MsgIndex": 315,
       "EmList": [
@@ -2296,6 +2617,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 337,
       "MsgIndex": 316,
       "EmList": [
@@ -2303,6 +2625,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 338,
       "MsgIndex": 317,
       "EmList": [
@@ -2310,6 +2633,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 339,
       "MsgIndex": 318,
       "EmList": [
@@ -2317,6 +2641,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 340,
       "MsgIndex": 319,
       "EmList": [
@@ -2324,6 +2649,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 341,
       "MsgIndex": 320,
       "EmList": [
@@ -2331,6 +2657,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 342,
       "MsgIndex": 321,
       "EmList": [
@@ -2338,6 +2665,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 344,
       "MsgIndex": 322,
       "EmList": [
@@ -2345,6 +2673,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 345,
       "MsgIndex": 323,
       "EmList": [
@@ -2352,6 +2681,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 346,
       "MsgIndex": 324,
       "EmList": [
@@ -2359,6 +2689,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 347,
       "MsgIndex": 325,
       "EmList": [
@@ -2366,6 +2697,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 348,
       "MsgIndex": 326,
       "EmList": [
@@ -2373,6 +2705,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 349,
       "MsgIndex": 327,
       "EmList": [
@@ -2380,6 +2713,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 350,
       "MsgIndex": 328,
       "EmList": [
@@ -2387,6 +2721,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 351,
       "MsgIndex": 329,
       "EmList": [
@@ -2394,6 +2729,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 352,
       "MsgIndex": 330,
       "EmList": [
@@ -2401,6 +2737,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 353,
       "MsgIndex": 331,
       "EmList": [
@@ -2408,6 +2745,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 354,
       "MsgIndex": 332,
       "EmList": [
@@ -2417,6 +2755,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 355,
       "MsgIndex": 333,
       "EmList": [
@@ -2424,6 +2763,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 356,
       "MsgIndex": 334,
       "EmList": [
@@ -2432,6 +2772,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 357,
       "MsgIndex": 335,
       "EmList": [
@@ -2440,6 +2781,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 358,
       "MsgIndex": 336,
       "EmList": [
@@ -2447,6 +2789,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 359,
       "MsgIndex": 337,
       "EmList": [
@@ -2455,6 +2798,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 360,
       "MsgIndex": 338,
       "EmList": [
@@ -2462,6 +2806,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 361,
       "MsgIndex": 339,
       "EmList": [
@@ -2469,6 +2814,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 362,
       "MsgIndex": 340,
       "EmList": [
@@ -2479,6 +2825,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 363,
       "MsgIndex": 341,
       "EmList": [
@@ -2487,6 +2834,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 364,
       "MsgIndex": 342,
       "EmList": [
@@ -2494,6 +2842,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 365,
       "MsgIndex": 343,
       "EmList": [
@@ -2502,6 +2851,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 366,
       "MsgIndex": 344,
       "EmList": [
@@ -2509,6 +2859,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 367,
       "MsgIndex": 345,
       "EmList": [
@@ -2516,6 +2867,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 368,
       "MsgIndex": 346,
       "EmList": [
@@ -2523,6 +2875,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 369,
       "MsgIndex": 347,
       "EmList": [
@@ -2530,6 +2883,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 371,
       "MsgIndex": 348,
       "EmList": [
@@ -2537,6 +2891,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 372,
       "MsgIndex": 349,
       "EmList": [
@@ -2544,6 +2899,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 373,
       "MsgIndex": 350,
       "EmList": [
@@ -2551,6 +2907,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 380,
       "MsgIndex": 351,
       "EmList": [
@@ -2558,6 +2915,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 381,
       "MsgIndex": 352,
       "EmList": [
@@ -2565,6 +2923,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 382,
       "MsgIndex": 353,
       "EmList": [
@@ -2573,6 +2932,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 383,
       "MsgIndex": 354,
       "EmList": [
@@ -2580,6 +2940,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 384,
       "MsgIndex": 355,
       "EmList": [
@@ -2589,6 +2950,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 385,
       "MsgIndex": 356,
       "EmList": [
@@ -2596,6 +2958,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 386,
       "MsgIndex": 357,
       "EmList": [
@@ -2606,6 +2969,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 390,
       "MsgIndex": 358,
       "EmList": [
@@ -2613,6 +2977,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 391,
       "MsgIndex": 359,
       "EmList": [
@@ -2620,6 +2985,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 392,
       "MsgIndex": 360,
       "EmList": [
@@ -2627,6 +2993,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 393,
       "MsgIndex": 361,
       "EmList": [
@@ -2634,6 +3001,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 394,
       "MsgIndex": 362,
       "EmList": [
@@ -2642,6 +3010,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 395,
       "MsgIndex": 363,
       "EmList": [
@@ -2651,6 +3020,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 396,
       "MsgIndex": 364,
       "EmList": [
@@ -2659,6 +3029,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 397,
       "MsgIndex": 365,
       "EmList": [
@@ -2666,6 +3037,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 398,
       "MsgIndex": 366,
       "EmList": [
@@ -2675,6 +3047,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 399,
       "MsgIndex": 367,
       "EmList": [
@@ -2682,6 +3055,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 400,
       "MsgIndex": 368,
       "EmList": [
@@ -2689,6 +3063,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 401,
       "MsgIndex": 369,
       "EmList": [
@@ -2696,6 +3071,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 402,
       "MsgIndex": 370,
       "EmList": [
@@ -2703,6 +3079,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 403,
       "MsgIndex": 371,
       "EmList": [
@@ -2710,6 +3087,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 404,
       "MsgIndex": 372,
       "EmList": [
@@ -2717,6 +3095,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 405,
       "MsgIndex": 373,
       "EmList": [
@@ -2724,6 +3103,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 406,
       "MsgIndex": 374,
       "EmList": [
@@ -2732,6 +3112,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 407,
       "MsgIndex": 375,
       "EmList": [
@@ -2739,6 +3120,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 408,
       "MsgIndex": 376,
       "EmList": [
@@ -2746,6 +3128,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 409,
       "MsgIndex": 377,
       "EmList": [
@@ -2753,6 +3136,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 410,
       "MsgIndex": 378,
       "EmList": [
@@ -2762,6 +3146,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 411,
       "MsgIndex": 379,
       "EmList": [
@@ -2769,6 +3154,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 412,
       "MsgIndex": 380,
       "EmList": [
@@ -2776,6 +3162,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 413,
       "MsgIndex": 381,
       "EmList": [
@@ -2783,6 +3170,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 414,
       "MsgIndex": 382,
       "EmList": [
@@ -2790,6 +3178,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 415,
       "MsgIndex": 383,
       "EmList": [
@@ -2797,6 +3186,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 416,
       "MsgIndex": 384,
       "EmList": [
@@ -2804,6 +3194,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 418,
       "MsgIndex": 385,
       "EmList": [
@@ -2812,6 +3203,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 419,
       "MsgIndex": 386,
       "EmList": [
@@ -2819,6 +3211,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 420,
       "MsgIndex": 387,
       "EmList": [
@@ -2826,6 +3219,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 421,
       "MsgIndex": 388,
       "EmList": [
@@ -2833,6 +3227,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 422,
       "MsgIndex": 389,
       "EmList": [
@@ -2842,6 +3237,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 423,
       "MsgIndex": 390,
       "EmList": [
@@ -2851,6 +3247,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 424,
       "MsgIndex": 391,
       "EmList": [
@@ -2860,6 +3257,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 425,
       "MsgIndex": 392,
       "EmList": [
@@ -2867,6 +3265,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 426,
       "MsgIndex": 393,
       "EmList": [
@@ -2875,6 +3274,7 @@
       ]
     },
     {
+      "@class": "org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup",
       "EnemyGroupId": 427,
       "MsgIndex": 394,
       "EmList": [
@@ -2884,9 +3284,5 @@
       ]
     }
   ],
-  "fileSize": 6808,
-  "FileHeader": {
-    "versionNumber": 1,
-    "versionBytesLength": 4
-  }
+  "FileSize": 6808
 }

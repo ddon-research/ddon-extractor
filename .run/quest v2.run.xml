@@ -1,16 +1,17 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="quest v2" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main" />
-    <module name="ddon-extractor.cli.main" />
-    <option name="PROGRAM_PARAMETERS" value="-o -m D:\DDON_02030004\nativePC\rom\quest" />
-    <extension name="coverage">
-      <pattern>
-        <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.*" />
-        <option name="ENABLED" value="true" />
-      </pattern>
-    </extension>
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
-  </configuration>
+    <configuration default="false" name="quest v2" type="Application" factoryName="Application">
+        <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main"/>
+        <module name="ddon-extractor.cli.main"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="resource -p false -o -m D:\DDON_02030004 D:\DDON-translation\gmd.csv quest"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
 </component>

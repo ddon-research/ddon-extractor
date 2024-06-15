@@ -1,15 +1,14 @@
 pluginManagement {
     plugins {
         id 'org.beryx.jlink' version '3.0.1'
-        id 'org.javamodularity.moduleplugin' version '1.8.12'
-        id 'io.freefair.lombok' version '8.4'
+        id 'org.javamodularity.moduleplugin' version '1.8.15'
+        id 'io.freefair.lombok' version '8.6'
         id 'com.github.ben-manes.versions' version '0.51.0'
-        id 'nl.littlerobots.version-catalog-update' version '0.8.3'
     }
 }
 
 plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.7.0'
 }
 
 dependencyResolutionManagement {
@@ -19,7 +18,7 @@ dependencyResolutionManagement {
         }
         log {
             version('orgSlf4j', '2.0.9')
-            version('orgApacheLoggingLog4j', '2.22.0')
+            version('orgApacheLoggingLog4j', '2.23.1')
 
             // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
             library('slf4j-api', 'org.slf4j', 'slf4j-api').versionRef('orgSlf4j')
@@ -34,13 +33,14 @@ dependencyResolutionManagement {
             bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
         }
         lib {
-            version('comFasterxmlJackson', '2.16.1')
-            version('orgBouncycastle', '1.77')
+            version('comFasterxmlJackson', '2.17.1')
+            version('orgBouncycastle', '1.78.1')
             version('orgApacheCommons', '3.14.0')
-            version('comGoogleGuava', '33.0.0-jre')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
+            // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-csv
+            library('jackson-dataformat-csv', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-csv').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
             library('jackson-databind', 'com.fasterxml.jackson.core', 'jackson-databind').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
@@ -49,11 +49,9 @@ dependencyResolutionManagement {
             library('bcprov-jdk18on', 'org.bouncycastle', 'bcprov-jdk18on').versionRef('orgBouncycastle')
             // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
             library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
-            // https://mvnrepository.com/artifact/com.google.guava/guava
-            library('guava', 'com.google.guava', 'guava').versionRef('comGoogleGuava')
         }
         libTest {
-            version('commonsCodec', '1.16.0')
+            version('commonsCodec', '1.17.0')
             version('commonsIo', '2.15.1')
             version('junitPioneer', '2.2.0')
 
@@ -65,8 +63,8 @@ dependencyResolutionManagement {
             library('junit-pioneer', 'org.junit-pioneer', 'junit-pioneer').versionRef('junitPioneer')
         }
         cli {
-            version('comFasterxmlJackson', '2.16.1')
-            version('infoPicocli', '4.7.5')
+            version('comFasterxmlJackson', '2.17.1')
+            version('infoPicocli', '4.7.6')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
@@ -87,7 +85,11 @@ rootProject.name = 'ddon-extractor'
 
 String[] modules = [
         'cli',
-        'lib',
+        'lib-api',
+        'lib-common',
+        'lib-season1',
+        'lib-season2',
+        'lib-season3',
         'lib-test'
 ]
 
