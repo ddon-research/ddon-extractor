@@ -677,8 +677,6 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
             case "SetGoto" -> readFSMUnitParamSetGoto(bufferReader);
             case "SetGotoTarget" -> readFSMUnitParamSetGotoTarget(bufferReader);
             case "SetMotion" -> {
-                // TODO: Avoid hack and instead find a more generic way? If there are other classes with such issues..
-                //  for season 2 this is the only class with this issue
                 if (xfsHeader.getClassHeaderIndex().get(xfsObjectData.getClassIndex()).getPropNum() == 22) {
                     yield readFSMUnitParamSetMotion(bufferReader);
                 } else {

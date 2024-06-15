@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource;
 
 import org.junit.jupiter.api.Test;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
 
 import java.math.BigInteger;
@@ -80,7 +81,7 @@ class FrameworkResourcesUtilTest {
 
     @Test
     void testFileClassNameForResourceFileEqualsExpected() {
-        long resourceTypeId = 1062777650;
+        long resourceTypeId = 1379483132;
 
         String className = FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(resourceTypeId);
 

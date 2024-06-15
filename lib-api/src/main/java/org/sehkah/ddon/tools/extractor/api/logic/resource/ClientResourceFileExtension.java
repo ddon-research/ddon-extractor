@@ -365,6 +365,10 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 
         Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(e.name()), e));
+
+        fileExtensionToResourceMap.forEach((key, value) -> {
+            System.out.println(key + "\t" + value + "\t" + FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(value.name()));
+        });
     }
 
     public static ClientResourceFileExtension of(String fileExtension) {

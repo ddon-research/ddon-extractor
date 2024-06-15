@@ -77,9 +77,7 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
 
-        //TODO:
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIFSM, new FileHeader("XFS\0", 131087, 4), new AIFSMDeserializer()));
-
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityList, new FileHeader("abl0", 8, 4), new AbilityListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoWordTbl, new FileHeader(4, 4), new AIPawnAutoWordTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnEmParam, new FileHeader(15, 4), new AIPawnEmParamDeserializer()));
