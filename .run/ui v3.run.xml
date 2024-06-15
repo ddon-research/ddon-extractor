@@ -1,8 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="rom\ui" type="Application" factoryName="Application">
+    <configuration default="false" name="ui v3" type="Application" factoryName="Application">
         <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main"/>
         <module name="ddon-extractor.cli.main"/>
-        <option name="PROGRAM_PARAMETERS" value="-u -o -m -f json D:\ddon\nativePC\rom\ui"/>
+        <option name="PROGRAM_PARAMETERS"
+                value="resource -p false -o -m -f json D:\DDON_03040008 D:\DDON-translation\gmd.csv ui"/>
         <extension name="coverage">
             <pattern>
                 <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*"/>

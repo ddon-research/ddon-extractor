@@ -37,6 +37,7 @@ module org.sehkah.ddon.tools.extractor.lib.season2 {
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIKeyConfig;
+    exports org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui;
 
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base;
@@ -66,6 +67,7 @@ module org.sehkah.ddon.tools.extractor.lib.season2 {
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIKeyConfig;
+    exports org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui;
 
     exports org.sehkah.ddon.tools.extractor.season2.logic.resource;
 }

@@ -49,6 +49,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.sc
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.stage.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.GUIMapSettingDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
@@ -108,6 +109,7 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureGroup, new FileHeader(1, 4), new FurnitureGroupDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureItem, new FileHeader(1, 4), new FurnitureItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureLayout, new FileHeader(1, 4), new FurnitureLayoutDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rGUIMapSetting, new FileHeader("GMP\0", 6, 4), new GUIMapSettingDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rItemList, new FileHeader("ipa\0", 58, 4), new ItemListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobBaseParam, new FileHeader(263, 4), new JobBaseParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJumpParamTbl, new FileHeader(3, 4), new JumpParamTblDeserializer()));

@@ -82,6 +82,7 @@ public enum ClientResourceFileExtension {
     rFurnitureGroup,
     rFurnitureItem,
     rFurnitureLayout,
+    rGUIMapSetting,
     rGatheringItem,
     rGUIDogmaOrb,
     rGUIMessage,
@@ -265,6 +266,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".fni", rFurnitureItem);
         fileExtensionToResourceMap.put(".fnl", rFurnitureLayout);
         fileExtensionToResourceMap.put(".fsm", rAIFSM);
+        fileExtensionToResourceMap.put(".gmp", rGUIMapSetting);
         fileExtensionToResourceMap.put(".gat", rGatheringItem);
         fileExtensionToResourceMap.put(".gmd", rGUIMessage);
         fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
@@ -366,9 +368,7 @@ public enum ClientResourceFileExtension {
 
         Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(e.name()), e));
 
-        fileExtensionToResourceMap.forEach((key, value) -> {
-            System.out.println(key + "\t" + value + "\t" + FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(value.name()));
-        });
+//        fileExtensionToResourceMap.forEach((key, value) -> System.out.println(key + "," + value));// + "," + FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(value.name())));
     }
 
     public static ClientResourceFileExtension of(String fileExtension) {

@@ -331,7 +331,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rGUIDogmaOrb", ".dgm");
         resourceToFileExtensionMap.put("rGUIFont", ".gfd");
         resourceToFileExtensionMap.put("rGUIIconInfo", ".gii");
-        resourceToFileExtensionMap.put("rGUIMapSetting", ".gmp");
+        resourceToFileExtensionMap.put("rGUIMapSetting", ".gmp"); // TODO: looks interesting for DDON Tools
         resourceToFileExtensionMap.put("rGUIMessage", ".gmd");
         resourceToFileExtensionMap.put("rGUIPhotoFrame", ".pho");
         resourceToFileExtensionMap.put("rHeadCtrl", ".head_ctrl");
@@ -459,7 +459,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rReplaceWardGmdList", ".repgmdlist");
         resourceToFileExtensionMap.put("rRigidBody", ".rbd");
         resourceToFileExtensionMap.put("rRoomWearParam", ".rwr");
-        resourceToFileExtensionMap.put("rScenario", ".sce");
+        resourceToFileExtensionMap.put("rScenario", ".sce"); // TODO: looks interesting for quests
         resourceToFileExtensionMap.put("rSceneTexture", ".stex");
         resourceToFileExtensionMap.put("rScheduler", ".sdl");
         resourceToFileExtensionMap.put("rShader2", ".mfx");

@@ -190,6 +190,21 @@ public class BinaryReader implements BufferReader {
     }
 
     @Override
+    public Rectangle readRectangle() {
+        return new Rectangle(
+                readSignedInteger(),
+                readSignedInteger(),
+                readSignedInteger(),
+                readSignedInteger()
+        );
+    }
+
+    @Override
+    public Vector2f readVector2f() {
+        return new Vector2f(readFloat(), readFloat());
+    }
+
+    @Override
     public Vector3f readVector3f() {
         return new Vector3f(readFloat(), readFloat(), readFloat());
     }
