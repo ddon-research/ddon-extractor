@@ -1,0 +1,21 @@
+package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
+
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import lombok.*;
+
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+public class FSMOrderParamSetDispUnit extends AICopiableParameter {
+    private long Act;
+    private long Target;
+    private long GroupNo;
+    private long SetId;
+    private long QuestId;
+    private boolean IsStopMove;
+}

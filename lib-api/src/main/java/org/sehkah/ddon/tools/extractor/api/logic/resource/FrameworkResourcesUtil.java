@@ -66,6 +66,29 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("cFSMUnit::cParamSetNeck", ".cFSMUnit_cParamSetNeck");
         resourceToFileExtensionMap.put("cFSMUnit::cParamSetWait", ".cFSMUnit_cParamSetWait");
         resourceToFileExtensionMap.put("cFSMUnit::cParamSetWaypoint", ".cFSMUnit_cParamSetWaypoint");
+
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetDispWeapon", ".cFSMUnit_cParamSetDispWeapon");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEyeBall", ".cFSMUnit_cParamSetEyeBall");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetMotionGoto", ".cFSMUnit_cParamSetMotionGoto");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetLayout", ".cFSMOrderParamSetLayout");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetDispUnit", ".cFSMOrderParamSetDispUnit");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetFade", ".cFSMOrderParamSetFade");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetEnemy", ".cFSMOrderParamSetEnemy");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetEnemy::cSetEmInfo", ".cFSMOrderParamSetEnemy_cSetEmInfo");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEmDie", ".cFSMUnit_cParamSetEmDie");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetHaveThing", ".cFSMUnit_cParamSetHaveThing");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetEffect", ".cFSMOrderParamSetEffect");
+        resourceToFileExtensionMap.put("cFSMOrderParamSetVib", ".cFSMOrderParamSetVib");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetParts", ".cFSMUnit_cParamSetParts");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetVibUnit", ".cFSMUnit_cParamSetVibUnit");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetCallSe", ".cFSMUnit_cParamSetCallSe");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEmMontage", ".cFSMUnit_cParamSetEmMontage");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetHakuryuStoneLevel", ".cFSMUnit_cParamSetHakuryuStoneLevel");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetIK", ".cFSMUnit_cParamSetIK");
+        resourceToFileExtensionMap.put("cFSMUnit::cParamSetEnemyHP", ".cFSMUnit_cParamSetEnemyHP");
+        resourceToFileExtensionMap.put("rAIConditionTree::ConstS32Node", ".rAIConditionTree_ConstS32Node");
+
+
         resourceToFileExtensionMap.put("cQuestGroup", ".cQuestGroup");
         resourceToFileExtensionMap.put("cQuestSet", ".cQuestSet");
         resourceToFileExtensionMap.put("cQuestStage", ".cQuestStage");

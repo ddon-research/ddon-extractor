@@ -17,7 +17,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 public class AIFSM extends Resource {
     private String OwnerObjectName;
     private AIFSMCluster RootCluster;
-    //private AIConditionTree ConditionTree;
-    // long FSMAttribute;
-    // long LastEditType;
+    private AIConditionTree ConditionTree;
+    private long FSMAttribute;
+    private long LastEditType;
 }

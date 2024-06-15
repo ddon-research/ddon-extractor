@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamBGMRequest extends AICopiableParameter {
+    private long BgmRequestEditType;
     private long BgmRequestType;
     private long BgmRequestNo;
-    private long BgmRequestEditType;
 }

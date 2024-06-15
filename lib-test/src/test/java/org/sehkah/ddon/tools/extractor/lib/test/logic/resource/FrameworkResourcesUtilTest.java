@@ -80,7 +80,7 @@ class FrameworkResourcesUtilTest {
 
     @Test
     void testFileClassNameForResourceFileEqualsExpected() {
-        long resourceTypeId = 1379483132;
+        long resourceTypeId = 1062777650;
 
         String className = FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(resourceTypeId);
 

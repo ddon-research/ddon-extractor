@@ -42,6 +42,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.np
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.npc_common.NpcIsNoSetPS3TblDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.npc_common.NpcIsUseJobParamExDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.om.OmKeyDeserializer;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.quest.AIFSMDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.quest.PawnQuestTalkDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.quest.QuestListDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.scr.MapSpotDataDeserializer;
@@ -76,7 +77,9 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
     public <T extends Resource> Set<ClientResourceFile<T>> setupResourceMapping() {
         Set<ClientResourceFile<T>> clientResourceFileSet = HashSet.newHashSet(128);
 
-        //TODO: clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIFSM, new FileHeader("XFS\0", 131087, 4), new AIFSMDeserializer()));
+        //TODO:
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIFSM, new FileHeader("XFS\0", 131087, 4), new AIFSMDeserializer()));
+
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityList, new FileHeader("abl0", 8, 4), new AbilityListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnAutoWordTbl, new FileHeader(4, 4), new AIPawnAutoWordTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAIPawnEmParam, new FileHeader(15, 4), new AIPawnEmParamDeserializer()));

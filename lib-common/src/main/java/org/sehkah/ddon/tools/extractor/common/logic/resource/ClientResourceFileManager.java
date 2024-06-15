@@ -233,7 +233,7 @@ public abstract class ClientResourceFileManager {
             if (clientResourceFileMap.containsKey(candidateKey)) {
                 ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.get(candidateKey);
                 clientResourceDeserializer = clientResourceFile.getDeserializer();
-                log.debug("File matches deserializer {}.", clientResourceDeserializer.getClass().getSimpleName());
+                log.debug("File {} matches deserializer {}.", filePath, clientResourceDeserializer.getClass().getSimpleName());
                 return clientResourceDeserializer.deserialize(filePath, clientResourceFile, bufferReader, lookupUtil);
             }
         }

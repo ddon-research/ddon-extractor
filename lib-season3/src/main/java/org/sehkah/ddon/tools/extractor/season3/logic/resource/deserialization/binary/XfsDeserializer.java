@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
 
+import lombok.extern.slf4j.Slf4j;
+import org.sehkah.ddon.tools.extractor.api.datatype.Matrix;
 import org.sehkah.ddon.tools.extractor.api.datatype.OrientedBoundingBox;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
@@ -16,6 +18,7 @@ import java.util.function.Function;
 
 // TODO: Make better use of this to abstract the unwrapping of all the binary meta data
 // TODO: Forward to other deserializers and get rid of buffer position hack
+@Slf4j
 public class XfsDeserializer {
     private XfsDeserializer() {
 
@@ -67,10 +70,17 @@ public class XfsDeserializer {
         final int baseOffset = bufferReader.getPosition();
         final List<Long> classDataOffset = bufferReader.readFixedLengthArray(numClasses, BufferReader::readUnsignedInteger);
         final List<ClassData> classDataList = bufferReader.readFixedLengthArray(classDataOffset.size(), XfsDeserializer::readClassData);
-        classDataList.forEach(classData -> classData.getProperties().forEach(property -> {
-            bufferReader.setPosition(baseOffset + (int) property.getPropertyNameOffset());
-            property.setName(bufferReader.readNullTerminatedString());
-        }));
+        classDataList.forEach(classData -> {
+            log.debug("[XFS] {}, r: {}, #{}", classData.getID(), classData.getResourceName(), classData.getPropNum());
+            classData.getProperties().forEach(property -> {
+                bufferReader.setPosition(baseOffset + (int) property.getPropertyNameOffset());
+                property.setName(bufferReader.readNullTerminatedString());
+                if (property.getPropertyParamDisable() != 0) {
+                    log.warn("Class header for '{}' indicates that parameter '{}' is disabled with value '{}'", classData.getResourceName(), property.getName(), property.getPropertyParamDisable());
+                }
+
+            });
+        });
         bufferReader.setPosition(baseOffset + (int) bufferSize);
 
         return new ClassHeader(
@@ -176,8 +186,7 @@ public class XfsDeserializer {
     }
 
     public static OrientedBoundingBox readOrientedBoundingBox(BufferReader bufferReader) {
-        long propertyCount = bufferReader.readUnsignedInteger();
-        OrientedBoundingBox orientedBoundingBox = bufferReader.readOrientedBoundingBox();
+        OrientedBoundingBox orientedBoundingBox = readXfsProperty(bufferReader, BufferReader::readOrientedBoundingBox);
         float padding = bufferReader.readFloat();
         return orientedBoundingBox;
     }
@@ -186,6 +195,11 @@ public class XfsDeserializer {
         Vector3f vector3f = readXfsProperty(bufferReader, BufferReader::readVector3f);
         float padding = bufferReader.readFloat();
         return vector3f;
+    }
+
+    public static Matrix readMatrix(BufferReader bufferReader) {
+        Matrix matrix = readXfsProperty(bufferReader, BufferReader::readMatrix);
+        return matrix;
     }
 
     public static <T> List<T> readMtArray(BufferReader bufferReader, Function<BufferReader, T> entityReaderFunction) {
