@@ -140,6 +140,7 @@ public enum ClientResourceFileExtension {
     rRageTable,
     rReplaceWardGmdList,
     rRoomWearParam,
+    rScenario,
     rShopGoods,
     rShotReqInfo,
     rShotReqInfo2,
@@ -331,6 +332,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sal2", rStageAdjoinList2);
         fileExtensionToResourceMap.put(".sbv", rShrinkBlowValue);
         fileExtensionToResourceMap.put(".sca", rStageCustom);
+        fileExtensionToResourceMap.put(".sce", rScenario);
         fileExtensionToResourceMap.put(".scc", rStageConnect);
         fileExtensionToResourceMap.put(".sck", rStatusCheck);
         fileExtensionToResourceMap.put(".scp", rStageCustomParts);

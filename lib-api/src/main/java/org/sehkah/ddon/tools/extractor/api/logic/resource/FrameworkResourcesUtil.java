@@ -17,6 +17,7 @@ public class FrameworkResourcesUtil {
     static {
         //        resourceToFileExtensionMap.put("cSetInfoOmHvLever", ".cSetInfoOmHvLever"); //TODO Unsure
         //        resourceToFileExtensionMap.put("cSetInfoOmMine", ".cSetInfoOmMine"); //TODO Unsure
+        resourceToFileExtensionMap.put("AreaHitShape", ".AreaHitShape");
         resourceToFileExtensionMap.put("cAICopiableParameter", ".cAICopiableParameter");
         resourceToFileExtensionMap.put("cAIDEnum", ".cAIDEnum");
         resourceToFileExtensionMap.put("cAIFSMCluster", ".cAIFSMCluster");
@@ -89,6 +90,14 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("cQuestGroup", ".cQuestGroup");
         resourceToFileExtensionMap.put("cQuestSet", ".cQuestSet");
         resourceToFileExtensionMap.put("cQuestStage", ".cQuestStage");
+        resourceToFileExtensionMap.put("cScenario", ".cScenario");
+        resourceToFileExtensionMap.put("cScenarioArg", ".cScenarioArg");
+        resourceToFileExtensionMap.put("cScenarioArg_AreaJump", ".cScenarioArg_AreaJump");
+        resourceToFileExtensionMap.put("cScenarioArg_BootFSM", ".cScenarioArg_BootFSM");
+        resourceToFileExtensionMap.put("cScenarioArg_Camera", ".cScenarioArg_Camera");
+        resourceToFileExtensionMap.put("cScenarioData", ".cScenarioData");
+        resourceToFileExtensionMap.put("cScenarioElement", ".cScenarioElement");
+        resourceToFileExtensionMap.put("cScenarioParam", ".cScenarioParam");
         resourceToFileExtensionMap.put("cSetInfo", ".cSetInfo");
         resourceToFileExtensionMap.put("cSetInfoCharacter", ".cSetInfoCharacter");
         resourceToFileExtensionMap.put("cSetInfoCoord", ".cSetInfoCoord");
@@ -124,6 +133,12 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("cSetInfoOmWarp", ".cSetInfoOmWarp");
         resourceToFileExtensionMap.put("MtArray", ".MtArray");
         resourceToFileExtensionMap.put("nAI::EnumProp", ".nAI_EnumProp");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoAABB", ".nZone_ShapeInfoAABB");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoArea", ".nZone_ShapeInfoArea");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoBase", ".nZone_ShapeInfoBase");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoCylinder", ".nZone_ShapeInfoCylinder");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoOBB", ".nZone_ShapeInfoOBB");
+        resourceToFileExtensionMap.put("nZone::ShapeInfoSphere", ".nZone_ShapeInfoSphere");
         resourceToFileExtensionMap.put("rAbilityList", ".abl");
         resourceToFileExtensionMap.put("rAchievement", ".acv");
         resourceToFileExtensionMap.put("rAchievementHeader", ".ach");
@@ -331,7 +346,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rGUIDogmaOrb", ".dgm");
         resourceToFileExtensionMap.put("rGUIFont", ".gfd");
         resourceToFileExtensionMap.put("rGUIIconInfo", ".gii");
-        resourceToFileExtensionMap.put("rGUIMapSetting", ".gmp"); // TODO: looks interesting for DDON Tools
+        resourceToFileExtensionMap.put("rGUIMapSetting", ".gmp");
         resourceToFileExtensionMap.put("rGUIMessage", ".gmd");
         resourceToFileExtensionMap.put("rGUIPhotoFrame", ".pho");
         resourceToFileExtensionMap.put("rHeadCtrl", ".head_ctrl");
@@ -459,7 +474,7 @@ public class FrameworkResourcesUtil {
         resourceToFileExtensionMap.put("rReplaceWardGmdList", ".repgmdlist");
         resourceToFileExtensionMap.put("rRigidBody", ".rbd");
         resourceToFileExtensionMap.put("rRoomWearParam", ".rwr");
-        resourceToFileExtensionMap.put("rScenario", ".sce"); // TODO: looks interesting for quests
+        resourceToFileExtensionMap.put("rScenario", ".sce");
         resourceToFileExtensionMap.put("rSceneTexture", ".stex");
         resourceToFileExtensionMap.put("rScheduler", ".sdl");
         resourceToFileExtensionMap.put("rShader2", ".mfx");
