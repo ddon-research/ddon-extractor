@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamCallEvent extends AICopiableParameter {
+    // TODO: Lookup
     private int StageNo;
     private int EventNo;
     private List<FSMOrderParamCallEventNpcId> NpcArray;

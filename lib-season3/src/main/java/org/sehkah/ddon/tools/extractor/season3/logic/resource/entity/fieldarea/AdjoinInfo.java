@@ -13,7 +13,9 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AdjoinInfo {
+    // TODO: Lookup
     private short DestinationStageNo;
+    // TODO: Lookup
     private short NextStageNo;
     private List<AdjoinInfoVector3> Positions;
     private int Priority;

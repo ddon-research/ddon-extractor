@@ -14,7 +14,9 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AdjoinInfo {
     private List<AdjoinInfoIndex> IndexArray;
+    // TODO: Lookup
     private int DestinationStageNo;
+    // TODO: Lookup
     private int NextStageNo;
     private int Priority;
 }

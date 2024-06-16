@@ -20,6 +20,7 @@ public class QuestSetInfoOmTreasureBox extends SetInfo {
     @MetaInformation
     private SetInfoOmGatherType GatheringTypeName;
     private boolean IsGatherEnemy;
+    // TODO: Lookup?
     private short EnemyGroupNo;
 
     public QuestSetInfoOmTreasureBox(QuestSetInfoOm infoOm, long itemListID, long gatheringType, boolean isGatherEnemy, short enemyGroupNo) {

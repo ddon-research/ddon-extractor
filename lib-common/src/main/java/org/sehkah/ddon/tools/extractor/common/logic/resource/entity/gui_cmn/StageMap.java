@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageMap {
+    // TODO: Lookup
     private int StageNo;
     private int PartsNum;
     private float OffsetY;

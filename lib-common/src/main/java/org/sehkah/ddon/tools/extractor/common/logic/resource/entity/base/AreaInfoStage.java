@@ -13,6 +13,7 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaInfoStage {
+    // TODO: Lookup
     private long StageNo;
     private long AreaId;
     @MetaInformation

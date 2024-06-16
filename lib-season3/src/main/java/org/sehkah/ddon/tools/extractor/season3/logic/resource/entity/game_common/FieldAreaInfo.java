@@ -19,8 +19,12 @@ public class FieldAreaInfo {
     private long GmdIdx;
     @MetaInformation
     private Translation FieldAreaName;
+    // TODO: Lookup
     private int LandId;
+    // TODO: Lookup
     private int AreaId;
+    // TODO: Lookup
     private List<StageNo> StageNoList;
+    // TODO: Lookup
     private List<StageNo> BelongStageNoList;
 }

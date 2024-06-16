@@ -7,7 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItem;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfo;
@@ -18,21 +19,32 @@ import java.nio.file.Path;
 @Slf4j
 @Setter
 public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUtil {
-    private final ClientResourceFile<GUIMessage> GUIMessageResourceFile;
     private final ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
+    private final ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
     private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
 
-    public ResourceMetadataLookupUtilSeason3(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile, ClientResourceFile<StageListInfoList> StageListInfoResourceFile) {
+    public ResourceMetadataLookupUtilSeason3(Path clientRootFolder, Path clientTranslationFile,
+                                             ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile,
+                                             ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile,
+                                             ClientResourceFile<StageListInfoList> StageListInfoResourceFile
+    ) {
         super(clientRootFolder, clientTranslationFile);
-        this.GUIMessageResourceFile = GUIMessageResourceFile;
         this.NpcLedgerListResourceFile = NpcLedgerListResourceFile;
+        this.EnemyGroupListResourceFile = EnemyGroupListResourceFile;
+
         this.StageListInfoResourceFile = StageListInfoResourceFile;
     }
 
     @Override
     public Translation getNpcName(long npcId) {
+        if (npcId < 1) {
+            return null;
+        }
         NpcLedgerList list = cache.getResource(ResourceLookupTable.NPC_NLL.getFilePath(), NpcLedgerListResourceFile, this);
         NpcLedgerListItem npc = list.getNpcById(npcId);
+        if (npc == null) {
+            return null;
+        }
         return npc.getNpcName();
     }
 
@@ -53,5 +65,18 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
     @Override
     public Translation getItemName(long itemId) {
         throw new TechnicalException("TODO");
+    }
+
+    @Override
+    public Translation getEnemyName(long enemyId) {
+        if (enemyId < 65792 || enemyId > 1048838) {
+            return null;
+        }
+        EnemyGroupList list = cache.getResource(ResourceLookupTable.ENEMY_GROUP.getFilePath(), EnemyGroupListResourceFile, this);
+        EnemyGroup enemy = list.getEnemyById(enemyId);
+        if (enemy == null) {
+            return null;
+        }
+        return enemy.getEnemyGroupName();
     }
 }

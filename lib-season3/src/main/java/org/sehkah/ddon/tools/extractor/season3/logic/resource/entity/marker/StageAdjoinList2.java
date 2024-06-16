@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageAdjoinList2 extends Resource {
+    // TODO: Lookup
     private int StageNo;
     private List<AdjoinInfo> AdjoinInfoArray;
     private List<JumpPosition2> JumpPositionArray;

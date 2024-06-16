@@ -6,6 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.XfsBody;
@@ -359,18 +360,22 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMOrderParamAreaHit(Act, TaskType, SceNo);
     }
 
-    private static FSMOrderParamCallEventNpcId readFSMOrderParamCallEventNpcId(BufferReader bufferReader) {
+    private static FSMOrderParamCallEventNpcId readFSMOrderParamCallEventNpcId(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long NpcId = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation NpcName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+        }
 
-        return new FSMOrderParamCallEventNpcId(NpcId);
+        return new FSMOrderParamCallEventNpcId(NpcId, NpcName);
     }
 
-    private static FSMOrderParamCallEvent readFSMOrderParamCallEvent(BufferReader bufferReader) {
+    private static FSMOrderParamCallEvent readFSMOrderParamCallEvent(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int StageNo = XfsDeserializer.readSignedInteger(bufferReader);
         int EventNo = XfsDeserializer.readSignedInteger(bufferReader);
-        List<FSMOrderParamCallEventNpcId> NpcArray = XfsDeserializer.readMtArray(bufferReader, AIFSMDeserializer::readFSMOrderParamCallEventNpcId);
+        List<FSMOrderParamCallEventNpcId> NpcArray = XfsDeserializer.readMtArray(bufferReader, br -> readFSMOrderParamCallEventNpcId(br, lookupUtil));
 
         return new FSMOrderParamCallEvent(StageNo, EventNo, NpcArray);
     }
@@ -494,10 +499,14 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMRelate(FSMName, FSMType);
     }
 
-    private static FSMOrderParamSetEnemySetEmInfo readFSMOrderParamSetEnemySetEmInfo(BufferReader bufferReader) {
+    private static FSMOrderParamSetEnemySetEmInfo readFSMOrderParamSetEnemySetEmInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long EnemyId = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation EnemyName = null;
+        if (lookupUtil != null) {
+            EnemyName = lookupUtil.getEnemyName(EnemyId);
+        }
         Matrix Mat = XfsDeserializer.readMatrix(bufferReader);
         FSMRelate FsmPath = readFSMRelate(bufferReader);
         long ErosionLv = XfsDeserializer.readUnsignedInteger(bufferReader);
@@ -508,11 +517,11 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         long GroupId = XfsDeserializer.readUnsignedInteger(bufferReader);
         long SetId = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        return new FSMOrderParamSetEnemySetEmInfo(EnemyId, Mat, FsmPath, ErosionLv, ArmedSetMode, IsNoSetPS3, GroupId, SetId);
+        return new FSMOrderParamSetEnemySetEmInfo(EnemyId, EnemyName, Mat, FsmPath, ErosionLv, ArmedSetMode, IsNoSetPS3, GroupId, SetId);
     }
 
-    private static FSMOrderParamSetEnemy readFSMOrderParamSetEnemy(BufferReader bufferReader) {
-        List<FSMOrderParamSetEnemySetEmInfo> SetEnemyInfo = XfsDeserializer.readMtArray(bufferReader, AIFSMDeserializer::readFSMOrderParamSetEnemySetEmInfo);
+    private static FSMOrderParamSetEnemy readFSMOrderParamSetEnemy(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        List<FSMOrderParamSetEnemySetEmInfo> SetEnemyInfo = XfsDeserializer.readMtArray(bufferReader, br -> readFSMOrderParamSetEnemySetEmInfo(br, lookupUtil));
         long GroupId = XfsDeserializer.readUnsignedInteger(bufferReader);
         long LayoutId = XfsDeserializer.readUnsignedInteger(bufferReader);
 
@@ -637,7 +646,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
             case "SetFade" -> readFSMOrderParamSetFade(bufferReader);
             case "SetDispUnit" -> readFSMOrderParamSetDispUnit(bufferReader);
             case "EventFlagOn", "EventFlagOff" -> readFSMOrderParamFlagCommon(bufferReader);
-            case "SetEnemy" -> readFSMOrderParamSetEnemy(bufferReader);
+            case "SetEnemy" -> readFSMOrderParamSetEnemy(bufferReader, lookupUtil);
             case "SetEmDie" -> readFSMUnitParamSetEmDie(bufferReader);
             case "SetHaveThing" -> readFSMUnitParamSetHaveThing(bufferReader);
             case "SetEffectVersatile" -> readFSMOrderParamSetEffect(bufferReader);
@@ -658,7 +667,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
 
             // Season 2 stage exclusive
             case "SetAreaHit" -> readFSMOrderParamAreaHit(bufferReader);
-            case "CallFsmEvent" -> readFSMOrderParamCallEvent(bufferReader);
+            case "CallFsmEvent" -> readFSMOrderParamCallEvent(bufferReader, lookupUtil);
             case "JumpPos" -> readFSMOrderParamJumpPos(bufferReader);
             case "Camera", "Camera_camev" -> readFSMOrderParamCamera(bufferReader);
             case "SetLocaName" -> readFSMOrderParamSetLocationName(bufferReader);

@@ -13,8 +13,11 @@ import lombok.*;
 public class WarpLocation {
     private long Id;
     private long SortNo;
+    // TODO: Lookup
     private long AreaId;
+    // TODO: Lookup
     private long SpotId;
+    // TODO: Lookup
     private int StageNo;
     private long PosNo;
     private int MapPosX;

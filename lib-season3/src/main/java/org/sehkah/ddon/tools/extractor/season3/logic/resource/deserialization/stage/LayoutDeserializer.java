@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.LayoutSetInfoType;
@@ -38,33 +39,37 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoNpc readSetInfoNpc(BufferReader bufferReader) {
-        return new SetInfoNpc(
-                bufferReader.readSignedInteger(),
-                bufferReader.readNullTerminatedString(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readSignedByte(),
-                bufferReader.readSignedByte(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readSignedShort(),
-                readSetInfoCoord(bufferReader)
-        );
+    private static SetInfoNpc readSetInfoNpc(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        int NpcId = bufferReader.readSignedInteger();
+        Translation NpcName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+        }
+        String FilePath = bufferReader.readNullTerminatedString();
+        boolean IsCommunicate = bufferReader.readBoolean();
+        int ClothType = bufferReader.readUnsignedByte();
+        byte DefNPCMotCategory = bufferReader.readSignedByte();
+        byte DefNPCMotNo = bufferReader.readSignedByte();
+        int ThinkIndex = bufferReader.readUnsignedShort();
+        int JobLv = bufferReader.readUnsignedShort();
+        int Lantern = bufferReader.readUnsignedByte();
+        boolean DisableScrAdj = bufferReader.readBoolean();
+        boolean DisableLedgerFinger = bufferReader.readBoolean();
+        boolean IsForceListTalk = bufferReader.readBoolean();
+        boolean IsAttand = bufferReader.readBoolean();
+        boolean UseAttendComponent = bufferReader.readBoolean();
+        boolean DisableTouchAction = bufferReader.readBoolean();
+        boolean DispElseQuestTalk = bufferReader.readBoolean();
+        boolean ForceSwitchGreeting = bufferReader.readBoolean();
+        long TalkStateId = bufferReader.readUnsignedInteger();
+        boolean UseLiteMotion = bufferReader.readBoolean();
+        boolean IsNoSetOnPS3 = bufferReader.readBoolean();
+        boolean UseJobParamEx = bufferReader.readBoolean();
+        boolean DispOnWeapon = bufferReader.readBoolean();
+        short InitEffectType = bufferReader.readSignedShort();
+        SetInfoCoord InfoCharacter = readSetInfoCoord(bufferReader);
+
+        return new SetInfoNpc(NpcId, NpcName, FilePath, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, UseAttendComponent, DisableTouchAction, DispElseQuestTalk, ForceSwitchGreeting, TalkStateId, UseLiteMotion, IsNoSetOnPS3, UseJobParamEx, DispOnWeapon, InitEffectType, InfoCharacter);
     }
 
     private static SetInfoGeneralPoint readSetInfoGeneralPoint(BufferReader bufferReader) {
@@ -618,7 +623,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader) {
+    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int ID = bufferReader.readSignedInteger();
         long Type = bufferReader.readUnsignedInteger();
         SetInfo Info = null;
@@ -626,7 +631,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         switch (LayoutSetInfoType.of(Type)) {
             case LayoutSetInfoType.SetInfoOm -> Info = readSetInfoOm(bufferReader);
             case LayoutSetInfoType.SetInfoEnemy -> Info = readSetInfoEnemy(bufferReader);
-            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(bufferReader);
+            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoGeneralPoint -> Info = readSetInfoGeneralPoint(bufferReader);
             case LayoutSetInfoType.SetInfoOmGather, LayoutSetInfoType.SetInfoOmTreasureBox ->
                     Info = readSetInfoOmGather(bufferReader);
@@ -688,7 +693,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
     protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         return new Layout(
                 bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
-                bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo)
+                bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo, lookupUtil)
         );
     }
 }

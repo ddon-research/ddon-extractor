@@ -11,5 +11,6 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageNo {
+    // TODO: Lookup
     private int StageNo;
 }

@@ -12,6 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SpotEnemyData {
     private long EnemyGroupId;
+    // TODO: Lookup?
     private long EnemyNamedId;
     private int Level;
     private int UnknownShort;

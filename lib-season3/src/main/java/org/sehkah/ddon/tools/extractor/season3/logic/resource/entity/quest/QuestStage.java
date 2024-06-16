@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestStage {
+    // TODO: Lookup
     private int StageNo;
     private List<QuestGroup> QuestGrp;
 }

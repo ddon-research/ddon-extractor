@@ -13,6 +13,7 @@ import lombok.*;
 public class EndContentsSortieInfoData {
     private long QuestId;
     private long StageNo1;
+    // TODO: Lookup
     private long StageNo2;
     private long StageNo3;
     private long Unknown2;

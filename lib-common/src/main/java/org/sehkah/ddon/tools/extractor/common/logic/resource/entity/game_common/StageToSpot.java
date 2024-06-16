@@ -11,7 +11,9 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageToSpot {
+    // TODO: Lookup
     private long StageNo;
+    // TODO: Lookup
     private long SpotId;
     private int RecommendLevel;
 }

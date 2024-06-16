@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
@@ -17,4 +18,6 @@ public class LayoutPreset {
     private String Keyword;
     private long CtrlType;
     private long EnemyId;
+    @MetaInformation
+    private Translation EnemyName;
 }

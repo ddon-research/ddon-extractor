@@ -13,6 +13,7 @@ import lombok.*;
 public class CycleContentsSortieInfoData {
     private long CycleNo;
     private long CycleSubNo;
+    // TODO: Lookup
     private long StageNo1;
     private long StageNo2;
     private long StageNo3;

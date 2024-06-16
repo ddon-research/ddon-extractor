@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class NpcIsUseJobParamEx {
+    // TODO: Lookup
     private int StageNo;
     private int GroupNo;
     private int UnitNo;

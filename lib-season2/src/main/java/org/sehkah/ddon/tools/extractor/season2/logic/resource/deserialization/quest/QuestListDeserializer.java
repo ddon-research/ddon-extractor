@@ -41,9 +41,13 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new FSMRelate(FSMName, FSMType);
     }
 
-    private static QuestSetInfoNpc readQuestSetInfoNpc(BufferReader bufferReader) {
+    private static QuestSetInfoNpc readQuestSetInfoNpc(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoCoord InfoCharacter = readQuestSetInfoCoord(bufferReader);
         int NpcId = XfsDeserializer.readSignedInteger(bufferReader);
+        Translation NpcName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+        }
         FSMRelate FsmResource = readFSMRelate(bufferReader);
         boolean IsCommunicate = XfsDeserializer.readBoolean(bufferReader);
         int ClothType = XfsDeserializer.readUnsignedByte(bufferReader);
@@ -59,7 +63,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         boolean DisableTouchAction = XfsDeserializer.readBoolean(bufferReader);
         boolean DispElseQuestTalk = XfsDeserializer.readBoolean(bufferReader);
 
-        return new QuestSetInfoNpc(InfoCharacter, NpcId, FsmResource, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, DisableTouchAction, DispElseQuestTalk);
+        return new QuestSetInfoNpc(InfoCharacter, NpcId, NpcName, FsmResource, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, DisableTouchAction, DispElseQuestTalk);
     }
 
     private static QuestSetInfoOm readQuestSetInfoOm(BufferReader bufferReader) {
@@ -282,7 +286,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
                 case "cSetInfoOmHeal" -> readQuestSetInfoOmHeal(bufferReader);
                 default -> readQuestSetInfoOm(bufferReader);
             };
-            case U_NPC -> readQuestSetInfoNpc(bufferReader);
+            case U_NPC -> readQuestSetInfoNpc(bufferReader, lookupUtil);
             default -> throw new IllegalStateException("Unexpected value: " + LayoutUnitKind.of(kind));
         };
     }

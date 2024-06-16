@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class DungeonMarker extends Resource {
+    // TODO: Lookup
     private int WarpStageNo;
     private List<DungeonMarkerWarpInfo> WarpInfoList;
     private List<DungeonMarkerPosition> PositionList;

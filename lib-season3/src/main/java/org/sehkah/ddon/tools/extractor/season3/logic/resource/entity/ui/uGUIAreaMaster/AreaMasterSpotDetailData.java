@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaMasterSpotDetailData {
+    // TODO: Lookup
     private long SpotId;
     private List<SpotItemData> ItemArray;
     private List<SpotEnemyData> EnemyArray;

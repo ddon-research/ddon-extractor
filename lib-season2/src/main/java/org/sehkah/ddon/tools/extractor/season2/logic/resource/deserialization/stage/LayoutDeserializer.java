@@ -39,25 +39,29 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoNpc readSetInfoNpc(BufferReader bufferReader) {
-        return new SetInfoNpc(
-                bufferReader.readSignedInteger(),
-                bufferReader.readNullTerminatedString(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readSignedByte(),
-                bufferReader.readSignedByte(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                readSetInfoCoord(bufferReader)
-        );
+    private static SetInfoNpc readSetInfoNpc(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        int NpcId = bufferReader.readSignedInteger();
+        Translation NpcName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+        }
+        String FilePath = bufferReader.readNullTerminatedString();
+        boolean IsCommunicate = bufferReader.readBoolean();
+        int ClothType = bufferReader.readUnsignedByte();
+        byte DefNPCMotCategory = bufferReader.readSignedByte();
+        byte DefNPCMotNo = bufferReader.readSignedByte();
+        int ThinkIndex = bufferReader.readUnsignedShort();
+        int JobLv = bufferReader.readUnsignedShort();
+        int Lantern = bufferReader.readUnsignedByte();
+        boolean DisableScrAdj = bufferReader.readBoolean();
+        boolean DisableLedgerFinger = bufferReader.readBoolean();
+        boolean IsForceListTalk = bufferReader.readBoolean();
+        boolean IsAttand = bufferReader.readBoolean();
+        boolean DisableTouchAction = bufferReader.readBoolean();
+        boolean DispElseQuestTalk = bufferReader.readBoolean();
+        SetInfoCoord InfoCharacter = readSetInfoCoord(bufferReader);
+
+        return new SetInfoNpc(NpcId, NpcName, FilePath, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, DisableTouchAction, DispElseQuestTalk, InfoCharacter);
     }
 
     private static SetInfoGeneralPoint readSetInfoGeneralPoint(BufferReader bufferReader) {
@@ -323,7 +327,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         switch (LayoutSetInfoType.of(Type)) {
             case LayoutSetInfoType.SetInfoOm -> Info = readSetInfoOm(bufferReader);
             case LayoutSetInfoType.SetInfoEnemy -> Info = readSetInfoEnemy(bufferReader);
-            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(bufferReader);
+            case LayoutSetInfoType.SetInfoNpc -> Info = readSetInfoNpc(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoGeneralPoint -> Info = readSetInfoGeneralPoint(bufferReader);
             case LayoutSetInfoType.SetInfoOmGather, LayoutSetInfoType.SetInfoOmTreasureBox ->
                     Info = readSetInfoOmGather(bufferReader);

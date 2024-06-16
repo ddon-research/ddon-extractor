@@ -12,6 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaMasterRankData {
     private long MsgGroupSerial;
+    // TODO: Lookup
     private long Point;
     //TODO: find enum
     private int BonusType;

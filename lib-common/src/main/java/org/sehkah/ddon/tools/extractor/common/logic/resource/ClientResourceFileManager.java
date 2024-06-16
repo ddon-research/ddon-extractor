@@ -49,7 +49,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sta
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.GUIMessageSerializer;
@@ -82,8 +82,8 @@ public abstract class ClientResourceFileManager {
     protected final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile<Resource>> clientResourceFileMap;
     protected final Serializer<Resource> stringSerializer;
     protected final ResourceMetadataLookupUtil lookupUtil;
-    protected ClientResourceFile<GUIMessage> GUIMessageResourceFile;
     protected ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
+    protected ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
 
     protected ClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
@@ -91,7 +91,7 @@ public abstract class ClientResourceFileManager {
         addCommonResourceMapping(clientResourceFileSet);
 
         if (shouldSerializeMetaInformation) {
-            lookupUtil = setupResourceLookupUtil(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, NpcLedgerListResourceFile);
+            lookupUtil = setupResourceLookupUtil(clientRootFolder, clientTranslationFile, NpcLedgerListResourceFile, EnemyGroupListResourceFile);
         } else {
             lookupUtil = null;
         }
@@ -104,8 +104,7 @@ public abstract class ClientResourceFileManager {
 
     @SuppressWarnings("unchecked")
     private <T extends Resource> void addCommonResourceMapping(Set<ClientResourceFile<T>> clientResourceFileSet) {
-        GUIMessageResourceFile = new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer());
-        clientResourceFileSet.add((ClientResourceFile<T>) GUIMessageResourceFile);
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rGUIMessage, new FileHeader("GMD\0", 66306, 4), new GUIMessageDeserializer(), new GUIMessageSerializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityAddData, new FileHeader(1, 4), new AbilityAddDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityData, new FileHeader(3, 4), new AbilityDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAchievement, new FileHeader(2, 4), new AchievementDeserializer()));
@@ -140,7 +139,8 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmDmgTimerTbl, new FileHeader(2, 4), new EmDmgTimerTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmScaleTable, new FileHeader(257, 4), new EmScaleTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEmSoundTable, new FileHeader(261, 4), new EmSoundTableDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer()));
+        EnemyGroupListResourceFile = new ClientResourceFile<>(rEnemyGroup, new FileHeader(1, 4), new EnemyGroupDeserializer(), new EnemyGroupSerializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) EnemyGroupListResourceFile);
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyLocalEst, new FileHeader(259, 4), new EnemyLocalEstTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyMaterialTable, new FileHeader(260, 4), new EnemyMaterialTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyReactResEx, new FileHeader(6, 4), new EnemyReactResExTableDeserializer()));
@@ -202,11 +202,10 @@ public abstract class ClientResourceFileManager {
      *
      * @param clientRootFolder          root installation folder, e.g. C:\DDON
      * @param clientTranslationFile
-     * @param GUIMessageResourceFile
      * @param npcLedgerListResourceFile
      * @return an initialized lookup util
      */
-    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile);
+    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile);
 
     /**
      * Initializes the season-specific resource file setup in {@link ClientResourceFileManager#clientResourceFileSet}.

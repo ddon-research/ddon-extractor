@@ -19,6 +19,7 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @ResourceHeader(magicStringSize = DDONPrimitiveDataType.u32, magicNumberSize = DDONPrimitiveDataType.u32)
 public class QuestMarkerInfo extends Resource {
+    // TODO: Lookup
     @DataType(size = DDONPrimitiveDataType.u32)
     public long StageNo;
     @ArrayDataType(size = DDONPrimitiveDataType.u32)

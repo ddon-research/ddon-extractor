@@ -19,7 +19,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.MyRoom.*;
@@ -72,8 +72,8 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, npcLedgerListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason2(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
     }
 
     @Override

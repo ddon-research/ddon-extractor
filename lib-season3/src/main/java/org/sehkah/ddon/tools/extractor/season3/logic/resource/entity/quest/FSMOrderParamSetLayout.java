@@ -13,6 +13,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamSetLayout extends AICopiableParameter {
     private int ActType;
+    // TODO: Lookup
     private int StageNo;
     private int FlagNo;
 }

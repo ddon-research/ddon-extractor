@@ -17,13 +17,16 @@ public class SetInfoOmWarpNewV3 extends SetInfo {
     private int Unknown2;
     private int Unknown3;
     private int Unknown4;
+    // TODO: Lookup
     private List<Long> StageNo;
     private List<Long> StartPosNo;
     private List<Long> QuestNo;
     private List<Long> FlagNo;
+    // TODO: Lookup
     private List<Long> SpotId;
     private long TextType;
     private long TextQuestNo;
+    // TODO: Lookup
     private long TextNo;
     private SetInfoOm InfoOm;
 }
