@@ -21,6 +21,8 @@ import java.util.Set;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class ItemListItemParam {
+    @MetaInformation
+    private int ItemIndex;
     private long ItemId;
     private long NameId;
     @MetaInformation

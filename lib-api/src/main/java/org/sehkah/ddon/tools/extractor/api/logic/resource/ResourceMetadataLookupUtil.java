@@ -92,4 +92,6 @@ public abstract class ResourceMetadataLookupUtil {
     public abstract Translation getStageNameByStageNo(int stageNo);
 
     public abstract Translation getStageNameByStageId(int stageId);
+
+    public abstract Translation getItemName(long itemId);
 }

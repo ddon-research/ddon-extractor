@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.binary.ClassData;
@@ -222,17 +223,21 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new QuestSetInfoOmCtrlLinkParam(Kind, Group, ID, Transition, State, CamEvNo, FSM);
     }
 
-    private static QuestSetInfoOmCtrl readQuestSetInfoOmCtrl(BufferReader bufferReader) {
+    private static QuestSetInfoOmCtrl readQuestSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
 
-        long KeyItemNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        long KeyItemId = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation KeyItemName = null;
+        if (lookupUtil != null) {
+            KeyItemName = lookupUtil.getItemName(KeyItemId);
+        }
         boolean IsQuest = XfsDeserializer.readBoolean(bufferReader);
         long QuestId = XfsDeserializer.readUnsignedInteger(bufferReader);
         List<QuestSetInfoOmCtrlLinkParam> LinkParam = bufferReader.readArray(QuestListDeserializer::readQuestSetInfoOmCtrlLinkParam);
         int AddGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
         int AddSubGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
 
-        return new QuestSetInfoOmCtrl(InfoOm, KeyItemNo, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo);
+        return new QuestSetInfoOmCtrl(InfoOm, KeyItemId, KeyItemName, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo);
     }
 
     private static QuestSetInfoOmLever readQuestSetInfoOmLever(BufferReader bufferReader) {
@@ -253,7 +258,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new QuestSetInfoOmHeal(InfoOm, HealType);
     }
 
-    private static SetInfo readSetInfo(BufferReader bufferReader, XfsHeader xfsHeader, long kind) {
+    private static SetInfo readSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, XfsHeader xfsHeader, long kind) {
         XfsObjectData setInfoObjectData = XfsDeserializer.readXfsObjectData(bufferReader);
 
         Map<Integer, ClassData> classHeaderIndexMap = xfsHeader.getClassHeaderIndex();
@@ -272,7 +277,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
                 case "cSetInfoOmTreasureBox" -> readQuestSetInfoOmTreasureBox(bufferReader);
                 case "cSetInfoOmRange" -> readQuestSetInfoOmRange(bufferReader);
                 case "cSetInfoOmHakuryuu" -> readQuestSetInfoOmHakuryuu(bufferReader);
-                case "cSetInfoOmCtrl" -> readQuestSetInfoOmCtrl(bufferReader);
+                case "cSetInfoOmCtrl" -> readQuestSetInfoOmCtrl(bufferReader, lookupUtil);
                 case "cSetInfoOmLever" -> readQuestSetInfoOmLever(bufferReader);
                 case "cSetInfoOmHeal" -> readQuestSetInfoOmHeal(bufferReader);
                 default -> readQuestSetInfoOm(bufferReader);
@@ -282,35 +287,35 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         };
     }
 
-    private static QuestSet readQuestSet(BufferReader bufferReader, XfsHeader xfsHeader) {
+    private static QuestSet readQuestSet(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, XfsHeader xfsHeader) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long OmID = XfsDeserializer.readUnsignedInteger(bufferReader);
         long UnitNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         String Comment = XfsDeserializer.readJapaneseNullTerminatedString(bufferReader);
         long Kind = XfsDeserializer.readUnsignedInteger(bufferReader);
-        SetInfo setInfo = XfsDeserializer.readXfsProperty(bufferReader, br -> readSetInfo(bufferReader, xfsHeader, Kind));
+        SetInfo setInfo = XfsDeserializer.readXfsProperty(bufferReader, br -> readSetInfo(bufferReader, lookupUtil, xfsHeader, Kind));
 
         return new QuestSet(OmID, UnitNo, Comment, Kind, setInfo);
     }
 
-    private static QuestGroup readQuestGroup(BufferReader bufferReader, XfsHeader xfsHeader) {
+    private static QuestGroup readQuestGroup(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, XfsHeader xfsHeader) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long GroupNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         String Comment = XfsDeserializer.readJapaneseNullTerminatedString(bufferReader);
         int Condition = XfsDeserializer.readSignedInteger(bufferReader);
         int EraseCondition = XfsDeserializer.readSignedInteger(bufferReader);
-        List<QuestSet> QuestSet = XfsDeserializer.readMtArray(bufferReader, br -> readQuestSet(br, xfsHeader));
+        List<QuestSet> QuestSet = XfsDeserializer.readMtArray(bufferReader, br -> readQuestSet(br, lookupUtil, xfsHeader));
 
         return new QuestGroup(GroupNo, Comment, Condition, EraseCondition, QuestSet);
     }
 
-    private static QuestStage readQuestStage(BufferReader bufferReader, XfsHeader xfsHeader) {
+    private static QuestStage readQuestStage(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, XfsHeader xfsHeader) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         int StageNo = XfsDeserializer.readSignedInteger(bufferReader);
-        List<QuestGroup> QuestGrp = XfsDeserializer.readMtArray(bufferReader, br -> readQuestGroup(br, xfsHeader));
+        List<QuestGroup> QuestGrp = XfsDeserializer.readMtArray(bufferReader, br -> readQuestGroup(br, lookupUtil, xfsHeader));
 
         return new QuestStage(StageNo, QuestGrp);
     }
@@ -323,6 +328,8 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         XfsHeader xfsHeader = XfsDeserializer.readHeader(bufferReader);
         XfsDeserializer.readResource(bufferReader);
 
-        return new QuestList(XfsDeserializer.readMtArray(bufferReader, br -> readQuestStage(br, xfsHeader)));
+        List<QuestStage> QuestStageList = XfsDeserializer.readMtArray(bufferReader, br -> readQuestStage(br, lookupUtil, xfsHeader));
+
+        return new QuestList(QuestStageList);
     }
 }

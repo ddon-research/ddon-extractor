@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.u
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDetailData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDetailDataList;
@@ -23,24 +24,28 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
         );
     }
 
-    private static SpotItemData readSpotItemData(BufferReader bufferReader) {
-        return new SpotItemData(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean()
-        );
+    private static SpotItemData readSpotItemData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long ItemId = bufferReader.readUnsignedInteger();
+        Translation ItemName = null;
+        if (lookupUtil != null) {
+            ItemName = lookupUtil.getItemName(ItemId);
+        }
+        boolean IsFeature = bufferReader.readBoolean();
+        boolean IsCannotPawnTake = bufferReader.readBoolean();
+
+        return new SpotItemData(ItemId, ItemName, IsFeature, IsCannotPawnTake);
     }
 
-    private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader) {
+    private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         return new AreaMasterSpotDetailData(
                 bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData),
+                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData, lookupUtil),
                 bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData)
         );
     }
 
     @Override
     protected AreaMasterSpotDetailDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new AreaMasterSpotDetailDataList(bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData));
+        return new AreaMasterSpotDetailDataList(bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData, lookupUtil));
     }
 }

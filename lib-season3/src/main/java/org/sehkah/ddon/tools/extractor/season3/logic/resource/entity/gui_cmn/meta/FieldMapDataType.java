@@ -21,8 +21,7 @@ public enum FieldMapDataType {
     TYPE_BASEMENT(0x0F),
     TYPE_OUTPOST(0x10),
     TYPE_DOOR(0x11),
-    TYPE_AREA_WARP(0x12),
-    TYPE_MAX_5(0x13);
+    TYPE_AREA_WARP(0x12);
 
     public long value;
 

@@ -4,11 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.LayoutSetInfoType;
 
 import java.nio.file.Path;
+import java.util.List;
 
 
 @Slf4j
@@ -116,16 +118,20 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader) {
-        return new SetInfoOmCtrl(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long KeyItemId = bufferReader.readUnsignedInteger();
+        Translation KeyItemName = null;
+        if (lookupUtil != null) {
+            KeyItemName = lookupUtil.getItemName(KeyItemId);
+        }
+        boolean IsQuest = bufferReader.readBoolean();
+        long QuestId = bufferReader.readUnsignedInteger();
+        List<SetInfoOmCtrlLinkParam> LinkParam = bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam);
+        int AddGroupNo = bufferReader.readSignedInteger();
+        int AddSubGroupNo = bufferReader.readSignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        return new SetInfoOmCtrl(KeyItemId, KeyItemName, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo, InfoOm);
     }
 
     private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {
@@ -309,7 +315,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader) {
+    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int ID = bufferReader.readSignedInteger();
         long Type = bufferReader.readUnsignedInteger();
         SetInfo Info = null;
@@ -324,7 +330,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader);
             case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
-            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader);
+            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);
             case LayoutSetInfoType.SetInfoOmFall -> Info = readSetInfoOmFall(bufferReader);
             case LayoutSetInfoType.SetInfoOmLever -> Info = readSetInfoOmLever(bufferReader);
@@ -354,9 +360,9 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
     @Override
     protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new Layout(
-                bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
-                bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo)
-        );
+        List<Long> SetInfoNeedNums = bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger);
+        List<LayoutSetInfo> Array = bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo, lookupUtil);
+
+        return new Layout(SetInfoNeedNums, Array);
     }
 }

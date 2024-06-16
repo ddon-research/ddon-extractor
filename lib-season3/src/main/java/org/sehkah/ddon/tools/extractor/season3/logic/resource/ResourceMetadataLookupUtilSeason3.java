@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -47,5 +48,10 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
         StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
         StageListInfo stage = list.getStageByStageId(stageId);
         return stage.getStageName();
+    }
+
+    @Override
+    public Translation getItemName(long itemId) {
+        throw new TechnicalException("TODO");
     }
 }

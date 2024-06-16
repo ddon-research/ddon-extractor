@@ -100,7 +100,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         );
     }
 
-    private static ItemListItemParam readItemParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    private static ItemListItemParam readItemParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
         long ItemId = bufferReader.readUnsignedInteger();
         long NameId = bufferReader.readUnsignedInteger();
         Translation ItemName = null;
@@ -159,6 +159,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
 
         return new ItemListItemParam(
+                itemIndex,
                 ItemId,
                 NameId, ItemName,
                 Category, CategoryName,
@@ -196,7 +197,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         List<ItemListItemParam> ItemParamList = new ArrayList<>((int) ArrayDataNum);
         for (int i = 0; i < ArrayDataNum; i++) {
-            ItemParamList.add(readItemParam(bufferReader, lookupUtil));
+            ItemParamList.add(readItemParam(bufferReader, lookupUtil, i));
         }
 
         return new ItemList(

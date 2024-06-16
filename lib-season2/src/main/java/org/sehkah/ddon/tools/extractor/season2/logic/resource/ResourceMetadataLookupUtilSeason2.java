@@ -10,6 +10,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItem;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.ItemList;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.ItemListItemParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.StageListInfo;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.StageListInfoList;
 
@@ -21,12 +23,19 @@ public class ResourceMetadataLookupUtilSeason2 extends ResourceMetadataLookupUti
     private final ClientResourceFile<GUIMessage> GUIMessageResourceFile;
     private final ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
     private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+    private final ClientResourceFile<ItemList> ItemListResourceFile;
 
-    public ResourceMetadataLookupUtilSeason2(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile, ClientResourceFile<StageListInfoList> StageListInfoResourceFile) {
+    public ResourceMetadataLookupUtilSeason2(Path clientRootFolder, Path clientTranslationFile,
+                                             ClientResourceFile<GUIMessage> GUIMessageResourceFile,
+                                             ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile,
+                                             ClientResourceFile<StageListInfoList> StageListInfoResourceFile,
+                                             ClientResourceFile<ItemList> ItemListResourceFile
+    ) {
         super(clientRootFolder, clientTranslationFile);
         this.GUIMessageResourceFile = GUIMessageResourceFile;
         this.NpcLedgerListResourceFile = NpcLedgerListResourceFile;
         this.StageListInfoResourceFile = StageListInfoResourceFile;
+        this.ItemListResourceFile = ItemListResourceFile;
     }
 
     @Override
@@ -48,5 +57,15 @@ public class ResourceMetadataLookupUtilSeason2 extends ResourceMetadataLookupUti
         StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
         StageListInfo stage = list.getStageByStageId(stageId);
         return stage.getStageName();
+    }
+
+    @Override
+    public Translation getItemName(long itemId) {
+        if (itemId < 34) {
+            return null;
+        }
+        ItemList list = cache.getResource(ResourceLookupTable.ITEM_LIST.getFilePath(), ItemListResourceFile, this);
+        ItemListItemParam item = list.getItemById(itemId);
+        return item.getItemName();
     }
 }
