@@ -16,7 +16,7 @@ public class SetInfoOmWarp extends SetInfo {
     // TODO: Lookup
     private List<Long> StageNo;
     private List<Long> StartPosNo;
-    private List<Long> QuestNo;
+    private List<Long> QuestId; //QuestNo
     private List<Long> FlagNo;
     // TODO: Lookup
     private List<Long> SpotId;

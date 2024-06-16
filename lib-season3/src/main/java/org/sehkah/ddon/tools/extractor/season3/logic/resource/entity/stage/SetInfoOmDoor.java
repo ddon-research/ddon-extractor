@@ -18,6 +18,7 @@ public class SetInfoOmDoor extends SetInfo {
     private long TextType;
     private long TextQuestNo;
     private long TextNo;
+    // TODO: Lookup
     private long QuestID;
     private long QuestFlag;
     private SetInfoOmOld InfoOm;

@@ -14,12 +14,14 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<FieldAreaList> {
+    private static StageNo readStageNo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        int StageNo = bufferReader.readSignedInteger();
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+        }
 
-
-    private static StageNo readStageNo(BufferReader bufferReader) {
-        return new StageNo(
-                bufferReader.readSignedInteger()
-        );
+        return new StageNo(StageNo, StageName);
     }
 
     private static FieldAreaInfo readFieldAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
@@ -31,8 +33,8 @@ public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<Fi
         }
         int LandId = bufferReader.readUnsignedShort();
         int AreaId = bufferReader.readUnsignedShort();
-        List<StageNo> StageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
-        List<StageNo> BelongStageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
+        List<StageNo> StageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo, lookupUtil);
+        List<StageNo> BelongStageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo, lookupUtil);
 
         return new FieldAreaInfo(FieldAreaId, GmdIdx, FieldAreaName, LandId, AreaId, StageNoList, BelongStageNoList);
     }

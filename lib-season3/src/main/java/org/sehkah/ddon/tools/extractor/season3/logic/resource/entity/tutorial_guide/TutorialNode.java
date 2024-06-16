@@ -22,5 +22,7 @@ public class TutorialNode {
     @MetaInformation
     private Translation CategoryName;
     private long OpenQuestId;
+    @MetaInformation
+    private Translation OpenQuestName;
     private boolean UnknownBoolean;
 }

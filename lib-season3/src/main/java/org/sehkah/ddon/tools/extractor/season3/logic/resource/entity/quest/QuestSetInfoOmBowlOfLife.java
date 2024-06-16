@@ -18,6 +18,7 @@ public class QuestSetInfoOmBowlOfLife extends SetInfo {
     private boolean SetEM;
     private boolean Invisible;
     private boolean IsQuest;
+    // TODO: Lookup
     private long QuestId;
     private int Kind;
     private int Group;

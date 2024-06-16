@@ -52,6 +52,9 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
     public Translation getStageNameByStageNo(int stageNo) {
         StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
         StageListInfo stage = list.getStageByStageNo(stageNo);
+        if (stage == null) {
+            return null;
+        }
         return stage.getStageName();
     }
 
@@ -59,6 +62,9 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
     public Translation getStageNameByStageId(int stageId) {
         StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
         StageListInfo stage = list.getStageByStageId(stageId);
+        if (stage == null) {
+            return null;
+        }
         return stage.getStageName();
     }
 

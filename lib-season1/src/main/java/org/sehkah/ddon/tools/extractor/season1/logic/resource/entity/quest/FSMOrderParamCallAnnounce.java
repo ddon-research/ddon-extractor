@@ -18,6 +18,7 @@ public class FSMOrderParamCallAnnounce extends AICopiableParameter {
     @MetaInformation
     private ParamCallAnnounceType TypeName;
     private long QuestId;
+    // TODO lookup MsgNo -> Serial via questid MSS file
     private long MsgNo;
 
     public FSMOrderParamCallAnnounce(long type, long questId, long msgNo) {

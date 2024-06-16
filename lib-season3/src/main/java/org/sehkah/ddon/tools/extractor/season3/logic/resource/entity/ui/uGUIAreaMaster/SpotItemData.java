@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SpotItemData {
+    // TODO: Lookup
     private long ItemId;
     private boolean IsFeature;
     private boolean IsCannotPawnTake;

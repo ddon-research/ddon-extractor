@@ -12,5 +12,6 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamSetLocationName extends AICopiableParameter {
+    // TODO: Lookup
     private long StageNo;
 }

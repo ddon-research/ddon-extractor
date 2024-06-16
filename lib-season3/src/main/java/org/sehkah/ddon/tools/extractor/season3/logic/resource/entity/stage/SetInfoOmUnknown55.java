@@ -26,6 +26,7 @@ public class SetInfoOmUnknown55 extends SetInfo {
     private long Unknown13;
     private int Unknown14;
     private boolean IsQuest;
+    // TODO: Lookup
     private long QuestId; // set to 0 when IsQuest is false
     private long QuestFlag; // set to 0 when IsQuest is false
     private SetInfoOmOld InfoOm;

@@ -16,6 +16,7 @@ public class FSMOrderParamSetDispUnit extends AICopiableParameter {
     private long Target;
     private long GroupNo;
     private long SetId;
+    // TODO: Lookup
     private long QuestId;
     private boolean IsStopMove;
 }

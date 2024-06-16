@@ -15,5 +15,6 @@ public class FSMOrderParamSetOpenDoor extends AICopiableParameter {
     private long GroupNo;
     private long SetNo;
     private boolean IsQuestSet;
+    // TODO: Lookup
     private long QuestId;
 }

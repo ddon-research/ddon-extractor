@@ -15,5 +15,6 @@ public class NpcIsNoSetPS3 {
     private int StageNo;
     private int GroupNo;
     private int UnitNo;
+    // TODO: Lookup
     private long QuestId;
 }

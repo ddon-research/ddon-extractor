@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamFlagQuest extends AICopiableParameter {
+    // TODO: Lookup
     private long QuestId;//QuestNo
     private long FlagNo;
 }

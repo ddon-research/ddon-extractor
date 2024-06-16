@@ -13,6 +13,7 @@ import lombok.*;
 public class SetInfoOmUnknown30 extends SetInfo {
     private long UnknownStageNo; // TODO Not sure if this is really a stage no
     private long Unknown1;
+    // TODO: Lookup
     private long QuestId;
     private long Unknown2;
     private SetInfoOmOld InfoOm;

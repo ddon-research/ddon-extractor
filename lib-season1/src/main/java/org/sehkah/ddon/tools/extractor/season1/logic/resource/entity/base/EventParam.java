@@ -22,7 +22,9 @@ public class EventParam {
     private int Type;
     @MetaInformation
     private EventParamEventType TypeName;
+    // TODO: Lookup
     private int Stage;
+    // TODO: Lookup
     private int EvNo;
     private int Flag;
     @MetaInformation

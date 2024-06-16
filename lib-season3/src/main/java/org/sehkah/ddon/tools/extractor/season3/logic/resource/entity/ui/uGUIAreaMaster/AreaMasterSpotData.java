@@ -18,6 +18,7 @@ public class AreaMasterSpotData {
     private long MessageId;
     // TODO: Lookup
     private int StageNoMap;
+    // TODO: Lookup
     private long QuestId;
     private float PosX;
     private float PosY;

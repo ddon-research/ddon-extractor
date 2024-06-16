@@ -15,15 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageListDeserializer extends ClientResourceFileDeserializer<StageListInfoList> {
-    private static StageListInfo readStageListInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    private static StageListInfo readStageListInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int stageId) {
         long StageNo = bufferReader.readUnsignedInteger();
         long Type = bufferReader.readUnsignedInteger();
         StageInfoType TypeName = StageInfoType.of(Type);
         int RecommendLevel = bufferReader.readUnsignedByte();
         long MessageId = bufferReader.readUnsignedInteger();
-        long StageId = Long.MIN_VALUE;
+        long StageId = stageId;
         Translation StageName = null;
         if (lookupUtil != null) {
+            // Assumes that stage ID is equal to the number in the key name
             StageId = Long.parseLong(lookupUtil.getMessageTranslationKey(GUIMessageLookupTable.STAGE_LIST.getFilePath(), (int) MessageId).replace("STAGE_NAME_", ""));
             StageName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.STAGE_LIST.getFilePath(), (int) MessageId);
         }
@@ -36,8 +37,8 @@ public class StageListDeserializer extends ClientResourceFileDeserializer<StageL
     protected StageListInfoList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         long stageListInfoSize = bufferReader.readUnsignedInteger();
         List<StageListInfo> stageListInfo = new ArrayList<>((int) stageListInfoSize);
-        for (long i = 0; i < stageListInfoSize; i++) {
-            stageListInfo.add(readStageListInfo(bufferReader, lookupUtil));
+        for (int i = 0; i < stageListInfoSize; i++) {
+            stageListInfo.add(readStageListInfo(bufferReader, lookupUtil, i));
         }
         return new StageListInfoList(
                 stageListInfoSize,

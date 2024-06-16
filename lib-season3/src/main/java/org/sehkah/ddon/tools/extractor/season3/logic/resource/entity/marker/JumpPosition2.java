@@ -14,6 +14,7 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 public class JumpPosition2 {
     private long Unknown1;
     private Vector3f Pos;
+    // TODO: Lookup
     private long QuestId;
     private long FlagId;
     private long Unknown2;

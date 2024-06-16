@@ -16,7 +16,8 @@ public class NpcMeetingPlace {
     private long NpcId;
     @MetaInformation
     private Translation NpcName;
-    // TODO: Lookup
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
     private long StartPosNo;
 }

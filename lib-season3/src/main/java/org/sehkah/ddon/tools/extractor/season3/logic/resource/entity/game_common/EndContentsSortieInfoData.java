@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class EndContentsSortieInfoData {
+    // TODO: Lookup
     private long QuestId;
     private long StageNo1;
     // TODO: Lookup

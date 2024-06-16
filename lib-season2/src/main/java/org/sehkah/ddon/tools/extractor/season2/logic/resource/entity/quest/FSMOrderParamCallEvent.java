@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -14,8 +16,10 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamCallEvent extends AICopiableParameter {
-    // TODO: Lookup
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
+    // TODO: Lookup
     private int EventNo;
     private List<FSMOrderParamCallEventNpcId> NpcArray;
 }

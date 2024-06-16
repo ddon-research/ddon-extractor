@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageCustomArea {
+    // TODO: Lookup
     private byte AreaNo;
     private int FilterNo;
     private int GroupNo;

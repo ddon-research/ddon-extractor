@@ -11,10 +11,9 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIArea
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.ui.uGUIAreaMaster.SpotItemData;
 
 import java.nio.file.Path;
+import java.util.List;
 
 public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDetailDataList> {
-
-
     private static SpotEnemyData readSpotEnemyData(BufferReader bufferReader) {
         return new SpotEnemyData(
                 bufferReader.readUnsignedInteger(),
@@ -37,11 +36,15 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
     }
 
     private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
-        return new AreaMasterSpotDetailData(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData, lookupUtil),
-                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData)
-        );
+        long SpotId = bufferReader.readUnsignedInteger();
+        List<SpotItemData> ItemArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData, lookupUtil);
+        List<SpotEnemyData> EnemyArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData);
+        Translation SpotName = null;
+        if (lookupUtil != null) {
+            SpotName = lookupUtil.getSpotName(SpotId);
+        }
+
+        return new AreaMasterSpotDetailData(SpotId, SpotName, ItemArray, EnemyArray);
     }
 
     @Override

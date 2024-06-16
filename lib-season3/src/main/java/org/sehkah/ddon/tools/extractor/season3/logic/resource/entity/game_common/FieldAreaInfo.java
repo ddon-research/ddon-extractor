@@ -23,8 +23,6 @@ public class FieldAreaInfo {
     private int LandId;
     // TODO: Lookup
     private int AreaId;
-    // TODO: Lookup
     private List<StageNo> StageNoList;
-    // TODO: Lookup
     private List<StageNo> BelongStageNoList;
 }

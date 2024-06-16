@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmEx extends SetInfo {
+    // TODO: Lookup
     private long QuestID;
     private SetInfoOm InfoOm;
 }

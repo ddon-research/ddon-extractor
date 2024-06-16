@@ -12,6 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown46 extends SetInfo {
     private long UnknownStageNo; // TODO Not sure if this is really a stage no
+    // TODO: Lookup
     private long QuestId;
     private long Unknown1;
     private long Unknown2;

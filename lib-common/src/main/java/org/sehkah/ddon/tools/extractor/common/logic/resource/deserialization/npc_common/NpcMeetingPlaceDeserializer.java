@@ -13,14 +13,16 @@ import java.nio.file.Path;
 public class NpcMeetingPlaceDeserializer extends ClientResourceFileDeserializer<NpcMeetingPlaceList> {
     private static NpcMeetingPlace readNpcMeetingPlace(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long NpcId = bufferReader.readUnsignedInteger();
-        Translation NpcName = null;
-        if (lookupUtil != null) {
-            NpcName = lookupUtil.getNpcName(NpcId);
-        }
         int StageNo = bufferReader.readSignedInteger();
         long StartPosNo = bufferReader.readUnsignedInteger();
+        Translation NpcName = null;
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+        }
 
-        return new NpcMeetingPlace(NpcId, NpcName, StageNo, StartPosNo);
+        return new NpcMeetingPlace(NpcId, NpcName, StageNo, StageName, StartPosNo);
     }
 
     @Override

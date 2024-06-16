@@ -16,6 +16,7 @@ import java.util.List;
 public class FSMOrderParamCallEvent extends AICopiableParameter {
     // TODO: Lookup
     private int StageNo;
+    // TODO: Lookup
     private int EventNo;
     private List<FSMOrderParamCallEventNpcId> NpcArray;
 }

@@ -125,11 +125,15 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMBaseParamCallMessage(MsgType, QuestId, MsgNo, MsgDispTime, MsgWaitTime, IsUseSerial, IsHideMessage);
     }
 
-    private static FSMOrderParamFlagQuest readFSMOrderParamFlagQuest(BufferReader bufferReader) {
+    private static FSMOrderParamFlagQuest readFSMOrderParamFlagQuest(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long QuestId = XfsDeserializer.readUnsignedInteger(bufferReader);
         long FlagNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
 
-        return new FSMOrderParamFlagQuest(QuestId, FlagNo);
+        return new FSMOrderParamFlagQuest(QuestId, QuestName, FlagNo);
     }
 
     private static FSMUnitParamSetWait readFSMUnitParamSetWait(BufferReader bufferReader) {
@@ -413,10 +417,14 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMOrderParamBGMRequest(BgmRequestType, BgmRequestNo, BgmRequestEditType, BgmRequestIsChangeFadeTime, BgmRequestFadeTime);
     }
 
-    private static FSMOrderParamSetLocationName readFSMOrderParamSetLocationName(BufferReader bufferReader) {
+    private static FSMOrderParamSetLocationName readFSMOrderParamSetLocationName(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long StageNo = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo((int) StageNo);
+        }
 
-        return new FSMOrderParamSetLocationName(StageNo);
+        return new FSMOrderParamSetLocationName(StageNo, StageName);
     }
 
     private static FSMOrderParamSetCallSe readFSMOrderParamSetCallSe(BufferReader bufferReader) {
@@ -462,15 +470,19 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMUnitParamSetMotionGoto(fsmUnitParamSetMotion, /*IsDisableFall, MotionSeOffBank,*/ TargetPos, StopBorder, IsSetVelocity, VelocityScalar, AccelerationScalar, IsHover, IsPosHokan);
     }
 
-    private static FSMOrderParamSetDispUnit readFSMOrderParamSetDispUnit(BufferReader bufferReader) {
+    private static FSMOrderParamSetDispUnit readFSMOrderParamSetDispUnit(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long Act = XfsDeserializer.readUnsignedInteger(bufferReader);
         long Target = XfsDeserializer.readUnsignedInteger(bufferReader);
         long GroupNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         long SetId = XfsDeserializer.readUnsignedInteger(bufferReader);
         long QuestId = XfsDeserializer.readUnsignedInteger(bufferReader);
         boolean IsStopMove = XfsDeserializer.readBoolean(bufferReader);
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
 
-        return new FSMOrderParamSetDispUnit(Act, Target, GroupNo, SetId, QuestId, IsStopMove);
+        return new FSMOrderParamSetDispUnit(Act, Target, GroupNo, SetId, QuestId, QuestName, IsStopMove);
     }
 
     private static FSMOrderParamSetFade readFSMOrderParamSetFade(BufferReader bufferReader) {
@@ -644,7 +656,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
             case "SetMotionGoto" -> readFSMUnitParamSetMotionGoto(bufferReader);
             case "SetLayout" -> readFSMOrderParamSetLayout(bufferReader);
             case "SetFade" -> readFSMOrderParamSetFade(bufferReader);
-            case "SetDispUnit" -> readFSMOrderParamSetDispUnit(bufferReader);
+            case "SetDispUnit" -> readFSMOrderParamSetDispUnit(bufferReader, lookupUtil);
             case "EventFlagOn", "EventFlagOff" -> readFSMOrderParamFlagCommon(bufferReader);
             case "SetEnemy" -> readFSMOrderParamSetEnemy(bufferReader, lookupUtil);
             case "SetEmDie" -> readFSMUnitParamSetEmDie(bufferReader);
@@ -670,14 +682,14 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
             case "CallFsmEvent" -> readFSMOrderParamCallEvent(bufferReader, lookupUtil);
             case "JumpPos" -> readFSMOrderParamJumpPos(bufferReader);
             case "Camera", "Camera_camev" -> readFSMOrderParamCamera(bufferReader);
-            case "SetLocaName" -> readFSMOrderParamSetLocationName(bufferReader);
+            case "SetLocaName" -> readFSMOrderParamSetLocationName(bufferReader, lookupUtil);
             case "StageBGMRequest", "BGMRequest", "BGMRequest_camev" -> readFSMOrderParamBGMRequest(bufferReader);
             case "BGMStop", "BGMStop_camev" -> readFSMOrderParamBGMStop(bufferReader);
 
             case "SetCallStreamSe", "SetCallSe" -> readFSMOrderParamSetCallSe(bufferReader);
 
             // Season 2 quest
-            case "MainQstFlagOn" -> readFSMOrderParamFlagQuest(bufferReader);
+            case "MainQstFlagOn" -> readFSMOrderParamFlagQuest(bufferReader, lookupUtil);
             case "checkMyQuestFlag" -> readFSMOrderParamIsMyQuestFlag(bufferReader);
             case "SetQuestInfo" -> readFSMOrderParamQuestInfo(bufferReader);
 

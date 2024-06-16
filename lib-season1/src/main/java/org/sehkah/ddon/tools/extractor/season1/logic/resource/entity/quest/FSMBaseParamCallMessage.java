@@ -17,7 +17,9 @@ public class FSMBaseParamCallMessage extends AICopiableParameter {
     private long MsgType;
     @MetaInformation
     private ParamCallMessageType MsgTypeName;
+    // TODO: Lookup
     private long QuestId;//QuestNo
+    // TODO: Lookup
     private long MsgNo;
     private float MsgDispTime;
     private float MsgWaitTime;

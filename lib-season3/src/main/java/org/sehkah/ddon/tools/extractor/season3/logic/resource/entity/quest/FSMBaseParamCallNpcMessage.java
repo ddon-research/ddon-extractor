@@ -14,6 +14,8 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMBaseParamCallNpcMessage extends AICopiableParameter {
     private long Type;
+    // TODO: Lookup
     private long QuestId;
+    // TODO: Lookup
     private long MsgNo;
 }

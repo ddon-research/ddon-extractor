@@ -13,5 +13,6 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamQuestInfo extends AICopiableParameter {
     private long QuestType;
+    // TODO: Lookup
     private long QuestId;
 }

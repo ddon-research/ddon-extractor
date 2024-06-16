@@ -27,6 +27,7 @@ public class StageCustomPartsExInfoEx {
     private String Epv;
     private String Occluder;
 
+    // TODO: Lookup
     private int AreaNo;
     private int Type;
     private long Size;

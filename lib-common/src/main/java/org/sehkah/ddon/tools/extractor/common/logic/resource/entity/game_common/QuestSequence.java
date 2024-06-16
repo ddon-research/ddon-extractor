@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -13,4 +15,6 @@ import lombok.*;
 public class QuestSequence {
     private long SeqNo;
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
 }

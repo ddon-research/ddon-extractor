@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SpotEnemyData {
+    //TODO: Lookup
     private long EnemyGroupId;
     private long EnemyNamedId;
     private int Level;

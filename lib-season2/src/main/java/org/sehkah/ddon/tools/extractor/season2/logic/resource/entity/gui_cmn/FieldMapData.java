@@ -18,12 +18,15 @@ public class FieldMapData {
     private long Type;
     @MetaInformation
     private FieldMapDataType TypeName;
+    // TODO: Lookup
     private int MessId;
     private long ID;
+    // TODO: Lookup
     private int StageNo;
     private Float2f Point;
     private Vector3f WorldPos;
     private boolean DispWideMap;
+    // TODO: Lookup
     private long QuestId;
 
     public FieldMapData(long type, int messId, long ID, int stageNo, Float2f point, Vector3f worldPos, boolean dispWideMap, long questId) {

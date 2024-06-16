@@ -25,7 +25,8 @@ public class CycleQuestInfo {
     private long GatherNpcId;
     @MetaInformation
     private Translation GatherNpcName;
-    // TODO: Lookup
     private long GatherStageNo;
+    @MetaInformation
+    private Translation GatherStageName;
     private long GatherStartPos;
 }

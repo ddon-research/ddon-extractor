@@ -13,6 +13,7 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     requires com.fasterxml.jackson.dataformat.yaml;
 
     requires org.sehkah.ddon.tools.extractor.lib.api;
+    requires java.desktop;
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit;

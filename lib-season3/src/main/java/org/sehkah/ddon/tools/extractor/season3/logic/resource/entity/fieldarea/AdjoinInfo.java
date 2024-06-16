@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -13,10 +15,12 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AdjoinInfo {
-    // TODO: Lookup
     private short DestinationStageNo;
-    // TODO: Lookup
+    @MetaInformation
+    private Translation DestinationStageName;
     private short NextStageNo;
+    @MetaInformation
+    private Translation NextStageName;
     private List<AdjoinInfoVector3> Positions;
     private int Priority;
 }

@@ -30,14 +30,16 @@ public class CycleQuestInfoDeserializer extends ClientResourceFileDeserializer<C
         long GatherInfoIdx = bufferReader.readUnsignedInteger();
         List<CycleQuestSituationInfo> SituationInfo = bufferReader.readArray(CycleQuestInfoDeserializer::readCycleQuestSituationInfo);
         long GatherNpcId = bufferReader.readUnsignedInteger();
-        Translation GatherNpcName = null;
-        if (lookupUtil != null) {
-            GatherNpcName = lookupUtil.getNpcName(GatherNpcId);
-        }
         long GatherStageNo = bufferReader.readUnsignedInteger();
         long GatherStartPos = bufferReader.readUnsignedInteger();
+        Translation GatherNpcName = null;
+        Translation GatherStageName = null;
+        if (lookupUtil != null) {
+            GatherNpcName = lookupUtil.getNpcName(GatherNpcId);
+            GatherStageName = lookupUtil.getStageNameByStageNo((int) GatherStageNo);
+        }
 
-        return new CycleQuestInfo(CycleNo, CycleSubNo, ContentNameIdx, ContentInfoIdx, GatherInfoIdx, SituationInfo, GatherNpcId, GatherNpcName, GatherStageNo, GatherStartPos);
+        return new CycleQuestInfo(CycleNo, CycleSubNo, ContentNameIdx, ContentInfoIdx, GatherInfoIdx, SituationInfo, GatherNpcId, GatherNpcName, GatherStageNo, GatherStageName, GatherStartPos);
     }
 
     @Override

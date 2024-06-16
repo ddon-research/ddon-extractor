@@ -17,6 +17,7 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageInfo extends Resource {
     //TODO: public -> private
+    // TODO: Lookup
     public int StageNo;
     public StageResourcePointer SchedulerModel;
     public StageResourcePointer SchedulerFilter;
@@ -35,6 +36,9 @@ public class StageInfo extends Resource {
     public Vector3f Pos;
     public float Ang;
     public long SceLoadFlag;
+    // TODO:
+    //    @MetaInformation
+//    private StageInfoLoadFlag SceLoadFlagType;
     public long Flag;
     public StageResourcePointer WeatherStageInfo;
     public StageResourcePointer WeatherParamInfoTbl;

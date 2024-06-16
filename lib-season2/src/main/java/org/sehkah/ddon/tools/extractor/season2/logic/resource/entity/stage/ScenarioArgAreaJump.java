@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class ScenarioArgAreaJump extends ScenarioArg {
+    // TODO: Lookup
     private long StageNo;
     private int PosNo;
 }

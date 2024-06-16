@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -13,12 +15,15 @@ import lombok.*;
 public class WarpLocation {
     private long Id;
     private long SortNo;
-    // TODO: Lookup
     private long AreaId;
-    // TODO: Lookup
+    @MetaInformation
+    private Translation AreaName;
     private long SpotId;
-    // TODO: Lookup
+    @MetaInformation
+    private Translation SpotName;
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
     private long PosNo;
     private int MapPosX;
     private int MapPosY;

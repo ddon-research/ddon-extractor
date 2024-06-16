@@ -13,6 +13,7 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AdjoinInfoVector3 {
     private Vector3f Pos;
+    // TODO: Lookup
     private long QuestId;
     private long FlagId;
 }

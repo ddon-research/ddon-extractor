@@ -17,16 +17,18 @@ public class TutorialListDeserializer extends ClientResourceFileDeserializer<Tut
         long SortNo = bufferReader.readUnsignedInteger();
         long TitleGmdIdx = bufferReader.readUnsignedInteger();
         long Category = bufferReader.readUnsignedInteger();
+        long OpenQuestId = bufferReader.readUnsignedInteger();
+        boolean UnknownBoolean = bufferReader.readBoolean();
         Translation TutorialTitleName = null;
         Translation CategoryName = null;
+        Translation OpenQuestName = null;
         if (lookupUtil != null) {
             TutorialTitleName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.TUTORIAL_GUIDE.getFilePath(), (int) TitleGmdIdx);
             CategoryName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.TUTORIAL_GUIDE_CATEGORY.getFilePath(), (int) Category);
+            OpenQuestName = lookupUtil.getQuestName(OpenQuestId);
         }
-        long OpenQuestId = bufferReader.readUnsignedInteger();
-        boolean UnknownBoolean = bufferReader.readBoolean();
 
-        return new TutorialNode(Id, SortNo, TitleGmdIdx, TutorialTitleName, Category, CategoryName, OpenQuestId, UnknownBoolean);
+        return new TutorialNode(Id, SortNo, TitleGmdIdx, TutorialTitleName, Category, CategoryName, OpenQuestId, OpenQuestName, UnknownBoolean);
     }
 
 

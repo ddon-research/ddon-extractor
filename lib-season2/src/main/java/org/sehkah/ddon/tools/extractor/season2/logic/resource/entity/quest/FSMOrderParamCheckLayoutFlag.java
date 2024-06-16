@@ -12,6 +12,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FSMOrderParamCheckLayoutFlag extends AICopiableParameter {
+    // TODO: Lookup
     private long QuestId;
     private long LayoutFlagNo;
 }

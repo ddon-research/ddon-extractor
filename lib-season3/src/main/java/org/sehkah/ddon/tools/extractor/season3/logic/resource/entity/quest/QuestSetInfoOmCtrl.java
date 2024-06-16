@@ -15,8 +15,10 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class QuestSetInfoOmCtrl extends SetInfo {
     private QuestSetInfoOm InfoOm;
+    // TODO: Lookup
     private long KeyItemNo;
     private boolean IsQuest;
+    // TODO: Lookup
     private long QuestId;
     private List<QuestSetInfoOmCtrlLinkParam> LinkParam; // 4
     private int AddGroupNo;

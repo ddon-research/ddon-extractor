@@ -12,6 +12,7 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmOldDoor extends SetInfo {
     private boolean IsQuest;
+    // TODO: Lookup
     private long QuestId;
     private int Kind0;
     private int Group0;

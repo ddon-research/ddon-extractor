@@ -14,6 +14,7 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class DungeonMarkerWarpInfo {
     private short GroupNo;
+    // TODO: Lookup
     private int TargetStageNo;
     private short TargetGroupNo;
     private List<DungeonMarkerWarpInfoIndex> PosIndex;

@@ -7,6 +7,8 @@ import org.sehkah.ddon.tools.extractor.api.deserialization.DDONPrimitiveDataType
 import org.sehkah.ddon.tools.extractor.api.deserialization.DataType;
 import org.sehkah.ddon.tools.extractor.api.deserialization.ResourceHeader;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -19,9 +21,10 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 @ResourceHeader(magicStringSize = DDONPrimitiveDataType.u32, magicNumberSize = DDONPrimitiveDataType.u32)
 public class QuestMarkerInfo extends Resource {
-    // TODO: Lookup
     @DataType(size = DDONPrimitiveDataType.u32)
-    public long StageNo;
+    private long StageNo;
+    @MetaInformation
+    private Translation StageName;
     @ArrayDataType(size = DDONPrimitiveDataType.u32)
-    public List<QuestMarkerInfoInfo> InfoList;
+    private List<QuestMarkerInfoInfo> InfoList;
 }

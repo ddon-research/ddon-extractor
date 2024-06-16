@@ -96,4 +96,26 @@ public abstract class ResourceMetadataLookupUtil {
     public abstract Translation getItemName(long itemId);
 
     public abstract Translation getEnemyName(long enemyId);
+
+    public Translation getQuestName(long questId) {
+        String questIdStr = String.format("q%08d", questId);
+        String gmdFilePath = String.format("quest/%1$s/ui/00_message/quest_info/%1$s_00.gmd", questIdStr);
+        return getMessageTranslation(gmdFilePath, 0);
+    }
+
+    public Translation getJobName(int jobId) {
+        return getMessageTranslation(GUIMessageLookupTable.JOB_NAME.getFilePath(), jobId);
+    }
+
+    public Translation getAreaName(int areaId) {
+        return getMessageTranslation(GUIMessageLookupTable.AREA_LIST.getFilePath(), "AREA_NAME_" + areaId);
+    }
+
+    public Translation getSpotName(long spotId) {
+        return getMessageTranslation(GUIMessageLookupTable.SPOT_NAME.getFilePath(), "SPOT_NAME_" + spotId);
+    }
+
+    public Translation getLandName(int landId) {
+        return getMessageTranslation(GUIMessageLookupTable.LAND_NAME.getFilePath(), landId - 1);
+    }
 }

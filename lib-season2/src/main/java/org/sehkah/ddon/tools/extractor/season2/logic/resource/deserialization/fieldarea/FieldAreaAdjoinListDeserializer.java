@@ -22,13 +22,20 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
         );
     }
 
-    private static AdjoinInfo readAdjoinInfo(BufferReader bufferReader) {
-        return new AdjoinInfo(
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfoVector3),
-                bufferReader.readUnsignedByte()
-        );
+    private static AdjoinInfo readAdjoinInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        short DestinationStageNo = bufferReader.readSignedShort();
+        short NextStageNo = bufferReader.readSignedShort();
+        List<AdjoinInfoVector3> Positions = bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfoVector3);
+        int Priority = bufferReader.readUnsignedByte();
+
+        Translation DestinationStageName = null;
+        Translation NextStageName = null;
+        if (lookupUtil != null) {
+            DestinationStageName = lookupUtil.getStageNameByStageNo(DestinationStageNo);
+            NextStageName = lookupUtil.getStageNameByStageNo(NextStageNo);
+        }
+
+        return new AdjoinInfo(DestinationStageNo, DestinationStageName, NextStageNo, NextStageName, Positions, Priority);
     }
 
     @Override
@@ -38,7 +45,7 @@ public class FieldAreaAdjoinListDeserializer extends ClientResourceFileDeseriali
         if (lookupUtil != null) {
             FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) (FieldAreaId - 1L));
         }
-        List<AdjoinInfo> Array = bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo);
+        List<AdjoinInfo> Array = bufferReader.readArray(FieldAreaAdjoinListDeserializer::readAdjoinInfo, lookupUtil);
 
         return new FieldAreaAdjoinList(FieldAreaId, FieldAreaName, Array);
     }

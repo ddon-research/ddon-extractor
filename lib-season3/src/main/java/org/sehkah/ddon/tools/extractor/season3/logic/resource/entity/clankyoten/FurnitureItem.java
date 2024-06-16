@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class FurnitureItem {
+    // TODO: Lookup
     private long ItemId;
     private long LayoutId;
     private long OmId;

@@ -16,12 +16,12 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<
         if (fileHeader.versionNumber() == 3) {
             return new org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker.season2.StageAdjoinList(
                     bufferReader.readSignedInteger(),
-                    bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season2.StageAdjoinListDeserializer::readAdjoinInfo)
+                    bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season2.StageAdjoinListDeserializer::readAdjoinInfo, lookupUtil)
             );
         } else if (fileHeader.versionNumber() == 4) {
             return new StageAdjoinList(
                     bufferReader.readUnsignedShort(),
-                    bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season3.StageAdjoinListDeserializer::readAdjoinInfo),
+                    bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season3.StageAdjoinListDeserializer::readAdjoinInfo, lookupUtil),
                     bufferReader.readArray(org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.marker.season3.StageAdjoinListDeserializer::readJumpPosition)
             );
         } else {
