@@ -18,8 +18,6 @@ import java.util.List;
 import java.util.Set;
 
 public class EventParamDeserializer extends ClientResourceFileDeserializer<EventParamList> {
-
-
     private static OmList readOmList(BufferReader bufferReader) {
         return new OmList(
                 bufferReader.readUnsignedInteger(),

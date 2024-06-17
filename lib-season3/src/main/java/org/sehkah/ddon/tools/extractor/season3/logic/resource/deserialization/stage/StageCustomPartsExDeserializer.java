@@ -6,6 +6,7 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
@@ -189,7 +190,7 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         );
     }
 
-    private static StageCustomPartsExInfoEx readStageCustomPartsExInfoEx(BufferReader bufferReader) {
+    private static StageCustomPartsExInfoEx readStageCustomPartsExInfoEx(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         String Model = bufferReader.readNullTerminatedString();
         String ScrSbc1 = bufferReader.readNullTerminatedString();
         String EffSbc1 = bufferReader.readNullTerminatedString();
@@ -229,11 +230,17 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
             AreaParamList.add(stageCustomPartsExAreaParam);
         }
 
-        StageCustomPartsExInfoEx stageCustomPartsExInfoEx = new StageCustomPartsExInfoEx(
-                Model, ScrSbc1, EffSbc1, ScrSbc2, EffSbc2, ScrSbc3, EffSbc3, Light, NaviMesh, Epv, Occluder, AreaNo, Type, Size, OffsetZ, EpvIndexAlways, EpvIndexDay, EpvIndexNight, Color, EfcColorZone, EfcCtrlZone,
-                IndoorZoneScr, IndoorZoneEfc, LightAndFogZone, SoundAreaInfo, ZoneUnitCtrl, ZoneStatus, Comment, AreaParamList
+        Translation AreaName = null;
+        if (lookupUtil != null) {
+            AreaName = lookupUtil.getAreaName(AreaNo);
+        }
+
+        return new StageCustomPartsExInfoEx(
+                Model, ScrSbc1, EffSbc1, ScrSbc2, EffSbc2, ScrSbc3, EffSbc3, Light, NaviMesh, Epv, Occluder, AreaNo,
+                AreaName, Type, Size, OffsetZ, EpvIndexAlways, EpvIndexDay, EpvIndexNight, Color, EfcColorZone,
+                EfcCtrlZone, IndoorZoneScr, IndoorZoneEfc, LightAndFogZone, SoundAreaInfo, ZoneUnitCtrl, ZoneStatus,
+                Comment, AddVersion, AreaParamList
         );
-        return stageCustomPartsExInfoEx;
     }
 
     private static StageCustomPartsParam readStageCustomPartsParam(BufferReader bufferReader) {
@@ -250,7 +257,7 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         List<StageCustomPartsExInfoEx> ArrayInfo = new ArrayList<>();
         long num = bufferReader.readUnsignedInteger();
         for (long i = 0; i < num; i++) {
-            StageCustomPartsExInfoEx stageCustomPartsExInfoEx = readStageCustomPartsExInfoEx(bufferReader);
+            StageCustomPartsExInfoEx stageCustomPartsExInfoEx = readStageCustomPartsExInfoEx(bufferReader, lookupUtil);
             ArrayInfo.add(stageCustomPartsExInfoEx);
         }
         List<StageCustomPartsFilter> ArrayFilter = bufferReader.readArray(StageCustomPartsExDeserializer::readStageCustomPartsFilter);

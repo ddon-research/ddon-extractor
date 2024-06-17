@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Color;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -26,8 +28,9 @@ public class StageCustomPartsExInfoEx {
     private String NaviMesh;
     private String Epv;
     private String Occluder;
-    // TODO: Lookup
     private int AreaNo;
+    @MetaInformation
+    private Translation AreaName;
     private int Type;
     private long Size;
     private float OffsetZ;
@@ -46,8 +49,4 @@ public class StageCustomPartsExInfoEx {
     private String Comment;
     private long AddVersion;
     private List<StageCustomPartsExAreaParam> AreaParamList;
-
-    public StageCustomPartsExInfoEx(String model, String scrSbc1, String effSbc1, String scrSbc2, String effSbc2, String scrSbc3, String effSbc3, String light, String naviMesh, String epv, String occluder, int areaNo, int type, long size, float offsetZ, int epvIndexAlways, int epvIndexDay, int epvIndexNight, org.sehkah.ddon.tools.extractor.api.datatype.Color color, BigInteger efcColorZone, BigInteger efcCtrlZone, BigInteger indoorZoneScr, BigInteger indoorZoneEfc, BigInteger lightAndFogZone, BigInteger soundAreaInfo, List<BigInteger> zoneUnitCtrl, BigInteger zoneStatus, String comment, List<StageCustomPartsExAreaParam> areaParamList) {
-        this(model, scrSbc1, effSbc1, scrSbc2, effSbc2, scrSbc3, effSbc3, light, naviMesh, epv, occluder, areaNo, type, size, offsetZ, epvIndexAlways, epvIndexDay, epvIndexNight, color, efcColorZone, efcCtrlZone, indoorZoneScr, indoorZoneEfc, lightAndFogZone, soundAreaInfo, zoneUnitCtrl, zoneStatus, comment, areaParamList.size(), areaParamList);
-    }
 }

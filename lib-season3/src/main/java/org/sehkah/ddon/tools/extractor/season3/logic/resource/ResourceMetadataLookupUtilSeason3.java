@@ -70,7 +70,8 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
 
     @Override
     public Translation getItemName(long itemId) {
-        throw new TechnicalException("TODO");
+        //TODO: implement item name lookup
+        return null;
     }
 
     @Override

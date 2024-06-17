@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -13,11 +15,13 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmCtrl extends SetInfo {
-    // TODO: Lookup
     private long KeyItemNo;
+    @MetaInformation
+    private Translation KeyItemName;
     private boolean IsQuest;
-    // TODO: Lookup
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private List<SetInfoOmCtrlLinkParam> LinkParam; // 4
     private int AddGroupNo;
     private int AddSubGroupNo;

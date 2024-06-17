@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.npc_common
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -11,10 +13,12 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class NpcIsUseJobParamEx {
-    // TODO: Lookup
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
     private int GroupNo;
     private int UnitNo;
-    // TODO: Lookup
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
 }

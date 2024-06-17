@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAre
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -11,8 +13,9 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SpotItemData {
-    // TODO: Lookup
     private long ItemId;
+    @MetaInformation
+    private Translation ItemName;
     private boolean IsFeature;
     private boolean IsCannotPawnTake;
     private int UnknownByte1;

@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -26,8 +28,9 @@ public class SetInfoOmUnknown55 extends SetInfo {
     private long Unknown13;
     private int Unknown14;
     private boolean IsQuest;
-    // TODO: Lookup
     private long QuestId; // set to 0 when IsQuest is false
+    @MetaInformation
+    private Translation QuestName;
     private long QuestFlag; // set to 0 when IsQuest is false
     private SetInfoOmOld InfoOm;
 }

@@ -16,7 +16,7 @@ public class FSMBaseParamCallMessageFortDefCommon extends FSMBaseParamCallMessag
     private int GotoPointNo;
 
     public FSMBaseParamCallMessageFortDefCommon(FSMBaseParamCallMessage callMessage, long type, int gotoPointNo) {
-        super(callMessage.getMsgType(), callMessage.getQuestId(), callMessage.getMsgNo(), callMessage.getMsgDispTime(), callMessage.getMsgWaitTime(), callMessage.isIsUseSerial(), callMessage.isIsHideMessage());
+        super(callMessage.getMsgType(), callMessage.getMsgTypeName(), callMessage.getQuestId(), callMessage.getQuestName(), callMessage.getMsgNo(), callMessage.getMsgDispTime(), callMessage.getMsgWaitTime(), callMessage.isIsUseSerial(), callMessage.isIsHideMessage());
         Type = type;
         GotoPointNo = gotoPointNo;
     }

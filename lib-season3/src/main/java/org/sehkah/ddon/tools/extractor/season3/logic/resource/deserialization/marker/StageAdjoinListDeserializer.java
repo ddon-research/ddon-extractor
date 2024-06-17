@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.marker;
 
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -14,12 +15,17 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<StageAdjoinList> {
-    private static JumpPosition readJumpPosition(BufferReader bufferReader) {
-        return new JumpPosition(
-                bufferReader.readVector3f(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger()
-        );
+    private static JumpPosition readJumpPosition(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        Vector3f Pos = bufferReader.readVector3f();
+        long QuestId = bufferReader.readUnsignedInteger();
+        long FlagId = bufferReader.readUnsignedInteger();
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new JumpPosition(Pos, QuestId, QuestName, FlagId);
     }
 
     private static AdjoinInfoIndex readAdjoinInfoIndex(BufferReader bufferReader) {
@@ -46,10 +52,15 @@ public class StageAdjoinListDeserializer extends ClientResourceFileDeserializer<
 
     @Override
     protected StageAdjoinList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new StageAdjoinList(
-                bufferReader.readUnsignedShort(),
-                bufferReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo, lookupUtil),
-                bufferReader.readArray(StageAdjoinListDeserializer::readJumpPosition)
-        );
+        int StageNo = bufferReader.readUnsignedShort();
+        List<AdjoinInfo> AdjoinInfoArray = bufferReader.readArray(StageAdjoinListDeserializer::readAdjoinInfo, lookupUtil);
+        List<JumpPosition> JumpPositionArray = bufferReader.readArray(StageAdjoinListDeserializer::readJumpPosition, lookupUtil);
+
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+        }
+
+        return new StageAdjoinList(StageNo, StageName, AdjoinInfoArray, JumpPositionArray);
     }
 }

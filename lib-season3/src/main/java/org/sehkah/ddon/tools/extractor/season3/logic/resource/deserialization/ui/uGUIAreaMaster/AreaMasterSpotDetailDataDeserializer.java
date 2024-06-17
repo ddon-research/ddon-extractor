@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.u
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDetailData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.AreaMasterSpotDetailDataList;
@@ -10,6 +11,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIArea
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster.SpotItemData;
 
 import java.nio.file.Path;
+import java.util.List;
 
 public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDetailDataList> {
 
@@ -24,26 +26,36 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
         );
     }
 
-    private static SpotItemData readSpotItemData(BufferReader bufferReader) {
-        return new SpotItemData(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedByte(),
-                bufferReader.readUnsignedByte()
-        );
+    private static SpotItemData readSpotItemData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long ItemId = bufferReader.readUnsignedInteger();
+        boolean IsFeature = bufferReader.readBoolean();
+        boolean IsCannotPawnTake = bufferReader.readBoolean();
+        int UnknownByte1 = bufferReader.readUnsignedByte();
+        int UnknownByte2 = bufferReader.readUnsignedByte();
+
+        Translation ItemName = null;
+        if (lookupUtil != null) {
+            ItemName = lookupUtil.getItemName(ItemId);
+        }
+
+        return new SpotItemData(ItemId, ItemName, IsCannotPawnTake, IsFeature, UnknownByte1, UnknownByte2);
     }
 
-    private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader) {
-        return new AreaMasterSpotDetailData(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData),
-                bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData)
-        );
+    private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long SpotId = bufferReader.readUnsignedInteger();
+        List<SpotItemData> ItemArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData, lookupUtil);
+        List<SpotEnemyData> EnemyArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData);
+
+        Translation SpotName = null;
+        if (lookupUtil != null) {
+            SpotName = lookupUtil.getSpotName(SpotId);
+        }
+
+        return new AreaMasterSpotDetailData(SpotId, SpotName, ItemArray, EnemyArray);
     }
 
     @Override
     protected AreaMasterSpotDetailDataList parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new AreaMasterSpotDetailDataList(bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData));
+        return new AreaMasterSpotDetailDataList(bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readAreaMasterSpotDetailData, lookupUtil));
     }
 }
