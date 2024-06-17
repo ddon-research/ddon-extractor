@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.npc;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -12,10 +14,12 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SituationData {
     private long GroupSerial;
-    // TODO: Lookup
     private long StartQuestId;
+    @MetaInformation
+    private Translation StartQuestName;
     private boolean IsStartQuestIdStart;
-    // TODO: Lookup
     private long EndQuestId;
+    @MetaInformation
+    private Translation EndQuestName;
     private boolean IsEndQuestIdStart;
 }

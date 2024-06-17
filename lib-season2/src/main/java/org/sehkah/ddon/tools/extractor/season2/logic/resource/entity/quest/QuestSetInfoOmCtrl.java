@@ -21,8 +21,9 @@ public class QuestSetInfoOmCtrl extends SetInfo {
     @MetaInformation
     private Translation KeyItemName;
     private boolean IsQuest;
-    // TODO: Lookup
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private List<QuestSetInfoOmCtrlLinkParam> LinkParam; // 4
     private int AddGroupNo;
     private int AddSubGroupNo;

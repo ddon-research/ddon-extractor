@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker.sea
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker.JumpPosition;
 
 import java.util.List;
@@ -15,8 +17,9 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageAdjoinList extends Resource {
-    // TODO: Lookup
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
     private List<AdjoinInfo> AdjoinInfoArray;
     private List<JumpPosition> JumpPositionArray;
 }

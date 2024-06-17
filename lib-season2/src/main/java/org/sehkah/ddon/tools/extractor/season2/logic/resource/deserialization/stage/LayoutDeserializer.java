@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.stage;
 
 import lombok.extern.slf4j.Slf4j;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -124,10 +125,6 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
     private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long KeyItemId = bufferReader.readUnsignedInteger();
-        Translation KeyItemName = null;
-        if (lookupUtil != null) {
-            KeyItemName = lookupUtil.getItemName(KeyItemId);
-        }
         boolean IsQuest = bufferReader.readBoolean();
         long QuestId = bufferReader.readUnsignedInteger();
         List<SetInfoOmCtrlLinkParam> LinkParam = bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam);
@@ -135,7 +132,14 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         int AddSubGroupNo = bufferReader.readSignedInteger();
         SetInfoOm InfoOm = readSetInfoOm(bufferReader);
 
-        return new SetInfoOmCtrl(KeyItemId, KeyItemName, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo, InfoOm);
+        Translation KeyItemName = null;
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            KeyItemName = lookupUtil.getItemName(KeyItemId);
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new SetInfoOmCtrl(KeyItemId, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, AddGroupNo, AddSubGroupNo, InfoOm);
     }
 
     private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {
@@ -221,33 +225,43 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmDoor readSetInfoOmDoor(BufferReader bufferReader) {
-        return new SetInfoOmDoor(
-                bufferReader.readBoolean(),
-                bufferReader.readVector3f(),
-                bufferReader.readFloat(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmDoor readSetInfoOmDoor(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        boolean PRT = bufferReader.readBoolean();
+        Vector3f PRTPos = bufferReader.readVector3f();
+        float PRTScale = bufferReader.readFloat();
+        long TextType = bufferReader.readUnsignedInteger();
+        long TextQuestNo = bufferReader.readUnsignedInteger();
+        long TextNo = bufferReader.readUnsignedInteger();
+        long QuestID = bufferReader.readUnsignedInteger();
+        long QuestFlag = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestID);
+        }
+
+        return new SetInfoOmDoor(PRT, PRTPos, PRTScale, TextType, TextQuestNo, TextNo, QuestID, QuestName, QuestFlag, InfoOm);
     }
 
-    private static SetInfoOmBowlOfLife readSetInfoOmBowlOfLife(BufferReader bufferReader) {
-        return new SetInfoOmBowlOfLife(
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmBowlOfLife readSetInfoOmBowlOfLife(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        boolean WaitBowlOfLife = bufferReader.readBoolean();
+        boolean FullBowlOfLife = bufferReader.readBoolean();
+        boolean SetEM = bufferReader.readBoolean();
+        boolean Invisible = bufferReader.readBoolean();
+        boolean IsQuest = bufferReader.readBoolean();
+        long QuestId = bufferReader.readUnsignedInteger();
+        int Kind = bufferReader.readSignedShort();
+        int Group = bufferReader.readSignedShort();
+        int ID = bufferReader.readSignedShort();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new SetInfoOmBowlOfLife(WaitBowlOfLife, FullBowlOfLife, SetEM, Invisible, IsQuest, QuestId, QuestName, Kind, Group, ID, InfoOm);
     }
 
     private static SetInfoOmNav readSetInfoOmNav(BufferReader bufferReader) {
@@ -274,41 +288,56 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmBlock readSetInfoOmBlock(BufferReader bufferReader) {
-        return new SetInfoOmBlock(
-                bufferReader.readUnsignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmBlock readSetInfoOmBlock(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long QuestID = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestID);
+        }
+
+        return new SetInfoOmBlock(QuestID, QuestName, InfoOm);
     }
 
-    private static SetInfoOmEx readSetInfoOmEx(BufferReader bufferReader) {
-        return new SetInfoOmEx(
-                bufferReader.readUnsignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmEx readSetInfoOmEx(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long QuestID = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestID);
+        }
+
+        return new SetInfoOmEx(QuestID, QuestName, InfoOm);
     }
 
-    private static SetInfoOmOldDoor readSetInfoOmOldDoor(BufferReader bufferReader) {
-        return new SetInfoOmOldDoor(
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                bufferReader.readSignedShort(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmOldDoor readSetInfoOmOldDoor(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        boolean IsQuest = bufferReader.readBoolean();
+        long QuestId = bufferReader.readUnsignedInteger();
+        int Kind0 = bufferReader.readSignedShort();
+        int Group0 = bufferReader.readSignedShort();
+        int ID0 = bufferReader.readSignedShort();
+        int Kind1 = bufferReader.readSignedShort();
+        int Group1 = bufferReader.readSignedShort();
+        int ID1 = bufferReader.readSignedShort();
+        int Kind2 = bufferReader.readSignedShort();
+        int Group2 = bufferReader.readSignedShort();
+        int ID2 = bufferReader.readSignedShort();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new SetInfoOmOldDoor(IsQuest, QuestId, QuestName, Kind0, Group0, ID0, Kind1, Group1, ID1, Kind2, Group2, ID2, InfoOm);
     }
 
-    private static SetInfoOmOneWay readSetInfoOmOneWay(BufferReader bufferReader) {
+    private static SetInfoOmOneWay readSetInfoOmOneWay(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         return new SetInfoOmOneWay(
                 bufferReader.readFixedLengthArray(4, BufferReader::readVector3f),
-                readSetInfoOmEx(bufferReader)
+                readSetInfoOmEx(bufferReader, lookupUtil)
         );
     }
 
@@ -342,15 +371,15 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmText -> Info = readSetInfoOmText(bufferReader);
             case LayoutSetInfoType.SetInfoOmWall -> Info = readSetInfoOmWall(bufferReader);
             case LayoutSetInfoType.SetInfoOmHakuryuu -> Info = readSetInfoOmHakuryuu(bufferReader);
-            case LayoutSetInfoType.SetInfoOmDoor -> Info = readSetInfoOmDoor(bufferReader);
-            case LayoutSetInfoType.SetInfoOmBowlOfLife -> Info = readSetInfoOmBowlOfLife(bufferReader);
+            case LayoutSetInfoType.SetInfoOmDoor -> Info = readSetInfoOmDoor(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmBowlOfLife -> Info = readSetInfoOmBowlOfLife(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmNav -> Info = readSetInfoOmNav(bufferReader);
             case LayoutSetInfoType.SetInfoOmHeal -> Info = readSetInfoOmHeal(bufferReader);
             case LayoutSetInfoType.SetInfoOmBadStatus -> Info = readSetInfoOmBadStatus(bufferReader);
-            case LayoutSetInfoType.SetInfoOmBlock -> Info = readSetInfoOmBlock(bufferReader);
-            case LayoutSetInfoType.SetInfoOmEx -> Info = readSetInfoOmEx(bufferReader);
-            case LayoutSetInfoType.SetInfoOmOldDoor -> Info = readSetInfoOmOldDoor(bufferReader);
-            case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(bufferReader);
+            case LayoutSetInfoType.SetInfoOmBlock -> Info = readSetInfoOmBlock(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmEx -> Info = readSetInfoOmEx(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmOldDoor -> Info = readSetInfoOmOldDoor(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(bufferReader);
             default -> log.error("Unhandled layout type: {}", Type);
         }

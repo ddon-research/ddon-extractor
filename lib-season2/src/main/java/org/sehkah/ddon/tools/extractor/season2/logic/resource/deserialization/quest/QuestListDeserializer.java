@@ -114,7 +114,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new QuestSetInfoOmWarp(InfoOm, StageNo, StartPosNo, QuestNo, FlagNo, SpotId, TextType, TextQuestNo, TextNo);
     }
 
-    private static QuestSetInfoOmDoor readQuestSetInfoOmDoor(BufferReader bufferReader) {
+    private static QuestSetInfoOmDoor readQuestSetInfoOmDoor(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
         boolean PRT = XfsDeserializer.readBoolean(bufferReader);
         Vector3f PRTPos = XfsDeserializer.readVector3f(bufferReader);
@@ -125,10 +125,15 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         long QuestID = XfsDeserializer.readUnsignedInteger(bufferReader);
         long QuestFlag = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        return new QuestSetInfoOmDoor(InfoOm, PRT, PRTPos, PRTScale, TextType, TextQuestNo, TextNo, QuestID, QuestFlag);
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestID);
+        }
+
+        return new QuestSetInfoOmDoor(InfoOm, PRT, PRTPos, PRTScale, TextType, TextQuestNo, TextNo, QuestID, QuestName, QuestFlag);
     }
 
-    private static QuestSetInfoOmBowlOfLife readQuestSetInfoOmBowlOfLife(BufferReader bufferReader) {
+    private static QuestSetInfoOmBowlOfLife readQuestSetInfoOmBowlOfLife(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
         boolean WaitBowlOfLife = XfsDeserializer.readBoolean(bufferReader);
         boolean FullBowlOfLife = XfsDeserializer.readBoolean(bufferReader);
@@ -140,7 +145,12 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         int Group = XfsDeserializer.readUnsignedShort(bufferReader);
         int ID = XfsDeserializer.readUnsignedShort(bufferReader);
 
-        return new QuestSetInfoOmBowlOfLife(InfoOm, WaitBowlOfLife, FullBowlOfLife, SetEM, Invisible, IsQuest, QuestId, Kind, Group, ID);
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new QuestSetInfoOmBowlOfLife(InfoOm, WaitBowlOfLife, FullBowlOfLife, SetEM, Invisible, IsQuest, QuestId, QuestName, Kind, Group, ID);
     }
 
     private static QuestSetInfoOmText readQuestSetInfoOmText(BufferReader bufferReader) {
@@ -231,17 +241,20 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
 
         long KeyItemId = XfsDeserializer.readUnsignedInteger(bufferReader);
-        Translation KeyItemName = null;
-        if (lookupUtil != null) {
-            KeyItemName = lookupUtil.getItemName(KeyItemId);
-        }
         boolean IsQuest = XfsDeserializer.readBoolean(bufferReader);
         long QuestId = XfsDeserializer.readUnsignedInteger(bufferReader);
         List<QuestSetInfoOmCtrlLinkParam> LinkParam = bufferReader.readArray(QuestListDeserializer::readQuestSetInfoOmCtrlLinkParam);
         int AddGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
         int AddSubGroupNo = XfsDeserializer.readSignedInteger(bufferReader);
 
-        return new QuestSetInfoOmCtrl(InfoOm, KeyItemId, KeyItemName, IsQuest, QuestId, LinkParam, AddGroupNo, AddSubGroupNo);
+        Translation KeyItemName = null;
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            KeyItemName = lookupUtil.getItemName(KeyItemId);
+            QuestName = lookupUtil.getQuestName(QuestId);
+        }
+
+        return new QuestSetInfoOmCtrl(InfoOm, KeyItemId, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, AddGroupNo, AddSubGroupNo);
     }
 
     private static QuestSetInfoOmLever readQuestSetInfoOmLever(BufferReader bufferReader) {
@@ -272,8 +285,8 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
             case U_OM -> switch (classHeaderIndexMap.get(setInfoObjectData.getClassIndex()).getResourceName()) {
                 case "cSetInfoOmWall" -> readQuestSetInfoOmWall(bufferReader);
                 case "cSetInfoOmWarp" -> readQuestSetInfoOmWarp(bufferReader);
-                case "cSetInfoOmDoor" -> readQuestSetInfoOmDoor(bufferReader);
-                case "cSetInfoOmBowlOfLife" -> readQuestSetInfoOmBowlOfLife(bufferReader);
+                case "cSetInfoOmDoor" -> readQuestSetInfoOmDoor(bufferReader, lookupUtil);
+                case "cSetInfoOmBowlOfLife" -> readQuestSetInfoOmBowlOfLife(bufferReader, lookupUtil);
                 case "cSetInfoOmText" -> readQuestSetInfoOmText(bufferReader);
                 case "cSetInfoOmBadStatus" -> readQuestSetInfoOmBadStatus(bufferReader);
                 case "cSetInfoOmBreakTarget" -> readQuestSetInfoOmBreakTarget(bufferReader);
@@ -321,7 +334,12 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         int StageNo = XfsDeserializer.readSignedInteger(bufferReader);
         List<QuestGroup> QuestGrp = XfsDeserializer.readMtArray(bufferReader, br -> readQuestGroup(br, lookupUtil, xfsHeader));
 
-        return new QuestStage(StageNo, QuestGrp);
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+        }
+
+        return new QuestStage(StageNo, StageName, QuestGrp);
     }
 
     @Override

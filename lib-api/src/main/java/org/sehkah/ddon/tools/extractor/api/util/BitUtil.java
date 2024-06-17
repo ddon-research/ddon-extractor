@@ -32,7 +32,7 @@ public class BitUtil {
         if (bitSetList.stream().allMatch(l -> l == 0)) {
             return Set.of(longToEnumMapper.apply(0));
         }
-        Set<T> types = HashSet.newHashSet(8);
+        Set<T> types = LinkedHashSet.newLinkedHashSet(8);
         for (long l : bitSetList) {
             BitSet bitSet = BitSet.valueOf(new long[]{l});
             for (int i = 0; i < bitSetBitsLength; i++) {

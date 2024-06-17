@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.marker;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -13,7 +15,8 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class JumpPosition {
     private Vector3f Pos;
-    // TODO: Lookup
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private long FlagId;
 }

@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.binary.XfsDeserializer;
@@ -153,7 +154,12 @@ public class ScenarioDeserializer extends ClientResourceFileDeserializer<Scenari
         long StageNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         int PosNo = XfsDeserializer.readSignedInteger(bufferReader);
 
-        return new ScenarioArgAreaJump(StageNo, PosNo);
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo((int) StageNo);
+        }
+
+        return new ScenarioArgAreaJump(StageNo, StageName, PosNo);
     }
 
     private static FSMRelate readFSMRelate(BufferReader bufferReader) {
