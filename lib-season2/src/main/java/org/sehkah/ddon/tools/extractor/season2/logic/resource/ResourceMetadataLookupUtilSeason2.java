@@ -22,9 +22,9 @@ import java.nio.file.Path;
 @Setter
 public class ResourceMetadataLookupUtilSeason2 extends ResourceMetadataLookupUtil {
     private final ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
+    private final ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
     private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
     private final ClientResourceFile<ItemList> ItemListResourceFile;
-    ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
 
     public ResourceMetadataLookupUtilSeason2(Path clientRootFolder, Path clientTranslationFile,
                                              ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile,

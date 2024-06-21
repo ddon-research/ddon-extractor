@@ -17,6 +17,7 @@ public enum GUIMessageLookupTable {
     FURNITURE_GROUP_NAME("MyRoom/ui/00_message/common/", "furniture_group_name.gmd"),
     FURNITURE_LAYOUT_NAME("MyRoom/ui/00_message/common/", "furniture_layout_name.gmd"),
     ITEM_NAME("ui/gui_cmn/ui/00_message/common/", "item_name.gmd"),
+    ITEM_INFO("ui/item_info/ui/00_message/common/", "item_info.gmd"),
     LAND_NAME("ui/gui_cmn/ui/00_message/common/", "land_name.gmd"),
     NAMED_PARAM("ui/gui_cmn/ui/00_message/named/", "named_param.gmd"),
     NPC_CLASS_NAME("npc/npc_common/ui/00_message/npc/", "npc_class_name.gmd"),

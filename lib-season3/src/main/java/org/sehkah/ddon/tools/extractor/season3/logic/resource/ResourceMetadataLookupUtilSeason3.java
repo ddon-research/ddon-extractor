@@ -2,7 +2,6 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource;
 
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -11,8 +10,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerListItem;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfo;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfoList;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.*;
 
 import java.nio.file.Path;
 
@@ -22,17 +20,20 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
     private final ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
     private final ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
     private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+    private final ClientResourceFile<ItemList> ItemListResourceFile;
 
     public ResourceMetadataLookupUtilSeason3(Path clientRootFolder, Path clientTranslationFile,
                                              ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile,
                                              ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile,
-                                             ClientResourceFile<StageListInfoList> StageListInfoResourceFile
+                                             ClientResourceFile<StageListInfoList> StageListInfoResourceFile,
+                                             ClientResourceFile<ItemList> ItemListResourceFile
     ) {
         super(clientRootFolder, clientTranslationFile);
         this.NpcLedgerListResourceFile = NpcLedgerListResourceFile;
         this.EnemyGroupListResourceFile = EnemyGroupListResourceFile;
 
         this.StageListInfoResourceFile = StageListInfoResourceFile;
+        this.ItemListResourceFile = ItemListResourceFile;
     }
 
     @Override
@@ -70,7 +71,37 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
 
     @Override
     public Translation getItemName(long itemId) {
-        //TODO: implement item name lookup
+        if (itemId < 1) {
+            return null;
+        }
+        ItemList list = cache.getResource(ResourceLookupTable.ITEM_LIST.getFilePath(), ItemListResourceFile, this);
+        ItemListItemParam item = list.getItemById(itemId);
+
+        // TODO: pull item name into super class once it is known how to get item names for armor/weapons
+        if (item instanceof ConsumableItem consumableItem) {
+            return consumableItem.getItemName();
+        } else if (item instanceof MaterialItem materialItem) {
+            return materialItem.getItemName();
+        } else if (item instanceof KeyItem keyItem) {
+            return keyItem.getItemName();
+        } else if (item instanceof JobItem jobItem) {
+            return jobItem.getItemName();
+        } else if (item instanceof SpecialItem specialItem) {
+            return specialItem.getItemName();
+        } else if (item instanceof WeaponItem weaponItem) {
+            return null;
+        } else if (item instanceof WeaponUpgradeItem weaponUpgradeItem) {
+            return weaponUpgradeItem.getItemName();
+        } else if (item instanceof ArmorItem armorItem) {
+            return null;
+        } else if (item instanceof ArmorUpgradeItem armorUpgradeItem) {
+            return armorUpgradeItem.getItemName();
+        } else if (item instanceof JewelryItem jewelryItem) {
+            return jewelryItem.getItemName();
+        } else if (item instanceof NpcEquipmentItem npcEquipmentItem) {
+            return npcEquipmentItem.getItemName();
+        }
+
         return null;
     }
 

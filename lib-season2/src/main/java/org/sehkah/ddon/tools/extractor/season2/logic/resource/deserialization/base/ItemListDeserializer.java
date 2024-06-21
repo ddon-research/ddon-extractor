@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.*;
 
@@ -104,8 +105,10 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long ItemId = bufferReader.readUnsignedInteger();
         long NameId = bufferReader.readUnsignedInteger();
         Translation ItemName = null;
+        Translation ItemInfo = null;
         if (lookupUtil != null) {
             ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
+            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
         }
         int Category = bufferReader.readUnsignedShort();
         int SubCategory = bufferReader.readUnsignedShort();
@@ -115,6 +118,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long NameSortNo = bufferReader.readUnsignedInteger();
         long AttackStatus = bufferReader.readUnsignedInteger();
         long IsUseJob = bufferReader.readUnsignedInteger();
+        Set<JobType> IsUseJobType = BitUtil.extractBitSetUnsignedIntegerFlag(JobType::of, IsUseJob);
         int Flag = bufferReader.readUnsignedShort();
         Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, Flag);
         int IconNo = bufferReader.readUnsignedShort();
@@ -161,14 +165,14 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         return new ItemListItemParam(
                 itemIndex,
                 ItemId,
-                NameId, ItemName,
+                NameId, ItemName, ItemInfo,
                 Category, CategoryName,
                 SubCategory, SubCategoryName,
                 Price,
                 SortNo,
                 NameSortNo,
                 AttackStatus,
-                IsUseJob,
+                IsUseJob, IsUseJobType,
                 Flag, FlagTypes,
                 IconNo,
                 IsUseLv,

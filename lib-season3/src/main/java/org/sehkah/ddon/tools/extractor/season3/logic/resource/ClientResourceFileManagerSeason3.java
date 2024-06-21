@@ -55,6 +55,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.ItemList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfoList;
 
 import java.nio.file.Path;
@@ -66,6 +67,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 @Slf4j
 public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager {
     private ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+    private ClientResourceFile<ItemList> ItemListResourceFile;
 
     public ClientResourceFileManagerSeason3(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         super(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
@@ -73,7 +75,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
 
     @Override
     public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile);
+        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
     }
 
     @Override
@@ -114,6 +116,8 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureItem, new FileHeader(1, 4), new FurnitureItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureLayout, new FileHeader(1, 4), new FurnitureLayoutDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rGUIMapSetting, new FileHeader("GMP\0", 6, 4), new GUIMapSettingDeserializer()));
+        ItemListResourceFile = new ClientResourceFile<>(rItemList, new FileHeader("ipa\0", 68, 4), new ItemListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) ItemListResourceFile);
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobBaseParam, new FileHeader(263, 4), new JobBaseParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJumpParamTbl, new FileHeader(4, 4), new JumpParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rKeyConfigTextTable, new FileHeader(1, 4), new KeyConfigTextTableDeserializer()));

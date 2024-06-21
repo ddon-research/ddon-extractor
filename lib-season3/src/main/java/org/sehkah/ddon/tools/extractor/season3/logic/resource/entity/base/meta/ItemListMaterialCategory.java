@@ -1,0 +1,48 @@
+package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta;
+
+import java.util.Arrays;
+
+public enum ItemListMaterialCategory {
+    MATERIAL_CATEGORY_NONE(0x0),
+    MATERIAL_CATEGORY_METAL(0x1),
+    MATERIAL_CATEGORY_STONE(0x2),
+    MATERIAL_CATEGORY_SAND(0x3),
+    MATERIAL_CATEGORY_CLOTH(0x4),
+    MATERIAL_CATEGORY_THREAD(0x5),
+    MATERIAL_CATEGORY_WOOL(0x6),
+    MATERIAL_CATEGORY_BARK(0x7),
+    MATERIAL_CATEGORY_BONE(0x8),
+    MATERIAL_CATEGORY_FANG(0x9),
+    MATERIAL_CATEGORY_HORN(0xA),
+    MATERIAL_CATEGORY_SHELL(0xB),
+    MATERIAL_CATEGORY_WING(0xC),
+    MATERIAL_CATEGORY_JEWEL(0xD),
+    MATERIAL_CATEGORY_GRASS(0xE),
+    MATERIAL_CATEGORY_FLOWER(0xF),
+    MATERIAL_CATEGORY_NUTS(0x10),
+    MATERIAL_CATEGORY_MUSHROOM(0x11),
+    MATERIAL_CATEGORY_WOODCHIP(0x12),
+    MATERIAL_CATEGORY_LIQUID(0x13),
+    MATERIAL_CATEGORY_BANDEROLE(0x14),
+    MATERIAL_CATEGORY_ALCHE(0x15),
+    MATERIAL_CATEGORY_MEAT(0x16),
+    MATERIAL_CATEGORY_OTHER(0x17),
+    MATERIAL_CATEGORY_ELEMENT_WEP(0x18),
+    MATERIAL_CATEGORY_ELEMENT_ARMOR(0x19),
+    MATERIAL_CATEGORY_SPECIAL_WEP(0x1A),
+    MATERIAL_CATEGORY_SPECIAL_ARMOR(0x1B),
+    MATERIAL_CATEGORY_COLOR(0x1C),
+    MATERIAL_CATEGORY_APPRAISAL(0x1D),
+    MATERIAL_CATEGORY_SPECIALTY_GOODS(0x1E),
+    MATERIAL_CATEGORY_UNKNOWN(Integer.MAX_VALUE);
+
+    public final long value;
+
+    ItemListMaterialCategory(long value) {
+        this.value = value;
+    }
+
+    public static ItemListMaterialCategory of(long value) {
+        return Arrays.stream(ItemListMaterialCategory.values()).filter(itemListMaterialCategory -> itemListMaterialCategory.value == value).findFirst().orElse(MATERIAL_CATEGORY_UNKNOWN);
+    }
+}

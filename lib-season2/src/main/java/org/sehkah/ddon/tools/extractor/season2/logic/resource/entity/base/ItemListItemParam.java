@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListEquipSubCategory;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListFlagType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.ItemListItemCategory;
@@ -27,6 +28,8 @@ public class ItemListItemParam {
     private long NameId;
     @MetaInformation
     private Translation ItemName;
+    @MetaInformation
+    private Translation ItemInfo;
     private int Category; // Can be either a generic u32, USE_CATEGORY, MATERIAL_CATEGORY or SUB_CATEGORY
     @MetaInformation
     private Object CategoryName; // TODO typification
@@ -38,6 +41,8 @@ public class ItemListItemParam {
     private long NameSortNo;
     private long AttackStatus;
     private long IsUseJob;
+    @MetaInformation
+    private Set<JobType> IsUseJobType;
     private int Flag;
     @MetaInformation
     private Set<ItemListFlagType> FlagTypes;
