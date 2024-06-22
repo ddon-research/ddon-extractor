@@ -6,11 +6,14 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.StageResourcePointer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.StageFlag;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.StageInfo;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Set;
 
 public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageInfo> {
     private static StageResourcePointer readStageResourcePointer(BufferReader bufferReader) {
@@ -38,6 +41,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
         float Ang = bufferReader.readFloat();
         long SceLoadFlag = bufferReader.readUnsignedInteger();
         long Flag = bufferReader.readUnsignedInteger();
+        Set<StageFlag> StageFlagType = BitUtil.extractBitSetUnsignedIntegerFlag(StageFlag::of, i -> 1 << i, Flag);
         StageResourcePointer WeatherStageInfo = readStageResourcePointer(bufferReader);
         StageResourcePointer WeatherParamInfoTbl = readStageResourcePointer(bufferReader);
         StageResourcePointer WeatherParamEfcInfo = readStageResourcePointer(bufferReader);
@@ -76,7 +80,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
         return new StageInfo(StageNo, StageName, SchedulerModel, SchedulerFilter, CollisionScrSbc0, CollisionEffSbc0,
                 CollisionScrSbc1, CollisionEffSbc1, CollisionScrSbc2, CollisionEffSbc2, NavigationMeshNaviMesh,
                 AIPathConsecutiverWayPoint, OccluderExOCC, StartPosStartPos, CameraParamListFld, CameraParamListEvt,
-                Pos, Ang, SceLoadFlag, Flag, WeatherStageInfo, WeatherParamInfoTbl, WeatherParamEfcInfo, WeatherEffectParam,
+                Pos, Ang, SceLoadFlag, Flag, StageFlagType, WeatherStageInfo, WeatherParamInfoTbl, WeatherParamEfcInfo, WeatherEffectParam,
                 SchedulerStageLightSchdl, EffectProvider, EpvIndexAlways, EpvIndexDay, EpvIndexNight, ZoneList, ZoneIndoorScr,
                 ZoneIndoorEfc, DayNightLightChgFrame, DayNightFogChgFrame, SkyInfiniteLightGroup, ZoneUnitCtrl, ZoneStatus,
                 SoundZone, EqLength, SoundAreaInfo, SchedulerEffectSchdl, SchedulerLanternSchdl, IsCraftStage, LocationData,

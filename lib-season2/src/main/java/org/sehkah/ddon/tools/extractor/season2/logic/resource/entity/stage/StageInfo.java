@@ -7,8 +7,10 @@ import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.StageResourcePointer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.StageFlag;
 
 import java.util.List;
+import java.util.Set;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -42,6 +44,8 @@ public class StageInfo extends Resource {
     //    @MetaInformation
 //    private StageInfoLoadFlag SceLoadFlagType;
     private long Flag;
+    @MetaInformation
+    private Set<StageFlag> StageFlagType;
     private StageResourcePointer WeatherStageInfo;
     private StageResourcePointer WeatherParamInfoTbl;
     private StageResourcePointer WeatherParamEfcInfo;
