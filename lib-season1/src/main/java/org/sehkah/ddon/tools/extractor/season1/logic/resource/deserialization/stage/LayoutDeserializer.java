@@ -6,8 +6,8 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutSetInfoType;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.meta.LayoutSetInfoType;
 
 import java.nio.file.Path;
 

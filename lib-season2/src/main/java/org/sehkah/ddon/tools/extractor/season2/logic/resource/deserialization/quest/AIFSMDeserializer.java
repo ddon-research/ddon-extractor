@@ -8,13 +8,13 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamCallAnnounceType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamCallMessageType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.binary.XfsBody;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.binary.XfsObjectData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.*;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.meta.ParamCallAnnounceType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.meta.ParamCallMessageType;
 
 import java.nio.file.Path;
 import java.util.List;

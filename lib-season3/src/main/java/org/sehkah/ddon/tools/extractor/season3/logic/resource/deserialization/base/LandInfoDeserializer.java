@@ -5,10 +5,10 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.LandAreaInfoGameMode;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandAreaInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandInfo;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.LandInfoList;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.LandAreaInfoGameMode;
 
 import java.nio.file.Path;
 import java.util.List;

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.meta.AIPawnActionGroupType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common.meta.AIPawnEnemySpStatusType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.AIPawnActionGroupType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.AIPawnEnemySpStatusType;
 
 import java.util.List;
 import java.util.Set;

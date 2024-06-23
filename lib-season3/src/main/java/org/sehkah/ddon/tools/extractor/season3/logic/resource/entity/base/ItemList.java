@@ -52,7 +52,6 @@ public class ItemList extends Resource {
         return getItemByIdNaive(itemId);
     }
 
-    //TODO implement
     private ItemListItemParam getItemByIdNaive(long itemId) {
         Optional<ItemListItemParam> optionalIndex = ItemParamList.stream().filter(i -> i.getItemId() == itemId).findFirst();
         return optionalIndex.orElse(null);

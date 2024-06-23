@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.AIPawnAutoMotionType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_common.meta.AIPawnAutoWordSituationType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.meta.AIPawnAutoWordSituationType;
 
 import java.util.List;
 

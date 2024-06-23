@@ -8,9 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.*;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

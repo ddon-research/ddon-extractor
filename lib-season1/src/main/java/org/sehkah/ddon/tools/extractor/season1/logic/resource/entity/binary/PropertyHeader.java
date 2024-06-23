@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.meta.PropertyType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.binary.meta.PropertyType;
 
 @ToString
 @EqualsAndHashCode

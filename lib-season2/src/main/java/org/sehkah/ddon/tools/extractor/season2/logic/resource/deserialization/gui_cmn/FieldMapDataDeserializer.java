@@ -7,9 +7,9 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.meta.FieldMapDataType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.FieldMapData;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.FieldMapDataList;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.gui_cmn.meta.FieldMapDataType;
 
 import java.nio.file.Path;
 

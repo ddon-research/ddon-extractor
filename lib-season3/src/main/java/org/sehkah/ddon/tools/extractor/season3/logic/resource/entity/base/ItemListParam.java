@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.ItemListElementParamKind;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.ItemListMaterialCategory;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.ItemListParamKind;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListElementParamKind;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListMaterialCategory;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListParamKind;
 
 import java.util.List;
 

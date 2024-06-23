@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListEquipParamS8FormType;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.ItemListEquipParamS8Kind;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipParamS8FormType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipParamS8Kind;
 
 @ToString
 @EqualsAndHashCode

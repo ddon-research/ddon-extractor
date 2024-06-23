@@ -3,7 +3,7 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.MyRoom.meta.RoomWearType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.MyRoom.meta.RoomWearType;
 
 @ToString
 @EqualsAndHashCode

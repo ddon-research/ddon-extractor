@@ -5,8 +5,8 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmBlinkType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmLotSetType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmBlinkType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmLotSetType;
 
 import java.math.BigInteger;
 import java.util.List;

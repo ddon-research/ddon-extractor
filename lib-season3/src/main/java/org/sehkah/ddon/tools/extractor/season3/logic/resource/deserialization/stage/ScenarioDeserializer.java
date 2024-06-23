@@ -8,16 +8,16 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioBootType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioCheckType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioStatusType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioTaskType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.ClassData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.XfsHeader;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.XfsObjectData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.FSMRelate;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.ScenarioBootType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.ScenarioCheckType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.ScenarioStatusType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.ScenarioTaskType;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

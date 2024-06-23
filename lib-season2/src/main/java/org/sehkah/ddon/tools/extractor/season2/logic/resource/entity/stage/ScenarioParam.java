@@ -3,10 +3,10 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.ScenarioBootType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.ScenarioCheckType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.ScenarioStatusType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.meta.ScenarioTaskType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioBootType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioCheckType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioStatusType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.ScenarioTaskType;
 
 import java.util.Set;
 

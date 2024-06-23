@@ -5,9 +5,9 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.MyRoom.meta.RoomWearType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.RoomWearParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.RoomWearParamTbl;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.meta.RoomWearType;
 
 import java.nio.file.Path;
 

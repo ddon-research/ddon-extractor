@@ -6,12 +6,12 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamEventFlag;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamEventType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamLightCtrlType;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.EventParam;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.EventParamList;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.OmList;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamEventFlag;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamEventType;
-import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.base.meta.EventParamLightCtrlType;
 
 import java.nio.file.Path;
 import java.util.List;

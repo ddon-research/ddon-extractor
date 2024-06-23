@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.EventParamEventFlag;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.EventParamEventType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.EventParamLightCtrlType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamEventFlag;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamEventType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.EventParamLightCtrlType;
 
 import java.util.List;
 import java.util.Set;
