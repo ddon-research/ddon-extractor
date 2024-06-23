@@ -28,9 +28,7 @@ public enum GUIMessageLookupTable {
     JOB_NAME("ui/gui_cmn/ui/00_message/common/", "job_name.gmd"),
     SPOT_NAME("ui/gui_cmn/ui/00_message/common/", "spot_name.gmd"),
     SPOT_CATEGORY("ui/uGUIAreaMaster/ui/00_message/master/", "spot_category.gmd"),
-    // UNUSED
     EVENT_NAME("EventViewRoom/ui/00_message/event/", "event_name.gmd"),
-
     ;
 
     String folderPath;

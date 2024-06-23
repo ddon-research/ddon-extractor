@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.skill;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -16,8 +18,14 @@ public class NormalSkillData {
     private int SkillNo;
     private int IconId;
     private int Index;
-    // TODO: Requires memorizing file names for looking up the appropriate GMD
     private int MsgIndex;
+    @MetaInformation
+    private Translation SkillName;
+    @MetaInformation
+    private Translation SkillInfo;
+    @MetaInformation
+    private Translation SkillCommand;
+    // TODO: Lookup
     private int Category;
     private int PreSkillIndex;
     private int SlotNo;

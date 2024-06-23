@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SkillLevelData {
+    // TODO: Lookup
     private int MsgExpIndex;
     private int NeedLv;
     private long NeedJp;
