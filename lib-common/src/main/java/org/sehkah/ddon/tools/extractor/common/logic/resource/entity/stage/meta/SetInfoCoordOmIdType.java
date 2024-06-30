@@ -35,7 +35,10 @@ public enum SetInfoCoordOmIdType {
     OM_ID_GATHERABLE_GRASS_ROCK(520004),
     OM_ID_STRUCTURE_WALL_STONE(523030),
     OM_ID_WARP_CRYSTAL(522157),
-    OM_ID_STRUCTURE_WALL1(522540);
+    OM_ID_STRUCTURE_WALL1(522540),
+    OM_ID_BBM_SEALED_TREASURE_BOX_ORANGE(513130),
+    OM_ID_BBM_SEALED_TREASURE_BOX_BLUE(513133),
+    OM_ID_SEALED_TREASURE_BOX_BLUE(513134);
 
     private static final Map<Integer, SetInfoCoordOmIdType> ordinalMap = Arrays.stream(values()).collect(Collectors.toMap(e -> e.value, Function.identity()));
     private final int value;

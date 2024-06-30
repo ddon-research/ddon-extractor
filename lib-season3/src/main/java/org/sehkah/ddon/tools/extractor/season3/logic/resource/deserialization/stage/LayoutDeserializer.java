@@ -494,13 +494,13 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmUnknown42 readSetInfoOmUnknown42(BufferReader bufferReader) {
-        return new SetInfoOmUnknown42(
+    private static SetInfoOmSealedTreasureBox readSetInfoOmUnknown42(BufferReader bufferReader) {
+        return new SetInfoOmSealedTreasureBox(
                 bufferReader.readBoolean(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
+                bufferReader.readUnsignedInteger(),
                 bufferReader.readSignedInteger(),
                 bufferReader.readBoolean(),
                 readSetInfoOmOld(bufferReader)
