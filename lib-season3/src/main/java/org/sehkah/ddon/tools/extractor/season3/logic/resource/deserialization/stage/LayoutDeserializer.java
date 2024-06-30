@@ -55,23 +55,29 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         int ThinkIndex = bufferReader.readUnsignedShort();
         int JobLv = bufferReader.readUnsignedShort();
         int Lantern = bufferReader.readUnsignedByte();
+
         boolean DisableScrAdj = bufferReader.readBoolean();
         boolean DisableLedgerFinger = bufferReader.readBoolean();
         boolean IsForceListTalk = bufferReader.readBoolean();
+
         boolean IsAttand = bufferReader.readBoolean();
         boolean UseAttendComponent = bufferReader.readBoolean();
         boolean DisableTouchAction = bufferReader.readBoolean();
+
+        long TalkStateId = bufferReader.readUnsignedInteger();
+
         boolean DispElseQuestTalk = bufferReader.readBoolean();
         boolean ForceSwitchGreeting = bufferReader.readBoolean();
-        long TalkStateId = bufferReader.readUnsignedInteger();
         boolean UseLiteMotion = bufferReader.readBoolean();
+
         boolean IsNoSetOnPS3 = bufferReader.readBoolean();
         boolean UseJobParamEx = bufferReader.readBoolean();
         boolean DispOnWeapon = bufferReader.readBoolean();
+
         short InitEffectType = bufferReader.readSignedShort();
         SetInfoCoord InfoCharacter = readSetInfoCoord(bufferReader);
 
-        return new SetInfoNpc(NpcId, NpcName, FilePath, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, UseAttendComponent, DisableTouchAction, DispElseQuestTalk, ForceSwitchGreeting, TalkStateId, UseLiteMotion, IsNoSetOnPS3, UseJobParamEx, DispOnWeapon, InitEffectType, InfoCharacter);
+        return new SetInfoNpc(NpcId, NpcName, FilePath, IsCommunicate, ClothType, DefNPCMotCategory, DefNPCMotNo, ThinkIndex, JobLv, Lantern, DisableScrAdj, DisableLedgerFinger, IsForceListTalk, IsAttand, UseAttendComponent, DisableTouchAction, TalkStateId, DispElseQuestTalk, ForceSwitchGreeting, UseLiteMotion, IsNoSetOnPS3, UseJobParamEx, DispOnWeapon, InitEffectType, InfoCharacter);
     }
 
     private static SetInfoGeneralPoint readSetInfoGeneralPoint(BufferReader bufferReader) {
@@ -413,19 +419,24 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmUnknown27 readSetInfoOmUnknown27(BufferReader bufferReader) {
-        return new SetInfoOmUnknown27(
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readVector3f(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedShort(),
-                readSetInfoOmOld(bufferReader)
-        );
+    private static SetInfoOmCannon readSetInfoOmCannon(BufferReader bufferReader) {
+        boolean Homing = bufferReader.readBoolean();
+        boolean AutoFire = bufferReader.readBoolean();
+        float AngleX = bufferReader.readFloat();
+        long CannonType = bufferReader.readUnsignedInteger();
+        long BreakHitNum = bufferReader.readUnsignedInteger();
+        short Group = bufferReader.readSignedShort();
+        short GroupID = bufferReader.readSignedShort();
+        float CannonHeightLimit = bufferReader.readFloat();
+        float DistanceLimitMin = bufferReader.readFloat();
+        float DistanceLimitMax = bufferReader.readFloat();
+        long ShotInterval = bufferReader.readUnsignedInteger();
+        int ShotIdleFrequency = bufferReader.readUnsignedByte();
+        int CheckAngle = bufferReader.readUnsignedByte();
+
+        SetInfoOmOld setInfoOmOld = readSetInfoOmOld(bufferReader);
+
+        return new SetInfoOmCannon(Homing, AutoFire, AngleX, CannonType, BreakHitNum, Group, GroupID, CannonHeightLimit, DistanceLimitMin, DistanceLimitMax, ShotInterval, ShotIdleFrequency, CheckAngle, setInfoOmOld);
     }
 
     private static SetInfoOmUnknown30 readSetInfoOmUnknown30(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
@@ -494,7 +505,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmSealedTreasureBox readSetInfoOmUnknown42(BufferReader bufferReader) {
+    private static SetInfoOmSealedTreasureBox readSetInfoOmSealedTreasureBox(BufferReader bufferReader) {
         return new SetInfoOmSealedTreasureBox(
                 bufferReader.readBoolean(),
                 bufferReader.readUnsignedShort(),
@@ -705,7 +716,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmOldDoor -> Info = readSetInfoOmOldDoor(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(bufferReader);
-            case LayoutSetInfoType.SetInfoOmUnknown27 -> Info = readSetInfoOmUnknown27(bufferReader);
+            case LayoutSetInfoType.SetInfoOmCannon -> Info = readSetInfoOmCannon(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown28 -> Info = readSetInfoOmUnknown28(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(bufferReader, lookupUtil);
@@ -714,7 +725,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmUnknown33 -> Info = readSetInfoOmUnknown33(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown34 -> Info = readSetInfoOmUnknown34(bufferReader);
             case LayoutSetInfoType.SetInfoOmOld -> Info = readSetInfoOmOld(bufferReader);
-            case LayoutSetInfoType.SetInfoOmUnknown42 -> Info = readSetInfoOmUnknown42(bufferReader);
+            case LayoutSetInfoType.SetInfoOmSealedTreasureBox -> Info = readSetInfoOmSealedTreasureBox(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarpNewV3 -> Info = readSetInfoOmWarpNewV3(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown45 -> Info = readSetInfoOmUnknown45(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown46 -> Info = readSetInfoOmUnknown46(bufferReader, lookupUtil);

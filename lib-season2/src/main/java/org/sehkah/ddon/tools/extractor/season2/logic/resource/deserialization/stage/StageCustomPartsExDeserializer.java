@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializer<StageCustomPartsEx> {
-
-
     private static StageCustomPartsExPattern readStageCustomPartsExPattern(BufferReader bufferReader) {
         return new StageCustomPartsExPattern(
                 bufferReader.readSignedInteger(),
@@ -149,6 +147,7 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
         ZoneShapeInfoBase Zone;
         switch (ShapeType) {
             case 0 -> Zone = null;
+            // FIXME: The struct is not correct in this case. While it has the correct amount of bytes, the boolean inside suggests some special handling for type 1 is required.
             case 1 -> Zone = readZoneShapeInfoArea(bufferReader);
             case 2 -> Zone = readZoneShapeInfoSphere(bufferReader);
             case 3 -> Zone = readZoneShapeInfoCylinder(bufferReader);

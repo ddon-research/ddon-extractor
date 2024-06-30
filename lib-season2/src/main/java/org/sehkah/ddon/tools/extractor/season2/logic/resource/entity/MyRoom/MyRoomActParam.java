@@ -18,6 +18,10 @@ public class MyRoomActParam {
     private int NpcMotNo;
     private int StartIdx;
     private long NeedOM;
+    private long NeedOM2;
+    private long NeedOM3;
+    private long NeedOM4;
+    private long NeedOM5;
     private short Message;
     private int Condition;
     private short LinkActNo;
@@ -26,8 +30,4 @@ public class MyRoomActParam {
     private boolean IsGriffin;
     private boolean IsNotAvoid;
     private boolean IsSingle;
-    private long NeedOM2;
-    private long NeedOM3;
-    private long NeedOM4;
-    private long NeedOM5;
 }

@@ -19,11 +19,15 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedShort(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readSignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedShort(),
+                bufferReader.readUnsignedShort(),
+                bufferReader.readSignedShort(),
                 bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
+                bufferReader.readBoolean(),
+                bufferReader.readBoolean(),
                 bufferReader.readBoolean()
         );
     }

@@ -31,7 +31,7 @@ public enum LayoutSetInfoType {
     SetInfoOmOldDoor(24),
     SetInfoOmOneWay(25),
     SetInfoOmBreakTarget(26),
-    SetInfoOmUnknown27(27),
+    SetInfoOmCannon(27),
     SetInfoOmUnknown28(28),
     SetInfoOmWarpNew(29),
     SetInfoOmUnknown30(30),
@@ -42,7 +42,7 @@ public enum LayoutSetInfoType {
     // 35 - 39 unused
     SetInfoOmOld(40),
     // 41 unused
-    SetInfoOmUnknown42(42),
+    SetInfoOmSealedTreasureBox(42), // Mostly contained in files with file name prefix "p"
     SetInfoOmWarpNewV3(43),
     SetInfoOmUnknown45(45),
     SetInfoOmUnknown46(46),

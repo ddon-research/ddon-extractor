@@ -10,8 +10,6 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.MyRoom.MyRo
 import java.nio.file.Path;
 
 public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserializer<MyRoomActParamTbl> {
-
-
     private static MyRoomActParam readMyRoomActParam(BufferReader bufferReader) {
         return new MyRoomActParam(
                 bufferReader.readVector3f(),
@@ -20,6 +18,10 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
                 bufferReader.readSignedShort(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readSignedShort(),
@@ -27,11 +29,7 @@ public class MyRoomActParamTblDeserializer extends ClientResourceFileDeserialize
                 bufferReader.readSignedShort(),
                 bufferReader.readBoolean(),
                 bufferReader.readBoolean(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger()
+                bufferReader.readBoolean()
         );
     }
 
