@@ -12,6 +12,8 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector4f;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown45 extends SetInfo {
+    // TODO: Probably the little lava rock eruptions protruding from the ground specifically for Evil Dragon's Roost
+    //  active/red glowing state
     private long Unknown1;
     private long Unknown2;
     private int Unknown3;

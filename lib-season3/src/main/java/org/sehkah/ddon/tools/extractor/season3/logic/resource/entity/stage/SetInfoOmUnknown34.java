@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown34 extends SetInfo {
+    // TODO: Probably some type of wall
     private long Unknown1;
     private long Unknown2;
     private SetInfoOmOld InfoOm;

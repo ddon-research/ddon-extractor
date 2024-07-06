@@ -16,8 +16,8 @@ public class SpotItemData {
     private long ItemId;
     @MetaInformation
     private Translation ItemName;
+    // Relates to the SpotEnemyData Unknown, both always have values >0 at the same time
+    private int Unknown;
     private boolean IsFeature;
     private boolean IsCannotPawnTake;
-    private int UnknownByte1;
-    private int UnknownByte2;
 }

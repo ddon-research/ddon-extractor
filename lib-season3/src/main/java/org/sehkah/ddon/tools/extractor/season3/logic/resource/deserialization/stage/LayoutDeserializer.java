@@ -476,10 +476,8 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmUnknown33 readSetInfoOmUnknown33(BufferReader bufferReader) {
-        return new SetInfoOmUnknown33(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
+    private static SetInfoOmFlag readSetInfoOmFlag(BufferReader bufferReader) {
+        return new SetInfoOmFlag(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger(),
                 readSetInfoOmOld(bufferReader)
@@ -519,18 +517,20 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
     }
 
     private static SetInfoOmUnknown46 readSetInfoOmUnknown46(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
-        long UnknownStageNo = bufferReader.readUnsignedInteger();
-        long QuestId = bufferReader.readUnsignedInteger();
-        long Unknown1 = bufferReader.readUnsignedInteger();
-        long Unknown2 = bufferReader.readUnsignedInteger();
+        long QuestFlag1 = bufferReader.readUnsignedInteger();
+        long QuestId1 = bufferReader.readUnsignedInteger();
+        long QuestFlag2 = bufferReader.readUnsignedInteger();
+        long QuestId2 = bufferReader.readUnsignedInteger();
         SetInfoOmOld InfoOm = readSetInfoOmOld(bufferReader);
 
-        Translation QuestName = null;
+        Translation QuestName1 = null;
+        Translation QuestName2 = null;
         if (lookupUtil != null) {
-            QuestName = lookupUtil.getQuestName(QuestId);
+            QuestName1 = lookupUtil.getQuestName(QuestId1);
+            QuestName2 = lookupUtil.getQuestName(QuestId2);
         }
 
-        return new SetInfoOmUnknown46(UnknownStageNo, QuestId, QuestName, Unknown1, Unknown2, InfoOm);
+        return new SetInfoOmUnknown46(QuestFlag1, QuestId1, QuestName1, QuestFlag2, QuestId2, QuestName2, InfoOm);
     }
 
     private static SetInfoOmUnknown47 readSetInfoOmUnknown47(BufferReader bufferReader) {
@@ -722,7 +722,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown31 -> Info = readSetInfoOmUnknown31(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown32 -> Info = readSetInfoOmUnknown32(bufferReader);
-            case LayoutSetInfoType.SetInfoOmUnknown33 -> Info = readSetInfoOmUnknown33(bufferReader);
+            case LayoutSetInfoType.SetInfoOmFlag -> Info = readSetInfoOmFlag(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown34 -> Info = readSetInfoOmUnknown34(bufferReader);
             case LayoutSetInfoType.SetInfoOmOld -> Info = readSetInfoOmOld(bufferReader);
             case LayoutSetInfoType.SetInfoOmSealedTreasureBox -> Info = readSetInfoOmSealedTreasureBox(bufferReader);

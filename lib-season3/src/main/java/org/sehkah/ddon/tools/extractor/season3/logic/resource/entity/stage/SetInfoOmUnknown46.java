@@ -13,13 +13,13 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmUnknown46 extends SetInfo {
-    // TODO Not sure if this is really a stage no
-    //  Verify via lookup?
-    private long UnknownStageNo;
-    private long QuestId;
+    private long QuestFlag1;
+    private long QuestId1;
     @MetaInformation
-    private Translation QuestName;
-    private long Unknown1;
-    private long Unknown2;
+    private Translation QuestName1;
+    private long QuestFlag2;
+    private long QuestId2;
+    @MetaInformation
+    private Translation QuestName2;
     private SetInfoOmOld InfoOm;
 }

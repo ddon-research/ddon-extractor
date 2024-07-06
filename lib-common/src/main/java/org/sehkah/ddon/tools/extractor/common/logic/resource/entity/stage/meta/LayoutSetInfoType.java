@@ -37,7 +37,7 @@ public enum LayoutSetInfoType {
     SetInfoOmUnknown30(30),
     SetInfoOmUnknown31(31),
     SetInfoOmUnknown32(32),
-    SetInfoOmUnknown33(33),
+    SetInfoOmFlag(33),
     SetInfoOmUnknown34(34),
     // 35 - 39 unused
     SetInfoOmOld(40),
