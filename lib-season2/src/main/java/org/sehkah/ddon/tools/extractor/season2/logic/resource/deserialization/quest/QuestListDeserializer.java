@@ -16,6 +16,7 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.SetInfo;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -100,7 +101,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new QuestSetInfoOmWall(InfoOm, WallType, NavOBB);
     }
 
-    private static QuestSetInfoOmWarp readQuestSetInfoOmWarp(BufferReader bufferReader) {
+    private static QuestSetInfoOmWarp readQuestSetInfoOmWarp(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
         List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
         List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
@@ -111,7 +112,16 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         long TextQuestNo = XfsDeserializer.readUnsignedInteger(bufferReader);
         long TextNo = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        return new QuestSetInfoOmWarp(InfoOm, StageNo, StartPosNo, QuestNo, FlagNo, SpotId, TextType, TextQuestNo, TextNo);
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestNo.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestNo.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
+        return new QuestSetInfoOmWarp(InfoOm, StageNo, StageNames, StartPosNo, QuestNo, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo);
     }
 
     private static QuestSetInfoOmDoor readQuestSetInfoOmDoor(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
@@ -284,7 +294,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return switch (layoutUnitKind) {
             case U_OM -> switch (classHeaderIndexMap.get(setInfoObjectData.getClassIndex()).getResourceName()) {
                 case "cSetInfoOmWall" -> readQuestSetInfoOmWall(bufferReader);
-                case "cSetInfoOmWarp" -> readQuestSetInfoOmWarp(bufferReader);
+                case "cSetInfoOmWarp" -> readQuestSetInfoOmWarp(bufferReader, lookupUtil);
                 case "cSetInfoOmDoor" -> readQuestSetInfoOmDoor(bufferReader, lookupUtil);
                 case "cSetInfoOmBowlOfLife" -> readQuestSetInfoOmBowlOfLife(bufferReader, lookupUtil);
                 case "cSetInfoOmText" -> readQuestSetInfoOmText(bufferReader);

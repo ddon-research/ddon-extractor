@@ -11,6 +11,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.L
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -105,51 +106,80 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmWarp readSetInfoOmWarp(BufferReader bufferReader) {
-        return new SetInfoOmWarp(
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmWarp readSetInfoOmWarp(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> QuestId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> FlagNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> SpotId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        long TextType = bufferReader.readUnsignedInteger();
+        long TextQuestNo = bufferReader.readUnsignedInteger();
+        long TextNo = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestId.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestId.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
+        return new SetInfoOmWarp(StageNo, StageNames, StartPosNo, QuestId, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo, InfoOm);
     }
 
-    private static SetInfoOmWarpNew readSetInfoOmWarpNew(BufferReader bufferReader) {
-        return new SetInfoOmWarpNew(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmWarpNew readSetInfoOmWarpNew(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long UnknownStageNo = bufferReader.readUnsignedInteger();
+        List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> QuestId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> FlagNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> SpotId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        long TextType = bufferReader.readUnsignedInteger();
+        long TextQuestNo = bufferReader.readUnsignedInteger();
+        long TextNo = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        Translation UnknownStageName = null;
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestId.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            UnknownStageName = lookupUtil.getStageNameByStageNo((int) UnknownStageNo);
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestId.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
+        return new SetInfoOmWarpNew(UnknownStageNo, UnknownStageName, StageNo, StageNames, StartPosNo, QuestId, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo, InfoOm);
     }
 
-    private static SetInfoOmWarpNewV3 readSetInfoOmWarpNewV3(BufferReader bufferReader) {
-        return new SetInfoOmWarpNewV3(
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmWarpNewV3 readSetInfoOmWarpNewV3(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        boolean Unknown1 = bufferReader.readBoolean();
+        int Unknown2 = bufferReader.readUnsignedShort();
+        int Unknown3 = bufferReader.readUnsignedShort();
+        int Unknown4 = bufferReader.readSignedInteger();
+        List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> QuestId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> FlagNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> SpotId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        long TextType = bufferReader.readUnsignedInteger();
+        long TextQuestNo = bufferReader.readUnsignedInteger();
+        long TextNo = bufferReader.readUnsignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestId.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestId.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
+        return new SetInfoOmWarpNewV3(Unknown1, Unknown2, Unknown3, Unknown4, StageNo, StageNames, StartPosNo, QuestId, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo, InfoOm);
     }
 
     private static SetInfoOmBoard readSetInfoOmBoard(BufferReader bufferReader) {
@@ -447,11 +477,13 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         SetInfoOmOld InfoOm = readSetInfoOmOld(bufferReader);
 
         Translation QuestName = null;
+        Translation UnknownStageName = null;
         if (lookupUtil != null) {
+            UnknownStageName = lookupUtil.getStageNameByStageNo((int) UnknownStageNo);
             QuestName = lookupUtil.getQuestName(QuestId);
         }
 
-        return new SetInfoOmUnknown30(UnknownStageNo, Unknown1, QuestId, QuestName, Unknown2, InfoOm);
+        return new SetInfoOmUnknown30(UnknownStageNo, UnknownStageName, Unknown1, QuestId, QuestName, Unknown2, InfoOm);
     }
 
     private static SetInfoOmUnknown31 readSetInfoOmUnknown31(BufferReader bufferReader) {
@@ -641,19 +673,28 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmWarpNewV2 readSetInfoOmWarpNewV2(BufferReader bufferReader) {
-        return new SetInfoOmWarpNewV2(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+    private static SetInfoOmWarpNewV2 readSetInfoOmWarpNewV2(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long Unknown = bufferReader.readUnsignedInteger();
+        List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> QuestId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> FlagNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> SpotId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        long TextType = bufferReader.readSignedInteger();
+        long TextQuestNo = bufferReader.readSignedInteger();
+        long TextNo = bufferReader.readSignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestId.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestId.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
+        return new SetInfoOmWarpNewV2(Unknown, StageNo, StageNames, StartPosNo, QuestId, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo, InfoOm);
     }
 
     private static SetInfoEnemyV2 readSetInfoEnemyV2(BufferReader bufferReader) {
@@ -696,7 +737,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmGather, LayoutSetInfoType.SetInfoOmTreasureBox ->
                     Info = readSetInfoOmGather(bufferReader);
             case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
-            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
             case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);
@@ -718,7 +759,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(bufferReader);
             case LayoutSetInfoType.SetInfoOmCannon -> Info = readSetInfoOmCannon(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown28 -> Info = readSetInfoOmUnknown28(bufferReader);
-            case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown31 -> Info = readSetInfoOmUnknown31(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown32 -> Info = readSetInfoOmUnknown32(bufferReader);
@@ -726,7 +767,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmUnknown34 -> Info = readSetInfoOmUnknown34(bufferReader);
             case LayoutSetInfoType.SetInfoOmOld -> Info = readSetInfoOmOld(bufferReader);
             case LayoutSetInfoType.SetInfoOmSealedTreasureBox -> Info = readSetInfoOmSealedTreasureBox(bufferReader);
-            case LayoutSetInfoType.SetInfoOmWarpNewV3 -> Info = readSetInfoOmWarpNewV3(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNewV3 -> Info = readSetInfoOmWarpNewV3(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown45 -> Info = readSetInfoOmUnknown45(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown46 -> Info = readSetInfoOmUnknown46(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown47 -> Info = readSetInfoOmUnknown47(bufferReader);
@@ -736,7 +777,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmUnknown51 -> Info = readSetInfoOmUnknown51(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown52 -> Info = readSetInfoOmUnknown52(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown53 -> Info = readSetInfoOmUnknown53(bufferReader);
-            case LayoutSetInfoType.SetInfoOmWarpNewV2 -> Info = readSetInfoOmWarpNewV2(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarpNewV2 -> Info = readSetInfoOmWarpNewV2(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoEnemyV2 -> Info = readSetInfoEnemyV2(bufferReader);
             case LayoutSetInfoType.SetInfoOmUnknown55 -> Info = readSetInfoOmUnknown55(bufferReader, lookupUtil);
             default -> log.error("Unhandled layout type: {}", Type);

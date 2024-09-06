@@ -16,6 +16,8 @@ public class SetInfoOmUnknown30 extends SetInfo {
     // TODO Not sure if this is really a stage no
     //  Verify via lookup?
     private long UnknownStageNo;
+    @MetaInformation
+    private Translation UnknownStageName;
     private long Unknown1;
     private long QuestId;
     @MetaInformation

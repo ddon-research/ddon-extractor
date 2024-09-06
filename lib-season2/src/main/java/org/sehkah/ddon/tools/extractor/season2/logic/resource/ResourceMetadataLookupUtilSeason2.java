@@ -55,6 +55,9 @@ public class ResourceMetadataLookupUtilSeason2 extends ResourceMetadataLookupUti
 
     @Override
     public Translation getStageNameByStageNo(int stageNo) {
+        if (stageNo <= 0) {
+            return null;
+        }
         StageListInfoList list = cache.getResource(ResourceLookupTable.STAGE_LIST_SLT.getFilePath(), StageListInfoResourceFile, this);
         StageListInfo stage = list.getStageByStageNo(stageNo);
         if (stage == null) {

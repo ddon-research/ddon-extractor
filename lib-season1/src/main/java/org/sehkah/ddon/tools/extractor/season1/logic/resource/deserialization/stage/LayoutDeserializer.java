@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.s
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
@@ -10,6 +11,8 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.L
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.*;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Slf4j
@@ -88,17 +91,28 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmWarp readSetInfoOmWarp(BufferReader bufferReader) {
+    private static SetInfoOmWarp readSetInfoOmWarp(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        List<Long> StageNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> StartPosNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> QuestId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> FlagNo = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        List<Long> SpotId = bufferReader.readArray(BufferReader::readUnsignedInteger);
+        long TextType = bufferReader.readSignedInteger();
+        long TextQuestNo = bufferReader.readSignedInteger();
+        long TextNo = bufferReader.readSignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        List<Translation> StageNames = new ArrayList<>(StageNo.size());
+        List<Translation> QuestNames = new ArrayList<>(QuestId.size());
+        List<Translation> SpotNames = new ArrayList<>(SpotId.size());
+        if (lookupUtil != null) {
+            StageNo.forEach(s -> StageNames.add(lookupUtil.getStageNameByStageNo(s.intValue())));
+            QuestId.forEach(s -> QuestNames.add(lookupUtil.getQuestName(s)));
+            SpotId.forEach(s -> SpotNames.add(lookupUtil.getSpotName(s)));
+        }
+
         return new SetInfoOmWarp(
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readArray(BufferReader::readUnsignedInteger),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
+                StageNo, StageNames, StartPosNo, QuestId, QuestNames, FlagNo, SpotId, SpotNames, TextType, TextQuestNo, TextNo, InfoOm
         );
     }
 
@@ -327,7 +341,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmGather, LayoutSetInfoType.SetInfoOmTreasureBox ->
                     Info = readSetInfoOmGather(bufferReader);
             case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
-            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader);
+            case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
             case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader);
             case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);

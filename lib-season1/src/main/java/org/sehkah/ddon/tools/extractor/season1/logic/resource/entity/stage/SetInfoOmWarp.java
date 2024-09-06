@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.util.List;
 
@@ -13,13 +15,17 @@ import java.util.List;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoOmWarp extends SetInfo {
-    // TODO: Lookup
     private List<Long> StageNo;
+    @MetaInformation
+    private List<Translation> StageNames;
     private List<Long> StartPosNo;
     private List<Long> QuestId; //QuestNo
+    @MetaInformation
+    private List<Translation> QuestNames;
     private List<Long> FlagNo;
-    // TODO: Lookup
     private List<Long> SpotId;
+    @MetaInformation
+    private List<Translation> SpotNames;
     private long TextType;
     private long TextQuestNo;
     // TODO: Lookup
