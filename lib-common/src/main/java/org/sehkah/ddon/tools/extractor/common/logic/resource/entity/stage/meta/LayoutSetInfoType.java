@@ -32,7 +32,7 @@ public enum LayoutSetInfoType {
     SetInfoOmOneWay(25),
     SetInfoOmBreakTarget(26),
     SetInfoOmCannon(27),
-    SetInfoOmUnknown28(28),
+    SetInfoOmLeverNew(28),
     SetInfoOmWarpNew(29),
     SetInfoOmUnknown30(30),
     SetInfoOmUnknown31(31),

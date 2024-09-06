@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
+import java.math.BigInteger;
+
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
@@ -10,8 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown28 extends SetInfo {
-    private int Unknown;
-    private int UnknownId; // TODO: Maybe Item ID?
+public class SetInfoOmLeverNew extends SetInfo {
+    private int CamEvNo;
     private SetInfoOmOld InfoOm;
 }

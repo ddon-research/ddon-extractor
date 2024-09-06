@@ -441,10 +441,9 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         return new SetInfoOmOldDoor(IsQuest, QuestId, QuestName, Kind0, Group0, ID0, Kind1, Group1, ID1, Kind2, Group2, ID2, InfoOm);
     }
 
-    private static SetInfoOmUnknown28 readSetInfoOmUnknown28(BufferReader bufferReader) {
-        return new SetInfoOmUnknown28(
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
+    private static SetInfoOmLeverNew readSetInfoOmLeverNew(BufferReader bufferReader) {
+        return new SetInfoOmLeverNew(
+                bufferReader.readSignedInteger(),
                 readSetInfoOmOld(bufferReader)
         );
     }
@@ -758,7 +757,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmOneWay -> Info = readSetInfoOmOneWay(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBreakTarget -> Info = readSetInfoOmBreakTarget(bufferReader);
             case LayoutSetInfoType.SetInfoOmCannon -> Info = readSetInfoOmCannon(bufferReader);
-            case LayoutSetInfoType.SetInfoOmUnknown28 -> Info = readSetInfoOmUnknown28(bufferReader);
+            case LayoutSetInfoType.SetInfoOmLeverNew -> Info = readSetInfoOmLeverNew(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarpNew -> Info = readSetInfoOmWarpNew(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown30 -> Info = readSetInfoOmUnknown30(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmUnknown31 -> Info = readSetInfoOmUnknown31(bufferReader);
