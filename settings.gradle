@@ -1,8 +1,8 @@
 pluginManagement {
     plugins {
-        id 'org.beryx.jlink' version '3.0.1'
+        id 'org.beryx.jlink' version '3.1.1'
         id 'org.javamodularity.moduleplugin' version '1.8.15'
-        id 'io.freefair.lombok' version '8.6'
+        id 'io.freefair.lombok' version '8.11'
         id 'com.github.ben-manes.versions' version '0.51.0'
     }
 }
@@ -33,9 +33,9 @@ dependencyResolutionManagement {
             bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
         }
         lib {
-            version('comFasterxmlJackson', '2.17.1')
-            version('orgBouncycastle', '1.78.1')
-            version('orgApacheCommons', '3.14.0')
+            version('comFasterxmlJackson', '2.18.2')
+            version('orgBouncycastle', '1.79')
+            version('orgApacheCommons', '3.17.0')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
@@ -51,9 +51,9 @@ dependencyResolutionManagement {
             library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
         }
         libTest {
-            version('commonsCodec', '1.17.0')
+            version('commonsCodec', '1.17.1')
             version('commonsIo', '2.15.1')
-            version('junitPioneer', '2.2.0')
+            version('junitPioneer', '2.3.0')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec
             library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')
@@ -63,7 +63,7 @@ dependencyResolutionManagement {
             library('junit-pioneer', 'org.junit-pioneer', 'junit-pioneer').versionRef('junitPioneer')
         }
         cli {
-            version('comFasterxmlJackson', '2.17.1')
+            version('comFasterxmlJackson', '2.18.2')
             version('infoPicocli', '4.7.6')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
