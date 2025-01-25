@@ -49,10 +49,10 @@ public class NormalSkillDataDeserializer extends ClientResourceFileDeserializer<
 
             gmdFilePathSkillName = "ui/gui_cmn/ui/00_message/skill/" + filePath.getFileName().toString().replace("normal_skill_data_", "normal_skill_name_").replace(".nsd", ".gmd");
 
-            String tmp = PathUtil.getRelativeFilePathFromRom(filePath).replace("00_param", "00_message").replace(".nsd", ".gmd");;
+            String tmp = PathUtil.getRelativeFilePathFromRom(filePath).replace("00_param", "00_message").replace(".nsd", ".gmd");
             gmdFilePathSkillInfo = tmp.replace("skill_ability/normal_skill_data_", "skill/normal_skill_info_");
             gmdFilePathSkillCommand = tmp.replace("skill_ability/normal_skill_data_", "skill/normal_skill_command_");
-        }else{
+        } else {
             gmdFilePathSkillName = null;
             gmdFilePathSkillInfo = null;
             gmdFilePathSkillCommand = null;

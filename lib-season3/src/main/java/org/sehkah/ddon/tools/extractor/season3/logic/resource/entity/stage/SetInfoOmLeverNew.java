@@ -3,8 +3,6 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
-import java.math.BigInteger;
-
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor

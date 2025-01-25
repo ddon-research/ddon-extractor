@@ -16,6 +16,8 @@ public enum ItemListEquipCategory {
     EQUIP_CATEGORY_JEWELRY(0xA),
     EQUIP_CATEGORY_LANTERN(0xB),
     EQUIP_CATEGORY_COSTUME(0xC),
+    EQUIP_CATEGORY_UNIFORM(0xD),
+    EQUIP_CATEGORY_FULLSUIT(0xE),
     EQUIP_CATEGORY_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;

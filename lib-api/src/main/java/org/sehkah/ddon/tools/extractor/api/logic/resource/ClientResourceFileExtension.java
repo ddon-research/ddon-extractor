@@ -175,6 +175,7 @@ public enum ClientResourceFileExtension {
     rWeaponOffset,
     rWeaponResTable,
     rWeatherStageInfo,
+    rCharacterEditVoicePalette,
     rWepCateResTbl;
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
@@ -365,6 +366,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wpt", rWaypoint);
         fileExtensionToResourceMap.put(".wrt", rWeaponResTable);
         fileExtensionToResourceMap.put(".wsi", rWeatherStageInfo);
+        fileExtensionToResourceMap.put(".edt_voice_pal", rCharacterEditVoicePalette);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 

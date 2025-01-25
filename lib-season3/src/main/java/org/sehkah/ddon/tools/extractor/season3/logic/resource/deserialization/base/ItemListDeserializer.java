@@ -71,13 +71,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int Category = bufferReader.readUnsignedByte();
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 
@@ -122,13 +122,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int Category = bufferReader.readUnsignedByte();
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 
@@ -172,13 +172,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int Category = bufferReader.readUnsignedByte();
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 
@@ -213,13 +213,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int Category = bufferReader.readUnsignedByte();
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 
@@ -269,13 +269,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int Category = bufferReader.readUnsignedByte();
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 

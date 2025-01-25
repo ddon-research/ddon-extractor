@@ -5,7 +5,6 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.api.util.PathUtil;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.CustomSkillData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill.CustomSkillDataList;

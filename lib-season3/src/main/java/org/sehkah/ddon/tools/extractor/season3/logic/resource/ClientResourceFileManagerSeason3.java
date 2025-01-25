@@ -12,6 +12,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.OcdImmuneParamResTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditVoicePaletteDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.StaminaDecTblDeserializer;
@@ -161,7 +162,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponResTable, new FileHeader(11, 4), new WeaponResTableDeserializer()));
         NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
         clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
-
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditVoicePalette, new FileHeader(35, 4), new CharacterEditVoicePaletteDeserializer()));
         return clientResourceFileSet;
     }
 }

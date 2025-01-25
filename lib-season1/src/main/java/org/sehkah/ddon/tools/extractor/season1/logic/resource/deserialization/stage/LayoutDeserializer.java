@@ -3,7 +3,6 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.s
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.GUIMessageLookupTable;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;

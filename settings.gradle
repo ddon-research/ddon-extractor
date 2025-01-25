@@ -14,11 +14,11 @@ plugins {
 dependencyResolutionManagement {
     versionCatalogs {
         common {
-            version('junit', '5.10.1')
+            version('junit', '5.11.4')
         }
         log {
             version('orgSlf4j', '2.0.9')
-            version('orgApacheLoggingLog4j', '2.23.1')
+            version('orgApacheLoggingLog4j', '2.24.3')
 
             // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
             library('slf4j-api', 'org.slf4j', 'slf4j-api').versionRef('orgSlf4j')
@@ -34,7 +34,7 @@ dependencyResolutionManagement {
         }
         lib {
             version('comFasterxmlJackson', '2.18.2')
-            version('orgBouncycastle', '1.79')
+            version('orgBouncycastle', '1.80')
             version('orgApacheCommons', '3.17.0')
 
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
@@ -51,7 +51,7 @@ dependencyResolutionManagement {
             library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
         }
         libTest {
-            version('commonsCodec', '1.17.1')
+            version('commonsCodec', '1.17.2')
             version('commonsIo', '2.15.1')
             version('junitPioneer', '2.3.0')
 
