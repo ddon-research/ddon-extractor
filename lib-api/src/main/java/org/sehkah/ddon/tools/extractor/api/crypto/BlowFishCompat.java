@@ -28,19 +28,15 @@ import org.bouncycastle.util.Arrays;
  * To Encrypt or decrypt a byte array using CBC or CTR mode, an array of bytes, you must provide an initialization vector.
  * A random IV can be created by calling SetRandomIV, then accessed with the IV property as it will be required to decrypt the data.
  * It is safe for the IV to be known by an attacker, as long as it is NEVER reused. IVs are handled automatically when encrypting and decrypting strings.
- * <p>
- * <code>
+ * <pre>{@code
  * String cipherText = b.Encrypt_CBC(plainText);
  * MessageBox.Show(cipherText);
- * </code
- * <p>
+ * } </pre>
  * Use the same mode of operation for decryption.
- * <p>
- * <code>
+ * <pre>{@code
  * plainText = b.Decrypt_CBC(cipherText);
  * MessageBox.Show(plainText);
- * </code>
- * <p>
+ * } </pre>
  * Which mode should I use?
  * ---ECB---
  * ECB mode encrypts each block of data with the same key, so patterns in a large set of data will be visible.

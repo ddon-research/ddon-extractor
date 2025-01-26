@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.AreaIn
 import java.nio.file.Path;
 
 /**
- * Season 1, season 2 & season 3 all share the same header version 2, but season 1 lacks the position data for areas.
+ * Season 1, season 2 and season 3 all share the same header version 2, but season 1 lacks the position data for areas.
  */
 public class AreaInfoDeserializer extends ClientResourceFileDeserializer<AreaInfoList> {
     private static AreaInfo readAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
