@@ -176,12 +176,17 @@ public enum ClientResourceFileExtension {
     rWeaponResTable,
     rWeatherStageInfo,
     rCharacterEditVoicePalette,
+    rEnemyBloodStain,
+    rLargeCameraParam,
+    rSoundOptData,
+    rTargetCursorOffset,
+    rWeatherFogInfo,
+    rWeatherParamInfoTbl,
+    rReaction,
     rWepCateResTbl;
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
-
     private static final Map<String, ClientResourceFileExtension> fileExtensionToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
-
     private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
 
     static {
@@ -367,6 +372,13 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wrt", rWeaponResTable);
         fileExtensionToResourceMap.put(".wsi", rWeatherStageInfo);
         fileExtensionToResourceMap.put(".edt_voice_pal", rCharacterEditVoicePalette);
+        fileExtensionToResourceMap.put(".ebs", rEnemyBloodStain);
+        fileExtensionToResourceMap.put(".lcp", rLargeCameraParam);
+        fileExtensionToResourceMap.put(".sot", rSoundOptData);
+        fileExtensionToResourceMap.put(".tco", rTargetCursorOffset);
+        fileExtensionToResourceMap.put(".wtf", rWeatherFogInfo);
+        fileExtensionToResourceMap.put(".wtl", rWeatherParamInfoTbl);
+        fileExtensionToResourceMap.put(".rac", rReaction);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 

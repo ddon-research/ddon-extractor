@@ -10,9 +10,10 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileM
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmWorkRateTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.OcdImmuneParamResTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.ReactionTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditVoicePaletteDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditVoicePaletteTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.StaminaDecTblDeserializer;
@@ -25,6 +26,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.N
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.base.*;
+import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.camera.LargeCameraParamTableDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureGroupDeserializer;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.deserialization.clankyoten.FurnitureItemDeserializer;
@@ -159,7 +161,9 @@ public class ClientResourceFileManagerSeason2 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponResTable, new FileHeader(9, 4), new WeaponResTableDeserializer()));
         NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
         clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditVoicePalette, new FileHeader(34, 4), new CharacterEditVoicePaletteDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditVoicePalette, new FileHeader(34, 4), new CharacterEditVoicePaletteTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLargeCameraParam, new FileHeader(3, 4), new LargeCameraParamTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReaction, new FileHeader(13, 4), new ReactionTableDeserializer()));
 
         return clientResourceFileSet;
     }

@@ -44,7 +44,10 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.que
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.shop.ShopGoodsDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundBossBgmDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundOptDataTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherFogInfoTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherParamInfoTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherStageInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
@@ -194,6 +197,13 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherStageInfo, new FileHeader("WSI_", 7, 4), new WeatherStageInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWepCateResTbl, new FileHeader(1, 4), new WepCateResTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rSoundBossBgm, new FileHeader("SBB\0", 1, 4), new SoundBossBgmDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnemyBloodStain, new FileHeader(1, 4), new EnemyBloodStainTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rSoundOptData, new FileHeader(1, 4), new SoundOptDataTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTargetCursorOffset, new FileHeader(272, 4), new TargetCursorOffsetTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherFogInfo, new FileHeader(3, 4), new WeatherFogInfoTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherParamInfoTbl, new FileHeader(12, 4), new WeatherParamInfoTableDeserializer()));
+
+
     }
 
     /**

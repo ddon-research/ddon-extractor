@@ -95,6 +95,11 @@ public abstract class ResourceMetadataLookupUtil {
 
     public abstract Translation getItemName(long itemId);
 
+    /**
+     * Caller must convert from hex to decimal if necessary.
+     *
+     * @param enemyId decimal radix
+     */
     public abstract Translation getEnemyName(long enemyId);
 
     public Translation getQuestName(long questId) {

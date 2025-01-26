@@ -10,7 +10,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.character_ed
 
 import java.nio.file.Path;
 
-public class CharacterEditVoicePaletteDeserializer extends ClientResourceFileDeserializer<CharacterEditVoicePaletteTable> {
+public class CharacterEditVoicePaletteTableDeserializer extends ClientResourceFileDeserializer<CharacterEditVoicePaletteTable> {
     private static CharacterEditPaletteBase readCharacterEditPaletteBase(BufferReader bufferReader) {
         return new CharacterEditPaletteBase(
                 bufferReader.readUnsignedInteger(),
@@ -30,6 +30,6 @@ public class CharacterEditVoicePaletteDeserializer extends ClientResourceFileDes
 
     @Override
     protected CharacterEditVoicePaletteTable parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new CharacterEditVoicePaletteTable(bufferReader.readArray(CharacterEditVoicePaletteDeserializer::readCharacterEditVoicePalette));
+        return new CharacterEditVoicePaletteTable(bufferReader.readArray(CharacterEditVoicePaletteTableDeserializer::readCharacterEditVoicePalette));
     }
 }
