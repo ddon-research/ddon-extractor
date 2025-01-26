@@ -90,6 +90,8 @@ public interface BufferReader {
 
     Color readColor();
 
+    Color4l readColor4l();
+
     OrientedBoundingBox readOrientedBoundingBox();
 
     AxisAlignedBoundingBox readAxisAlignedBoundingBox();

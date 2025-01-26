@@ -308,6 +308,11 @@ public class BinaryReader implements BufferReader {
     }
 
     @Override
+    public Color4l readColor4l() {
+        return new Color4l(readUnsignedInteger(), readUnsignedInteger(), readUnsignedInteger(), readUnsignedInteger());
+    }
+
+    @Override
     public OrientedBoundingBox readOrientedBoundingBox() {
         return new OrientedBoundingBox(
                 readMatrix(),

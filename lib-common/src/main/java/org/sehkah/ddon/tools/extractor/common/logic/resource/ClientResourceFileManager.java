@@ -202,8 +202,6 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTargetCursorOffset, new FileHeader(272, 4), new TargetCursorOffsetTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherFogInfo, new FileHeader(3, 4), new WeatherFogInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherParamInfoTbl, new FileHeader(12, 4), new WeatherParamInfoTableDeserializer()));
-
-
     }
 
     /**
