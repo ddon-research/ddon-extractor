@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutSetInfoType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutUnitKind;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.*;
 
 import java.nio.file.Path;
@@ -149,7 +150,14 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             QuestName = lookupUtil.getQuestName(QuestId);
         }
 
-        return new SetInfoOmCtrl(KeyItemId, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, AddGroupNo, AddSubGroupNo, InfoOm);
+        boolean ControlsKeyDoorMechanism = false;
+        List<SetInfoOmCtrlLinkParam> omParams = LinkParam.stream().filter(p -> p.getKindType() == LayoutUnitKind.U_OM).toList();
+        if (!omParams.isEmpty()) {
+            log.debug("SetInfoOmCtrl has a high chance of controlling a key door!");
+            ControlsKeyDoorMechanism = true;
+        }
+
+        return new SetInfoOmCtrl(KeyItemId, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, ControlsKeyDoorMechanism, AddGroupNo, AddSubGroupNo, InfoOm);
     }
 
     private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {

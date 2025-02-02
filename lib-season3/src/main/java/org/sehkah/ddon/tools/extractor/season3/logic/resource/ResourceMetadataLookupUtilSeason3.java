@@ -81,28 +81,28 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
         ItemListItemParam item = list.getItemById(itemId);
 
         // TODO: pull item name into super class once it is known how to get item names for armor/weapons
-        if (item instanceof ConsumableItem consumableItem) {
-            return consumableItem.getItemName();
-        } else if (item instanceof MaterialItem materialItem) {
-            return materialItem.getItemName();
+        if (item instanceof Consumable consumable) {
+            return consumable.getItemName();
+        } else if (item instanceof Material material) {
+            return material.getItemName();
         } else if (item instanceof KeyItem keyItem) {
             return keyItem.getItemName();
         } else if (item instanceof JobItem jobItem) {
             return jobItem.getItemName();
         } else if (item instanceof SpecialItem specialItem) {
             return specialItem.getItemName();
-        } else if (item instanceof WeaponItem weaponItem) {
+        } else if (item instanceof Weapon weapon) {
             return null;
-        } else if (item instanceof WeaponUpgradeItem weaponUpgradeItem) {
-            return weaponUpgradeItem.getItemName();
-        } else if (item instanceof ArmorItem armorItem) {
+        } else if (item instanceof WeaponBase weaponBase) {
+            return weaponBase.getItemName();
+        } else if (item instanceof Armor armor) {
             return null;
-        } else if (item instanceof ArmorUpgradeItem armorUpgradeItem) {
-            return armorUpgradeItem.getItemName();
-        } else if (item instanceof JewelryItem jewelryItem) {
-            return jewelryItem.getItemName();
-        } else if (item instanceof NpcEquipmentItem npcEquipmentItem) {
-            return npcEquipmentItem.getItemName();
+        } else if (item instanceof ArmorBase armorBase) {
+            return armorBase.getItemName();
+        } else if (item instanceof Jewelry jewelry) {
+            return jewelry.getItemName();
+        } else if (item instanceof NpcEquipment npcEquipment) {
+            return npcEquipment.getItemName();
         }
 
         return null;

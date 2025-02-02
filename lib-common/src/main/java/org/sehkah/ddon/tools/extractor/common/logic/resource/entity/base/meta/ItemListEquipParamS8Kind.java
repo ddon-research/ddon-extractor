@@ -64,6 +64,9 @@ public enum ItemListEquipParamS8Kind {
     KIND_TYPE_DOWN_MAGIC_SAV(0x3A),
     KIND_TYPE_DOWN_MAGIC_DEF_SAV(0x3B),
     KIND_TYPE_STAN_SAV(0x3C),
+    // Season 3+, a lot of built-in parameters were moved here for Jewelry
+    KIND_TYPE_MAX_HP_UP(0x44),
+    KIND_TYPE_MAX_ST_UP(0x45),
     KIND_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;

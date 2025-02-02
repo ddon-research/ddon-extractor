@@ -7,6 +7,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutSetInfoType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutUnitKind;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.stage.*;
 
 import java.nio.file.Path;
@@ -135,15 +136,22 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
     }
 
     private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader) {
-        return new SetInfoOmCtrl(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam),
-                bufferReader.readSignedInteger(),
-                bufferReader.readSignedInteger(),
-                readSetInfoOm(bufferReader)
-        );
+        long KeyItemNo = bufferReader.readUnsignedInteger();
+        boolean IsQuest = bufferReader.readBoolean();
+        long QuestId = bufferReader.readUnsignedInteger();
+        List<SetInfoOmCtrlLinkParam> LinkParam = bufferReader.readFixedLengthArray(4, LayoutDeserializer::readSetInfoOmCtrlLinkParam);
+        int AddGroupNo = bufferReader.readSignedInteger();
+        int AddSubGroupNo = bufferReader.readSignedInteger();
+        SetInfoOm InfoOm = readSetInfoOm(bufferReader);
+
+        boolean ControlsKeyDoorMechanism = false;
+        List<SetInfoOmCtrlLinkParam> omParams = LinkParam.stream().filter(p -> p.getKindType() == LayoutUnitKind.U_OM).toList();
+        if (!omParams.isEmpty()) {
+            log.debug("SetInfoOmCtrl has a high chance of controlling a key door!");
+            ControlsKeyDoorMechanism = true;
+        }
+
+        return new SetInfoOmCtrl(KeyItemNo, IsQuest, QuestId, LinkParam, ControlsKeyDoorMechanism, AddGroupNo, AddSubGroupNo, InfoOm);
     }
 
     private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {

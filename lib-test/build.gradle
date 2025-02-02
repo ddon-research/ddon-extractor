@@ -15,4 +15,5 @@ dependencies {
 
     testImplementation libTest.commons.codec
     testImplementation libTest.junit.pioneer
+    testImplementation libTest.mockito.core
 }

@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListElementParamKind;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListMaterialCategory;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListParamKind;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @ToString
@@ -22,22 +21,14 @@ public class ItemListParam {
     private short KindType;
     @MetaInformation
     private String KindTypeName;
-    private List<Integer> Parameters; // TODO typification;
+    private Map<String, Integer> Parameters;
 
-    public ItemListParam(int category, short kindType, List<Integer> parameters) {
-        this(
-                kindType, getKindTypeName(category, kindType),
-                parameters
-        );
-    }
-
-    private static String getKindTypeName(int category, short kindType) {
-        log.trace("{}, {}", category, kindType);
-        if (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_WEP.value
-                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_ARMOR.value
-                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_COLOR.value) {
-            return ItemListElementParamKind.of(kindType).name();
+    public ItemListParam(short kindType, String kindTypeName, List<Integer> parameters) {
+        KindType = kindType;
+        KindTypeName = kindTypeName;
+        Parameters = HashMap.newHashMap(parameters.size());
+        for (int i = 0; i < parameters.size(); i++) {
+            Parameters.put("Param" + i, parameters.get(i));
         }
-        return ItemListParamKind.of(kindType).name();
     }
 }

@@ -119,7 +119,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long IsUseJob = bufferReader.readUnsignedInteger();
         Set<JobType> IsUseJobType = BitUtil.extractBitSetUnsignedIntegerFlag(JobType::of, IsUseJob);
         int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, Flag);
+        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
         int IconNo = bufferReader.readUnsignedShort();
         int IsUseLv = bufferReader.readUnsignedShort();
         int ItemCategory = bufferReader.readUnsignedByte();

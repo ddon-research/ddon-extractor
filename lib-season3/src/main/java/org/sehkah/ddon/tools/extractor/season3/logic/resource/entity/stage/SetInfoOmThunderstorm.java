@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown49 extends SetInfo {
+public class SetInfoOmThunderstorm extends SetInfo {
     private long unknown1;
     private long unknown2;
     private long unknown3;

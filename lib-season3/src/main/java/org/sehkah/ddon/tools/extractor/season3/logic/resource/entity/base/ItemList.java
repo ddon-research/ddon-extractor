@@ -20,30 +20,30 @@ public class ItemList extends Resource {
     private long Buffer2;
 
     private long ArrayUnknown1Num;
-    private long ArrayConsumableItemsNum;
-    private long ArrayMaterialItemsNum;
+    private long ArrayConsumableNum;
+    private long ArrayMaterialNum;
     private long ArrayKeyItemsNum;
     private long ArrayJobItemsNum;
     private long ArraySpecialItemsNum;
-    private long ArrayWeaponItemsNum;
-    private long ArrayWeaponUpgradeItemsNum;
-    private long ArrayArmorItemsNum;
-    private long ArrayArmorUpgradeItemNum;
-    private long ArrayJewelryItemsNum;
-    private long ArrayNpcEquipmentItemsNum;
+    private long ArrayWeaponNum;
+    private long ArrayWeaponBaseNum;
+    private long ArrayArmorNum;
+    private long ArrayArmorBaseItemNum;
+    private long ArrayJewelryNum;
+    private long ArrayNpcEquipmentNum;
 
     private List<Long> Unknown1List;
-    private List<ConsumableItem> ConsumableItemList;
-    private List<MaterialItem> MaterialItemList;
+    private List<Consumable> ConsumableList;
+    private List<Material> MaterialList;
     private List<KeyItem> KeyItemList;
     private List<JobItem> JobItemList;
     private List<SpecialItem> SpecialItemList;
-    private List<WeaponItem> WeaponItemList;
-    private List<WeaponUpgradeItem> WeaponUpgradeItemList;
-    private List<ArmorItem> ArmorItemList;
-    private List<ArmorUpgradeItem> ArmorUpgradeItemList;
-    private List<JewelryItem> JewelryItemList;
-    private List<NpcEquipmentItem> NpcEquipmentItemList;
+    private List<Weapon> WeaponList;
+    private List<WeaponBase> WeaponBaseList;
+    private List<Armor> ArmorList;
+    private List<ArmorBase> ArmorBaseList;
+    private List<Jewelry> JewelryList;
+    private List<NpcEquipment> NpcEquipmentList;
 
     @JsonIgnore
     private List<ItemListItemParam> ItemParamList;

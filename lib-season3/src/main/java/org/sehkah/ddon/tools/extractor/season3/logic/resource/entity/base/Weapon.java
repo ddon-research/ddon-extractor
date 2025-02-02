@@ -17,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class ArmorItem extends ItemListItemParam {
+public class Weapon extends ItemListItemParam {
     private int Flag;
     @MetaInformation
     private Set<ItemListFlagType> FlagTypes;
@@ -37,17 +37,23 @@ public class ArmorItem extends ItemListItemParam {
 
     private int Attack;
     private int MagicAttack;
-    private int Defense;
-    private int MagicDefense;
     private int Weight;
 
-    private int Unknown1;
-    private int Unknown2;
+    private int EleSlot;
+    @MetaInformation
+    private int CrestSlot;
+    @MetaInformation
+    private int QualityStars;
+
+    private int WeaponBaseId;
 
     private int EquipParamS8Num;
     private List<ItemListEquipParamS8> EquipParamS8List;
 
-    public ArmorItem(int ItemIndex, long ItemId, int flag, Set<ItemListFlagType> flagTypes, int itemCategory, ItemListItemCategory itemCategoryName, long sortNo, long nameSortNo, int price, int gradeRankFlag, int grade, int rank, int attack, int magicAttack, int defense, int magicDefense, int weight, int unknown1, int unknown2, int equipParamS8Num, List<ItemListEquipParamS8> equipParamS8List) {
+    public Weapon(int ItemIndex, long ItemId, int flag, Set<ItemListFlagType> flagTypes, int itemCategory,
+                  ItemListItemCategory itemCategoryName, long sortNo, long nameSortNo, int price, int gradeRankFlag,
+                  int grade, int rank, int attack, int magicAttack, int weight, int eleSlot, int crestSlot, int qualityStars,
+                  int weaponBaseId, int equipParamS8Num, List<ItemListEquipParamS8> equipParamS8List) {
         super(ItemIndex, ItemId);
         Flag = flag;
         FlagTypes = flagTypes;
@@ -61,11 +67,11 @@ public class ArmorItem extends ItemListItemParam {
         Rank = rank;
         Attack = attack;
         MagicAttack = magicAttack;
-        Defense = defense;
-        MagicDefense = magicDefense;
         Weight = weight;
-        Unknown1 = unknown1;
-        Unknown2 = unknown2;
+        EleSlot = eleSlot;
+        CrestSlot = crestSlot;
+        QualityStars = qualityStars;
+        WeaponBaseId = weaponBaseId;
         EquipParamS8Num = equipParamS8Num;
         EquipParamS8List = equipParamS8List;
     }

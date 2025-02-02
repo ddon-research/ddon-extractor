@@ -23,6 +23,8 @@ public class SetInfoOmCtrl extends SetInfo {
     @MetaInformation
     private Translation QuestName;
     private List<SetInfoOmCtrlLinkParam> LinkParam; // 4
+    @MetaInformation
+    private boolean ControlsKeyDoorMechanism;
     private int AddGroupNo;
     private int AddSubGroupNo;
     private SetInfoOm InfoOm;

@@ -8,6 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutSetInfoType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.LayoutUnitKind;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
 import java.nio.file.Path;
@@ -201,7 +202,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, Path filePath) {
         long KeyItemNo = bufferReader.readUnsignedInteger();
         boolean IsQuest = bufferReader.readBoolean();
         long QuestId = bufferReader.readUnsignedInteger();
@@ -218,7 +219,21 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             QuestName = lookupUtil.getQuestName(QuestId);
         }
 
-        return new SetInfoOmCtrl(KeyItemNo, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, AddGroupNo, AddSubGroupNo, EmHpRate, InfoOm);
+        boolean ControlsKeyDoorMechanism = false;
+        List<SetInfoOmCtrlLinkParam> omParams = LinkParam.stream().filter(p -> p.getKindType() == LayoutUnitKind.U_OM).toList();
+        // Known patterns:
+        // 1x EM unknown what this does, very few exist
+        // 1x EM for 1x OM (enemy group unlocks door),
+        // >=2x EM for 1x OM (different enemy groups unlock door),
+        // 1x OM for 1x OM (lever unlocks door)
+        // 1x EM & 1x OM for 1x OM is a dead ID which can be ignored (only exists in 821+824)
+        // There are never more than 2x OM in a single SetInfoOmCtrl
+        if (!omParams.isEmpty()) {
+            log.debug("SetInfoOmCtrl has a high chance of controlling a key door!");
+            ControlsKeyDoorMechanism = true;
+        }
+
+        return new SetInfoOmCtrl(KeyItemNo, KeyItemName, IsQuest, QuestId, QuestName, LinkParam, ControlsKeyDoorMechanism, AddGroupNo, AddSubGroupNo, EmHpRate, InfoOm);
     }
 
     private static SetInfoOmElfSW readSetInfoOmElfSW(BufferReader bufferReader) {
@@ -485,15 +500,15 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         return new SetInfoOmUnknown30(UnknownStageNo, UnknownStageName, Unknown1, QuestId, QuestName, Unknown2, InfoOm);
     }
 
-    private static SetInfoOmUnknown31 readSetInfoOmUnknown31(BufferReader bufferReader) {
-        return new SetInfoOmUnknown31(
+    private static SetInfoOmGeyser readSetInfoOmUnknown31(BufferReader bufferReader) {
+        return new SetInfoOmGeyser(
                 bufferReader.readVector4f(),
                 readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown32 readSetInfoOmUnknown32(BufferReader bufferReader) {
-        return new SetInfoOmUnknown32(
+    private static SetInfoOmReloadableCannon readSetInfoOmUnknown32(BufferReader bufferReader) {
+        return new SetInfoOmReloadableCannon(
                 bufferReader.readBoolean(),
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger(),
@@ -515,16 +530,16 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmUnknown34 readSetInfoOmUnknown34(BufferReader bufferReader) {
-        return new SetInfoOmUnknown34(
+    private static SetInfoOmMagicBreakableWall readSetInfoOmUnknown34(BufferReader bufferReader) {
+        return new SetInfoOmMagicBreakableWall(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger(),
                 readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown45 readSetInfoOmUnknown45(BufferReader bufferReader) {
-        return new SetInfoOmUnknown45(
+    private static SetInfoOmLavaGeyser readSetInfoOmUnknown45(BufferReader bufferReader) {
+        return new SetInfoOmLavaGeyser(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedShort(),
                 bufferReader.readSignedInteger(),
@@ -564,8 +579,8 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         return new SetInfoOmUnknown46(QuestFlag1, QuestId1, QuestName1, QuestFlag2, QuestId2, QuestName2, InfoOm);
     }
 
-    private static SetInfoOmUnknown47 readSetInfoOmUnknown47(BufferReader bufferReader) {
-        return new SetInfoOmUnknown47(
+    private static SetInfoOmEpitaphBarrier readSetInfoOmUnknown47(BufferReader bufferReader) {
+        return new SetInfoOmEpitaphBarrier(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readBoolean(),
                 bufferReader.readSignedInteger(),
@@ -574,15 +589,15 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmUnknown48 readSetInfoOmUnknown48(BufferReader bufferReader) {
-        return new SetInfoOmUnknown48(
+    private static SetInfoOmDragonHornStaff readSetInfoOmUnknown48(BufferReader bufferReader) {
+        return new SetInfoOmDragonHornStaff(
                 bufferReader.readUnsignedInteger(),
                 readSetInfoOmOld(bufferReader)
         );
     }
 
-    private static SetInfoOmUnknown49 readSetInfoOmUnknown49(BufferReader bufferReader) {
-        return new SetInfoOmUnknown49(
+    private static SetInfoOmThunderstorm readSetInfoOmUnknown49(BufferReader bufferReader) {
+        return new SetInfoOmThunderstorm(
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger(),
                 bufferReader.readUnsignedInteger(),
@@ -723,7 +738,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, Path filePath) {
         int ID = bufferReader.readSignedInteger();
         long Type = bufferReader.readUnsignedInteger();
         SetInfo Info = null;
@@ -738,7 +753,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
-            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil, filePath);
             case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);
             case LayoutSetInfoType.SetInfoOmFall -> Info = readSetInfoOmFall(bufferReader);
             case LayoutSetInfoType.SetInfoOmLever -> Info = readSetInfoOmLever(bufferReader);
@@ -791,9 +806,9 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
     @Override
     protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
-        return new Layout(
-                bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger),
-                bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo, lookupUtil)
-        );
+        List<Long> SetInfoNeedNums = bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger);
+        List<LayoutSetInfo> Array = bufferReader.readArray(br -> readLayoutSetInfo(br, lookupUtil, filePath));
+
+        return new Layout(SetInfoNeedNums, Array);
     }
 }

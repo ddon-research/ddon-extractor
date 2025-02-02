@@ -119,6 +119,8 @@ public enum SetInfoCoordOmIdType {
     OM_ID_DOOR_523031(523031),
     OM_ID_DOOR_523033(523033),
     OM_ID_DOOR_523081(523081),
+    // Special IDs which are always used to control stateful behavior in a layout/stage.
+    OM_ID_CONTROL_522550(522550),
     ;
 
     private static final Map<Integer, SetInfoCoordOmIdType> ordinalMap = Arrays.stream(values()).collect(Collectors.toMap(e -> e.value, Function.identity()));

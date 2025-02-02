@@ -63,6 +63,17 @@ public enum ItemListParamKind {
     SKILL_LEARN(0x82),
     ABILITY_LEARN(0x83),
     PAWN_USE(0x84),
+    // Season 3+
+//    EXPERIENCE_POINT(0x84), //TODO: Verify
+    ORB_GROWTH(0x8C),
+    ORB_AUGMENTATION(0x8D),
+    ORB_PORTCRYSTAL(0x8E),
+    PLAY_POINT(0x8F),
+    THROWING(0x90),
+    TOTAL_ATTACK_UP(0x91),
+    TOTAL_DEFENCE_UP(0x92),
+    DARK_FLAME_CLEAR(0x93),
+    CURSE_CLEAR(0x94),
     PARAM_KIND_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;

@@ -123,4 +123,23 @@ public abstract class ResourceMetadataLookupUtil {
     public Translation getLandName(int landId) {
         return getMessageTranslation(GUIMessageLookupTable.LAND_NAME.getFilePath(), landId - 1);
     }
+
+    public Translation getSkillName(int jobId, int skillNo) {
+        Translation translation = null;
+
+        String normalSkillFilePath = String.format("ui/gui_cmn/ui/00_message/skill/normal_skill_name_%02d.gmd", jobId);
+        translation = getMessageTranslation(normalSkillFilePath, String.format("NORMAL_SKILL_NAME_%02d_%d", jobId, skillNo));
+        if (translation != null) {
+            return translation;
+        }
+
+        String customSkillFilePath = String.format("ui/gui_cmn/ui/00_message/skill/custom_skill_name_%02d.gmd", jobId);
+        translation = getMessageTranslation(customSkillFilePath, String.format("CUSTOM_SKILL_NAME_%02d_%d", jobId, skillNo));
+
+        return translation;
+    }
+
+    public Translation getAbilityName(int abilityNo) {
+        return getMessageTranslation(GUIMessageLookupTable.ABILITY_NAME.getFilePath(), "ABILITY_NAME_" + abilityNo);
+    }
 }

@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.lib.test.common.crypto;
+package org.sehkah.ddon.tools.extractor.lib.test.api.crypto;
 
 import org.junit.jupiter.api.Test;
 import org.sehkah.ddon.tools.extractor.api.crypto.CrcUtil;
