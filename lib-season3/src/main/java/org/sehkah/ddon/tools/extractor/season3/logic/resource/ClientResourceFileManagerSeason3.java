@@ -23,8 +23,10 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStageList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base.*;
@@ -79,8 +81,13 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile,
+
+                                                              ClientResourceFile<MsgSet> msgSetResourceFile,
+                                                              ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile,
+                                                              ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile,
+                                                              ClientResourceFile<AreaInfoStageList> AreaInfoStageListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, msgSetResourceFile, npcLedgerListResourceFile, enemyGroupListResourceFile, AreaInfoStageListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
     }
 
     @Override
@@ -171,6 +178,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReaction, new FileHeader(14, 4), new ReactionTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditColorDef, new FileHeader(35, 4), new CharacterEditColorDefTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditTexturePalette, new FileHeader(35, 4), new CharacterEditTexturePaletteTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLayoutGroupParamList, new FileHeader("gpl\0", 70, 4), new LayoutGroupParamListDeserializer()));
 
         return clientResourceFileSet;
     }

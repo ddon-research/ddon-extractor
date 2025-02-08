@@ -54,6 +54,11 @@ public class BitUtil {
         return result;
     }
 
+    public static boolean extractBoolean(long source, int position) {
+        ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES).order(ByteOrder.LITTLE_ENDIAN).putLong(source);
+        return BitSet.valueOf(buffer.array()).get(position);
+    }
+
     public static long extractLong(long source, int fromInclusive, int toInclusive) {
         return BitSet.valueOf(new long[]{source}).get(fromInclusive, toInclusive + 1).toLongArray()[0];
     }

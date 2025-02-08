@@ -18,7 +18,7 @@ public class ZoneShapeInfoOBB extends ZoneShapeInfoBase {
     private boolean IsEnableExtendedDecay;
 
     public ZoneShapeInfoOBB(ZoneShapeInfoBase base, OrientedBoundingBox OBB, float decayY, float decayZ, boolean isEnableExtendedDecay) {
-        super(base.getDecay());
+        super(base.getDecay(), base.isIsNativeData());
         this.OBB = OBB;
         DecayY = decayY;
         DecayZ = decayZ;

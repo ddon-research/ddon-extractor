@@ -22,7 +22,7 @@ public class ZoneShapeInfoArea extends ZoneShapeInfoBase {
     private Vector3f ConcaveCrossPos;
 
     public ZoneShapeInfoArea(ZoneShapeInfoBase base, float height, float bottom, long concaveStatus, boolean flgConvex, List<Vector3f> vertex, Vector3f concaveCrossPos) {
-        super(base.getDecay());
+        super(base.getDecay(), base.isIsNativeData());
         Height = height;
         Bottom = bottom;
         ConcaveStatus = concaveStatus;

@@ -14,11 +14,12 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 @Slf4j
 public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
-
+    private static final Pattern stageNoPattern = Pattern.compile("(?:^|[\\\\/])st(\\d+)");
 
     private static SetInfoCoord readSetInfoCoord(BufferReader bufferReader) {
         return new SetInfoCoord(
@@ -202,7 +203,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, Path filePath) {
+    private static SetInfoOmCtrl readSetInfoOmCtrl(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long KeyItemNo = bufferReader.readUnsignedInteger();
         boolean IsQuest = bufferReader.readBoolean();
         long QuestId = bufferReader.readUnsignedInteger();
@@ -364,7 +365,6 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
         return new SetInfoOmDoor(PRT, PRTPos, PRTScale, TextType, TextQuestNo, TextNo, QuestID, QuestName, QuestFlag, InfoOm);
     }
-
 
     private static SetInfoOmBowlOfLife readSetInfoOmBowlOfLife(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         boolean WaitBowlOfLife = bufferReader.readBoolean();
@@ -738,7 +738,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, Path filePath) {
+    private static LayoutSetInfo readLayoutSetInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int ID = bufferReader.readSignedInteger();
         long Type = bufferReader.readUnsignedInteger();
         SetInfo Info = null;
@@ -753,7 +753,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmLadder -> Info = readSetInfoOmLadder(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarp -> Info = readSetInfoOmWarp(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmBoard -> Info = readSetInfoOmBoard(bufferReader);
-            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil, filePath);
+            case LayoutSetInfoType.SetInfoOmCtrl -> Info = readSetInfoOmCtrl(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoOmElfSW -> Info = readSetInfoOmElfSW(bufferReader);
             case LayoutSetInfoType.SetInfoOmFall -> Info = readSetInfoOmFall(bufferReader);
             case LayoutSetInfoType.SetInfoOmLever -> Info = readSetInfoOmLever(bufferReader);
@@ -797,18 +797,28 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             default -> log.error("Unhandled layout type: {}", Type);
         }
 
-        return new LayoutSetInfo(
-                ID,
-                Type,
-                Info
-        );
+        return new LayoutSetInfo(ID, Type, Info);
     }
 
     @Override
     protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<Long> SetInfoNeedNums = bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger);
-        List<LayoutSetInfo> Array = bufferReader.readArray(br -> readLayoutSetInfo(br, lookupUtil, filePath));
+        List<LayoutSetInfo> Array = bufferReader.readArray(br -> readLayoutSetInfo(br, lookupUtil));
 
-        return new Layout(SetInfoNeedNums, Array);
+        // stage/st0414/lot/st0414_00m00n/scr/st0414/etc/st0414_00m00n_n02.lot
+        int StageNo = stageNoPattern.matcher(filePath.toString()).results().findFirst()
+                .map(m -> Integer.parseInt(m.group(1), 10))
+                .orElse(-1);
+
+        int AreaId = -1;
+        Translation StageName = null;
+        Translation AreaName = null;
+        if (StageNo > 0 && lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+            AreaId = (int) lookupUtil.getAreaIdByStageNo(StageNo);
+            AreaName = lookupUtil.getAreaName(AreaId);
+        }
+
+        return new Layout(SetInfoNeedNums, Array, StageNo, StageName, AreaId, AreaName);
     }
 }

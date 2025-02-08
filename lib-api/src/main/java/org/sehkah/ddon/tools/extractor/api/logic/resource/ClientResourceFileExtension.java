@@ -104,6 +104,7 @@ public enum ClientResourceFileExtension {
     rLandInfo,
     rLargeCameraParam,
     rLayout,
+    rLayoutGroupParamList,
     rLayoutPreset,
     rLocationData,
     rMagicChantParam,
@@ -298,6 +299,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lcp", rLargeCameraParam);
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lot", rLayout);
+        fileExtensionToResourceMap.put(".gpl", rLayoutGroupParamList);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
         fileExtensionToResourceMap.put(".mcw", rMagicCommandWord);
         fileExtensionToResourceMap.put(".mgcc", rMagicCommandList);

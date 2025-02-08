@@ -80,7 +80,7 @@ public class BinaryWriter implements BufferWriter {
 
     @Override
     public void writeUnsignedLong(BigInteger value) {
-        byteBuffer.putLong(value.longValue());
+        byteBuffer.putLong(value.longValueExact());
     }
 
     @Override

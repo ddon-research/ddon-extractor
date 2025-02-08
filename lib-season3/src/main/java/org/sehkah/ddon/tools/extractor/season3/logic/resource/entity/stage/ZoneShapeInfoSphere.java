@@ -15,7 +15,7 @@ public class ZoneShapeInfoSphere extends ZoneShapeInfoBase {
     private Sphere Sphere;
 
     public ZoneShapeInfoSphere(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.api.datatype.Sphere sphere) {
-        super(base.getDecay());
+        super(base.getDecay(), base.isIsNativeData());
         Sphere = sphere;
     }
 }

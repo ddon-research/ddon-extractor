@@ -14,16 +14,21 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDeserializer<AreaMasterSpotDetailDataList> {
+    private static SpotEnemyData readSpotEnemyData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        long EnemyGroupId = bufferReader.readUnsignedInteger();
+        long EnemyNamedId = bufferReader.readUnsignedInteger();
+        int Level = bufferReader.readUnsignedShort();
+        int UnknownShort = bufferReader.readUnsignedShort();
+        int Rank = bufferReader.readUnsignedByte();
 
+        Translation EnemyName = null;
+        Translation NamedEnemyName = null;
+        if (lookupUtil != null) {
+            EnemyName = lookupUtil.getEnemyGroupName(EnemyGroupId);
+            NamedEnemyName = lookupUtil.getNamedEnemyName(EnemyNamedId);
+        }
 
-    private static SpotEnemyData readSpotEnemyData(BufferReader bufferReader) {
-        return new SpotEnemyData(
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedShort(),
-                bufferReader.readUnsignedByte()
-        );
+        return new SpotEnemyData(EnemyGroupId, EnemyName, EnemyNamedId, NamedEnemyName, Level, UnknownShort, Rank);
     }
 
     private static SpotItemData readSpotItemData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
@@ -43,7 +48,7 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
     private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long SpotId = bufferReader.readUnsignedInteger();
         List<SpotItemData> ItemArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotItemData, lookupUtil);
-        List<SpotEnemyData> EnemyArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData);
+        List<SpotEnemyData> EnemyArray = bufferReader.readArray(AreaMasterSpotDetailDataDeserializer::readSpotEnemyData, lookupUtil);
 
         Translation SpotName = null;
         if (lookupUtil != null) {

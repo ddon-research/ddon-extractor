@@ -502,11 +502,11 @@ public class FrameworkResourcesUtil {
     }
 
     public static long convertResourceIdToPathId(BigInteger resourceId) {
-        return resourceId.longValue() & 0xFFFF_FFFFL;
+        return resourceId.longValueExact() & 0xFFFF_FFFFL;
     }
 
     public static long convertResourceIdToTagId(BigInteger resourceId) {
-        return resourceId.longValue() >> 32;
+        return resourceId.longValueExact() >> 32;
     }
 
     /**
