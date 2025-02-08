@@ -4,7 +4,7 @@ package org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.meta.ParamCallMessageType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamCallMessageType;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -17,7 +17,9 @@ public class FSMBaseParamCallMessage extends AICopiableParameter {
     private long MsgType;
     @MetaInformation
     private ParamCallMessageType MsgTypeName;
+    // TODO: Lookup
     private long QuestId;//QuestNo
+    // TODO: Lookup
     private long MsgNo;
     private float MsgDispTime;
     private float MsgWaitTime;

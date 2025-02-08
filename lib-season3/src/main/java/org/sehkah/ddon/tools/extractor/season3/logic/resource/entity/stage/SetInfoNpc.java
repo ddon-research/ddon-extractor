@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -12,6 +14,8 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class SetInfoNpc extends SetInfo {
     private int NpcId;
+    @MetaInformation
+    private Translation NpcName;
     private String FilePath;
     private boolean IsCommunicate;
     private int ClothType;
@@ -26,9 +30,9 @@ public class SetInfoNpc extends SetInfo {
     private boolean IsAttand;
     private boolean UseAttendComponent;
     private boolean DisableTouchAction;
+    private long TalkStateId;
     private boolean DispElseQuestTalk;
     private boolean ForceSwitchGreeting;
-    private long TalkStateId;
     private boolean UseLiteMotion;
     private boolean IsNoSetOnPS3;
     private boolean UseJobParamEx;

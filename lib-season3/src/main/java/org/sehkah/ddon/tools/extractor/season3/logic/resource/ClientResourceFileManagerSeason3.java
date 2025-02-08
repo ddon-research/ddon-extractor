@@ -10,8 +10,12 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileM
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmLvUpParamDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.EmWorkRateTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.OcdImmuneParamResTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.EM.ReactionTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CatchInfoParamTblDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.Human.CaughtInfoParamTblDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditColorDefTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditTexturePaletteTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common.CharacterEditVoicePaletteTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.EmBaseInfoSvDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.em_common.OcdStatusParamResListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job.StaminaDecTblDeserializer;
@@ -19,11 +23,12 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base.*;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.camera.LargeCameraParamTableDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureGroupDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureItemDeserializer;
@@ -51,9 +56,11 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.sc
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.skill.CustomSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.GUIMapSettingDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.ItemList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfoList;
 
 import java.nio.file.Path;
@@ -65,14 +72,15 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 @Slf4j
 public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager {
     private ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
+    private ClientResourceFile<ItemList> ItemListResourceFile;
 
     public ClientResourceFileManagerSeason3(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         super(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, npcLedgerListResourceFile, StageListInfoResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
     }
 
     @Override
@@ -112,6 +120,9 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureGroup, new FileHeader(1, 4), new FurnitureGroupDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureItem, new FileHeader(1, 4), new FurnitureItemDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rFurnitureLayout, new FileHeader(1, 4), new FurnitureLayoutDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rGUIMapSetting, new FileHeader("GMP\0", 6, 4), new GUIMapSettingDeserializer()));
+        ItemListResourceFile = new ClientResourceFile<>(rItemList, new FileHeader("ipa\0", 68, 4), new ItemListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) ItemListResourceFile);
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJobBaseParam, new FileHeader(263, 4), new JobBaseParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJumpParamTbl, new FileHeader(4, 4), new JumpParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rKeyConfigTextTable, new FileHeader(1, 4), new KeyConfigTextTableDeserializer()));
@@ -147,6 +158,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) StageListInfoResourceFile);
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStaminaDecTbl, new FileHeader("sdt\0", 7, 4), new StaminaDecTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rStartPos, new FileHeader("XFS\0", 196623, 4), new StartPosDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rScenario, new FileHeader("XFS\0", 458767, 4), new ScenarioDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexDetailEdit, new FileHeader("XFS\0", 393231, 4), new TexDetailEditDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTutorialList, new FileHeader("TLT\0", 6, 4), new TutorialListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWarpLocation, new FileHeader(353, 4), new WarpLocationDeserializer()));
@@ -154,6 +166,11 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeaponResTable, new FileHeader(11, 4), new WeaponResTableDeserializer()));
         NpcLedgerListResourceFile = new ClientResourceFile<>(rNpcLedgerList, new FileHeader("nll\0", 6, 4), new NpcLedgerListDeserializer());
         clientResourceFileSet.add((ClientResourceFile<T>) NpcLedgerListResourceFile);
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditVoicePalette, new FileHeader(35, 4), new CharacterEditVoicePaletteTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLargeCameraParam, new FileHeader(6, 4), new LargeCameraParamTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReaction, new FileHeader(14, 4), new ReactionTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditColorDef, new FileHeader(35, 4), new CharacterEditColorDefTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditTexturePalette, new FileHeader(35, 4), new CharacterEditTexturePaletteTableDeserializer()));
 
         return clientResourceFileSet;
     }

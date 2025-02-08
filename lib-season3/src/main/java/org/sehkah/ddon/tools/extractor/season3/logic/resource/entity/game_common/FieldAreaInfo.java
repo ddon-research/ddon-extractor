@@ -20,7 +20,11 @@ public class FieldAreaInfo {
     @MetaInformation
     private Translation FieldAreaName;
     private int LandId;
+    @MetaInformation
+    private Translation LandName;
     private int AreaId;
+    @MetaInformation
+    private Translation AreaName;
     private List<StageNo> StageNoList;
     private List<StageNo> BelongStageNoList;
 }

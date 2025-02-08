@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.quest.meta.ParamSetNeckTargetType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamSetNeckTargetType;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)

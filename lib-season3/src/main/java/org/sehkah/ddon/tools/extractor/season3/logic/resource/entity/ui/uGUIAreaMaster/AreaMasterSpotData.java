@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAre
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -12,10 +14,19 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaMasterSpotData {
     private long SpotId;
+    @MetaInformation
+    private Translation SpotName;
     private long CategoryNo;
+    @MetaInformation
+    private Translation CategoryName;
+    // TODO: Lookup -> am_spot_01.ams.json => area1_spot_info.gmd.json
     private long MessageId;
     private int StageNoMap;
+    @MetaInformation
+    private Translation StageName;
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private float PosX;
     private float PosY;
     private float PosZ;

@@ -5,8 +5,8 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.meta.GameElementType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM.meta.ShotReqInfo2Type;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.EM.meta.GameElementType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.EM.meta.ShotReqInfo2Type;
 
 import java.util.Set;
 

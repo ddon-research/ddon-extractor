@@ -11,8 +11,10 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaMasterSpotData {
+    // TODO: Lookup
     private long SpotId;
     private long CategoryNo;
+    // TODO: Lookup
     private long MessageId;
     private int StageNoMap;
     private float PosX;

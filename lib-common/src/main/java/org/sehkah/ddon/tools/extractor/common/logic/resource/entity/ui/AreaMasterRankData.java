@@ -11,6 +11,7 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaMasterRankData {
+    // TODO: Lookup
     private long MsgGroupSerial;
     private long Point;
     //TODO: find enum

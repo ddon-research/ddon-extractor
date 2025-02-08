@@ -5,6 +5,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.binary.XfsDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.binary.XfsHeader;
@@ -325,18 +326,22 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMOrderParamAreaHit(Act, TaskType, SceNo);
     }
 
-    private static FSMOrderParamCallEventNpcId readFSMOrderParamCallEventNpcId(BufferReader bufferReader) {
+    private static FSMOrderParamCallEventNpcId readFSMOrderParamCallEventNpcId(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long NpcId = XfsDeserializer.readUnsignedInteger(bufferReader);
+        Translation NpcName = null;
+        if (lookupUtil != null) {
+            NpcName = lookupUtil.getNpcName(NpcId);
+        }
 
-        return new FSMOrderParamCallEventNpcId(NpcId);
+        return new FSMOrderParamCallEventNpcId(NpcId, NpcName);
     }
 
-    private static FSMOrderParamCallEvent readFSMOrderParamCallEvent(BufferReader bufferReader) {
+    private static FSMOrderParamCallEvent readFSMOrderParamCallEvent(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int StageNo = XfsDeserializer.readSignedInteger(bufferReader);
         int EventNo = XfsDeserializer.readSignedInteger(bufferReader);
-        List<FSMOrderParamCallEventNpcId> NpcArray = XfsDeserializer.readMtArray(bufferReader, AIFSMDeserializer::readFSMOrderParamCallEventNpcId);
+        List<FSMOrderParamCallEventNpcId> NpcArray = XfsDeserializer.readMtArray(bufferReader, br -> readFSMOrderParamCallEventNpcId(br, lookupUtil));
 
         return new FSMOrderParamCallEvent(StageNo, EventNo, NpcArray);
     }
@@ -389,13 +394,13 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new FSMOrderParamSetCallSe(SeId, Target, Group, Id, JointNo, DelayFrame, Pos);
     }
 
-    private static AICopiableParameter readAICopiableParameter(BufferReader bufferReader, String containerName) {
+    private static AICopiableParameter readAICopiableParameter(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, String containerName) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         return switch (containerName) {
             // Season 2 stage exclusive
             case "SetAreaHit" -> readFSMOrderParamAreaHit(bufferReader);
-            case "CallFsmEvent" -> readFSMOrderParamCallEvent(bufferReader);
+            case "CallFsmEvent" -> readFSMOrderParamCallEvent(bufferReader, lookupUtil);
             case "JumpPos" -> readFSMOrderParamJumpPos(bufferReader);
             case "Camera_camev" -> readFSMOrderParamCamera(bufferReader);
             case "SetLocaName" -> readFSMOrderParamSetLocationName(bufferReader);
@@ -454,12 +459,12 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         };
     }
 
-    private static AIFSMNodeProcess readAIFSMNodeProcess(BufferReader bufferReader) {
+    private static AIFSMNodeProcess readAIFSMNodeProcess(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         String ContainerName = XfsDeserializer.readNullTerminatedString(bufferReader);
         String CategoryName = XfsDeserializer.readNullTerminatedString(bufferReader);
-        AICopiableParameter Parameter = XfsDeserializer.readXfsProperty(bufferReader, br -> readAICopiableParameter(bufferReader, ContainerName));
+        AICopiableParameter Parameter = XfsDeserializer.readXfsProperty(bufferReader, br -> readAICopiableParameter(bufferReader, lookupUtil, ContainerName));
 
         return new AIFSMNodeProcess(ContainerName, CategoryName, Parameter);
     }
@@ -482,7 +487,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new AIFSMNodeUIPos(UIPosX, UIPosY);
     }
 
-    private static AIFSMNode readAIFSMNode(BufferReader bufferReader) {
+    private static AIFSMNode readAIFSMNode(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         String Name = XfsDeserializer.readJapaneseNullTerminatedString(bufferReader);
@@ -493,12 +498,12 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         AIFSMCluster SubCluster = null;
         if (SubClusterId != 65534) {
             bufferReader.setPosition(bufferReader.getPosition() - 4);
-            SubCluster = readAIFSMCluster(bufferReader);
+            SubCluster = readAIFSMCluster(bufferReader, lookupUtil);
         }
         long LinkListNum = bufferReader.readUnsignedInteger();
         List<AIFSMLink> LinkList = bufferReader.readFixedLengthArray(LinkListNum, AIFSMDeserializer::readAIFSMLink);
         long ProcessListNum = bufferReader.readUnsignedInteger();
-        List<AIFSMNodeProcess> ProcessList = bufferReader.readFixedLengthArray(ProcessListNum, AIFSMDeserializer::readAIFSMNodeProcess);
+        List<AIFSMNodeProcess> ProcessList = bufferReader.readFixedLengthArray(ProcessListNum, br -> readAIFSMNodeProcess(br, lookupUtil));
         AIFSMNodeUIPos UIPos = XfsDeserializer.readXfsProperty(bufferReader, AIFSMDeserializer::readAIFSMNodeUIPos);
         int ColorType = XfsDeserializer.readUnsignedByte(bufferReader);
         long Setting = XfsDeserializer.readUnsignedInteger(bufferReader);
@@ -509,13 +514,13 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
         return new AIFSMNode(Name, Id, UniqueId, OwnerId, SubCluster, LinkListNum, LinkList, ProcessListNum, ProcessList, UIPos, ColorType, Setting, UserAttribute, ExistConditionTrainsitionFromAll, ConditionTrainsitionFromAllId);
     }
 
-    private static AIFSMCluster readAIFSMCluster(BufferReader bufferReader) {
+    private static AIFSMCluster readAIFSMCluster(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         XfsDeserializer.readXfsObjectData(bufferReader);
 
         long Id = XfsDeserializer.readUnsignedInteger(bufferReader);
         long OwnerNodeUniqueId = XfsDeserializer.readUnsignedInteger(bufferReader);
         long InitialStateId = XfsDeserializer.readUnsignedInteger(bufferReader);
-        List<AIFSMNode> NodeList = bufferReader.readArray(AIFSMDeserializer::readAIFSMNode);
+        List<AIFSMNode> NodeList = bufferReader.readArray(br -> readAIFSMNode(br, lookupUtil));
 
         return new AIFSMCluster(Id, OwnerNodeUniqueId, InitialStateId, NodeList);
     }
@@ -529,7 +534,7 @@ public class AIFSMDeserializer extends ClientResourceFileDeserializer<AIFSM> {
 
         XfsDeserializer.readResource(bufferReader);
         String OwnerObjectName = XfsDeserializer.readJapaneseNullTerminatedString(bufferReader);
-        AIFSMCluster RootCluster = XfsDeserializer.readXfsProperty(bufferReader, AIFSMDeserializer::readAIFSMCluster);
+        AIFSMCluster RootCluster = XfsDeserializer.readXfsProperty(bufferReader, br -> readAIFSMCluster(br, lookupUtil));
 
         XfsDeserializer.readResource(bufferReader);
         // AIConditionTree ConditionTree = readAIConditionTree(bufferReader);

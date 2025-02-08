@@ -18,7 +18,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.job
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc_common.NpcLedgerListDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.GUIMessage;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.AbilityListDeserializer;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.deserialization.base.AreaInfoDeserializer;
@@ -48,8 +48,8 @@ public class ClientResourceFileManagerSeason1 extends ClientResourceFileManager 
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<GUIMessage> GUIMessageResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason1(clientRootFolder, clientTranslationFile, GUIMessageResourceFile, npcLedgerListResourceFile, StageListInfoResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason1(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile);
     }
 
     @Override
@@ -79,6 +79,7 @@ public class ClientResourceFileManagerSeason1 extends ClientResourceFileManager 
         // TODO: clientResourceFileSet.add(new ClientResourceFile(rStageJoint, new FileHeader("sja\0", 13, 4), new StageJointDeserializer()));
         // TODO: clientResourceFileSet.add(new ClientResourceFile(rStageList, new FileHeader("slt\0", 26, 4), new StageListDeserializer()));
         // TODO: clientResourceFileSet.add(new ClientResourceFile(rWarpLocation, new FileHeader(304, 4), new WarpLocationDeserializer()));
+        // TODO: clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rScenario, new FileHeader("XFS\0", 458767, 4), new ScenarioDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAbilityList, new FileHeader("abl0", 8, 4), new AbilityListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfo, new FileHeader("ARI\0", 2, 4), new AreaInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaMasterRankData, new FileHeader(2, 4), new AreaMasterRankDataDeserializer()));

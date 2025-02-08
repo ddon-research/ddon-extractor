@@ -3,8 +3,9 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.meta.ParamCallMessageType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamCallMessageType;
 
 
 @ToString(callSuper = true)
@@ -19,20 +20,12 @@ public class FSMBaseParamCallMessage extends AICopiableParameter {
     @MetaInformation
     private ParamCallMessageType MsgTypeName;
     private long QuestId;//QuestNo
+    @MetaInformation
+    private Translation QuestName;
+    // TODO: Lookup
     private long MsgNo;
     private float MsgDispTime;
     private float MsgWaitTime;
     private boolean IsUseSerial;
     private boolean IsHideMessage;
-
-    public FSMBaseParamCallMessage(long msgType, long questId, long msgNo, float msgDispTime, float msgWaitTime, boolean isUseSerial, boolean isHideMessage) {
-        MsgType = msgType;
-        MsgTypeName = ParamCallMessageType.of((int) MsgType);
-        QuestId = questId;
-        MsgNo = msgNo;
-        MsgDispTime = msgDispTime;
-        MsgWaitTime = msgWaitTime;
-        IsUseSerial = isUseSerial;
-        IsHideMessage = isHideMessage;
-    }
 }

@@ -1,14 +1,12 @@
 package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
 
 import lombok.extern.slf4j.Slf4j;
-import org.sehkah.ddon.tools.extractor.api.datatype.Matrix;
-import org.sehkah.ddon.tools.extractor.api.datatype.OrientedBoundingBox;
-import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
+import org.sehkah.ddon.tools.extractor.api.datatype.*;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.binary.meta.PropertyType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.*;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary.meta.PropertyType;
 
 import java.math.BigInteger;
 import java.util.HashMap;
@@ -191,6 +189,46 @@ public class XfsDeserializer {
         return orientedBoundingBox;
     }
 
+    public static Sphere readSphere(BufferReader bufferReader) {
+        long propertyCount = bufferReader.readUnsignedInteger();
+
+        Vector3f pos = bufferReader.readVector3f();
+        float r = bufferReader.readFloat();
+
+        return new Sphere(pos, r);
+    }
+
+    public static Cylinder readCylinder(BufferReader bufferReader) {
+        long propertyCount = bufferReader.readUnsignedInteger();
+
+        Vector3f p0 = bufferReader.readVector3f();
+        float padding1 = bufferReader.readFloat();
+        assert padding1 == 0f;
+        Vector3f p1 = bufferReader.readVector3f();
+        float padding2 = bufferReader.readFloat();
+        assert padding2 == 0f;
+        float r = bufferReader.readFloat();
+        float padding3 = bufferReader.readFloat();
+        assert padding3 == 0f;
+        float padding4 = bufferReader.readFloat();
+        assert padding4 == 0f;
+        float padding5 = bufferReader.readFloat();
+        assert padding5 == 0f;
+
+        return new Cylinder(p0, p1, r);
+    }
+
+    public static AxisAlignedBoundingBox readAxisAlignedBoundingBox(BufferReader bufferReader) {
+        long propertyCount = bufferReader.readUnsignedInteger();
+
+        Vector3f minpos = bufferReader.readVector3f();
+        float padding1 = bufferReader.readFloat();
+        Vector3f maxpos = bufferReader.readVector3f();
+        float padding2 = bufferReader.readFloat();
+
+        return new AxisAlignedBoundingBox(minpos, maxpos);
+    }
+
     public static Vector3f readVector3f(BufferReader bufferReader) {
         Vector3f vector3f = readXfsProperty(bufferReader, BufferReader::readVector3f);
         float padding = bufferReader.readFloat();
@@ -205,7 +243,7 @@ public class XfsDeserializer {
     public static <T> List<T> readMtArray(BufferReader bufferReader, Function<BufferReader, T> entityReaderFunction) {
         long propertyCount = bufferReader.readUnsignedInteger();
 
-        readXfsObjectData(bufferReader);
+        XfsObjectData xfsObjectData = readXfsObjectData(bufferReader);
 
         boolean autoDelete = readXfsProperty(bufferReader, BufferReader::readBoolean);
         return bufferReader.readArray(entityReaderFunction);

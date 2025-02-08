@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * An ARCS file is simply a collection of 8-byte long IDs to reference already loaded resources.
  * During runtime this ID is used to look up the resource via lookup table (see sResource::findTable).
- * The ID is made up of the DTI ID & a null-terminated file path (see sResource::makeID):
- * <code>
+ * The ID is made up of the DTI ID and a null-terminated file path (see sResource::makeID):
+ * <pre>{@code
  * mID = dti->mID;
- * str = path + '\0'
+ * str = path + '\0';
  * (mID << 32) | getCRC(str, 0xFFFFFFFF);
- * </code>
+ * } </pre>
  * This is used for *_mod.arc, *_fedt_jntpreset.arc, *_dds.arc, armor\ac_*.arc, armor\np*.arc, wp\wp*.arc.
  * For example, the ARCS file "eye0_fedt_jntpreset.arc" represents a reference to resource "eye0.fedt_jntpreset".
  */

@@ -92,4 +92,54 @@ public abstract class ResourceMetadataLookupUtil {
     public abstract Translation getStageNameByStageNo(int stageNo);
 
     public abstract Translation getStageNameByStageId(int stageId);
+
+    public abstract Translation getItemName(long itemId);
+
+    /**
+     * Caller must convert from hex to decimal if necessary.
+     *
+     * @param enemyId decimal radix
+     */
+    public abstract Translation getEnemyName(long enemyId);
+
+    public Translation getQuestName(long questId) {
+        String questIdStr = String.format("q%08d", questId);
+        String gmdFilePath = String.format("quest/%1$s/ui/00_message/quest_info/%1$s_00.gmd", questIdStr);
+        return getMessageTranslation(gmdFilePath, 0);
+    }
+
+    public Translation getJobName(int jobId) {
+        return getMessageTranslation(GUIMessageLookupTable.JOB_NAME.getFilePath(), jobId);
+    }
+
+    public Translation getAreaName(int areaId) {
+        return getMessageTranslation(GUIMessageLookupTable.AREA_LIST.getFilePath(), "AREA_NAME_" + areaId);
+    }
+
+    public Translation getSpotName(long spotId) {
+        return getMessageTranslation(GUIMessageLookupTable.SPOT_NAME.getFilePath(), "SPOT_NAME_" + spotId);
+    }
+
+    public Translation getLandName(int landId) {
+        return getMessageTranslation(GUIMessageLookupTable.LAND_NAME.getFilePath(), landId - 1);
+    }
+
+    public Translation getSkillName(int jobId, int skillNo) {
+        Translation translation = null;
+
+        String normalSkillFilePath = String.format("ui/gui_cmn/ui/00_message/skill/normal_skill_name_%02d.gmd", jobId);
+        translation = getMessageTranslation(normalSkillFilePath, String.format("NORMAL_SKILL_NAME_%02d_%d", jobId, skillNo));
+        if (translation != null) {
+            return translation;
+        }
+
+        String customSkillFilePath = String.format("ui/gui_cmn/ui/00_message/skill/custom_skill_name_%02d.gmd", jobId);
+        translation = getMessageTranslation(customSkillFilePath, String.format("CUSTOM_SKILL_NAME_%02d_%d", jobId, skillNo));
+
+        return translation;
+    }
+
+    public Translation getAbilityName(int abilityNo) {
+        return getMessageTranslation(GUIMessageLookupTable.ABILITY_NAME.getFilePath(), "ABILITY_NAME_" + abilityNo);
+    }
 }

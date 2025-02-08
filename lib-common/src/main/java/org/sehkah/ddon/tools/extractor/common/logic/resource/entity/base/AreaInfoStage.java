@@ -14,6 +14,8 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class AreaInfoStage {
     private long StageNo;
+    @MetaInformation
+    private Translation StageName;
     private long AreaId;
     @MetaInformation
     private Translation AreaName;

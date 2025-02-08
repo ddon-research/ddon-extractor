@@ -3,8 +3,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.SetInfoOmGatherType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.SetInfo;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.meta.SetInfoOmGatherType;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -20,6 +20,7 @@ public class QuestSetInfoOmGather extends SetInfo {
     @MetaInformation
     private SetInfoOmGatherType GatheringTypeName;
     private boolean IsGatherEnemy;
+    // TODO: Lookup?
     private short EnemyGroupNo;
 
     public QuestSetInfoOmGather(QuestSetInfoOm infoOm, long itemListID, long gatheringType, boolean isGatherEnemy, short enemyGroupNo) {

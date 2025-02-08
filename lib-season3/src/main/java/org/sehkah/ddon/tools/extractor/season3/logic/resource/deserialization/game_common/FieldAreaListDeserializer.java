@@ -14,27 +14,34 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class FieldAreaListDeserializer extends ClientResourceFileDeserializer<FieldAreaList> {
+    private static StageNo readStageNo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+        int StageNo = bufferReader.readSignedInteger();
+        Translation StageName = null;
+        if (lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+        }
 
-
-    private static StageNo readStageNo(BufferReader bufferReader) {
-        return new StageNo(
-                bufferReader.readSignedInteger()
-        );
+        return new StageNo(StageNo, StageName);
     }
 
     private static FieldAreaInfo readFieldAreaInfo(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long FieldAreaId = bufferReader.readUnsignedInteger();
         long GmdIdx = bufferReader.readUnsignedInteger();
-        Translation FieldAreaName = null;
-        if (lookupUtil != null) {
-            FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) GmdIdx);
-        }
         int LandId = bufferReader.readUnsignedShort();
         int AreaId = bufferReader.readUnsignedShort();
-        List<StageNo> StageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
-        List<StageNo> BelongStageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo);
+        List<StageNo> StageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo, lookupUtil);
+        List<StageNo> BelongStageNoList = bufferReader.readArray(FieldAreaListDeserializer::readStageNo, lookupUtil);
 
-        return new FieldAreaInfo(FieldAreaId, GmdIdx, FieldAreaName, LandId, AreaId, StageNoList, BelongStageNoList);
+        Translation FieldAreaName = null;
+        Translation LandName = null;
+        Translation AreaName = null;
+        if (lookupUtil != null) {
+            FieldAreaName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.FIELD_AREA_NAME.getFilePath(), (int) GmdIdx);
+            LandName = lookupUtil.getLandName(LandId);
+            AreaName = lookupUtil.getAreaName(AreaId);
+        }
+
+        return new FieldAreaInfo(FieldAreaId, GmdIdx, FieldAreaName, LandId, LandName, AreaId, AreaName, StageNoList, BelongStageNoList);
     }
 
     @Override

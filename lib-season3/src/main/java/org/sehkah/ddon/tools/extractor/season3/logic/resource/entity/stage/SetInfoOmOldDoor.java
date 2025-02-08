@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -13,6 +15,8 @@ import lombok.*;
 public class SetInfoOmOldDoor extends SetInfo {
     private boolean IsQuest;
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private int Kind0;
     private int Group0;
     private int ID0;

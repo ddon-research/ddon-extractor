@@ -8,8 +8,8 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.*;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.*;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.base.meta.*;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -104,8 +104,10 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long ItemId = bufferReader.readUnsignedInteger();
         long NameId = bufferReader.readUnsignedInteger();
         Translation ItemName = null;
+        Translation ItemInfo = null;
         if (lookupUtil != null) {
             ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
+            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
         }
         int Category = bufferReader.readUnsignedShort();
         int SubCategory = bufferReader.readUnsignedShort();
@@ -115,20 +117,21 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         long NameSortNo = bufferReader.readUnsignedInteger();
         long AttackStatus = bufferReader.readUnsignedInteger();
         long IsUseJob = bufferReader.readUnsignedInteger();
+        Set<JobType> IsUseJobType = BitUtil.extractBitSetUnsignedIntegerFlag(JobType::of, IsUseJob);
         int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, Flag);
+        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
         int IconNo = bufferReader.readUnsignedShort();
         int IsUseLv = bufferReader.readUnsignedShort();
         int ItemCategory = bufferReader.readUnsignedByte();
         ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
         Object CategoryName = switch (ItemCategoryName) {
-            case CATEGORY_MATERIAL_ITEM -> ItemListMaterialCategory.of(Category);
-            case CATEGORY_USE_ITEM -> ItemListUseCategory.of(Category);
-            case CATEGORY_ARMS -> ItemListEquipCategory.of(Category);
-            case CATEGORY_FURNITURE, CATEGORY_KEY_ITEM,
-                 CATEGORY_JOB_ITEM, CATEGORY_CRAFT_RECIPE,
-                 CATEGORY_SPECIAL, CATEGORY_SPECIAL_PAWN,
-                 CATEGORY_SPECIAL_EMOTE, CATEGORY_SPECIAL_CONVERSATION_DATA -> "CATEGORY_NONE";
+            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
+            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
+            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
+                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
+                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
         int StackMax = bufferReader.readUnsignedByte();
@@ -148,7 +151,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
         ItemListWeaponParam WeaponParam = null;
         ItemListProtectorParam ProtectorParam = null;
-        if (ItemCategory == (int) ItemListItemCategory.CATEGORY_ARMS.value) {
+        if (ItemCategory == (int) ItemListItemCategory.ITEM_CATEGORY_EQUIP.value) {
             if (Category - 1 < 2) {
                 WeaponParam = ItemListDeserializer.readWeaponParam(bufferReader);
             }
@@ -160,14 +163,14 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         return new ItemListItemParam(
                 ItemId,
-                NameId, ItemName,
+                NameId, ItemName, ItemInfo,
                 Category, CategoryName,
                 SubCategory, SubCategoryName,
                 Price,
                 SortNo,
                 NameSortNo,
                 AttackStatus,
-                IsUseJob,
+                IsUseJob, IsUseJobType,
                 Flag, FlagTypes,
                 IconNo,
                 IsUseLv,

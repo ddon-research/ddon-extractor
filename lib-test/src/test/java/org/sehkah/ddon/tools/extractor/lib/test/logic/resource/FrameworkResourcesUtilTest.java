@@ -1,7 +1,6 @@
 package org.sehkah.ddon.tools.extractor.lib.test.logic.resource;
 
 import org.junit.jupiter.api.Test;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
 
 import java.math.BigInteger;

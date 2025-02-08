@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.SetInfo;
 
 @ToString(callSuper = true)
@@ -19,6 +21,8 @@ public class QuestSetInfoOmBowlOfLife extends SetInfo {
     private boolean Invisible;
     private boolean IsQuest;
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
     private int Kind;
     private int Group;
     private int ID;

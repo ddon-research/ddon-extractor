@@ -3,8 +3,9 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest.meta.ParamCallAnnounceType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.quest.meta.ParamCallAnnounceType;
 
 
 @ToString(callSuper = true)
@@ -19,12 +20,8 @@ public class FSMOrderParamCallAnnounce extends AICopiableParameter {
     @MetaInformation
     private ParamCallAnnounceType TypeName;
     private long QuestId;
+    @MetaInformation
+    private Translation QuestName;
+    // TODO: Lookup
     private long MsgNo;
-
-    public FSMOrderParamCallAnnounce(long type, long questId, long msgNo) {
-        Type = type;
-        TypeName = ParamCallAnnounceType.of((int) Type);
-        QuestId = questId;
-        MsgNo = msgNo;
-    }
 }

@@ -29,6 +29,8 @@ public class NpcLedgerListItem {
     @MetaInformation
     private Translation NpcClassName;
     private int JobId;
+    @MetaInformation
+    private Translation JobName;
     private int Finger;
     private int VoiceType;
     @MetaInformation

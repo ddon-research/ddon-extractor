@@ -5,8 +5,8 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmBlinkType;
-import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.meta.OmLotSetType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmBlinkType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmLotSetType;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -51,7 +51,7 @@ public class OmParamPart extends Resource {
     private BigInteger ResPathZone;
     private BigInteger ResPathOmZone;
     private BigInteger ResPathJointInfo;
-    private BigInteger ResPathUnknown2;
+    private BigInteger ResPathNavConnect;
     private boolean Unknown3;
     private long DetailBehavior; // TODO: This is a flag; find enum
     private long MapIcon;
@@ -94,7 +94,7 @@ public class OmParamPart extends Resource {
     private long Unknown13;
     private long Unknown14;
 
-    public OmParamPart(int omID, BigInteger resPathModel, BigInteger resPathObjCollision, BigInteger resPathMotionList, BigInteger resPathSoundMotionSe, long unitDTIID, long useComponent, long unknown1, long omSetType, BigInteger resPathEffectProvider, BigInteger resPathSoundRequest, long reqSeFlag, int fxIndex0, int seIndex0, int fxIndex1, int seIndex1, int fxIndex2, int seIndex2, int fxIndex3, int seIndex3, BigInteger resPathSwingModel, BigInteger resPathSoftBody, BigInteger resPathRigidBody, BigInteger resPathBrRigidBody, BigInteger resPathBrModel, BigInteger resPathBrSoftBody, BigInteger resPathCaught, BigInteger resPathZone, BigInteger resPathOmZone, BigInteger resPathJointInfo, BigInteger resPathUnknown2, boolean unknown3, long detailBehavior, long mapIcon, float killLength, boolean unknown4, long unknown5, boolean useNightColor, Vector3f nightColor, float rigidTime, float rigidForce, float rigidOfsY, float rigidVelocity, float throwVelocity, float throwVectorY, float rigidWorldOfsY, Vector3f targetOfs, boolean nav, Vector3f navOBBPos, Vector3f navOBBExtent, boolean atk, long shotGroup, int wepType, long arcTagID, int targetJntNo, int jointNum, Vector3f keyOfs, long colliOffFrame, long blinkType, List<BigInteger> resPathCollision, boolean unknown6, long version, long unknown7, long unknown8, long unknown9, long unknown10, long unknown11, long unknown12, long unknown13, long unknown14) {
+    public OmParamPart(int omID, BigInteger resPathModel, BigInteger resPathObjCollision, BigInteger resPathMotionList, BigInteger resPathSoundMotionSe, long unitDTIID, long useComponent, long unknown1, long omSetType, BigInteger resPathEffectProvider, BigInteger resPathSoundRequest, long reqSeFlag, int fxIndex0, int seIndex0, int fxIndex1, int seIndex1, int fxIndex2, int seIndex2, int fxIndex3, int seIndex3, BigInteger resPathSwingModel, BigInteger resPathSoftBody, BigInteger resPathRigidBody, BigInteger resPathBrRigidBody, BigInteger resPathBrModel, BigInteger resPathBrSoftBody, BigInteger resPathCaught, BigInteger resPathZone, BigInteger resPathOmZone, BigInteger resPathJointInfo, BigInteger resPathNavConnect, boolean unknown3, long detailBehavior, long mapIcon, float killLength, boolean unknown4, long unknown5, boolean useNightColor, Vector3f nightColor, float rigidTime, float rigidForce, float rigidOfsY, float rigidVelocity, float throwVelocity, float throwVectorY, float rigidWorldOfsY, Vector3f targetOfs, boolean nav, Vector3f navOBBPos, Vector3f navOBBExtent, boolean atk, long shotGroup, int wepType, long arcTagID, int targetJntNo, int jointNum, Vector3f keyOfs, long colliOffFrame, long blinkType, List<BigInteger> resPathCollision, boolean unknown6, long version, long unknown7, long unknown8, long unknown9, long unknown10, long unknown11, long unknown12, long unknown13, long unknown14) {
         OmID = omID;
         ResPathModel = resPathModel;
         ResPathObjCollision = resPathObjCollision;
@@ -126,7 +126,7 @@ public class OmParamPart extends Resource {
         ResPathZone = resPathZone;
         ResPathOmZone = resPathOmZone;
         ResPathJointInfo = resPathJointInfo;
-        ResPathUnknown2 = resPathUnknown2;
+        ResPathNavConnect = resPathNavConnect;
         Unknown3 = unknown3;
         DetailBehavior = detailBehavior;
         MapIcon = mapIcon;

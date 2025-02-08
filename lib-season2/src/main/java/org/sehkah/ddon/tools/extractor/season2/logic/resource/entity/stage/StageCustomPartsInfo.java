@@ -3,6 +3,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Color;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -28,6 +30,8 @@ public class StageCustomPartsInfo {
     private String Occluder;
 
     private int AreaNo;
+    @MetaInformation
+    private Translation AreaName;
     private int Type;
     private long Size;
     private float OffsetZ;

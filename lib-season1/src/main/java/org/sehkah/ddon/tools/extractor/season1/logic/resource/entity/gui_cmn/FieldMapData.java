@@ -5,7 +5,7 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Float2f;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
-import org.sehkah.ddon.tools.extractor.season1.logic.resource.entity.gui_cmn.meta.FieldMapDataType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.gui_cmn.meta.FieldMapDataType;
 
 @ToString
 @EqualsAndHashCode

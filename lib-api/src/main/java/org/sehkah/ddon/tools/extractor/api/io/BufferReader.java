@@ -58,6 +58,10 @@ public interface BufferReader {
 
     Cylinder readCylinder();
 
+    Rectangle readRectangle();
+
+    Vector2f readVector2f();
+
     Vector3f readVector3f();
 
     Vector3f[] readVector3f(int num);
@@ -85,6 +89,8 @@ public interface BufferReader {
     String readMtString(Charset charset);
 
     Color readColor();
+
+    Color4l readColor4l();
 
     OrientedBoundingBox readOrientedBoundingBox();
 

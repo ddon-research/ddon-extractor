@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.game_commo
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 
 @ToString
 @EqualsAndHashCode
@@ -12,4 +14,6 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageNo {
     private int StageNo;
+    @MetaInformation
+    private Translation StageName;
 }

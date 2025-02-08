@@ -37,6 +37,9 @@ public enum ClientResourceFileExtension {
     rCaughtDamageRateRefTbl,
     rCaughtDamageRateTbl,
     rCaughtInfoParam,
+    rCharacterEditColorDef,
+    rCharacterEditTexturePalette,
+    rCharacterEditVoicePalette,
     rCharParamEnemy,
     rChildRegionStatusParam,
     rChildRegionStatusParamList,
@@ -66,6 +69,7 @@ public enum ClientResourceFileExtension {
     rEmWarpParam,
     rEmWorkRateTable,
     rEndContentsSortieInfo,
+    rEnemyBloodStain,
     rEnemyGroup,
     rEnemyLocalEst,
     rEnemyMaterialTable,
@@ -84,6 +88,7 @@ public enum ClientResourceFileExtension {
     rFurnitureLayout,
     rGatheringItem,
     rGUIDogmaOrb,
+    rGUIMapSetting,
     rGUIMessage,
     rHumanEnemyCustomSkill,
     rHumanEnemyEquip,
@@ -97,6 +102,7 @@ public enum ClientResourceFileExtension {
     rJumpParamTbl,
     rKeyConfigTextTable,
     rLandInfo,
+    rLargeCameraParam,
     rLayout,
     rLayoutPreset,
     rLocationData,
@@ -137,13 +143,17 @@ public enum ClientResourceFileExtension {
     rQuestSequenceList,
     rQuestTextData,
     rRageTable,
+    rReaction,
     rReplaceWardGmdList,
     rRoomWearParam,
+    rScenario,
     rShopGoods,
     rShotReqInfo,
     rShotReqInfo2,
     rShrinkBlowValue,
     rSituationMsgCtrl,
+    rSoundBossBgm,
+    rSoundOptData,
     rStageAdjoinList,
     rStageAdjoinList2,
     rStageConnect,
@@ -160,7 +170,7 @@ public enum ClientResourceFileExtension {
     rStartPosArea,
     rStatusCheck,
     rStatusGainTable,
-    rSoundBossBgm,
+    rTargetCursorOffset,
     rTbl2ChatMacro,
     rTexDetailEdit,
     rTutorialDialogMessage,
@@ -172,13 +182,13 @@ public enum ClientResourceFileExtension {
     rWaypoint2,
     rWeaponOffset,
     rWeaponResTable,
+    rWeatherFogInfo,
+    rWeatherParamInfoTbl,
     rWeatherStageInfo,
     rWepCateResTbl;
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
-
     private static final Map<String, ClientResourceFileExtension> fileExtensionToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
-
     private static final Map<ClientResourceFileExtension, String> resourceToFileExtensionMap = new EnumMap<>(ClientResourceFileExtension.class);
 
     static {
@@ -238,6 +248,10 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".dmi", rDungeonMarker);
         fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
         fileExtensionToResourceMap.put(".ebi_sv", rEmBaseInfoSv);
+        fileExtensionToResourceMap.put(".ebs", rEnemyBloodStain);
+        fileExtensionToResourceMap.put(".edt_color_def", rCharacterEditColorDef);
+        fileExtensionToResourceMap.put(".edt_tex_pal", rCharacterEditTexturePalette);
+        fileExtensionToResourceMap.put(".edt_voice_pal", rCharacterEditVoicePalette);
         fileExtensionToResourceMap.put(".edv", rEmDamageDirInfo);
         fileExtensionToResourceMap.put(".ele", rEnemyLocalEst);
         fileExtensionToResourceMap.put(".eli", rVfxLightInfluence);
@@ -267,6 +281,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".fsm", rAIFSM);
         fileExtensionToResourceMap.put(".gat", rGatheringItem);
         fileExtensionToResourceMap.put(".gmd", rGUIMessage);
+        fileExtensionToResourceMap.put(".gmp", rGUIMapSetting);
         fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
         fileExtensionToResourceMap.put(".hmeq", rHumanEnemyEquip);
         fileExtensionToResourceMap.put(".ipa", rItemList);
@@ -280,6 +295,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".kctt", rKeyConfigTextTable);
         fileExtensionToResourceMap.put(".lai", rLandInfo);
         fileExtensionToResourceMap.put(".lcd", rLocationData);
+        fileExtensionToResourceMap.put(".lcp", rLargeCameraParam);
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lot", rLayout);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
@@ -320,6 +336,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".qsq", rQuestSequenceList);
         fileExtensionToResourceMap.put(".qst", rQuestList);
         fileExtensionToResourceMap.put(".qtd", rQuestTextData);
+        fileExtensionToResourceMap.put(".rac", rReaction);
         fileExtensionToResourceMap.put(".rag", rRageTable);
         fileExtensionToResourceMap.put(".rcp", rCraftRecipe);
         fileExtensionToResourceMap.put(".repgmdlist", rReplaceWardGmdList);
@@ -327,20 +344,22 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".rwr", rRoomWearParam);
         fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
         fileExtensionToResourceMap.put(".sal2", rStageAdjoinList2);
+        fileExtensionToResourceMap.put(".sbb", rSoundBossBgm);
         fileExtensionToResourceMap.put(".sbv", rShrinkBlowValue);
         fileExtensionToResourceMap.put(".sca", rStageCustom);
         fileExtensionToResourceMap.put(".scc", rStageConnect);
+        fileExtensionToResourceMap.put(".sce", rScenario);
         fileExtensionToResourceMap.put(".sck", rStatusCheck);
         fileExtensionToResourceMap.put(".scp", rStageCustomParts);
         fileExtensionToResourceMap.put(".scpx", rStageCustomPartsEx);
         fileExtensionToResourceMap.put(".sdt", rStaminaDecTbl);
         fileExtensionToResourceMap.put(".sg_tbl", rStatusGainTable);
-        fileExtensionToResourceMap.put(".sbb", rSoundBossBgm);
         fileExtensionToResourceMap.put(".sja", rStageJoint);
         fileExtensionToResourceMap.put(".slt", rStageList);
         fileExtensionToResourceMap.put(".smc", rSituationMsgCtrl);
         fileExtensionToResourceMap.put(".smp", rStageMap);
         fileExtensionToResourceMap.put(".sn2", rAISensor);
+        fileExtensionToResourceMap.put(".sot", rSoundOptData);
         fileExtensionToResourceMap.put(".spg_tbl", rShopGoods);
         fileExtensionToResourceMap.put(".sri", rShotReqInfo);
         fileExtensionToResourceMap.put(".sri2", rShotReqInfo2);
@@ -349,6 +368,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".stp", rStartPos);
         fileExtensionToResourceMap.put(".sts", rStageToSpot);
         fileExtensionToResourceMap.put(".tcm", rTbl2ChatMacro);
+        fileExtensionToResourceMap.put(".tco", rTargetCursorOffset);
         fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
         fileExtensionToResourceMap.put(".tlt", rTutorialList);
@@ -361,14 +381,14 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wpt", rWaypoint);
         fileExtensionToResourceMap.put(".wrt", rWeaponResTable);
         fileExtensionToResourceMap.put(".wsi", rWeatherStageInfo);
+        fileExtensionToResourceMap.put(".wtf", rWeatherFogInfo);
+        fileExtensionToResourceMap.put(".wtl", rWeatherParamInfoTbl);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 
         Arrays.stream(ClientResourceFileExtension.values()).forEach(e -> jamCrcToResourceMap.put(FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(e.name()), e));
 
-        fileExtensionToResourceMap.forEach((key, value) -> {
-            System.out.println(key + "\t" + value + "\t" + FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(value.name()));
-        });
+//        fileExtensionToResourceMap.forEach((key, value) -> System.out.println(key + "," + value));// + "," + FrameworkResourcesUtil.convertDataTypeStringToDataTypeId(value.name())));
     }
 
     public static ClientResourceFileExtension of(String fileExtension) {

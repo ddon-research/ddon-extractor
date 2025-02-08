@@ -1,5 +1,6 @@
 package org.sehkah.ddon.tools.extractor.api.io;
 
+import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.datatype.*;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 
@@ -18,6 +19,7 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
+@Slf4j
 public class BinaryReader implements BufferReader {
     private static final ByteOrder DEFAULT_BYTE_ORDER = ByteOrder.LITTLE_ENDIAN;
     private static final Charset CHARSET_SHIFT_JIS = Charset.forName("Shift-JIS");
@@ -111,7 +113,14 @@ public class BinaryReader implements BufferReader {
 
     @Override
     public boolean readBoolean() {
-        return byteBuffer.get() != 0;
+        byte booleanValue = byteBuffer.get();
+        if (booleanValue == 1) {
+            return true;
+        } else if (booleanValue == 0) {
+            return false;
+        }
+        log.error("Attempting to parse a boolean from byte '%d' which is neither '0' nor '1'. Likely cause is bad data parsing.".formatted(booleanValue));
+        return booleanValue != 0;
     }
 
     @Override
@@ -187,6 +196,21 @@ public class BinaryReader implements BufferReader {
                 readVector3f(),
                 readFloat()
         );
+    }
+
+    @Override
+    public Rectangle readRectangle() {
+        return new Rectangle(
+                readSignedInteger(),
+                readSignedInteger(),
+                readSignedInteger(),
+                readSignedInteger()
+        );
+    }
+
+    @Override
+    public Vector2f readVector2f() {
+        return new Vector2f(readFloat(), readFloat());
     }
 
     @Override
@@ -281,6 +305,11 @@ public class BinaryReader implements BufferReader {
         int a = (int) ((rgba >> 24) & 0xff);
 
         return new Color(r, g, b, a);
+    }
+
+    @Override
+    public Color4l readColor4l() {
+        return new Color4l(readUnsignedInteger(), readUnsignedInteger(), readUnsignedInteger(), readUnsignedInteger());
     }
 
     @Override

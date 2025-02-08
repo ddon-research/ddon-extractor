@@ -43,13 +43,15 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<Np
         NpcSexType SexType = NpcSexType.of(Sex);
         long NameId = bufferReader.readUnsignedInteger();
         long ClassNameId = bufferReader.readUnsignedInteger();
+        int JobId = bufferReader.readUnsignedByte();
         Translation NpcName = null;
         Translation NpcClassName = null;
+        Translation JobName = null;
         if (lookupUtil != null) {
             NpcName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.NPC_NAME.getFilePath(), (int) NameId);
             NpcClassName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.NPC_CLASS_NAME.getFilePath(), (int) ClassNameId);
+            JobName = lookupUtil.getJobName(JobId);
         }
-        int JobId = bufferReader.readUnsignedByte();
         int Finger = bufferReader.readUnsignedByte();
         int VoiceType = bufferReader.readUnsignedByte();
         NpcVoiceType VoiceTypeName = NpcVoiceType.of(VoiceType);
@@ -58,7 +60,7 @@ public class NpcLedgerListDeserializer extends ClientResourceFileDeserializer<Np
         long UnitTypeParam = bufferReader.readUnsignedInteger();
         List<NpcLedgerListItemInstitution> InstitutionList = bufferReader.readArray(NpcLedgerListDeserializer::readNpcLedgerListItemInstitution, lookupUtil);
 
-        return new NpcLedgerListItem(NpcId, Sex, SexType, NameId, NpcName, ClassNameId, NpcClassName, JobId, Finger, VoiceType, VoiceTypeName, UnitType, UnitTypeName, UnitTypeParam, InstitutionList);
+        return new NpcLedgerListItem(NpcId, Sex, SexType, NameId, NpcName, ClassNameId, NpcClassName, JobId, JobName, Finger, VoiceType, VoiceTypeName, UnitType, UnitTypeName, UnitTypeParam, InstitutionList);
     }
 
     @Override

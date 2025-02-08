@@ -3,7 +3,7 @@
         <option name="MAIN_CLASS_NAME" value="org.sehkah.ddon.tools.extractor.cli.Main"/>
         <module name="ddon-extractor.cli.main"/>
         <option name="PROGRAM_PARAMETERS"
-                value="resource -p false -o -m D:\DDON_02030004 D:\DDON-translation\gmd.csv quest"/>
+                value="resource -p false -o -m D:\DDON_02030004 D:\DDON_02030004\gmd.csv quest"/>
         <extension name="coverage">
             <pattern>
                 <option name="PATTERN" value="org.sehkah.ddon.tools.extractor.cli.logic.*"/>

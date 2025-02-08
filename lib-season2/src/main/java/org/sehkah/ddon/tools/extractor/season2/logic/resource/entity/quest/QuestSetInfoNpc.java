@@ -2,6 +2,8 @@ package org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
+import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.SetInfo;
 
 @ToString(callSuper = true)
@@ -14,6 +16,8 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.SetIn
 public class QuestSetInfoNpc extends SetInfo {
     private QuestSetInfoCoord InfoCharacter;
     private int NpcId;
+    @MetaInformation
+    private Translation NpcName;
     private FSMRelate FsmResource;
     private boolean IsCommunicate;
     private int ClothType;
