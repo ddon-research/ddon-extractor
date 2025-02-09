@@ -45,10 +45,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sho
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundBossBgmDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundOptDataTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherFogInfoTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherParamInfoTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherStageInfoDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
@@ -78,7 +75,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
  * Regarding initialization:
  * It is mandatory that the season-specific resources are initialized before the resource cache and lookup util
  * can be provided.
- * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, Path, ClientResourceFile, ClientResourceFile, ClientResourceFile)}.
+ * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, Path, ClientResourceFile, ClientResourceFile, ClientResourceFile, ClientResourceFile)}.
  */
 @Slf4j
 @Getter
@@ -210,6 +207,7 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTargetCursorOffset, new FileHeader(272, 4), new TargetCursorOffsetTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherFogInfo, new FileHeader(3, 4), new WeatherFogInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherParamInfoTbl, new FileHeader(12, 4), new WeatherParamInfoTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNavigationMesh, new FileHeader("NAV\0", 33, 4), new NavigationMeshDeserializer()));
     }
 
     /**

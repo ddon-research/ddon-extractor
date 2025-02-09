@@ -329,6 +329,16 @@ public class BinaryReader implements BufferReader {
     }
 
     @Override
+    public AxisAlignedBoundingBox readPaddedAxisAlignedBoundingBox() {
+        Vector3f minpos = readVector3f();
+        readFloat();
+        Vector3f maxpos = readVector3f();
+        readFloat();
+
+        return new AxisAlignedBoundingBox(minpos, maxpos);
+    }
+
+    @Override
     public <E> List<E> readArray(Function<BufferReader, E> entityReaderFunction) {
         return readArray(BufferReader::readUnsignedInteger, entityReaderFunction);
     }

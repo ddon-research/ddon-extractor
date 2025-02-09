@@ -42,7 +42,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
         float Ang = bufferReader.readFloat();
         long SceLoadFlag = bufferReader.readUnsignedInteger();
         long Flag = bufferReader.readUnsignedInteger();
-        Set<StageFlag> StageFlagType = BitUtil.extractBitSetUnsignedIntegerFlag(StageFlag::of, i -> 1 << 1, Flag);
+        Set<StageFlag> StageFlagType = BitUtil.extractBitSetUnsignedIntegerFlag(StageFlag::of, i -> 1 << i, Flag);
         StageResourcePointer WeatherStageInfo = readStageResourcePointer(bufferReader);
         StageResourcePointer WeatherParamInfoTbl = readStageResourcePointer(bufferReader);
         StageResourcePointer WeatherParamEfcInfo = readStageResourcePointer(bufferReader);

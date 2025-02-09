@@ -185,6 +185,7 @@ public enum ClientResourceFileExtension {
     rWeaponResTable,
     rWeatherFogInfo,
     rWeatherParamInfoTbl,
+    rNavigationMesh,
     rWeatherStageInfo,
     rWepCateResTbl;
 
@@ -385,6 +386,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wsi", rWeatherStageInfo);
         fileExtensionToResourceMap.put(".wtf", rWeatherFogInfo);
         fileExtensionToResourceMap.put(".wtl", rWeatherParamInfoTbl);
+        fileExtensionToResourceMap.put(".nav", rNavigationMesh);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 
