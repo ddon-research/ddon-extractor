@@ -30,9 +30,9 @@ public class SetInfoNpc extends SetInfo {
     private boolean IsAttand;
     private boolean UseAttendComponent;
     private boolean DisableTouchAction;
-    private long TalkStateId;
     private boolean DispElseQuestTalk;
     private boolean ForceSwitchGreeting;
+    private long TalkStateId;
     private boolean UseLiteMotion;
     private boolean IsNoSetOnPS3;
     private boolean UseJobParamEx;

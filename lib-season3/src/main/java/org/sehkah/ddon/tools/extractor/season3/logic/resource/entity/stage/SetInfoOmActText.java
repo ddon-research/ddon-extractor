@@ -12,14 +12,14 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown46 extends SetInfo {
-    private long QuestFlag1;
-    private long QuestId1;
+public class SetInfoOmActText extends SetInfo {
+    private long PLActNo;
+    // TODO: Lookup
+    private long TextNo;
+    private long TextQuestNo;
     @MetaInformation
-    private Translation QuestName1;
-    private long QuestFlag2;
-    private long QuestId2;
-    @MetaInformation
-    private Translation QuestName2;
+    private Translation QuestName;
+    // TODO: Lookup
+    private long TextType;
     private SetInfoOmOld InfoOm;
 }

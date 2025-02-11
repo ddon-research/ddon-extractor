@@ -15,5 +15,8 @@ public class FurnitureData {
     private Vector3f Pos;
     private Vector3f Angle;
     private long OmId;
-    private Vector3f UnknownVector;
+    private long StatusFlag;
+    // TODO: Lookup
+    private long KindFlag;
+    private long WorkFlag;
 }

@@ -23,6 +23,6 @@ public class SituationData {
     @MetaInformation
     private Translation EndQuestName;
     private boolean IsEndQuestIdStart;
-    private long UnknownInt1;
-    private long UnknownInt2;
+    private long RangeStartQuestFlag;
+    private long RangeEndQuestFlag;
 }

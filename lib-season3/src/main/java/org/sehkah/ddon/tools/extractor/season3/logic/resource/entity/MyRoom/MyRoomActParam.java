@@ -26,5 +26,5 @@ public class MyRoomActParam {
     private boolean IsGriffin;
     private boolean IsNotAvoid;
     private boolean IsSingle;
-    private boolean Unknown;
+    private boolean IsWoodDeck;
 }

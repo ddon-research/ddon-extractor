@@ -14,7 +14,7 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class CharParamEnemyFly extends CharParamEnemy {
     private float hoverSpeed;
-    private List<Float> hoverAltitude;
+    private List<Float> hoverAltitude;//4
     private int hoverLevelMax;
     private int hoverLevelRange;
     private float flySpeed;

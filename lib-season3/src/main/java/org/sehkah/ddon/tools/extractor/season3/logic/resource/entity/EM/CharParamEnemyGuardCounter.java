@@ -11,6 +11,6 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class CharParamEnemyGuardCounter {
-    private int Times;
-    private int Percent;
+    private int Times;//Number of times guarded (less than or equal to)
+    private int Percent;//Counterattack probability (% or less)
 }

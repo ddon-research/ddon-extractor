@@ -11,8 +11,8 @@ import lombok.*;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class CharParamEnemyJumpAttackSpeed {
-    private boolean IsValid;
-    private float SpeedZ;
-    private float SpeedY;
+    private boolean IsValid;//enable flag
+    private float SpeedZ;//Forward speed
+    private float SpeedY;//Y initial velocity
     private float Gravity;
 }

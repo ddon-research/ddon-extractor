@@ -10,13 +10,11 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoEnemyV2 extends SetInfo {
-    private int Unknown1;
-    private int PresetKind;
-    private int Group;
-    private long EmReactNo;
-    private int SubGroupNo;
-    private boolean ReturnPoint2nd;
-    private long Unknown2;
-    private SetInfoCoord InfoCharacter;
+public class SetInfoOmGrpID extends SetInfo {
+    private boolean Block;
+    // TODO: Lookup
+    private int Kind;
+    private int Grp;
+    private int ID;
+    private SetInfoOmOld InfoOm;
 }

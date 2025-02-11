@@ -16,6 +16,6 @@ public class SetInfoEnemy extends SetInfo {
     private long EmReactNo;
     private int SubGroupNo;
     private boolean ReturnPoint2nd;
-    private long Unknown;
+    private int WanderType;
     private SetInfoCoord InfoCharacter;
 }

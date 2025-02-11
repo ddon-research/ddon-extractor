@@ -17,7 +17,9 @@ public class FurnitureDataDeserializer extends ClientResourceFileDeserializer<Fu
                 bufferReader.readVector3f(),
                 bufferReader.readVector3f(),
                 bufferReader.readUnsignedInteger(),
-                bufferReader.readVector3f()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readUnsignedInteger()
         );
     }
 

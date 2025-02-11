@@ -10,8 +10,14 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmFlag extends SetInfo {
-    private long BreakHitNum;
-    private long MaxRepairCount;
+public class SetInfoOmMagmaSpring extends SetInfo {
+    private long Relation;
+    private int Grp;
+    private int ID;
+    private boolean Always;
+    private float Length;
+    private float JumpLength;
+    private float Span;
+    private float FireTime;
     private SetInfoOmOld InfoOm;
 }

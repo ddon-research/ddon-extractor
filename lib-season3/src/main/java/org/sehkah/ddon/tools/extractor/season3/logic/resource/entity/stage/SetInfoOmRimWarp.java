@@ -14,11 +14,12 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmWarpNewV3 extends SetInfo {
-    private boolean Unknown1;
-    private int Unknown2;
-    private int Unknown3;
-    private int Unknown4;
+public class SetInfoOmRimWarp extends SetInfo {
+    private boolean NoWarp;
+    // TODO: Lookup
+    private int Kind;
+    private int Group;
+    private int ID;
     private List<Long> StageNo;
     @MetaInformation
     private List<Translation> StageNames;

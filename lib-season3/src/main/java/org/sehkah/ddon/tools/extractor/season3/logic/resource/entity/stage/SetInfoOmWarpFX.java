@@ -14,15 +14,13 @@ import java.util.List;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmWarpNew extends SetInfo {
-    private long UnknownStageNo;
-    @MetaInformation
-    private Translation UnknownStageName;
+public class SetInfoOmWarpFX extends SetInfo {
+    private long MemberCount;
     private List<Long> StageNo;
     @MetaInformation
     private List<Translation> StageNames;
     private List<Long> StartPosNo;
-    private List<Long> QuestId;
+    private List<Long> QuestId;//QuestNo
     @MetaInformation
     private List<Translation> QuestNames;
     private List<Long> FlagNo;

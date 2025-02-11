@@ -10,7 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmLeverNew extends SetInfo {
-    private int CamEvNo;
+public class SetInfoOmGauge extends SetInfo {
+    private long BreakHitNum;
     private SetInfoOmOld InfoOm;
 }

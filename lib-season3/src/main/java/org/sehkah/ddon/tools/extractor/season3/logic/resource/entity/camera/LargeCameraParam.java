@@ -19,11 +19,9 @@ public class LargeCameraParam {
     private float Range1;
     private float Range2;
     private long Camera;
-
-    private float Unknown1;
-    private float Unknown2;
-    private int Unknown3;
-    private float Unknown4;
-
+    private float DistCling;
+    private float FovCling;
+    private int ProductJoint;
+    private float ProductRadius;
     private boolean Group;
 }

@@ -10,8 +10,11 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmMagicBreakableWall extends SetInfo {
-    private long LinkedWallGroupNo;
-    private long Unknown2;
+public class SetInfoOmMagmaFall extends SetInfo {
+    private long Relation;
+    // TODO: Lookup
+    private int Kind;
+    private int Grp;
+    private int ID;
     private SetInfoOmOld InfoOm;
 }

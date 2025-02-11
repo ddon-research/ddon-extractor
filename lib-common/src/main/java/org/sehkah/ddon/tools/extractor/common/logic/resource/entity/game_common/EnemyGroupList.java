@@ -30,6 +30,7 @@ public class EnemyGroupList extends Resource {
                 }
             }
         }
+        // TODO: investigate these cases
         log.error("Could not find enemy group for id {}", enemyId);
         return null;
     }

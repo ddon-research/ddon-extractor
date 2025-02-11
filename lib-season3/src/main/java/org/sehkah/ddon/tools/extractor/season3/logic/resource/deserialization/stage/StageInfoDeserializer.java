@@ -72,7 +72,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
         float GrassFadeEndDistance = bufferReader.readFloat();
         int PerformanceFlag = bufferReader.readUnsignedShort();
         String AnotherMapName = bufferReader.readNullTerminatedString();
-        boolean Unknown = bufferReader.readBoolean();
+        boolean ShowOnlyCurrentFloorMinimap = bufferReader.readBoolean();
 
         return new StageInfo(SchedulerModel, SchedulerFilter, CollisionScrSbc0, CollisionEffSbc0, CollisionScrSbc1,
                 CollisionEffSbc1, CollisionScrSbc2, CollisionEffSbc2, NavigationMeshNaviMesh, OccluderExOCC,
@@ -82,7 +82,7 @@ public class StageInfoDeserializer extends ClientResourceFileDeserializer<StageI
                 DayNightFogChgFrame, SkyInfiniteLightGroup, ZoneUnitCtrl, ZoneStatus, SoundZone, EqLength,
                 SoundAreaInfo, SchedulerEffectSchdl, SchedulerLanternSchdl, IsCraftStage, LocationData,
                 GrassVisiblePercentMulValue, GrassFadeBeginDistance, GrassFadeEndDistance, PerformanceFlag,
-                AnotherMapName, Unknown);
+                AnotherMapName, ShowOnlyCurrentFloorMinimap);
     }
 
     @Override

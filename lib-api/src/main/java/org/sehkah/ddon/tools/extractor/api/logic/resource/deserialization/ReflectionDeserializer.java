@@ -100,7 +100,7 @@ public class ReflectionDeserializer<T extends Resource> implements ClientResourc
         FileHeader fileHeader = FileHeaderDeserializer.parseClientResourceFile(bufferReader, clientResourceFile.getFileHeader());
         T result = parseEntity(resourceClass, bufferReader);
         if (bufferReader.hasRemaining()) {
-            throw new FileParsingIncompleteException(fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
+            throw new FileParsingIncompleteException(filePath, fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
         }
         result.setFileSize(bufferReader.getLimit());
         result.setFileHeader(fileHeader);

@@ -14,13 +14,15 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmSealedTreasureBox extends SetInfo { // 封印されし宝箱 - sealed treasure chest / box
-    private boolean IsSealedByEnemyGroup;
-    private int Unknown1;
-    private int EnemyGroup;
-    private int EnemySubGroup;
+public class SetInfoOmTreasureBoxG extends SetInfo { // 封印されし宝箱 - sealed treasure chest / box
+    private boolean Block;//IsSealedByEnemyGroup
+    // TODO: Lookup
+    private int Kind;
+    private int Grp;
+    private int ID;
     private long ItemListID;
-    private int Unknown2;
+    // TODO: Lookup
+    private long GatheringType;
     private boolean IsGatherEnemy;
     private SetInfoOmOld InfoOm;
 }

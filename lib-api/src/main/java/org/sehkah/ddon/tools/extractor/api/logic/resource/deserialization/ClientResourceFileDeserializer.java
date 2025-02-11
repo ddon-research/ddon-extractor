@@ -55,7 +55,7 @@ public abstract class ClientResourceFileDeserializer<T extends Resource> impleme
         FileHeader fileHeader = FileHeaderDeserializer.parseClientResourceFileUnsafe(bufferReader, clientResourceFile.getFileHeader());
         T result = parseClientResourceFile(filePath, bufferReader, fileHeader, lookupUtil);
         if (bufferReader.hasRemaining()) {
-            throw new FileParsingIncompleteException(fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
+            throw new FileParsingIncompleteException(filePath, fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
         }
         result.setFileSize(bufferReader.getLimit());
         result.setFileHeader(fileHeader);

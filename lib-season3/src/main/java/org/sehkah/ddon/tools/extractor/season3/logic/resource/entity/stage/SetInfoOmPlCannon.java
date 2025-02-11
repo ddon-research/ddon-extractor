@@ -10,10 +10,15 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmEpitaphBarrier extends SetInfo {
-    private long unknown1;
-    private boolean unknown2;
-    private int unknown3;
-    private boolean unknown4;
+public class SetInfoOmPlCannon extends SetInfo {
+    private boolean IsSetCorruption;
+    private float AngleX;
+    private long BreakHitNum;
+    private long FirstShotInterval;
+    private long ShotInterval;
+    private long CancelInterval;
+    private long CannonType;
+    private float DistanceLimitMax;
+    private long OmAtkMagnification;
     private SetInfoOmOld InfoOm;
 }

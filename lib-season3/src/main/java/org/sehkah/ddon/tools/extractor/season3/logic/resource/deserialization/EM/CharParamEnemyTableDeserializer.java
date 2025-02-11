@@ -100,8 +100,8 @@ public class CharParamEnemyTableDeserializer extends ClientResourceFileDeseriali
             CharParamEnemy = readCharParamEnemy(bufferReader);
         }
         float ScaleDispGui = bufferReader.readFloat();
-        long Unknown1 = bufferReader.readUnsignedInteger();
-        long Unknown2 = bufferReader.readUnsignedInteger();
+        long Unknown1 = bufferReader.readUnsignedInteger();//TODO: Verify u32 '汎用ダメージボーナスタイプ'  ?
+        long Unknown2 = bufferReader.readUnsignedInteger();//TODO: Verify f32 '部位破壊のゆさぶり蓄積値割合'
 
         return new CharParamEnemyTable(
                 FlgEnemyFly,

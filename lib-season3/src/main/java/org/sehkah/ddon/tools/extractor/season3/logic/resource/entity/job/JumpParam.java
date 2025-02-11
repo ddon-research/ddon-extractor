@@ -18,5 +18,5 @@ public class JumpParam {
     private float AddMoveSpeedXZ;
     private boolean IsAwakening;
     private float AwakeJumpAdd;
-    private float Unknown;
+    private float AwakeJumpAddEx;
 }

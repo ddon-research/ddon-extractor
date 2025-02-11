@@ -10,9 +10,13 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown53 extends SetInfo {
-    private long Unknown1;
-    private boolean Unknown2; // TODO Check if boolean might come first
-    private int Unknown3;
-    private SetInfoOmOld InfoOm;
+public class SetInfoEnemyLinked extends SetInfo {
+    private int LinkedFlagID;
+    private int PresetKind;
+    private int Group;
+    private long EmReactNo;
+    private int SubGroupNo;
+    private boolean ReturnPoint2nd;
+    private int WanderType;
+    private SetInfoCoord InfoCharacter;
 }

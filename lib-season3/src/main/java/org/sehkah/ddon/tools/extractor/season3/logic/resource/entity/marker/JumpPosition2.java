@@ -14,11 +14,11 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class JumpPosition2 {
-    private long Unknown1;
+    private long DTIID;
     private Vector3f Pos;
     private long QuestId;
     @MetaInformation
     private Translation QuestName;
     private long FlagId;
-    private long Unknown2;
+    private long LayoutFlagId;
 }

@@ -10,9 +10,7 @@ import lombok.*;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown51 extends SetInfo {
-    private long Unknown1;
-    private long Flag;
-    private long Unknown3;
+public class SetInfoOmXXX extends SetInfo {
+    private int PLActNo;
     private SetInfoOmOld InfoOm;
 }

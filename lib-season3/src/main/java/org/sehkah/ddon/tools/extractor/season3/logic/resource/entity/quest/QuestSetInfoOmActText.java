@@ -1,9 +1,10 @@
-package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
+package org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.quest;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.SetInfo;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -12,16 +13,14 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class SetInfoOmUnknown30 extends SetInfo {
-    // TODO Not sure if this is really a stage no
-    //  Verify via lookup?
-    private long UnknownStageNo;
-    @MetaInformation
-    private Translation UnknownStageName;
-    private long Unknown1;
-    private long QuestId;
+public class QuestSetInfoOmActText extends SetInfo {
+    private QuestSetInfoOm InfoOm;
+    // TODO: Lookup
+    private long TextNo;
+    private long TextQuestNo;
     @MetaInformation
     private Translation QuestName;
-    private long Unknown2;
-    private SetInfoOmOld InfoOm;
+    // TODO: Lookup
+    private long TextType;
+    private long PLActNo;
 }
