@@ -33,6 +33,5 @@ public class SetInfoOmHugeRimShl extends SetInfo {
     @MetaInformation
     private Translation BlockQuestName;
     private long BlockQuestFlag;
-    private long ShotPtn;
     private SetInfoOmOld InfoOm;
 }

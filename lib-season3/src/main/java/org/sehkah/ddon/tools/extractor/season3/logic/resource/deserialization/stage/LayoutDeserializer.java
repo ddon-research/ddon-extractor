@@ -620,7 +620,6 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         boolean BlockQuest = bufferReader.readBoolean();
         long BlockQuestID = bufferReader.readUnsignedInteger();
         long BlockQuestFlag = bufferReader.readUnsignedInteger();
-        long ShotPtn = bufferReader.readUnsignedInteger();
         SetInfoOmOld InfoOm = readSetInfoOmOld(bufferReader);
 
         Translation BlockQuestName = null;
@@ -629,7 +628,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         }
 
         return new SetInfoOmHugeRimShl(ShotGrp, ShotInterval, WeatherID, StartHour, EndHour, Boundary, BoundaryPos,
-                BoundaryRadius, Block, Kind, Grp, ID, BlockQuest, BlockQuestID, BlockQuestName, BlockQuestFlag, ShotPtn, InfoOm);
+                BoundaryRadius, Block, Kind, Grp, ID, BlockQuest, BlockQuestID, BlockQuestName, BlockQuestFlag, InfoOm);
     }
 
     private static SetInfoOmRisingMagma readSetInfoOmRisingMagma(BufferReader bufferReader) {
@@ -663,15 +662,15 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
         );
     }
 
-    private static SetInfoOmVolcano SetInfoOmVolcano(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
+    private static SetInfoOmVolcano readSetInfoOmVolcano(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         int ShotGrp = bufferReader.readSignedInteger();
         long ShotInterval = bufferReader.readUnsignedInteger();
         int WeatherID = bufferReader.readSignedInteger();
+        long ShotPtn = bufferReader.readUnsignedInteger();
         long StartHour = bufferReader.readUnsignedInteger();
         long EndHour = bufferReader.readUnsignedInteger();
         boolean Boundary = bufferReader.readBoolean();
         Vector3f BoundaryPos = bufferReader.readVector3f();
-        float Padding = bufferReader.readFloat();
         float BoundaryRadius = bufferReader.readFloat();
         boolean Block = bufferReader.readBoolean();
         int Kind = bufferReader.readUnsignedShort();
@@ -687,7 +686,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             BlockQuestName = lookupUtil.getQuestName(BlockQuestID);
         }
 
-        return new SetInfoOmVolcano(ShotGrp, ShotInterval, WeatherID, StartHour, EndHour, Boundary, BoundaryPos, Padding,
+        return new SetInfoOmVolcano(ShotGrp, ShotInterval, WeatherID, ShotPtn, StartHour, EndHour, Boundary, BoundaryPos,
                 BoundaryRadius, Block, Kind, Grp, ID, BlockQuest, BlockQuestID, BlockQuestName, BlockQuestFlag, InfoOm);
     }
 
@@ -809,7 +808,7 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             case LayoutSetInfoType.SetInfoOmGrpID -> Info = readSetInfoOmGrpID(bufferReader);
             case LayoutSetInfoType.SetInfoOmWarpFX -> Info = readSetInfoOmWarpFX(bufferReader, lookupUtil);
             case LayoutSetInfoType.SetInfoEnemyLinked -> Info = readSetInfoEnemyLinked(bufferReader);
-            case LayoutSetInfoType.SetInfoOmVolcano -> Info = SetInfoOmVolcano(bufferReader, lookupUtil);
+            case LayoutSetInfoType.SetInfoOmVolcano -> Info = readSetInfoOmVolcano(bufferReader, lookupUtil);
             default -> log.error("Unhandled layout type: {}", Type);
         }
 

@@ -17,11 +17,11 @@ public class SetInfoOmVolcano extends SetInfo {
     private int ShotGrp;
     private long ShotInterval;
     private int WeatherID;
+    private long ShotPtn;
     private long StartHour;
     private long EndHour;
     private boolean Boundary;
     private Vector3f BoundaryPos;
-    private float Padding;
     private float BoundaryRadius;
     private boolean Block;
     // TODO: Lookup
