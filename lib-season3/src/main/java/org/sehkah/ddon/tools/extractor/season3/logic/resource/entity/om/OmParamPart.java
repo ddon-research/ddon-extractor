@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
+import org.sehkah.ddon.tools.extractor.api.logic.resource.FrameworkResourcesUtil;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmBlinkType;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.OmLotSetType;
@@ -25,6 +26,8 @@ public class OmParamPart extends Resource {
     private BigInteger ResPathMotionList;
     private BigInteger ResPathSoundMotionSe;
     private long UnitDTIID;
+    @MetaInformation
+    private String UnitTypeName;
     private long UseComponent;
     private long Unknown1;
     private long OmSetType;
@@ -101,6 +104,7 @@ public class OmParamPart extends Resource {
         ResPathMotionList = resPathMotionList;
         ResPathSoundMotionSe = resPathSoundMotionSe;
         UnitDTIID = unitDTIID;
+        UnitTypeName = FrameworkResourcesUtil.getFrameworkResourceClassNameByCrc(unitDTIID);
         UseComponent = useComponent;
         Unknown1 = unknown1;
         OmSetType = omSetType;

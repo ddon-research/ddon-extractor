@@ -15,6 +15,6 @@ import java.util.List;
 public class StageConnectConnect {
     private short Start;
     private short Goal;
-    private List<Short> Index;
     private long IndexNum;
+    private List<Short> Index;
 }

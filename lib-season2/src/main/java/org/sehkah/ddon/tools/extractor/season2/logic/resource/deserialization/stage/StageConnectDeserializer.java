@@ -17,8 +17,8 @@ public class StageConnectDeserializer extends ClientResourceFileDeserializer<Sta
         return new StageConnectConnect(
                 bufferReader.readSignedShort(),
                 bufferReader.readSignedShort(),
-                bufferReader.readFixedLengthArray(6, BufferReader::readSignedShort),
-                bufferReader.readUnsignedInteger()
+                bufferReader.readUnsignedInteger(),
+                bufferReader.readFixedLengthArray(6, BufferReader::readSignedShort)
         );
     }
 

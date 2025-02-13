@@ -15,5 +15,5 @@ import java.util.List;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class StageConnect extends Resource {
     private List<StageConnectData> ConnectorArray;
-    private List<StageConnectConnect> ConnectionArray;
+    private List<StageConnectCustomMarkerGroupShape> ConnectionArray;
 }
