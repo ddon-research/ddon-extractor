@@ -18,6 +18,9 @@ import java.util.Map;
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class ItemListParamJpGet extends ItemListParam {
+    /**
+     * The JobId will be dumped via the parent's attributes instead, so ignore here.
+     */
     @JsonIgnore
     private int JobId;
     @MetaInformation

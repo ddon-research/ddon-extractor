@@ -87,4 +87,6 @@ module org.sehkah.ddon.tools.extractor.lib.common {
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.meta;
 }

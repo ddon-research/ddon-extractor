@@ -17,6 +17,9 @@ import java.util.Map;
 public class Archive extends org.sehkah.ddon.tools.extractor.api.entity.Resource {
     private int ResourceNum;
     private List<ResourceInfo> Resource;
+    /**
+     * Actual byte array contents, not useful to dump as we just create the files instead.
+     */
     @JsonIgnore
     private Map<String, byte[]> ResourceFiles;
 

@@ -1,5 +1,7 @@
 package org.sehkah.ddon.tools.extractor.api.util;
 
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.*;
@@ -46,6 +48,9 @@ public class BitUtil {
 
     public static int extractInt(long source, int fromInclusive, int toInclusive) {
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES).order(ByteOrder.LITTLE_ENDIAN).putLong(source);
+        if (toInclusive > 31) {
+            throw new TechnicalException("Bit extraction for integer out of range: greater than 32 bit");
+        }
         BitSet bitSet = BitSet.valueOf(buffer.array()).get(fromInclusive, toInclusive + 1);
         int result = 0;
         for (int i = 0; i < bitSet.length(); ++i) {
@@ -60,6 +65,9 @@ public class BitUtil {
     }
 
     public static long extractLong(long source, int fromInclusive, int toInclusive) {
+        if (toInclusive > 63) {
+            throw new TechnicalException("Bit extraction for long out of range: greater than 64 bit");
+        }
         return BitSet.valueOf(new long[]{source}).get(fromInclusive, toInclusive + 1).toLongArray()[0];
     }
 }

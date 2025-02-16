@@ -29,12 +29,12 @@ public class XfsDeserializer {
         // bitfield FieldFlag { type : 8; attr : 8; bytes : 15; disable : 1; };
         propertyHeader.setPropertyParam(bufferReader.readUnsignedInteger());
 
-        propertyHeader.setPropertyParamType(BitUtil.extractInt(propertyHeader.getPropertyParam(), 0, 8));
+        propertyHeader.setPropertyParamType(BitUtil.extractInt(propertyHeader.getPropertyParam(), 0, 7));
         propertyHeader.setPropertyParamTypeName(PropertyType.of(propertyHeader.getPropertyParamType()));
 
-        propertyHeader.setPropertyParamAttr(BitUtil.extractInt(propertyHeader.getPropertyParam(), 8, 16));
-        propertyHeader.setPropertyParamBytes(BitUtil.extractInt(propertyHeader.getPropertyParam(), 16, 31));
-        propertyHeader.setPropertyParamDisable(BitUtil.extractInt(propertyHeader.getPropertyParam(), 31, 32));
+        propertyHeader.setPropertyParamAttr(BitUtil.extractInt(propertyHeader.getPropertyParam(), 8, 15));
+        propertyHeader.setPropertyParamBytes(BitUtil.extractInt(propertyHeader.getPropertyParam(), 16, 30));
+        propertyHeader.setPropertyParamDisable(BitUtil.extractBoolean(propertyHeader.getPropertyParam(), 31));
 
         propertyHeader.setUnknown1(bufferReader.readUnsignedInteger());
         propertyHeader.setUnknown2(bufferReader.readUnsignedInteger());
@@ -47,9 +47,9 @@ public class XfsDeserializer {
     private static ClassData readClassData(BufferReader bufferReader) {
         final long ID = bufferReader.readUnsignedInteger();
         final long classParam = bufferReader.readUnsignedInteger();
-        final int propNum = BitUtil.extractInt(classParam, 0, 15);
-        final int init = BitUtil.extractInt(classParam, 15, 16);
-        final int reserved = BitUtil.extractInt(classParam, 16, 32);
+        final int propNum = BitUtil.extractInt(classParam, 0, 14);
+        final boolean init = BitUtil.extractBoolean(classParam, 15);
+        final int reserved = BitUtil.extractInt(classParam, 16, 31);
         final List<PropertyHeader> fields = bufferReader.readFixedLengthArray(propNum, XfsDeserializer::readPropertyHeader);
         return new ClassData(
 
@@ -73,10 +73,9 @@ public class XfsDeserializer {
             classData.getProperties().forEach(property -> {
                 bufferReader.setPosition(baseOffset + (int) property.getPropertyNameOffset());
                 property.setName(bufferReader.readNullTerminatedString());
-                if (property.getPropertyParamDisable() != 0) {
-                    log.warn("Class header for '{}' indicates that parameter '{}' is disabled with value '{}'", classData.getResourceName(), property.getName(), property.getPropertyParamDisable());
+                if (property.isPropertyParamDisable()) {
+                    log.warn("Class header for '{}' indicates that parameter '{}' is disabled.", classData.getResourceName(), property.getName());
                 }
-
             });
         });
         bufferReader.setPosition(baseOffset + (int) bufferSize);

@@ -46,6 +46,9 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ski
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundBossBgmDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundOptDataTableDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.*;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.DirectDrawSurfaceDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.RenderTargetTextureDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.TextureDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
@@ -55,6 +58,8 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.N
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.GUIMessageSerializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.texture.DirectDrawSurfaceSerializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.texture.TextureSerializer;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -208,6 +213,10 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherFogInfo, new FileHeader(3, 4), new WeatherFogInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherParamInfoTbl, new FileHeader(12, 4), new WeatherParamInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNavigationMesh, new FileHeader("NAV\0", 33, 4), new NavigationMeshDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexture, new FileHeader("TEX\0", 8349, 2), new TextureDeserializer(), new TextureSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexture, new FileHeader("TEX\0", 41117, 2), new TextureDeserializer(), new TextureSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRenderTargetTexture, new FileHeader("RTX\0", 158, 2), new RenderTargetTextureDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(DirectDrawSurface, new FileHeader("DDS ", 124, 4), new DirectDrawSurfaceDeserializer(), new DirectDrawSurfaceSerializer()));
     }
 
     /**
@@ -256,7 +265,7 @@ public abstract class ClientResourceFileManager {
     }
 
     public <T extends Resource> ClientResourceSerializer<T> getSerializer(String fileName, T deserialized) {
-        String fileNameExtension = fileName.substring(fileName.indexOf('.')).replace(".json", "").replace(".yaml", "");
+        String fileNameExtension = fileName.substring(fileName.indexOf('.')).replace(".json", "").replace(".yaml", "").replace(".tex.dds", ".dds");
         ClientResourceFileExtension clientResourceFileExtension = ClientResourceFileExtension.of(fileNameExtension);
         ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.getOrDefault(Pair.of(clientResourceFileExtension, deserialized.getFileHeader()), null);
         if (clientResourceFile != null) {

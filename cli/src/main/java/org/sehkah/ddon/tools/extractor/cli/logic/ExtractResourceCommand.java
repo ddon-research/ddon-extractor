@@ -12,6 +12,8 @@ import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.DirectDrawSurface;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.Texture;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
@@ -83,7 +85,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
             Optionally specify whether to enrich the output with additional meta information (if available).
             If omitted the default behavior is not to add meta information.
-                        
+            
             For example, if a numeric type has a corresponding (probable) semantic mapping this will be output as additional field.
             Note that this makes the output more comprehensible at the price of serialization compatibility and accuracy.
             """, defaultValue = "false")
@@ -92,7 +94,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-u", "--unpack-archives"}, arity = "0..1", description = """
             Optionally specify whether to unpack .arc files if encountered.
             If omitted the default behavior is not to unpack archives.
-                        
+            
             For example, if a .arc file is encountered while iterating files the contents of the archive will be written to disk and a descriptive file of the archive will be generated.
             Note that this can potentially be a memory hog.
             """, defaultValue = "false")
@@ -102,7 +104,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Optionally specify whether to ignore all other file types and only unpack .arc files if encountered.
             Has no effect if specified by itself.
             If omitted the default behavior is to extract information for other file types as well.
-                        
+            
             For example, if any file type other than .arc is encountered while iterating files they will be ignored.
             """, defaultValue = "false")
     private boolean unpackArchivesExclusively;
@@ -110,10 +112,18 @@ public class ExtractResourceCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-p", "--parallel"}, arity = "0..1", description = """
             Optionally specify whether to run extraction in parallel.
             If omitted the default behavior is to run in parallel.
-                        
+            
             Turning this off improves legibility of logs and supports debugging.
             """, defaultValue = "true")
     private boolean runInParallel;
+
+    @CommandLine.Option(names = {"-t", "--export-textures"}, arity = "0..1", description = """
+            Optionally specify whether to export textures as DDS.
+            If omitted the default behavior is to not export textures as DDS.
+            
+            Note that textures will be dumped as JSON or YAML without the data either way.
+            """, defaultValue = "false")
+    private boolean exportTextures;
 
     private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
@@ -148,7 +158,6 @@ public class ExtractResourceCommand implements Callable<Integer> {
             }
             return StatusCode.ERROR;
         }
-
         Resource deserializedOutput = clientResourceFileManager.deserialize(filePath, bufferReader);
         if (deserializedOutput == null) {
             log.error("File '{}' is not supported.", filePath);
@@ -168,6 +177,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
         if (writeOutputToFile) {
             String fileName = filePath.getFileName().toString();
             String outputFile = fileName + "." + outputFormat;
+
             Path outputFolder = Path.of("output").resolve(filePath.subpath(0, filePath.getNameCount() - 1));
             boolean mkdirsSucceeded = outputFolder.toFile().mkdirs();
             if (!mkdirsSucceeded && !Files.isDirectory(outputFolder)) {
@@ -176,7 +186,13 @@ public class ExtractResourceCommand implements Callable<Integer> {
             }
             Path outputFilePath = outputFolder.resolve(outputFile);
             log.info("Outputting to file '{}'.", outputFilePath);
+
             try {
+                if (exportTextures && (deserializedOutput instanceof Texture t)) {
+                    DirectDrawSurface dds = t.toDirectDrawSurface();
+                    Files.write(outputFolder.resolve(fileName + ".dds"), clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                }
+
                 Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
                 if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
                     outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));

@@ -13,6 +13,8 @@ import java.util.function.Supplier;
 public interface BufferWriter {
     int getPosition();
 
+    void setPosition(int position);
+
     byte[] getBytes();
 
     void writeUnsignedByte(int value);
@@ -58,4 +60,6 @@ public interface BufferWriter {
     <E> void writeArray(List<E> entities, Supplier<Consumer<E>> consumeEntity);
 
     <E> void writeArray(List<E> entities, IntFunction<Void> arraySizeWriterFunction, Supplier<Consumer<E>> consumeEntity);
+
+    <E> void writeFixedLengthArray(List<E> entities, Supplier<Consumer<E>> consumeEntity);
 }

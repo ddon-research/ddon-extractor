@@ -186,7 +186,10 @@ public enum ClientResourceFileExtension {
     rWeatherFogInfo,
     rWeatherParamInfoTbl,
     rNavigationMesh,
+    rTexture,
+    rRenderTargetTexture,
     rWeatherStageInfo,
+    DirectDrawSurface,
     rWepCateResTbl;
 
     private static final Map<Long, ClientResourceFileExtension> jamCrcToResourceMap = HashMap.newHashMap(ClientResourceFileExtension.values().length);
@@ -387,6 +390,9 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".wtf", rWeatherFogInfo);
         fileExtensionToResourceMap.put(".wtl", rWeatherParamInfoTbl);
         fileExtensionToResourceMap.put(".nav", rNavigationMesh);
+        fileExtensionToResourceMap.put(".tex", rTexture);
+        fileExtensionToResourceMap.put(".rtex", rRenderTargetTexture);
+        fileExtensionToResourceMap.put(".dds", DirectDrawSurface);
 
         fileExtensionToResourceMap.forEach((key, value) -> resourceToFileExtensionMap.put(value, key));
 

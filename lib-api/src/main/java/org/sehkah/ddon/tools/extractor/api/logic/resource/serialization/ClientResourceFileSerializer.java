@@ -8,7 +8,7 @@ import org.sehkah.ddon.tools.extractor.api.io.BufferWriter;
 
 @Slf4j
 public abstract class ClientResourceFileSerializer<T extends Resource> implements ClientResourceSerializer<T> {
-    private static final FileHeaderSerializer fileHeaderSerializer = new FileHeaderSerializer();
+    protected static final FileHeaderSerializer fileHeaderSerializer = new FileHeaderSerializer();
 
     protected ClientResourceFileSerializer() {
     }
