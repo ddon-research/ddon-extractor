@@ -12,8 +12,7 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class ItemListItemParam {
+public class Item {
     @MetaInformation
     private int ItemIndex;
-    private long ItemId;
 }

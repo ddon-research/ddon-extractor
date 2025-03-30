@@ -5,8 +5,7 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipSubCategory;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListFlagType;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListItemCategory;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
 
 import java.util.List;
 import java.util.Set;
@@ -14,27 +13,16 @@ import java.util.Set;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class Jewelry extends ItemListItemParam {
-    private int Flag;
-    @MetaInformation
-    private Set<ItemListFlagType> FlagTypes;
-    private int ItemCategory;
-    @MetaInformation
-    private ItemListItemCategory ItemCategoryName;
-
+public class Jewelry extends ItemCore {
     private long SortNo;
     private long NameSortNo;
 
     private int Price;
-    private int GradeRankFlag;
-    @MetaInformation
     private int Grade;
-    @MetaInformation
     private int Rank;
 
     private long NameId;
@@ -45,7 +33,7 @@ public class Jewelry extends ItemListItemParam {
     private int IconNo;
 
     private int IsUseLv;
-    private int IsUseJobOffset;
+    private Set<JobType> IsUseJobType;
 
     private int Attack;
     private int MagicAttack;
@@ -53,28 +41,20 @@ public class Jewelry extends ItemListItemParam {
     private int MagicDefense;
     private int Weight;
 
-    // TODO: this looks weird
     private int SubCategory;
     @MetaInformation
     private ItemListEquipSubCategory SubCategoryName;
 
     private int IconColNo;
-    // TODO: check if this has to be split up into crest/quality
     private int EleSlot;//crest
 
-    private int EquipParamS8Num;
-    private List<ItemListEquipParamS8> EquipParamS8List;
+    private List<ItemListEquipParam> EquipParamList;
 
-    public Jewelry(int ItemIndex, long ItemId, int flag, Set<ItemListFlagType> flagTypes, int itemCategory, ItemListItemCategory itemCategoryName, long sortNo, long nameSortNo, int price, int gradeRankFlag, int grade, int rank, long nameId, Translation itemName, Translation itemInfo, int iconNo, int isUseLv, int isUseJobOffset, int attack, int magicAttack, int defense, int magicDefense, int weight, int subCategory, int iconColNo, int eleSlot, int equipParamS8Num, List<ItemListEquipParamS8> equipParamS8List) {
-        super(ItemIndex, ItemId);
-        Flag = flag;
-        FlagTypes = flagTypes;
-        ItemCategory = itemCategory;
-        ItemCategoryName = itemCategoryName;
+    public Jewelry(ItemCore core, long sortNo, long nameSortNo, int price, int grade, int rank, long nameId, Translation itemName, Translation itemInfo, int iconNo, int isUseLv, Set<JobType> isUseJobType, int attack, int magicAttack, int defense, int magicDefense, int weight, int subCategory, int iconColNo, int eleSlot, List<ItemListEquipParam> equipParamList) {
+        super(core.getItemIndex(), core.getItemId(), core.getFlag(), core.getFlagTypes(), core.getItemCategory(), core.getItemCategoryName());
         SortNo = sortNo;
         NameSortNo = nameSortNo;
         Price = price;
-        GradeRankFlag = gradeRankFlag;
         Grade = grade;
         Rank = rank;
         NameId = nameId;
@@ -82,7 +62,7 @@ public class Jewelry extends ItemListItemParam {
         ItemInfo = itemInfo;
         IconNo = iconNo;
         IsUseLv = isUseLv;
-        IsUseJobOffset = isUseJobOffset;
+        IsUseJobType = isUseJobType;
         Attack = attack;
         MagicAttack = magicAttack;
         Defense = defense;
@@ -92,7 +72,6 @@ public class Jewelry extends ItemListItemParam {
         SubCategoryName = ItemListEquipSubCategory.of(subCategory);
         IconColNo = iconColNo;
         EleSlot = eleSlot;
-        EquipParamS8Num = equipParamS8Num;
-        EquipParamS8List = equipParamS8List;
+        EquipParamList = equipParamList;
     }
 }

@@ -40,7 +40,7 @@ public class ItemListParamBbJobPhysUp extends ItemListParam {
         JobId = jobId;
         JobName = JobType.of(jobId);
         PhysicalType = physicalType;
-        PhysicalTypeName = ItemListPhysicalType.of(physicalType - 1);
+        PhysicalTypeName = ItemListPhysicalType.of(physicalType - 1L);
         this.padding1 = padding1;
         this.padding2 = padding2;
     }

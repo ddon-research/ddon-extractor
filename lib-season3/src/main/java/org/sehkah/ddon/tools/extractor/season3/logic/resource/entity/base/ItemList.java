@@ -6,7 +6,6 @@ import lombok.*;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 
 import java.util.List;
-import java.util.Optional;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -39,24 +38,28 @@ public class ItemList extends Resource {
     private List<JobItem> JobItemList;
     private List<SpecialItem> SpecialItemList;
     private List<Weapon> WeaponList;
-    private List<WeaponBase> WeaponBaseList;
+    private List<ItemEquipWeaponGroup> itemEquipWeaponGroupList;
     private List<Armor> ArmorList;
-    private List<ArmorBase> ArmorBaseList;
+    private List<ItemEquipProtectorGroup> itemEquipProtectorGroupList;
     private List<Jewelry> JewelryList;
-    private List<NpcEquipment> NpcEquipmentList;
+    private List<ItemEquipNpcProtector> itemEquipNpcProtectorList;
 
     /**
      * A list of all items for dyanmic lookups, not meant to be dumped as it is just a duplicate.
      */
     @JsonIgnore
-    private List<ItemListItemParam> ItemParamList;
+    private List<Item> ItemParamList;
 
-    public ItemListItemParam getItemById(long itemId) {
+    public Item getItemById(long itemId) {
         return getItemByIdNaive(itemId);
     }
 
-    private ItemListItemParam getItemByIdNaive(long itemId) {
-        Optional<ItemListItemParam> optionalIndex = ItemParamList.stream().filter(i -> i.getItemId() == itemId).findFirst();
-        return optionalIndex.orElse(null);
+    private Item getItemByIdNaive(long itemId) {
+        for (Item item : ItemParamList) {
+            if (item instanceof ItemCore core && core.getItemId() == itemId) {
+                return item;
+            }
+        }
+        return null;
     }
 }

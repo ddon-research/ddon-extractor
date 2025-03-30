@@ -65,6 +65,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.ItemEquipJobInfoList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.ItemList;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.StageListInfoList;
 
@@ -78,6 +79,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
 public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager {
     private ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
     private ClientResourceFile<ItemList> ItemListResourceFile;
+    private ClientResourceFile<ItemEquipJobInfoList> ItemEquipJobInfoListResourceFile;
 
     public ClientResourceFileManagerSeason3(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         super(clientRootFolder, clientTranslationFile, preferredSerializationType, shouldSerializeMetaInformation);
@@ -90,7 +92,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
                                                               ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile,
                                                               ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile,
                                                               ClientResourceFile<AreaInfoStageList> AreaInfoStageListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, msgSetResourceFile, npcLedgerListResourceFile, enemyGroupListResourceFile, AreaInfoStageListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
+        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, msgSetResourceFile, npcLedgerListResourceFile, enemyGroupListResourceFile, AreaInfoStageListResourceFile, StageListInfoResourceFile, ItemListResourceFile, ItemEquipJobInfoListResourceFile);
     }
 
     @Override
@@ -187,6 +189,8 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJukeBoxItem, new FileHeader(1, 4), new JukeBoxItemListDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEventViewerSetInfo, new FileHeader("EVSI", 2, 4), new EventViewerSetInfoDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEvidenceList, new FileHeader(1, 4), new EvidenceListDeserializer()));
+        ItemEquipJobInfoListResourceFile = new ClientResourceFile<>(rItemEquipJobInfoList, new FileHeader(2, 4), new ItemEquipJobInfoListDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) ItemEquipJobInfoListResourceFile);
 
         return clientResourceFileSet;
     }

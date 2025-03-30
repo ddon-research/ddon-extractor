@@ -3,10 +3,10 @@ package org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta;
 import java.util.Arrays;
 
 public enum ItemListPhysicalType {
-    PHYSICAL_TYPE_SWORD(0x0),
-    PHYSICAL_TYPE_HIT(0x1),
-    PHYSICAL_TYPE_ARROW(0x2),
-    PHYSICAL_TYPE_HIT_ARROW(0x3),
+    SLASH(0x0),
+    BLUNT(0x1),
+    SHOT(0x2),
+    BLUNT_SHOT(0x3),
     PHYSICAL_TYPE_UNKNOWN(Integer.MAX_VALUE);
 
     public final long value;

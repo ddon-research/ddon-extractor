@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookup
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStage;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStageList;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroup;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
@@ -19,6 +20,7 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.*;
 
 import java.nio.file.Path;
+import java.util.Set;
 
 @Slf4j
 @Getter
@@ -32,6 +34,7 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
 
     private final ClientResourceFile<StageListInfoList> StageListInfoResourceFile;
     private final ClientResourceFile<ItemList> ItemListResourceFile;
+    private final ClientResourceFile<ItemEquipJobInfoList> ItemEquipJobInfoListResourceFile;
 
     public ResourceMetadataLookupUtilSeason3(Path clientRootFolder, Path clientTranslationFile,
 
@@ -41,7 +44,8 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
                                              ClientResourceFile<AreaInfoStageList> areaInfoStageListResourceFile,
 
                                              ClientResourceFile<StageListInfoList> stageListInfoResourceFile,
-                                             ClientResourceFile<ItemList> itemListResourceFile
+                                             ClientResourceFile<ItemList> itemListResourceFile,
+                                             ClientResourceFile<ItemEquipJobInfoList> itemEquipJobInfoListResourceFile
     ) {
         super(clientRootFolder, clientTranslationFile);
 
@@ -53,6 +57,7 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
 
         StageListInfoResourceFile = stageListInfoResourceFile;
         ItemListResourceFile = itemListResourceFile;
+        ItemEquipJobInfoListResourceFile = itemEquipJobInfoListResourceFile;
     }
 
     @Override
@@ -117,51 +122,36 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
             return null;
         }
         ItemList list = cache.getResource(ResourceLookupTable.ITEM_LIST.getFilePath(), ItemListResourceFile, this);
-        ItemListItemParam item = list.getItemById(itemId);
+        Item item = list.getItemById(itemId);
 
-        switch (item) {
-            case null -> {
+        return switch (item) {
+            case null: {
                 log.error("Could not find item for item id {}", itemId);
-                return null;
+                yield null;
             }
-            // TODO: pull item name into super class once it is known how to get item names for armor/weapons
-            case Consumable consumable -> {
-                return consumable.getItemName();
+            case Consumable consumable:
+                yield consumable.getItemName();
+            case Material material:
+                yield material.getItemName();
+            case KeyItem keyItem:
+                yield keyItem.getItemName();
+            case JobItem jobItem:
+                yield jobItem.getItemName();
+            case SpecialItem specialItem:
+                yield specialItem.getItemName();
+            case Weapon weapon:
+                yield weapon.getWeaponBase().getItemName();
+            case Armor armor:
+                yield armor.getArmorBase().getItemName();
+            case Jewelry jewelry:
+                yield jewelry.getItemName();
+            case ItemEquipNpcProtector itemEquipNpcProtector:
+                yield itemEquipNpcProtector.getItemName();
+            default: {
+                log.error("Could not find item name for item id {}", itemId);
+                yield null;
             }
-            case Material material -> {
-                return material.getItemName();
-            }
-            case KeyItem keyItem -> {
-                return keyItem.getItemName();
-            }
-            case JobItem jobItem -> {
-                return jobItem.getItemName();
-            }
-            case SpecialItem specialItem -> {
-                return specialItem.getItemName();
-            }
-            case Weapon weapon -> {
-                return null; // TODO: lookup via weapon base id
-            }
-            case WeaponBase weaponBase -> {
-                return weaponBase.getItemName();
-            }
-            case Armor armor -> {
-                return null; // TODO: lookup via armor base id
-            }
-            case ArmorBase armorBase -> {
-                return armorBase.getItemName();
-            }
-            case Jewelry jewelry -> {
-                return jewelry.getItemName();
-            }
-            case NpcEquipment npcEquipment -> {
-                return npcEquipment.getItemName();
-            }
-            default -> {
-                return null;
-            }
-        }
+        };
     }
 
     @Override
@@ -197,5 +187,10 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
         }
         log.error("Could not find area id for stage no {}", stageNo);
         return -1;
+    }
+
+    public Set<JobType> getItemUseJob(int index) {
+        ItemEquipJobInfoList itemEquipJobInfoList = cache.getResource(ResourceLookupTable.ITEM_EQUIP_JOB_LIST_S3.getFilePath(), ItemEquipJobInfoListResourceFile, this);
+        return itemEquipJobInfoList.getDataList().get(index).getIsUseJobList();
     }
 }

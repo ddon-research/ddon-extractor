@@ -4,7 +4,7 @@ import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipParamS8Kind;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipParamKind;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.enhanced_param.EnhancedData;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.enhanced_param.EnhancedParam;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.enhanced_param.EnhancedParamList;
@@ -17,7 +17,7 @@ public class EnhancedParamListDeserializer extends ClientResourceFileDeserialize
         int ParamId = bufferReader.readUnsignedByte();
         int ParamValue = bufferReader.readUnsignedShort();
 
-        return new EnhancedData(DTIID, ParamId, ItemListEquipParamS8Kind.of(ParamId), ParamValue);
+        return new EnhancedData(DTIID, ParamId, ItemListEquipParamKind.of(ParamId), ParamValue);
     }
 
     private static EnhancedParam readEnhancedParam(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {

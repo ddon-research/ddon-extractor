@@ -18,10 +18,10 @@ import java.util.Set;
 
 @Slf4j
 public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemList> {
-    private static ItemListEquipParamS8 readEquipParamS8(BufferReader bufferReader) {
+    private static ItemListEquipParam readEquipParam(BufferReader bufferReader) {
         int KindType = bufferReader.readUnsignedByte();
         int Form = bufferReader.readUnsignedByte();
-        int Value = switch (ItemListEquipParamS8FormType.of(Form)) {
+        int Value = switch (ItemListEquipParamFormType.of(Form)) {
             case FORM_TYPE_S8 -> bufferReader.readSignedByte();
             case FORM_TYPE_U8 -> bufferReader.readUnsignedByte();
             case FORM_TYPE_S16 -> bufferReader.readSignedShort();
@@ -32,7 +32,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
             }
         };
 
-        return new ItemListEquipParamS8(
+        return new ItemListEquipParam(
                 KindType,
                 Form,
                 Value
@@ -56,7 +56,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
                 bufferReader.readUnsignedByte(),
                 bufferReader.readUnsignedByte(),
                 bufferReader.readUnsignedByte(),
-                bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParamS8)
+                bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParam)
         );
     }
 
@@ -81,7 +81,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
                 bufferReader.readUnsignedByte(),
                 bufferReader.readUnsignedByte(),
                 bufferReader.readUnsignedByte(),
-                bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParamS8)
+                bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParam)
         );
     }
 
