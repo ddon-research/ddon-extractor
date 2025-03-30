@@ -110,19 +110,19 @@ Commands:
 $ ./ddon-extractor.exe resource
 Missing required parameters: '<clientRootFolder>', '<clientTranslationFile>', '<inputFilePath>'
 Usage: extract resource [-hV] [-f[=<outputFormat>]] [-m[=<addMetaInformation>]]
-[-o[=<writeOutputToFile>]] [-p[=<runInParallel>]] [-u
-[=<unpackArchives>]] [-x[=<unpackArchivesExclusively>]]
-<clientRootFolder> <clientTranslationFile>
-<inputFilePath>
+                        [-o[=<writeOutputToFile>]] [-p[=<runInParallel>]] [-t
+                        [=<exportTextures>]] [-u[=<unpackArchives>]] [-x
+                        [=<unpackArchivesExclusively>]] <clientRootFolder>
+                        <clientTranslationFile> <inputFilePath>
 Extracts the provided DDON resource file(s).
-<clientRootFolder>   Specifies the DDON client root folder.
-This will be used as a basis to derive further meta
-information for certain files where supported and
-enabled.
-See the meta information flag for further
-information.
-Example:
-extract "D:\DDON" <resource file>
+      <clientRootFolder>   Specifies the DDON client root folder.
+                           This will be used as a basis to derive further meta
+                             information for certain files where supported and
+                             enabled.
+                           See the meta information flag for further
+                             information.
+                           Example:
+                               extract "D:\DDON" <resource file>
 
       <clientTranslationFile>
                            Specifies the DDON client translation file.
@@ -187,6 +187,14 @@ extract "D:\DDON" <resource file>
                            Turning this off improves legibility of logs and
                              supports debugging.
 
+  -t, --export-textures[=<exportTextures>]
+                           Optionally specify whether to export textures as DDS.
+                           If omitted the default behavior is to not export
+                             textures as DDS.
+
+                           Note that textures will be dumped as JSON or YAML
+                             without the data either way.
+
   -u, --unpack-archives[=<unpackArchives>]
                            Optionally specify whether to unpack .arc files if
                              encountered.
@@ -210,4 +218,77 @@ extract "D:\DDON" <resource file>
                            For example, if any file type other than .arc is
                              encountered while iterating files they will be
                              ignored.
+----
+
+==== Packet extraction arguments
+
+[source]
+----
+$ ./ddon-extractor.exe packet
+Missing required parameters: '<clientRootFolder>', '<inputFilePath>'
+Usage: extract packet [-hV] [-f[=<outputFormat>]] [-m[=<addMetaInformation>]]
+                      [-o[=<writeOutputToFile>]] [-p[=<runInParallel>]]
+                      <clientRootFolder> <inputFilePath>
+Extracts the provided DDON packet file(s).
+      <clientRootFolder>   Specifies the DDON client resource file path.
+                           This will be used as a basis to derive further meta
+                             information for certain packet files where
+                             supported and enabled.
+                           See the meta information flag for further information
+                           Example:
+                               extract "D:\DDON\nativePC\rom" <resource file>
+
+      <inputFilePath>      Specifies the DDON packet file whose data to extract
+                             or a folder to recursively search for such files.
+                           The full path must be specified.
+                           Example:
+                               extract-packet <client resource base path> "D:
+                             \packets\C2L_LOGIN_REQ.packet" will extract the
+                             data of the C2L_LOGIN_REQ.packet packet file.
+                               extract-packet <client resource base path> "D:
+                             \packets" will extract the data of all packet
+                             files found in this path.
+
+  -f, --format[=<outputFormat>]
+                           Optionally specify the output format (json, yaml).
+                           If omitted the default format is used (json).
+                           Example:
+                                extract-packet --format=JSON FILE  outputs the
+                             data with the JSON format on the console
+                                extract-packet --format FILE   outputs the data
+                             with the default format on the console"
+
+  -h, --help               Show this help message and exit.
+  -m, --meta-information[=<addMetaInformation>]
+                           Optionally specify whether to enrich the output with
+                             additional meta information (if available).
+                           If omitted the default behavior is not to add meta
+                             information.
+
+                           For example, if a numeric type has a corresponding
+                             (probable) semantic mapping this will be output as
+                             additional field.
+                           Note that this makes the output more comprehensible
+                             at the price of serialization compatibility and
+                             accuracy.
+
+  -o=[<writeOutputToFile>] Optionally specify whether to output the extracted
+                             data as a file.
+                           If omitted the default behavior is to output to
+                             console.
+                           Example:
+                               extract-packet -o FILE outputs the data in a
+                             file relative to the current working directory
+                             based on the input file name.
+
+  -p, --parallel[=<runInParallel>]
+                           Optionally specify whether to run extraction in
+                             parallel.
+                           If omitted the default behavior is to run in
+                             parallel.
+
+                           Turning this off improves legibility of logs and
+                             supports debugging.
+
+  -V, --version            Print version information and exit.
 ----
