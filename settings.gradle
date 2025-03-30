@@ -2,7 +2,7 @@ pluginManagement {
     plugins {
         id 'org.beryx.jlink' version '3.1.1'
         id 'org.javamodularity.moduleplugin' version '1.8.15'
-        id 'io.freefair.lombok' version '8.12.1'
+        id 'io.freefair.lombok' version '8.13.1'
         id 'com.github.ben-manes.versions' version '0.52.0'
     }
 }
@@ -14,7 +14,7 @@ plugins {
 dependencyResolutionManagement {
     versionCatalogs {
         common {
-            version('junit', '5.11.4')
+            version('junit', '5.12.0')
         }
         log {
             version('orgSlf4j', '2.0.9')
@@ -33,7 +33,7 @@ dependencyResolutionManagement {
             bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
         }
         lib {
-            version('comFasterxmlJackson', '2.18.2')
+            version('comFasterxmlJackson', '2.18.3')
             version('orgBouncycastle', '1.80')
             version('orgApacheCommons', '3.17.0')
 
@@ -52,9 +52,9 @@ dependencyResolutionManagement {
         }
         libTest {
             version('commonsCodec', '1.18.0')
-            version('commonsIo', '2.15.1')
+            version('commonsIo', '2.18.0')
             version('junitPioneer', '2.3.0')
-            version('mockitoCore', '5.15.2')
+            version('mockitoCore', '5.16.1')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec
             library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')

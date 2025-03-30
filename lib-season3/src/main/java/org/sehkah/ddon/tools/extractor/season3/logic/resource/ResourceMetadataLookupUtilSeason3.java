@@ -119,32 +119,49 @@ public class ResourceMetadataLookupUtilSeason3 extends ResourceMetadataLookupUti
         ItemList list = cache.getResource(ResourceLookupTable.ITEM_LIST.getFilePath(), ItemListResourceFile, this);
         ItemListItemParam item = list.getItemById(itemId);
 
-        // TODO: pull item name into super class once it is known how to get item names for armor/weapons
-        if (item instanceof Consumable consumable) {
-            return consumable.getItemName();
-        } else if (item instanceof Material material) {
-            return material.getItemName();
-        } else if (item instanceof KeyItem keyItem) {
-            return keyItem.getItemName();
-        } else if (item instanceof JobItem jobItem) {
-            return jobItem.getItemName();
-        } else if (item instanceof SpecialItem specialItem) {
-            return specialItem.getItemName();
-        } else if (item instanceof Weapon weapon) {
-            return null; // TODO: lookup via weapon base id
-        } else if (item instanceof WeaponBase weaponBase) {
-            return weaponBase.getItemName();
-        } else if (item instanceof Armor armor) {
-            return null; // TODO: lookup via armor base id
-        } else if (item instanceof ArmorBase armorBase) {
-            return armorBase.getItemName();
-        } else if (item instanceof Jewelry jewelry) {
-            return jewelry.getItemName();
-        } else if (item instanceof NpcEquipment npcEquipment) {
-            return npcEquipment.getItemName();
+        switch (item) {
+            case null -> {
+                log.error("Could not find item for item id {}", itemId);
+                return null;
+            }
+            // TODO: pull item name into super class once it is known how to get item names for armor/weapons
+            case Consumable consumable -> {
+                return consumable.getItemName();
+            }
+            case Material material -> {
+                return material.getItemName();
+            }
+            case KeyItem keyItem -> {
+                return keyItem.getItemName();
+            }
+            case JobItem jobItem -> {
+                return jobItem.getItemName();
+            }
+            case SpecialItem specialItem -> {
+                return specialItem.getItemName();
+            }
+            case Weapon weapon -> {
+                return null; // TODO: lookup via weapon base id
+            }
+            case WeaponBase weaponBase -> {
+                return weaponBase.getItemName();
+            }
+            case Armor armor -> {
+                return null; // TODO: lookup via armor base id
+            }
+            case ArmorBase armorBase -> {
+                return armorBase.getItemName();
+            }
+            case Jewelry jewelry -> {
+                return jewelry.getItemName();
+            }
+            case NpcEquipment npcEquipment -> {
+                return npcEquipment.getItemName();
+            }
+            default -> {
+                return null;
+            }
         }
-
-        return null;
     }
 
     @Override

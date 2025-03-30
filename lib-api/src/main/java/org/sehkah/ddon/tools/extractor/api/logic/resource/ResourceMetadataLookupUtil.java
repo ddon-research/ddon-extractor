@@ -112,6 +112,10 @@ public abstract class ResourceMetadataLookupUtil {
         return getMessageTranslation(GUIMessageLookupTable.NAMED_PARAM.getFilePath(), "namedparam_" + namedParamId);
     }
 
+    public Translation getParameterName(long paramId) {
+        return getMessageTranslation(GUIMessageLookupTable.PARAMETER.getFilePath(), (int) paramId);
+    }
+
     public Translation getQuestName(long questId) {
         String questIdStr = String.format("q%08d", questId);
         String gmdFilePath = String.format("quest/%1$s/ui/00_message/quest_info/%1$s_00.gmd", questIdStr);
