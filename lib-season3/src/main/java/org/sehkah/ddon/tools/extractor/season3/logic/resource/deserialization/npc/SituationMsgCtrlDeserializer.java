@@ -17,8 +17,8 @@ public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer
         boolean IsStartQuestIdStart = bufferReader.readBoolean();
         long EndQuestId = bufferReader.readUnsignedInteger();
         boolean IsEndQuestIdStart = bufferReader.readBoolean();
-        long UnknownInt1 = bufferReader.readUnsignedInteger();
-        long UnknownInt2 = bufferReader.readUnsignedInteger();
+        long RangeStartQuestFlag = bufferReader.readUnsignedInteger();
+        long RangeEndQuestFlag = bufferReader.readUnsignedInteger();
         Translation StartQuestName = null;
         Translation EndQuestName = null;
         if (lookupUtil != null) {
@@ -26,7 +26,7 @@ public class SituationMsgCtrlDeserializer extends ClientResourceFileDeserializer
             EndQuestName = lookupUtil.getQuestName(EndQuestId);
         }
 
-        return new SituationData(GroupSerial, StartQuestId, StartQuestName, IsStartQuestIdStart, EndQuestId, EndQuestName, IsEndQuestIdStart, UnknownInt1, UnknownInt2);
+        return new SituationData(GroupSerial, StartQuestId, StartQuestName, IsStartQuestIdStart, EndQuestId, EndQuestName, IsEndQuestIdStart, RangeStartQuestFlag, RangeEndQuestFlag);
     }
 
     @Override

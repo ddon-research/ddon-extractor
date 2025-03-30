@@ -15,7 +15,7 @@ public class ZoneShapeInfoCylinder extends ZoneShapeInfoBase {
     private Cylinder Cylinder;
 
     public ZoneShapeInfoCylinder(ZoneShapeInfoBase base, org.sehkah.ddon.tools.extractor.api.datatype.Cylinder cylinder) {
-        super(base.getDecay());
+        super(base.getDecay(), base.isIsNativeData());
         Cylinder = cylinder;
     }
 }

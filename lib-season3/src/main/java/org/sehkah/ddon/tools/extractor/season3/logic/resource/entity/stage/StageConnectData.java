@@ -17,6 +17,6 @@ public class StageConnectData {
     private long PartsNo;
     private long MapGroup;
     private long Unknown1;
-    private long Unknown2;
-    private long Unknown3;
+    private long LayoutGroupNo;
+    private long LayoutId;
 }

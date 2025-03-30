@@ -18,7 +18,7 @@ public class ZoneShapeInfoCone extends ZoneShapeInfoBase {
     private float BottomRadius;
 
     public ZoneShapeInfoCone(ZoneShapeInfoBase base, float height, float topRadius, Vector3f pos, float bottomRadius) {
-        super(base.getDecay());
+        super(base.getDecay(), base.isIsNativeData());
         Height = height;
         TopRadius = topRadius;
         Pos = pos;

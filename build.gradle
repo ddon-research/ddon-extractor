@@ -4,6 +4,12 @@ plugins {
     id 'com.github.ben-manes.versions'
 }
 
+allprojects {
+    wrapper {
+        distributionType = Wrapper.DistributionType.ALL
+    }
+}
+
 subprojects {
     apply plugin: 'org.javamodularity.moduleplugin'
     apply plugin: 'io.freefair.lombok'
@@ -26,6 +32,8 @@ subprojects {
     }
 
     tasks.withType(JavaCompile).configureEach {
+        options.fork = true
+        options.incremental = true
         options.encoding = 'UTF-8'
     }
 

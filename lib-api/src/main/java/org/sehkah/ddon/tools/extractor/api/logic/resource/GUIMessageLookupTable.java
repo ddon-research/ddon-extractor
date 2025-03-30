@@ -20,6 +20,7 @@ public enum GUIMessageLookupTable {
     ITEM_INFO("ui/item_info/ui/00_message/common/", "item_info.gmd"),
     LAND_NAME("ui/gui_cmn/ui/00_message/common/", "land_name.gmd"),
     NAMED_PARAM("ui/gui_cmn/ui/00_message/named/", "named_param.gmd"),
+    PARAMETER("ui/menu_cmn/ui/00_message/ui/", "parameter.gmd"),
     NPC_CLASS_NAME("npc/npc_common/ui/00_message/npc/", "npc_class_name.gmd"),
     NPC_NAME("npc/npc_common/ui/00_message/npc/", "npc_name.gmd"),
     STAGE_LIST("ui/gui_cmn/ui/00_message/common/", "stage_list.gmd"),
@@ -29,6 +30,9 @@ public enum GUIMessageLookupTable {
     SPOT_NAME("ui/gui_cmn/ui/00_message/common/", "spot_name.gmd"),
     SPOT_CATEGORY("ui/uGUIAreaMaster/ui/00_message/master/", "spot_category.gmd"),
     EVENT_NAME("EventViewRoom/ui/00_message/event/", "event_name.gmd"),
+    // Season 3 exclusive
+    EVIDENCE_INFO("ui/menu_evidence_list/ui/00_message/common/", "evidence_info.gmd"),
+    EVIDENCE_NAME("ui/menu_evidence_list/ui/00_message/common/", "evidence_name.gmd"),
     ;
 
     String folderPath;

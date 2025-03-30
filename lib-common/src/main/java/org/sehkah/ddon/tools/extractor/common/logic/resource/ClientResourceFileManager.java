@@ -45,17 +45,21 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sho
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill.NormalSkillDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundBossBgmDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound.SoundOptDataTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherFogInfoTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherParamInfoTableDeserializer;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WeatherStageInfoDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.*;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.DirectDrawSurfaceDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.RenderTargetTextureDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture.TextureDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide.TutorialDialogMessageDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.*;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WepCateResTblDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStageList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.EnemyGroupSerializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common.GUIMessageSerializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.texture.DirectDrawSurfaceSerializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.texture.TextureSerializer;
 
 import java.nio.file.Path;
 import java.util.HashMap;
@@ -76,7 +80,7 @@ import static org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceF
  * Regarding initialization:
  * It is mandatory that the season-specific resources are initialized before the resource cache and lookup util
  * can be provided.
- * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, Path, ClientResourceFile, ClientResourceFile)}.
+ * Thus it is ensured that {@link ClientResourceFileManager#setupResourceMapping()} is called before {@link ClientResourceFileManager#setupResourceLookupUtil(Path, Path, ClientResourceFile, ClientResourceFile, ClientResourceFile, ClientResourceFile)}.
  */
 @Slf4j
 @Getter
@@ -85,8 +89,10 @@ public abstract class ClientResourceFileManager {
     protected final Map<Pair<ClientResourceFileExtension, FileHeader>, ClientResourceFile<Resource>> clientResourceFileMap;
     protected final Serializer<Resource> stringSerializer;
     protected final ResourceMetadataLookupUtil lookupUtil;
+    protected ClientResourceFile<MsgSet> MsgSetResourceFile;
     protected ClientResourceFile<NpcLedgerList> NpcLedgerListResourceFile;
     protected ClientResourceFile<EnemyGroupList> EnemyGroupListResourceFile;
+    protected ClientResourceFile<AreaInfoStageList> AreaInfoStageListResourceFile;
 
     protected ClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         stringSerializer = ClientStringSerializer.get(preferredSerializationType, shouldSerializeMetaInformation);
@@ -94,7 +100,7 @@ public abstract class ClientResourceFileManager {
         addCommonResourceMapping(clientResourceFileSet);
 
         if (shouldSerializeMetaInformation) {
-            lookupUtil = setupResourceLookupUtil(clientRootFolder, clientTranslationFile, NpcLedgerListResourceFile, EnemyGroupListResourceFile);
+            lookupUtil = setupResourceLookupUtil(clientRootFolder, clientTranslationFile, MsgSetResourceFile, NpcLedgerListResourceFile, EnemyGroupListResourceFile, AreaInfoStageListResourceFile);
         } else {
             lookupUtil = null;
         }
@@ -122,7 +128,9 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchive, new FileHeader("ARCS", 7, 2), new ReferenceArchiveDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rArchiveListArray, new FileHeader(11, 4), new ArchiveListArrayDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoJointArea, new FileHeader("ARJ\0", 2, 4), new AreaInfoJointAreaDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer()));
+        AreaInfoStageListResourceFile = new ClientResourceFile<>(rAreaInfoStage, new FileHeader("ARS\0", 2, 4), new AreaInfoStageDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) AreaInfoStageListResourceFile);
+
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBakeJoint, new FileHeader(3, 4), new BakeJointTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rBitTable, new FileHeader(2, 4), new BitTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCalcDamageAtdmAdj, new FileHeader(1, 4), new CalcDamageAtdmAdjTblDeserializer()));
@@ -163,7 +171,9 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicChantParam, new FileHeader(17, 4), new MagicChantParamTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandList, new FileHeader(27, 4), new MagicCommandListTblDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMagicCommandWord, new FileHeader(1, 4), new MagicCommandWordTblDeserializer()));
-        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer()));
+        MsgSetResourceFile = new ClientResourceFile<>(rMsgSet, new FileHeader("mgst", 3, 2), new MsgSetDeserializer());
+        clientResourceFileSet.add((ClientResourceFile<T>) MsgSetResourceFile);
+
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNamedParam, new FileHeader(5, 4), new NamedParamDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNormalSkillData, new FileHeader(5, 4), new NormalSkillDataDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNpcConstItem, new FileHeader(2, 4), new NpcConstItemDeserializer()));
@@ -202,18 +212,24 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTargetCursorOffset, new FileHeader(272, 4), new TargetCursorOffsetTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherFogInfo, new FileHeader(3, 4), new WeatherFogInfoTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rWeatherParamInfoTbl, new FileHeader(12, 4), new WeatherParamInfoTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rNavigationMesh, new FileHeader("NAV\0", 33, 4), new NavigationMeshDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexture, new FileHeader("TEX\0", 8349, 2), new TextureDeserializer(), new TextureSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexture, new FileHeader("TEX\0", 41117, 2), new TextureDeserializer(), new TextureSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRenderTargetTexture, new FileHeader("RTX\0", 158, 2), new RenderTargetTextureDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(DirectDrawSurface, new FileHeader("DDS ", 124, 4), new DirectDrawSurfaceDeserializer(), new DirectDrawSurfaceSerializer()));
     }
 
     /**
      * Initializes a {@link ResourceMetadataLookupUtil}.
      * To accomplish this, a client root folder is required as well as a season-specific resource setup stored in {@link ClientResourceFileManager#clientResourceFileSet}.
      *
-     * @param clientRootFolder          root installation folder, e.g. C:\DDON
+     * @param clientRootFolder              root installation folder, e.g. C:\DDON
      * @param clientTranslationFile
      * @param npcLedgerListResourceFile
+     * @param areaInfoStageListResourceFile
      * @return an initialized lookup util
      */
-    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile);
+    public abstract ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<MsgSet> msgSetResourceFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile, ClientResourceFile<AreaInfoStageList> areaInfoStageListResourceFile);
 
     /**
      * Initializes the season-specific resource file setup in {@link ClientResourceFileManager#clientResourceFileSet}.
@@ -249,7 +265,7 @@ public abstract class ClientResourceFileManager {
     }
 
     public <T extends Resource> ClientResourceSerializer<T> getSerializer(String fileName, T deserialized) {
-        String fileNameExtension = fileName.substring(fileName.indexOf('.')).replace(".json", "").replace(".yaml", "");
+        String fileNameExtension = fileName.substring(fileName.indexOf('.')).replace(".json", "").replace(".yaml", "").replace(".tex.dds", ".dds");
         ClientResourceFileExtension clientResourceFileExtension = ClientResourceFileExtension.of(fileNameExtension);
         ClientResourceFile<T> clientResourceFile = (ClientResourceFile<T>) clientResourceFileMap.getOrDefault(Pair.of(clientResourceFileExtension, deserialized.getFileHeader()), null);
         if (clientResourceFile != null) {

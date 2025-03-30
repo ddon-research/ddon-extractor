@@ -21,7 +21,7 @@ public class ClassData {
     @MetaInformation
     private int propNum;
     @MetaInformation
-    private int init;
+    private boolean init;
     @MetaInformation
     private int reserved;
     private List<PropertyHeader> properties;

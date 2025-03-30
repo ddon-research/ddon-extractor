@@ -32,6 +32,11 @@ public class BinaryWriter implements BufferWriter {
     }
 
     @Override
+    public void setPosition(int position) {
+        byteBuffer.position(position);
+    }
+
+    @Override
     public byte[] getBytes() {
         return byteBuffer.array();
     }
@@ -80,7 +85,7 @@ public class BinaryWriter implements BufferWriter {
 
     @Override
     public void writeUnsignedLong(BigInteger value) {
-        byteBuffer.putLong(value.longValue());
+        byteBuffer.putLong(value.longValueExact());
     }
 
     @Override
@@ -157,6 +162,11 @@ public class BinaryWriter implements BufferWriter {
     @Override
     public <E> void writeArray(List<E> entities, IntFunction<Void> arraySizeWriterFunction, Supplier<Consumer<E>> consumeEntity) {
         arraySizeWriterFunction.apply(entities.size());
+        entities.forEach(consumeEntity.get());
+    }
+
+    @Override
+    public <E> void writeFixedLengthArray(List<E> entities, Supplier<Consumer<E>> consumeEntity) {
         entities.forEach(consumeEntity.get());
     }
 }

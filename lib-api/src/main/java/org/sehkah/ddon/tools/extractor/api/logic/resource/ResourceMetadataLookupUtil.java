@@ -87,6 +87,10 @@ public abstract class ResourceMetadataLookupUtil {
         }
     }
 
+    public abstract Translation getMsgGroupTranslation(String msgSetFilePath, long msgGroupSerial);
+
+    public abstract Translation getMsgGroupMessageTranslation(String msgSetFilePath, int msgSerial);
+
     public abstract Translation getNpcName(long npcId);
 
     public abstract Translation getStageNameByStageNo(int stageNo);
@@ -101,6 +105,16 @@ public abstract class ResourceMetadataLookupUtil {
      * @param enemyId decimal radix
      */
     public abstract Translation getEnemyName(long enemyId);
+
+    public abstract Translation getEnemyGroupName(long enemyGroupId);
+
+    public Translation getNamedEnemyName(long namedParamId) {
+        return getMessageTranslation(GUIMessageLookupTable.NAMED_PARAM.getFilePath(), "namedparam_" + namedParamId);
+    }
+
+    public Translation getParameterName(long paramId) {
+        return getMessageTranslation(GUIMessageLookupTable.PARAMETER.getFilePath(), (int) paramId);
+    }
 
     public Translation getQuestName(long questId) {
         String questIdStr = String.format("q%08d", questId);
@@ -142,4 +156,15 @@ public abstract class ResourceMetadataLookupUtil {
     public Translation getAbilityName(int abilityNo) {
         return getMessageTranslation(GUIMessageLookupTable.ABILITY_NAME.getFilePath(), "ABILITY_NAME_" + abilityNo);
     }
+
+    /**
+     * Looks up am_spot_(01).ams via area(1)_spot_info.gmd
+     */
+    public Translation getSpotInfoMessage(Path sourcePath, int spotMessageId) {
+        int sourceSpotId = Integer.valueOf(sourcePath.getFileName().toString().replace("am_spot_", "").replace(".ams", ""), 10);
+        String gmdFilePath = String.format("ui/uGUIAreaMaster/ui/00_message/master/area%d_spot_info.gmd", sourceSpotId);
+        return getMessageTranslation(gmdFilePath, spotMessageId);
+    }
+
+    public abstract long getAreaIdByStageNo(int stageNoMap);
 }

@@ -15,6 +15,7 @@ public class SetInfoOm extends SetInfo {
     private boolean DisableOnlyEffect;
     private boolean OpenFlag;
     private boolean EnableSyncLight;
+    //TODO: maybe dead / unused Matrix u8 pointer
     private boolean Unknown;
     private boolean EnableZone;
     private long InitMtnNo;

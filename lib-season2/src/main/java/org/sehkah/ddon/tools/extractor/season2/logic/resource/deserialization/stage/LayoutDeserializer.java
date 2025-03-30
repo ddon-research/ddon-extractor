@@ -14,11 +14,14 @@ import org.sehkah.ddon.tools.extractor.season2.logic.resource.entity.stage.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 @Slf4j
 public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
 
+
+    private static final Pattern stageNoPattern = Pattern.compile("(?:^|[\\\\/])st(\\d+)");
 
     private static SetInfoCoord readSetInfoCoord(BufferReader bufferReader) {
         return new SetInfoCoord(
@@ -402,18 +405,28 @@ public class LayoutDeserializer extends ClientResourceFileDeserializer<Layout> {
             default -> log.error("Unhandled layout type: {}", Type);
         }
 
-        return new LayoutSetInfo(
-                ID,
-                Type,
-                Info
-        );
+        return new LayoutSetInfo(ID, Type, Info);
     }
 
     @Override
     protected Layout parseClientResourceFile(Path filePath, BufferReader bufferReader, FileHeader fileHeader, ResourceMetadataLookupUtil lookupUtil) {
         List<Long> SetInfoNeedNums = bufferReader.readFixedLengthArray(22, BufferReader::readUnsignedInteger);
-        List<LayoutSetInfo> Array = bufferReader.readArray(LayoutDeserializer::readLayoutSetInfo, lookupUtil);
+        List<LayoutSetInfo> Array = bufferReader.readArray(br -> readLayoutSetInfo(br, lookupUtil));
 
-        return new Layout(SetInfoNeedNums, Array);
+        // stage/st0414/lot/st0414_00m00n/scr/st0414/etc/st0414_00m00n_n02.lot
+        int StageNo = stageNoPattern.matcher(filePath.toString()).results().findFirst()
+                .map(m -> Integer.parseInt(m.group(1), 10))
+                .orElse(-1);
+
+        int AreaId = -1;
+        Translation StageName = null;
+        Translation AreaName = null;
+        if (StageNo > 0 && lookupUtil != null) {
+            StageName = lookupUtil.getStageNameByStageNo(StageNo);
+            AreaId = (int) lookupUtil.getAreaIdByStageNo(StageNo);
+            AreaName = lookupUtil.getAreaName(AreaId);
+        }
+
+        return new Layout(SetInfoNeedNums, Array, StageNo, StageName, AreaId, AreaName);
     }
 }

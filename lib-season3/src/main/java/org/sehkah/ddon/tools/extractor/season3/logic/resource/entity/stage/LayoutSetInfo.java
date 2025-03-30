@@ -20,8 +20,9 @@ public class LayoutSetInfo {
     private SetInfo Info;
 
     public LayoutSetInfo(int ID, long type, SetInfo info) {
-        this(ID,
-                type, LayoutSetInfoType.of(type),
-                info);
+        this.ID = ID;
+        Type = type;
+        TypeName = LayoutSetInfoType.of(type);
+        Info = info;
     }
 }

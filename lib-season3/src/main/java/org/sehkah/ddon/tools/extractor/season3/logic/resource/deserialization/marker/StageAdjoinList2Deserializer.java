@@ -16,18 +16,18 @@ import java.util.List;
 
 public class StageAdjoinList2Deserializer extends ClientResourceFileDeserializer<StageAdjoinList2> {
     private static JumpPosition2 readJumpPosition(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
-        long Unknown1 = bufferReader.readUnsignedInteger();
+        long ID = bufferReader.readUnsignedInteger();
         Vector3f Pos = bufferReader.readVector3f();
         long QuestId = bufferReader.readUnsignedInteger();
         long FlagId = bufferReader.readUnsignedInteger();
-        long Unknown2 = bufferReader.readUnsignedInteger();
+        long LayoutFlagId = bufferReader.readUnsignedInteger();
 
         Translation QuestName = null;
         if (lookupUtil != null) {
             QuestName = lookupUtil.getQuestName(QuestId);
         }
 
-        return new JumpPosition2(Unknown1, Pos, QuestId, QuestName, FlagId, Unknown2);
+        return new JumpPosition2(ID, Pos, QuestId, QuestName, FlagId, LayoutFlagId);
     }
 
     private static AdjoinInfoIndex readAdjoinInfoIndex(BufferReader bufferReader) {

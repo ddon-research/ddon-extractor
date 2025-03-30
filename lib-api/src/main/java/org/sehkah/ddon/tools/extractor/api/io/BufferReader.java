@@ -96,6 +96,8 @@ public interface BufferReader {
 
     AxisAlignedBoundingBox readAxisAlignedBoundingBox();
 
+    AxisAlignedBoundingBox readPaddedAxisAlignedBoundingBox();
+
     <E> List<E> readArray(Function<BufferReader, E> entityReaderFunction);
 
     <E> List<E> readArray(BiFunction<BufferReader, ResourceMetadataLookupUtil, E> entityReaderFunction, ResourceMetadataLookupUtil entityMetadataLookupUtil);

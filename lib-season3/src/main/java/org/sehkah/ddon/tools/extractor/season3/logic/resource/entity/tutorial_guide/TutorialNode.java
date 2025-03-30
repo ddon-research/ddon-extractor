@@ -24,5 +24,5 @@ public class TutorialNode {
     private long OpenQuestId;
     @MetaInformation
     private Translation OpenQuestName;
-    private boolean UnknownBoolean;
+    private boolean IsNoDispNotice;
 }

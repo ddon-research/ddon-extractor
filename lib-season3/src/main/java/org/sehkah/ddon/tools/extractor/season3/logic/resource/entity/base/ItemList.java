@@ -45,6 +45,9 @@ public class ItemList extends Resource {
     private List<Jewelry> JewelryList;
     private List<NpcEquipment> NpcEquipmentList;
 
+    /**
+     * A list of all items for dyanmic lookups, not meant to be dumped as it is just a duplicate.
+     */
     @JsonIgnore
     private List<ItemListItemParam> ItemParamList;
 

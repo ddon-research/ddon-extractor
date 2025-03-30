@@ -67,5 +67,5 @@ public class StageInfo extends Resource {
     private float GrassFadeEndDistance;
     private int PerformanceFlag;
     private String AnotherMapName;
-    private boolean Unknown;
+    private boolean ShowOnlyCurrentFloorMinimap;
 }

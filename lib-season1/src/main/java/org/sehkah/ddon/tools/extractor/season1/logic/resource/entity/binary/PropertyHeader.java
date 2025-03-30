@@ -27,7 +27,7 @@ public class PropertyHeader {
     @MetaInformation
     private int propertyParamBytes;
     @MetaInformation
-    private int propertyParamDisable;
+    private boolean propertyParamDisable;
     private long unknown1;
     private long unknown2;
     private long unknown3;

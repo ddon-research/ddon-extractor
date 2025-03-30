@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.api.logic.resource;
 import java.util.*;
 
 public enum ClientResourceFileExtension {
+    DirectDrawSurface,
     rAbilityAddData,
     rAbilityData,
     rAbilityList,
@@ -75,9 +76,12 @@ public enum ClientResourceFileExtension {
     rEnemyMaterialTable,
     rEnemyReactResEx,
     rEnemyStatusChange,
+    rEnhancedParamList,
     rEquipPreset,
     rEvaluationTable,
     rEventParam,
+    rEventViewerSetInfo,
+    rEvidenceList,
     rFieldAreaAdjoinList,
     rFieldAreaList,
     rFieldAreaMarkerInfo,
@@ -99,11 +103,13 @@ public enum ClientResourceFileExtension {
     rJobTutorialQuestList,
     rJointInfo,
     rJointOrder,
+    rJukeBoxItem,
     rJumpParamTbl,
     rKeyConfigTextTable,
     rLandInfo,
     rLargeCameraParam,
     rLayout,
+    rLayoutGroupParamList,
     rLayoutPreset,
     rLocationData,
     rMagicChantParam,
@@ -114,6 +120,7 @@ public enum ClientResourceFileExtension {
     rMsgSet,
     rMyRoomActParam,
     rNamedParam,
+    rNavigationMesh,
     rNormalSkillData,
     rNpcConstItem,
     rNpcCustomSkill,
@@ -133,6 +140,7 @@ public enum ClientResourceFileExtension {
     rPartnerReactParam,
     rPartsCtrlTable,
     rPawnQuestTalk,
+    rPlanetariumItem,
     rPlayerExpTable,
     rPlPartsInfo,
     rPrologueHmStatus,
@@ -144,6 +152,7 @@ public enum ClientResourceFileExtension {
     rQuestTextData,
     rRageTable,
     rReaction,
+    rRenderTargetTexture,
     rReplaceWardGmdList,
     rRoomWearParam,
     rScenario,
@@ -173,6 +182,7 @@ public enum ClientResourceFileExtension {
     rTargetCursorOffset,
     rTbl2ChatMacro,
     rTexDetailEdit,
+    rTexture,
     rTutorialDialogMessage,
     rTutorialList,
     rTutorialQuestGroup,
@@ -244,6 +254,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".csd", rCustomSkillData);
         fileExtensionToResourceMap.put(".csi", rCycleContentsSortieInfo);
         fileExtensionToResourceMap.put(".cuex", rCraftUpGradeExp);
+        fileExtensionToResourceMap.put(".dds", DirectDrawSurface);
         fileExtensionToResourceMap.put(".dgm", rGUIDogmaOrb);
         fileExtensionToResourceMap.put(".dmi", rDungeonMarker);
         fileExtensionToResourceMap.put(".dtt", rEmDmgTimerTbl);
@@ -258,6 +269,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".ema", rEnemyMaterialTable);
         fileExtensionToResourceMap.put(".emg", rEnemyGroup);
         fileExtensionToResourceMap.put(".eoc", rOcdElectricParam);
+        fileExtensionToResourceMap.put(".epl", rEnhancedParamList);
         fileExtensionToResourceMap.put(".equip_preset", rEquipPreset);
         fileExtensionToResourceMap.put(".era", rEnemyReactResEx);
         fileExtensionToResourceMap.put(".esi", rEndContentsSortieInfo);
@@ -265,8 +277,10 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".esn", rEmSoundTable);
         fileExtensionToResourceMap.put(".esp", rEditStageParam);
         fileExtensionToResourceMap.put(".est", rEnemyStatusChange);
+        fileExtensionToResourceMap.put(".evd", rEvidenceList);
         fileExtensionToResourceMap.put(".evl", rEvaluationTable);
         fileExtensionToResourceMap.put(".evp", rEventParam);
+        fileExtensionToResourceMap.put(".evsi", rEventViewerSetInfo);
         fileExtensionToResourceMap.put(".ewk", rEmWorkRateTable);
         fileExtensionToResourceMap.put(".ewp", rEmWarpParam);
         fileExtensionToResourceMap.put(".exp", rPlayerExpTable);
@@ -282,9 +296,11 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".gat", rGatheringItem);
         fileExtensionToResourceMap.put(".gmd", rGUIMessage);
         fileExtensionToResourceMap.put(".gmp", rGUIMapSetting);
+        fileExtensionToResourceMap.put(".gpl", rLayoutGroupParamList);
         fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
         fileExtensionToResourceMap.put(".hmeq", rHumanEnemyEquip);
         fileExtensionToResourceMap.put(".ipa", rItemList);
+        fileExtensionToResourceMap.put(".jbi", rJukeBoxItem);
         fileExtensionToResourceMap.put(".jlt2", rJobLevelUpTbl2);
         fileExtensionToResourceMap.put(".jmc", rJobMasterCtrl);
         fileExtensionToResourceMap.put(".jmp", rJumpParamTbl);
@@ -305,6 +321,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".msd", rMapSpotData);
         fileExtensionToResourceMap.put(".msl", rMapSpotStageList);
         fileExtensionToResourceMap.put(".mss", rMsgSet);
+        fileExtensionToResourceMap.put(".nav", rNavigationMesh);
         fileExtensionToResourceMap.put(".nci", rNpcConstItem);
         fileExtensionToResourceMap.put(".ncs", rNpcCustomSkill);
         fileExtensionToResourceMap.put(".ndp", rNamedParam);
@@ -323,6 +340,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".paw", rAIPawnAutoWordTbl);
         fileExtensionToResourceMap.put(".pep", rAIPawnEmParam);
         fileExtensionToResourceMap.put(".phs", rPrologueHmStatus);
+        fileExtensionToResourceMap.put(".planet", rPlanetariumItem);
         fileExtensionToResourceMap.put(".ppr", rPartnerReactParam);
         fileExtensionToResourceMap.put(".ppt", rPartnerPawnTalk);
         fileExtensionToResourceMap.put(".pqi", rPackageQuestInfo);
@@ -341,6 +359,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".rcp", rCraftRecipe);
         fileExtensionToResourceMap.put(".repgmdlist", rReplaceWardGmdList);
         fileExtensionToResourceMap.put(".rsl", rChildRegionStatusParamList);
+        fileExtensionToResourceMap.put(".rtex", rRenderTargetTexture);
         fileExtensionToResourceMap.put(".rwr", rRoomWearParam);
         fileExtensionToResourceMap.put(".sal", rStageAdjoinList);
         fileExtensionToResourceMap.put(".sal2", rStageAdjoinList2);
@@ -371,6 +390,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".tco", rTargetCursorOffset);
         fileExtensionToResourceMap.put(".tde", rTexDetailEdit);
         fileExtensionToResourceMap.put(".tdm", rTutorialDialogMessage);
+        fileExtensionToResourceMap.put(".tex", rTexture);
         fileExtensionToResourceMap.put(".tlt", rTutorialList);
         fileExtensionToResourceMap.put(".tqg", rTutorialQuestGroup);
         fileExtensionToResourceMap.put(".ujp", rNpcIsUseJobParamEx);

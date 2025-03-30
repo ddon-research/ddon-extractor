@@ -51,16 +51,22 @@
 .csd	rCustomSkillData	1854846791
 .csi	rCycleContentsSortieInfo	2047896008
 .cuex	rCraftUpGradeExp	1419111675
+.dds	DirectDrawSurface	1501889384
 .dgm	rGUIDogmaOrb	2092429145
 .dmi	rDungeonMarker	622238481
 .dtt	rEmDmgTimerTbl	1512467920
 .ebi_sv	rEmBaseInfoSv	1220980978
+.ebs	rEnemyBloodStain	1584434270
+.edt_color_def	rCharacterEditColorDef	425204406
+.edt_tex_pal	rCharacterEditTexturePalette	46219037
+.edt_voice_pal	rCharacterEditVoicePalette	910351872
 .edv	rEmDamageDirInfo	337955055
 .ele	rEnemyLocalEst	1614543981
 .eli	rVfxLightInfluence	497059326
 .ema	rEnemyMaterialTable	2122691624
 .emg	rEnemyGroup	1784705244
 .eoc	rOcdElectricParam	117095616
+.epl	rEnhancedParamList	1477503768
 .equip_preset	rEquipPreset	1896271990
 .era	rEnemyReactResEx	50557339
 .esi	rEndContentsSortieInfo	7329906
@@ -68,8 +74,10 @@
 .esn	rEmSoundTable	365734412
 .esp	rEditStageParam	549097020
 .est	rEnemyStatusChange	1257313462
+.evd	rEvidenceList	1636254564
 .evl	rEvaluationTable	857702472
 .evp	rEventParam	959750586
+.evsi	rEventViewerSetInfo	1984359139
 .ewk	rEmWorkRateTable	1503541994
 .ewp	rEmWarpParam	384039007
 .exp	rPlayerExpTable	782589744
@@ -84,9 +92,12 @@
 .fsm	rAIFSM	1723094544
 .gat	rGatheringItem	1000990922
 .gmd	rGUIMessage	606843546
+.gmp	rGUIMapSetting	768588360
+.gpl	rLayoutGroupParamList	708256813
 .hmcs	rHumanEnemyCustomSkill	1821946757
 .hmeq	rHumanEnemyEquip	525549043
 .ipa	rItemList	359893203
+.jbi	rJukeBoxItem	1394130695
 .jlt2	rJobLevelUpTbl2	1872280229
 .jmc	rJobMasterCtrl	842173823
 .jmp	rJumpParamTbl	13719235
@@ -97,6 +108,7 @@
 .kctt	rKeyConfigTextTable	1222454804
 .lai	rLandInfo	14904867
 .lcd	rLocationData	1757389591
+.lcp	rLargeCameraParam	1671379672
 .lop	rLayoutPreset	1630537847
 .lot	rLayout	355479284
 .lup	rEmLvUpParam	1142037459
@@ -106,6 +118,7 @@
 .msd	rMapSpotData	1907720775
 .msl	rMapSpotStageList	1394327073
 .mss	rMsgSet	322508730
+.nav	rNavigationMesh	1324456003
 .nci	rNpcConstItem	492253165
 .ncs	rNpcCustomSkill	1196997254
 .ndp	rNamedParam	1531000865
@@ -124,6 +137,7 @@
 .paw	rAIPawnAutoWordTbl	399271175
 .pep	rAIPawnEmParam	2129426602
 .phs	rPrologueHmStatus	1456563412
+.planet	rPlanetariumItem	813108029
 .ppr	rPartnerReactParam	141939141
 .ppt	rPartnerPawnTalk	344238075
 .pqi	rPackageQuestInfo	1113093352
@@ -137,10 +151,12 @@
 .qsq	rQuestSequenceList	830186358
 .qst	rQuestList	1921309429
 .qtd	rQuestTextData	323398500
+.rac	rReaction	2132851402
 .rag	rRageTable	1238282276
 .rcp	rCraftRecipe	1477497329
 .repgmdlist	rReplaceWardGmdList	202710488
 .rsl	rChildRegionStatusParamList	1316627834
+.rtex	rRenderTargetTexture	2013850128
 .rwr	rRoomWearParam	929734854
 .sal	rStageAdjoinList	166465326
 .sal2	rStageAdjoinList2	336113728
@@ -148,6 +164,7 @@
 .sbv	rShrinkBlowValue	695861062
 .sca	rStageCustom	1509381429
 .scc	rStageConnect	386919230
+.sce	rScenario	1706194405
 .sck	rStatusCheck	959202904
 .scp	rStageCustomParts	541275337
 .scpx	rStageCustomPartsEx	1750923967
@@ -158,6 +175,7 @@
 .smc	rSituationMsgCtrl	288661158
 .smp	rStageMap	885933509
 .sn2	rAISensor	2045723134
+.sot	rSoundOptData	1799154948
 .spg_tbl	rShopGoods	1380209768
 .sri	rShotReqInfo	650765880
 .sri2	rShotReqInfo2	1618157816
@@ -166,8 +184,10 @@
 .stp	rStartPos	1730093530
 .sts	rStageToSpot	774129431
 .tcm	rTbl2ChatMacro	1859689034
+.tco	rTargetCursorOffset	1606480357
 .tde	rTexDetailEdit	1868748149
 .tdm	rTutorialDialogMessage	2106523837
+.tex	rTexture	606035435
 .tlt	rTutorialList	1289541045
 .tqg	rTutorialQuestGroup	56061566
 .ujp	rNpcIsUseJobParamEx	1505976654
@@ -178,3 +198,5 @@
 .wpt	rWaypoint	1747707324
 .wrt	rWeaponResTable	478500771
 .wsi	rWeatherStageInfo	346535369
+.wtf	rWeatherFogInfo	801480517
+.wtl	rWeatherParamInfoTbl	1935507962

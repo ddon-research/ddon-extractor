@@ -2,12 +2,14 @@ package org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.s
 
 import org.sehkah.ddon.tools.extractor.api.datatype.AxisAlignedBoundingBox;
 import org.sehkah.ddon.tools.extractor.api.datatype.Color;
+import org.sehkah.ddon.tools.extractor.api.datatype.Vector2f;
 import org.sehkah.ddon.tools.extractor.api.datatype.Vector3f;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta.AreaHitShapeType;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.*;
 
 import java.math.BigInteger;
@@ -16,7 +18,147 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializer<StageCustomPartsEx> {
+    private static ZoneShapeInfoBase readZoneShapeInfoBase(BufferReader bufferReader) {
+        return new ZoneShapeInfoBase(
+                bufferReader.readFloat(),
+                bufferReader.readBoolean()
+        );
+    }
 
+    private static ZoneShapeInfoOBB readZoneShapeInfoOBB(BufferReader bufferReader) {
+        return new ZoneShapeInfoOBB(
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readOrientedBoundingBox(),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readBoolean()
+        );
+    }
+
+    private static ZoneShapeInfoAABB readZoneShapeInfoAABB(BufferReader bufferReader) {
+        ZoneShapeInfoBase ZoneShapeInfoBase = readZoneShapeInfoBase(bufferReader);
+        AxisAlignedBoundingBox AABB = bufferReader.readAxisAlignedBoundingBox();
+        float DecayY = bufferReader.readFloat();
+        float DecayZ = bufferReader.readFloat();
+        Vector2f Vector = bufferReader.readVector2f();
+        boolean IsEnableExtendedDecay = bufferReader.readBoolean();
+
+        return new ZoneShapeInfoAABB(
+                ZoneShapeInfoBase,
+                AABB,
+                DecayY,
+                DecayZ,
+                Vector,
+                IsEnableExtendedDecay
+        );
+    }
+
+    private static ZoneShapeInfoCone readZoneShapeInfoCone(BufferReader bufferReader) {
+        return new ZoneShapeInfoCone(
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readFloat(),
+                bufferReader.readFloat(),
+                bufferReader.readVector3f(),
+                bufferReader.readFloat()
+        );
+    }
+
+    private static ZoneShapeInfoCylinder readZoneShapeInfoCylinder(BufferReader bufferReader) {
+        return new ZoneShapeInfoCylinder(
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readCylinder()
+        );
+    }
+
+    private static ZoneShapeInfoSphere readZoneShapeInfoSphere(BufferReader bufferReader) {
+        return new ZoneShapeInfoSphere(
+                readZoneShapeInfoBase(bufferReader),
+                bufferReader.readSphere()
+        );
+    }
+
+    private static ZoneShapeInfoArea readZoneShapeInfoArea(BufferReader bufferReader) {
+        ZoneShapeInfoBase base = readZoneShapeInfoBase(bufferReader);
+        float Height = bufferReader.readFloat();
+        float Bottom = 0;
+        long ConcaveStatus = 0; //bufferReader.readUnsignedInteger();
+        boolean FlgConvex = false; //bufferReader.readBoolean();
+        List<Vector3f> Vertex = bufferReader.readFixedLengthArray(4, BufferReader::readVector3f);
+        Vector3f ConcaveCrossPos = bufferReader.readVector3f();
+
+        return new ZoneShapeInfoArea(base, Height, Bottom, ConcaveStatus, FlgConvex, Vertex, ConcaveCrossPos);
+    }
+
+    private static AreaHitShape readAreaHitShape(BufferReader bufferReader) {
+        String Name = bufferReader.readJapaneseNullTerminatedString();
+        float CheckAngle = bufferReader.readFloat();
+        float CheckRange = bufferReader.readFloat();
+        float CheckToward = bufferReader.readFloat();
+        boolean AngleFlag = bufferReader.readBoolean();
+        boolean TowardFlag = bufferReader.readBoolean();
+        int ShapeType = bufferReader.readSignedInteger();
+
+        ZoneShapeInfoBase Zone;
+        AxisAlignedBoundingBox ZoneBoundingBox = null;
+        switch (AreaHitShapeType.of(ShapeType)) {
+            case AREAHIT_SHAPE_TYPE_NONE -> Zone = null;
+            case AREAHIT_SHAPE_TYPE_BOX -> {
+                Zone = readZoneShapeInfoArea(bufferReader);
+
+                ZoneBoundingBox = bufferReader.readAxisAlignedBoundingBox();
+
+                long ConcaveStatus = bufferReader.readUnsignedInteger();
+                boolean FlgConvex = bufferReader.readBoolean();
+                ((ZoneShapeInfoArea) Zone).setConcaveStatus(ConcaveStatus);
+                ((ZoneShapeInfoArea) Zone).setFlgConvex(FlgConvex);
+            }
+            case AREAHIT_SHAPE_TYPE_SPHERE -> {
+                Zone = readZoneShapeInfoSphere(bufferReader);
+
+                Vector2f vector2f = bufferReader.readVector2f();
+                Vector3f vector3f = new Vector3f(vector2f.X(), 0, vector2f.Y());
+
+                ZoneBoundingBox = new AxisAlignedBoundingBox(vector3f, bufferReader.readVector3f());
+            }
+            case AREAHIT_SHAPE_TYPE_CYLINDER -> {
+                Zone = readZoneShapeInfoCylinder(bufferReader);
+
+                Vector2f vector2f = bufferReader.readVector2f();
+                Vector3f vector3f = new Vector3f(vector2f.X(), 0, vector2f.Y());
+
+                ZoneBoundingBox = new AxisAlignedBoundingBox(vector3f, bufferReader.readVector3f());
+            }
+            case AREAHIT_SHAPE_TYPE_CONE -> {
+                Zone = readZoneShapeInfoCone(bufferReader);
+
+                Vector2f vector2f = bufferReader.readVector2f();
+                Vector3f vector3f = new Vector3f(vector2f.X(), 0, vector2f.Y());
+
+                ZoneBoundingBox = new AxisAlignedBoundingBox(vector3f, bufferReader.readVector3f());
+            }
+            case AREAHIT_SHAPE_TYPE_OBB -> {
+                Zone = readZoneShapeInfoOBB(bufferReader);
+
+                Vector2f vector2f = bufferReader.readVector2f();
+                Vector3f vector3f = new Vector3f(vector2f.X(), 0, vector2f.Y());
+
+                ZoneBoundingBox = new AxisAlignedBoundingBox(vector3f, bufferReader.readVector3f());
+            }
+            case AREAHIT_SHAPE_TYPE_AABB -> Zone = readZoneShapeInfoAABB(bufferReader);
+            default -> Zone = readZoneShapeInfoBase(bufferReader);
+        }
+
+        return new AreaHitShape(Name,
+                CheckAngle,
+                CheckRange,
+                CheckToward,
+                AngleFlag,
+                TowardFlag,
+                ShapeType,
+                Zone,
+                ZoneBoundingBox
+        );
+    }
 
     private static StageCustomPartsExPattern readStageCustomPartsExPattern(BufferReader bufferReader) {
         return new StageCustomPartsExPattern(
@@ -66,118 +208,6 @@ public class StageCustomPartsExDeserializer extends ClientResourceFileDeserializ
     private static StageCustomPartsFilter readStageCustomPartsFilter(BufferReader bufferReader) {
         return new StageCustomPartsFilter(
                 bufferReader.readNullTerminatedString()
-        );
-    }
-
-    private static ZoneShapeInfoBase readZoneShapeInfoBase(BufferReader bufferReader) {
-        return new ZoneShapeInfoBase(
-                bufferReader.readFloat()
-        );
-    }
-
-    private static ZoneShapeInfoOBB readZoneShapeInfoOBB(BufferReader bufferReader) {
-        return new ZoneShapeInfoOBB(
-                readZoneShapeInfoBase(bufferReader),
-                bufferReader.readOrientedBoundingBox(),
-                bufferReader.readFloat(),
-                bufferReader.readFloat(),
-                bufferReader.readBoolean()
-        );
-    }
-
-    private static ZoneShapeInfoAABB readZoneShapeInfoAABB(BufferReader bufferReader) {
-        ZoneShapeInfoBase ZoneShapeInfoBase = readZoneShapeInfoBase(bufferReader);
-        AxisAlignedBoundingBox AABB = bufferReader.readAxisAlignedBoundingBox();
-        float DecayY = bufferReader.readFloat();
-        float DecayZ = bufferReader.readFloat();
-        boolean IsEnableExtendedDecay = bufferReader.readBoolean();
-
-        return new ZoneShapeInfoAABB(
-                ZoneShapeInfoBase,
-                AABB,
-                DecayY,
-                DecayZ,
-                IsEnableExtendedDecay
-        );
-    }
-
-    private static ZoneShapeInfoCone readZoneShapeInfoCone(BufferReader bufferReader) {
-        return new ZoneShapeInfoCone(
-                readZoneShapeInfoBase(bufferReader),
-                bufferReader.readFloat(),
-                bufferReader.readFloat(),
-                bufferReader.readVector3f(),
-                bufferReader.readFloat()
-        );
-    }
-
-    private static ZoneShapeInfoCylinder readZoneShapeInfoCylinder(BufferReader bufferReader) {
-        return new ZoneShapeInfoCylinder(
-                readZoneShapeInfoBase(bufferReader),
-                bufferReader.readCylinder()
-        );
-    }
-
-    private static ZoneShapeInfoSphere readZoneShapeInfoSphere(BufferReader bufferReader) {
-        return new ZoneShapeInfoSphere(
-                readZoneShapeInfoBase(bufferReader),
-                bufferReader.readSphere()
-        );
-    }
-
-    private static ZoneShapeInfoArea readZoneShapeInfoArea(BufferReader bufferReader) {
-        return new ZoneShapeInfoArea(
-                readZoneShapeInfoBase(bufferReader),
-                bufferReader.readFloat(),
-                bufferReader.readFloat(),
-                bufferReader.readUnsignedInteger(),
-                bufferReader.readBoolean(),
-                bufferReader.readFixedLengthArray(4, BufferReader::readVector3f),
-                bufferReader.readVector3f()
-        );
-    }
-
-    private static AreaHitShape readAreaHitShape(BufferReader bufferReader) {
-        String Name = bufferReader.readJapaneseNullTerminatedString();
-        float CheckAngle = bufferReader.readFloat();
-        float CheckRange = bufferReader.readFloat();
-        float CheckToward = bufferReader.readFloat();
-        boolean AngleFlag = bufferReader.readBoolean();
-        boolean TowardFlag = bufferReader.readBoolean();
-        int ShapeType = bufferReader.readUnsignedByte();
-
-        ZoneShapeInfoBase Zone;
-        switch (ShapeType) {
-            case 0 -> Zone = null;
-            case 1 -> Zone = readZoneShapeInfoArea(bufferReader);
-            case 2 -> Zone = readZoneShapeInfoSphere(bufferReader);
-            case 3 -> Zone = readZoneShapeInfoCylinder(bufferReader);
-            case 6 -> Zone = readZoneShapeInfoCone(bufferReader);
-            case 8 -> Zone = readZoneShapeInfoAABB(bufferReader);
-            case 9 -> Zone = readZoneShapeInfoOBB(bufferReader);
-            default -> Zone = readZoneShapeInfoBase(bufferReader);
-        }
-
-        AxisAlignedBoundingBox ZoneBoundingBox;
-        if (ShapeType == 8) {
-            // FIXME: No idea what is expected in this case, but this at least fixes parsing.
-            ZoneBoundingBox = new AxisAlignedBoundingBox(
-                    bufferReader.readVector3f(),
-                    new Vector3f(0, 0, 0)
-            );
-        } else {
-            ZoneBoundingBox = bufferReader.readAxisAlignedBoundingBox();
-        }
-
-        return new AreaHitShape(Name,
-                CheckAngle,
-                CheckRange,
-                CheckToward,
-                AngleFlag,
-                TowardFlag,
-                ShapeType,
-                Zone,
-                ZoneBoundingBox
         );
     }
 

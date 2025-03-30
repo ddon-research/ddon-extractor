@@ -19,11 +19,16 @@ public class AreaMasterSpotData {
     private long CategoryNo;
     @MetaInformation
     private Translation CategoryName;
-    // TODO: Lookup -> am_spot_01.ams.json => area1_spot_info.gmd.json
     private long MessageId;
+    @MetaInformation
+    private Translation Message;
     private int StageNoMap;
     @MetaInformation
     private Translation StageName;
+    @MetaInformation
+    private long AreaId;
+    @MetaInformation
+    private Translation AreaName;
     private long QuestId;
     @MetaInformation
     private Translation QuestName;
@@ -31,7 +36,7 @@ public class AreaMasterSpotData {
     private float PosY;
     private float PosZ;
     private int ImageId;
-    private int UnknownByte;
+    private int Rank;
     private int RecommendLevel;
     private int KeyType;
     private int MaskType;

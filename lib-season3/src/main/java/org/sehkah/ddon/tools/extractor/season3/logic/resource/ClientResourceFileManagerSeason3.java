@@ -23,8 +23,10 @@ import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.npc
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage.WaypointDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui.AreaMasterRankDataDeserializer;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table.WeaponResTableDeserializer;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.AreaInfoStageList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.game_common.EnemyGroupList;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.npc_common.NpcLedgerList;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.MsgSet;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.MyRoom.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base.*;
@@ -34,6 +36,8 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.cl
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureItemDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten.FurnitureLayoutDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common.BlowSaveEmLvParamTblDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.enhanced_param.EnhancedParamListDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.event.EventViewerSetInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea.FieldAreaAdjoinListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea.FieldAreaMarkerInfoDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common.*;
@@ -57,6 +61,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.sk
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage.*;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.tutorial_guide.TutorialListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.GUIMapSettingDeserializer;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.menu_evidence_list.EvidenceListDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster.AreaMasterSpotDetailDataDeserializer;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig.KeyConfigTextTableDeserializer;
@@ -79,8 +84,13 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
     }
 
     @Override
-    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile, ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile, ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile) {
-        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, npcLedgerListResourceFile, enemyGroupListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
+    public ResourceMetadataLookupUtil setupResourceLookupUtil(Path clientRootFolder, Path clientTranslationFile,
+
+                                                              ClientResourceFile<MsgSet> msgSetResourceFile,
+                                                              ClientResourceFile<NpcLedgerList> npcLedgerListResourceFile,
+                                                              ClientResourceFile<EnemyGroupList> enemyGroupListResourceFile,
+                                                              ClientResourceFile<AreaInfoStageList> AreaInfoStageListResourceFile) {
+        return new ResourceMetadataLookupUtilSeason3(clientRootFolder, clientTranslationFile, msgSetResourceFile, npcLedgerListResourceFile, enemyGroupListResourceFile, AreaInfoStageListResourceFile, StageListInfoResourceFile, ItemListResourceFile);
     }
 
     @Override
@@ -171,6 +181,12 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rReaction, new FileHeader(14, 4), new ReactionTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditColorDef, new FileHeader(35, 4), new CharacterEditColorDefTableDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rCharacterEditTexturePalette, new FileHeader(35, 4), new CharacterEditTexturePaletteTableDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rLayoutGroupParamList, new FileHeader("gpl\0", 70, 4), new LayoutGroupParamListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rPlanetariumItem, new FileHeader(3, 4), new PlanetariumItemListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEnhancedParamList, new FileHeader(2, 4), new EnhancedParamListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rJukeBoxItem, new FileHeader(1, 4), new JukeBoxItemListDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEventViewerSetInfo, new FileHeader("EVSI", 2, 4), new EventViewerSetInfoDeserializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEvidenceList, new FileHeader(1, 4), new EvidenceListDeserializer()));
 
         return clientResourceFileSet;
     }

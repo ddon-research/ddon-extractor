@@ -51,7 +51,7 @@ public class JobItem extends ItemListItemParam {
     private int IsUseLv;
     private int IsUseJobAttackStatusFlag;
     @MetaInformation
-    private int AttackStatus;
+    private boolean AttackStatus;
     @MetaInformation
     private int IsUseJob;
     @MetaInformation
@@ -60,7 +60,7 @@ public class JobItem extends ItemListItemParam {
     private int ParamNum;
     private List<ItemListParam> ItemParamList;
 
-    public JobItem(int ItemIndex, long ItemId, int flag, Set<ItemListFlagType> flagTypes, int itemCategory, ItemListItemCategory itemCategoryName, long nameId, Translation itemName, Translation itemInfo, int category, Object categoryName, int iconNo, int iconColNo, long sortNo, long nameSortNo, int price, int gradeRankFlag, int grade, int rank, int stackMax, int isUseLv, int isUseJobAttackStatusFlag, int attackStatus, int isUseJob, Set<JobType> isUseJobType, int paramNum, List<ItemListParam> itemParamList) {
+    public JobItem(int ItemIndex, long ItemId, int flag, Set<ItemListFlagType> flagTypes, int itemCategory, ItemListItemCategory itemCategoryName, long nameId, Translation itemName, Translation itemInfo, int category, Object categoryName, int iconNo, int iconColNo, long sortNo, long nameSortNo, int price, int gradeRankFlag, int grade, int rank, int stackMax, int isUseLv, int isUseJobAttackStatusFlag, boolean attackStatus, int isUseJob, Set<JobType> isUseJobType, int paramNum, List<ItemListParam> itemParamList) {
         super(ItemIndex, ItemId);
         Flag = flag;
         FlagTypes = flagTypes;

@@ -32,30 +32,30 @@ public enum LayoutSetInfoType {
     SetInfoOmOneWay(25),
     SetInfoOmBreakTarget(26),
     SetInfoOmCannon(27),
-    SetInfoOmLeverNew(28),
-    SetInfoOmWarpNew(29),
-    SetInfoOmUnknown30(30),
-    SetInfoOmUnknown31(31),
-    SetInfoOmUnknown32(32),
-    SetInfoOmFlag(33),
-    SetInfoOmUnknown34(34),
+    SetInfoOmXXX(28),
+    SetInfoOmLimitWarp(29),
+    SetInfoOmActText(30),
+    SetInfoOmPLJump(31),
+    SetInfoOmPlCannon(32),
+    SetInfoOmBreakRecovery(33),
+    SetInfoOmBreakHeal(34),
     // 35 - 39 unused
     SetInfoOmOld(40),
     // 41 unused
-    SetInfoOmSealedTreasureBox(42), // Mostly contained in files with file name prefix "p"
-    SetInfoOmWarpNewV3(43),
-    SetInfoOmUnknown45(45),
-    SetInfoOmUnknown46(46),
-    SetInfoOmUnknown47(47),
-    SetInfoOmUnknown48(48),
-    SetInfoOmUnknown49(49),
-    SetInfoOmUnknown50(50),
-    SetInfoOmUnknown51(51),
-    SetInfoOmUnknown52(52),
-    SetInfoOmUnknown53(53),
-    SetInfoOmWarpNewV2(54),
-    SetInfoOmUnknown55(55),
-    SetInfoEnemyV2(200);
+    SetInfoOmTreasureBoxG(42), // Mostly contained in files with file name prefix "p"
+    SetInfoOmRimWarp(43),
+    SetInfoOmMagmaSpring(45),
+    SetInfoOmFlagMapMarker(46),
+    SetInfoOm511380(47),
+    SetInfoOmGauge(48),
+    SetInfoOmHugeRimShl(49),
+    SetInfoOmRisingMagma(50),
+    SetInfoOmMagmaFall(51),
+    SetInfoOmRisingMagma2(52),
+    SetInfoOmGrpID(53),
+    SetInfoOmWarpFX(54),
+    SetInfoOmVolcano(55),
+    SetInfoEnemyLinked(200);
 
     public long value;
 

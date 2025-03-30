@@ -11,7 +11,7 @@ import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage.SetIn
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class QuestSetInfoOmTimer extends SetInfo { // TODO: Figure out which Layout SetInfo Unknown class corresponds to this...
+public class QuestSetInfoOmTimer extends SetInfo {
     private QuestSetInfoOm InfoOm;
     private float Timer;
 }

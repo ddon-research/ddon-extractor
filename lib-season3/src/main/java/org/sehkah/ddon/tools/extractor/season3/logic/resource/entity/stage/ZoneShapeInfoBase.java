@@ -13,5 +13,5 @@ import lombok.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
 public class ZoneShapeInfoBase {
     private float Decay;
-
+    private boolean IsNativeData;
 }

@@ -3,6 +3,7 @@ package org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization;
 import org.sehkah.ddon.tools.extractor.api.entity.FileHeader;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.FileParsingIncompleteException;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFile;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
@@ -53,9 +54,14 @@ public abstract class ClientResourceFileDeserializer<T extends Resource> impleme
     @Override
     public T deserialize(Path filePath, ClientResourceFile<T> clientResourceFile, BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         FileHeader fileHeader = FileHeaderDeserializer.parseClientResourceFileUnsafe(bufferReader, clientResourceFile.getFileHeader());
-        T result = parseClientResourceFile(filePath, bufferReader, fileHeader, lookupUtil);
+        T result;
+        try {
+            result = parseClientResourceFile(filePath, bufferReader, fileHeader, lookupUtil);
+        } catch (Exception e) {
+            throw new TechnicalException("Failed to parse resource file '%s'".formatted(filePath), e);
+        }
         if (bufferReader.hasRemaining()) {
-            throw new FileParsingIncompleteException(fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
+            throw new FileParsingIncompleteException(filePath, fileHeader, bufferReader.getRemainingCount(), bufferReader.getLimit());
         }
         result.setFileSize(bufferReader.getLimit());
         result.setFileHeader(fileHeader);

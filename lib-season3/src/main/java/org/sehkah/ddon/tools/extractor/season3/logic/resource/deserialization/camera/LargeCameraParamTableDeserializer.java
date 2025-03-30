@@ -20,13 +20,13 @@ public class LargeCameraParamTableDeserializer extends ClientResourceFileDeseria
         float Range1 = bufferReader.readFloat();
         float Range2 = bufferReader.readFloat();
         long Camera = bufferReader.readUnsignedInteger();
-        float Unknown1 = bufferReader.readFloat();
-        float Unknown2 = bufferReader.readFloat();
-        int Unknown3 = bufferReader.readSignedInteger();
-        float Unknown4 = bufferReader.readFloat();
+        float DistCling = bufferReader.readFloat();
+        float FovCling = bufferReader.readFloat();
+        int ProductJoint = bufferReader.readSignedInteger();
+        float ProductRadius = bufferReader.readFloat();
         boolean Group = bufferReader.readBoolean();
 
-        return new LargeCameraParam(EmId, EnemyName, Range1, Range2, Camera, Unknown1, Unknown2, Unknown3, Unknown4, Group);
+        return new LargeCameraParam(EmId, EnemyName, Range1, Range2, Camera, DistCling, FovCling, ProductJoint, ProductRadius, Group);
     }
 
     @Override

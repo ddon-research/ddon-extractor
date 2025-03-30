@@ -183,7 +183,7 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         return new QuestSetInfoOmText(InfoOm, TextNo, TextQuestNo, TextType);
     }
 
-    private static QuestSetInfoOmTextUnknown readQuestSetInfoOmTextUnknown(BufferReader bufferReader) {
+    private static QuestSetInfoOmActText readQuestSetInfoOmActText(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         QuestSetInfoOm InfoOm = readQuestSetInfoOm(bufferReader);
 
         long TextNo = XfsDeserializer.readUnsignedInteger(bufferReader);
@@ -191,7 +191,12 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
         long TextType = XfsDeserializer.readUnsignedInteger(bufferReader);
         long PLActNo = XfsDeserializer.readUnsignedInteger(bufferReader);
 
-        return new QuestSetInfoOmTextUnknown(InfoOm, TextNo, TextQuestNo, TextType, PLActNo);
+        Translation QuestName = null;
+        if (lookupUtil != null) {
+            QuestName = lookupUtil.getQuestName(TextQuestNo);
+        }
+
+        return new QuestSetInfoOmActText(InfoOm, TextNo, TextQuestNo, QuestName, TextType, PLActNo);
     }
 
     private static QuestSetInfoOmBadStatus readQuestSetInfoOmBadStatus(BufferReader bufferReader) {
@@ -359,13 +364,8 @@ public class QuestListDeserializer extends ClientResourceFileDeserializer<QuestL
                 case "cSetInfoOmHeal" -> readQuestSetInfoOmHeal(bufferReader);
                 case "cSetInfoOmCannon" -> readQuestSetInfoOmCannon(bufferReader);
                 case "cSetInfoOmTimer" -> readQuestSetInfoOmTimer(bufferReader);
-                default -> {
-                    if (classHeaderIndexMap.get(setInfoObjectData.getClassIndex()).getID() == 100955604L) {
-                        yield readQuestSetInfoOmTextUnknown(bufferReader);
-                    } else {
-                        yield readQuestSetInfoOm(bufferReader);
-                    }
-                }
+                case "cSetInfoOmActText" -> readQuestSetInfoOmActText(bufferReader, lookupUtil);
+                default -> readQuestSetInfoOm(bufferReader);
             };
             case U_NPC -> readQuestSetInfoNpc(bufferReader, lookupUtil);
             default -> throw new IllegalStateException("Unexpected value: " + LayoutUnitKind.of(kind));

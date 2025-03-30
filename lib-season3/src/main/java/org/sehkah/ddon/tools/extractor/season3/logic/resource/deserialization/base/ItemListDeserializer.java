@@ -303,7 +303,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int StackMax = bufferReader.readUnsignedByte();
         int IsUseLv = bufferReader.readUnsignedByte();
         int IsUseJobAttackStatusFlag = bufferReader.readUnsignedByte();
-        int AttackStatus = BitUtil.extractInt(IsUseJobAttackStatusFlag, 0, 0);
+        boolean AttackStatus = BitUtil.extractBoolean(IsUseJobAttackStatusFlag, 0);
         int IsUseJob = BitUtil.extractInt(IsUseJobAttackStatusFlag, 1, 4);
         Set<JobType> IsUseJobType = Set.of(JobType.of(IsUseJobAttackStatusFlag / 4 - 1));
 
