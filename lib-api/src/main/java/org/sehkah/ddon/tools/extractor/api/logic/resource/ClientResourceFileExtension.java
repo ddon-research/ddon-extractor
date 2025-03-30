@@ -97,6 +97,7 @@ public enum ClientResourceFileExtension {
     rHumanEnemyCustomSkill,
     rHumanEnemyEquip,
     rItemList,
+    rItemEquipJobInfoList,
     rJobBaseParam,
     rJobLevelUpTbl2,
     rJobMasterCtrl,
@@ -300,6 +301,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".hmcs", rHumanEnemyCustomSkill);
         fileExtensionToResourceMap.put(".hmeq", rHumanEnemyEquip);
         fileExtensionToResourceMap.put(".ipa", rItemList);
+        fileExtensionToResourceMap.put(".eir", rItemEquipJobInfoList);
         fileExtensionToResourceMap.put(".jbi", rJukeBoxItem);
         fileExtensionToResourceMap.put(".jlt2", rJobLevelUpTbl2);
         fileExtensionToResourceMap.put(".jmc", rJobMasterCtrl);

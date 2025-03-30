@@ -33,9 +33,9 @@ public class ItemListProtectorParam {
     private int ModelParts;
     private int EleSlot;
     private int EquipParamS8Num;
-    private List<ItemListEquipParamS8> EquipParamS8List;
+    private List<ItemListEquipParam> EquipParamS8List;
 
-    public ItemListProtectorParam(long modelTagId, long powerRev, long chance, long defense, long magicDefense, long durability, long attack, long magicAttack, int weight, int maxHpRev, int maxStRev, int colorNo, int sex, int modelParts, int eleSlot, List<ItemListEquipParamS8> equipParamS8List) {
+    public ItemListProtectorParam(long modelTagId, long powerRev, long chance, long defense, long magicDefense, long durability, long attack, long magicAttack, int weight, int maxHpRev, int maxStRev, int colorNo, int sex, int modelParts, int eleSlot, List<ItemListEquipParam> equipParamS8List) {
         this(modelTagId,
                 powerRev,
                 chance,

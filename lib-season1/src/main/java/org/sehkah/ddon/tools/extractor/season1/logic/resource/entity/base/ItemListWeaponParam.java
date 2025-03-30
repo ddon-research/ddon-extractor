@@ -46,9 +46,9 @@ public class ItemListWeaponParam {
     @MetaInformation
     private ItemListElementType ElementTypeName;
     private int EquipParamS8Num;
-    private List<ItemListEquipParamS8> EquipParamS8List;
+    private List<ItemListEquipParam> EquipParamS8List;
 
-    public ItemListWeaponParam(long modelTagId, long powerRev, long chance, long defense, long magicDefense, long durability, int wepCategory, long attack, long magicAttack, long shieldStagger, int weight, int maxHpRev, int maxStRev, int colorNo, int sex, int modelParts, int eleSlot, int physicalType, int elementType, List<ItemListEquipParamS8> equipParamS8List) {
+    public ItemListWeaponParam(long modelTagId, long powerRev, long chance, long defense, long magicDefense, long durability, int wepCategory, long attack, long magicAttack, long shieldStagger, int weight, int maxHpRev, int maxStRev, int colorNo, int sex, int modelParts, int eleSlot, int physicalType, int elementType, List<ItemListEquipParam> equipParamS8List) {
         this(modelTagId,
                 powerRev,
                 chance,

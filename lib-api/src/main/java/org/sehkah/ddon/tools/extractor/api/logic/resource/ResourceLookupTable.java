@@ -15,7 +15,8 @@ public enum ResourceLookupTable {
     // ARS
     AREA_STAGE_LIST_S2("game_common/scr/", "area_stage_list.ars"),
     AREA_STAGE_LIST_S3("base/scr/", "area_stage_list.ars"),
-    ;
+    // EIR, S3 exclusive
+    ITEM_EQUIP_JOB_LIST_S3("base/etc/", "itemEquipJobList.eir");
 
     String folderPath;
     String fileName;

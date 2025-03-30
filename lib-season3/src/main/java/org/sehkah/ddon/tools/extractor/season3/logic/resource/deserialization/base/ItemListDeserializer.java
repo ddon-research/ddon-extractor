@@ -9,6 +9,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.Translation;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization.ClientResourceFileDeserializer;
 import org.sehkah.ddon.tools.extractor.api.util.BitUtil;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.*;
+import org.sehkah.ddon.tools.extractor.season3.logic.resource.ResourceMetadataLookupUtilSeason3;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base.*;
 
 import java.nio.file.Path;
@@ -18,10 +19,10 @@ import java.util.Set;
 
 @Slf4j
 public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemList> {
-    private static ItemListEquipParamS8 readEquipParamS8(BufferReader bufferReader) {
+    private static ItemListEquipParam readEquipParam(BufferReader bufferReader) {
         int KindType = bufferReader.readUnsignedByte();
         int Form = bufferReader.readUnsignedByte();
-        int Value = switch (ItemListEquipParamS8FormType.of(Form)) {
+        int Value = switch (ItemListEquipParamFormType.of(Form)) {
             case FORM_TYPE_S8 -> bufferReader.readSignedByte();
             case FORM_TYPE_U8 -> bufferReader.readUnsignedByte();
             case FORM_TYPE_S16 -> bufferReader.readSignedShort();
@@ -32,7 +33,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
             }
         };
 
-        return new ItemListEquipParamS8(
+        return new ItemListEquipParam(
                 KindType,
                 Form,
                 Value
@@ -110,25 +111,38 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         log.trace("{}, {}", category, kindType);
         if (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_WEP.value
                 || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_ELEMENT_ARMOR.value
-                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_COLOR.value) {
+                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_COLOR.value
+                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_DRAGON_ABILITY.value
+                || category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_PAWN_INSPIRATION.value
+                || (category == (int) ItemListMaterialCategory.MATERIAL_CATEGORY_OTHER.value && kindType >= 90)
+        ) {
             return ItemListElementParamKind.of(kindType).name();
         }
         return ItemListParamKind.of(kindType).name();
     }
 
-    private static ItemListItemParam readItemListItemParam(BufferReader bufferReader, int itemIndex) {
-        long ItemId = bufferReader.readUnsignedInteger();
+    private static ItemModelBase readItemModelBase(BufferReader bufferReader) {
+        long ModelTagId = bufferReader.readUnsignedInteger();
+        int ModelParts = bufferReader.readUnsignedByte();
+        int ColorNo = bufferReader.readUnsignedByte();
 
-        return new ItemListItemParam(itemIndex, ItemId);
+        return new ItemModelBase(ModelTagId, ModelParts, ColorNo);
     }
 
-    private static Consumable readConsumable(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+    private static ItemCore readItemCore(BufferReader bufferReader, int itemIndex) {
+        long ItemId = bufferReader.readUnsignedInteger();
 
         int Flag = bufferReader.readUnsignedShort();
         Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
         int ItemCategory = bufferReader.readUnsignedByte();
         ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
+
+        return new ItemCore(itemIndex, ItemId, Flag, FlagTypes, ItemCategory, ItemCategoryName);
+    }
+
+    private static ItemBase readItemBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemCore core = readItemCore(bufferReader, itemIndex);
+
         long NameId = bufferReader.readUnsignedInteger();
 
         Translation ItemName = null;
@@ -139,233 +153,123 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
 
         int Category = bufferReader.readUnsignedByte();
-        Object CategoryName = switch (ItemCategoryName) {
+        Object CategoryName = switch (core.getItemCategoryName()) {
             case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
             case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
             case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
-            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
+            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_CLAN_FURNITURE, ITEM_CATEGORY_KEY,
                  ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
                  ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
                  ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
             default -> "CATEGORY_UNKNOWN";
         };
 
+        return new ItemBase(core, NameId, ItemName, ItemInfo, Category, CategoryName);
+    }
+
+    private static ItemIconBase readItemIconBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemBase base = readItemBase(bufferReader, lookupUtil, itemIndex);
+
         int IconNo = bufferReader.readUnsignedShort();
         int IconColNo = bufferReader.readUnsignedByte();
+
+        return new ItemIconBase(base, IconNo, IconColNo);
+    }
+
+    private static Consumable readConsumable(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemIconBase itemIconBase = readItemIconBase(bufferReader, lookupUtil, itemIndex);
+
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
 
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
         int StackMax = bufferReader.readUnsignedByte();
         int AttackStatus = bufferReader.readUnsignedByte();
 
         int ParamNum = bufferReader.readUnsignedByte();
         List<ItemListParam> ItemParamList = new ArrayList<>(ParamNum);
         for (int i = 0; i < ParamNum; i++) {
-            ItemParamList.add(readParam(Category, bufferReader, lookupUtil));
+            ItemParamList.add(readParam(itemIconBase.getCategory(), bufferReader, lookupUtil));
         }
 
-        return new Consumable(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, NameId, ItemName, ItemInfo, Category, CategoryName, IconNo, IconColNo,
-                SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, StackMax, AttackStatus, ParamNum, ItemParamList);
+        return new Consumable(itemIconBase, SortNo, NameSortNo, Price, Grade, Rank, StackMax, AttackStatus, ParamNum, ItemParamList);
     }
 
     private static Material readMaterial(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+        ItemIconBase itemIconBase = readItemIconBase(bufferReader, lookupUtil, itemIndex);
 
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
-        long NameId = bufferReader.readUnsignedInteger();
-
-        Translation ItemName = null;
-        Translation ItemInfo = null;
-        if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
-            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
-        }
-
-        int Category = bufferReader.readUnsignedByte();
-        Object CategoryName = switch (ItemCategoryName) {
-            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
-            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
-            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
-            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
-                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
-                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
-                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
-            default -> "CATEGORY_UNKNOWN";
-        };
-
-        int IconNo = bufferReader.readUnsignedShort();
-        int IconColNo = bufferReader.readUnsignedByte();
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
 
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
         int StackMax = bufferReader.readUnsignedByte();
 
         int ParamNum = bufferReader.readUnsignedByte();
         List<ItemListParam> ItemParamList = new ArrayList<>(ParamNum);
         for (int i = 0; i < ParamNum; i++) {
-            ItemParamList.add(readParam(Category, bufferReader, lookupUtil));
+            ItemParamList.add(readParam(itemIconBase.getCategory(), bufferReader, lookupUtil));
         }
 
-        return new Material(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, NameId, ItemName, ItemInfo, Category, CategoryName, IconNo, IconColNo,
-                SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, StackMax, ParamNum, ItemParamList);
+        return new Material(itemIconBase, SortNo, NameSortNo, Price, Grade, Rank, StackMax, ParamNum, ItemParamList);
     }
 
     private static KeyItem readKeyItem(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+        ItemIconBase itemIconBase = readItemIconBase(bufferReader, lookupUtil, itemIndex);
 
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
-        long NameId = bufferReader.readUnsignedInteger();
-
-        Translation ItemName = null;
-        Translation ItemInfo = null;
-        if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
-            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
-        }
-
-        int Category = bufferReader.readUnsignedByte();
-        Object CategoryName = switch (ItemCategoryName) {
-            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
-            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
-            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
-            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
-                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
-                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
-                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
-            default -> "CATEGORY_UNKNOWN";
-        };
-
-        int IconNo = bufferReader.readUnsignedShort();
-        int IconColNo = bufferReader.readUnsignedByte();
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
 
         int StackMax = bufferReader.readUnsignedByte();
 
-        return new KeyItem(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, NameId, ItemName, ItemInfo, Category, CategoryName, IconNo, IconColNo,
-                SortNo, NameSortNo, StackMax);
+        return new KeyItem(itemIconBase, SortNo, NameSortNo, StackMax);
     }
 
     private static JobItem readJobItem(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+        ItemIconBase itemIconBase = readItemIconBase(bufferReader, lookupUtil, itemIndex);
 
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
-        long NameId = bufferReader.readUnsignedInteger();
-
-        Translation ItemName = null;
-        Translation ItemInfo = null;
-        if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
-            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
-        }
-
-        int Category = bufferReader.readUnsignedByte();
-        Object CategoryName = switch (ItemCategoryName) {
-            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
-            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
-            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
-            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
-                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
-                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
-                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
-            default -> "CATEGORY_UNKNOWN";
-        };
-
-        int IconNo = bufferReader.readUnsignedShort();
-        int IconColNo = bufferReader.readUnsignedByte();
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
 
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
         int StackMax = bufferReader.readUnsignedByte();
         int IsUseLv = bufferReader.readUnsignedByte();
         int IsUseJobAttackStatusFlag = bufferReader.readUnsignedByte();
         boolean AttackStatus = BitUtil.extractBoolean(IsUseJobAttackStatusFlag, 0);
         int IsUseJob = BitUtil.extractInt(IsUseJobAttackStatusFlag, 1, 4);
-        Set<JobType> IsUseJobType = Set.of(JobType.of(IsUseJobAttackStatusFlag / 4 - 1));
+        Set<JobType> IsUseJobType = Set.of(JobType.of((IsUseJobAttackStatusFlag / 4) - 1L));
 
         int ParamNum = bufferReader.readUnsignedByte();
         List<ItemListParam> ItemParamList = new ArrayList<>(ParamNum);
         for (int i = 0; i < ParamNum; i++) {
-            ItemParamList.add(readParam(Category, bufferReader, lookupUtil));
+            ItemParamList.add(readParam(itemIconBase.getCategory(), bufferReader, lookupUtil));
         }
 
-        return new JobItem(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, NameId, ItemName, ItemInfo, Category, CategoryName, IconNo, IconColNo,
-                SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, StackMax, IsUseLv, IsUseJobAttackStatusFlag,
+        return new JobItem(itemIconBase, SortNo, NameSortNo, Price, Grade, Rank, StackMax, IsUseLv, IsUseJobAttackStatusFlag,
                 AttackStatus, IsUseJob, IsUseJobType, ParamNum, ItemParamList);
     }
 
     private static SpecialItem readSpecialItem(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+        ItemIconBase itemIconBase = readItemIconBase(bufferReader, lookupUtil, itemIndex);
 
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
-        long NameId = bufferReader.readUnsignedInteger();
-
-        Translation ItemName = null;
-        Translation ItemInfo = null;
-        if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
-            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
-        }
-
-        int Category = bufferReader.readUnsignedByte();
-        Object CategoryName = switch (ItemCategoryName) {
-            case ITEM_CATEGORY_MATERIAL -> ItemListMaterialCategory.of(Category);
-            case ITEM_CATEGORY_USE -> ItemListUseCategory.of(Category);
-            case ITEM_CATEGORY_EQUIP -> ItemListEquipCategory.of(Category);
-            case ITEM_CATEGORY_FURNITURE, ITEM_CATEGORY_KEY,
-                 ITEM_CATEGORY_JOB, ITEM_CATEGORY_CRAFT_RECIPE,
-                 ITEM_CATEGORY_PROFILE_BG, ITEM_CATEGORY_EDIT_PARTS,
-                 ITEM_CATEGORY_EMOTION, ITEM_CATEGORY_PAWN_TALK -> "CATEGORY_NONE";
-            default -> "CATEGORY_UNKNOWN";
-        };
-
-        int IconNo = bufferReader.readUnsignedShort();
-        int IconColNo = bufferReader.readUnsignedByte();
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
 
         int Rank = bufferReader.readUnsignedByte();
 
-        return new SpecialItem(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, NameId, ItemName, ItemInfo, Category, CategoryName, IconNo, IconColNo,
-                SortNo, NameSortNo, Rank);
+        return new SpecialItem(itemIconBase, SortNo, NameSortNo, Rank);
     }
 
     private static Weapon readWeapon(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
-
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
+        ItemCore core = readItemCore(bufferReader, itemIndex);
 
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
@@ -373,35 +277,27 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
 
         int Attack = bufferReader.readUnsignedShort();
         int MagicAttack = bufferReader.readUnsignedShort();
         int Weight = bufferReader.readUnsignedShort();
 
         int EleSlot = bufferReader.readUnsignedByte();
-        int CrestSlot = BitUtil.extractInt(GradeRankFlag, 0, 2);
-        int QualityStars = BitUtil.extractInt(GradeRankFlag, 3, 5);
+        int CrestSlot = BitUtil.extractInt(EleSlot, 0, 2);
+        int QualityStars = BitUtil.extractInt(EleSlot, 3, 5);
 
         // TODO: Connect/embed weaponBase stats?
         int WeaponBaseId = bufferReader.readUnsignedShort();
 
-        int EquipParamS8Num = bufferReader.readUnsignedByte();
-        List<ItemListEquipParamS8> EquipParamS8List = new ArrayList<>(EquipParamS8Num);
-        for (int i = 0; i < EquipParamS8Num; i++) {
-            EquipParamS8List.add(readEquipParamS8(bufferReader));
-        }
+        List<ItemListEquipParam> equipParamList = bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParam);
 
-        return new Weapon(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, Attack,
-                MagicAttack, Weight, EleSlot, CrestSlot, QualityStars, WeaponBaseId, EquipParamS8Num, EquipParamS8List);
+        return new Weapon(core, SortNo, NameSortNo, Price, Grade, Rank, Attack,
+                MagicAttack, Weight, CrestSlot, QualityStars, WeaponBaseId, equipParamList);
     }
 
-    private static WeaponBase readWeaponBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex); // TODO: not an ItemId but rather a ModelTagId, deal with renaming somehow
-
-        int ModelParts = bufferReader.readUnsignedByte();
-        int ColorNo = bufferReader.readUnsignedByte();
+    private static ItemEquipGroupBase readItemEquipGroupBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemModelBase ModelBase = readItemModelBase(bufferReader);
 
         long NameId = bufferReader.readUnsignedInteger();
 
@@ -419,26 +315,33 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int IsUseLv = bufferReader.readUnsignedByte();
         int IsUseJobOffset = bufferReader.readUnsignedByte();
+        Set<JobType> IsUseJobType = null;
+        if (lookupUtil != null) {
+            IsUseJobType = ((ResourceMetadataLookupUtilSeason3) lookupUtil).getItemUseJob((IsUseJobOffset / 4) - 1);
+        }
 
         int EquipSlot = bufferReader.readUnsignedByte();
         int IconColNo = bufferReader.readUnsignedByte();
         int ItemSex = bufferReader.readUnsignedByte();
 
+        return new ItemEquipGroupBase(itemIndex, ModelBase, NameId, ItemName, ItemInfo,
+                Flag, FlagTypes, IconNo, IsUseLv, IsUseJobType, EquipSlot, IconColNo, ItemSex);
+    }
+
+    private static ItemEquipWeaponGroup readWeaponBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemEquipGroupBase Base = readItemEquipGroupBase(bufferReader, lookupUtil, itemIndex);
+
         int WepCategory = bufferReader.readUnsignedByte();
         int PhysicalType = bufferReader.readUnsignedByte();
         int ElementType = bufferReader.readUnsignedByte();
 
-        return new WeaponBase(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), ModelParts, ColorNo,
-                NameId, ItemName, ItemInfo, Flag, FlagTypes, IconNo, IsUseLv, IsUseJobOffset, EquipSlot, IconColNo, ItemSex, WepCategory, PhysicalType, ElementType);
+        ItemEquipWeaponGroup itemEquipWeaponGroup = new ItemEquipWeaponGroup(Base, WepCategory, PhysicalType, ElementType);
+        itemEquipWeaponGroup.setWeaponGroup(new ArrayList<>(5));
+        return itemEquipWeaponGroup;
     }
 
     private static Armor readArmor(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
-
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
+        ItemCore core = readItemCore(bufferReader, itemIndex);
 
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
@@ -446,7 +349,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
 
         int Attack = bufferReader.readUnsignedShort();
         int MagicAttack = bufferReader.readUnsignedShort();
@@ -455,62 +358,26 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int Weight = bufferReader.readUnsignedShort();
 
         int EleSlot = bufferReader.readUnsignedByte();
-        int CrestSlot = BitUtil.extractInt(GradeRankFlag, 0, 2);
-        int QualityStars = BitUtil.extractInt(GradeRankFlag, 3, 5);
+        int CrestSlot = BitUtil.extractInt(EleSlot, 0, 2);
+        int QualityStars = BitUtil.extractInt(EleSlot, 3, 5);
 
-        // TODO: Connect/embed armorBase stats?
         int ArmorBaseId = bufferReader.readUnsignedShort();
 
-        int EquipParamS8Num = bufferReader.readUnsignedByte();
-        List<ItemListEquipParamS8> EquipParamS8List = new ArrayList<>(EquipParamS8Num);
-        for (int i = 0; i < EquipParamS8Num; i++) {
-            EquipParamS8List.add(readEquipParamS8(bufferReader));
-        }
+        List<ItemListEquipParam> equipParamList = bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParam);
 
-        return new Armor(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, Attack,
-                MagicAttack, Defense, MagicDefense, Weight, EleSlot, CrestSlot, QualityStars, ArmorBaseId, EquipParamS8Num, EquipParamS8List);
+        return new Armor(core, SortNo, NameSortNo, Price, Grade, Rank, Attack,
+                MagicAttack, Defense, MagicDefense, Weight, CrestSlot, QualityStars, ArmorBaseId, equipParamList);
     }
 
-
-    private static ArmorBase readArmorBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex); // TODO: not an ItemId but rather a ModelTagId, deal with renaming somehow
-
-        int ModelParts = bufferReader.readUnsignedByte();
-        int ColorNo = bufferReader.readUnsignedByte();
-
-        long NameId = bufferReader.readUnsignedInteger();
-
-        Translation ItemName = null;
-        Translation ItemInfo = null;
-        if (lookupUtil != null) {
-            ItemName = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_NAME.getFilePath(), (int) NameId);
-            ItemInfo = lookupUtil.getMessageTranslation(GUIMessageLookupTable.ITEM_INFO.getFilePath(), (int) NameId);
-        }
-
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-
-        int IconNo = bufferReader.readUnsignedShort();
-
-        int IsUseLv = bufferReader.readUnsignedByte();
-        int IsUseJobOffset = bufferReader.readUnsignedByte();
-
-        int EquipSlot = bufferReader.readUnsignedByte();
-        int IconColNo = bufferReader.readUnsignedByte();
-        int ItemSex = bufferReader.readUnsignedByte();
-
-        return new ArmorBase(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), ModelParts, ColorNo,
-                NameId, ItemName, ItemInfo, Flag, FlagTypes, IconNo, IsUseLv, IsUseJobOffset, EquipSlot, IconColNo, ItemSex);
+    private static ItemEquipProtectorGroup readArmorBase(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemEquipGroupBase Base = readItemEquipGroupBase(bufferReader, lookupUtil, itemIndex);
+        ItemEquipProtectorGroup itemEquipProtectorGroup = new ItemEquipProtectorGroup(Base);
+        itemEquipProtectorGroup.setArmorGroup(new ArrayList<>(5));
+        return itemEquipProtectorGroup;
     }
 
     private static Jewelry readJewelry(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
-
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
+        ItemCore core = readItemCore(bufferReader, itemIndex);
 
         long SortNo = bufferReader.readUnsignedInteger();
         long NameSortNo = bufferReader.readUnsignedInteger();
@@ -518,7 +385,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int Price = bufferReader.readUnsignedShort();
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
 
         long NameId = bufferReader.readUnsignedInteger();
 
@@ -532,8 +399,11 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int IconNo = bufferReader.readUnsignedShort();
 
         int IsUseLv = bufferReader.readUnsignedByte();
-        // TODO: look up job
         int IsUseJobOffset = bufferReader.readUnsignedByte();
+        Set<JobType> IsUseJobType = null;
+        if (lookupUtil != null) {
+            IsUseJobType = ((ResourceMetadataLookupUtilSeason3) lookupUtil).getItemUseJob((IsUseJobOffset / 4) - 1);
+        }
 
         int Attack = bufferReader.readUnsignedShort();
         int MagicAttack = bufferReader.readUnsignedShort();
@@ -545,31 +415,18 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         int IconColNo = bufferReader.readUnsignedByte();
         int EleSlot = bufferReader.readUnsignedByte();
 
-        int EquipParamS8Num = bufferReader.readUnsignedByte();
-        List<ItemListEquipParamS8> EquipParamS8List = new ArrayList<>(EquipParamS8Num);
-        for (int i = 0; i < EquipParamS8Num; i++) {
-            EquipParamS8List.add(readEquipParamS8(bufferReader));
-        }
+        List<ItemListEquipParam> equipParamList = bufferReader.readArray(BufferReader::readUnsignedByte, ItemListDeserializer::readEquipParam);
 
-        return new Jewelry(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, SortNo, NameSortNo, Price, GradeRankFlag, Grade, Rank, NameId, ItemName,
-                ItemInfo, IconNo, IsUseLv, IsUseJobOffset, Attack, MagicAttack, Defense, MagicDefense, Weight, SubCategory,
-                IconColNo, EleSlot, EquipParamS8Num, EquipParamS8List);
+        return new Jewelry(core, SortNo, NameSortNo, Price, Grade, Rank, NameId, ItemName,
+                ItemInfo, IconNo, IsUseLv, IsUseJobType, Attack, MagicAttack, Defense, MagicDefense, Weight, SubCategory,
+                IconColNo, EleSlot, equipParamList);
     }
 
 
-    private static NpcEquipment readNpcEquipment(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
-        ItemListItemParam itemListItemParam = readItemListItemParam(bufferReader, itemIndex);
+    private static ItemEquipNpcProtector readNpcEquipment(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil, int itemIndex) {
+        ItemCore core = readItemCore(bufferReader, itemIndex);
 
-        int Flag = bufferReader.readUnsignedShort();
-        Set<ItemListFlagType> FlagTypes = BitUtil.extractBitSetUnsignedIntegerFlag(ItemListFlagType::of, i -> i + 1, Flag);
-        int ItemCategory = bufferReader.readUnsignedByte();
-        ItemListItemCategory ItemCategoryName = ItemListItemCategory.of(ItemCategory);
-
-        // TODO: probably a link to a base weapon/armor ID
-        long Unknown1 = bufferReader.readUnsignedInteger();
-        int Unknown2 = bufferReader.readUnsignedByte();
-        int Unknown3 = bufferReader.readUnsignedByte();
+        ItemModelBase ModelBase = readItemModelBase(bufferReader);
 
         long NameId = bufferReader.readUnsignedInteger();
 
@@ -582,11 +439,9 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
 
         int GradeRankFlag = bufferReader.readUnsignedShort();
         int Grade = BitUtil.extractInt(GradeRankFlag, 0, 1);
-        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 5);
+        int Rank = BitUtil.extractInt(GradeRankFlag, 2, 9);
 
-        return new NpcEquipment(itemListItemParam.getItemIndex(), itemListItemParam.getItemId(), Flag, FlagTypes,
-                ItemCategory, ItemCategoryName, Unknown1, Unknown2, Unknown3, NameId, ItemName, ItemInfo, GradeRankFlag,
-                Grade, Rank);
+        return new ItemEquipNpcProtector(core, ModelBase, NameId, ItemName, ItemInfo, Grade, Rank);
     }
 
 
@@ -616,13 +471,13 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         List<JobItem> JobItemList = new ArrayList<>((int) ArrayJobItemsNum);
         List<SpecialItem> SpecialItemList = new ArrayList<>((int) ArraySpecialItemsNum);
         List<Weapon> weaponList = new ArrayList<>((int) ArrayWeaponNum);
-        List<WeaponBase> weaponBaseList = new ArrayList<>((int) ArrayWeaponBaseNum);
+        List<ItemEquipWeaponGroup> itemEquipWeaponGroupList = new ArrayList<>((int) ArrayWeaponBaseNum);
         List<Armor> armorList = new ArrayList<>((int) ArrayArmorNum);
-        List<ArmorBase> armorBaseList = new ArrayList<>((int) ArrayArmorBaseNum);
+        List<ItemEquipProtectorGroup> itemEquipProtectorGroupList = new ArrayList<>((int) ArrayArmorBaseNum);
         List<Jewelry> jewelryList = new ArrayList<>((int) ArrayJewelryNum);
-        List<NpcEquipment> npcEquipmentList = new ArrayList<>((int) ArrayNpcEquipmentNum);
+        List<ItemEquipNpcProtector> itemEquipNpcProtectorList = new ArrayList<>((int) ArrayNpcEquipmentNum);
 
-        List<ItemListItemParam> ItemParamList = new ArrayList<>((int) ArrayUnknown1Num);
+        List<Item> ItemParamList = new ArrayList<>((int) ArrayUnknown1Num);
 
         for (int i = 0; i < ArrayConsumableNum; i++) {
             consumableList.add(readConsumable(bufferReader, lookupUtil, i));
@@ -649,7 +504,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
 
         for (int i = 0; i < ArrayWeaponBaseNum; i++) {
-            weaponBaseList.add(readWeaponBase(bufferReader, lookupUtil, i));
+            itemEquipWeaponGroupList.add(readWeaponBase(bufferReader, lookupUtil, i));
         }
 
         for (int i = 0; i < ArrayArmorNum; i++) {
@@ -657,7 +512,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
 
         for (int i = 0; i < ArrayArmorBaseNum; i++) {
-            armorBaseList.add(readArmorBase(bufferReader, lookupUtil, i));
+            itemEquipProtectorGroupList.add(readArmorBase(bufferReader, lookupUtil, i));
         }
 
         for (int i = 0; i < ArrayJewelryNum; i++) {
@@ -665,7 +520,7 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         }
 
         for (int i = 0; i < ArrayNpcEquipmentNum; i++) {
-            npcEquipmentList.add(readNpcEquipment(bufferReader, lookupUtil, i));
+            itemEquipNpcProtectorList.add(readNpcEquipment(bufferReader, lookupUtil, i));
         }
 
         ItemParamList.addAll(consumableList);
@@ -674,17 +529,29 @@ public class ItemListDeserializer extends ClientResourceFileDeserializer<ItemLis
         ItemParamList.addAll(JobItemList);
         ItemParamList.addAll(SpecialItemList);
         ItemParamList.addAll(weaponList);
-        ItemParamList.addAll(weaponBaseList);
+        ItemParamList.addAll(itemEquipWeaponGroupList);
         ItemParamList.addAll(armorList);
-        ItemParamList.addAll(armorBaseList);
+        ItemParamList.addAll(itemEquipProtectorGroupList);
         ItemParamList.addAll(jewelryList);
-        ItemParamList.addAll(npcEquipmentList);
+        ItemParamList.addAll(itemEquipNpcProtectorList);
+
+        for (Armor armor : armorList) {
+            ItemEquipProtectorGroup itemEquipProtectorGroup = itemEquipProtectorGroupList.get(armor.getArmorBaseId());
+            armor.setArmorBase(itemEquipProtectorGroup);
+            itemEquipProtectorGroup.getArmorGroup().add(armor);
+        }
+
+        for (Weapon weapon : weaponList) {
+            ItemEquipWeaponGroup itemEquipWeaponGroup = itemEquipWeaponGroupList.get(weapon.getWeaponBaseId());
+            weapon.setWeaponBase(itemEquipWeaponGroup);
+            itemEquipWeaponGroup.getWeaponGroup().add(weapon);
+        }
 
         return new ItemList(Buffer1, Buffer2, ArrayUnknown1Num, ArrayConsumableNum, ArrayMaterialNum,
                 ArrayKeyItemsNum, ArrayJobItemsNum, ArraySpecialItemsNum, ArrayWeaponNum,
                 ArrayWeaponBaseNum, ArrayArmorNum, ArrayArmorBaseNum, ArrayJewelryNum,
                 ArrayNpcEquipmentNum, Unknown1List, consumableList, materialList, KeyItemList,
-                JobItemList, SpecialItemList, weaponList, weaponBaseList, armorList,
-                armorBaseList, jewelryList, npcEquipmentList, ItemParamList);
+                JobItemList, SpecialItemList, weaponList, itemEquipWeaponGroupList, armorList,
+                itemEquipProtectorGroupList, jewelryList, itemEquipNpcProtectorList, ItemParamList);
     }
 }

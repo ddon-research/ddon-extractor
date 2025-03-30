@@ -40,7 +40,7 @@ public class ItemListParamBbElementUp extends ItemListParam {
         JobId = jobId;
         JobName = JobType.of(jobId);
         ElementType = elementType;
-        ElementTypeName = ItemListElementType.of(elementType);
+        ElementTypeName = ItemListElementType.of(elementType - 1L);
         this.padding1 = padding1;
         this.padding2 = padding2;
     }

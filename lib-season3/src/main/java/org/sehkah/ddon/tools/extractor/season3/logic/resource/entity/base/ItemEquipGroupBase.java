@@ -7,20 +7,19 @@ import org.sehkah.ddon.tools.extractor.api.serialization.MetaInformation;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListEquipCategory;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListFlagType;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.ItemListSexType;
+import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base.meta.JobType;
 
 import java.util.Set;
 
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-public class ArmorBase extends ItemListItemParam {
-    private int ModelParts;
-    private int ColorNo;
+public class ItemEquipGroupBase extends Item {
+    private ItemModelBase ModelBase;
 
     private long NameId;
     @MetaInformation
@@ -34,8 +33,7 @@ public class ArmorBase extends ItemListItemParam {
 
     private int IconNo;
     private int IsUseLv;
-    // TODO: Offset in bytes, the first entry is at 4, then every 4 after. Where?
-    private int IsUseJobOffset;
+    private Set<JobType> IsUseJobType;
 
     private int EquipSlot;
     @MetaInformation
@@ -47,10 +45,9 @@ public class ArmorBase extends ItemListItemParam {
     @MetaInformation
     private ItemListSexType SexName;
 
-    public ArmorBase(int ModelPartsId, long ItemId, int modelParts, int colorNo, long nameId, Translation itemName, Translation itemInfo, int flag, Set<ItemListFlagType> flagTypes, int iconNo, int isUseLv, int isUseJobOffset, int equipSlot, int iconColNo, int sex) {
-        super(ModelPartsId, ItemId);
-        ModelParts = modelParts;
-        ColorNo = colorNo;
+    public ItemEquipGroupBase(int itemIndex, ItemModelBase modelBase, long nameId, Translation itemName, Translation itemInfo, int flag, Set<ItemListFlagType> flagTypes, int iconNo, int isUseLv, Set<JobType> isUseJobType, int equipSlot, int iconColNo, int sex) {
+        super(itemIndex);
+        ModelBase = modelBase;
         NameId = nameId;
         ItemName = itemName;
         ItemInfo = itemInfo;
@@ -58,7 +55,7 @@ public class ArmorBase extends ItemListItemParam {
         FlagTypes = flagTypes;
         IconNo = iconNo;
         IsUseLv = isUseLv;
-        IsUseJobOffset = isUseJobOffset;
+        IsUseJobType = isUseJobType;
         EquipSlot = equipSlot;
         EquipSlotName = ItemListEquipCategory.of(equipSlot);
         IconColNo = iconColNo;
