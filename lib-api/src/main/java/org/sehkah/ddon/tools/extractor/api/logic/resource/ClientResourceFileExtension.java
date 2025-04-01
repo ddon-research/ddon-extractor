@@ -157,6 +157,7 @@ public enum ClientResourceFileExtension {
     rReplaceWardGmdList,
     rRoomWearParam,
     rScenario,
+    rScheduler,
     rShopGoods,
     rShotReqInfo,
     rShotReqInfo2,
@@ -370,6 +371,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sca", rStageCustom);
         fileExtensionToResourceMap.put(".scc", rStageConnect);
         fileExtensionToResourceMap.put(".sce", rScenario);
+        fileExtensionToResourceMap.put(".sdl", rScheduler);
         fileExtensionToResourceMap.put(".sck", rStatusCheck);
         fileExtensionToResourceMap.put(".scp", rStageCustomParts);
         fileExtensionToResourceMap.put(".scpx", rStageCustomPartsEx);

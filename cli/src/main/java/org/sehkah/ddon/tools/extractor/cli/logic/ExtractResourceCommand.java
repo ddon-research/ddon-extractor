@@ -33,7 +33,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @Slf4j
-@CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "extract 1.0",
+@CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "resource 1.0",
         description = "Extracts the provided DDON resource file(s).")
 public class ExtractResourceCommand implements Callable<Integer> {
     private ClientResourceFileManager clientResourceFileManager;
@@ -42,8 +42,8 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
             Example:
-                 extract --format=JSON FILE  outputs the data with the JSON format on the console
-                 extract --format FILE   outputs the data with the default format on the console"
+                 resource --format=JSON FILE  outputs the data with the JSON format on the console
+                 resource --format FILE   outputs the data with the default format on the console"
             """, defaultValue = "json")
     private SerializationFormat outputFormat;
 
@@ -52,7 +52,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             This will be used as a basis to derive further meta information for certain files where supported and enabled.
             See the meta information flag for further information.
             Example:
-                extract "D:\\DDON" <resource file>
+                resource "D:\\DDON" <resource file>
             """)
     private Path clientRootFolder;
 
@@ -61,7 +61,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             This will be used to dump messages in both JP and EN.
             See the meta information flag for further information.
             Example:
-                extract "D:\\DDON" "D:\\DDON-translation\\gmd.csv" <resource file>
+                resource "D:\\DDON" "D:\\DDON-translation\\gmd.csv" <resource file>
             """)
     private Path clientTranslationFile;
 
@@ -69,8 +69,8 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
             The full path starting from the client resource base path must be specified, i.e. from "rom".
             Example:
-                extract <client resource base path> "game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
-                extract <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
+                resource <client resource base path> "game_common\\param\\enemy_group.emg" will resource the data of the enemy_group.emg resource file.
+                resource <client resource base path> "game_common\\param" will resource the data of all resource files found in this path.
             """)
     private Path inputFilePath;
 
@@ -78,7 +78,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Optionally specify whether to output the extracted data as a file.
             If omitted the default behavior is to output to console.
             Example:
-                extract -o FILE outputs the data in a file relative to the current working directory based on the input file name.
+                resource -o FILE outputs the data in a file relative to the current working directory based on the input file name.
             """, defaultValue = "false")
     private boolean writeOutputToFile;
 
@@ -124,6 +124,14 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Note that textures will be dumped as JSON or YAML without the data either way.
             """, defaultValue = "false")
     private boolean exportTextures;
+
+    @CommandLine.Option(names = {"-i", "--ignore-extensions"}, arity = "0..1", description = """
+            Optionally specify whether to ignore specific file extensions from parsing.
+            If omitted the default behavior is parse all supported extensions.
+            Example:
+                resource -i .dds,.tex FILE outputs the data in a file relative to the current working directory based on the input file name.
+            """, split = ",", defaultValue = "")
+    private Set<String> ignoreExtensions;
 
     private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
@@ -242,6 +250,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
                         };
                     } else {
                         Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
+                        supportedFileExtensions.removeAll(ignoreExtensions);
                         fileFilter = path -> {
                             String fileName = path.getFileName().toString();
                             return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
@@ -257,7 +266,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
                             .filter(fileFilter)
                             .map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
-                        log.warn("Failed to extract one or more resource files.");
+                        log.warn("Failed to resource one or more resource files.");
                         return StatusCode.ERROR.ordinal();
                     } else {
                         log.info("Extracted all resource files.");

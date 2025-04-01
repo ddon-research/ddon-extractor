@@ -111,4 +111,6 @@ public interface BufferReader {
     <E> List<E> readArray(long length, Function<BufferReader, E> entityReaderFunction);
 
     <E> List<E> readArray(long length, BiFunction<BufferReader, ResourceMetadataLookupUtil, E> entityReaderFunction, ResourceMetadataLookupUtil entityMetadataLookupUtil);
+
+    HermiteCurve readHermiteCurve();
 }
