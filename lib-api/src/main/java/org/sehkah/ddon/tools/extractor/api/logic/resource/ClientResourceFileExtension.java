@@ -113,6 +113,7 @@ public enum ClientResourceFileExtension {
     rLayoutGroupParamList,
     rLayoutPreset,
     rLocationData,
+    rMandraActionParam,
     rMagicChantParam,
     rMagicCommandList,
     rMagicCommandWord,
@@ -318,6 +319,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lot", rLayout);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
+        fileExtensionToResourceMap.put(".map", rMandraActionParam);
         fileExtensionToResourceMap.put(".mcw", rMagicCommandWord);
         fileExtensionToResourceMap.put(".mgcc", rMagicCommandList);
         fileExtensionToResourceMap.put(".mra", rMyRoomActParam);

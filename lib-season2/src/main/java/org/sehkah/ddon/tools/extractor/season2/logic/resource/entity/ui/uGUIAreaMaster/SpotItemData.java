@@ -16,6 +16,6 @@ public class SpotItemData {
     private long ItemId;
     @MetaInformation
     private Translation ItemName;
-    private boolean IsFeature;
     private boolean IsCannotPawnTake;
+    private boolean IsFeature;
 }

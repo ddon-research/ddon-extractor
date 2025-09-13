@@ -191,6 +191,7 @@ public class ClientResourceFileManagerSeason3 extends ClientResourceFileManager 
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rEvidenceList, new FileHeader(1, 4), new EvidenceListDeserializer()));
         ItemEquipJobInfoListResourceFile = new ClientResourceFile<>(rItemEquipJobInfoList, new FileHeader(2, 4), new ItemEquipJobInfoListDeserializer());
         clientResourceFileSet.add((ClientResourceFile<T>) ItemEquipJobInfoListResourceFile);
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rMandraActionParam, new FileHeader(17, 4), new MandraActionParamTableDeserializer()));
 
         return clientResourceFileSet;
     }

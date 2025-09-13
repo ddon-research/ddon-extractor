@@ -36,10 +36,10 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
         if (lookupUtil != null) {
             ItemName = lookupUtil.getItemName(ItemId);
         }
-        boolean IsFeature = bufferReader.readBoolean();
         boolean IsCannotPawnTake = bufferReader.readBoolean();
+        boolean IsFeature = bufferReader.readBoolean();
 
-        return new SpotItemData(ItemId, ItemName, IsFeature, IsCannotPawnTake);
+        return new SpotItemData(ItemId, ItemName, IsCannotPawnTake, IsFeature);
     }
 
     private static AreaMasterSpotDetailData readAreaMasterSpotDetailData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {

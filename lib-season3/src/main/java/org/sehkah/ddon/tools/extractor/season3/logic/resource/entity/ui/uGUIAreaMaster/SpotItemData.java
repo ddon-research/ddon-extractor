@@ -18,6 +18,6 @@ public class SpotItemData {
     private Translation ItemName;
     // Relates to the SpotEnemyData Unknown, both always have values >0 at the same time
     private int Unknown;
-    private boolean IsFeature;
     private boolean IsCannotPawnTake;
+    private boolean IsFeature;
 }
