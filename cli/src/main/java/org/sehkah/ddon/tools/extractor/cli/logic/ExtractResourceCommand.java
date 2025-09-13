@@ -18,8 +18,9 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFile
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 import picocli.CommandLine;
-
+import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -198,10 +199,57 @@ public class ExtractResourceCommand implements Callable<Integer> {
             try {
                 if (exportTextures && (deserializedOutput instanceof Texture t)) {
                     DirectDrawSurface dds = t.toDirectDrawSurface();
-                    Files.write(outputFolder.resolve(fileName + ".dds"), clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    Path ddsPath = outputFolder.resolve(fileName + ".dds");
+                    byte[] ddsBytes = clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds);
+                    boolean shouldWriteDds = true;
+                    if (Files.exists(ddsPath)) {
+                        try {
+                            long existingSize = Files.size(ddsPath);
+                            if (existingSize == ddsBytes.length) {
+                                String newHash = DigestUtils.md5Hex(ddsBytes);
+                                try (InputStream is = Files.newInputStream(ddsPath)) {
+                                    String existingHash = DigestUtils.md5Hex(is);
+                                    if (existingHash.equals(newHash)) {
+                                        shouldWriteDds = false;
+                                        log.debug("Skipping unchanged DDS file '{}'.", ddsPath);
+                                    }
+                                }
+                            }
+                        } catch (IOException e) {
+                            log.warn("Failed to compare existing DDS file '{}', proceeding to overwrite.", ddsPath);
+                        }
+                    }
+                    if (shouldWriteDds) {
+                        Files.write(ddsPath, ddsBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    }
                 }
 
-                Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                // Hash-based skip for main serialized output
+                byte[] newBytes = serializedOutput.getBytes(StandardCharsets.UTF_8);
+                boolean shouldWriteMain = true;
+                if (Files.exists(outputFilePath)) {
+                    try {
+                        long existingSize = Files.size(outputFilePath);
+                        if (existingSize == newBytes.length) {
+                            // Only compute hashes if sizes match to save some work
+                            String newHash = DigestUtils.md5Hex(newBytes);
+                            try (InputStream is = Files.newInputStream(outputFilePath)) {
+                                String existingHash = DigestUtils.md5Hex(is);
+                                if (newHash.equals(existingHash)) {
+                                    shouldWriteMain = false;
+                                    log.debug("Skipping unchanged output file '{}'.", outputFilePath);
+                                }
+                            }
+                        }
+                    } catch (IOException e) {
+                        log.warn("Failed to compare existing file '{}', proceeding to overwrite.", outputFilePath);
+                    }
+                }
+
+                if (shouldWriteMain) {
+                    Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                }
+
                 if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
                     outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
                     for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
@@ -220,7 +268,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
                     }
                 }
             } catch (IOException e) {
-                log.error("Failed to write file '{}'.", outputFilePath);
+                log.error("Failed to write file '{}'", outputFilePath);
                 if (log.isDebugEnabled()) {
                     log.error("", e);
                 }

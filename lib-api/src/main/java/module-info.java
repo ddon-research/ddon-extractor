@@ -32,4 +32,5 @@ module org.sehkah.ddon.tools.extractor.lib.api {
     exports org.sehkah.ddon.tools.extractor.api.logic.resource;
     exports org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization;
     exports org.sehkah.ddon.tools.extractor.api.logic.resource.serialization;
+    exports org.sehkah.ddon.tools.extractor.crypto;
 }

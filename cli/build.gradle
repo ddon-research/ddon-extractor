@@ -4,6 +4,7 @@ plugins {
     id 'jacoco'
     id 'project-report'
     id 'org.beryx.jlink'
+    id 'me.champeau.jmh'
 }
 
 dependencies {
@@ -15,6 +16,7 @@ dependencies {
 
     implementation cli.picocli
     implementation cli.jackson.dataformat.yaml
+    implementation cli.commons.codec
 }
 
 tasks.distTar.enabled = false
@@ -61,4 +63,10 @@ jlink {
         uses 'org.apache.logging.log4j.spi.Provider'
         uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory'
     }
+}
+
+jmh {
+    warmupIterations = 2
+    iterations = 5
+    fork = 1
 }

@@ -4,6 +4,7 @@ pluginManagement {
         id 'org.javamodularity.moduleplugin' version '1.8.15'
         id 'io.freefair.lombok' version '8.14.2'
         id 'com.github.ben-manes.versions' version '0.52.0'
+        id 'me.champeau.jmh' version '0.7.3'
     }
 }
 
@@ -66,9 +67,12 @@ dependencyResolutionManagement {
             library('mockito-core', 'org.mockito', 'mockito-core').versionRef('mockitoCore')
         }
         cli {
+            version('commonsCodec', '1.19.0')
             version('comFasterxmlJackson', '2.20.0')
             version('infoPicocli', '4.7.7')
 
+            // https://mvnrepository.com/artifact/commons-codec/commons-codec
+            library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')
             // https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-yaml
             library('jackson-dataformat-yaml', 'com.fasterxml.jackson.dataformat', 'jackson-dataformat-yaml').versionRef('comFasterxmlJackson')
             // https://mvnrepository.com/artifact/info.picocli/picocli

@@ -4,6 +4,7 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires info.picocli;
     requires org.slf4j;
     requires org.apache.logging.log4j;
+    requires org.apache.commons.codec;
 
     requires java.compiler;
 
