@@ -6,6 +6,9 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     requires org.apache.commons.lang3;
     requires org.apache.logging.log4j;
 
+    // Make javax.annotation.processing visible when merged (for log4j processors)
+    requires java.compiler;
+
     requires org.bouncycastle.provider;
 
     requires com.fasterxml.jackson.core;

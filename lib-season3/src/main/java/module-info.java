@@ -6,6 +6,8 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     requires org.apache.commons.lang3;
     requires org.apache.logging.log4j;
 
+    requires java.compiler;
+
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;

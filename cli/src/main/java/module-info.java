@@ -5,6 +5,8 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires org.slf4j;
     requires org.apache.logging.log4j;
 
+    requires java.compiler;
+
     requires org.sehkah.ddon.tools.extractor.lib.common;
     requires org.sehkah.ddon.tools.extractor.lib.season1;
     requires org.sehkah.ddon.tools.extractor.lib.season3;
