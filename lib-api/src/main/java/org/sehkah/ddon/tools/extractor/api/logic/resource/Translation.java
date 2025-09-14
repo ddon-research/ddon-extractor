@@ -19,6 +19,9 @@ public class Translation {
         StringBuilder enBuilder = new StringBuilder();
 
         for (Translation t : translations) {
+            if (t == null) {
+                continue;
+            }
             if (!jpBuilder.isEmpty()) {
                 jpBuilder.append(" ");
             }

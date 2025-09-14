@@ -70,7 +70,7 @@ public class ExtractPacketCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-m", "--meta-information"}, arity = "0..1", description = """
             Optionally specify whether to enrich the output with additional meta information (if available).
             If omitted the default behavior is not to add meta information.
-                        
+            
             For example, if a numeric type has a corresponding (probable) semantic mapping this will be output as additional field.
             Note that this makes the output more comprehensible at the price of serialization compatibility and accuracy.
             """, defaultValue = "false")
@@ -79,7 +79,7 @@ public class ExtractPacketCommand implements Callable<Integer> {
     @CommandLine.Option(names = {"-p", "--parallel"}, arity = "0..1", description = """
             Optionally specify whether to run extraction in parallel.
             If omitted the default behavior is to run in parallel.
-                        
+            
             Turning this off improves legibility of logs and supports debugging.
             """, defaultValue = "true")
     private boolean runInParallel;

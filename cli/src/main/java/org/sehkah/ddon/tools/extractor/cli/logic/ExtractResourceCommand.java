@@ -1,6 +1,7 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.MurmurHash3;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
@@ -18,14 +19,14 @@ import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFile
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
 import org.sehkah.ddon.tools.extractor.season3.logic.resource.ClientResourceFileManagerSeason3;
 import picocli.CommandLine;
-import org.apache.commons.codec.digest.DigestUtils;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -36,6 +37,7 @@ import java.util.stream.Stream;
 @Slf4j
 @CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "resource 1.0",
         description = "Extracts the provided DDON resource file(s).")
+@SuppressWarnings("unused") // Fields are injected by picocli
 public class ExtractResourceCommand implements Callable<Integer> {
     private ClientResourceFileManager clientResourceFileManager;
 
@@ -156,6 +158,33 @@ public class ExtractResourceCommand implements Callable<Integer> {
         };
     }
 
+    public static long[] computeHash(byte[] data) {
+        return MurmurHash3.hash128x64(data, 0, data.length, 0);
+    }
+
+    /**
+     * Determines whether a file should be written by comparing size and hash.
+     * Returns true if the file does not exist or the content differs, false if identical.
+     */
+    private boolean shouldWrite(Path target, byte[] newBytes) {
+        try {
+            if (!Files.exists(target)) {
+                return true; // No file -> write
+            }
+            long existingSize = Files.size(target);
+            if (existingSize != newBytes.length) {
+                return true; // Size differs -> write
+            }
+            byte[] existingBytes = Files.readAllBytes(target);
+            long[] existingHash = computeHash(existingBytes);
+            long[] newHash = computeHash(newBytes);
+            return !Arrays.equals(newHash, existingHash);
+        } catch (IOException e) {
+            log.warn("Failed to compare existing file '{}' with new content, proceeding to overwrite.", target);
+            return true; // On error prefer safety (overwrite)
+        }
+    }
+
     private StatusCode extractSingleFile(Path filePath, Serializer<Resource> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
@@ -201,52 +230,20 @@ public class ExtractResourceCommand implements Callable<Integer> {
                     DirectDrawSurface dds = t.toDirectDrawSurface();
                     Path ddsPath = outputFolder.resolve(fileName + ".dds");
                     byte[] ddsBytes = clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds);
-                    boolean shouldWriteDds = true;
-                    if (Files.exists(ddsPath)) {
-                        try {
-                            long existingSize = Files.size(ddsPath);
-                            if (existingSize == ddsBytes.length) {
-                                String newHash = DigestUtils.md5Hex(ddsBytes);
-                                try (InputStream is = Files.newInputStream(ddsPath)) {
-                                    String existingHash = DigestUtils.md5Hex(is);
-                                    if (existingHash.equals(newHash)) {
-                                        shouldWriteDds = false;
-                                        log.debug("Skipping unchanged DDS file '{}'.", ddsPath);
-                                    }
-                                }
-                            }
-                        } catch (IOException e) {
-                            log.warn("Failed to compare existing DDS file '{}', proceeding to overwrite.", ddsPath);
-                        }
-                    }
-                    if (shouldWriteDds) {
+                    boolean writeDds = shouldWrite(ddsPath, ddsBytes);
+                    if (!writeDds) {
+                        log.debug("Skipping unchanged DDS file '{}'.", ddsPath);
+                    } else {
                         Files.write(ddsPath, ddsBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
                     }
                 }
 
-                // Hash-based skip for main serialized output
+                // Main serialized output
                 byte[] newBytes = serializedOutput.getBytes(StandardCharsets.UTF_8);
-                boolean shouldWriteMain = true;
-                if (Files.exists(outputFilePath)) {
-                    try {
-                        long existingSize = Files.size(outputFilePath);
-                        if (existingSize == newBytes.length) {
-                            // Only compute hashes if sizes match to save some work
-                            String newHash = DigestUtils.md5Hex(newBytes);
-                            try (InputStream is = Files.newInputStream(outputFilePath)) {
-                                String existingHash = DigestUtils.md5Hex(is);
-                                if (newHash.equals(existingHash)) {
-                                    shouldWriteMain = false;
-                                    log.debug("Skipping unchanged output file '{}'.", outputFilePath);
-                                }
-                            }
-                        }
-                    } catch (IOException e) {
-                        log.warn("Failed to compare existing file '{}', proceeding to overwrite.", outputFilePath);
-                    }
-                }
-
-                if (shouldWriteMain) {
+                boolean writeMain = shouldWrite(outputFilePath, newBytes);
+                if (!writeMain) {
+                    log.debug("Skipping unchanged output file '{}'.", outputFilePath);
+                } else {
                     Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
                 }
 

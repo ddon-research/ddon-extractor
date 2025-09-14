@@ -37,7 +37,7 @@ public abstract class ResourceMetadataLookupUtil {
         Map<String, Map<Integer, GMDTranslation>> result = HashMap.newHashMap(6000);
         deserialized.forEach(gmdTranslation -> {
             String arcPath = gmdTranslation.getArcPath();
-            if(arcPath.isBlank()) return;
+            if (arcPath.isBlank()) return;
             String gmdFilePath = (arcPath.substring(1).replace(".arc", "") + '/' + gmdTranslation.getGmdPath()).replace('\\', '/');
             Map<Integer, GMDTranslation> gmdIndexTranslationMap = result.getOrDefault(gmdFilePath, HashMap.newHashMap(21504));
             gmdIndexTranslationMap.put(gmdTranslation.getReadIndex(), gmdTranslation);
