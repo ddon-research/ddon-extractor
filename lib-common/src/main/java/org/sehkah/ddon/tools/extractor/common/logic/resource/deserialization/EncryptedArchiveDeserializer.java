@@ -49,8 +49,8 @@ public class EncryptedArchiveDeserializer extends ClientResourceFileDeserializer
         Map<String, byte[]> resourceFileMap = HashMap.newHashMap(resourceInfos.size());
         for (ResourceInfo resourceInfo : resourceInfos) {
             byte[] compressedEncryptedData = bufferReader.copySignedByte((int) resourceInfo.getDataSize(), (int) resourceInfo.getOffset());
-            byte[] decrypt = BlowFishUtil.decrypt(compressedEncryptedData);
-            byte[] decompressedData = ZipUtil.decompress(decrypt, (int) resourceInfo.getOriginalSize());
+            byte[] decryptedData = BlowFishUtil.decrypt(compressedEncryptedData);
+            byte[] decompressedData = ZipUtil.decompress(decryptedData, (int) resourceInfo.getOriginalSize());
             if (decompressedData.length != (int) resourceInfo.getOriginalSize()) {
                 throw new TechnicalException("Decompressed resource file size '%s' does not match original size '%s'!".formatted(decompressedData.length, resourceInfo.getOriginalSize()));
             }

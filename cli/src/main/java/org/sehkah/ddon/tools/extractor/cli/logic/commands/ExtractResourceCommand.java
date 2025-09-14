@@ -76,8 +76,8 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
             The full path starting from the client resource base path must be specified, i.e. from "rom".
             Example:
-                resource <client resource base path> "game_common\\param\\enemy_group.emg" will resource the data of the enemy_group.emg resource file.
-                resource <client resource base path> "game_common\\param" will resource the data of all resource files found in this path.
+                resource <client resource base path> "game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
+                resource <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
             """)
     private Path inputFilePath;
 

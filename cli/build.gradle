@@ -75,5 +75,5 @@ jmh {
     resultFormat = 'CSV'
     zip64 = true
     jmhVersion = '1.37'
-    jvm = javaLauncher.map {it.executablePath.asFile.toString()}
+    jvm = javaLauncher.map { it.executablePath.asFile.toString() }
 }

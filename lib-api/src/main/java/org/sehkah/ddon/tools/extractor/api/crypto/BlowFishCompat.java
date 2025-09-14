@@ -17,8 +17,6 @@ import java.util.stream.IntStream;
 public final class BlowFishCompat {
     private static final int[] INITIAL_P;
     private static final int[][] INITIAL_S;
-    private final int[] p;
-    private final int[] s0, s1, s2, s3;
 
     static {
         INITIAL_P = new int[]{
@@ -211,6 +209,9 @@ public final class BlowFishCompat {
         };
     }
 
+    private final int[] p;
+    private final int[] s0, s1, s2, s3;
+
     public BlowFishCompat(final byte[] cipherKey) {
         if (cipherKey.length == 0 || cipherKey.length > 56) {
             throw new IllegalArgumentException("Cipher key must be between 1 and 56 bytes.");
@@ -298,6 +299,37 @@ public final class BlowFishCompat {
         xl ^= (((s0[xr >>> 24] + s1[(xr >>> 16) & 0xff]) ^ s2[(xr >>> 8) & 0xff]) + s3[xr & 0xff]) ^ p[16];
         xr ^= p[17];
         return new int[]{xr, xl};
+    }
+
+    /**
+     * Reads a 32-bit little-endian integer from a byte array at a given offset.
+     */
+    private static int bytesToIntLE(final byte[] bytes, final int offset) {
+        return (bytes[offset] & 0xFF) |
+                ((bytes[offset + 1] & 0xFF) << 8) |
+                ((bytes[offset + 2] & 0xFF) << 16) |
+                ((bytes[offset + 3] & 0xFF) << 24);
+    }
+
+    /**
+     * Writes a 32-bit integer to a byte array at a given offset in little-endian format.
+     */
+    private static void intToBytesLE(final int value, final byte[] bytes, final int offset) {
+        bytes[offset] = (byte) (value);
+        bytes[offset + 1] = (byte) (value >> 8);
+        bytes[offset + 2] = (byte) (value >> 16);
+        bytes[offset + 3] = (byte) (value >> 24);
+    }
+
+    /**
+     * Reads a 32-bit big-endian integer from a wrapping byte array. Used for key setup.
+     */
+    private static int bytesToIntBE(final byte[] bytes, int offset) {
+        final int len = bytes.length;
+        return ((bytes[offset] & 0xFF) << 24) |
+                ((bytes[(offset + 1) % len] & 0xFF) << 16) |
+                ((bytes[(offset + 2) % len] & 0xFF) << 8) |
+                (bytes[(offset + 3) % len] & 0xFF);
     }
 
     public byte[] encryptECBParallel(final byte[] pt) {
@@ -414,38 +446,5 @@ public final class BlowFishCompat {
         // Final swap is reversed; xl is now the right part, xr the left
         intToBytesLE(xr, block, offset);
         intToBytesLE(xl, block, offset + 4);
-    }
-
-    // --- Byte Conversion Helpers ---
-
-    /**
-     * Reads a 32-bit little-endian integer from a byte array at a given offset.
-     */
-    private static int bytesToIntLE(final byte[] bytes, final int offset) {
-        return (bytes[offset] & 0xFF) |
-                ((bytes[offset + 1] & 0xFF) << 8) |
-                ((bytes[offset + 2] & 0xFF) << 16) |
-                ((bytes[offset + 3] & 0xFF) << 24);
-    }
-
-    /**
-     * Writes a 32-bit integer to a byte array at a given offset in little-endian format.
-     */
-    private static void intToBytesLE(final int value, final byte[] bytes, final int offset) {
-        bytes[offset] = (byte) (value);
-        bytes[offset + 1] = (byte) (value >> 8);
-        bytes[offset + 2] = (byte) (value >> 16);
-        bytes[offset + 3] = (byte) (value >> 24);
-    }
-
-    /**
-     * Reads a 32-bit big-endian integer from a wrapping byte array. Used for key setup.
-     */
-    private static int bytesToIntBE(final byte[] bytes, int offset) {
-        final int len = bytes.length;
-        return ((bytes[offset] & 0xFF) << 24) |
-                ((bytes[(offset + 1) % len] & 0xFF) << 16) |
-                ((bytes[(offset + 2) % len] & 0xFF) << 8) |
-                (bytes[(offset + 3) % len] & 0xFF);
     }
 }
