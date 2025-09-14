@@ -29,7 +29,8 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Callable;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -41,7 +42,9 @@ public class ExtractResourceCommand implements Callable<Integer> {
     private final FileChangeDetector fileChangeDetector = new FileChangeDetector();
     private final ArchiveUnpacker archiveUnpacker = new ArchiveUnpacker();
     private ClientResourceFileManager clientResourceFileManager;
-    private TextureExporter textureExporter; // lazy init after manager
+    private TextureExporter textureExporter;
+    private ExecutorService executorService;
+
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -235,6 +238,53 @@ public class ExtractResourceCommand implements Callable<Integer> {
         return StatusCode.OK;
     }
 
+    private ExecutorService createOptimizedExecutorService() {
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        // For mixed CPU/I/O workload, use more threads than CPU cores
+        // I/O operations can benefit from higher thread count due to blocking operations
+        int threadPoolSize = Math.max(availableProcessors * 2, 8); // Minimum 8 threads for I/O throughput
+        log.debug("Creating executor service with {} threads for optimal CPU/I/O throughput", threadPoolSize);
+        // Custom thread factory for better debugging and monitoring
+        ThreadFactory threadFactory = new ThreadFactory() {
+            private final AtomicInteger threadNumber = new AtomicInteger(1);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread thread = new Thread(r, "resource-extractor-" + threadNumber.getAndIncrement());
+                thread.setDaemon(true); // Don't prevent JVM shutdown
+                return thread;
+            }
+        };
+        return Executors.newFixedThreadPool(threadPoolSize, threadFactory);
+    }
+
+    private List<StatusCode> processFilesInParallel(List<Path> filePaths, Serializer<Resource> serializer, boolean writeOutputToFile) {
+        executorService = createOptimizedExecutorService();
+        try {
+            List<CompletableFuture<StatusCode>> futures = filePaths.stream()
+                    .map(path -> CompletableFuture.supplyAsync(
+                            () -> extractSingleFile(path, serializer, writeOutputToFile),
+                            executorService))
+                    .toList();
+            CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+            allOf.join();
+            return futures.stream().map(CompletableFuture::join).toList();
+        } finally {
+            if (executorService != null && !executorService.isShutdown()) {
+                executorService.shutdown();
+                try {
+                    if (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
+                        log.warn("Executor service did not terminate gracefully, forcing shutdown");
+                        executorService.shutdownNow();
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    executorService.shutdownNow();
+                }
+            }
+        }
+    }
+
     @Override
     public Integer call() throws Exception {
         Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
@@ -243,17 +293,14 @@ public class ExtractResourceCommand implements Callable<Integer> {
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {
-                    // Use new filter builder (logic unchanged)
                     Predicate<Path> fileFilter = ResourceFileFilter.build(unpackArchives, unpackArchivesExclusively, ignoreExtensions);
-                    Stream<Path> filePathStream;
+                    List<Path> filteredFiles = files.filter(fileFilter).toList();
+                    List<StatusCode> statusCodes;
                     if (runInParallel) {
-                        filePathStream = files.toList().parallelStream();
+                        statusCodes = processFilesInParallel(filteredFiles, clientResourceFileManager.getStringSerializer(), writeOutputToFile);
                     } else {
-                        filePathStream = files.toList().stream();
+                        statusCodes = filteredFiles.stream().map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     }
-                    List<StatusCode> statusCodes = filePathStream
-                            .filter(fileFilter)
-                            .map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
                         log.warn("Failed to resource one or more resource files.");
                         return StatusCode.ERROR.ordinal();
