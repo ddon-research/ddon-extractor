@@ -6,9 +6,6 @@ module org.sehkah.ddon.tools.extractor.lib.season2 {
     requires org.apache.commons.lang3;
     requires org.apache.logging.log4j;
 
-    // Make javax.annotation.processing visible when merged (for log4j processors)
-    requires java.compiler;
-
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.dataformat.yaml;
