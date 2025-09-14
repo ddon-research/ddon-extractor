@@ -1,19 +1,21 @@
-package org.sehkah.ddon.tools.extractor.cli.logic;
+package org.sehkah.ddon.tools.extractor.cli.logic.commands;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.MurmurHash3;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
 import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.cli.logic.StatusCode;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.ArchiveUnpacker;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.FileChangeDetector;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.ResourceFileFilter;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.TextureExporter;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.DirectDrawSurface;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.Texture;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
@@ -24,11 +26,8 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.function.Predicate;
@@ -39,8 +38,10 @@ import java.util.stream.Stream;
         description = "Extracts the provided DDON resource file(s).")
 @SuppressWarnings("unused") // Fields are injected by picocli
 public class ExtractResourceCommand implements Callable<Integer> {
+    private final FileChangeDetector fileChangeDetector = new FileChangeDetector();
+    private final ArchiveUnpacker archiveUnpacker = new ArchiveUnpacker();
     private ClientResourceFileManager clientResourceFileManager;
-
+    private TextureExporter textureExporter; // lazy init after manager
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
@@ -158,33 +159,6 @@ public class ExtractResourceCommand implements Callable<Integer> {
         };
     }
 
-    public static long[] computeHash(byte[] data) {
-        return MurmurHash3.hash128x64(data, 0, data.length, 0);
-    }
-
-    /**
-     * Determines whether a file should be written by comparing size and hash.
-     * Returns true if the file does not exist or the content differs, false if identical.
-     */
-    private boolean shouldWrite(Path target, byte[] newBytes) {
-        try {
-            if (!Files.exists(target)) {
-                return true; // No file -> write
-            }
-            long existingSize = Files.size(target);
-            if (existingSize != newBytes.length) {
-                return true; // Size differs -> write
-            }
-            byte[] existingBytes = Files.readAllBytes(target);
-            long[] existingHash = computeHash(existingBytes);
-            long[] newHash = computeHash(newBytes);
-            return !Arrays.equals(newHash, existingHash);
-        } catch (IOException e) {
-            log.warn("Failed to compare existing file '{}' with new content, proceeding to overwrite.", target);
-            return true; // On error prefer safety (overwrite)
-        }
-    }
-
     private StatusCode extractSingleFile(Path filePath, Serializer<Resource> serializer, boolean writeOutputToFile) {
         BufferReader bufferReader;
         try {
@@ -226,43 +200,26 @@ public class ExtractResourceCommand implements Callable<Integer> {
             log.info("Outputting to file '{}'.", outputFilePath);
 
             try {
+                // Texture export
                 if (exportTextures && (deserializedOutput instanceof Texture t)) {
-                    DirectDrawSurface dds = t.toDirectDrawSurface();
-                    Path ddsPath = outputFolder.resolve(fileName + ".dds");
-                    byte[] ddsBytes = clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds);
-                    boolean writeDds = shouldWrite(ddsPath, ddsBytes);
-                    if (!writeDds) {
-                        log.debug("Skipping unchanged DDS file '{}'.", ddsPath);
-                    } else {
-                        Files.write(ddsPath, ddsBytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    if (textureExporter == null) {
+                        textureExporter = new TextureExporter(clientResourceFileManager, fileChangeDetector);
                     }
+                    textureExporter.export(t, outputFolder, fileName, outputFile);
                 }
 
                 // Main serialized output
                 byte[] newBytes = serializedOutput.getBytes(StandardCharsets.UTF_8);
-                boolean writeMain = shouldWrite(outputFilePath, newBytes);
+                boolean writeMain = fileChangeDetector.shouldWrite(outputFilePath, newBytes);
                 if (!writeMain) {
                     log.debug("Skipping unchanged output file '{}'.", outputFilePath);
                 } else {
                     Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
                 }
 
+                // Archive unpack
                 if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
-                    outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
-                    for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
-                        String arcFile = entry.getKey();
-                        byte[] bytes = entry.getValue();
-                        Path arcFilePath = Paths.get(arcFile);
-                        Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
-                        boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
-                        if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
-                            log.error("Failed to create folders for arc file.");
-                            return StatusCode.ERROR;
-                        }
-                        Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
-                        log.info("Outputting to file '{}'.", arcOutputFilePath);
-                        Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                    }
+                    archiveUnpacker.unpack(archive, outputFolder, fileName);
                 }
             } catch (IOException e) {
                 log.error("Failed to write file '{}'", outputFilePath);
@@ -286,21 +243,8 @@ public class ExtractResourceCommand implements Callable<Integer> {
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {
-                    Predicate<Path> fileFilter;
-                    if (unpackArchives && unpackArchivesExclusively) {
-                        String arcFileExtension = ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive);
-                        fileFilter = path -> {
-                            String fileName = path.getFileName().toString();
-                            return fileName.endsWith(arcFileExtension);
-                        };
-                    } else {
-                        Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
-                        supportedFileExtensions.removeAll(ignoreExtensions);
-                        fileFilter = path -> {
-                            String fileName = path.getFileName().toString();
-                            return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
-                        };
-                    }
+                    // Use new filter builder (logic unchanged)
+                    Predicate<Path> fileFilter = ResourceFileFilter.build(unpackArchives, unpackArchivesExclusively, ignoreExtensions);
                     Stream<Path> filePathStream;
                     if (runInParallel) {
                         filePathStream = files.toList().parallelStream();

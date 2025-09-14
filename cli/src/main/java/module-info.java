@@ -15,4 +15,6 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires org.sehkah.ddon.tools.extractor.lib.api;
 
     opens org.sehkah.ddon.tools.extractor.cli.logic to info.picocli;
+    opens org.sehkah.ddon.tools.extractor.cli.logic.util to info.picocli;
+    opens org.sehkah.ddon.tools.extractor.cli.logic.commands to info.picocli;
 }

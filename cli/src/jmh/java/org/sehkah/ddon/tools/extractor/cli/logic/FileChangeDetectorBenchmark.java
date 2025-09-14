@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.FileChangeDetector;
 
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @State(Scope.Benchmark)
-public class ExtractResourceCommandBenchmark {
+public class FileChangeDetectorBenchmark {
     private final Map<String, byte[]> dataSets = new HashMap<>();
     @Param({"SMALL", "MEDIUM", "LARGE"})
     public String sizeProfile;
@@ -32,6 +33,6 @@ public class ExtractResourceCommandBenchmark {
     @Benchmark
     public void hashDataset(Blackhole bh) {
         byte[] data = dataSets.get(sizeProfile);
-        bh.consume(ExtractResourceCommand.computeHash(data));
+        bh.consume(FileChangeDetector.computeHash(data));
     }
 }

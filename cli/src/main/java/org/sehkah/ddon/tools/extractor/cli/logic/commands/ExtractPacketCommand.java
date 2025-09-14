@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.cli.logic;
+package org.sehkah.ddon.tools.extractor.cli.logic.commands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
@@ -12,6 +12,7 @@ import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
 import org.sehkah.ddon.tools.extractor.api.packet.Packet;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.cli.logic.StatusCode;
 import org.sehkah.ddon.tools.extractor.season3.logic.packet.PacketManagerSeason3;
 import picocli.CommandLine;
 
