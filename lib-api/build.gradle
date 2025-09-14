@@ -18,12 +18,12 @@ dependencies {
 jmh {
     benchmarkMode = ['thrpt']
 
-    iterations = 5
+    iterations = 2
     fork = 1
     warmupIterations = 1
 
     resultFormat = 'CSV'
     zip64 = true
     jmhVersion = '1.37'
-    duplicateClassesStrategy = DuplicatesStrategy.FAIL
+    jvm = javaLauncher.map {it.executablePath.asFile.toString()}
 }
