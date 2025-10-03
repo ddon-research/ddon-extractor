@@ -52,7 +52,7 @@ jlink {
             ]
         }
     }
-    forceMerge('jackson', 'slf4j', 'log4j', 'snakeyaml')
+    forceMerge('jackson', 'slf4j', 'slf4j2.impl', 'log4j', 'snakeyaml')
     mergedModule {
         additive = true
         uses 'com.fasterxml.jackson.databind.Module'
@@ -60,10 +60,10 @@ jlink {
         uses 'org.apache.logging.log4j.core.util.ContextDataProvider'
         uses 'org.apache.logging.log4j.spi.Provider'
         uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory'
-        requires transitive 'java.xml'
-        requires transitive 'java.management'
-        requires transitive 'java.desktop'
-        requires transitive 'java.naming'
+        requires 'java.xml'
+        requires 'java.management'
+        requires 'java.desktop'
+        requires 'java.naming'
         excludeProvides servicePattern: 'javax.annotation.processing.Processor'
     }
 }

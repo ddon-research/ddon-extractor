@@ -29,4 +29,6 @@ module org.sehkah.ddon.tools.extractor.lib.api {
     exports org.sehkah.ddon.tools.extractor.api.logic.resource;
     exports org.sehkah.ddon.tools.extractor.api.logic.resource.deserialization;
     exports org.sehkah.ddon.tools.extractor.api.logic.resource.serialization;
+
+    opens org.sehkah.ddon.tools.extractor.api.logic.resource to com.fasterxml.jackson.databind;
 }
