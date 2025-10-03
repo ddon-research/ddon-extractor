@@ -17,6 +17,7 @@ module org.sehkah.ddon.tools.extractor.lib.common {
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.collision_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.craft_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.effect_common;
@@ -35,6 +36,7 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.skill;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.sound;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.stage;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.texture;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.ui;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.wep_res_table;
@@ -45,6 +47,7 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.binary.meta;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.character_edit;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.character_edit_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.collision_common;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.craft_common.meta;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.craft_common;
@@ -75,6 +78,8 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.sound;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage.meta;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.stage;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.meta;
+    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.tutorial_guide;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui.meta;
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.ui;
@@ -86,7 +91,4 @@ module org.sehkah.ddon.tools.extractor.lib.common {
     exports org.sehkah.ddon.tools.extractor.common.logic.resource.serialization.game_common;
 
     exports org.sehkah.ddon.tools.extractor.common.logic.resource;
-    exports org.sehkah.ddon.tools.extractor.common.logic.resource.deserialization.character_edit_common;
-    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture;
-    exports org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.meta;
 }
