@@ -1,7 +1,5 @@
 plugins {
     id 'java-library'
-    id 'jacoco'
-    id 'project-report'
 }
 
 dependencies {
@@ -13,4 +11,10 @@ dependencies {
 
     runtimeOnly lib.jackson.core
     runtimeOnly lib.jackson.databind
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Automatic-Module-Name': 'org.sehkah.ddon.tools.extractor.lib.common')
+    }
 }

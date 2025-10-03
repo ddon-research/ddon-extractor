@@ -1,8 +1,6 @@
 plugins {
     id 'java'
     id 'application'
-    id 'jacoco'
-    id 'project-report'
     id 'org.beryx.jlink'
     id 'me.champeau.jmh'
 }
@@ -62,6 +60,11 @@ jlink {
         uses 'org.apache.logging.log4j.core.util.ContextDataProvider'
         uses 'org.apache.logging.log4j.spi.Provider'
         uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory'
+        requires transitive 'java.xml'
+        requires transitive 'java.management'
+        requires transitive 'java.desktop'
+        requires transitive 'java.naming'
+        excludeProvides servicePattern: 'javax.annotation.processing.Processor'
     }
 }
 

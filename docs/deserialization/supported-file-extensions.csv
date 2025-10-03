@@ -1,202 +1,205 @@
 #extension	resource	jamcrc
-.2EA55F30	rPlayerExpTable	782589744
-.3FD51519	rCraftSkillGain	1070929177
-.4BB8A7C5	rCraftSkillBurst	1270392773
-.46ECE09C	rCraftSkillStr	1189929116
-.60BA5E0B	rCraftWepQualityParam	1622826507
-.5362A636	rPartsCtrlTable	1398974006
-.5810D1F1	rCraftRecipe	1477497329
-.767645BE	rCraftArmQualityParam	1987462590
-.aad	rAbilityAddData	1498868292
-.abd	rAbilityData	802288012
-.abl	rAbilityList	1189804791
-.ach	rAchievementHeader	2140329819
-.acv	rAchievement	926115633
-.ajp	rAdjustParam	1078391265
-.ala	rArchiveListArray	73664048
-.alp	rAdjLimitParam	1314760703
-.aml	rAnimalData	1103478990
-.amr	rAreaMasterRankData	1875774790
-.ams	rAreaMasterSpotData	1260472660
-.amsd	rAreaMasterSpotDetailData	619564080
-.aps	rAIPawnSkillParamTbl	916178101
-.arc	rArchive	1938099461
-.ari	rAreaInfo	1878491666
-.arj	rAreaInfoJointArea	1643385479
-.ars	rAreaInfoStage	1904376660
-.bjt	rBakeJoint	1232235360
-.blow_save	rBlowSaveEmLvParam	1587114433
-.btb	rBitTable	1397543980
-.caip	rCaughtInfoParam	1795105297
-.ccp	rCraftCapPass	1917387096
-.cda	rCalcDamageAtdmAdj	2078967848
-.cdarate	rCalcDamageAtdmAdjRate	1522840064
-.cdl	rCalcDamageLvAdj	995828923
-.cdrr	rCaughtDamageRateRefTbl	784525450
-.cdrt	rCaughtDamageRateTbl	2108314941
-.cee	rCraftElementExp	713965367
-.chant	rMagicChantParam	96263325
-.cip	rCatchInfoParam	1099706359
-.ckb	rCraftSkillBurst	1270392773
-.ckc	rCraftSkillCost	2003217637
-.ckg	rCraftSkillGain	1070929177
-.cks	rCraftSkillSpd	1448382665
-.ckst	rCraftSkillStr	1189929116
-.cpe	rCharParamEnemy	63560526
-.cqa	rCraftArmQualityParam	1987462590
-.cqi	rCycleQuestInfo	663721926
-.cqr	rCraftQuality	1555372920
-.cqw	rCraftWepQualityParam	1622826507
-.crs	rChildRegionStatusParam	1082391169
-.csd	rCustomSkillData	1854846791
-.csi	rCycleContentsSortieInfo	2047896008
-.cuex	rCraftUpGradeExp	1419111675
-.dds	DirectDrawSurface	1501889384
-.dgm	rGUIDogmaOrb	2092429145
-.dmi	rDungeonMarker	622238481
-.dtt	rEmDmgTimerTbl	1512467920
-.ebi_sv	rEmBaseInfoSv	1220980978
-.ebs	rEnemyBloodStain	1584434270
-.edt_color_def	rCharacterEditColorDef	425204406
-.edt_tex_pal	rCharacterEditTexturePalette	46219037
-.edt_voice_pal	rCharacterEditVoicePalette	910351872
-.edv	rEmDamageDirInfo	337955055
-.ele	rEnemyLocalEst	1614543981
-.eli	rVfxLightInfluence	497059326
-.ema	rEnemyMaterialTable	2122691624
-.emg	rEnemyGroup	1784705244
-.eoc	rOcdElectricParam	117095616
-.epl	rEnhancedParamList	1477503768
-.equip_preset	rEquipPreset	1896271990
-.era	rEnemyReactResEx	50557339
-.esi	rEndContentsSortieInfo	7329906
-.esl	rEmScaleTable	1472898117
-.esn	rEmSoundTable	365734412
-.esp	rEditStageParam	549097020
-.est	rEnemyStatusChange	1257313462
-.evd	rEvidenceList	1636254564
-.evl	rEvaluationTable	857702472
-.evp	rEventParam	959750586
-.evsi	rEventViewerSetInfo	1984359139
-.ewk	rEmWorkRateTable	1503541994
-.ewp	rEmWarpParam	384039007
-.exp	rPlayerExpTable	782589744
-.faa	rFieldAreaAdjoinList	1283462504
-.fal	rFieldAreaList	1091873868
-.fmd	rFieldMapData	889156114
-.fmi	rFieldAreaMarkerInfo	447335827
-.fnd	rFurnitureData	814945820
-.fng	rFurnitureGroup	2137368320
-.fni	rFurnitureItem	41664609
-.fnl	rFurnitureLayout	52697011
-.fsm	rAIFSM	1723094544
-.gat	rGatheringItem	1000990922
-.gmd	rGUIMessage	606843546
-.gmp	rGUIMapSetting	768588360
-.gpl	rLayoutGroupParamList	708256813
-.hmcs	rHumanEnemyCustomSkill	1821946757
-.hmeq	rHumanEnemyEquip	525549043
-.ipa	rItemList	359893203
-.jbi	rJukeBoxItem	1394130695
-.jlt2	rJobLevelUpTbl2	1872280229
-.jmc	rJobMasterCtrl	842173823
-.jmp	rJumpParamTbl	13719235
-.jnt_info	rJointInfo	1187224004
-.jnt_order	rJointOrder	1310782531
-.jobbase	rJobBaseParam	751624955
-.jtq	rJobTutorialQuestList	969274645
-.kctt	rKeyConfigTextTable	1222454804
-.lai	rLandInfo	14904867
-.lcd	rLocationData	1757389591
-.lcp	rLargeCameraParam	1671379672
-.lop	rLayoutPreset	1630537847
-.lot	rLayout	355479284
-.lup	rEmLvUpParam	1142037459
-.mcw	rMagicCommandWord	1566392246
-.mgcc	rMagicCommandList	1516548799
-.mra	rMyRoomActParam	1069254348
-.msd	rMapSpotData	1907720775
-.msl	rMapSpotStageList	1394327073
-.mss	rMsgSet	322508730
-.nav	rNavigationMesh	1324456003
-.nci	rNpcConstItem	492253165
-.ncs	rNpcCustomSkill	1196997254
-.ndp	rNamedParam	1531000865
-.nll	rNpcLedgerList	419776405
-.nmp	rNpcMeetingPlace	1387310490
-.nsd	rNormalSkillData	1469476204
-.nsp	rNpcIsNoSetPS3	408278577
-.oIp	rOcdImmuneParamRes	1016626567
-.omk	rOmKey	1453598347
-.omp	rOmParam	1368919039
-.ompp	rOmParamPart	1382353828
-.osp	rOcdStatusParamRes	2141185255
-.pam	rAIPawnAutoMotionTbl	833182854
-.pao	rAIPawnOrder	1054533347
-.pas	rAIPawnActNoSwitch	2082815638
-.paw	rAIPawnAutoWordTbl	399271175
-.pep	rAIPawnEmParam	2129426602
-.phs	rPrologueHmStatus	1456563412
-.planet	rPlanetariumItem	813108029
-.ppr	rPartnerReactParam	141939141
-.ppt	rPartnerPawnTalk	344238075
-.pqi	rPackageQuestInfo	1113093352
-.pqt	rPawnQuestTalk	1085186063
-.prs	rParentRegionStatusParam	636967631
-.psi	rPlPartsInfo	249867213
-.ptc	rPartsCtrlTable	1398974006
-.push_rate	rPushRate	1455095984
-.qhd	rQuestHistoryData	1046479090
-.qmi	rQuestMarkerInfo	1251156012
-.qsq	rQuestSequenceList	830186358
-.qst	rQuestList	1921309429
-.qtd	rQuestTextData	323398500
-.rac	rReaction	2132851402
-.rag	rRageTable	1238282276
-.rcp	rCraftRecipe	1477497329
-.repgmdlist	rReplaceWardGmdList	202710488
-.rsl	rChildRegionStatusParamList	1316627834
-.rtex	rRenderTargetTexture	2013850128
-.rwr	rRoomWearParam	929734854
-.sal	rStageAdjoinList	166465326
-.sal2	rStageAdjoinList2	336113728
-.sbb	rSoundBossBgm	1977996674
-.sbv	rShrinkBlowValue	695861062
-.sca	rStageCustom	1509381429
-.scc	rStageConnect	386919230
-.sce	rScenario	1706194405
-.sck	rStatusCheck	959202904
-.scp	rStageCustomParts	541275337
-.scpx	rStageCustomPartsEx	1750923967
-.sdt	rStaminaDecTbl	261643883
-.sg_tbl	rStatusGainTable	976164631
-.sja	rStageJoint	1562763786
-.slt	rStageList	558901313
-.smc	rSituationMsgCtrl	288661158
-.smp	rStageMap	885933509
-.sn2	rAISensor	2045723134
-.sot	rSoundOptData	1799154948
-.spg_tbl	rShopGoods	1380209768
-.sri	rShotReqInfo	650765880
-.sri2	rShotReqInfo2	1618157816
-.sta	rStartPosArea	1437614373
-.sti	rStageInfo	772923662
-.stp	rStartPos	1730093530
-.sts	rStageToSpot	774129431
-.tcm	rTbl2ChatMacro	1859689034
-.tco	rTargetCursorOffset	1606480357
-.tde	rTexDetailEdit	1868748149
-.tdm	rTutorialDialogMessage	2106523837
-.tex	rTexture	606035435
-.tlt	rTutorialList	1289541045
-.tqg	rTutorialQuestGroup	56061566
-.ujp	rNpcIsUseJobParamEx	1505976654
-.wal	rWarpLocation	860825677
-.wcrt	rWepCateResTbl	1091215607
-.wp2	rWaypoint2	183010754
-.wpn_ofs	rWeaponOffset	820231738
-.wpt	rWaypoint	1747707324
-.wrt	rWeaponResTable	478500771
-.wsi	rWeatherStageInfo	346535369
-.wtf	rWeatherFogInfo	801480517
-.wtl	rWeatherParamInfoTbl	1935507962
+.2EA55F30,rPlayerExpTable,782589744
+.3FD51519,rCraftSkillGain,1070929177
+.4BB8A7C5,rCraftSkillBurst,1270392773
+.46ECE09C,rCraftSkillStr,1189929116
+.60BA5E0B,rCraftWepQualityParam,1622826507
+.5362A636,rPartsCtrlTable,1398974006
+.5810D1F1,rCraftRecipe,1477497329
+.767645BE,rCraftArmQualityParam,1987462590
+.aad,rAbilityAddData,1498868292
+.abd,rAbilityData,802288012
+.abl,rAbilityList,1189804791
+.ach,rAchievementHeader,2140329819
+.acv,rAchievement,926115633
+.ajp,rAdjustParam,1078391265
+.ala,rArchiveListArray,73664048
+.alp,rAdjLimitParam,1314760703
+.aml,rAnimalData,1103478990
+.amr,rAreaMasterRankData,1875774790
+.ams,rAreaMasterSpotData,1260472660
+.amsd,rAreaMasterSpotDetailData,619564080
+.aps,rAIPawnSkillParamTbl,916178101
+.arc,rArchive,1938099461
+.ari,rAreaInfo,1878491666
+.arj,rAreaInfoJointArea,1643385479
+.ars,rAreaInfoStage,1904376660
+.bjt,rBakeJoint,1232235360
+.blow_save,rBlowSaveEmLvParam,1587114433
+.btb,rBitTable,1397543980
+.caip,rCaughtInfoParam,1795105297
+.ccp,rCraftCapPass,1917387096
+.cda,rCalcDamageAtdmAdj,2078967848
+.cdarate,rCalcDamageAtdmAdjRate,1522840064
+.cdl,rCalcDamageLvAdj,995828923
+.cdrr,rCaughtDamageRateRefTbl,784525450
+.cdrt,rCaughtDamageRateTbl,2108314941
+.cee,rCraftElementExp,713965367
+.chant,rMagicChantParam,96263325
+.cip,rCatchInfoParam,1099706359
+.ckb,rCraftSkillBurst,1270392773
+.ckc,rCraftSkillCost,2003217637
+.ckg,rCraftSkillGain,1070929177
+.cks,rCraftSkillSpd,1448382665
+.ckst,rCraftSkillStr,1189929116
+.cpe,rCharParamEnemy,63560526
+.cqa,rCraftArmQualityParam,1987462590
+.cqi,rCycleQuestInfo,663721926
+.cqr,rCraftQuality,1555372920
+.cqw,rCraftWepQualityParam,1622826507
+.crs,rChildRegionStatusParam,1082391169
+.csd,rCustomSkillData,1854846791
+.csi,rCycleContentsSortieInfo,2047896008
+.cuex,rCraftUpGradeExp,1419111675
+.dds,DirectDrawSurface,1501889384
+.dgm,rGUIDogmaOrb,2092429145
+.dmi,rDungeonMarker,622238481
+.dtt,rEmDmgTimerTbl,1512467920
+.ebi_sv,rEmBaseInfoSv,1220980978
+.ebs,rEnemyBloodStain,1584434270
+.edt_color_def,rCharacterEditColorDef,425204406
+.edt_tex_pal,rCharacterEditTexturePalette,46219037
+.edt_voice_pal,rCharacterEditVoicePalette,910351872
+.edv,rEmDamageDirInfo,337955055
+.eir,rItemEquipJobInfoList,1873708728
+.ele,rEnemyLocalEst,1614543981
+.eli,rVfxLightInfluence,497059326
+.ema,rEnemyMaterialTable,2122691624
+.emg,rEnemyGroup,1784705244
+.eoc,rOcdElectricParam,117095616
+.epl,rEnhancedParamList,1477503768
+.equip_preset,rEquipPreset,1896271990
+.era,rEnemyReactResEx,50557339
+.esi,rEndContentsSortieInfo,7329906
+.esl,rEmScaleTable,1472898117
+.esn,rEmSoundTable,365734412
+.esp,rEditStageParam,549097020
+.est,rEnemyStatusChange,1257313462
+.evd,rEvidenceList,1636254564
+.evl,rEvaluationTable,857702472
+.evp,rEventParam,959750586
+.evsi,rEventViewerSetInfo,1984359139
+.ewk,rEmWorkRateTable,1503541994
+.ewp,rEmWarpParam,384039007
+.exp,rPlayerExpTable,782589744
+.faa,rFieldAreaAdjoinList,1283462504
+.fal,rFieldAreaList,1091873868
+.fmd,rFieldMapData,889156114
+.fmi,rFieldAreaMarkerInfo,447335827
+.fnd,rFurnitureData,814945820
+.fng,rFurnitureGroup,2137368320
+.fni,rFurnitureItem,41664609
+.fnl,rFurnitureLayout,52697011
+.fsm,rAIFSM,1723094544
+.gat,rGatheringItem,1000990922
+.gmd,rGUIMessage,606843546
+.gmp,rGUIMapSetting,768588360
+.gpl,rLayoutGroupParamList,708256813
+.hmcs,rHumanEnemyCustomSkill,1821946757
+.hmeq,rHumanEnemyEquip,525549043
+.ipa,rItemList,359893203
+.jbi,rJukeBoxItem,1394130695
+.jlt2,rJobLevelUpTbl2,1872280229
+.jmc,rJobMasterCtrl,842173823
+.jmp,rJumpParamTbl,13719235
+.jnt_info,rJointInfo,1187224004
+.jnt_order,rJointOrder,1310782531
+.jobbase,rJobBaseParam,751624955
+.jtq,rJobTutorialQuestList,969274645
+.kctt,rKeyConfigTextTable,1222454804
+.lai,rLandInfo,14904867
+.lcd,rLocationData,1757389591
+.lcp,rLargeCameraParam,1671379672
+.lop,rLayoutPreset,1630537847
+.lot,rLayout,355479284
+.lup,rEmLvUpParam,1142037459
+.map,rMandraActionParam,2081294118
+.mcw,rMagicCommandWord,1566392246
+.mgcc,rMagicCommandList,1516548799
+.mra,rMyRoomActParam,1069254348
+.msd,rMapSpotData,1907720775
+.msl,rMapSpotStageList,1394327073
+.mss,rMsgSet,322508730
+.nav,rNavigationMesh,1324456003
+.nci,rNpcConstItem,492253165
+.ncs,rNpcCustomSkill,1196997254
+.ndp,rNamedParam,1531000865
+.nll,rNpcLedgerList,419776405
+.nmp,rNpcMeetingPlace,1387310490
+.nsd,rNormalSkillData,1469476204
+.nsp,rNpcIsNoSetPS3,408278577
+.oIp,rOcdImmuneParamRes,1016626567
+.omk,rOmKey,1453598347
+.omp,rOmParam,1368919039
+.ompp,rOmParamPart,1382353828
+.osp,rOcdStatusParamRes,2141185255
+.pam,rAIPawnAutoMotionTbl,833182854
+.pao,rAIPawnOrder,1054533347
+.pas,rAIPawnActNoSwitch,2082815638
+.paw,rAIPawnAutoWordTbl,399271175
+.pep,rAIPawnEmParam,2129426602
+.phs,rPrologueHmStatus,1456563412
+.planet,rPlanetariumItem,813108029
+.ppr,rPartnerReactParam,141939141
+.ppt,rPartnerPawnTalk,344238075
+.pqi,rPackageQuestInfo,1113093352
+.pqt,rPawnQuestTalk,1085186063
+.prs,rParentRegionStatusParam,636967631
+.psi,rPlPartsInfo,249867213
+.ptc,rPartsCtrlTable,1398974006
+.push_rate,rPushRate,1455095984
+.qhd,rQuestHistoryData,1046479090
+.qmi,rQuestMarkerInfo,1251156012
+.qsq,rQuestSequenceList,830186358
+.qst,rQuestList,1921309429
+.qtd,rQuestTextData,323398500
+.rac,rReaction,2132851402
+.rag,rRageTable,1238282276
+.rcp,rCraftRecipe,1477497329
+.repgmdlist,rReplaceWardGmdList,202710488
+.rsl,rChildRegionStatusParamList,1316627834
+.rtex,rRenderTargetTexture,2013850128
+.rwr,rRoomWearParam,929734854
+.sal,rStageAdjoinList,166465326
+.sal2,rStageAdjoinList2,336113728
+.sbb,rSoundBossBgm,1977996674
+.sbv,rShrinkBlowValue,695861062
+.sca,rStageCustom,1509381429
+.scc,rStageConnect,386919230
+.sce,rScenario,1706194405
+.sck,rStatusCheck,959202904
+.scp,rStageCustomParts,541275337
+.scpx,rStageCustomPartsEx,1750923967
+.sdl,rScheduler,1275967545
+.sdt,rStaminaDecTbl,261643883
+.sg_tbl,rStatusGainTable,976164631
+.sja,rStageJoint,1562763786
+.slt,rStageList,558901313
+.smc,rSituationMsgCtrl,288661158
+.smp,rStageMap,885933509
+.sn2,rAISensor,2045723134
+.sot,rSoundOptData,1799154948
+.spg_tbl,rShopGoods,1380209768
+.sri,rShotReqInfo,650765880
+.sri2,rShotReqInfo2,1618157816
+.sta,rStartPosArea,1437614373
+.sti,rStageInfo,772923662
+.stp,rStartPos,1730093530
+.sts,rStageToSpot,774129431
+.tcm,rTbl2ChatMacro,1859689034
+.tco,rTargetCursorOffset,1606480357
+.tde,rTexDetailEdit,1868748149
+.tdm,rTutorialDialogMessage,2106523837
+.tex,rTexture,606035435
+.tlt,rTutorialList,1289541045
+.tqg,rTutorialQuestGroup,56061566
+.ujp,rNpcIsUseJobParamEx,1505976654
+.wal,rWarpLocation,860825677
+.wcrt,rWepCateResTbl,1091215607
+.wp2,rWaypoint2,183010754
+.wpn_ofs,rWeaponOffset,820231738
+.wpt,rWaypoint,1747707324
+.wrt,rWeaponResTable,478500771
+.wsi,rWeatherStageInfo,346535369
+.wtf,rWeatherFogInfo,801480517
+.wtl,rWeatherParamInfoTbl,1935507962

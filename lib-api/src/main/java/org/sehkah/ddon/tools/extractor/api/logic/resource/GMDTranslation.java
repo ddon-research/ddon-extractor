@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.api.logic.resource;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
 @ToString
@@ -11,28 +12,38 @@ import lombok.*;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder({
+        "#Index",
+        "Key",
+        "MsgJp",
+        "MsgEn",
+        "GmdPath",
+        "ArcPath",
+        "ArcName",
+        "ReadIndex"
+})
 public class GMDTranslation {
-    @JsonProperty("#Index")
+    @JsonProperty(value = "#Index")
     private String Index;
 
-    @JsonProperty("Key")
+    @JsonProperty(value = "Key")
     private String Key;
 
-    @JsonProperty("MsgJp")
+    @JsonProperty(value = "MsgJp")
     private String MsgJp;
 
-    @JsonProperty("MsgEn")
+    @JsonProperty(value = "MsgEn")
     private String MsgEn;
 
-    @JsonProperty("GmdPath")
+    @JsonProperty(value = "GmdPath")
     private String GmdPath;
 
-    @JsonProperty("ArcPath")
+    @JsonProperty(value = "ArcPath")
     private String ArcPath;
 
-    @JsonProperty("ArcName")
+    @JsonProperty(value = "ArcName")
     private String ArcName;
 
-    @JsonProperty("ReadIndex")
+    @JsonProperty(value = "ReadIndex")
     private int ReadIndex;
 }
