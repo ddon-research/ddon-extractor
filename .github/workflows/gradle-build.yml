@@ -26,6 +26,7 @@ concurrency:
 
 permissions:
   contents: read
+  actions: read
   checks: write
   pull-requests: write
 
@@ -63,6 +64,13 @@ jobs:
         cache-read-only: ${{ github.event_name == 'pull_request' }}
         cache-cleanup: on-success
         dependency-graph: ${{ github.ref == 'refs/heads/main' && 'generate-and-submit' || 'generate' }}
+        gradle-home-cache-strict-match: true
+        gradle-home-cache-includes: |
+          caches
+          notifications
+        gradle-home-cache-excludes: |
+          caches/journal-1
+          caches/**/gc.properties
 
     - name: Validate Gradle wrapper
       uses: gradle/actions/wrapper-validation@v4
@@ -100,12 +108,12 @@ jobs:
 
     - name: Generate test report
       if: always()
-      uses: dorny/test-reporter@v1
+      uses: dorny/test-reporter@v2
       with:
         name: Test Results (Java ${{ env.JAVA_VERSION }})
         path: '**/build/test-results/test/TEST-*.xml'
         reporter: java-junit
-        fail-on-error: false
+        fail-on-error: true
 
     - name: Upload test results
       if: always()
@@ -120,7 +128,6 @@ jobs:
         if-no-files-found: ignore
 
     - name: Build JPackage distribution
-      if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
       run: ./gradlew :cli:jpackage
       env:
         GITHUB_DEPENDENCY_GRAPH_ENABLED: false
@@ -132,6 +139,6 @@ jobs:
         name: distribution-jpackage
         path: |
           cli/build/jpackage/
-        retention-days: 7
+        retention-days: 1
         compression-level: 1
         if-no-files-found: ignore
