@@ -1,12 +1,13 @@
 name: CD - Windows JPackage
 
 on:
-  pull_request:
-    types: [ closed ]
+  push:
+    branches:
+      - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.run_id }}
-  cancel-in-progress: false
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -16,19 +17,14 @@ permissions:
 
 jobs:
   windows-jpackage:
-    # Run only when the PR was merged into main
-    if: ${{ github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' }}
     runs-on: windows-latest
     timeout-minutes: 30
     defaults:
       run:
         shell: bash
     steps:
-      - name: Checkout merged commit (main)
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.merge_commit_sha }}
-          fetch-depth: 1
 
       - name: Set up JDK 25
         uses: actions/setup-java@v4
