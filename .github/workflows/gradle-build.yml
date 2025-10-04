@@ -11,7 +11,7 @@ on:
       - 'output/**'
       - '*.log'
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: [ "main" ]
     paths-ignore:
       - 'docs/**'
       - '**/*.md'
@@ -30,7 +30,6 @@ permissions:
   checks: write
   pull-requests: write
 
-# Use bash uniformly across runners to make ./gradlew consistent
 defaults:
   run:
     shell: bash
@@ -42,9 +41,14 @@ jobs:
   build-test-package:
     name: Build, Test & Package
     runs-on: windows-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
+    env:
+      GITHUB_DEPENDENCY_GRAPH_ENABLED: false
     permissions:
-      contents: write
+      contents: read
+      checks: write
+      pull-requests: write
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -75,16 +79,8 @@ jobs:
     - name: Validate Gradle wrapper
       uses: gradle/actions/wrapper-validation@v4
 
-    - name: Generate dependency graph
-      if: github.ref == 'refs/heads/main' || github.event_name == 'pull_request'
-      run: ./gradlew dependencies --configuration runtimeClasspath
-      env:
-        GITHUB_DEPENDENCY_GRAPH_ENABLED: true
-
     - name: Check dependency updates
       run: ./gradlew dependencyUpdates -Drevision=release
-      env:
-        GITHUB_DEPENDENCY_GRAPH_ENABLED: false
 
     - name: Upload dependency report
       uses: actions/upload-artifact@v4
@@ -98,13 +94,9 @@ jobs:
 
     - name: Assemble (no tests)
       run: ./gradlew assemble
-      env:
-        GITHUB_DEPENDENCY_GRAPH_ENABLED: false
 
     - name: Run tests
       run: ./gradlew test
-      env:
-        GITHUB_DEPENDENCY_GRAPH_ENABLED: false
 
     - name: Generate test report
       if: always()
@@ -129,8 +121,6 @@ jobs:
 
     - name: Build JPackage distribution
       run: ./gradlew :cli:jpackage
-      env:
-        GITHUB_DEPENDENCY_GRAPH_ENABLED: false
 
     - name: Upload distribution artifacts
       if: always()
