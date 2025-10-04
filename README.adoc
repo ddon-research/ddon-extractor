@@ -3,7 +3,7 @@
 
 == About
 
-image::https://github.com/Sehkah/ddon-extractor/actions/workflows/gradle-build.yml/badge.svg[]
+image::https://github.com/Sehkah/ddon-extractor/actions/workflows/ci.yml/badge.svg[]
 
 a minimal CLI to extract data from DDON's client resources.
 
