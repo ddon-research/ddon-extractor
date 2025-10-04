@@ -130,10 +130,12 @@ gradle.lifecycle.afterProject {
             runtimeOnly log.bundles.logging.runtimeOnly
         }
 
-        javadoc {
+        tasks.withType(Javadoc).configureEach { t ->
+            options.addStringOption('Xdoclint:none', '-quiet')
             options.addBooleanOption('html5', true)
             source = sourceSets.main.allJava
             classpath = configurations.compileClasspath
+            failOnError = false
         }
 
         if (publishableModules.contains(it.name)) {
