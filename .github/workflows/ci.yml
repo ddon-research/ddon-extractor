@@ -37,8 +37,8 @@ jobs:
           cache-cleanup: on-success
           cache-read-only: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork }}
 
-      - name: Build & Test
-        run: ./gradlew --no-daemon --info check assemble
+      - name: Build & Test with Gradle
+        run: ./gradlew --build-cache --no-daemon --info check assemble
 
       - name: Publish Test Report
         if: always()
