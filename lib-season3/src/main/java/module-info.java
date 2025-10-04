@@ -25,9 +25,12 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
 
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.binary;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.camera;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.EM;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.em_common;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.enhanced_param;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.event;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.fieldarea;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.game_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.gui_cmn;
@@ -42,15 +45,19 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.skill;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.stage;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.tutorial_guide;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.menu_evidence_list;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui.uGUIKeyConfig;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.deserialization.ui;
 
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.base;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.binary;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.camera;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.clankyoten;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.EM;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.em_common;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.enhanced_param;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.event;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.fieldarea;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.game_common;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.gui_cmn;
@@ -65,6 +72,7 @@ module org.sehkah.ddon.tools.extractor.lib.season3 {
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.skill;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.stage;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.tutorial_guide;
+    exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.menu_evidence_list;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIAreaMaster;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui.uGUIKeyConfig;
     exports org.sehkah.ddon.tools.extractor.season3.logic.resource.entity.ui;

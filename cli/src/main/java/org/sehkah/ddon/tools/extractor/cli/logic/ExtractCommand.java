@@ -1,6 +1,8 @@
 package org.sehkah.ddon.tools.extractor.cli.logic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.sehkah.ddon.tools.extractor.cli.logic.commands.ExtractPacketCommand;
+import org.sehkah.ddon.tools.extractor.cli.logic.commands.ExtractResourceCommand;
 import picocli.CommandLine;
 
 @Slf4j

@@ -1,9 +1,8 @@
 plugins {
     id 'java'
     id 'application'
-    id 'jacoco'
-    id 'project-report'
     id 'org.beryx.jlink'
+    id 'me.champeau.jmh'
 }
 
 dependencies {
@@ -15,6 +14,7 @@ dependencies {
 
     implementation cli.picocli
     implementation cli.jackson.dataformat.yaml
+    implementation cli.commons.codec
 }
 
 tasks.distTar.enabled = false
@@ -52,7 +52,7 @@ jlink {
             ]
         }
     }
-    forceMerge('jackson', 'slf4j', 'log4j', 'snakeyaml')
+    forceMerge('jackson', 'slf4j', 'slf4j2.impl', 'log4j', 'snakeyaml')
     mergedModule {
         additive = true
         uses 'com.fasterxml.jackson.databind.Module'
@@ -60,5 +60,23 @@ jlink {
         uses 'org.apache.logging.log4j.core.util.ContextDataProvider'
         uses 'org.apache.logging.log4j.spi.Provider'
         uses 'org.apache.logging.log4j.message.ThreadDumpMessage.ThreadInfoFactory'
+        requires 'java.xml'
+        requires 'java.management'
+        requires 'java.desktop'
+        requires 'java.naming'
+        excludeProvides servicePattern: 'javax.annotation.processing.Processor'
     }
+}
+
+jmh {
+    benchmarkMode = ['thrpt']
+
+    iterations = 2
+    fork = 1
+    warmupIterations = 1
+
+    resultFormat = 'CSV'
+    zip64 = true
+    jmhVersion = '1.37'
+    jvm = javaLauncher.map { it.executablePath.asFile.toString() }
 }

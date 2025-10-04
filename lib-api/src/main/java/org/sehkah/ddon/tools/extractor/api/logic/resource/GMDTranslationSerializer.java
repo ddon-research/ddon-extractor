@@ -15,6 +15,7 @@ import java.util.List;
 
 public class GMDTranslationSerializer {
     private final CsvMapper objectMapper;
+    private static CsvSchema translationSchema;
 
     private GMDTranslationSerializer(CsvMapper objectMapper) {
         this.objectMapper = objectMapper;
@@ -22,6 +23,7 @@ public class GMDTranslationSerializer {
 
     public static GMDTranslationSerializer get() {
         CsvMapper objectMapper = initializeMapper();
+        translationSchema = objectMapper.schemaFor(GMDTranslation.class);
         return new GMDTranslationSerializer(objectMapper);
     }
 
@@ -45,7 +47,6 @@ public class GMDTranslationSerializer {
     }
 
     public List<GMDTranslation> deserialize(String serialized) {
-        CsvSchema translationSchema = objectMapper.schemaFor(GMDTranslation.class);
         try {
             return objectMapper
                     .readerForListOf(GMDTranslation.class)

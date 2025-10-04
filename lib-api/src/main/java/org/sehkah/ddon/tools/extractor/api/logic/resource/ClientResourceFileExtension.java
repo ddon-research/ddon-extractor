@@ -113,6 +113,7 @@ public enum ClientResourceFileExtension {
     rLayoutGroupParamList,
     rLayoutPreset,
     rLocationData,
+    rMandraActionParam,
     rMagicChantParam,
     rMagicCommandList,
     rMagicCommandWord,
@@ -157,6 +158,7 @@ public enum ClientResourceFileExtension {
     rReplaceWardGmdList,
     rRoomWearParam,
     rScenario,
+    rScheduler,
     rShopGoods,
     rShotReqInfo,
     rShotReqInfo2,
@@ -317,6 +319,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".lop", rLayoutPreset);
         fileExtensionToResourceMap.put(".lot", rLayout);
         fileExtensionToResourceMap.put(".lup", rEmLvUpParam);
+        fileExtensionToResourceMap.put(".map", rMandraActionParam);
         fileExtensionToResourceMap.put(".mcw", rMagicCommandWord);
         fileExtensionToResourceMap.put(".mgcc", rMagicCommandList);
         fileExtensionToResourceMap.put(".mra", rMyRoomActParam);
@@ -370,6 +373,7 @@ public enum ClientResourceFileExtension {
         fileExtensionToResourceMap.put(".sca", rStageCustom);
         fileExtensionToResourceMap.put(".scc", rStageConnect);
         fileExtensionToResourceMap.put(".sce", rScenario);
+        fileExtensionToResourceMap.put(".sdl", rScheduler);
         fileExtensionToResourceMap.put(".sck", rStatusCheck);
         fileExtensionToResourceMap.put(".scp", rStageCustomParts);
         fileExtensionToResourceMap.put(".scpx", rStageCustomPartsEx);

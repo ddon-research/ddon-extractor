@@ -217,6 +217,7 @@ public abstract class ClientResourceFileManager {
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rTexture, new FileHeader("TEX\0", 41117, 2), new TextureDeserializer(), new TextureSerializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rRenderTargetTexture, new FileHeader("RTX\0", 158, 2), new RenderTargetTextureDeserializer()));
         clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(DirectDrawSurface, new FileHeader("DDS ", 124, 4), new DirectDrawSurfaceDeserializer(), new DirectDrawSurfaceSerializer()));
+        clientResourceFileSet.add((ClientResourceFile<T>) new ClientResourceFile<>(rScheduler, new FileHeader("SDL\0", 22, 2), new SchedulerDeserializer()));
     }
 
     /**

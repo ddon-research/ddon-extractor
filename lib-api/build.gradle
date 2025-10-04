@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
-    id 'jacoco'
-    id 'project-report'
+    id 'me.champeau.jmh'
 }
 
 dependencies {
@@ -12,4 +11,17 @@ dependencies {
 
     runtimeOnly lib.jackson.core
     runtimeOnly lib.jackson.databind
+}
+
+jmh {
+    benchmarkMode = ['thrpt']
+
+    iterations = 2
+    fork = 1
+    warmupIterations = 1
+
+    resultFormat = 'CSV'
+    zip64 = true
+    jmhVersion = '1.37'
+    jvm = javaLauncher.map { it.executablePath.asFile.toString() }
 }

@@ -15,6 +15,7 @@ module org.sehkah.ddon.tools.extractor.lib.test {
     requires org.sehkah.ddon.tools.extractor.lib.season2;
     requires org.sehkah.ddon.tools.extractor.lib.season3;
     requires org.mockito;
+    requires org.junit.jupiter.params;
 
     opens org.sehkah.ddon.tools.extractor.lib.test.logic.packet.deserialization to org.junit.platform.commons;
     opens org.sehkah.ddon.tools.extractor.lib.test.logic.resource.serialization to org.junit.platform.commons;

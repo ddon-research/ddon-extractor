@@ -1,4 +1,4 @@
-package org.sehkah.ddon.tools.extractor.cli.logic;
+package org.sehkah.ddon.tools.extractor.cli.logic.commands;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.entity.Resource;
@@ -6,13 +6,16 @@ import org.sehkah.ddon.tools.extractor.api.error.SerializerException;
 import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.io.BinaryReader;
 import org.sehkah.ddon.tools.extractor.api.io.BufferReader;
-import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientResourceFileExtension;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ClientVersion;
 import org.sehkah.ddon.tools.extractor.api.serialization.SerializationFormat;
 import org.sehkah.ddon.tools.extractor.api.serialization.Serializer;
+import org.sehkah.ddon.tools.extractor.cli.logic.StatusCode;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.ArchiveUnpacker;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.FileChangeDetector;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.ResourceFileFilter;
+import org.sehkah.ddon.tools.extractor.cli.logic.util.TextureExporter;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.ClientResourceFileManager;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.Archive;
-import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.DirectDrawSurface;
 import org.sehkah.ddon.tools.extractor.common.logic.resource.entity.texture.Texture;
 import org.sehkah.ddon.tools.extractor.season1.logic.resource.ClientResourceFileManagerSeason1;
 import org.sehkah.ddon.tools.extractor.season2.logic.resource.ClientResourceFileManagerSeason2;
@@ -23,27 +26,31 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.Callable;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @Slf4j
-@CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "extract 1.0",
+@CommandLine.Command(name = "resource", mixinStandardHelpOptions = true, version = "resource 1.0",
         description = "Extracts the provided DDON resource file(s).")
+@SuppressWarnings("unused") // Fields are injected by picocli
 public class ExtractResourceCommand implements Callable<Integer> {
+    private final FileChangeDetector fileChangeDetector = new FileChangeDetector();
+    private final ArchiveUnpacker archiveUnpacker = new ArchiveUnpacker();
     private ClientResourceFileManager clientResourceFileManager;
+    private TextureExporter textureExporter;
+    private ExecutorService executorService;
 
     @CommandLine.Option(names = {"-f", "--format"}, arity = "0..1", description = """
             Optionally specify the output format (${COMPLETION-CANDIDATES}).
             If omitted the default format is used (json).
             Example:
-                 extract --format=JSON FILE  outputs the data with the JSON format on the console
-                 extract --format FILE   outputs the data with the default format on the console"
+                 resource --format=JSON FILE  outputs the data with the JSON format on the console
+                 resource --format FILE   outputs the data with the default format on the console"
             """, defaultValue = "json")
     private SerializationFormat outputFormat;
 
@@ -52,7 +59,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             This will be used as a basis to derive further meta information for certain files where supported and enabled.
             See the meta information flag for further information.
             Example:
-                extract "D:\\DDON" <resource file>
+                resource "D:\\DDON" <resource file>
             """)
     private Path clientRootFolder;
 
@@ -61,7 +68,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             This will be used to dump messages in both JP and EN.
             See the meta information flag for further information.
             Example:
-                extract "D:\\DDON" "D:\\DDON-translation\\gmd.csv" <resource file>
+                resource "D:\\DDON" "D:\\DDON-translation\\gmd.csv" <resource file>
             """)
     private Path clientTranslationFile;
 
@@ -69,8 +76,8 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Specifies the DDON client resource file whose data to extract or a folder to recursively search for such files.
             The full path starting from the client resource base path must be specified, i.e. from "rom".
             Example:
-                extract <client resource base path> "game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
-                extract <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
+                resource <client resource base path> "game_common\\param\\enemy_group.emg" will extract the data of the enemy_group.emg resource file.
+                resource <client resource base path> "game_common\\param" will extract the data of all resource files found in this path.
             """)
     private Path inputFilePath;
 
@@ -78,7 +85,7 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Optionally specify whether to output the extracted data as a file.
             If omitted the default behavior is to output to console.
             Example:
-                extract -o FILE outputs the data in a file relative to the current working directory based on the input file name.
+                resource -o FILE outputs the data in a file relative to the current working directory based on the input file name.
             """, defaultValue = "false")
     private boolean writeOutputToFile;
 
@@ -124,6 +131,14 @@ public class ExtractResourceCommand implements Callable<Integer> {
             Note that textures will be dumped as JSON or YAML without the data either way.
             """, defaultValue = "false")
     private boolean exportTextures;
+
+    @CommandLine.Option(names = {"-i", "--ignore-extensions"}, arity = "0..1", description = """
+            Optionally specify whether to ignore specific file extensions from parsing.
+            If omitted the default behavior is parse all supported extensions.
+            Example:
+                resource -i .dds,.tex FILE outputs the data in a file relative to the current working directory based on the input file name.
+            """, split = ",", defaultValue = "")
+    private Set<String> ignoreExtensions;
 
     private static ClientResourceFileManager getClientResourceFileManager(Path clientRootFolder, Path clientTranslationFile, SerializationFormat preferredSerializationType, boolean shouldSerializeMetaInformation) {
         Path versionlist = clientRootFolder.resolve("dlinfo").resolve("versionlist");
@@ -188,31 +203,29 @@ public class ExtractResourceCommand implements Callable<Integer> {
             log.info("Outputting to file '{}'.", outputFilePath);
 
             try {
+                // Texture export
                 if (exportTextures && (deserializedOutput instanceof Texture t)) {
-                    DirectDrawSurface dds = t.toDirectDrawSurface();
-                    Files.write(outputFolder.resolve(fileName + ".dds"), clientResourceFileManager.getSerializer(outputFile + ".dds", dds).serializeResource(dds), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                    if (textureExporter == null) {
+                        textureExporter = new TextureExporter(clientResourceFileManager, fileChangeDetector);
+                    }
+                    textureExporter.export(t, outputFolder, fileName, outputFile);
                 }
 
-                Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                // Main serialized output
+                byte[] newBytes = serializedOutput.getBytes(StandardCharsets.UTF_8);
+                boolean writeMain = fileChangeDetector.shouldWrite(outputFilePath, newBytes);
+                if (!writeMain) {
+                    log.debug("Skipping unchanged output file '{}'.", outputFilePath);
+                } else {
+                    Files.writeString(outputFilePath, serializedOutput, StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+                }
+
+                // Archive unpack
                 if (unpackArchives && (deserializedOutput instanceof Archive archive)) {
-                    outputFolder = outputFolder.resolve(fileName.substring(0, fileName.lastIndexOf('.')));
-                    for (Map.Entry<String, byte[]> entry : archive.getResourceFiles().entrySet()) {
-                        String arcFile = entry.getKey();
-                        byte[] bytes = entry.getValue();
-                        Path arcFilePath = Paths.get(arcFile);
-                        Path arcOutputFolder = outputFolder.resolve(arcFilePath.subpath(0, Math.max(1, arcFilePath.getNameCount() - 1)));
-                        boolean arcMkdirsSucceeded = arcOutputFolder.toFile().mkdirs();
-                        if (!arcMkdirsSucceeded && !Files.isDirectory(arcOutputFolder)) {
-                            log.error("Failed to create folders for arc file.");
-                            return StatusCode.ERROR;
-                        }
-                        Path arcOutputFilePath = arcOutputFolder.resolve(arcFilePath.getFileName());
-                        log.info("Outputting to file '{}'.", arcOutputFilePath);
-                        Files.write(arcOutputFilePath, bytes, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-                    }
+                    archiveUnpacker.unpack(archive, outputFolder, fileName);
                 }
             } catch (IOException e) {
-                log.error("Failed to write file '{}'.", outputFilePath);
+                log.error("Failed to write file '{}'", outputFilePath);
                 if (log.isDebugEnabled()) {
                     log.error("", e);
                 }
@@ -225,6 +238,53 @@ public class ExtractResourceCommand implements Callable<Integer> {
         return StatusCode.OK;
     }
 
+    private ExecutorService createOptimizedExecutorService() {
+        int availableProcessors = Runtime.getRuntime().availableProcessors();
+        // For mixed CPU/I/O workload, use more threads than CPU cores
+        // I/O operations can benefit from higher thread count due to blocking operations
+        int threadPoolSize = Math.max(availableProcessors * 2, 8); // Minimum 8 threads for I/O throughput
+        log.debug("Creating executor service with {} threads for optimal CPU/I/O throughput", threadPoolSize);
+        // Custom thread factory for better debugging and monitoring
+        ThreadFactory threadFactory = new ThreadFactory() {
+            private final AtomicInteger threadNumber = new AtomicInteger(1);
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread thread = new Thread(r, "resource-extractor-" + threadNumber.getAndIncrement());
+                thread.setDaemon(true); // Don't prevent JVM shutdown
+                return thread;
+            }
+        };
+        return Executors.newFixedThreadPool(threadPoolSize, threadFactory);
+    }
+
+    private List<StatusCode> processFilesInParallel(List<Path> filePaths, Serializer<Resource> serializer, boolean writeOutputToFile) {
+        executorService = createOptimizedExecutorService();
+        try {
+            List<CompletableFuture<StatusCode>> futures = filePaths.stream()
+                    .map(path -> CompletableFuture.supplyAsync(
+                            () -> extractSingleFile(path, serializer, writeOutputToFile),
+                            executorService))
+                    .toList();
+            CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
+            allOf.join();
+            return futures.stream().map(CompletableFuture::join).toList();
+        } finally {
+            if (executorService != null && !executorService.isShutdown()) {
+                executorService.shutdown();
+                try {
+                    if (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
+                        log.warn("Executor service did not terminate gracefully, forcing shutdown");
+                        executorService.shutdownNow();
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    executorService.shutdownNow();
+                }
+            }
+        }
+    }
+
     @Override
     public Integer call() throws Exception {
         Path fullPath = clientRootFolder.resolve("nativePC").resolve("rom").resolve(inputFilePath);
@@ -233,31 +293,16 @@ public class ExtractResourceCommand implements Callable<Integer> {
             if (Files.isDirectory(fullPath)) {
                 log.debug("Recursively extracting resource data from folder '{}'.", fullPath);
                 try (Stream<Path> files = Files.walk(fullPath)) {
-                    Predicate<Path> fileFilter;
-                    if (unpackArchives && unpackArchivesExclusively) {
-                        String arcFileExtension = ClientResourceFileExtension.getFileExtensions(ClientResourceFileExtension.rArchive);
-                        fileFilter = path -> {
-                            String fileName = path.getFileName().toString();
-                            return fileName.endsWith(arcFileExtension);
-                        };
-                    } else {
-                        Set<String> supportedFileExtensions = ClientResourceFileExtension.getSupportedFileExtensions();
-                        fileFilter = path -> {
-                            String fileName = path.getFileName().toString();
-                            return supportedFileExtensions.stream().anyMatch(fileName::endsWith);
-                        };
-                    }
-                    Stream<Path> filePathStream;
+                    Predicate<Path> fileFilter = ResourceFileFilter.build(unpackArchives, unpackArchivesExclusively, ignoreExtensions);
+                    List<Path> filteredFiles = files.filter(fileFilter).toList();
+                    List<StatusCode> statusCodes;
                     if (runInParallel) {
-                        filePathStream = files.toList().parallelStream();
+                        statusCodes = processFilesInParallel(filteredFiles, clientResourceFileManager.getStringSerializer(), writeOutputToFile);
                     } else {
-                        filePathStream = files.toList().stream();
+                        statusCodes = filteredFiles.stream().map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     }
-                    List<StatusCode> statusCodes = filePathStream
-                            .filter(fileFilter)
-                            .map(path -> extractSingleFile(path, clientResourceFileManager.getStringSerializer(), writeOutputToFile)).toList();
                     if (statusCodes.contains(StatusCode.ERROR)) {
-                        log.warn("Failed to extract one or more resource files.");
+                        log.warn("Failed to resource one or more resource files.");
                         return StatusCode.ERROR.ordinal();
                     } else {
                         log.info("Extracted all resource files.");

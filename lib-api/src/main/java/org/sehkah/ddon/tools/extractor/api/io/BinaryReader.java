@@ -2,6 +2,7 @@ package org.sehkah.ddon.tools.extractor.api.io;
 
 import lombok.extern.slf4j.Slf4j;
 import org.sehkah.ddon.tools.extractor.api.datatype.*;
+import org.sehkah.ddon.tools.extractor.api.error.TechnicalException;
 import org.sehkah.ddon.tools.extractor.api.logic.resource.ResourceMetadataLookupUtil;
 
 import java.io.IOException;
@@ -119,8 +120,7 @@ public class BinaryReader implements BufferReader {
         } else if (booleanValue == 0) {
             return false;
         }
-        log.error("Attempting to parse a boolean from byte '%d' which is neither '0' nor '1'. Likely cause is bad data parsing.".formatted(booleanValue));
-        return booleanValue != 0;
+        throw new TechnicalException("Attempting to parse a boolean from byte '%d' which is neither '0' nor '1'. Likely cause is bad data parsing.".formatted(booleanValue));
     }
 
     @Override
@@ -381,5 +381,10 @@ public class BinaryReader implements BufferReader {
             entities.add(entityReaderFunction.apply(this, entityMetadataLookupUtil));
         }
         return entities;
+    }
+
+    @Override
+    public HermiteCurve readHermiteCurve() {
+        return new HermiteCurve(readFixedLengthArray(8, BufferReader::readFloat), readFixedLengthArray(8, BufferReader::readFloat));
     }
 }

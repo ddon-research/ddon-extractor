@@ -34,8 +34,8 @@ public class AreaMasterSpotDetailDataDeserializer extends ClientResourceFileDese
     private static SpotItemData readSpotItemData(BufferReader bufferReader, ResourceMetadataLookupUtil lookupUtil) {
         long ItemId = bufferReader.readUnsignedInteger();
         int Unknown = bufferReader.readUnsignedShort();
-        boolean IsFeature = bufferReader.readBoolean();
         boolean IsCannotPawnTake = bufferReader.readBoolean();
+        boolean IsFeature = bufferReader.readBoolean();
 
         Translation ItemName = null;
         if (lookupUtil != null) {

@@ -4,6 +4,7 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires info.picocli;
     requires org.slf4j;
     requires org.apache.logging.log4j;
+    requires org.apache.commons.codec;
 
     requires org.sehkah.ddon.tools.extractor.lib.common;
     requires org.sehkah.ddon.tools.extractor.lib.season1;
@@ -12,4 +13,6 @@ module org.sehkah.ddon.tools.extractor.cli {
     requires org.sehkah.ddon.tools.extractor.lib.api;
 
     opens org.sehkah.ddon.tools.extractor.cli.logic to info.picocli;
+    opens org.sehkah.ddon.tools.extractor.cli.logic.util to info.picocli;
+    opens org.sehkah.ddon.tools.extractor.cli.logic.commands to info.picocli;
 }

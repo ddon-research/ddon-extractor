@@ -9,25 +9,22 @@ import java.util.zip.Inflater;
 
 @Slf4j
 public class ZipUtil {
-    private ZipUtil() {
+    private static final ThreadLocal<Inflater> INFLATER_CACHE = ThreadLocal.withInitial(Inflater::new);
 
+    private ZipUtil() {
     }
 
     public static byte[] decompress(byte[] input, int expectedSize) {
-        final Inflater decompresser = new Inflater();
-        decompresser.setInput(input);
-        byte[] buffer = new byte[expectedSize];
+        Inflater inflater = INFLATER_CACHE.get();
+        inflater.reset();
+        inflater.setInput(input);
+        byte[] out = new byte[expectedSize];
         try {
-            int decompressedSize = decompresser.inflate(buffer);
-            if (decompressedSize == buffer.length) {
-                return buffer;
-            } else {
-                return Arrays.copyOfRange(buffer, 0, decompressedSize);
-            }
+            int len = inflater.inflate(out);
+            if (len == out.length) return out;
+            return Arrays.copyOf(out, len);
         } catch (DataFormatException e) {
-            throw new TechnicalException("Decompression has failed!", e);
-        } finally {
-            decompresser.end();
+            throw new TechnicalException("Decompression failed", e);
         }
     }
 }
