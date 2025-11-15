@@ -1,4 +1,4 @@
-#extension	resource	jamcrc
+#extension,resource,jamcrc
 .2EA55F30,rPlayerExpTable,782589744
 .3FD51519,rCraftSkillGain,1070929177
 .4BB8A7C5,rCraftSkillBurst,1270392773

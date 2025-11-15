@@ -3,7 +3,6 @@ module org.sehkah.ddon.tools.extractor.lib.test {
     requires org.apache.commons.codec;
 
     requires org.junit.jupiter.api;
-    requires org.junitpioneer;
 
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;

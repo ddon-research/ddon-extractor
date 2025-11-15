@@ -1,7 +1,7 @@
 pluginManagement {
     plugins {
         id 'org.beryx.jlink' version '3.1.4-rc'
-        id 'io.freefair.lombok' version '9.0.0'
+        id 'io.freefair.lombok' version '9.1.0'
         id 'com.github.ben-manes.versions' version '0.52.0'
         id 'me.champeau.jmh' version '0.7.3'
     }
@@ -10,7 +10,7 @@ pluginManagement {
 dependencyResolutionManagement {
     versionCatalogs {
         common {
-            version('junit', '5.12.0')
+            version('junit', '6.0.1')
         }
         log {
             version('orgSlf4j', '2.0.17')
@@ -29,7 +29,7 @@ dependencyResolutionManagement {
             bundle('logging-runtimeOnly', ['log4j-core', 'log4j-slf4j2-impl'])
         }
         lib {
-            version('comFasterxmlJackson', '2.20.0')
+            version('comFasterxmlJackson', '2.20.1')
             version('orgBouncycastle', '1.82')
             version('orgApacheCommons', '3.19.0')
 
@@ -47,23 +47,20 @@ dependencyResolutionManagement {
             library('commons-lang3', 'org.apache.commons', 'commons-lang3').versionRef('orgApacheCommons')
         }
         libTest {
-            version('commonsCodec', '1.19.0')
+            version('commonsCodec', '1.20.0')
             version('commonsIo', '2.18.0')
-            version('junitPioneer', '2.3.0')
             version('mockitoCore', '5.20.0')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec
             library('commons-codec', 'commons-codec', 'commons-codec').versionRef('commonsCodec')
             // https://mvnrepository.com/artifact/commons-io/commons-io
             library('commons-io', 'commons-io', 'commons-io').versionRef('commonsIo')
-            // https://mvnrepository.com/artifact/org.junit-pioneer/junit-pioneer
-            library('junit-pioneer', 'org.junit-pioneer', 'junit-pioneer').versionRef('junitPioneer')
             // https://mvnrepository.com/artifact/org.mockito/mockito-core
             library('mockito-core', 'org.mockito', 'mockito-core').versionRef('mockitoCore')
         }
         cli {
-            version('commonsCodec', '1.19.0')
-            version('comFasterxmlJackson', '2.20.0')
+            version('commonsCodec', '1.20.0')
+            version('comFasterxmlJackson', '2.20.1')
             version('infoPicocli', '4.7.7')
 
             // https://mvnrepository.com/artifact/commons-codec/commons-codec

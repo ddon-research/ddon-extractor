@@ -24,7 +24,7 @@ This is currently the only IDE the source code has been tested with.
 
 ==== IntelliJ IDEA Community Edition
 
-* Download and Install JDK21 via https://adoptium.net/releases.html[Eclipse Adoptium]
+* Download and Install JDK25 via https://adoptium.net/releases.html[Eclipse Adoptium]
 * Download and install the https://www.jetbrains.com/toolbox-app/[Toolbox App] by JetBrains
 * Install IntelliJ IDEA Community Edition via the toolbox
 * Click on Open Project and open the cloned repository
@@ -32,7 +32,7 @@ This is currently the only IDE the source code has been tested with.
 * Set up the project structure to fix the JDK hints
 ** Navigate to `File -> Settings -> Project Structure`
 ** Ensure `Project language` is set to SDK default
-** Ensure `Project SDK` is set to JDK17
+** Ensure `Project SDK` is set to JDK25
 
 == How to build
 
