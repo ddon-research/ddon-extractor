@@ -185,3 +185,9 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij+all,windows,git,gradle
 output/
+
+### Docusaurus ###
+website/node_modules/
+website/.docusaurus/
+website/build/
+website/.cache-loader/
